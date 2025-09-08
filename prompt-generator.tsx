@@ -932,7 +932,7 @@ const PromptGenerator = () => {
           <div className="text-center mb-8">
             <button
               onClick={() => generatePrompt()}
-              className={`bg-${getTabColor(activeTab)}-600 hover:bg-${getTabColor(activeTab)}-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors shadow-lg`}
+              className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors shadow-lg"
             >
               Generate Prompt
             </button>
