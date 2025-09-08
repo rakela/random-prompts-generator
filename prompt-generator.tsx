@@ -851,12 +851,12 @@ const PromptGenerator = () => {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
               <Sparkles className="text-blue-600" size={24} />
-              <span className="text-xl font-bold text-gray-900">PromptGen</span>
+              <span className="text-xl font-bold text-gray-900">Random Prompts</span>
             </div>
             <nav className="hidden md:flex items-center space-x-6">
               <a href="#features" className="text-gray-600 hover:text-blue-600 transition-colors">Features</a>
               <a href="#about" className="text-gray-600 hover:text-blue-600 transition-colors">About</a>
-              <a href="https://github.com/yourusername/prompt-generator" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-gray-600 hover:text-blue-600 transition-colors">
+              <a href="https://github.com/rakela/random-prompts-generator" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-gray-600 hover:text-blue-600 transition-colors">
                 <Github size={16} />
                 GitHub
               </a>
@@ -886,14 +886,8 @@ const PromptGenerator = () => {
             Writing, AI Art, Blog & Fantasy
           </p>
           <p className="text-lg opacity-80 mb-8 max-w-2xl mx-auto">
-            Generate unique, high-quality prompts for writing, AI art, blogging, and worldbuilding — in one clean tool. Free, fast, unlimited.
+            Generate unique, high-quality prompts for writing, AI art, blogging, and worldbuilding, in one clean tool. Free, fast, unlimited.
           </p>
-          <button
-            onClick={() => generatePrompt()}
-            className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors shadow-lg"
-          >
-            Start Generating
-          </button>
         </div>
       </div>
 
@@ -1191,13 +1185,13 @@ const PromptGenerator = () => {
             <div>
               <div className="flex items-center space-x-2 mb-4">
                 <Sparkles size={20} />
-                <span className="text-lg font-bold">PromptGen</span>
+                <span className="text-lg font-bold">Random Prompts</span>
               </div>
               <p className="text-gray-400 text-sm mb-4">
                 The ultimate free prompt generator for writers, artists, bloggers, and worldbuilders.
               </p>
               <div className="flex space-x-4">
-                <a href="https://github.com/yourusername/prompt-generator" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                <a href="https://github.com/rakela/random-prompts-generator" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                   <Github size={20} />
                 </a>
                 <a href="https://twitter.com/intent/tweet?text=Check%20out%20this%20free%20prompt%20generator!&url=https://prompt-generator.vercel.app" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
@@ -1238,15 +1232,15 @@ const PromptGenerator = () => {
             <div>
               <h3 className="font-semibold mb-4">Support</h3>
               <ul className="space-y-2 text-sm">
-                <li><a href="https://github.com/yourusername/prompt-generator/issues" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">Report Issues</a></li>
-                <li><a href="https://github.com/yourusername/prompt-generator/discussions" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">Discussions</a></li>
-                <li><a href="https://github.com/yourusername/prompt-generator" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">Contribute</a></li>
+                <li><a href="https://github.com/rakela/random-prompts-generator/issues" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">Report Issues</a></li>
+                <li><a href="https://github.com/rakela/random-prompts-generator/discussions" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">Discussions</a></li>
+                <li><a href="https://github.com/rakela/random-prompts-generator" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">Contribute</a></li>
               </ul>
             </div>
           </div>
 
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
-            <p>© 2024 PromptGen. Made with <Heart size={14} className="inline text-red-500" /> for the creative community.</p>
+            <p>© 2024 Random Prompts. Made with <Heart size={14} className="inline text-red-500" /> for the creative community.</p>
             <p className="mt-2">Free and open source. No registration required. No data collected.</p>
           </div>
         </div>
