@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import { Copy, RefreshCw, Save, Download, Sparkles, Wand2, PenTool, BookOpen, Crown, Github, Twitter, Heart, ExternalLink, Zap, History, Share2, Star } from 'lucide-react';
 
 // High-quality data dictionaries for generation
@@ -849,10 +850,10 @@ const PromptGenerator = () => {
       <header className="bg-white shadow-sm border-b border-gray-200">
         <div className="max-w-6xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
+            <Link to="/" className="flex items-center space-x-2">
               <Sparkles className="text-blue-600" size={24} />
               <span className="text-xl font-bold text-gray-900">Random Prompts</span>
-            </div>
+            </Link>
             <nav className="hidden md:flex items-center space-x-6">
               <a href="#features" className="text-gray-600 hover:text-blue-600 transition-colors">Features</a>
               <a href="#about" className="text-gray-600 hover:text-blue-600 transition-colors">About</a>
@@ -896,7 +897,25 @@ Random Prompts Generator for writing, AI art, blogging, stories, and character c
             const Icon = tab.icon;
             const color = getTabColor(tab.id);
             const isActive = activeTab === tab.id;
-            
+
+            // Special case for Writing tab - link to dedicated page
+            if (tab.id === 'writing') {
+              return (
+                <Link
+                  key={tab.id}
+                  to="/writing-prompts"
+                  className={`flex items-center gap-2 px-6 py-3 font-medium transition-all ${
+                    isActive
+                      ? `text-${color}-600 border-b-2 border-${color}-600 bg-${color}-50`
+                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                  }`}
+                >
+                  <Icon size={18} />
+                  {tab.label}
+                </Link>
+              );
+            }
+
             return (
               <button
                 key={tab.id}
@@ -1229,7 +1248,7 @@ Random Prompts Generator for writing, AI art, blogging, stories, and character c
             <div>
               <h3 className="font-semibold mb-4">Quick Links</h3>
               <ul className="space-y-2 text-sm">
-                <li><button onClick={() => setActiveTab('writing')} className="text-gray-400 hover:text-white transition-colors">Writing Prompts</button></li>
+                <li><Link to="/writing-prompts" className="text-gray-400 hover:text-white transition-colors">Writing Prompts</Link></li>
                 <li><button onClick={() => setActiveTab('aiArt')} className="text-gray-400 hover:text-white transition-colors">AI Art Prompts</button></li>
                 <li><button onClick={() => setActiveTab('blog')} className="text-gray-400 hover:text-white transition-colors">Blog Ideas</button></li>
                 <li><button onClick={() => setActiveTab('fantasy')} className="text-gray-400 hover:text-white transition-colors">Fantasy Worlds</button></li>
