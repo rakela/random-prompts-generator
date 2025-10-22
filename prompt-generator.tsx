@@ -1173,6 +1173,35 @@ Random Prompts Generator for writing, AI art, blogging, stories, and character c
             </div>
           </div>
         </section>
+
+        {/* FAQ Section */}
+        <section className="bg-white py-16">
+          <div className="max-w-4xl mx-auto px-4">
+            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+            <div className="space-y-6">
+              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">What is a random prompts generator?</h3>
+                <p className="text-gray-700">
+                  It's a tool that instantly creates unique ideas for writing, AI art, blogs, and worldbuilding using curated templates and parameters like genre, tone, and style.
+                </p>
+              </div>
+
+              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">Is the Random Prompts Generator free to use?</h3>
+                <p className="text-gray-700">
+                  Yes. You can generate unlimited prompts for free. Optional pro features may include saving, bulk export, and an API.
+                </p>
+              </div>
+
+              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">Can I use the generated prompts commercially?</h3>
+                <p className="text-gray-700">
+                  Yes. Prompts are yours to use for personal or commercial projects; attribution is appreciated but not required.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
 
       {/* Footer */}

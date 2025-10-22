@@ -26,6 +26,46 @@
     <!-- Additional SEO -->
     <link rel="canonical" href="https://prompt-generator.vercel.app" />
     <meta name="theme-color" content="#3B82F6" />
+
+    <!-- JSON-LD: WebApplication -->
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"WebApplication",
+      "name":"Random Prompts Generator",
+      "url":"https://randomprompts.org/prompt-generator",
+      "applicationCategory":"CreativeApplication",
+      "operatingSystem":"Web",
+      "description":"Generate prompts for writing, AI art, blogs, and fantasy worldbuilding.",
+      "offers": { "@type":"Offer", "price":"0", "priceCurrency":"USD" },
+      "publisher": { "@type":"Organization", "name":"RandomPrompts.org", "url":"https://randomprompts.org" }
+    }
+    </script>
+
+    <!-- JSON-LD: FAQPage (helps the main keyword) -->
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"FAQPage",
+      "mainEntity":[
+        {
+          "@type":"Question",
+          "name":"What is a random prompts generator?",
+          "acceptedAnswer":{"@type":"Answer","text":"It's a tool that instantly creates unique ideas for writing, AI art, blogs, and worldbuilding using curated templates and parameters like genre, tone, and style."}
+        },
+        {
+          "@type":"Question",
+          "name":"Is the Random Prompts Generator free to use?",
+          "acceptedAnswer":{"@type":"Answer","text":"Yes. You can generate unlimited prompts for free. Optional pro features may include saving, bulk export, and an API."}
+        },
+        {
+          "@type":"Question",
+          "name":"Can I use the generated prompts commercially?",
+          "acceptedAnswer":{"@type":"Answer","text":"Yes. Prompts are yours to use for personal or commercial projects; attribution is appreciated but not required."}
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
