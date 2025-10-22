@@ -880,14 +880,11 @@ const PromptGenerator = () => {
       <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Random Prompt Generator
+            Random Prompts Generator
           </h1>
-          <p className="text-xl md:text-2xl mb-2 opacity-90">
-            Writing, AI Art, Blog & Fantasy
-          </p>
+          
           <p className="text-lg opacity-80 mb-8 max-w-2xl mx-auto">
-            Generate unique, high-quality prompts for writing, AI art, blogging, and worldbuilding, in one clean tool. Free, fast, unlimited.
-          </p>
+Random Prompts Generator for writing, AI art, blogging, stories, and character creation, all in one clean, powerful tool. Instantly generate professional-quality prompts for ChatGPT, MidJourney, and creative writing.          </p>
         </div>
       </div>
 
