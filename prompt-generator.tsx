@@ -1025,12 +1025,12 @@ const PromptGenerator = () => {
           <div className="mt-16 space-y-8">
             {activeTab === 'writing' && (
               <div className="prose prose-gray max-w-none">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">Professional Writing Prompt Generator</h2>
+                <h2 className="text-2xl font-bold text-gray-900 mb-4">Random Prompts Generator for Writing - Professional Story Ideas</h2>
                 <p className="text-gray-700 mb-4">
-                  Generate sophisticated writing prompts with specific conflicts, emotional stakes, and compelling plot twists. Our advanced algorithm combines proven story elements including unique protagonists, immersive settings, and high-impact revelations that challenge writers to explore complex themes.
+                  Our random prompts generator creates professional writing prompts designed to spark creativity and overcome writer's block. This free writing prompt generator delivers unlimited story ideas featuring unique conflicts, emotional stakes, and compelling plot twists. Each randomly generated prompt combines proven story elements with sophisticated narratives perfect for creative writers, novelists, and storytellers.
                 </p>
                 <p className="text-gray-700 mb-4">
-                  Each prompt includes specific character archetypes (memory thieves, dream architects, retired superheroes), detailed conflicts with clear stakes, and thought-provoking plot twists that avoid common clichés. Perfect for overcoming writer's block and exploring new narrative territories.
+                  Generate random writing prompts with detailed character archetypes (memory thieves, dream architects, retired superheroes), specific story conflicts, and creative plot twists that go beyond generic writing prompts. This random story prompt generator tool is ideal for daily writing practice, NaNoWriMo preparation, creative writing exercises, and exploring new narrative ideas.
                 </p>
                 <div className="bg-blue-50 p-4 rounded-lg mt-4">
                   <h3 className="font-semibold text-blue-900 mb-2">Quality Features:</h3>
