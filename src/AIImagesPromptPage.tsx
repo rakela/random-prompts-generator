@@ -3,85 +3,68 @@ import { Helmet } from 'react-helmet-async';
 import { Copy, RefreshCw, Save, Download, Sparkles, PenTool, BookOpen, Crown, Github, Twitter, Heart, History, Share2, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-// High-quality data dictionaries for generation
+// High-quality data dictionaries for AI art generation
 const promptData = {
-  writing: {
-    // Story structures and hooks
-    openings: [
-      'A mysterious letter arrives with no return address',
-      'The last person on Earth hears a knock at the door',
-      'Your character wakes up with someone else\'s memories',
-      'A child finds a door in their bedroom that wasn\'t there yesterday',
-      'The GPS leads your character to a place that doesn\'t exist on any map',
-      'Your character receives a phone call from themselves',
-      'A time capsule is opened 50 years early',
-      'Your character discovers their reflection is acting independently',
-      'A stranger approaches claiming to be from the future',
-      'Your character finds a diary that predicts their life perfectly'
+  aiArt: {
+    // Professional art techniques and styles
+    techniques: [
+      'hyperrealistic digital painting', 'concept art', 'matte painting', 'photorealistic 3D render',
+      'oil painting masterpiece', 'watercolor illustration', 'pencil sketch portrait',
+      'acrylic painting', 'charcoal drawing', 'digital art illustration'
     ],
 
-    // Specific conflicts with emotional stakes
-    conflicts: [
-      'must choose between saving their child or saving a thousand strangers',
-      'discovers their life-saving medication is slowly poisoning someone they love',
-      'learns their memory of a traumatic event was deliberately implanted',
-      'finds out their soulmate is their mortal enemy in disguise',
-      'realizes they\'re the only one who remembers the world before it changed',
-      'must betray their deepest principles to save their family',
-      'discovers they\'re living in a simulation but escaping means abandoning everyone inside',
-      'learns their healing powers come at the cost of shortening others\' lives',
-      'finds out their deceased parent is alive but has become their greatest enemy',
-      'must use their fear of heights to rescue someone from a collapsing tower'
+    // Specific subjects with visual appeal
+    subjects: [
+      'ethereal elven warrior with glowing tattoos',
+      'steampunk airship soaring through storm clouds',
+      'cyberpunk samurai in neon-lit alleyway',
+      'ancient dragon perched atop crystalline mountains',
+      'space marine battling alien creatures on distant planet',
+      'mystical forest guardian with antler crown',
+      'robotic angel with mechanical wings',
+      'underwater palace with bioluminescent details',
+      'post-apocalyptic survivor in gas mask',
+      'celestial being made of stars and nebulae'
     ],
 
-    // Rich, specific settings
-    settings: [
-      'a floating city that only appears during solar eclipses',
-      'an underground library where books rewrite themselves',
-      'a small town where time moves backward every midnight',
-      'a space station orbiting a dying star',
-      'a school for children who remember their past lives',
-      'a hospital where patients\' dreams become reality',
-      'a lighthouse that guides souls instead of ships',
-      'a coffee shop that exists in multiple dimensions simultaneously',
-      'an antique store where every item has a dangerous history',
-      'a forest where the trees whisper secrets of the dead'
+    // Professional lighting setups
+    lighting: [
+      'dramatic chiaroscuro lighting', 'golden hour rim lighting', 'volumetric god rays',
+      'neon accent lighting', 'soft box studio lighting', 'harsh spotlight from above',
+      'bioluminescent ambient glow', 'candlelight and shadows', 'aurora borealis backdrop',
+      'lens flare and bloom effects', 'moody atmospheric lighting', 'backlit silhouette'
     ],
 
-    // Character archetypes with depth
-    protagonists: [
-      'a memory thief who can steal and experience others\' recollections',
-      'a retired superhero living under witness protection',
-      'a therapist who absorbs their patients\' traumas',
-      'a time loop victim who ages while everyone else resets',
-      'a prophet who sees multiple futures but can\'t control which becomes real',
-      'a ghost who doesn\'t know they\'re dead',
-      'a dream architect who builds worlds in people\'s sleep',
-      'a voice actor who discovers their recordings can alter reality',
-      'a cartographer mapping places that exist only in stories',
-      'a funeral director who can speak with the recently deceased'
+    // Camera and composition terms
+    composition: [
+      'extreme close-up portrait', 'wide establishing shot', 'dramatic low angle',
+      'bird\'s eye view', 'dutch angle composition', 'symmetrical framing',
+      'rule of thirds composition', 'leading lines', 'depth of field focus',
+      'macro detail shot', 'panoramic landscape', 'tilt-shift miniature effect'
     ],
 
-    // High-impact plot twists
-    revelations: [
-      'the narrator has been the villain all along',
-      'everyone except the protagonist is an AI',
-      'the story is happening in reverse chronological order',
-      'the protagonist is their own time-traveling descendant',
-      'the entire conflict was manufactured by the protagonist\'s future self',
-      'death in this world just means waking up in another',
-      'the protagonist is the only real person in a philosophical thought experiment',
-      'the story is being told by the protagonist to their killer',
-      'each chapter is a different iteration of the same day',
-      'the protagonist has been dead since chapter one'
+    // Quality and style modifiers
+    quality: [
+      'trending on ArtStation', 'highly detailed', 'award-winning photography',
+      'museum quality', 'photorealistic', 'hyper-detailed',
+      'studio quality', 'masterpiece', '8K resolution', 'ultra-realistic'
+    ],
+
+    // Artist style references
+    artists: [
+      'painted by Greg Rutkowski', 'in the style of Alphonse Mucha',
+      'reminiscent of H.R. Giger', 'inspired by Hayao Miyazaki',
+      'like a John Singer Sargent portrait', 'in Caravaggio\'s style',
+      'digital art by Loish', 'concept art by Feng Zhu',
+      'illustration by James Jean', 'photography by Annie Leibovitz'
     ],
 
     templates: [
-      '{openings}, but when your protagonist {conflicts}, they discover that {revelations}. Set in {settings}.',
-      'Your protagonist is {protagonists} who lives in {settings}. When they {conflicts}, {revelations}.',
-      'In {settings}, {openings}. Your protagonist, {protagonists}, must {conflicts} while facing the truth that {revelations}.',
-      'Write about {protagonists} in {settings}. The story begins when {openings}, forcing them to {conflicts}, ultimately revealing that {revelations}.',
-      '{protagonists} discovers {revelations} when {openings} in {settings}. Now they must {conflicts} to set things right.'
+      '{subjects}, {techniques}, {lighting}, {composition}, {quality}, {artists}',
+      '{composition} of {subjects}, {techniques} with {lighting}, {quality}, {artists}',
+      '{subjects} rendered as {techniques}, featuring {lighting} and {composition}, {quality}, {artists}',
+      'Professional {techniques} showing {subjects}, {lighting}, {composition}, {quality}, {artists}',
+      '{artists} style {techniques} of {subjects}, {lighting}, {composition}, {quality}'
     ]
   }
 };
@@ -110,45 +93,41 @@ const processTemplate = (template, data) => {
   });
 };
 
-// Quality enhancement for writing prompts
-const enhanceWritingPrompt = (prompt) => {
-  const enhancements = [
-    ' Focus on the internal conflict.',
-    ' Include a ticking clock element.',
-    ' Show the cost of failure.',
-    ' Add a moral dilemma.',
-    ' Include sensory details.'
+// Quality enhancement for AI art prompts
+const enhanceAIArtPrompt = (prompt) => {
+  const qualityModifiers = [
+    ', ultra detailed, 8k resolution',
+    ', professional photography',
+    ', award winning composition',
+    ', cinematic lighting',
+    ', sharp focus, detailed textures'
   ];
 
-  if (Math.random() < 0.3) {
-    prompt += weightedRandom(enhancements);
-  }
-
-  return prompt;
+  return prompt + weightedRandom(qualityModifiers);
 };
 
-const WritingPromptsPage = () => {
+const AIImagesPromptPage = () => {
   const [generatedPrompt, setGeneratedPrompt] = useState(null);
   const [savedPrompts, setSavedPrompts] = useState([]);
   const [promptHistory, setPromptHistory] = useState([]);
   const [favorites, setFavorites] = useState([]);
   const [showHistory, setShowHistory] = useState(false);
   const [controls, setControls] = useState({
-    genre: 'any',
-    tone: 'any',
-    length: 'medium'
+    style: 'any',
+    mood: 'any',
+    quality: 'high'
   });
 
   const generatePrompt = useCallback(() => {
-    const data = promptData.writing;
+    const data = promptData.aiArt;
     const template = weightedRandom(data.templates);
     let prompt = processTemplate(template, data);
-    prompt = enhanceWritingPrompt(prompt);
+    prompt = enhanceAIArtPrompt(prompt);
 
     const newPrompt = {
       id: Date.now(),
       text: prompt,
-      category: 'writing',
+      category: 'aiArt',
       timestamp: new Date().toISOString()
     };
 
@@ -181,7 +160,7 @@ const WritingPromptsPage = () => {
     if (navigator.share) {
       try {
         await navigator.share({
-          title: 'Writing Prompt',
+          title: 'AI Images Prompt',
           text: prompt.text,
           url: window.location.href
         });
@@ -199,7 +178,7 @@ const WritingPromptsPage = () => {
     const url = URL.createObjectURL(dataBlob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = 'saved-writing-prompts.json';
+    link.download = 'saved-ai-images-prompts.json';
     link.click();
     URL.revokeObjectURL(url);
   };
@@ -263,21 +242,21 @@ const WritingPromptsPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
       <Helmet>
-        <title>Random Writing Prompt Generator - Free Writing Prompts</title>
-        <meta name="description" content="Generate unlimited writing prompts instantly with our free writing prompt generator. Create unique story ideas with compelling conflicts, emotional stakes, and creative plot twists to overcome writer's block." />
-        <meta name="keywords" content="writing prompts, random writing prompts, writing prompt generator, story prompts, creative writing prompts, random story prompt generator" />
-        <link rel="canonical" href="https://randomprompts.org/writing-prompts" />
+        <title>AI Images Prompt Generator - Free AI Art Prompts for MidJourney & DALL-E</title>
+        <meta name="description" content="Generate professional AI images prompt instantly with our free AI art prompt generator. Create detailed prompts for MidJourney, DALL-E, Stable Diffusion with advanced lighting, composition, and style techniques." />
+        <meta name="keywords" content="ai images prompt, ai art prompt generator, midjourney prompts, dall-e prompts, stable diffusion prompts, ai image generation, free ai art prompts" />
+        <link rel="canonical" href="https://randomprompts.org/ai-images-prompt" />
 
         {/* Open Graph Tags */}
-        <meta property="og:title" content="Random Writing Prompt Generator - Free Writing Prompts" />
-        <meta property="og:description" content="Generate unlimited writing prompts instantly with our free writing prompt generator. Create unique story ideas with compelling conflicts, emotional stakes, and creative plot twists to overcome writer's block." />
+        <meta property="og:title" content="AI Images Prompt Generator - Free AI Art Prompts" />
+        <meta property="og:description" content="Generate professional AI images prompt instantly with our free AI art prompt generator. Create detailed prompts for MidJourney, DALL-E, Stable Diffusion." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://randomprompts.org/writing-prompts" />
+        <meta property="og:url" content="https://randomprompts.org/ai-images-prompt" />
 
         {/* Twitter Card Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Random Writing Prompt Generator - Free Writing Prompts" />
-        <meta name="twitter:description" content="Generate unlimited writing prompts instantly with our free writing prompt generator. Create unique story ideas with compelling conflicts, emotional stakes, and creative plot twists to overcome writer's block." />
+        <meta name="twitter:title" content="AI Images Prompt Generator - Free AI Art Prompts" />
+        <meta name="twitter:description" content="Generate professional AI images prompt instantly with our free AI art prompt generator." />
       </Helmet>
 
       {/* Header */}
@@ -307,14 +286,14 @@ const WritingPromptsPage = () => {
       </header>
 
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16">
+      <div className="bg-gradient-to-r from-purple-600 to-pink-600 text-white py-16">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Random Writing Prompt Generator
+            AI Images Prompt Generator
           </h1>
 
           <p className="text-lg opacity-80 mb-8 max-w-2xl mx-auto">
-            Generate unlimited writing prompts instantly. Our free writing prompt generator creates unique story ideas with compelling conflicts, emotional stakes, and creative plot twists to spark your creativity and overcome writer's block.
+            Generate professional AI images prompt for MidJourney, DALL-E, and Stable Diffusion. Our free AI art prompt generator creates detailed prompts with advanced lighting, composition techniques, and style references to produce stunning AI-generated images.
           </p>
         </div>
       </div>
@@ -324,14 +303,14 @@ const WritingPromptsPage = () => {
         <div className="flex flex-wrap justify-center gap-2 mb-8 border-b border-gray-200">
           <Link
             to="/writing-prompts"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-blue-600 border-b-2 border-blue-600 bg-blue-50"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
           >
             <PenTool size={18} />
             Writing
           </Link>
           <Link
             to="/ai-images-prompt"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-purple-600 border-b-2 border-purple-600 bg-purple-50"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72Z"></path>
@@ -376,37 +355,37 @@ const WritingPromptsPage = () => {
           {/* Controls */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
             <select
-              value={controls.genre}
-              onChange={(e) => updateControl('genre', e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              value={controls.style}
+              onChange={(e) => updateControl('style', e.target.value)}
+              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
             >
-              <option value="any">Any Story Type</option>
-              <option value="character-driven">Character-Driven</option>
-              <option value="plot-driven">Plot-Driven</option>
-              <option value="experimental">Experimental</option>
-              <option value="traditional">Traditional</option>
+              <option value="any">Any Medium</option>
+              <option value="digital">Digital Art</option>
+              <option value="traditional">Traditional Art</option>
+              <option value="photography">Photography</option>
+              <option value="3d">3D Render</option>
             </select>
             <select
-              value={controls.tone}
-              onChange={(e) => updateControl('tone', e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              value={controls.mood}
+              onChange={(e) => updateControl('mood', e.target.value)}
+              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
             >
-              <option value="any">Any Complexity</option>
-              <option value="simple">Simple Conflict</option>
-              <option value="complex">Complex Conflict</option>
-              <option value="moral">Moral Dilemma</option>
-              <option value="psychological">Psychological</option>
+              <option value="any">Any Subject</option>
+              <option value="portrait">Portrait</option>
+              <option value="landscape">Landscape</option>
+              <option value="fantasy">Fantasy</option>
+              <option value="scifi">Sci-Fi</option>
+              <option value="abstract">Abstract</option>
             </select>
             <select
-              value={controls.length}
-              onChange={(e) => updateControl('length', e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              value={controls.quality}
+              onChange={(e) => updateControl('quality', e.target.value)}
+              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
             >
-              <option value="any">Any Length</option>
-              <option value="flash">Flash Fiction</option>
-              <option value="short">Short Story</option>
-              <option value="novella">Novella</option>
-              <option value="novel">Novel</option>
+              <option value="standard">Standard Quality</option>
+              <option value="high">High Quality</option>
+              <option value="professional">Professional</option>
+              <option value="masterpiece">Masterpiece</option>
             </select>
           </div>
 
@@ -416,7 +395,7 @@ const WritingPromptsPage = () => {
               onClick={() => generatePrompt()}
               className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors shadow-lg"
             >
-              Generate Writing Prompt
+              Generate AI Images Prompt
             </button>
           </div>
 
@@ -502,20 +481,20 @@ const WritingPromptsPage = () => {
           {/* SEO Content Section */}
           <div className="mt-16 space-y-8">
             <div className="prose prose-gray max-w-none">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Random Writing Prompts - Professional Story Ideas</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">Professional AI Images Prompt Generator</h2>
               <p className="text-gray-700 mb-4">
-                Our random writing prompt generator creates professional writing prompts designed to spark creativity and overcome writer's block. This free writing prompt generator delivers unlimited story ideas featuring unique conflicts, emotional stakes, and compelling plot twists. Each randomly generated prompt combines proven story elements with sophisticated narratives perfect for creative writers, novelists, and storytellers.
+                Our AI images prompt generator creates professional prompts optimized for MidJourney, DALL-E, Stable Diffusion, and other AI art platforms. Generate detailed AI images prompt with specific technical terminology, professional lighting setups, composition techniques, and artist style references that produce gallery-quality results.
               </p>
               <p className="text-gray-700 mb-4">
-                Generate random writing prompts with detailed character archetypes (memory thieves, dream architects, retired superheroes), specific story conflicts, and creative plot twists that go beyond generic writing prompts. This random story prompt generator tool is ideal for daily writing practice, NaNoWriMo preparation, creative writing exercises, and exploring new narrative ideas.
+                Each AI images prompt combines detailed subject descriptions with professional art techniques including chiaroscuro lighting, rule of thirds composition, quality modifiers like "trending on ArtStation" and "museum quality," plus specific artist style references to produce consistent, high-quality AI-generated images for commercial and personal projects.
               </p>
-              <div className="bg-blue-50 p-4 rounded-lg mt-4">
-                <h3 className="font-semibold text-blue-900 mb-2">Quality Features:</h3>
-                <ul className="text-blue-800 text-sm space-y-1">
-                  <li>• Emotional stakes and internal conflicts</li>
-                  <li>• Specific, evocative settings beyond generic locations</li>
-                  <li>• Complex character archetypes with built-in motivations</li>
-                  <li>• Plot twists that recontextualize the entire story</li>
+              <div className="bg-purple-50 p-4 rounded-lg mt-4">
+                <h3 className="font-semibold text-purple-900 mb-2">AI Images Prompt Features:</h3>
+                <ul className="text-purple-800 text-sm space-y-1">
+                  <li>• Professional lighting terminology (volumetric rays, rim lighting, golden hour)</li>
+                  <li>• Advanced composition techniques (dutch angle, bird's eye view, depth of field)</li>
+                  <li>• Quality modifiers and resolution specifications (8K, ultra-realistic, photorealistic)</li>
+                  <li>• Specific artist style references for consistent AI image generation</li>
                 </ul>
               </div>
             </div>
@@ -528,37 +507,37 @@ const WritingPromptsPage = () => {
             <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
             <div className="space-y-6">
               <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">What are writing prompts?</h3>
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">What is an AI images prompt?</h3>
                 <p className="text-gray-700">
-                  Writing prompts are short ideas or situations designed to inspire new stories, essays, or creative pieces. They help overcome writer's block and spark creativity.
+                  An AI images prompt is a detailed text description that tells AI art generators like MidJourney, DALL-E, or Stable Diffusion exactly what image to create. The best AI images prompt includes specific details about subject, style, lighting, composition, and quality to produce professional results.
                 </p>
               </div>
 
               <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">How do I use writing prompts effectively?</h3>
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">How do I use AI images prompts effectively?</h3>
                 <p className="text-gray-700">
-                  Choose a prompt that catches your interest, set a timer (10–15 minutes), and start writing without overthinking. Let the prompt lead your imagination.
+                  Copy the generated AI images prompt and paste it directly into your AI art generator (MidJourney, DALL-E, Stable Diffusion). For best results, use prompts that include specific technical terms, lighting descriptions, and style references. Our generator creates prompts optimized for professional AI image generation.
                 </p>
               </div>
 
               <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Can I use these writing prompts for commercial projects?</h3>
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">Can I use these AI images prompts for commercial projects?</h3>
                 <p className="text-gray-700">
-                  Yes. All writing prompts on RandomPrompts.org are free to use for personal or commercial purposes — no attribution required.
+                  Yes. All AI images prompts generated by RandomPrompts.org are free to use for personal or commercial projects. Check your AI art platform's terms (MidJourney, DALL-E, etc.) regarding commercial use of generated images.
                 </p>
               </div>
 
               <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Are the writing prompts generated by AI?</h3>
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">Which AI art generators work with these prompts?</h3>
                 <p className="text-gray-700">
-                  Yes. Our Random Prompts Generator uses AI-assisted templates to produce unique, high-quality writing ideas across genres and tones.
+                  Our AI images prompts work with all major AI art platforms including MidJourney, DALL-E 2, DALL-E 3, Stable Diffusion, Leonardo AI, and more. The prompts use universal terminology that produces excellent results across different AI image generation platforms.
                 </p>
               </div>
 
               <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">What types of writing prompts can I generate?</h3>
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">What makes a good AI images prompt?</h3>
                 <p className="text-gray-700">
-                  You can create prompts for fiction, poetry, blogging, journaling, or screenwriting — including genres like fantasy, romance, mystery, and sci-fi.
+                  A professional AI images prompt includes: specific subject descriptions, art style or technique, lighting setup, composition angle, quality modifiers, and optional artist references. Our generator combines these elements automatically to create detailed prompts that produce stunning AI-generated images.
                 </p>
               </div>
             </div>
@@ -576,13 +555,13 @@ const WritingPromptsPage = () => {
                 <span className="text-lg font-bold">Random Prompts</span>
               </div>
               <p className="text-gray-400 text-sm mb-4">
-                Free writing prompt generator for writers, storytellers, and creative minds.
+                Free AI images prompt generator for MidJourney, DALL-E, and creative minds.
               </p>
               <div className="flex space-x-4">
                 <a href="https://github.com/rakela/random-prompts-generator" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                   <Github size={20} />
                 </a>
-                <a href="https://twitter.com/intent/tweet?text=Check%20out%20this%20free%20writing%20prompt%20generator!&url=https://randomprompts.org" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                <a href="https://twitter.com/intent/tweet?text=Check%20out%20this%20free%20AI%20images%20prompt%20generator!&url=https://randomprompts.org" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                   <Twitter size={20} />
                 </a>
               </div>
@@ -626,4 +605,4 @@ const WritingPromptsPage = () => {
   );
 };
 
-export default WritingPromptsPage;
+export default AIImagesPromptPage;
