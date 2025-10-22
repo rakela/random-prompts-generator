@@ -433,11 +433,11 @@ const PromptGenerator = () => {
   });
 
   const tabs = [
-    { id: 'writing', label: 'Writing', icon: PenTool },
-    { id: 'aiArt', label: 'AI Art', icon: Wand2 },
-    { id: 'blog', label: 'Blog', icon: BookOpen },
-    { id: 'fantasy', label: 'Fantasy', icon: Crown },
-    { id: 'names', label: 'Names', icon: Sparkles }
+    { id: 'writing', label: 'Writing', icon: PenTool, path: '/writing-prompts' },
+    { id: 'aiArt', label: 'AI Images', icon: Wand2, path: '/ai-images-prompt' },
+    { id: 'blog', label: 'Blog post', icon: BookOpen, path: '/ai-blog-post-generator' },
+    { id: 'fantasy', label: 'Short stories', icon: Crown, path: '/short-story-prompts-generator' },
+    { id: 'names', label: 'Names', icon: Sparkles, path: '/random-name-generator' }
   ];
 
   const generatePrompt = useCallback((category = activeTab, count = 1) => {
@@ -895,40 +895,16 @@ Random Prompts Generator for writing, AI art, blogging, stories, and character c
         <div className="flex flex-wrap justify-center gap-2 mb-8 border-b border-gray-200">
           {tabs.map((tab) => {
             const Icon = tab.icon;
-            const color = getTabColor(tab.id);
-            const isActive = activeTab === tab.id;
-
-            // Special case for Writing tab - link to dedicated page
-            if (tab.id === 'writing') {
-              return (
-                <Link
-                  key={tab.id}
-                  to="/writing-prompts"
-                  className={`flex items-center gap-2 px-6 py-3 font-medium transition-all ${
-                    isActive
-                      ? `text-${color}-600 border-b-2 border-${color}-600 bg-${color}-50`
-                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
-                  }`}
-                >
-                  <Icon size={18} />
-                  {tab.label}
-                </Link>
-              );
-            }
 
             return (
-              <button
+              <Link
                 key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center gap-2 px-6 py-3 font-medium transition-all ${
-                  isActive
-                    ? `text-${color}-600 border-b-2 border-${color}-600 bg-${color}-50`
-                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
-                }`}
+                to={tab.path}
+                className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
               >
                 <Icon size={18} />
                 {tab.label}
-              </button>
+              </Link>
             );
           })}
         </div>
