@@ -433,11 +433,11 @@ const PromptGenerator = () => {
   });
 
   const tabs = [
-    { id: 'writing', label: 'Writing', icon: PenTool },
-    { id: 'aiArt', label: 'AI Art', icon: Wand2 },
-    { id: 'blog', label: 'Blog', icon: BookOpen },
-    { id: 'fantasy', label: 'Fantasy', icon: Crown },
-    { id: 'names', label: 'Names', icon: Sparkles }
+    { id: 'writing', label: 'Writing', icon: PenTool, path: '/writing-prompts' },
+    { id: 'aiArt', label: 'AI Images', icon: Wand2, path: '/ai-images-prompt' },
+    { id: 'blog', label: 'Blog Post', icon: BookOpen, path: '/ai-blog-post-generator' },
+    { id: 'fantasy', label: 'Short Stories', icon: Crown, path: '/short-story-prompts-generator' },
+    { id: 'names', label: 'Names', icon: Sparkles, path: '/random-name-generator' }
   ];
 
   const generatePrompt = useCallback((category = activeTab, count = 1) => {
@@ -898,28 +898,10 @@ Random Prompts Generator for writing, AI art, blogging, stories, and character c
             const color = getTabColor(tab.id);
             const isActive = activeTab === tab.id;
 
-            // Special case for Writing tab - link to dedicated page
-            if (tab.id === 'writing') {
-              return (
-                <Link
-                  key={tab.id}
-                  to="/writing-prompts"
-                  className={`flex items-center gap-2 px-6 py-3 font-medium transition-all ${
-                    isActive
-                      ? `text-${color}-600 border-b-2 border-${color}-600 bg-${color}-50`
-                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
-                  }`}
-                >
-                  <Icon size={18} />
-                  {tab.label}
-                </Link>
-              );
-            }
-
             return (
-              <button
+              <Link
                 key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
+                to={tab.path}
                 className={`flex items-center gap-2 px-6 py-3 font-medium transition-all ${
                   isActive
                     ? `text-${color}-600 border-b-2 border-${color}-600 bg-${color}-50`
@@ -928,7 +910,7 @@ Random Prompts Generator for writing, AI art, blogging, stories, and character c
               >
                 <Icon size={18} />
                 {tab.label}
-              </button>
+              </Link>
             );
           })}
         </div>
@@ -1249,10 +1231,10 @@ Random Prompts Generator for writing, AI art, blogging, stories, and character c
               <h3 className="font-semibold mb-4">Quick Links</h3>
               <ul className="space-y-2 text-sm">
                 <li><Link to="/writing-prompts" className="text-gray-400 hover:text-white transition-colors">Writing Prompts</Link></li>
-                <li><button onClick={() => setActiveTab('aiArt')} className="text-gray-400 hover:text-white transition-colors">AI Art Prompts</button></li>
-                <li><button onClick={() => setActiveTab('blog')} className="text-gray-400 hover:text-white transition-colors">Blog Ideas</button></li>
-                <li><button onClick={() => setActiveTab('fantasy')} className="text-gray-400 hover:text-white transition-colors">Fantasy Worlds</button></li>
-                <li><button onClick={() => setActiveTab('names')} className="text-gray-400 hover:text-white transition-colors">Character Names</button></li>
+                <li><Link to="/ai-images-prompt" className="text-gray-400 hover:text-white transition-colors">AI Images Prompt</Link></li>
+                <li><Link to="/ai-blog-post-generator" className="text-gray-400 hover:text-white transition-colors">AI Blog Post Generator</Link></li>
+                <li><Link to="/short-story-prompts-generator" className="text-gray-400 hover:text-white transition-colors">Short Story Prompts</Link></li>
+                <li><Link to="/random-name-generator" className="text-gray-400 hover:text-white transition-colors">Random Name Generator</Link></li>
               </ul>
             </div>
 
