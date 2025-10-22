@@ -149,10 +149,10 @@ const BlogPostGeneratorPage = () => {
           url: window.location.href
         });
       } catch (err) {
-        copyToClipboard(\`\${prompt.text}\\n\\nGenerated at: \${window.location.href}\`);
+        copyToClipboard(`${prompt.text}\n\nGenerated at: ${window.location.href}`);
       }
     } else {
-      copyToClipboard(\`\${prompt.text}\\n\\nGenerated at: \${window.location.href}\`);
+      copyToClipboard(`${prompt.text}\n\nGenerated at: ${window.location.href}`);
     }
   };
 
@@ -180,7 +180,7 @@ const BlogPostGeneratorPage = () => {
           <button onClick={() => savePrompt(prompt)} className="inline-flex items-center gap-2 px-3 py-1.5 bg-green-100 hover:bg-green-200 text-green-700 rounded-md text-sm transition-colors">
             <Save size={14} /> Save
           </button>
-          <button onClick={() => toggleFavorite(prompt)} className={\`inline-flex items-center gap-2 px-3 py-1.5 rounded-md text-sm transition-colors \${favorites.some(fav => fav.id === prompt.id) ? 'bg-yellow-100 hover:bg-yellow-200 text-yellow-700' : 'bg-gray-100 hover:bg-gray-200 text-gray-700'}\`}>
+          <button onClick={() => toggleFavorite(prompt)} className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-md text-sm transition-colors ${favorites.some(fav => fav.id === prompt.id) ? 'bg-yellow-100 hover:bg-yellow-200 text-yellow-700' : 'bg-gray-100 hover:bg-gray-200 text-gray-700'}`}>
             <Star size={14} fill={favorites.some(fav => fav.id === prompt.id) ? 'currentColor' : 'none'} /> Favorite
           </button>
           <button onClick={() => sharePrompt(prompt)} className="inline-flex items-center gap-2 px-3 py-1.5 bg-indigo-100 hover:bg-indigo-200 text-indigo-700 rounded-md text-sm transition-colors">
@@ -294,7 +294,7 @@ const BlogPostGeneratorPage = () => {
                           <button onClick={() => copyToClipboard(prompt.text)} className="p-1 text-gray-400 hover:text-gray-600 transition-colors" title="Copy">
                             <Copy size={14} />
                           </button>
-                          <button onClick={() => toggleFavorite(prompt)} className={\`p-1 transition-colors \${favorites.some(fav => fav.id === prompt.id) ? 'text-yellow-600 hover:text-yellow-700' : 'text-gray-400 hover:text-yellow-600'}\`} title="Favorite">
+                          <button onClick={() => toggleFavorite(prompt)} className={`p-1 transition-colors ${favorites.some(fav => fav.id === prompt.id) ? 'text-yellow-600 hover:text-yellow-700' : 'text-gray-400 hover:text-yellow-600'}`} title="Favorite">
                             <Star size={14} fill={favorites.some(fav => fav.id === prompt.id) ? 'currentColor' : 'none'} />
                           </button>
                         </div>
