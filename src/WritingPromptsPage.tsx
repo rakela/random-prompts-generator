@@ -1,162 +1,115 @@
 import React, { useState, useCallback } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Copy, RefreshCw, Save, Download, Sparkles, PenTool, Github, Twitter, Heart, History, Share2, Star } from 'lucide-react';
+import { Copy, RefreshCw, Save, Download, Sparkles, Wand2, PenTool, BookOpen, Crown, Github, Twitter, Heart, History, Share2, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
-// High-quality data dictionaries for generation
-const promptData = {
-  writing: {
-    // Story structures and hooks
-    openings: [
-      'A mysterious letter arrives with no return address',
-      'The last person on Earth hears a knock at the door',
-      'Your character wakes up with someone else\'s memories',
-      'A child finds a door in their bedroom that wasn\'t there yesterday',
-      'The GPS leads your character to a place that doesn\'t exist on any map',
-      'Your character receives a phone call from themselves',
-      'A time capsule is opened 50 years early',
-      'Your character discovers their reflection is acting independently',
-      'A stranger approaches claiming to be from the future',
-      'Your character finds a diary that predicts their life perfectly'
-    ],
-
-    // Specific conflicts with emotional stakes
-    conflicts: [
-      'must choose between saving their child or saving a thousand strangers',
-      'discovers their life-saving medication is slowly poisoning someone they love',
-      'learns their memory of a traumatic event was deliberately implanted',
-      'finds out their soulmate is their mortal enemy in disguise',
-      'realizes they\'re the only one who remembers the world before it changed',
-      'must betray their deepest principles to save their family',
-      'discovers they\'re living in a simulation but escaping means abandoning everyone inside',
-      'learns their healing powers come at the cost of shortening others\' lives',
-      'finds out their deceased parent is alive but has become their greatest enemy',
-      'must use their fear of heights to rescue someone from a collapsing tower'
-    ],
-
-    // Rich, specific settings
-    settings: [
-      'a floating city that only appears during solar eclipses',
-      'an underground library where books rewrite themselves',
-      'a small town where time moves backward every midnight',
-      'a space station orbiting a dying star',
-      'a school for children who remember their past lives',
-      'a hospital where patients\' dreams become reality',
-      'a lighthouse that guides souls instead of ships',
-      'a coffee shop that exists in multiple dimensions simultaneously',
-      'an antique store where every item has a dangerous history',
-      'a forest where the trees whisper secrets of the dead'
-    ],
-
-    // Character archetypes with depth
-    protagonists: [
-      'a memory thief who can steal and experience others\' recollections',
-      'a retired superhero living under witness protection',
-      'a therapist who absorbs their patients\' traumas',
-      'a time loop victim who ages while everyone else resets',
-      'a prophet who sees multiple futures but can\'t control which becomes real',
-      'a ghost who doesn\'t know they\'re dead',
-      'a dream architect who builds worlds in people\'s sleep',
-      'a voice actor who discovers their recordings can alter reality',
-      'a cartographer mapping places that exist only in stories',
-      'a funeral director who can speak with the recently deceased'
-    ],
-
-    // High-impact plot twists
-    revelations: [
-      'the narrator has been the villain all along',
-      'everyone except the protagonist is an AI',
-      'the story is happening in reverse chronological order',
-      'the protagonist is their own time-traveling descendant',
-      'the entire conflict was manufactured by the protagonist\'s future self',
-      'death in this world just means waking up in another',
-      'the protagonist is the only real person in a philosophical thought experiment',
-      'the story is being told by the protagonist to their killer',
-      'each chapter is a different iteration of the same day',
-      'the protagonist has been dead since chapter one'
-    ],
-
-    templates: [
-      '{openings}, but when your protagonist {conflicts}, they discover that {revelations}. Set in {settings}.',
-      'Your protagonist is {protagonists} who lives in {settings}. When they {conflicts}, {revelations}.',
-      'In {settings}, {openings}. Your protagonist, {protagonists}, must {conflicts} while facing the truth that {revelations}.',
-      'Write about {protagonists} in {settings}. The story begins when {openings}, forcing them to {conflicts}, ultimately revealing that {revelations}.',
-      '{protagonists} discovers {revelations} when {openings} in {settings}. Now they must {conflicts} to set things right.'
-    ]
-  }
-};
-
-// Weighted random selection
-const weightedRandom = (items, weights = null) => {
-  if (!weights) return items[Math.floor(Math.random() * items.length)];
-
-  const totalWeight = weights.reduce((sum, weight) => sum + weight, 0);
-  let random = Math.random() * totalWeight;
-
-  for (let i = 0; i < items.length; i++) {
-    random -= weights[i];
-    if (random <= 0) return items[i];
-  }
-  return items[items.length - 1];
-};
-
-// Enhanced template processor
-const processTemplate = (template, data) => {
-  return template.replace(/\{(\w+)\}/g, (match, key) => {
-    if (data[key] && Array.isArray(data[key])) {
-      return weightedRandom(data[key]);
-    }
-    return match;
-  });
-};
-
-// Quality enhancement for writing prompts
-const enhanceWritingPrompt = (prompt) => {
-  const enhancements = [
-    ' Focus on the internal conflict.',
-    ' Include a ticking clock element.',
-    ' Show the cost of failure.',
-    ' Add a moral dilemma.',
-    ' Include sensory details.'
-  ];
-
-  if (Math.random() < 0.3) {
-    prompt += weightedRandom(enhancements);
-  }
-
-  return prompt;
-};
+import {
+  promptData,
+  weightedRandom,
+  processTemplate,
+  enhanceWritingPrompt,
+  enhanceAIArtPrompt,
+  enhanceBlogPrompt,
+  enhanceFantasyPrompt
+} from './promptUtils';
 
 const WritingPromptsPage = () => {
-  const [generatedPrompt, setGeneratedPrompt] = useState(null);
-  const [savedPrompts, setSavedPrompts] = useState([]);
-  const [promptHistory, setPromptHistory] = useState([]);
-  const [favorites, setFavorites] = useState([]);
+  const [activeTab, setActiveTab] = useState('writing');
+  const [generatedPrompts, setGeneratedPrompts] = useState<any>({});
+  const [savedPrompts, setSavedPrompts] = useState<any[]>([]);
+  const [promptHistory, setPromptHistory] = useState<any[]>([]);
+  const [favorites, setFavorites] = useState<any[]>([]);
   const [showHistory, setShowHistory] = useState(false);
   const [controls, setControls] = useState({
-    genre: 'any',
-    tone: 'any',
-    length: 'medium'
+    writing: { genre: 'any', tone: 'any', length: 'medium' },
+    aiArt: { style: 'any', mood: 'any', quality: 'high' },
+    blog: { topic: 'any', format: 'any', angle: 'any' },
+    fantasy: { race: 'any', magic: 'any', setting: 'any' },
+    names: { type: 'full', origin: 'any', count: 'single' }
   });
 
-  const generatePrompt = useCallback(() => {
-    const data = promptData.writing;
-    const template = weightedRandom(data.templates);
-    let prompt = processTemplate(template, data);
-    prompt = enhanceWritingPrompt(prompt);
+  const tabs = [
+    { id: 'writing', label: 'Writing', icon: PenTool },
+    { id: 'aiArt', label: 'AI Art', icon: Wand2 },
+    { id: 'blog', label: 'Blog', icon: BookOpen },
+    { id: 'fantasy', label: 'Fantasy', icon: Crown },
+    { id: 'names', label: 'Names', icon: Sparkles }
+  ];
 
-    const newPrompt = {
-      id: Date.now(),
-      text: prompt,
-      category: 'writing',
-      timestamp: new Date().toISOString()
-    };
+  const generatePrompt = useCallback((category = activeTab, count = 1) => {
+    const data = promptData[category];
+    if (!data) return;
 
-    setGeneratedPrompt(newPrompt);
-    setPromptHistory(prev => [newPrompt, ...prev.slice(0, 19)]);
-  }, []);
+    const categoryControls = controls[category];
 
-  const copyToClipboard = async (text) => {
+    // Special handling for names with multiple generation
+    if (category === 'names') {
+      const batchSize = categoryControls.count === 'multiple' ? 5 :
+                       categoryControls.count === 'batch' ? 10 : 1;
+
+      const names = [];
+      for (let i = 0; i < batchSize; i++) {
+        const name = processTemplate('', data, category, categoryControls);
+        names.push(name);
+      }
+
+      const prompt = {
+        id: Date.now(),
+        text: batchSize === 1 ? names[0] : names.join('\n'),
+        category,
+        timestamp: new Date().toISOString(),
+        isMultiple: batchSize > 1
+      };
+
+      setGeneratedPrompts(prev => ({
+        ...prev,
+        [category]: prompt
+      }));
+      return;
+    }
+
+    const prompts = [];
+    for (let i = 0; i < count; i++) {
+      const template = weightedRandom(data.templates);
+      let prompt = processTemplate(template, data, category, categoryControls);
+
+      // Apply category-specific enhancements
+      switch (category) {
+        case 'writing':
+          prompt = enhanceWritingPrompt(prompt);
+          break;
+        case 'aiArt':
+          prompt = enhanceAIArtPrompt(prompt);
+          break;
+        case 'blog':
+          prompt = enhanceBlogPrompt(prompt);
+          break;
+        case 'fantasy':
+          prompt = enhanceFantasyPrompt(prompt);
+          break;
+      }
+
+      prompts.push({
+        id: Date.now() + i,
+        text: prompt,
+        category,
+        timestamp: new Date().toISOString()
+      });
+    }
+
+    const newPrompt = count === 1 ? prompts[0] : prompts;
+
+    setGeneratedPrompts(prev => ({
+      ...prev,
+      [category]: newPrompt
+    }));
+
+    // Add to history
+    if (count === 1) {
+      setPromptHistory(prev => [prompts[0], ...prev.slice(0, 19)]); // Keep last 20
+    }
+  }, [activeTab, controls]);
+
+  const copyToClipboard = async (text: string) => {
     try {
       await navigator.clipboard.writeText(text);
     } catch (err) {
@@ -164,11 +117,11 @@ const WritingPromptsPage = () => {
     }
   };
 
-  const savePrompt = (prompt) => {
+  const savePrompt = (prompt: any) => {
     setSavedPrompts(prev => [...prev, { ...prompt, saved: true }]);
   };
 
-  const toggleFavorite = (prompt) => {
+  const toggleFavorite = (prompt: any) => {
     const isFavorite = favorites.some(fav => fav.id === prompt.id);
     if (isFavorite) {
       setFavorites(prev => prev.filter(fav => fav.id !== prompt.id));
@@ -177,11 +130,11 @@ const WritingPromptsPage = () => {
     }
   };
 
-  const sharePrompt = async (prompt) => {
+  const sharePrompt = async (prompt: any) => {
     if (navigator.share) {
       try {
         await navigator.share({
-          title: 'Writing Prompt',
+          title: 'Creative Prompt',
           text: prompt.text,
           url: window.location.href
         });
@@ -199,21 +152,235 @@ const WritingPromptsPage = () => {
     const url = URL.createObjectURL(dataBlob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = 'saved-writing-prompts.json';
+    link.download = 'saved-prompts.json';
     link.click();
     URL.revokeObjectURL(url);
   };
 
-  const updateControl = (key, value) => {
-    setControls(prev => ({ ...prev, [key]: value }));
+  const renderControls = (category: string) => {
+    const categoryControls = controls[category];
+    const updateControl = (key: string, value: string) => {
+      setControls(prev => ({
+        ...prev,
+        [category]: { ...prev[category], [key]: value }
+      }));
+    };
+
+    const data = promptData[category];
+
+    switch (category) {
+      case 'writing':
+        return (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <select
+              value={categoryControls.genre}
+              onChange={(e) => updateControl('genre', e.target.value)}
+              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            >
+              <option value="any">Any Story Type</option>
+              <option value="character-driven">Character-Driven</option>
+              <option value="plot-driven">Plot-Driven</option>
+              <option value="experimental">Experimental</option>
+              <option value="traditional">Traditional</option>
+            </select>
+            <select
+              value={categoryControls.tone}
+              onChange={(e) => updateControl('tone', e.target.value)}
+              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            >
+              <option value="any">Any Complexity</option>
+              <option value="simple">Simple Conflict</option>
+              <option value="complex">Complex Conflict</option>
+              <option value="moral">Moral Dilemma</option>
+              <option value="psychological">Psychological</option>
+            </select>
+            <select
+              value={categoryControls.length}
+              onChange={(e) => updateControl('length', e.target.value)}
+              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            >
+              <option value="any">Any Length</option>
+              <option value="flash">Flash Fiction</option>
+              <option value="short">Short Story</option>
+              <option value="novella">Novella</option>
+              <option value="novel">Novel</option>
+            </select>
+          </div>
+        );
+
+      case 'aiArt':
+        return (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <select
+              value={categoryControls.style}
+              onChange={(e) => updateControl('style', e.target.value)}
+              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+            >
+              <option value="any">Any Medium</option>
+              <option value="digital">Digital Art</option>
+              <option value="traditional">Traditional Art</option>
+              <option value="photography">Photography</option>
+              <option value="3d">3D Render</option>
+            </select>
+            <select
+              value={categoryControls.mood}
+              onChange={(e) => updateControl('mood', e.target.value)}
+              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+            >
+              <option value="any">Any Subject</option>
+              <option value="portrait">Portrait</option>
+              <option value="landscape">Landscape</option>
+              <option value="fantasy">Fantasy</option>
+              <option value="scifi">Sci-Fi</option>
+              <option value="abstract">Abstract</option>
+            </select>
+            <select
+              value={categoryControls.quality}
+              onChange={(e) => updateControl('quality', e.target.value)}
+              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+            >
+              <option value="standard">Standard Quality</option>
+              <option value="high">High Quality</option>
+              <option value="professional">Professional</option>
+              <option value="masterpiece">Masterpiece</option>
+            </select>
+          </div>
+        );
+
+      case 'blog':
+        return (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <select
+              value={categoryControls.topic}
+              onChange={(e) => updateControl('topic', e.target.value)}
+              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+            >
+              <option value="any">Any Niche</option>
+              {data.niches.slice(0, 8).map((niche: string, index: number) => (
+                <option key={index} value={niche}>{niche}</option>
+              ))}
+            </select>
+            <select
+              value={categoryControls.format}
+              onChange={(e) => updateControl('format', e.target.value)}
+              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+            >
+              <option value="any">Any Format</option>
+              {data.formats.slice(0, 8).map((format: string, index: number) => (
+                <option key={index} value={format}>{format}</option>
+              ))}
+            </select>
+            <select
+              value={categoryControls.angle}
+              onChange={(e) => updateControl('angle', e.target.value)}
+              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+            >
+              <option value="any">Any Angle</option>
+              {data.angles.slice(0, 8).map((angle: string, index: number) => (
+                <option key={index} value={angle}>{angle}</option>
+              ))}
+            </select>
+          </div>
+        );
+
+      case 'fantasy':
+        return (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <select
+              value={categoryControls.race}
+              onChange={(e) => updateControl('race', e.target.value)}
+              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+            >
+              <option value="any">Any Magic System</option>
+              {data.magicSystems.slice(0, 8).map((magic: string, index: number) => (
+                <option key={index} value={magic}>{magic}</option>
+              ))}
+            </select>
+            <select
+              value={categoryControls.magic}
+              onChange={(e) => updateControl('magic', e.target.value)}
+              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+            >
+              <option value="any">Any Culture</option>
+              {data.cultures.slice(0, 8).map((culture: string, index: number) => (
+                <option key={index} value={culture}>{culture}</option>
+              ))}
+            </select>
+            <select
+              value={categoryControls.setting}
+              onChange={(e) => updateControl('setting', e.target.value)}
+              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+            >
+              <option value="any">Any Location</option>
+              {data.locations.slice(0, 8).map((location: string, index: number) => (
+                <option key={index} value={location}>{location}</option>
+              ))}
+            </select>
+          </div>
+        );
+
+      case 'names':
+        return (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <select
+              value={categoryControls.type}
+              onChange={(e) => updateControl('type', e.target.value)}
+              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+            >
+              <option value="full">Full Name</option>
+              <option value="first">First Name Only</option>
+              <option value="title">With Title</option>
+              <option value="house">With House</option>
+            </select>
+            <select
+              value={categoryControls.origin}
+              onChange={(e) => updateControl('origin', e.target.value)}
+              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+            >
+              <option value="any">Any Culture</option>
+              <option value="elvish">Elvish</option>
+              <option value="dwarven">Dwarven</option>
+              <option value="human">Human</option>
+              <option value="exotic">Exotic</option>
+            </select>
+            <select
+              value={categoryControls.count}
+              onChange={(e) => updateControl('count', e.target.value)}
+              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+            >
+              <option value="single">Single Name</option>
+              <option value="multiple">Generate 5 Names</option>
+              <option value="batch">Batch of 10</option>
+            </select>
+          </div>
+        );
+
+      default:
+        return null;
+    }
   };
 
-  const renderPromptCard = (prompt) => {
+  const renderPromptCard = (prompt: any) => {
     if (!prompt) return null;
+
+    const isMultipleNames = prompt.category === 'names' && prompt.isMultiple;
 
     return (
       <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
-        <p className="text-gray-800 text-lg leading-relaxed mb-4">{prompt.text}</p>
+        {isMultipleNames ? (
+          <div className="mb-4">
+            <h3 className="font-semibold text-gray-900 mb-3">Generated Names:</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+              {prompt.text.split('\n').map((name: string, index: number) => (
+                <div key={index} className="bg-gray-50 px-3 py-2 rounded border text-gray-800">
+                  {name}
+                </div>
+              ))}
+            </div>
+          </div>
+        ) : (
+          <p className="text-gray-800 text-lg leading-relaxed mb-4">{prompt.text}</p>
+        )}
 
         <div className="flex flex-wrap gap-2">
           <button
@@ -221,7 +388,7 @@ const WritingPromptsPage = () => {
             className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-md text-sm transition-colors"
           >
             <Copy size={14} />
-            Copy
+            Copy {isMultipleNames ? 'All' : ''}
           </button>
           <button
             onClick={() => savePrompt(prompt)}
@@ -249,7 +416,7 @@ const WritingPromptsPage = () => {
             Share
           </button>
           <button
-            onClick={() => generatePrompt()}
+            onClick={() => generatePrompt(prompt.category)}
             className="inline-flex items-center gap-2 px-3 py-1.5 bg-blue-100 hover:bg-blue-200 text-blue-700 rounded-md text-sm transition-colors"
           >
             <RefreshCw size={14} />
@@ -258,6 +425,17 @@ const WritingPromptsPage = () => {
         </div>
       </div>
     );
+  };
+
+  const getTabColor = (tabId: string) => {
+    const colors: Record<string, string> = {
+      writing: 'blue',
+      aiArt: 'purple',
+      blog: 'green',
+      fantasy: 'amber',
+      names: 'pink'
+    };
+    return colors[tabId] || 'gray';
   };
 
   return (
@@ -321,44 +499,34 @@ const WritingPromptsPage = () => {
 
       {/* Main Content */}
       <div className="max-w-6xl mx-auto px-4 py-8">
+        {/* Tab Navigation */}
+        <div className="flex flex-wrap justify-center gap-2 mb-8 border-b border-gray-200">
+          {tabs.map((tab) => {
+            const Icon = tab.icon;
+            const color = getTabColor(tab.id);
+            const isActive = activeTab === tab.id;
+
+            return (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`flex items-center gap-2 px-6 py-3 font-medium transition-all ${
+                  isActive
+                    ? `text-${color}-600 border-b-2 border-${color}-600 bg-${color}-50`
+                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                }`}
+              >
+                <Icon size={18} />
+                {tab.label}
+              </button>
+            );
+          })}
+        </div>
+
         {/* Generator Section */}
         <div className="max-w-4xl mx-auto">
           {/* Controls */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-            <select
-              value={controls.genre}
-              onChange={(e) => updateControl('genre', e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            >
-              <option value="any">Any Story Type</option>
-              <option value="character-driven">Character-Driven</option>
-              <option value="plot-driven">Plot-Driven</option>
-              <option value="experimental">Experimental</option>
-              <option value="traditional">Traditional</option>
-            </select>
-            <select
-              value={controls.tone}
-              onChange={(e) => updateControl('tone', e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            >
-              <option value="any">Any Complexity</option>
-              <option value="simple">Simple Conflict</option>
-              <option value="complex">Complex Conflict</option>
-              <option value="moral">Moral Dilemma</option>
-              <option value="psychological">Psychological</option>
-            </select>
-            <select
-              value={controls.length}
-              onChange={(e) => updateControl('length', e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            >
-              <option value="any">Any Length</option>
-              <option value="flash">Flash Fiction</option>
-              <option value="short">Short Story</option>
-              <option value="novella">Novella</option>
-              <option value="novel">Novel</option>
-            </select>
-          </div>
+          {renderControls(activeTab)}
 
           {/* Generate Button */}
           <div className="text-center mb-8">
@@ -366,12 +534,12 @@ const WritingPromptsPage = () => {
               onClick={() => generatePrompt()}
               className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors shadow-lg"
             >
-              Generate Writing Prompt
+              Generate Prompt
             </button>
           </div>
 
           {/* Result */}
-          {generatedPrompt && renderPromptCard(generatedPrompt)}
+          {generatedPrompts[activeTab] && renderPromptCard(generatedPrompts[activeTab])}
 
           {/* History Panel */}
           {showHistory && (
@@ -394,9 +562,14 @@ const WritingPromptsPage = () => {
                       <div className="flex items-start justify-between gap-3">
                         <div className="flex-1">
                           <p className="text-sm text-gray-800 leading-relaxed">{prompt.text}</p>
-                          <span className="text-xs text-gray-400 mt-2 block">
-                            {new Date(prompt.timestamp).toLocaleTimeString()}
-                          </span>
+                          <div className="flex items-center gap-2 mt-2">
+                            <span className={`px-2 py-1 text-xs rounded-full bg-${getTabColor(prompt.category)}-100 text-${getTabColor(prompt.category)}-700`}>
+                              {prompt.category}
+                            </span>
+                            <span className="text-xs text-gray-400">
+                              {new Date(prompt.timestamp).toLocaleTimeString()}
+                            </span>
+                          </div>
                         </div>
                         <div className="flex items-center gap-1">
                           <button
@@ -442,7 +615,12 @@ const WritingPromptsPage = () => {
               <div className="grid gap-4">
                 {savedPrompts.slice(-5).map((prompt, index) => (
                   <div key={index} className="bg-gray-50 border border-gray-200 rounded-lg p-4">
-                    <p className="text-gray-800">{prompt.text}</p>
+                    <div className="flex items-start justify-between">
+                      <p className="text-gray-800 flex-1">{prompt.text}</p>
+                      <span className={`px-2 py-1 text-xs rounded-full bg-${getTabColor(prompt.category)}-100 text-${getTabColor(prompt.category)}-700 ml-4`}>
+                        {prompt.category}
+                      </span>
+                    </div>
                   </div>
                 ))}
               </div>
