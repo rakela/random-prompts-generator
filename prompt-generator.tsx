@@ -1249,10 +1249,10 @@ Random Prompts Generator for writing, AI art, blogging, stories, and character c
               <h3 className="font-semibold mb-4">Quick Links</h3>
               <ul className="space-y-2 text-sm">
                 <li><Link to="/writing-prompts" className="text-gray-400 hover:text-white transition-colors">Writing Prompts</Link></li>
-                <li><button onClick={() => setActiveTab('aiArt')} className="text-gray-400 hover:text-white transition-colors">AI Art Prompts</button></li>
-                <li><button onClick={() => setActiveTab('blog')} className="text-gray-400 hover:text-white transition-colors">Blog Ideas</button></li>
-                <li><button onClick={() => setActiveTab('fantasy')} className="text-gray-400 hover:text-white transition-colors">Fantasy Worlds</button></li>
-                <li><button onClick={() => setActiveTab('names')} className="text-gray-400 hover:text-white transition-colors">Character Names</button></li>
+                <li><Link to="/ai-images-prompt" className="text-gray-400 hover:text-white transition-colors">AI Images Prompt</Link></li>
+                <li><Link to="/ai-blog-post-generator" className="text-gray-400 hover:text-white transition-colors">Blog Post Generator</Link></li>
+                <li><Link to="/short-story-prompts-generator" className="text-gray-400 hover:text-white transition-colors">Short Story Prompts</Link></li>
+                <li><Link to="/random-name-generator" className="text-gray-400 hover:text-white transition-colors">Random Name Generator</Link></li>
               </ul>
             </div>
 
