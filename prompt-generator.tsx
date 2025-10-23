@@ -898,12 +898,22 @@ Random Prompts Generator for writing, AI art, blogging, stories, and character c
             const color = getTabColor(tab.id);
             const isActive = activeTab === tab.id;
 
-            // Special case for Writing tab - link to dedicated page
-            if (tab.id === 'writing') {
+            // Map tabs to their dedicated pages
+            const pageLinks = {
+              'writing': '/writing-prompts',
+              'aiArt': '/ai-images-prompt',
+              'blog': '/ai-blog-post-generator',
+              'fantasy': '/short-story-prompts-generator',
+              'names': '/random-name-generator'
+            };
+
+            const pageLink = pageLinks[tab.id];
+
+            if (pageLink) {
               return (
                 <Link
                   key={tab.id}
-                  to="/writing-prompts"
+                  to={pageLink}
                   className={`flex items-center gap-2 px-6 py-3 font-medium transition-all ${
                     isActive
                       ? `text-${color}-600 border-b-2 border-${color}-600 bg-${color}-50`
