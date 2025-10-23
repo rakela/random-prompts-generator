@@ -264,6 +264,40 @@ const ShortStoryPromptsPage = () => {
 
       <div className="max-w-6xl mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
+          {/* Controls */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <select
+              value={controls.race}
+              onChange={(e) => updateControl('race', e.target.value)}
+              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+            >
+              <option value="any">Any Magic System</option>
+              {promptData.fantasy.magicSystems.slice(0, 8).map((magic, index) => (
+                <option key={index} value={magic}>{magic}</option>
+              ))}
+            </select>
+            <select
+              value={controls.magic}
+              onChange={(e) => updateControl('magic', e.target.value)}
+              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+            >
+              <option value="any">Any Culture</option>
+              {promptData.fantasy.cultures.slice(0, 8).map((culture, index) => (
+                <option key={index} value={culture}>{culture}</option>
+              ))}
+            </select>
+            <select
+              value={controls.setting}
+              onChange={(e) => updateControl('setting', e.target.value)}
+              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+            >
+              <option value="any">Any Location</option>
+              {promptData.fantasy.locations.slice(0, 8).map((location, index) => (
+                <option key={index} value={location}>{location}</option>
+              ))}
+            </select>
+          </div>
+
           <div className="text-center mb-8">
             <button onClick={() => generatePrompt()} className="bg-amber-600 hover:bg-amber-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors shadow-lg">
               Generate Short Story Prompt

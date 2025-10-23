@@ -265,6 +265,40 @@ const BlogPostGeneratorPage = () => {
 
       <div className="max-w-6xl mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
+          {/* Controls */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <select
+              value={controls.topic}
+              onChange={(e) => updateControl('topic', e.target.value)}
+              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+            >
+              <option value="any">Any Niche</option>
+              {promptData.blog.niches.slice(0, 8).map((niche, index) => (
+                <option key={index} value={niche}>{niche}</option>
+              ))}
+            </select>
+            <select
+              value={controls.format}
+              onChange={(e) => updateControl('format', e.target.value)}
+              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+            >
+              <option value="any">Any Format</option>
+              {promptData.blog.formats.slice(0, 8).map((format, index) => (
+                <option key={index} value={format}>{format}</option>
+              ))}
+            </select>
+            <select
+              value={controls.angle}
+              onChange={(e) => updateControl('angle', e.target.value)}
+              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+            >
+              <option value="any">Any Angle</option>
+              {promptData.blog.angles.slice(0, 8).map((angle, index) => (
+                <option key={index} value={angle}>{angle}</option>
+              ))}
+            </select>
+          </div>
+
           <div className="text-center mb-8">
             <button onClick={() => generatePrompt()} className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors shadow-lg">
               Generate Blog Post Idea
