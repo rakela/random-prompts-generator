@@ -893,44 +893,41 @@ Random Prompts Generator for writing, AI art, blogging, stories, and character c
       <div className="max-w-6xl mx-auto px-4 py-8">
         {/* Tab Navigation */}
         <div className="flex flex-wrap justify-center gap-2 mb-8 border-b border-gray-200">
-          {tabs.map((tab) => {
-            const Icon = tab.icon;
-            const color = getTabColor(tab.id);
-            const isActive = activeTab === tab.id;
-
-            // Special case for Writing tab - link to dedicated page
-            if (tab.id === 'writing') {
-              return (
-                <Link
-                  key={tab.id}
-                  to="/writing-prompts"
-                  className={`flex items-center gap-2 px-6 py-3 font-medium transition-all ${
-                    isActive
-                      ? `text-${color}-600 border-b-2 border-${color}-600 bg-${color}-50`
-                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
-                  }`}
-                >
-                  <Icon size={18} />
-                  {tab.label}
-                </Link>
-              );
-            }
-
-            return (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center gap-2 px-6 py-3 font-medium transition-all ${
-                  isActive
-                    ? `text-${color}-600 border-b-2 border-${color}-600 bg-${color}-50`
-                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
-                }`}
-              >
-                <Icon size={18} />
-                {tab.label}
-              </button>
-            );
-          })}
+          <Link
+            to="/writing-prompts"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+          >
+            <PenTool size={18} />
+            Writing
+          </Link>
+          <Link
+            to="/ai-images-prompt"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+          >
+            <Wand2 size={18} />
+            AI Images
+          </Link>
+          <Link
+            to="/ai-blog-post-generator"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+          >
+            <BookOpen size={18} />
+            Blog post
+          </Link>
+          <Link
+            to="/short-story-prompts-generator"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+          >
+            <Crown size={18} />
+            Short stories
+          </Link>
+          <Link
+            to="/random-name-generator"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+          >
+            <Sparkles size={18} />
+            Names
+          </Link>
         </div>
 
         {/* Generator Section */}
