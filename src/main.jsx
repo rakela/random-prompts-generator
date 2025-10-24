@@ -8,6 +8,8 @@ import AIImagesPromptPage from './AIImagesPromptPage.tsx'
 import BlogPostGeneratorPage from './BlogPostGeneratorPage.tsx'
 import ShortStoryPromptsPage from './ShortStoryPromptsPage.tsx'
 import RandomNameGeneratorPage from './RandomNameGeneratorPage.tsx'
+import GhostfaceAIPromptPage from './GhostfaceAIPromptPage.tsx'
+import OctoberWritingPromptsPage from './OctoberWritingPromptsPage.tsx'
 import { SpeedInsights } from '@vercel/speed-insights/react'
 import './index.css'
 
@@ -22,6 +24,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="/ai-blog-post-generator" element={<BlogPostGeneratorPage />} />
           <Route path="/short-story-prompts-generator" element={<ShortStoryPromptsPage />} />
           <Route path="/random-name-generator" element={<RandomNameGeneratorPage />} />
+          <Route path="/ghostface-ai-trend-prompt-generator" element={<GhostfaceAIPromptPage />} />
+          <Route path="/october-writing-prompts" element={<OctoberWritingPromptsPage />} />
         </Routes>
         <SpeedInsights />
       </BrowserRouter>
