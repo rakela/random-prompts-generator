@@ -2,6 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Copy, RefreshCw, Save, Download, Sparkles, PenTool, BookOpen, Crown, Github, Twitter, Heart, History, Share2, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import Logo from './components/Logo';
 
 const promptData = {
   fantasy: {
@@ -213,7 +214,7 @@ const ShortStoryPromptsPage = () => {
         <div className="max-w-6xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <Link to="/" className="flex items-center space-x-2">
-              <Sparkles className="text-blue-600" size={24} />
+              <Logo size={28} />
               <span className="text-xl font-bold text-gray-900">Random Prompts</span>
             </Link>
             <nav className="hidden md:flex items-center space-x-6">

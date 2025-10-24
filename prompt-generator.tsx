@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Copy, RefreshCw, Save, Download, Sparkles, Wand2, PenTool, BookOpen, Crown, Github, Twitter, Heart, ExternalLink, Zap, History, Share2, Star } from 'lucide-react';
+import Logo from './src/components/Logo';
 
 // High-quality data dictionaries for generation
 const promptData = {
@@ -851,7 +852,7 @@ const PromptGenerator = () => {
         <div className="max-w-6xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <Link to="/" className="flex items-center space-x-2">
-              <Sparkles className="text-blue-600" size={24} />
+              <Logo size={28} />
               <span className="text-xl font-bold text-gray-900">Random Prompts</span>
             </Link>
             <nav className="hidden md:flex items-center space-x-6">
@@ -1186,8 +1187,8 @@ Random Prompts Generator for writing, AI art, blogging, stories, and character c
           <div className="max-w-4xl mx-auto px-4 text-center">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Built for Creators, By Creators</h2>
             <p className="text-xl text-gray-600 mb-8">
-              Our prompt generator was created by writers, artists, and content creators who understand the challenge of creative blocks. 
-              Every prompt is designed to spark genuine inspiration and produce professional results.
+              Our prompt generator was created by writers, artists, and content creators who understand the challenge of creative blocks.
+              Every prompt is designed to spark genuine inspiration and produce professional results. Perfect for use with <a href="https://chat.openai.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">ChatGPT</a>, <a href="https://www.midjourney.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">MidJourney</a>, and other AI tools.
             </p>
             <div className="flex justify-center items-center space-x-8">
               <div className="text-center">
