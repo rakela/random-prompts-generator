@@ -219,6 +219,22 @@ const BlogPostGeneratorPage = () => {
             </Link>
             <nav className="hidden md:flex items-center space-x-6">
               <Link to="/" className="text-gray-600 hover:text-blue-600 transition-colors">Home</Link>
+              <div className="relative group">
+                <button className="text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-1">
+                  Prompts
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                  <Link to="/ghostface-ai-trend-prompt-generator" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
+                    Ghostface AI Trend
+                  </Link>
+                  <Link to="/october-writing-prompts" className="block px-4 py-3 text-gray-700 hover:bg-gray-50">
+                    October Writing Prompts
+                  </Link>
+                </div>
+              </div>
               <a href="https://github.com/rakela/random-prompts-generator" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-gray-600 hover:text-blue-600 transition-colors">
                 <Github size={16} /> GitHub
               </a>
