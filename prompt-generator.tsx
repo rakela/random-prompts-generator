@@ -868,7 +868,7 @@ const PromptGenerator = () => {
                 <History size={16} />
                 History ({promptHistory.length})
               </button>
-              <a href="https://twitter.com/intent/tweet?text=Check%20out%20this%20free%20prompt%20generator%20for%20writing,%20AI%20art,%20and%20more!&url=https://prompt-generator.vercel.app" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-gray-600 hover:text-blue-600 transition-colors">
+              <a href="https://twitter.com/intent/tweet?text=Check%20out%20this%20free%20prompt%20generator%20for%20writing,%20AI%20art,%20and%20more!&url=https://randomprompts.org" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-gray-600 hover:text-blue-600 transition-colors">
                 <Share2 size={16} />
                 Share
               </a>
@@ -1236,7 +1236,7 @@ Random Prompts Generator for writing, AI art, blogging, stories, and character c
                 <a href="https://github.com/rakela/random-prompts-generator" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                   <Github size={20} />
                 </a>
-                <a href="https://twitter.com/intent/tweet?text=Check%20out%20this%20free%20prompt%20generator!&url=https://prompt-generator.vercel.app" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                <a href="https://twitter.com/intent/tweet?text=Check%20out%20this%20free%20prompt%20generator!&url=https://randomprompts.org" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                   <Twitter size={20} />
                 </a>
               </div>
