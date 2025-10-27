@@ -133,8 +133,11 @@ const GhostfaceAIPromptPage = () => {
                   <Link to="/october-writing-prompts" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
                     October Writing Prompts
                   </Link>
-                  <Link to="/writing-prompts-for-students" className="block px-4 py-3 text-gray-700 hover:bg-gray-50">
+                  <Link to="/writing-prompts-for-students" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
                     Writing Prompts for Students
+                  </Link>
+                  <Link to="/nano-banana-prompts" className="block px-4 py-3 text-gray-700 hover:bg-gray-50">
+                    Nano Banana Prompts
                   </Link>
                 </div>
               </div>
@@ -463,6 +466,8 @@ const GhostfaceAIPromptPage = () => {
                 <li><Link to="/ai-images-prompt" className="text-gray-400 hover:text-white transition-colors">AI Images Prompt</Link></li>
                 <li><Link to="/ghostface-ai-trend-prompt-generator" className="text-gray-400 hover:text-white transition-colors">Ghostface AI Trend</Link></li>
                 <li><Link to="/october-writing-prompts" className="text-gray-400 hover:text-white transition-colors">October Writing Prompts</Link></li>
+                <li><Link to="/writing-prompts-for-students" className="text-gray-400 hover:text-white transition-colors">Writing Prompts for Students</Link></li>
+                <li><Link to="/nano-banana-prompts" className="text-gray-400 hover:text-white transition-colors">Nano Banana Prompts</Link></li>
               </ul>
             </div>
 

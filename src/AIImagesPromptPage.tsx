@@ -284,8 +284,11 @@ const AIImagesPromptPage = () => {
                   <Link to="/october-writing-prompts" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
                     October Writing Prompts
                   </Link>
-                  <Link to="/writing-prompts-for-students" className="block px-4 py-3 text-gray-700 hover:bg-gray-50">
+                  <Link to="/writing-prompts-for-students" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
                     Writing Prompts for Students
+                  </Link>
+                  <Link to="/nano-banana-prompts" className="block px-4 py-3 text-gray-700 hover:bg-gray-50">
+                    Nano Banana Prompts
                   </Link>
                 </div>
               </div>
@@ -596,6 +599,8 @@ const AIImagesPromptPage = () => {
                 <li><Link to="/ai-blog-post-generator" className="text-gray-400 hover:text-white transition-colors">Blog Post Generator</Link></li>
                 <li><Link to="/short-story-prompts-generator" className="text-gray-400 hover:text-white transition-colors">Short Story Prompts</Link></li>
                 <li><Link to="/random-name-generator" className="text-gray-400 hover:text-white transition-colors">Random Name Generator</Link></li>
+                <li><Link to="/writing-prompts-for-students" className="text-gray-400 hover:text-white transition-colors">Writing Prompts for Students</Link></li>
+                <li><Link to="/nano-banana-prompts" className="text-gray-400 hover:text-white transition-colors">Nano Banana Prompts</Link></li>
               </ul>
             </div>
 
