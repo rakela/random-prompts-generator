@@ -4,65 +4,65 @@ import { Copy, RefreshCw, Save, Download, Sparkles, PenTool, BookOpen, Crown, Gi
 import { Link } from 'react-router-dom';
 import Logo from './components/Logo';
 
-// October Writing Prompts Data
-const octoberPrompts = {
-  autumnFall: [
+// Writing Prompts for Students Data
+const studentPrompts = {
+  creative: [
     {
-      title: "The Café in October",
-      description: "Write about a hidden café that only appears when the autumn leaves start to fall.",
-      emoji: "🍁"
+      title: "The Door That Wasn't There Yesterday",
+      description: "You wake up and find a new door in your room. What happens when you open it?",
+      emoji: "🚪"
     },
     {
-      title: "Whispers in the Woods",
-      description: "A quiet forest that hums with voices when the wind passes through the golden trees.",
-      emoji: "🍂"
+      title: "A Message from the Future",
+      description: "You receive a text from your future self warning you about something. What does it say?",
+      emoji: "📱"
     },
     {
-      title: "Pumpkin Market at Sunset",
-      description: "Capture the warmth of a local harvest fair filled with glowing lanterns and cinnamon air.",
-      emoji: "🎃"
+      title: "The Day the Internet Disappeared",
+      description: "Describe how life changes when the world suddenly loses access to the internet.",
+      emoji: "🌐"
     },
     {
-      title: "Letters from Autumn Past",
-      description: "Someone starts receiving handwritten letters from their younger self every fall.",
-      emoji: "✉️"
+      title: "The Secret Library",
+      description: "You discover a hidden library where books write themselves as you read them.",
+      emoji: "📚"
     },
     {
-      title: "The Last Bonfire",
-      description: "A group of old friends meets for their final bonfire before life takes them in different directions.",
-      emoji: "🔥"
+      title: "The Last Tree on Earth",
+      description: "Write from the perspective of the last tree surviving in a futuristic world.",
+      emoji: "🌳"
     }
   ],
-  halloween: [
+  reflective: [
     {
-      title: "Masks After Midnight",
-      description: "At a Halloween party, everyone's masks begin to take on a life of their own.",
-      emoji: "🎭"
+      title: "A Lesson I Learned the Hard Way",
+      description: "Describe a mistake that taught you something important.",
+      emoji: "💡"
     },
     {
-      title: "The Haunted Costume Shop",
-      description: "A shop that appears once a year and gives out costumes with strange powers.",
-      emoji: "👻"
+      title: "My Favorite Place in the World",
+      description: "Write about a place that makes you feel calm, happy, or inspired.",
+      emoji: "🏞️"
     },
     {
-      title: "Pumpkin Hollow Manor",
-      description: "A family inherits a mansion where carved pumpkins guard the secrets of the dead.",
-      emoji: "🏚️"
+      title: "If I Could Talk to My Younger Self",
+      description: "What advice would you give to yourself five years ago?",
+      emoji: "⏳"
     },
     {
-      title: "The Photographer of Ghosts",
-      description: "A street photographer in October starts seeing spirits appear in their Polaroids.",
-      emoji: "📷"
+      title: "The Power of Kindness",
+      description: "Write about a moment when someone's kindness changed your day (or your life).",
+      emoji: "💝"
     },
     {
-      title: "31 Nights of Whispers",
-      description: "Every night in October, someone hears a voice counting down to Halloween — but to what?",
-      emoji: "🌙"
+      title: "What Makes a Hero?",
+      description: "Who do you consider a hero in your life and why?",
+      emoji: "🦸"
     }
   ]
 };
 
-const OctoberWritingPromptsPage = () => {
+const WritingPromptsForStudentsPage = () => {
   const [generatedPrompt, setGeneratedPrompt] = useState(null);
   const [savedPrompts, setSavedPrompts] = useState([]);
   const [promptHistory, setPromptHistory] = useState([]);
@@ -73,10 +73,10 @@ const OctoberWritingPromptsPage = () => {
   // Helper Functions
   const generatePrompt = useCallback(() => {
     const allPrompts = selectedCategory === 'all'
-      ? [...octoberPrompts.autumnFall, ...octoberPrompts.halloween]
-      : selectedCategory === 'autumn'
-      ? octoberPrompts.autumnFall
-      : octoberPrompts.halloween;
+      ? [...studentPrompts.creative, ...studentPrompts.reflective]
+      : selectedCategory === 'creative'
+      ? studentPrompts.creative
+      : studentPrompts.reflective;
 
     const randomPrompt = allPrompts[Math.floor(Math.random() * allPrompts.length)];
     const promptWithId = {
@@ -115,7 +115,7 @@ const OctoberWritingPromptsPage = () => {
     if (navigator.share) {
       try {
         await navigator.share({
-          title: 'October Writing Prompt',
+          title: 'Writing Prompt for Students',
           text: prompt.fullText,
           url: window.location.href
         });
@@ -133,7 +133,7 @@ const OctoberWritingPromptsPage = () => {
     const url = URL.createObjectURL(dataBlob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = 'october-writing-prompts.json';
+    link.download = 'writing-prompts-for-students.json';
     link.click();
     URL.revokeObjectURL(url);
   };
@@ -141,21 +141,21 @@ const OctoberWritingPromptsPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
       <Helmet>
-        <title>October Writing Prompts - Fall & Halloween Story Ideas</title>
-        <meta name="description" content="Generate creative October writing prompts featuring autumn themes, Halloween stories, and fall-inspired narratives. Perfect for seasonal creative writing, spooky stories, and cozy autumn tales." />
-        <meta name="keywords" content="october writing prompts, halloween writing prompts, fall writing prompts, autumn story ideas, seasonal writing prompts, spooky story prompts" />
-        <link rel="canonical" href="https://randomprompts.org/october-writing-prompts" />
+        <title>Writing Prompts for Students - Creative & Reflective Writing Ideas</title>
+        <meta name="description" content="Generate engaging writing prompts for students featuring creative story starters and reflective personal prompts. Perfect for classroom assignments, homework, and developing writing skills." />
+        <meta name="keywords" content="writing prompts for students, student writing prompts, creative writing for students, reflective writing prompts, classroom writing activities, educational writing prompts" />
+        <link rel="canonical" href="https://randomprompts.org/writing-prompts-for-students" />
 
         {/* Open Graph Tags */}
-        <meta property="og:title" content="October Writing Prompts - Fall & Halloween Story Ideas" />
-        <meta property="og:description" content="Generate creative October writing prompts featuring autumn themes, Halloween stories, and fall-inspired narratives. Perfect for seasonal creative writing." />
+        <meta property="og:title" content="Writing Prompts for Students - Creative & Reflective Writing Ideas" />
+        <meta property="og:description" content="Generate engaging writing prompts for students featuring creative story starters and reflective personal prompts. Perfect for classroom assignments and developing writing skills." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://randomprompts.org/october-writing-prompts" />
+        <meta property="og:url" content="https://randomprompts.org/writing-prompts-for-students" />
 
         {/* Twitter Card Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="October Writing Prompts - Fall & Halloween Story Ideas" />
-        <meta name="twitter:description" content="Generate creative October writing prompts featuring autumn themes, Halloween stories, and fall-inspired narratives." />
+        <meta name="twitter:title" content="Writing Prompts for Students - Creative & Reflective Writing Ideas" />
+        <meta name="twitter:description" content="Generate engaging writing prompts for students featuring creative story starters and reflective personal prompts." />
       </Helmet>
 
       {/* Header */}
@@ -204,14 +204,14 @@ const OctoberWritingPromptsPage = () => {
       </header>
 
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-orange-600 via-red-600 to-purple-600 text-white py-16">
+      <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white py-16">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            October Writing Prompts
+            Writing Prompts for Students
           </h1>
 
           <p className="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
-            Discover creative October writing prompts featuring autumn themes, Halloween stories, and fall-inspired narratives. Perfect for seasonal creative writing, spooky tales, and cozy autumn stories.
+            Discover engaging writing prompts designed specifically for students. From creative storytelling to personal reflection, these prompts help develop writing skills and inspire creative thinking.
           </p>
         </div>
       </div>
@@ -276,31 +276,31 @@ const OctoberWritingPromptsPage = () => {
                 onClick={() => setSelectedCategory('all')}
                 className={`px-6 py-2 rounded-lg font-medium transition-colors ${
                   selectedCategory === 'all'
-                    ? 'bg-orange-600 text-white'
+                    ? 'bg-blue-600 text-white'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
               >
                 All Prompts
               </button>
               <button
-                onClick={() => setSelectedCategory('autumn')}
+                onClick={() => setSelectedCategory('creative')}
                 className={`px-6 py-2 rounded-lg font-medium transition-colors ${
-                  selectedCategory === 'autumn'
-                    ? 'bg-orange-600 text-white'
+                  selectedCategory === 'creative'
+                    ? 'bg-blue-600 text-white'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
               >
-                🍁 Autumn & Fall
+                ✏️ Creative Writing
               </button>
               <button
-                onClick={() => setSelectedCategory('halloween')}
+                onClick={() => setSelectedCategory('reflective')}
                 className={`px-6 py-2 rounded-lg font-medium transition-colors ${
-                  selectedCategory === 'halloween'
-                    ? 'bg-orange-600 text-white'
+                  selectedCategory === 'reflective'
+                    ? 'bg-blue-600 text-white'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
               >
-                🎃 Halloween
+                💭 Reflective / Personal
               </button>
             </div>
           </div>
@@ -309,15 +309,15 @@ const OctoberWritingPromptsPage = () => {
           <div className="text-center mb-8">
             <button
               onClick={generatePrompt}
-              className="bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all shadow-lg hover:shadow-xl"
+              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all shadow-lg hover:shadow-xl"
             >
-              Generate October Prompt
+              Generate Writing Prompt
             </button>
           </div>
 
           {/* Generated Prompt Card */}
           {generatedPrompt && (
-            <div className="bg-white border border-orange-200 rounded-lg p-6 shadow-lg mb-8">
+            <div className="bg-white border border-blue-200 rounded-lg p-6 shadow-lg mb-8">
               <div className="flex items-start gap-4 mb-4">
                 <div className="text-4xl">{generatedPrompt.emoji}</div>
                 <div className="flex-1">
@@ -361,7 +361,7 @@ const OctoberWritingPromptsPage = () => {
                 </button>
                 <button
                   onClick={generatePrompt}
-                  className="inline-flex items-center gap-2 px-3 py-1.5 bg-orange-100 hover:bg-orange-200 text-orange-700 rounded-md text-sm transition-colors"
+                  className="inline-flex items-center gap-2 px-3 py-1.5 bg-blue-100 hover:bg-blue-200 text-blue-700 rounded-md text-sm transition-colors"
                 >
                   <RefreshCw size={14} />
                   Regenerate
@@ -429,16 +429,16 @@ const OctoberWritingPromptsPage = () => {
 
           {/* All Prompts Display */}
           <div className="mt-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">All October Writing Prompts</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">All Writing Prompts for Students</h2>
 
-            {/* Autumn & Fall Prompts */}
+            {/* Creative Writing Prompts */}
             <div className="mb-8">
-              <h3 className="text-xl font-bold text-orange-700 mb-4 flex items-center gap-2">
-                🍁 Autumn & Fall Prompts
+              <h3 className="text-xl font-bold text-blue-700 mb-4 flex items-center gap-2">
+                ✏️ Creative Writing Prompts
               </h3>
               <div className="grid gap-4">
-                {octoberPrompts.autumnFall.map((prompt, index) => (
-                  <div key={index} className="bg-gradient-to-r from-orange-50 to-yellow-50 border border-orange-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                {studentPrompts.creative.map((prompt, index) => (
+                  <div key={index} className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-lg p-4 hover:shadow-md transition-shadow">
                     <div className="flex items-start gap-3">
                       <span className="text-2xl">{prompt.emoji}</span>
                       <div className="flex-1">
@@ -458,13 +458,13 @@ const OctoberWritingPromptsPage = () => {
               </div>
             </div>
 
-            {/* Halloween Prompts */}
+            {/* Reflective / Personal Prompts */}
             <div className="mb-8">
               <h3 className="text-xl font-bold text-purple-700 mb-4 flex items-center gap-2">
-                🎃 Halloween Prompts
+                💭 Reflective / Personal Prompts
               </h3>
               <div className="grid gap-4">
-                {octoberPrompts.halloween.map((prompt, index) => (
+                {studentPrompts.reflective.map((prompt, index) => (
                   <div key={index} className="bg-gradient-to-r from-purple-50 to-pink-50 border border-purple-200 rounded-lg p-4 hover:shadow-md transition-shadow">
                     <div className="flex items-start gap-3">
                       <span className="text-2xl">{prompt.emoji}</span>
@@ -518,12 +518,12 @@ const OctoberWritingPromptsPage = () => {
           {/* SEO Content Section */}
           <div className="mt-16 space-y-8">
             <div className="prose prose-gray max-w-none">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">October Writing Prompts for Autumn & Halloween</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">Writing Prompts for Students</h2>
               <p className="text-gray-700 mb-4">
-                October writing prompts capture the magic of autumn — from crisp fallen leaves and harvest moons to spooky Halloween tales and cozy fireside stories. Whether you're writing horror fiction, seasonal poetry, or heartwarming autumn narratives, October-themed prompts provide endless creative inspiration.
+                Writing prompts for students are powerful tools that spark creativity, develop critical thinking skills, and build confidence in written expression. These carefully crafted prompts combine imaginative storytelling with personal reflection, helping students explore both creative fiction and meaningful self-examination.
               </p>
               <p className="text-gray-700 mb-4">
-                Perfect for <Link to="/writing-prompts" className="text-blue-600 hover:underline">creative writing exercises</Link>, NaNoWriMo preparation, or exploring seasonal storytelling, October writing prompts help writers tap into the atmospheric richness of fall — mysterious fog, changing seasons, and the thin veil between worlds that makes October storytelling so compelling.
+                Perfect for <Link to="/writing-prompts" className="text-blue-600 hover:underline">creative writing assignments</Link>, classroom activities, homework exercises, or journal writing, these prompts encourage students to think deeply, express themselves clearly, and develop their unique voice as writers. From fantastical scenarios that ignite imagination to thoughtful reflections that build emotional intelligence, these prompts support comprehensive writing development.
               </p>
             </div>
           </div>
@@ -540,13 +540,13 @@ const OctoberWritingPromptsPage = () => {
                 <Crown size={16} />
                 Short Story Prompt Generator
               </Link>
+              <Link to="/october-writing-prompts" className="text-blue-600 hover:underline flex items-center gap-2">
+                <PenTool size={16} />
+                October Writing Prompts
+              </Link>
               <Link to="/ai-blog-post-generator" className="text-blue-600 hover:underline flex items-center gap-2">
                 <BookOpen size={16} />
                 Blog Post Generator
-              </Link>
-              <Link to="/random-name-generator" className="text-blue-600 hover:underline flex items-center gap-2">
-                <Sparkles size={16} />
-                Random Name Generator
               </Link>
             </div>
           </div>
@@ -558,30 +558,30 @@ const OctoberWritingPromptsPage = () => {
             <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
             <div className="space-y-6">
               <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">What are October writing prompts?</h3>
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">What are writing prompts for students?</h3>
                 <p className="text-gray-700">
-                  October writing prompts are creative story starters inspired by autumn themes, Halloween elements, fall seasons, and the atmospheric mood of October. They help writers explore seasonal storytelling through horror, mystery, cozy autumn tales, and harvest-themed narratives.
+                  Writing prompts for students are carefully designed story starters and thought-provoking questions that help students practice writing skills, develop creativity, and explore personal reflection. They provide a starting point that makes it easier to begin writing and overcome writer's block.
                 </p>
               </div>
 
               <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Can I use October prompts for NaNoWriMo?</h3>
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">How do writing prompts help students?</h3>
                 <p className="text-gray-700">
-                  Absolutely! October writing prompts are perfect for NaNoWriMo (National Novel Writing Month) preparation and brainstorming. Many writers use seasonal prompts in October to warm up for the November writing challenge.
+                  Writing prompts help students develop essential skills including creative thinking, self-expression, grammar and composition, critical reasoning, and emotional intelligence. They provide structure while encouraging imagination, making writing practice more engaging and effective.
                 </p>
               </div>
 
               <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Are Halloween writing prompts included?</h3>
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">Can teachers use these prompts in the classroom?</h3>
                 <p className="text-gray-700">
-                  Yes! October writing prompts include Halloween-themed story ideas featuring spooky scenarios, supernatural elements, horror atmospheres, and classic October traditions like trick-or-treating, haunted houses, and autumn festivals.
+                  Absolutely! These writing prompts are perfect for classroom use, homework assignments, writing workshops, creative writing clubs, or independent study. They work well for various grade levels and can be adapted to different skill levels and learning objectives.
                 </p>
               </div>
 
               <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">What genres work best with October prompts?</h3>
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">What's the difference between creative and reflective prompts?</h3>
                 <p className="text-gray-700">
-                  October writing prompts span multiple genres: horror and supernatural fiction, cozy mysteries, literary fiction with autumn settings, romance with fall backdrops, magical realism, and reflective personal essays about change and seasons.
+                  Creative writing prompts focus on imagination and storytelling, encouraging students to create fictional narratives and explore "what if" scenarios. Reflective prompts encourage personal exploration, helping students examine their experiences, values, and perspectives through introspective writing.
                 </p>
               </div>
             </div>
@@ -599,13 +599,13 @@ const OctoberWritingPromptsPage = () => {
                 <span className="text-lg font-bold">Random Prompts</span>
               </div>
               <p className="text-gray-400 text-sm mb-4">
-                Free writing prompt generator for seasonal stories, creative writing, and narrative inspiration.
+                Free writing prompt generator for students, creative writing, and educational inspiration.
               </p>
               <div className="flex space-x-4">
                 <a href="https://github.com/rakela/random-prompts-generator" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                   <Github size={20} />
                 </a>
-                <a href="https://twitter.com/intent/tweet?text=Check%20out%20these%20October%20writing%20prompts!&url=https://randomprompts.org/october-writing-prompts" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                <a href="https://twitter.com/intent/tweet?text=Check%20out%20these%20writing%20prompts%20for%20students!&url=https://randomprompts.org/writing-prompts-for-students" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                   <Twitter size={20} />
                 </a>
               </div>
@@ -619,6 +619,7 @@ const OctoberWritingPromptsPage = () => {
                 <li><Link to="/ai-images-prompt" className="text-gray-400 hover:text-white transition-colors">AI Images Prompt</Link></li>
                 <li><Link to="/ghostface-ai-trend-prompt-generator" className="text-gray-400 hover:text-white transition-colors">Ghostface AI Trend</Link></li>
                 <li><Link to="/october-writing-prompts" className="text-gray-400 hover:text-white transition-colors">October Writing Prompts</Link></li>
+                <li><Link to="/writing-prompts-for-students" className="text-gray-400 hover:text-white transition-colors">Writing Prompts for Students</Link></li>
               </ul>
             </div>
 
@@ -649,4 +650,4 @@ const OctoberWritingPromptsPage = () => {
   );
 };
 
-export default OctoberWritingPromptsPage;
+export default WritingPromptsForStudentsPage;
