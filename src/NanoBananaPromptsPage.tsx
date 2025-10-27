@@ -389,70 +389,6 @@ const NanoBananaPromptsPage = () => {
             </div>
           </div>
 
-          {/* Generate Button */}
-          <div className="text-center mb-8">
-            <button
-              onClick={generatePrompt}
-              className="bg-gradient-to-r from-yellow-500 via-orange-500 to-pink-500 hover:from-yellow-600 hover:via-orange-600 hover:to-pink-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all shadow-lg hover:shadow-xl"
-            >
-              Generate Nano Banana Prompt
-            </button>
-          </div>
-
-          {/* Generated Prompt Card */}
-          {generatedPrompt && (
-            <div className="bg-white border-2 border-yellow-300 rounded-lg p-6 shadow-xl mb-8">
-              <div className="mb-4">
-                <div className="bg-gray-100 rounded-lg h-48 flex items-center justify-center mb-4 overflow-hidden">
-                  <div className="text-6xl">🍌</div>
-                </div>
-                <p className="text-gray-800 text-lg leading-relaxed">{generatedPrompt.prompt}</p>
-              </div>
-
-              <div className="flex flex-wrap gap-2 mt-4">
-                <button
-                  onClick={() => copyToClipboard(generatedPrompt.prompt)}
-                  className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-md text-sm transition-colors"
-                >
-                  <Copy size={14} />
-                  Copy
-                </button>
-                <button
-                  onClick={() => savePrompt(generatedPrompt)}
-                  className="inline-flex items-center gap-2 px-3 py-1.5 bg-green-100 hover:bg-green-200 text-green-700 rounded-md text-sm transition-colors"
-                >
-                  <Save size={14} />
-                  Save
-                </button>
-                <button
-                  onClick={() => toggleFavorite(generatedPrompt)}
-                  className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-md text-sm transition-colors ${
-                    favorites.some(fav => fav.id === generatedPrompt.id)
-                      ? 'bg-yellow-100 hover:bg-yellow-200 text-yellow-700'
-                      : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
-                  }`}
-                >
-                  <Star size={14} fill={favorites.some(fav => fav.id === generatedPrompt.id) ? 'currentColor' : 'none'} />
-                  Favorite
-                </button>
-                <button
-                  onClick={() => sharePrompt(generatedPrompt)}
-                  className="inline-flex items-center gap-2 px-3 py-1.5 bg-indigo-100 hover:bg-indigo-200 text-indigo-700 rounded-md text-sm transition-colors"
-                >
-                  <Share2 size={14} />
-                  Share
-                </button>
-                <button
-                  onClick={generatePrompt}
-                  className="inline-flex items-center gap-2 px-3 py-1.5 bg-orange-100 hover:bg-orange-200 text-orange-700 rounded-md text-sm transition-colors"
-                >
-                  <RefreshCw size={14} />
-                  Regenerate
-                </button>
-              </div>
-            </div>
-          )}
-
           {/* History Panel */}
           {showHistory && (
             <div className="mt-8 bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
@@ -513,27 +449,88 @@ const NanoBananaPromptsPage = () => {
               <span className="text-lg font-normal text-gray-600 ml-2">({filteredPrompts.length} prompts)</span>
             </h2>
 
-            <div className="grid gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               {filteredPrompts.map((prompt) => (
-                <div key={prompt.id} className="bg-white border border-yellow-200 rounded-lg p-4 hover:shadow-md transition-shadow">
-                  <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0 w-24 h-24 bg-gradient-to-br from-yellow-100 to-orange-100 rounded-lg flex items-center justify-center">
-                      <span className="text-3xl">🍌</span>
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-gray-800 leading-relaxed">{prompt.prompt}</p>
-                    </div>
-                    <button
-                      onClick={() => copyToClipboard(prompt.prompt)}
-                      className="p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
-                      title="Copy prompt"
-                    >
-                      <Copy size={16} />
-                    </button>
+                <div key={prompt.id} className="bg-white border border-yellow-200 rounded-lg p-4 hover:shadow-lg transition-all hover:-translate-y-1 flex flex-col">
+                  <div className="w-full h-32 bg-gradient-to-br from-yellow-100 to-orange-100 rounded-lg flex items-center justify-center mb-3">
+                    <span className="text-4xl">🍌</span>
                   </div>
+                  <p className="text-gray-800 text-sm leading-relaxed flex-1 mb-3 line-clamp-4">{prompt.prompt}</p>
+                  <button
+                    onClick={() => copyToClipboard(prompt.prompt)}
+                    className="w-full py-2 px-3 bg-yellow-500 hover:bg-yellow-600 text-white rounded-md text-sm transition-colors flex items-center justify-center gap-2"
+                    title="Copy prompt"
+                  >
+                    <Copy size={14} />
+                    Copy Prompt
+                  </button>
                 </div>
               ))}
             </div>
+
+            {/* Generate Button */}
+            <div className="text-center mt-12 mb-8">
+              <button
+                onClick={generatePrompt}
+                className="bg-gradient-to-r from-yellow-500 via-orange-500 to-pink-500 hover:from-yellow-600 hover:via-orange-600 hover:to-pink-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all shadow-lg hover:shadow-xl"
+              >
+                Generate Random Nano Banana Prompt
+              </button>
+            </div>
+
+            {/* Generated Prompt Card */}
+            {generatedPrompt && (
+              <div className="bg-white border-2 border-yellow-300 rounded-lg p-6 shadow-xl mb-8">
+                <div className="mb-4">
+                  <div className="bg-gray-100 rounded-lg h-48 flex items-center justify-center mb-4 overflow-hidden">
+                    <div className="text-6xl">🍌</div>
+                  </div>
+                  <p className="text-gray-800 text-lg leading-relaxed">{generatedPrompt.prompt}</p>
+                </div>
+
+                <div className="flex flex-wrap gap-2 mt-4">
+                  <button
+                    onClick={() => copyToClipboard(generatedPrompt.prompt)}
+                    className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-md text-sm transition-colors"
+                  >
+                    <Copy size={14} />
+                    Copy
+                  </button>
+                  <button
+                    onClick={() => savePrompt(generatedPrompt)}
+                    className="inline-flex items-center gap-2 px-3 py-1.5 bg-green-100 hover:bg-green-200 text-green-700 rounded-md text-sm transition-colors"
+                  >
+                    <Save size={14} />
+                    Save
+                  </button>
+                  <button
+                    onClick={() => toggleFavorite(generatedPrompt)}
+                    className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-md text-sm transition-colors ${
+                      favorites.some(fav => fav.id === generatedPrompt.id)
+                        ? 'bg-yellow-100 hover:bg-yellow-200 text-yellow-700'
+                        : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
+                    }`}
+                  >
+                    <Star size={14} fill={favorites.some(fav => fav.id === generatedPrompt.id) ? 'currentColor' : 'none'} />
+                    Favorite
+                  </button>
+                  <button
+                    onClick={() => sharePrompt(generatedPrompt)}
+                    className="inline-flex items-center gap-2 px-3 py-1.5 bg-indigo-100 hover:bg-indigo-200 text-indigo-700 rounded-md text-sm transition-colors"
+                  >
+                    <Share2 size={14} />
+                    Share
+                  </button>
+                  <button
+                    onClick={generatePrompt}
+                    className="inline-flex items-center gap-2 px-3 py-1.5 bg-orange-100 hover:bg-orange-200 text-orange-700 rounded-md text-sm transition-colors"
+                  >
+                    <RefreshCw size={14} />
+                    Regenerate
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Saved Prompts Section */}
@@ -558,34 +555,6 @@ const NanoBananaPromptsPage = () => {
               </div>
             </div>
           )}
-
-          {/* SEO Content Section */}
-          <div className="mt-16 space-y-8">
-            <div className="prose prose-gray max-w-none">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">What are Nano Banana Prompts?</h2>
-              <p className="text-gray-700 mb-4">
-                Nano banana prompts are creative AI image generation prompts that combine the whimsical concept of "nano banana" with various artistic styles and themes. These prompts are specifically designed to inspire unique and imaginative AI-generated artwork across multiple categories, from 3D figurine designs to plush toys, capsule dioramas, and more.
-              </p>
-              <p className="text-gray-700 mb-4">
-                Whether you're an AI artist experimenting with tools like Midjourney, DALL-E, or Stable Diffusion, or a creative professional looking for fresh inspiration, these nano banana prompts offer a playful yet detailed foundation for your next masterpiece. Each prompt is crafted with specific visual elements, lighting conditions, and stylistic directions to help you achieve stunning results.
-              </p>
-
-              <h2 className="text-2xl font-bold text-gray-900 mb-4 mt-8">Categories of Nano Banana Prompts</h2>
-              <p className="text-gray-700 mb-4">
-                Our collection features 96+ prompts organized into 8 distinct categories:
-              </p>
-              <ul className="list-disc pl-6 text-gray-700 space-y-2">
-                <li><strong>3D Figurine Design:</strong> Create collectible-style figurines with detailed bases and accessories</li>
-                <li><strong>Plush Toy:</strong> Design adorable soft toys with various textures and character styles</li>
-                <li><strong>Capsule Diorama:</strong> Craft miniature scenes inside transparent gashapon capsules</li>
-                <li><strong>Portrait & Character:</strong> Generate character portraits in multiple artistic styles</li>
-                <li><strong>Synthwave/Retro & Styles:</strong> Explore neon-lit retro aesthetics and vaporwave art</li>
-                <li><strong>Fantasy & Sci-Fi:</strong> Create otherworldly scenes with dragons, spaceships, and magic</li>
-                <li><strong>Photo Editing & Enhancement:</strong> Transform photos with creative nano banana elements</li>
-                <li><strong>Social Media & Branding:</strong> Design logos, avatars, and branded content</li>
-              </ul>
-            </div>
-          </div>
 
           {/* Related Links */}
           <div className="mt-12 bg-white rounded-lg p-6 border border-gray-200">
@@ -626,30 +595,37 @@ const NanoBananaPromptsPage = () => {
             <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
             <div className="space-y-6">
               <div className="bg-yellow-50 rounded-lg p-6 border border-yellow-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">What are nano banana prompts used for?</h3>
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">What is the nano banana prompt generator?</h3>
                 <p className="text-gray-700">
-                  Nano banana prompts are designed for AI image generation tools like Midjourney, DALL-E, Stable Diffusion, and other text-to-image AI models. They provide detailed, creative instructions that help generate unique and visually appealing artwork with a playful nano banana theme.
+                  This tool helps you automatically generate detailed and creative prompts related to nano banana for AI-image generation, 3D modeling, collectibles, and artwork.
                 </p>
               </div>
 
               <div className="bg-yellow-50 rounded-lg p-6 border border-yellow-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">How do I use these prompts?</h3>
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">How can I achieve the best results with my nano banana images?</h3>
                 <p className="text-gray-700">
-                  Simply copy any prompt you like and paste it into your preferred AI image generation tool. You can use the prompts as-is or modify them to better suit your creative vision. The category filters help you find prompts that match your specific artistic goals.
+                  Focus on clear subject descriptions combined with specific style keywords, lighting conditions, poses, and accessories. For example, use terms like "soft plush toy", "chibi doll", "transparent capsule", or "studio lighting" to create more precise and compelling artwork.
                 </p>
               </div>
 
               <div className="bg-yellow-50 rounded-lg p-6 border border-yellow-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Can I modify these prompts?</h3>
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">Can I create 3D figurine designs with these prompts?</h3>
                 <p className="text-gray-700">
-                  Absolutely! These prompts are meant to inspire your creativity. Feel free to adjust colors, styles, subjects, or any other elements to create something uniquely yours. Experimentation is encouraged!
+                  Absolutely! Our prompts include detailed specifications for scale (1/7, 1/6), materials (acrylic, plush, metal), base designs, packaging concepts, and lighting setups—perfect for designing collectible 3D figurines.
                 </p>
               </div>
 
               <div className="bg-yellow-50 rounded-lg p-6 border border-yellow-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Which AI tools work best with these prompts?</h3>
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">Does this cost anything to use?</h3>
                 <p className="text-gray-700">
-                  These prompts work with any text-to-image AI model including Midjourney, DALL-E 3, Stable Diffusion, Leonardo AI, and other similar tools. The detailed descriptions help ensure consistent results across different platforms.
+                  No, the core functionality is completely free to use.
+                </p>
+              </div>
+
+              <div className="bg-yellow-50 rounded-lg p-6 border border-yellow-200">
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">What can I do with the generated prompts?</h3>
+                <p className="text-gray-700">
+                  Use them in popular AI image tools like MidJourney, Stable Diffusion, DALL·E, or Nano Banana AI editor. They're also valuable for 3D modeling projects, packaging mockups, collectible design, and branding work.
                 </p>
               </div>
             </div>
