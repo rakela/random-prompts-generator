@@ -869,8 +869,17 @@ const PromptGenerator = () => {
                   <Link to="/ghostface-ai-trend-prompt-generator" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
                     Ghostface AI Trend
                   </Link>
-                  <Link to="/october-writing-prompts" className="block px-4 py-3 text-gray-700 hover:bg-gray-50">
+                  <Link to="/october-writing-prompts" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
                     October Writing Prompts
+                  </Link>
+                  <Link to="/writing-prompts-for-students" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
+                    Writing Prompts for Students
+                  </Link>
+                  <Link to="/persuasive-writing-topics" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
+                    Persuasive Writing Topics
+                  </Link>
+                  <Link to="/nano-banana-prompts" className="block px-4 py-3 text-gray-700 hover:bg-gray-50">
+                    Nano Banana Prompts
                   </Link>
                 </div>
               </div>
