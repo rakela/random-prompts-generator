@@ -11,6 +11,7 @@ import RandomNameGeneratorPage from './RandomNameGeneratorPage.tsx'
 import GhostfaceAIPromptPage from './GhostfaceAIPromptPage.tsx'
 import OctoberWritingPromptsPage from './OctoberWritingPromptsPage.tsx'
 import WritingPromptsForStudentsPage from './WritingPromptsForStudentsPage.tsx'
+import PersuasiveWritingTopicsPage from './PersuasiveWritingTopicsPage.tsx'
 import NanoBananaPromptsPage from './NanoBananaPromptsPage.tsx'
 import { SpeedInsights } from '@vercel/speed-insights/react'
 import './index.css'
@@ -29,6 +30,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="/ghostface-ai-trend-prompt-generator" element={<GhostfaceAIPromptPage />} />
           <Route path="/october-writing-prompts" element={<OctoberWritingPromptsPage />} />
           <Route path="/writing-prompts-for-students" element={<WritingPromptsForStudentsPage />} />
+          <Route path="/persuasive-writing-topics" element={<PersuasiveWritingTopicsPage />} />
           <Route path="/nano-banana-prompts" element={<NanoBananaPromptsPage />} />
         </Routes>
         <SpeedInsights />

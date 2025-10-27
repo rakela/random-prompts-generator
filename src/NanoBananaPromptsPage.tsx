@@ -140,6 +140,8 @@ const NanoBananaPromptsPage = () => {
   const [favorites, setFavorites] = useState([]);
   const [showHistory, setShowHistory] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const promptsPerPage = 12;
 
   // Get all prompts for the selected category
   const filteredPrompts = useMemo(() => {
@@ -159,6 +161,18 @@ const NanoBananaPromptsPage = () => {
     }
 
     return prompts;
+  }, [selectedCategory, searchTerm]);
+
+  // Pagination logic
+  const totalPages = Math.ceil(filteredPrompts.length / promptsPerPage);
+  const paginatedPrompts = useMemo(() => {
+    const startIndex = (currentPage - 1) * promptsPerPage;
+    return filteredPrompts.slice(startIndex, startIndex + promptsPerPage);
+  }, [filteredPrompts, currentPage, promptsPerPage]);
+
+  // Reset to page 1 when category or search changes
+  React.useEffect(() => {
+    setCurrentPage(1);
   }, [selectedCategory, searchTerm]);
 
   // Helper Functions
@@ -446,11 +460,10 @@ const NanoBananaPromptsPage = () => {
           <div className="mt-12">
             <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
               {selectedCategory === 'all' ? 'All Nano Banana Prompts' : `${categoryInfo[selectedCategory].label} Prompts`}
-              <span className="text-lg font-normal text-gray-600 ml-2">({filteredPrompts.length} prompts)</span>
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              {filteredPrompts.map((prompt) => (
+              {paginatedPrompts.map((prompt) => (
                 <div key={prompt.id} className="bg-white border border-yellow-200 rounded-lg p-4 hover:shadow-lg transition-all hover:-translate-y-1 flex flex-col">
                   <div className="w-full h-32 bg-gradient-to-br from-yellow-100 to-orange-100 rounded-lg flex items-center justify-center mb-3">
                     <span className="text-4xl">🍌</span>
@@ -467,6 +480,51 @@ const NanoBananaPromptsPage = () => {
                 </div>
               ))}
             </div>
+
+            {/* Pagination Controls */}
+            {totalPages > 1 && (
+              <div className="flex items-center justify-center gap-2 mt-8">
+                <button
+                  onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
+                  disabled={currentPage === 1}
+                  className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+                    currentPage === 1
+                      ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                      : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
+                  }`}
+                >
+                  Previous
+                </button>
+
+                <div className="flex gap-1">
+                  {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+                    <button
+                      key={page}
+                      onClick={() => setCurrentPage(page)}
+                      className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+                        currentPage === page
+                          ? 'bg-gradient-to-r from-yellow-500 to-orange-500 text-white shadow-lg'
+                          : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
+                      }`}
+                    >
+                      {page}
+                    </button>
+                  ))}
+                </div>
+
+                <button
+                  onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
+                  disabled={currentPage === totalPages}
+                  className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+                    currentPage === totalPages
+                      ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                      : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
+                  }`}
+                >
+                  Next
+                </button>
+              </div>
+            )}
 
             {/* Generate Button */}
             <div className="text-center mt-12 mb-8">
