@@ -10,7 +10,7 @@
     <meta name="description" content="Random Prompts Generator for writing, AI art, blogging, stories, and character creation, all in one clean, powerful tool. Instantly generate professional-quality prompts for ChatGPT, MidJourney, and creative writing." />
     <meta name="keywords" content="random prompts generator, random writing prompts, random story prompts, random story prompt generator, random character name generator" />
     <meta name="author" content="Random Prompt Generator" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="index, follow" id="robots-meta" />
     
     <!-- Open Graph Tags -->
     <meta property="og:title" content="Random Prompts Generator - Writing, Stories, & AI Art" />
@@ -66,13 +66,31 @@
       ]
     }
     </script>
+    <!-- Domain Verification Script - Blocks non-primary domains from indexing -->
+    <script>
+      (function() {
+        const PRIMARY_DOMAIN = 'randomprompts.org';
+        const currentDomain = window.location.hostname;
+        const isPrimary = currentDomain === PRIMARY_DOMAIN || currentDomain === 'www.' + PRIMARY_DOMAIN;
+
+        if (!isPrimary) {
+          // Block non-primary domains from being indexed
+          const robotsMeta = document.getElementById('robots-meta');
+          if (robotsMeta) {
+            robotsMeta.setAttribute('content', 'noindex, nofollow');
+          }
+          console.warn('⚠️ Non-primary domain detected. Pages set to noindex,nofollow');
+        }
+      })();
+    </script>
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RSS9MM86H4"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-    
+
       gtag('config', 'G-RSS9MM86H4');
     </script>
   </head>

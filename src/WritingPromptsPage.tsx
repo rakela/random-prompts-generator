@@ -1,9 +1,9 @@
 import React, { useState, useCallback } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { Copy, RefreshCw, Save, Download, Sparkles, PenTool, BookOpen, Crown, Share2, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import SEO from './components/SEO';
 
 // High-quality data dictionaries for generation
 const promptData = {
@@ -264,23 +264,12 @@ const WritingPromptsPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
-      <Helmet>
-        <title>Random Writing Prompt Generator - Free Writing Prompts</title>
-        <meta name="description" content="Generate unlimited writing prompts instantly with our free writing prompt generator. Create unique story ideas with compelling conflicts, emotional stakes, and creative plot twists to overcome writer's block." />
-        <meta name="keywords" content="writing prompts, random writing prompts, writing prompt generator, story prompts, creative writing prompts, random story prompt generator" />
-        <link rel="canonical" href="https://randomprompts.org/writing-prompts" />
-
-        {/* Open Graph Tags */}
-        <meta property="og:title" content="Random Writing Prompt Generator - Free Writing Prompts" />
-        <meta property="og:description" content="Generate unlimited writing prompts instantly with our free writing prompt generator. Create unique story ideas with compelling conflicts, emotional stakes, and creative plot twists to overcome writer's block." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://randomprompts.org/writing-prompts" />
-
-        {/* Twitter Card Tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Random Writing Prompt Generator - Free Writing Prompts" />
-        <meta name="twitter:description" content="Generate unlimited writing prompts instantly with our free writing prompt generator. Create unique story ideas with compelling conflicts, emotional stakes, and creative plot twists to overcome writer's block." />
-      </Helmet>
+      <SEO
+        path="writing-prompts"
+        title="Random Writing Prompt Generator - Free Writing Prompts"
+        description="Generate unlimited writing prompts instantly with our free writing prompt generator. Create unique story ideas with compelling conflicts, emotional stakes, and creative plot twists to overcome writer's block."
+        keywords="writing prompts, random writing prompts, writing prompt generator, story prompts, creative writing prompts, random story prompt generator"
+      />
 
       <Header
         promptHistory={promptHistory}

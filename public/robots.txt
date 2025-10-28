@@ -1,0 +1,24 @@
+# robots.txt for Random Prompts Generator
+# Primary domain: https://randomprompts.org
+
+# Allow all crawlers on primary domain
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://randomprompts.org/sitemap.xml
+
+# Block common problematic bots (optional)
+User-agent: AhrefsBot
+User-agent: SemrushBot
+User-agent: DotBot
+User-agent: MJ12bot
+Crawl-delay: 10
+
+# Disallow common paths that shouldn't be indexed
+Disallow: /api/
+Disallow: /*.json$
+Disallow: /node_modules/
+
+# Note: Non-primary domains are blocked via meta robots tags
+# See src/utils/seo.js for implementation
