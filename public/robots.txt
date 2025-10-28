@@ -8,13 +8,6 @@ Allow: /
 # Sitemap location
 Sitemap: https://randomprompts.org/sitemap.xml
 
-# Block common problematic bots (optional)
-User-agent: AhrefsBot
-User-agent: SemrushBot
-User-agent: DotBot
-User-agent: MJ12bot
-Crawl-delay: 10
-
 # Disallow common paths that shouldn't be indexed
 Disallow: /api/
 Disallow: /*.json$
