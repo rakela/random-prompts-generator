@@ -1,5 +1,6 @@
 import React, { useState, useCallback, useMemo } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { Copy, RefreshCw, Save, Download, Sparkles, Wand2, PenTool, BookOpen, Crown, Github, Twitter, Heart, ExternalLink, Zap, History, Share2, Star } from 'lucide-react';
 import Logo from './src/components/Logo';
 
@@ -847,6 +848,10 @@ const PromptGenerator = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
+      <Helmet>
+        <link rel="canonical" href="https://randomprompts.org" />
+      </Helmet>
+
       {/* Header */}
       <header className="bg-white shadow-sm border-b border-gray-200">
         <div className="max-w-6xl mx-auto px-4 py-4">
