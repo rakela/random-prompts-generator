@@ -3,6 +3,8 @@ import { Helmet } from 'react-helmet-async';
 import { Copy, RefreshCw, Save, Download, Sparkles, PenTool, BookOpen, Crown, Github, Twitter, Heart, History, Share2, Star, Ghost } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Logo from './components/Logo';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 // Ghostface AI prompt data
 const ghostfacePrompts = [
@@ -110,48 +112,11 @@ const GhostfaceAIPromptPage = () => {
       </Helmet>
 
       {/* Header */}
-      <header className="bg-white shadow-sm border-b border-gray-200">
-        <div className="max-w-6xl mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <Link to="/" className="flex items-center space-x-2">
-              <Logo size={28} />
-              <span className="text-xl font-bold text-gray-900">Random Prompts</span>
-            </Link>
-            <nav className="hidden md:flex items-center space-x-6">
-              <Link to="/" className="text-gray-600 hover:text-blue-600 transition-colors">Home</Link>
-              <div className="relative group">
-                <button className="text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-1">
-                  Prompts
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
-                <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                  <Link to="/ghostface-ai-trend-prompt-generator" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
-                    Ghostface AI Trend
-                  </Link>
-                  <Link to="/october-writing-prompts" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
-                    October Writing Prompts
-                  </Link>
-                  <Link to="/writing-prompts-for-students" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
-                    Writing Prompts for Students
-                  </Link>
-                  <Link to="/persuasive-writing-topics" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
-                    Persuasive Writing Topics
-                  </Link>
-                  <Link to="/nano-banana-prompts" className="block px-4 py-3 text-gray-700 hover:bg-gray-50">
-                    Nano Banana Prompts
-                  </Link>
-                </div>
-              </div>
-              <a href="https://github.com/rakela/random-prompts-generator" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-gray-600 hover:text-blue-600 transition-colors">
-                <Github size={16} />
-                GitHub
-              </a>
-            </nav>
-          </div>
-        </div>
-      </header>
+      <Header
+        promptHistory={[]}
+        showHistory={false}
+        onHistoryToggle={() => {}}
+      />
 
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-purple-900 via-red-900 to-black text-white py-16">
@@ -440,65 +405,7 @@ const GhostfaceAIPromptPage = () => {
       </div>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <Sparkles size={20} />
-                <span className="text-lg font-bold">Random Prompts</span>
-              </div>
-              <p className="text-gray-400 text-sm mb-4">
-                Free AI prompt generator for viral content, creative writing, and AI art.
-              </p>
-              <div className="flex space-x-4">
-                <a href="https://github.com/rakela/random-prompts-generator" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
-                  <Github size={20} />
-                </a>
-                <a href="https://twitter.com/intent/tweet?text=Check%20out%20these%20viral%20Ghostface%20AI%20prompts!&url=https://randomprompts.org/ghostface-ai-trend-prompt-generator" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
-                  <Twitter size={20} />
-                </a>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="font-semibold mb-4">Quick Links</h3>
-              <ul className="space-y-2 text-sm">
-                <li><Link to="/" className="text-gray-400 hover:text-white transition-colors">All Prompts</Link></li>
-                <li><Link to="/writing-prompts" className="text-gray-400 hover:text-white transition-colors">Writing Prompts</Link></li>
-                <li><Link to="/ai-images-prompt" className="text-gray-400 hover:text-white transition-colors">AI Images Prompt</Link></li>
-                <li><Link to="/ghostface-ai-trend-prompt-generator" className="text-gray-400 hover:text-white transition-colors">Ghostface AI Trend</Link></li>
-                <li><Link to="/october-writing-prompts" className="text-gray-400 hover:text-white transition-colors">October Writing Prompts</Link></li>
-                <li><Link to="/writing-prompts-for-students" className="text-gray-400 hover:text-white transition-colors">Writing Prompts for Students</Link></li>
-                <li><Link to="/nano-banana-prompts" className="text-gray-400 hover:text-white transition-colors">Nano Banana Prompts</Link></li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="font-semibold mb-4">AI Tools</h3>
-              <ul className="space-y-2 text-sm">
-                <li><a href="https://www.midjourney.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">MidJourney</a></li>
-                <li><a href="https://openai.com/dall-e-2" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">DALL-E</a></li>
-                <li><a href="https://stability.ai" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">Stable Diffusion</a></li>
-                <li><a href="https://chat.openai.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">ChatGPT</a></li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="font-semibold mb-4">Support</h3>
-              <ul className="space-y-2 text-sm">
-                <li><a href="https://github.com/rakela/random-prompts-generator/issues" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">Report Issues</a></li>
-                <li><a href="https://github.com/rakela/random-prompts-generator" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">Contribute</a></li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
-            <p>© 2024 Random Prompts. Made with <Heart size={14} className="inline text-red-500" /> for the creative community.</p>
-            <p className="mt-2">Free and open source. No registration required. No data collected.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };
