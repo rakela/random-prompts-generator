@@ -83,6 +83,11 @@ const routes = [
     path: 'nano-banana-prompts',
     priority: '0.9',
     changefreq: 'weekly'
+  },
+  {
+    path: 'midjourney-ai-prompts',
+    priority: '0.9',
+    changefreq: 'weekly'
   }
 ];
 
