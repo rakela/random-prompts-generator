@@ -37,8 +37,27 @@ const Header: React.FC<HeaderProps> = ({ promptHistory = [], showHistory = false
                 <Link to="/writing-prompts-for-students" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
                   Writing Prompts for Students
                 </Link>
-                <Link to="/persuasive-writing-topics" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
-                  Persuasive Writing Topics
+                <div className="relative group/submenu">
+                  <button className="w-full text-left px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100 flex items-center justify-between">
+                    Persuasive Writing
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
+                  <div className="absolute left-full top-0 ml-1 w-64 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover/submenu:opacity-100 group-hover/submenu:visible transition-all duration-200 z-50">
+                    <Link to="/persuasive-writing-topics" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
+                      Persuasive Writing Topics
+                    </Link>
+                    <Link to="/persuasive-essays-topics" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
+                      Persuasive Essays Topics
+                    </Link>
+                    <Link to="/persuasive-writing-titles" className="block px-4 py-3 text-gray-700 hover:bg-gray-50">
+                      Persuasive Writing Titles
+                    </Link>
+                  </div>
+                </div>
+                <Link to="/midjourney-ai-prompts" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
+                  Midjourney AI Prompts
                 </Link>
                 <Link to="/nano-banana-prompts" className="block px-4 py-3 text-gray-700 hover:bg-gray-50">
                   Nano Banana Prompts
