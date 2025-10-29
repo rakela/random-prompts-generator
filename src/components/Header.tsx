@@ -56,7 +56,7 @@ const Header: React.FC<HeaderProps> = ({ promptHistory = [], showHistory = false
                     </Link>
                   </div>
                 </div>
-                <Link to="/midjourney-ai-prompts" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
+                <Link to="/midjourney-ai-picture-generator" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
                   Midjourney AI Prompts
                 </Link>
                 <Link to="/nano-banana-prompts" className="block px-4 py-3 text-gray-700 hover:bg-gray-50">

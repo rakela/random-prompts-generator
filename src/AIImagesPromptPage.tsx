@@ -245,7 +245,7 @@ const AIImagesPromptPage = () => {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
       <Helmet>
         <title>AI Images Prompt Generator - Free AI Art Prompts for MidJourney & DALL-E</title>
-        <meta name="description" content="Generate professional AI images prompt instantly with our free AI art prompt generator. Create detailed prompts for MidJourney, DALL-E, Stable Diffusion with advanced lighting, composition, and style techniques." />
+        <meta name="description" content="Free AI images prompt generator for MidJourney, DALL-E, and Stable Diffusion. Create professional AI art prompts with advanced lighting, composition, and artistic styles. Generate detailed image prompts instantly for stunning AI-generated artwork. Perfect for digital artists, designers, and AI art enthusiasts." />
         <meta name="keywords" content="ai images prompt, ai art prompt generator, midjourney prompts, dall-e prompts, stable diffusion prompts, ai image generation, free ai art prompts" />
         <link rel="canonical" href="https://randomprompts.org/ai-images-prompt" />
 

@@ -85,7 +85,7 @@ const routes = [
     changefreq: 'weekly'
   },
   {
-    path: 'midjourney-ai-prompts',
+    path: 'midjourney-ai-picture-generator',
     priority: '0.9',
     changefreq: 'weekly'
   }
