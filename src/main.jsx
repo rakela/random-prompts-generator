@@ -37,7 +37,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="/persuasive-essays-topics" element={<PersuasiveEssaysTopicsPage />} />
           <Route path="/persuasive-writing-titles" element={<PersuasiveWritingTitlesPage />} />
           <Route path="/nano-banana-prompts" element={<NanoBananaPromptsPage />} />
-          <Route path="/midjourney-ai-prompts" element={<MidjourneyAIPromptsPage />} />
+          <Route path="/midjourney-ai-picture-generator" element={<MidjourneyAIPromptsPage />} />
         </Routes>
         <SpeedInsights />
       </BrowserRouter>
