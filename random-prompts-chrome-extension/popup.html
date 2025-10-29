@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Prompts Generator</title>
+  <link rel="stylesheet" href="css/popup.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+          <path d="M2 17l10 5 10-5"/>
+          <path d="M2 12l10 5 10-5"/>
+        </svg>
+        <h1>Random Prompts</h1>
+      </div>
+    </header>
+
+    <!-- Category Tabs -->
+    <div class="tabs">
+      <button class="tab-btn active" data-category="writing">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 19l7-7 3 3-7 7-3-3z"/>
+          <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
+          <path d="M2 2l7.586 7.586"/>
+        </svg>
+        Writing
+      </button>
+      <button class="tab-btn" data-category="aiArt">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M15 4V2"/>
+          <path d="M15 16v-2"/>
+          <path d="M8 9h2"/>
+          <path d="M20 9h2"/>
+          <path d="M17.8 11.8L19 13"/>
+          <path d="M15 9h0"/>
+          <path d="M17.8 6.2L19 5"/>
+          <path d="m3 21 9-9"/>
+          <path d="M12.2 6.2L11 5"/>
+        </svg>
+        AI Art
+      </button>
+      <button class="tab-btn" data-category="blog">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+        </svg>
+        Blog
+      </button>
+      <button class="tab-btn" data-category="fantasy">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z"/>
+          <path d="M5 21h14"/>
+        </svg>
+        Fantasy
+      </button>
+      <button class="tab-btn" data-category="persuasive">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+        </svg>
+        Persuasive
+      </button>
+      <button class="tab-btn" data-category="names">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/>
+        </svg>
+        Names
+      </button>
+    </div>
+
+    <!-- Controls Area -->
+    <div id="controls-area"></div>
+
+    <!-- Generate Button -->
+    <button id="generate-btn" class="generate-btn">
+      Generate Prompt
+    </button>
+
+    <!-- Result Area -->
+    <div id="result-area" class="result-area hidden">
+      <div class="prompt-card">
+        <p id="prompt-text" class="prompt-text"></p>
+        <div class="action-buttons">
+          <button id="copy-btn" class="action-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+            </svg>
+            Copy
+          </button>
+          <button id="save-btn" class="action-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
+              <polyline points="17 21 17 13 7 13 7 21"/>
+              <polyline points="7 3 7 8 15 8"/>
+            </svg>
+            Save
+          </button>
+          <button id="regenerate-btn" class="action-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21.5 2v6h-6"/>
+              <path d="M2.5 22v-6h6"/>
+              <path d="M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/>
+            </svg>
+            Regenerate
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Saved Prompts -->
+    <div class="saved-section">
+      <div class="saved-header">
+        <h3>Saved Prompts</h3>
+        <button id="clear-saved-btn" class="clear-btn">Clear All</button>
+      </div>
+      <div id="saved-list" class="saved-list"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <a href="https://randomprompts.org" target="_blank" class="footer-link">
+        Visit randomprompts.org
+      </a>
+    </footer>
+  </div>
+
+  <script src="js/popup.js"></script>
+</body>
+</html>
