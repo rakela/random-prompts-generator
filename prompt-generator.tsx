@@ -281,6 +281,61 @@ const promptData = {
     ]
   },
 
+  persuasive: {
+    // Persuasive Essay Topics
+    topics: [
+      '🎓 Should schools eliminate homework and replace it with hands-on projects?',
+      '🎓 Should students be graded on creativity and participation as much as test scores?',
+      '🎓 Is online learning as effective as classroom learning?',
+      '🎓 Should schools require financial literacy courses for graduation?',
+      '🎓 Should smartphones be banned in schools to improve focus?',
+      '🌍 Should governments ban single-use plastics completely?',
+      '🌍 Is climate change primarily a government issue or a personal responsibility?',
+      '🌍 Should fast fashion brands be held accountable for environmental damage?',
+      '🌍 Should public transportation be free to reduce pollution?',
+      '🌍 Should zoos be replaced with virtual or open sanctuaries?',
+      '💻 Should AI-generated content be labeled to protect creative industries?',
+      '💻 Does social media do more harm than good for young people?',
+      '💻 Should governments regulate the use of artificial intelligence?',
+      '💻 Are smartphones making people less social and more isolated?',
+      '💻 Should influencers be legally responsible for misleading product promotions?',
+      '⚖️ Should voting be mandatory in democratic countries?',
+      '⚖️ Should everyone become vegetarian to protect the planet?',
+      '⚖️ Is it ethical to use animals for medical or cosmetic testing?',
+      '⚖️ Should college education be free for all students?',
+      '⚖️ Should people who spread fake news online face legal consequences?'
+    ],
+
+    // Persuasive Writing Titles
+    titles: [
+      '🌎 Should governments impose a carbon tax to fight climate change?',
+      '🌎 Is space exploration worth the environmental cost?',
+      '🌎 Should countries ban bottled water to reduce plastic waste?',
+      '🌎 Is nuclear energy a safe alternative to fossil fuels?',
+      '🌎 Should wealthy nations be required to help poorer countries fight climate change?',
+      '🧠 Should mental health days be mandatory in schools and workplaces?',
+      '🧠 Is social media addiction as harmful as substance abuse?',
+      '🧠 Should fast food companies be held responsible for obesity?',
+      '🧠 Should junk food advertising to children be banned?',
+      '🧠 Should therapy be free and accessible for everyone?',
+      '⚙️ Should AI be allowed to create art, music, and literature?',
+      '⚙️ Are privacy rights more important than national security in the digital age?',
+      '⚙️ Should robots be granted legal rights if they become sentient?',
+      '⚙️ Should schools teach prompt engineering as a core skill?',
+      '⚙️ Should deepfake technology be banned completely?',
+      '💬 Should celebrities and influencers be role models for society?',
+      '💬 Should cancel culture be seen as accountability or censorship?',
+      '💬 Is traditional media still trustworthy in the digital era?',
+      '💬 Should cultural appropriation be punished by law?',
+      '💬 Should patriotism be taught in schools, or does it create division?'
+    ],
+
+    templates: [
+      '{topics}',
+      '{titles}'
+    ]
+  },
+
   names: {
     // Culturally consistent fantasy names
     elvish: {
@@ -322,17 +377,17 @@ const weightedRandom = (items, weights = null) => {
 const processTemplate = (template, data, category, controls = {}) => {
   if (category === 'names') {
     // Special handling for names
-    const selectedCulture = controls.origin && controls.origin !== 'any' 
-      ? controls.origin 
+    const selectedCulture = controls.origin && controls.origin !== 'any'
+      ? controls.origin
       : weightedRandom(['elvish', 'dwarven', 'human', 'exotic']);
-    
+
     const cultureData = data[selectedCulture];
     const nameType = controls.type || 'full';
-    
+
     const firstName = weightedRandom(cultureData.first);
     const lastName = weightedRandom(cultureData.last);
     const title = weightedRandom(data.titles);
-    
+
     switch (nameType) {
       case 'first':
         return firstName;
@@ -344,7 +399,24 @@ const processTemplate = (template, data, category, controls = {}) => {
         return `${firstName} ${lastName}`;
     }
   }
-  
+
+  if (category === 'persuasive') {
+    // Special handling for persuasive prompts
+    const type = controls.type || 'all';
+
+    let sourceArray = [];
+    if (type === 'topics') {
+      sourceArray = data.topics;
+    } else if (type === 'titles') {
+      sourceArray = data.titles;
+    } else {
+      // 'all' - combine both
+      sourceArray = [...data.topics, ...data.titles];
+    }
+
+    return weightedRandom(sourceArray);
+  }
+
   // Regular template processing for other categories
   return template.replace(/\{(\w+)\}/g, (match, key) => {
     if (data[key] && Array.isArray(data[key])) {
@@ -431,6 +503,7 @@ const PromptGenerator = () => {
     aiArt: { style: 'any', mood: 'any', quality: 'high' },
     blog: { topic: 'any', format: 'any', angle: 'any' },
     fantasy: { race: 'any', magic: 'any', setting: 'any' },
+    persuasive: { type: 'all' },
     names: { type: 'full', origin: 'any', count: 'single' }
   });
 
@@ -439,6 +512,7 @@ const PromptGenerator = () => {
     { id: 'aiArt', label: 'AI Art', icon: Wand2 },
     { id: 'blog', label: 'Blog', icon: BookOpen },
     { id: 'fantasy', label: 'Fantasy', icon: Crown },
+    { id: 'persuasive', label: 'Persuasive', icon: Zap },
     { id: 'names', label: 'Names', icon: Sparkles }
   ];
 
@@ -727,10 +801,25 @@ const PromptGenerator = () => {
           </div>
         );
 
+      case 'persuasive':
+        return (
+          <div className="grid grid-cols-1 md:grid-cols-1 gap-4 mb-6">
+            <select
+              value={categoryControls.type}
+              onChange={(e) => updateControl('type', e.target.value)}
+              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+            >
+              <option value="all">All Persuasive Topics</option>
+              <option value="topics">Essay Topics Only</option>
+              <option value="titles">Writing Titles Only</option>
+            </select>
+          </div>
+        );
+
       case 'names':
         return (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-            <select 
+            <select
               value={categoryControls.type}
               onChange={(e) => updateControl('type', e.target.value)}
               className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent"
@@ -740,7 +829,7 @@ const PromptGenerator = () => {
               <option value="title">With Title</option>
               <option value="house">With House</option>
             </select>
-            <select 
+            <select
               value={categoryControls.origin}
               onChange={(e) => updateControl('origin', e.target.value)}
               className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent"
@@ -751,7 +840,7 @@ const PromptGenerator = () => {
               <option value="human">Human</option>
               <option value="exotic">Exotic</option>
             </select>
-            <select 
+            <select
               value={categoryControls.count}
               onChange={(e) => updateControl('count', e.target.value)}
               className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent"
@@ -841,6 +930,7 @@ const PromptGenerator = () => {
       aiArt: 'purple',
       blog: 'green',
       fantasy: 'amber',
+      persuasive: 'orange',
       names: 'pink'
     };
     return colors[tabId] || 'gray';

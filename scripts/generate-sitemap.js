@@ -70,6 +70,16 @@ const routes = [
     changefreq: 'weekly'
   },
   {
+    path: 'persuasive-essays-topics',
+    priority: '0.9',
+    changefreq: 'weekly'
+  },
+  {
+    path: 'persuasive-writing-titles',
+    priority: '0.9',
+    changefreq: 'weekly'
+  },
+  {
     path: 'nano-banana-prompts',
     priority: '0.9',
     changefreq: 'weekly'
