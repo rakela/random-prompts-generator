@@ -1,0 +1,23 @@
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="32" height="32" rx="6.4" fill="url(#grad)"/>
+
+  <!-- Icon design - Sparkles/Stars representing prompts -->
+  <g transform="translate(16, 16)">
+    <!-- Main star -->
+    <path d="M 0,-8 L 1.6,-2.56 L 7.04,-2.56 L 2.56,0.64 L 4.48,6.4 L 0,3.2 L -4.48,6.4 L -2.56,0.64 L -7.04,-2.56 L -1.6,-2.56 Z"
+          fill="white" opacity="1"/>
+
+    <!-- Small stars -->
+    <circle cx="8" cy="-6.4" r="1.28" fill="white" opacity="0.8"/>
+    <circle cx="-7.04" cy="5.76" r="0.96" fill="white" opacity="0.7"/>
+    <circle cx="5.76" cy="7.04" r="1.12" fill="white" opacity="0.75"/>
+  </g>
+</svg>
