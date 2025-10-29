@@ -940,13 +940,13 @@ const PromptGenerator = () => {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
       <Helmet>
         <title>Random Prompts Generator - Writing, Stories, & AI Art</title>
-        <meta name="description" content="Random Prompts Generator for writing, AI art, blogging, stories, and character creation, all in one clean, powerful tool. Instantly generate professional-quality prompts for ChatGPT, MidJourney, and creative writing." />
+        <meta name="description" content="Free random prompts generator for writing, AI art, blog posts, and stories. Generate creative writing prompts, AI image prompts for MidJourney and DALL-E, blog ideas, fantasy worldbuilding, and character names instantly. Perfect for overcoming writer's block and creative inspiration." />
         <meta name="keywords" content="random prompts generator, random writing prompts, random story prompts, random story prompt generator, random character name generator" />
         <link rel="canonical" href="https://randomprompts.org" />
 
         {/* Open Graph Tags */}
         <meta property="og:title" content="Random Prompts Generator - Writing, Stories, & AI Art" />
-        <meta property="og:description" content="Random Prompts Generator for writing, AI art, blogging, stories, and character creation, all in one clean, powerful tool. Instantly generate professional-quality prompts for ChatGPT, MidJourney, and creative writing." />
+        <meta property="og:description" content="Free random prompts generator for writing, AI art, blog posts, and stories. Generate creative writing prompts, AI image prompts for MidJourney and DALL-E, blog ideas, fantasy worldbuilding, and character names instantly." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://randomprompts.org" />
 
