@@ -185,20 +185,20 @@ const MidjourneyAIPromptsPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-pink-50">
       <Helmet>
-        <title>Midjourney AI Picture Prompts - Creative AI Image Generation Ideas for Stunning Art</title>
+        <title>Midjourney AI Picture Generator - Creative AI Image Generation Ideas for Stunning Art</title>
         <meta name="description" content="Discover 40+ professional Midjourney AI prompts for stunning image generation. Browse creative prompts across 8 categories including nature, architecture, fantasy characters, Christmas scenes, and more. Perfect for AI artists using Midjourney, Stable Diffusion, and DALL-E." />
-        <meta name="keywords" content="midjourney prompts, midjourney AI prompts, AI image generation prompts, AI art prompts, stable diffusion prompts, DALL-E prompts, fantasy art prompts, nature photography prompts, Christmas AI art, cyberpunk prompts" />
-        <link rel="canonical" href="https://randomprompts.org/midjourney-ai-prompts" />
+        <meta name="keywords" content="midjourney ai picture generator, midjourney prompts, midjourney AI prompts, AI image generation prompts, AI art prompts, stable diffusion prompts, DALL-E prompts, fantasy art prompts, nature photography prompts, Christmas AI art, cyberpunk prompts" />
+        <link rel="canonical" href="https://randomprompts.org/midjourney-ai-picture-generator" />
 
         {/* Open Graph Tags */}
-        <meta property="og:title" content="Midjourney AI Picture Prompts - Creative AI Image Generation Ideas" />
+        <meta property="og:title" content="Midjourney AI Picture Generator - Creative AI Image Generation Ideas" />
         <meta property="og:description" content="Discover 40+ professional Midjourney AI prompts for stunning image generation. Browse creative prompts across 8 categories. Perfect for AI artists and creators." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://randomprompts.org/midjourney-ai-prompts" />
+        <meta property="og:url" content="https://randomprompts.org/midjourney-ai-picture-generator" />
 
         {/* Twitter Card Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Midjourney AI Picture Prompts - Creative AI Image Generation Ideas" />
+        <meta name="twitter:title" content="Midjourney AI Picture Generator - Creative AI Image Generation Ideas" />
         <meta name="twitter:description" content="Discover 40+ professional Midjourney AI prompts for stunning image generation. Browse creative prompts across 8 categories." />
       </Helmet>
 
@@ -213,7 +213,7 @@ const MidjourneyAIPromptsPage = () => {
       <div className="bg-gradient-to-r from-purple-600 via-blue-600 to-pink-600 text-white py-16">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Midjourney AI Picture Prompts
+            Midjourney AI Picture Generator
           </h1>
           <p className="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
             Explore 40+ professional Midjourney AI prompts for creating stunning images across 8 unique categories. From breathtaking landscapes to fantasy characters, magical Christmas scenes to cyberpunk cityscapes - find the perfect prompt for your next AI art masterpiece.
