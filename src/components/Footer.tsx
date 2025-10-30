@@ -47,8 +47,10 @@ const Footer: React.FC = () => {
           </div>
 
           <div>
-            <h3 className="font-semibold mb-4">Support</h3>
+            <h3 className="font-semibold mb-4">Legal & Support</h3>
             <ul className="space-y-2 text-sm">
+              <li><Link to="/privacy" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</Link></li>
+              <li><Link to="/terms" className="text-gray-400 hover:text-white transition-colors">Terms of Service</Link></li>
               <li><a href="https://github.com/rakela/random-prompts-generator/issues" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">Report Issues</a></li>
               <li><a href="https://github.com/rakela/random-prompts-generator" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">Contribute</a></li>
             </ul>
