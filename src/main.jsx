@@ -16,6 +16,8 @@ import PersuasiveEssaysTopicsPage from './PersuasiveEssaysTopicsPage.tsx'
 import PersuasiveWritingTitlesPage from './PersuasiveWritingTitlesPage.tsx'
 import NanoBananaPromptsPage from './NanoBananaPromptsPage.tsx'
 import MidjourneyAIPromptsPage from './MidjourneyAIPromptsPage.tsx'
+import PrivacyPage from './PrivacyPage.tsx'
+import TermsPage from './TermsPage.tsx'
 import { SpeedInsights } from '@vercel/speed-insights/react'
 import './index.css'
 
@@ -38,6 +40,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="/persuasive-writing-titles" element={<PersuasiveWritingTitlesPage />} />
           <Route path="/nano-banana-prompts" element={<NanoBananaPromptsPage />} />
           <Route path="/midjourney-ai-picture-generator" element={<MidjourneyAIPromptsPage />} />
+          <Route path="/privacy" element={<PrivacyPage />} />
+          <Route path="/terms" element={<TermsPage />} />
         </Routes>
         <SpeedInsights />
       </BrowserRouter>

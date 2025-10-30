@@ -489,6 +489,64 @@ const WritingPromptsPage = () => {
                   <li>• Plot twists that recontextualize the entire story</li>
                 </ul>
               </div>
+
+              <h2 className="text-2xl font-bold text-gray-900 mb-4 mt-8">Examples of Writing Prompts</h2>
+              <p className="text-gray-700 mb-4">
+                Our writing prompt generator creates unique combinations that challenge writers to explore complex narratives. Here are some examples of the types of prompts you can generate:
+              </p>
+              <ul className="list-disc pl-6 text-gray-700 mb-4 space-y-2">
+                <li><strong>Character-Driven:</strong> "Your protagonist is a memory thief who can steal and experience others' recollections. When they must choose between saving their child or saving a thousand strangers, they discover that death in this world just means waking up in another."</li>
+                <li><strong>High-Concept:</strong> "In a floating city that only appears during solar eclipses, a mysterious letter arrives with no return address. The protagonist, a dream architect who builds worlds in people's sleep, realizes they're the only one who remembers the world before it changed."</li>
+                <li><strong>Plot Twist Focus:</strong> "A time capsule is opened 50 years early in an underground library where books rewrite themselves. When the protagonist discovers their life-saving medication is slowly poisoning someone they love, the story reveals that the narrator has been the villain all along."</li>
+              </ul>
+
+              <h2 className="text-2xl font-bold text-gray-900 mb-4 mt-8">Tips for Overcoming Writer's Block</h2>
+              <p className="text-gray-700 mb-4">
+                Writer's block affects every creative writer at some point. Here are proven strategies to break through creative stagnation using writing prompts:
+              </p>
+              <ul className="list-disc pl-6 text-gray-700 mb-4 space-y-2">
+                <li><strong>Set a Timer:</strong> Give yourself 15 minutes to write from a prompt without editing. The time pressure forces your creative brain to bypass perfectionism.</li>
+                <li><strong>Embrace Imperfection:</strong> Your first draft doesn't need to be good—it just needs to exist. Use prompts as springboards, not prescriptions.</li>
+                <li><strong>Mix and Match:</strong> Generate multiple prompts and combine elements from different ones to create something uniquely yours.</li>
+                <li><strong>Start in the Middle:</strong> Don't feel obligated to begin at the beginning. Jump into the most exciting part of the prompt and work outward.</li>
+                <li><strong>Change One Element:</strong> Take a generated prompt and deliberately change one key component (setting, character, or conflict) to make it feel more personal.</li>
+              </ul>
+              <p className="text-gray-700 mb-4">
+                For more writing advice and techniques, check out{' '}
+                <a href="https://writersdigest.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                  Writer's Digest
+                </a>, a leading resource for creative writers with articles on craft, publishing, and inspiration.
+              </p>
+
+              <h2 className="text-2xl font-bold text-gray-900 mb-4 mt-8">Writing Exercises Using Prompts</h2>
+              <p className="text-gray-700 mb-4">
+                Transform generated prompts into structured writing exercises to develop your craft:
+              </p>
+              <ul className="list-disc pl-6 text-gray-700 mb-4 space-y-2">
+                <li><strong>The 500-Word Challenge:</strong> Use a prompt to write exactly 500 words. This constraint forces precision and helps you focus on essential story elements.</li>
+                <li><strong>Perspective Shift:</strong> Generate a prompt, write a scene from it, then rewrite the same scene from a different character's perspective. This builds empathy and narrative flexibility.</li>
+                <li><strong>Genre Mashup:</strong> Take a writing prompt designed for one genre (like fantasy) and rewrite it in a completely different genre (like noir mystery). This exercise sparks creativity through constraint.</li>
+                <li><strong>Dialogue-Only Scene:</strong> Use a prompt's conflict as the basis for a scene written entirely in dialogue. No action tags, no description—just conversation. This strengthens your ear for character voice.</li>
+                <li><strong>Sensory Deep Dive:</strong> Pick a prompt with an interesting setting and write a descriptive passage using all five senses. This trains you to write immersive environments.</li>
+              </ul>
+              <p className="text-gray-700 mb-4">
+                For daily writing practice and additional exercises, visit{' '}
+                <a href="https://thewritepractice.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                  The Write Practice
+                </a>, which offers guided writing exercises and a supportive community of writers.
+              </p>
+
+              <h2 className="text-2xl font-bold text-gray-900 mb-4 mt-8">Related Tools</h2>
+              <p className="text-gray-700 mb-4">
+                Enhance your creative workflow with our other free tools:
+              </p>
+              <ul className="list-disc pl-6 text-gray-700 mb-4 space-y-2">
+                <li><Link to="/ai-images-prompt" className="text-blue-600 hover:underline">AI Art Prompts Generator</Link> - Create detailed prompts for MidJourney, DALL-E, and Stable Diffusion</li>
+                <li><Link to="/ai-blog-post-generator" className="text-blue-600 hover:underline">Blog Post Ideas Generator</Link> - Generate SEO-optimized blog topics and content ideas</li>
+                <li><Link to="/short-story-prompts-generator" className="text-blue-600 hover:underline">Short Story Prompts</Link> - Specialized prompts for short fiction and flash fiction</li>
+                <li><Link to="/random-name-generator" className="text-blue-600 hover:underline">Character Name Generator</Link> - Generate authentic fantasy and character names for your stories</li>
+                <li><Link to="/" className="text-blue-600 hover:underline">All Prompt Tools</Link> - Access all our prompt generators in one place</li>
+              </ul>
             </div>
           </div>
         </div>

@@ -1306,7 +1306,7 @@ Random Prompts Generator for writing, AI art, blogging, stories, and character c
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Built for Creators, By Creators</h2>
             <p className="text-xl text-gray-600 mb-8">
               Our prompt generator was created by writers, artists, and content creators who understand the challenge of creative blocks.
-              Every prompt is designed to spark genuine inspiration and produce professional results. Perfect for use with <a href="https://chat.openai.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">ChatGPT</a>, <a href="https://www.midjourney.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">MidJourney</a>, and other AI tools.
+              Every prompt is designed to spark genuine inspiration and produce professional results. Perfect for use with <a href="https://chat.openai.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">ChatGPT</a>, <a href="https://www.midjourney.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">MidJourney</a>, and other AI tools. Stay updated on AI developments by following the <a href="https://openai.com/blog" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">OpenAI Blog</a>.
             </p>
             <div className="flex justify-center items-center space-x-8">
               <div className="text-center">

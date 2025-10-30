@@ -480,6 +480,74 @@ const AIImagesPromptPage = () => {
                   <li>• Specific artist style references for consistent AI image generation</li>
                 </ul>
               </div>
+
+              <h2 className="text-2xl font-bold text-gray-900 mb-4 mt-8">AI Art Prompt Examples</h2>
+              <p className="text-gray-700 mb-4">
+                Understanding how professional prompts are structured helps you get better results from AI art generators. Here are examples showing the anatomy of effective AI art prompts:
+              </p>
+              <ul className="list-disc pl-6 text-gray-700 mb-4 space-y-3">
+                <li><strong>Fantasy Character Portrait:</strong> "Ethereal elven warrior with glowing tattoos, hyperrealistic digital painting, dramatic chiaroscuro lighting, extreme close-up portrait, trending on ArtStation, painted by Greg Rutkowski"</li>
+                <li><strong>Sci-Fi Environment:</strong> "Steampunk airship soaring through storm clouds, concept art with golden hour rim lighting, wide establishing shot, museum quality, in the style of Alphonse Mucha"</li>
+                <li><strong>Abstract Composition:</strong> "Celestial being made of stars and nebulae, watercolor illustration, bioluminescent ambient glow, symmetrical framing, masterpiece, digital art by Loish"</li>
+              </ul>
+              <p className="text-gray-700 mb-4">
+                Notice how each prompt combines: <strong>Subject</strong> (what to create) + <strong>Technique</strong> (art style) + <strong>Lighting</strong> (mood/atmosphere) + <strong>Composition</strong> (camera angle) + <strong>Quality</strong> (output standards) + <strong>Artist Reference</strong> (style consistency).
+              </p>
+
+              <h2 className="text-2xl font-bold text-gray-900 mb-4 mt-8">How to Use MidJourney Effectively</h2>
+              <p className="text-gray-700 mb-4">
+                <a href="https://midjourney.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline font-semibold">MidJourney</a> is one of the most popular AI art platforms, known for its artistic, dreamlike outputs. Here's how to get the best results with our generated prompts:
+              </p>
+              <ul className="list-disc pl-6 text-gray-700 mb-4 space-y-2">
+                <li><strong>Copy the Full Prompt:</strong> Use the entire generated prompt as-is for best results. MidJourney interprets detailed descriptions accurately.</li>
+                <li><strong>Add Parameters:</strong> Append MidJourney-specific parameters like <code className="bg-gray-100 px-1 py-0.5 rounded">--ar 16:9</code> for aspect ratio or <code className="bg-gray-100 px-1 py-0.5 rounded">--stylize 750</code> for artistic interpretation.</li>
+                <li><strong>Use Artist References:</strong> MidJourney excels at mimicking artist styles. Prompts with "in the style of [artist name]" produce more consistent, professional results.</li>
+                <li><strong>Iterate with Variations:</strong> After generating an image, use MidJourney's V1-V4 buttons to create variations. Combine elements from multiple prompts for unique results.</li>
+                <li><strong>Quality Settings:</strong> Terms like "trending on ArtStation," "8K resolution," and "museum quality" significantly improve MidJourney's output quality.</li>
+              </ul>
+              <p className="text-gray-700 mb-4">
+                For more AI art generation tools, check out{' '}
+                <a href="https://leonardo.ai" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                  Leonardo.AI
+                </a>, which offers fine-tuned models and advanced control over AI art generation.
+              </p>
+
+              <h2 className="text-2xl font-bold text-gray-900 mb-4 mt-8">AI Art Style Tips</h2>
+              <p className="text-gray-700 mb-4">
+                Choosing the right style keywords dramatically impacts your AI-generated images. Here's how to leverage style terms effectively:
+              </p>
+              <h3 className="text-xl font-semibold text-gray-800 mb-3 mt-6">Art Techniques & Mediums</h3>
+              <ul className="list-disc pl-6 text-gray-700 mb-4 space-y-2">
+                <li><strong>Digital Art:</strong> Terms like "hyperrealistic digital painting," "concept art," and "matte painting" produce clean, professional results ideal for commercial use.</li>
+                <li><strong>Traditional Art:</strong> "Oil painting masterpiece," "watercolor illustration," and "pencil sketch portrait" create more organic, hand-crafted aesthetics.</li>
+                <li><strong>Photography Style:</strong> Use "photorealistic 3D render," "award-winning photography," and "studio quality" for ultra-realistic outputs.</li>
+              </ul>
+
+              <h3 className="text-xl font-semibold text-gray-800 mb-3 mt-6">Lighting Makes the Mood</h3>
+              <ul className="list-disc pl-6 text-gray-700 mb-4 space-y-2">
+                <li><strong>Dramatic:</strong> "Chiaroscuro lighting," "harsh spotlight," and "candlelight and shadows" create high-contrast, moody images.</li>
+                <li><strong>Warm & Inviting:</strong> "Golden hour rim lighting," "soft box studio lighting," and "lens flare and bloom effects" produce welcoming, beautiful scenes.</li>
+                <li><strong>Ethereal & Magical:</strong> "Volumetric god rays," "bioluminescent ambient glow," and "aurora borealis backdrop" add supernatural atmosphere.</li>
+              </ul>
+
+              <h3 className="text-xl font-semibold text-gray-800 mb-3 mt-6">Composition Angles</h3>
+              <ul className="list-disc pl-6 text-gray-700 mb-4 space-y-2">
+                <li><strong>For Portraits:</strong> "Extreme close-up portrait," "rule of thirds composition," and "depth of field focus" emphasize character and emotion.</li>
+                <li><strong>For Environments:</strong> "Wide establishing shot," "bird's eye view," and "panoramic landscape" showcase world-building and scale.</li>
+                <li><strong>For Drama:</strong> "Dramatic low angle," "dutch angle composition," and "backlit silhouette" add tension and visual interest.</li>
+              </ul>
+
+              <h2 className="text-2xl font-bold text-gray-900 mb-4 mt-8">Related Creative Tools</h2>
+              <p className="text-gray-700 mb-4">
+                Enhance your creative workflow with our complementary prompt generators:
+              </p>
+              <ul className="list-disc pl-6 text-gray-700 mb-4 space-y-2">
+                <li><Link to="/writing-prompts" className="text-blue-600 hover:underline">Writing Prompts Generator</Link> - Generate story ideas and creative writing prompts</li>
+                <li><Link to="/ai-blog-post-generator" className="text-blue-600 hover:underline">Blog Post Ideas Generator</Link> - SEO-optimized blog topics and content strategies</li>
+                <li><Link to="/short-story-prompts-generator" className="text-blue-600 hover:underline">Short Story Prompts</Link> - Focused prompts for short fiction and flash fiction</li>
+                <li><Link to="/random-name-generator" className="text-blue-600 hover:underline">Character Name Generator</Link> - Create unique character names for your AI art subjects</li>
+                <li><Link to="/" className="text-blue-600 hover:underline">All Prompt Generators</Link> - Access all creative tools in one place</li>
+              </ul>
             </div>
           </div>
         </div>
