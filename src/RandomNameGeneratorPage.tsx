@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { Helmet } from 'react-helmet-async';
+import SEO from './components/SEO';
 import { Copy, RefreshCw, Save, Download, Sparkles, PenTool, BookOpen, Crown, Share2, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Header from './components/Header';
@@ -183,19 +183,7 @@ const RandomNameGeneratorPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
-      <Helmet>
-        <title>Random Name Generator - Free Fantasy Character Name Generator</title>
-        <meta name="description" content="Bring your characters to life with authentic fantasy names from our random character name generator. From lyrical elvish names to sturdy dwarven titles, create memorable character names for D&D campaigns, novels, and RPG adventures with genuine linguistic flair." />
-        <meta name="keywords" content="random name generator, character name generator, fantasy name generator, dnd name generator, name generator fantasy, character names, elvish names, dwarven names" />
-        <link rel="canonical" href="https://randomprompts.org/random-name-generator" />
-        <meta property="og:title" content="Random Name Generator - Free Fantasy Character Names" />
-        <meta property="og:description" content="Authentic fantasy names for your characters. Lyrical elvish to sturdy dwarven titles for D&D campaigns, novels & RPGs with genuine linguistic flair." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://randomprompts.org/random-name-generator" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Random Name Generator - Free Fantasy Character Names" />
-        <meta name="twitter:description" content="Authentic character names with linguistic flair! Elvish, dwarven & exotic names for D&D, novels & RPG adventures. Random fantasy name generator!" />
-      </Helmet>
+      <SEO pageKey="randomNameGenerator" />
 
       <Header
         promptHistory={promptHistory}

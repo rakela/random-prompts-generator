@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { Helmet } from 'react-helmet-async';
+import SEO from './components/SEO';
 import { Copy, RefreshCw, Save, Download, Sparkles, PenTool, BookOpen, Crown, Share2, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Header from './components/Header';
@@ -198,19 +198,7 @@ const BlogPostGeneratorPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
-      <Helmet>
-        <title>AI Blog Post Generator - Free Blog Ideas & Content Generator</title>
-        <meta name="description" content="Never run out of blog post ideas again. Our AI blog post generator produces SEO-optimized topics with compelling hooks, data-driven angles, and proven content formats. Power your blog with unlimited content inspiration and watch your traffic soar." />
-        <meta name="keywords" content="ai blog post generator, blog post generator, blog idea generator, content generator, seo blog ideas, blog topic generator, free blog generator" />
-        <link rel="canonical" href="https://randomprompts.org/ai-blog-post-generator" />
-        <meta property="og:title" content="AI Blog Post Generator - Free Blog Ideas Generator" />
-        <meta property="og:description" content="Never run out of blog post ideas. Our AI generator produces SEO-optimized topics with compelling hooks and proven formats. Unlimited content inspiration." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://randomprompts.org/ai-blog-post-generator" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="AI Blog Post Generator - Free Blog Ideas Generator" />
-        <meta name="twitter:description" content="Unlimited blog post ideas with our AI generator! SEO-optimized topics, compelling hooks & proven formats. Power your content strategy today!" />
-      </Helmet>
+      <SEO pageKey="blogPostGenerator" />
 
       <Header
         promptHistory={promptHistory}

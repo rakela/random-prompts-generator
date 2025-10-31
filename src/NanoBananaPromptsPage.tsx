@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useMemo } from 'react';
-import { Helmet } from 'react-helmet-async';
+import SEO from './components/SEO';
 import { Copy, RefreshCw, Save, Download, Sparkles, PenTool, BookOpen, Crown, Github, Twitter, Heart, History, Share2, Star, Filter } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Logo from './components/Logo';
@@ -241,23 +241,7 @@ const NanoBananaPromptsPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-orange-50 to-pink-50">
-      <Helmet>
-        <title>Nano Banana Prompts - Creative AI Image Generation Ideas for Nano Banana Art</title>
-        <meta name="description" content="Dive into whimsical nano banana AI art with 96+ curated prompts. Transform tiny bananas into adorable 3D figurines, collectible plush toys, intricate capsule dioramas, and retro synthwave masterpieces. Quirky nano banana prompts that make AI image generation delightfully fun." />
-        <meta name="keywords" content="nano banana prompts, nano banana AI prompts, AI image generation prompts, 3D figurine prompts, plush toy prompts, capsule diorama prompts, synthwave prompts, AI art prompts" />
-        <link rel="canonical" href="https://randomprompts.org/nano-banana-prompts" />
-
-        {/* Open Graph Tags */}
-        <meta property="og:title" content="Nano Banana Prompts - Creative AI Image Generation Ideas" />
-        <meta property="og:description" content="Whimsical nano banana AI art with 96+ prompts. Transform tiny bananas into 3D figurines, plush toys, capsule dioramas & synthwave masterpieces." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://randomprompts.org/nano-banana-prompts" />
-
-        {/* Twitter Card Tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Nano Banana Prompts - Creative AI Image Generation Ideas" />
-        <meta name="twitter:description" content="Adorable nano banana AI art! 96+ prompts for 3D figurines, plush toys, capsule dioramas & synthwave. Quirky AI image generation fun!" />
-      </Helmet>
+      <SEO pageKey="nanoBananaPrompts" />
 
       {/* Header */}
       <Header

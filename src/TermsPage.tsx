@@ -8,12 +8,7 @@ import { FileText } from 'lucide-react';
 const TermsPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
-      <SEO
-        path="terms"
-        title="Terms of Service - Random Prompts Generator"
-        description="Terms of service for Random Prompts Generator. Learn about legal terms, user responsibilities, intellectual property, and usage guidelines for our prompt generator."
-        keywords="terms of service, website policy, RandomPrompts terms, legal terms, user agreement"
-      />
+      <SEO pageKey="terms" />
 
       <Header />
 

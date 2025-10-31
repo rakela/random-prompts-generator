@@ -264,12 +264,7 @@ const WritingPromptsPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
-      <SEO
-        path="writing-prompts"
-        title="Random Writing Prompt Generator - Free Writing Prompts"
-        description="Unlock your storytelling potential with dynamic writing prompts built for serious writers. Each random writing prompt combines emotional stakes, unexpected plot twists, and multidimensional characters. Break through creative blocks with story prompts that challenge conventional narratives."
-        keywords="writing prompts, random writing prompts, writing prompt generator, story prompts, creative writing prompts, random story prompt generator"
-      />
+      <SEO pageKey="writingPrompts" />
 
       <Header
         promptHistory={promptHistory}
