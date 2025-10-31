@@ -267,7 +267,7 @@ const WritingPromptsPage = () => {
       <SEO
         path="writing-prompts"
         title="Random Writing Prompt Generator - Free Writing Prompts"
-        description="Free random writing prompt generator with unlimited story ideas. Generate creative writing prompts featuring compelling conflicts, plot twists, and unique characters. Perfect for overcoming writer's block, novel writing, and creative storytelling. Get instant inspiration with our professional writing prompts tool."
+        description="Best random writing prompt generator with unlimited creative writing prompts. Generate unique story ideas featuring compelling conflicts, plot twists, and rich characters. Free writing prompts to overcome writer's block and inspire storytelling. Professional random story prompt generator."
         keywords="writing prompts, random writing prompts, writing prompt generator, story prompts, creative writing prompts, random story prompt generator"
       />
 

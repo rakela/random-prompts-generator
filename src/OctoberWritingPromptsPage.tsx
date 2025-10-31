@@ -144,20 +144,20 @@ const OctoberWritingPromptsPage = () => {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
       <Helmet>
         <title>October Writing Prompts - Fall & Halloween Story Ideas</title>
-        <meta name="description" content="Generate creative October writing prompts featuring autumn themes, Halloween stories, and fall-inspired narratives. Perfect for seasonal creative writing, spooky stories, and cozy autumn tales." />
+        <meta name="description" content="Free October writing prompts generator for autumn and Halloween stories. Create seasonal writing prompts featuring fall themes, spooky Halloween narratives, and cozy autumn tales. Perfect October writing ideas for creative storytelling." />
         <meta name="keywords" content="october writing prompts, halloween writing prompts, fall writing prompts, autumn story ideas, seasonal writing prompts, spooky story prompts" />
         <link rel="canonical" href="https://randomprompts.org/october-writing-prompts" />
 
         {/* Open Graph Tags */}
         <meta property="og:title" content="October Writing Prompts - Fall & Halloween Story Ideas" />
-        <meta property="og:description" content="Generate creative October writing prompts featuring autumn themes, Halloween stories, and fall-inspired narratives. Perfect for seasonal creative writing." />
+        <meta property="og:description" content="Free October writing prompts for autumn and Halloween stories. Generate seasonal writing ideas with fall themes, spooky narratives & cozy autumn tales." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://randomprompts.org/october-writing-prompts" />
 
         {/* Twitter Card Tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="October Writing Prompts - Fall & Halloween Story Ideas" />
-        <meta name="twitter:description" content="Generate creative October writing prompts featuring autumn themes, Halloween stories, and fall-inspired narratives." />
+        <meta name="twitter:description" content="Generate October writing prompts for fall & Halloween! Create seasonal story ideas with autumn themes & spooky narratives. Free October writing inspiration!" />
       </Helmet>
 
       {/* Header */}
