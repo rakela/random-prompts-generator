@@ -186,20 +186,20 @@ const MidjourneyAIPromptsPage = () => {
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-pink-50">
       <Helmet>
         <title>Midjourney AI Picture Generator - Creative AI Image Generation Ideas for Stunning Art</title>
-        <meta name="description" content="Professional Midjourney AI picture generator with 40+ curated prompts for stunning images. Browse Midjourney prompts across 8 categories: nature, architecture, fantasy characters, Christmas scenes. Best Midjourney AI prompts for Stable Diffusion and DALL-E." />
+        <meta name="description" content="Curated collection of 40+ Midjourney AI prompts spanning breathtaking nature photography, architectural marvels, mystical fantasy characters, and festive Christmas scenes. Battle-tested Midjourney prompts that work flawlessly across Stable Diffusion and DALL-E platforms." />
         <meta name="keywords" content="midjourney ai picture generator, midjourney prompts, midjourney AI prompts, AI image generation prompts, AI art prompts, stable diffusion prompts, DALL-E prompts, fantasy art prompts, nature photography prompts, Christmas AI art, cyberpunk prompts" />
         <link rel="canonical" href="https://randomprompts.org/midjourney-ai-picture-generator" />
 
         {/* Open Graph Tags */}
         <meta property="og:title" content="Midjourney AI Picture Generator - Creative AI Image Generation Ideas" />
-        <meta property="og:description" content="Professional Midjourney AI picture generator with 40+ prompts for stunning images. Best Midjourney prompts for Stable Diffusion and DALL-E. 8 categories." />
+        <meta property="og:description" content="40+ curated Midjourney AI prompts: nature photography, architectural marvels, fantasy characters & Christmas scenes. Battle-tested for all AI platforms." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://randomprompts.org/midjourney-ai-picture-generator" />
 
         {/* Twitter Card Tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Midjourney AI Picture Generator - Creative AI Image Generation Ideas" />
-        <meta name="twitter:description" content="Get 40+ professional Midjourney AI prompts! Nature, architecture, fantasy & Christmas scenes. Best Midjourney picture generator for AI art!" />
+        <meta name="twitter:description" content="40+ battle-tested Midjourney prompts! Nature, architecture, fantasy & Christmas scenes that work on Stable Diffusion & DALL-E too!" />
       </Helmet>
 
       {/* Header */}

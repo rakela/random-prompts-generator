@@ -202,20 +202,20 @@ const PersuasiveWritingTopicsPage = () => {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
       <Helmet>
         <title>Persuasive Writing Topics - Debate Topics & Essay Ideas for Students</title>
-        <meta name="description" content="Best persuasive writing topics for students. Explore engaging debate topics covering school, environment, technology, and ethics. Perfect persuasive essay topics for classroom discussions, debates, and developing critical thinking skills." />
+        <meta name="description" content="Sharpen argumentative skills with persuasive writing topics students actually care about. From environmental policy to tech ethics, these debate topics spark passionate discussions and teach evidence-based reasoning. Real issues, real opinions, real persuasive writing." />
         <meta name="keywords" content="persuasive writing topics, persuasive essay topics, debate topics for students, argumentative writing prompts, persuasive speech topics, controversial topics for essays, student debate topics" />
         <link rel="canonical" href="https://randomprompts.org/persuasive-writing-topics" />
 
         {/* Open Graph Tags */}
         <meta property="og:title" content="Persuasive Writing Topics - Debate Topics & Essay Ideas for Students" />
-        <meta property="og:description" content="Best persuasive writing topics for students covering school, environment, technology & ethics. Perfect debate topics for essays, classroom discussions & critical thinking." />
+        <meta property="og:description" content="Persuasive writing topics students care about. Environmental policy to tech ethics - debate topics that spark passionate discussions and evidence-based reasoning." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://randomprompts.org/persuasive-writing-topics" />
 
         {/* Twitter Card Tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Persuasive Writing Topics - Debate Topics & Essay Ideas for Students" />
-        <meta name="twitter:description" content="Explore persuasive writing topics for students! Debate topics on school, environment, technology & ethics. Perfect for essays & classroom discussions!" />
+        <meta name="twitter:description" content="Real issues students care about! Persuasive writing topics from environmental policy to tech ethics. Spark passionate debates & evidence-based reasoning!" />
       </Helmet>
 
       {/* Header */}
