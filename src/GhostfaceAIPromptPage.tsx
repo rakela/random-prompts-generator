@@ -95,20 +95,20 @@ const GhostfaceAIPromptPage = () => {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
       <Helmet>
         <title>Ghostface AI Trend Prompt Generator - Viral MidJourney & DALL-E Prompts</title>
-        <meta name="description" content="Generate viral Ghostface AI art prompts for MidJourney, DALL-E, and Stable Diffusion. Create trending cyberpunk, horror, and aesthetic Ghostface images with professional prompt templates for TikTok and Instagram." />
+        <meta name="description" content="Trending Ghostface AI prompt generator for viral TikTok and Instagram content. Create Ghostface AI art with MidJourney, DALL-E, and Stable Diffusion. Generate cyberpunk, horror & aesthetic Ghostface AI images with professional prompt templates." />
         <meta name="keywords" content="ghostface ai trend, ghostface prompt generator, midjourney ghostface prompts, ghostface ai art, viral ghostface prompts, ghostface tiktok trend, ai ghostface generator" />
         <link rel="canonical" href="https://randomprompts.org/ghostface-ai-trend-prompt-generator" />
 
         {/* Open Graph Tags */}
         <meta property="og:title" content="Ghostface AI Trend Prompt Generator - Viral MidJourney & DALL-E Prompts" />
-        <meta property="og:description" content="Generate viral Ghostface AI art prompts for MidJourney, DALL-E, and Stable Diffusion. Create trending cyberpunk, horror, and aesthetic Ghostface images with professional prompt templates." />
+        <meta property="og:description" content="Trending Ghostface AI prompt generator for viral content. Create Ghostface AI art with MidJourney, DALL-E, and Stable Diffusion. Professional templates for TikTok & Instagram." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://randomprompts.org/ghostface-ai-trend-prompt-generator" />
 
         {/* Twitter Card Tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Ghostface AI Trend Prompt Generator - Viral MidJourney & DALL-E Prompts" />
-        <meta name="twitter:description" content="Generate viral Ghostface AI art prompts for MidJourney, DALL-E, and Stable Diffusion. Create trending cyberpunk, horror, and aesthetic Ghostface images." />
+        <meta name="twitter:description" content="Create viral Ghostface AI art for TikTok & Instagram! Generate Ghostface prompts for MidJourney, DALL-E & Stable Diffusion. Cyberpunk, horror & aesthetic templates!" />
       </Helmet>
 
       {/* Header */}

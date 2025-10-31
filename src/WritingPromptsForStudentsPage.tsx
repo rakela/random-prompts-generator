@@ -144,20 +144,20 @@ const WritingPromptsForStudentsPage = () => {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
       <Helmet>
         <title>Writing Prompts for Students - Creative & Reflective Writing Ideas</title>
-        <meta name="description" content="Generate engaging writing prompts for students featuring creative story starters and reflective personal prompts. Perfect for classroom assignments, homework, and developing writing skills." />
+        <meta name="description" content="Best writing prompts for students generator. Create engaging writing prompts featuring creative story starters and reflective ideas. Perfect student writing prompts for classroom assignments, homework, and developing writing skills. Free educational tool." />
         <meta name="keywords" content="writing prompts for students, student writing prompts, creative writing for students, reflective writing prompts, classroom writing activities, educational writing prompts" />
         <link rel="canonical" href="https://randomprompts.org/writing-prompts-for-students" />
 
         {/* Open Graph Tags */}
         <meta property="og:title" content="Writing Prompts for Students - Creative & Reflective Writing Ideas" />
-        <meta property="og:description" content="Generate engaging writing prompts for students featuring creative story starters and reflective personal prompts. Perfect for classroom assignments and developing writing skills." />
+        <meta property="og:description" content="Best writing prompts for students with creative story starters and reflective ideas. Perfect for classroom assignments and developing writing skills. Free generator." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://randomprompts.org/writing-prompts-for-students" />
 
         {/* Twitter Card Tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Writing Prompts for Students - Creative & Reflective Writing Ideas" />
-        <meta name="twitter:description" content="Generate engaging writing prompts for students featuring creative story starters and reflective personal prompts." />
+        <meta name="twitter:description" content="Generate writing prompts for students! Creative story starters & reflective ideas perfect for classroom assignments. Free student writing prompt generator!" />
       </Helmet>
 
       {/* Header */}

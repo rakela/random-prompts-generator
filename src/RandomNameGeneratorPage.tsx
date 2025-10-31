@@ -185,16 +185,16 @@ const RandomNameGeneratorPage = () => {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
       <Helmet>
         <title>Random Name Generator - Free Fantasy Character Name Generator</title>
-        <meta name="description" content="Generate unique character names instantly with our free random name generator. Create authentic fantasy names for elvish, dwarven, human, and exotic characters perfect for D&D, novels, games, and creative writing projects." />
+        <meta name="description" content="Best random name generator for fantasy characters. Instantly create unique character names including elvish names, dwarven names, and exotic names for D&D, novels, and games. Free random character name generator with authentic fantasy naming." />
         <meta name="keywords" content="random name generator, character name generator, fantasy name generator, dnd name generator, name generator fantasy, character names, elvish names, dwarven names" />
         <link rel="canonical" href="https://randomprompts.org/random-name-generator" />
         <meta property="og:title" content="Random Name Generator - Free Fantasy Character Names" />
-        <meta property="og:description" content="Generate unique character names instantly with our free random name generator." />
+        <meta property="og:description" content="Best random name generator creates unique fantasy character names instantly. Generate elvish, dwarven & exotic names for D&D, novels & games. Free character name generator." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://randomprompts.org/random-name-generator" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Random Name Generator - Free Fantasy Character Names" />
-        <meta name="twitter:description" content="Generate unique character names instantly with our free random name generator." />
+        <meta name="twitter:description" content="Create unique fantasy character names with our random name generator! Generate elvish, dwarven & exotic names for D&D, novels & games. Free to use!" />
       </Helmet>
 
       <Header

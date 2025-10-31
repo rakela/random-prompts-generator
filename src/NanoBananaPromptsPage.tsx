@@ -243,20 +243,20 @@ const NanoBananaPromptsPage = () => {
     <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-orange-50 to-pink-50">
       <Helmet>
         <title>Nano Banana Prompts - Creative AI Image Generation Ideas for Nano Banana Art</title>
-        <meta name="description" content="Discover unique nano banana prompts for AI image generation. Browse 96+ creative prompts across 8 categories including 3D figurines, plush toys, capsule dioramas, portraits, synthwave art, and more. Perfect for AI artists and creators." />
+        <meta name="description" content="Best nano banana prompts collection for AI art. Explore 96+ creative nano banana AI prompts across 8 categories: 3D figurines, plush toys, capsule dioramas, portraits, and synthwave art. Perfect nano banana AI image generation ideas for creators." />
         <meta name="keywords" content="nano banana prompts, nano banana AI prompts, AI image generation prompts, 3D figurine prompts, plush toy prompts, capsule diorama prompts, synthwave prompts, AI art prompts" />
         <link rel="canonical" href="https://randomprompts.org/nano-banana-prompts" />
 
         {/* Open Graph Tags */}
         <meta property="og:title" content="Nano Banana Prompts - Creative AI Image Generation Ideas" />
-        <meta property="og:description" content="Discover unique nano banana prompts for AI image generation. Browse 96+ creative prompts across 8 categories. Perfect for AI artists and creators." />
+        <meta property="og:description" content="Best nano banana prompts for AI art! 96+ creative nano banana AI prompts across 8 categories. Perfect for AI image generation creators." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://randomprompts.org/nano-banana-prompts" />
 
         {/* Twitter Card Tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Nano Banana Prompts - Creative AI Image Generation Ideas" />
-        <meta name="twitter:description" content="Discover unique nano banana prompts for AI image generation. Browse 96+ creative prompts across 8 categories." />
+        <meta name="twitter:description" content="Explore 96+ nano banana prompts for AI art! 3D figurines, plush toys, capsule dioramas & more. Best nano banana AI image generation ideas!" />
       </Helmet>
 
       {/* Header */}
