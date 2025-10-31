@@ -199,16 +199,16 @@ const ShortStoryPromptsPage = () => {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
       <Helmet>
         <title>Short Story Prompts Generator - Free Fantasy & Fiction Story Ideas</title>
-        <meta name="description" content="Best short story prompts generator for writers. Create unique fantasy and fiction short story ideas with magic systems, worldbuilding, and character elements. Free short story prompt generator with creative writing ideas for authors and storytellers." />
+        <meta name="description" content="Discover compelling short story prompts that bring fantasy worlds to life. Generate fiction ideas with intricate magic systems, rich cultures, and deep worldbuilding elements. Every short story prompt sparks imagination for authors crafting their next masterpiece." />
         <meta name="keywords" content="short story prompts generator, short story prompts, story prompt generator, fantasy story prompts, fiction prompts, creative writing prompts, story ideas" />
         <link rel="canonical" href="https://randomprompts.org/short-story-prompts-generator" />
         <meta property="og:title" content="Short Story Prompts Generator - Free Fantasy Story Ideas" />
-        <meta property="og:description" content="Best short story prompts generator creates unique fantasy and fiction story ideas instantly. Free short story prompt tool for creative writers and authors." />
+        <meta property="og:description" content="Compelling short story prompts with intricate magic systems and rich worldbuilding. Fiction ideas that spark imagination for your next masterpiece." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://randomprompts.org/short-story-prompts-generator" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Short Story Prompts Generator - Free Fantasy Story Ideas" />
-        <meta name="twitter:description" content="Generate creative short story prompts for fantasy & fiction writing. Free short story prompt generator with unique ideas. Perfect for writers & storytellers!" />
+        <meta name="twitter:description" content="Fantasy short story prompts with magic systems & worldbuilding depth. Fiction ideas that spark imagination for authors & storytellers!" />
       </Helmet>
 
       <Header

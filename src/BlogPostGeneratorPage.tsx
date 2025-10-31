@@ -200,16 +200,16 @@ const BlogPostGeneratorPage = () => {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
       <Helmet>
         <title>AI Blog Post Generator - Free Blog Ideas & Content Generator</title>
-        <meta name="description" content="Free AI blog post generator creates SEO-optimized blog ideas instantly. Generate engaging blog post topics, content ideas, and article headlines with proven formats. Best blog idea generator for content creators and marketers seeking maximum traffic." />
+        <meta name="description" content="Never run out of blog post ideas again. Our AI blog post generator produces SEO-optimized topics with compelling hooks, data-driven angles, and proven content formats. Power your blog with unlimited content inspiration and watch your traffic soar." />
         <meta name="keywords" content="ai blog post generator, blog post generator, blog idea generator, content generator, seo blog ideas, blog topic generator, free blog generator" />
         <link rel="canonical" href="https://randomprompts.org/ai-blog-post-generator" />
         <meta property="og:title" content="AI Blog Post Generator - Free Blog Ideas Generator" />
-        <meta property="og:description" content="Free AI blog post generator for SEO-optimized blog ideas. Generate engaging blog post topics and content ideas instantly. Best blog idea generator for content creators." />
+        <meta property="og:description" content="Never run out of blog post ideas. Our AI generator produces SEO-optimized topics with compelling hooks and proven formats. Unlimited content inspiration." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://randomprompts.org/ai-blog-post-generator" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="AI Blog Post Generator - Free Blog Ideas Generator" />
-        <meta name="twitter:description" content="Create SEO-optimized blog post ideas with our free AI blog post generator. Generate blog topics, content ideas & headlines instantly. Free blog idea generator!" />
+        <meta name="twitter:description" content="Unlimited blog post ideas with our AI generator! SEO-optimized topics, compelling hooks & proven formats. Power your content strategy today!" />
       </Helmet>
 
       <Header

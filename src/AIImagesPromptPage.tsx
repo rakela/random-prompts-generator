@@ -245,20 +245,20 @@ const AIImagesPromptPage = () => {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
       <Helmet>
         <title>AI Images Prompt Generator - Free AI Art Prompts for MidJourney & DALL-E</title>
-        <meta name="description" content="Professional AI images prompt generator for MidJourney, DALL-E, and Stable Diffusion. Create detailed AI art prompts with lighting, composition, and styles. Free AI image prompt generator for stunning artwork - perfect for digital artists and AI art enthusiasts." />
+        <meta name="description" content="Master AI image creation with our specialized prompt generator for MidJourney, DALL-E, and Stable Diffusion. Craft detailed AI art prompts featuring professional lighting setups, composition techniques, and artistic styles. Generate stunning AI images with precision-engineered prompts." />
         <meta name="keywords" content="ai images prompt, ai art prompt generator, midjourney prompts, dall-e prompts, stable diffusion prompts, ai image generation, free ai art prompts" />
         <link rel="canonical" href="https://randomprompts.org/ai-images-prompt" />
 
         {/* Open Graph Tags */}
         <meta property="og:title" content="AI Images Prompt Generator - Free AI Art Prompts" />
-        <meta property="og:description" content="Professional AI images prompt generator for MidJourney, DALL-E, and Stable Diffusion. Create detailed AI art prompts with lighting and composition. Free AI prompt generator." />
+        <meta property="og:description" content="Master AI image creation with specialized prompts for MidJourney, DALL-E & Stable Diffusion. Professional lighting, composition & artistic styles." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://randomprompts.org/ai-images-prompt" />
 
         {/* Twitter Card Tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="AI Images Prompt Generator - Free AI Art Prompts" />
-        <meta name="twitter:description" content="Create stunning AI images prompts for MidJourney, DALL-E & Stable Diffusion. Professional AI art prompt generator with lighting, composition & styles. Free to use!" />
+        <meta name="twitter:description" content="Craft precision AI art prompts for MidJourney, DALL-E & Stable Diffusion. Professional lighting, composition techniques & artistic styles included!" />
       </Helmet>
 
       {/* Header */}

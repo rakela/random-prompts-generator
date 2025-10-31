@@ -221,20 +221,20 @@ const PersuasiveEssaysTopicsPage = () => {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
       <Helmet>
         <title>Persuasive Essays Topics - Complete Essay Arguments & Thesis Ideas</title>
-        <meta name="description" content="Comprehensive persuasive essays topics with ready-made thesis statements, arguments, counterpoints, and rebuttals. Best persuasive essay ideas for students on education, environment, technology, and ethics. Complete argumentative essay framework." />
+        <meta name="description" content="Skip the brainstorming with fully-developed persuasive essays topics. Each topic includes thesis statements, supporting arguments, anticipated counterpoints, and strategic rebuttals. Everything students need to write compelling persuasive essays that earn top grades." />
         <meta name="keywords" content="persuasive essays topics, persuasive essay ideas, argumentative essay topics, thesis statements, essay arguments, persuasive essay examples, debate topics with arguments" />
         <link rel="canonical" href="https://randomprompts.org/persuasive-essays-topics" />
 
         {/* Open Graph Tags */}
         <meta property="og:title" content="Persuasive Essays Topics - Complete Essay Arguments & Thesis Ideas" />
-        <meta property="og:description" content="Comprehensive persuasive essays topics with thesis statements, arguments, counterpoints & rebuttals. Best essay ideas for students. Complete argumentative framework." />
+        <meta property="og:description" content="Fully-developed persuasive essays topics with thesis statements, arguments, counterpoints & rebuttals. Everything students need for top-grade essays." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://randomprompts.org/persuasive-essays-topics" />
 
         {/* Twitter Card Tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Persuasive Essays Topics - Complete Essay Arguments & Thesis Ideas" />
-        <meta name="twitter:description" content="Get persuasive essays topics with thesis statements, arguments, counterpoints & rebuttals! Complete essay framework for students. Free persuasive essay ideas!" />
+        <meta name="twitter:description" content="Skip brainstorming! Fully-developed persuasive essays topics with thesis, arguments, counterpoints & rebuttals. Write top-grade essays faster!" />
       </Helmet>
 
       {/* Header */}
