@@ -34,15 +34,20 @@ const Footer: React.FC = () => {
               <li><Link to="/ai-blog-post-generator" className="text-gray-400 hover:text-white transition-colors">Blog Post Generator</Link></li>
               <li><Link to="/short-story-prompts-generator" className="text-gray-400 hover:text-white transition-colors">Short Story Prompts</Link></li>
               <li><Link to="/random-name-generator" className="text-gray-400 hover:text-white transition-colors">Random Name Generator</Link></li>
-              <li><Link to="/writing-prompts-for-students" className="text-gray-400 hover:text-white transition-colors">Writing Prompts for Students</Link></li>
-              <li><Link to="/nano-banana-prompts" className="text-gray-400 hover:text-white transition-colors">Nano Banana Prompts</Link></li>
             </ul>
           </div>
 
           <div>
-            <h3 className="font-semibold mb-4">Resources</h3>
+            <h3 className="font-semibold mb-4">Specialized Prompts</h3>
             <ul className="space-y-2 text-sm">
-              <li><a href="https://chat.openai.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">ChatGPT</a></li>
+              <li><Link to="/writing-prompts-for-students" className="text-gray-400 hover:text-white transition-colors">Writing Prompts for Students</Link></li>
+              <li><Link to="/nano-banana-prompts" className="text-gray-400 hover:text-white transition-colors">Nano Banana Prompts</Link></li>
+              <li><Link to="/october-writing-prompts" className="text-gray-400 hover:text-white transition-colors">October Writing Prompts</Link></li>
+              <li><Link to="/ghostface-ai-trend-prompt-generator" className="text-gray-400 hover:text-white transition-colors">Ghostface AI Prompts</Link></li>
+              <li><Link to="/midjourney-ai-picture-generator" className="text-gray-400 hover:text-white transition-colors">MidJourney AI Prompts</Link></li>
+              <li><Link to="/persuasive-writing-topics" className="text-gray-400 hover:text-white transition-colors">Persuasive Writing Topics</Link></li>
+              <li><Link to="/persuasive-essays-topics" className="text-gray-400 hover:text-white transition-colors">Persuasive Essays Topics</Link></li>
+              <li><Link to="/persuasive-writing-titles" className="text-gray-400 hover:text-white transition-colors">Persuasive Writing Titles</Link></li>
             </ul>
           </div>
 
