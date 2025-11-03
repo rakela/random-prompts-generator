@@ -56,25 +56,7 @@ export const getRobotsMeta = () => {
  * @returns {object} JSON-LD structured data
  */
 export const getWebApplicationSchema = (path = '') => {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'WebApplication',
-    'name': 'Random Prompts Generator',
-    'url': getCanonicalUrl(path),
-    'applicationCategory': 'CreativeApplication',
-    'operatingSystem': 'Web',
-    'description': 'Generate prompts for writing, AI art, blogs, and fantasy worldbuilding.',
-    'offers': {
-      '@type': 'Offer',
-      'price': '0',
-      'priceCurrency': 'USD'
-    },
-    'publisher': {
-      '@type': 'Organization',
-      'name': 'RandomPrompts.org',
-      'url': PRIMARY_URL
-    }
-  };
+  return ;
 };
 
 /**
