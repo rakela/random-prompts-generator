@@ -5,36 +5,11 @@
     <link rel="icon" type="image/svg+xml" href="/logo.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <!-- SEO Meta Tags - Default fallback values -->
-    <!-- Note: Page-specific meta tags are set dynamically by React Helmet in each page component -->
-    <title>Random Prompts Generator - Writing, Stories, & AI Art</title>
-    <meta name="description" content="Free random prompts generator for writing, AI art, blog posts, and stories. Generate creative writing prompts, AI image prompts for MidJourney and DALL-E, blog ideas, fantasy worldbuilding, and character names instantly. Perfect for overcoming writer's block and creative inspiration." />
-    <meta name="author" content="Random Prompt Generator" />
+    <!-- SEO Meta Tags -->
+    <!-- Note: All meta tags (title, description, canonical, etc.) are set dynamically by React Helmet in each page component -->
+    <!-- No default values here to avoid duplicates - React Helmet will handle everything -->
     <meta name="robots" content="index, follow" id="robots-meta" />
-
-    <!-- Additional SEO -->
-    <!-- Default canonical - will be replaced by react-helmet-async in each page component -->
-    <link rel="canonical" href="https://randomprompts.org/" id="default-canonical" />
     <meta name="theme-color" content="#3B82F6" />
-
-    <!-- Dynamic Canonical URL Script - Ensures crawlers see canonical immediately -->
-    <script>
-      (function() {
-        const PRIMARY_DOMAIN = 'randomprompts.org';
-        const currentPath = window.location.pathname;
-        const currentDomain = window.location.hostname;
-        const isPrimary = currentDomain === PRIMARY_DOMAIN || currentDomain === 'www.' + PRIMARY_DOMAIN;
-
-        // Only set canonical on primary domain
-        if (isPrimary) {
-          const canonicalUrl = 'https://' + PRIMARY_DOMAIN + currentPath;
-          const canonicalLink = document.getElementById('default-canonical');
-          if (canonicalLink) {
-            canonicalLink.setAttribute('href', canonicalUrl);
-          }
-        }
-      })();
-    </script>
 
     <!-- JSON-LD: WebApplication -->
     <script type="application/ld+json">

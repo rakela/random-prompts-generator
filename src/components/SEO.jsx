@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { getPageSEO } from '../utils/seo';
+import { getSEOData } from '../data/seoDescriptions';
 
 /**
  * SEO Component
@@ -8,14 +9,16 @@ import { getPageSEO } from '../utils/seo';
  * Automatically blocks non-primary domains from indexing
  *
  * @param {object} props - SEO properties
- * @param {string} props.path - Current page path (e.g., 'writing-prompts')
- * @param {string} props.title - Page title
- * @param {string} props.description - Page description
- * @param {string} props.keywords - Page keywords (comma-separated)
+ * @param {string} props.pageKey - Page identifier key (e.g., 'writingPrompts', 'home') - if provided, uses centralized SEO data
+ * @param {string} props.path - Current page path (e.g., 'writing-prompts') - used if pageKey not provided
+ * @param {string} props.title - Page title - used if pageKey not provided
+ * @param {string} props.description - Page description - used if pageKey not provided
+ * @param {string} props.keywords - Page keywords (comma-separated) - used if pageKey not provided
  * @param {object} props.structuredData - Optional structured data (JSON-LD)
  * @param {string} props.ogImage - Optional Open Graph image URL
  */
 const SEO = ({
+  pageKey = null,
   path = '',
   title,
   description,
@@ -23,7 +26,22 @@ const SEO = ({
   structuredData = null,
   ogImage = null
 }) => {
-  const seo = getPageSEO({ path, title, description, keywords });
+  // If pageKey is provided, use centralized SEO data
+  let seoData;
+  if (pageKey) {
+    const centralizedData = getSEOData(pageKey);
+    seoData = getPageSEO({
+      path: centralizedData.path,
+      title: centralizedData.title,
+      description: centralizedData.description,
+      keywords: centralizedData.keywords
+    });
+  } else {
+    // Fall back to manual props
+    seoData = getPageSEO({ path, title, description, keywords });
+  }
+
+  const seo = seoData;
 
   return (
     <Helmet>

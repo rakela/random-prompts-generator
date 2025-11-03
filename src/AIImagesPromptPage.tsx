@@ -1,9 +1,9 @@
 import React, { useState, useCallback } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { Copy, RefreshCw, Save, Download, Sparkles, PenTool, BookOpen, Crown, Share2, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import SEO from './components/SEO';
 
 // High-quality data dictionaries for AI art generation
 const promptData = {
@@ -243,23 +243,7 @@ const AIImagesPromptPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
-      <Helmet>
-        <title>AI Images Prompt Generator - Free AI Art Prompts for MidJourney & DALL-E</title>
-        <meta name="description" content="Master AI image creation with our specialized prompt generator for MidJourney, DALL-E, and Stable Diffusion. Craft detailed AI art prompts featuring professional lighting setups, composition techniques, and artistic styles. Generate stunning AI images with precision-engineered prompts." />
-        <meta name="keywords" content="ai images prompt, ai art prompt generator, midjourney prompts, dall-e prompts, stable diffusion prompts, ai image generation, free ai art prompts" />
-        <link rel="canonical" href="https://randomprompts.org/ai-images-prompt" />
-
-        {/* Open Graph Tags */}
-        <meta property="og:title" content="AI Images Prompt Generator - Free AI Art Prompts" />
-        <meta property="og:description" content="Master AI image creation with specialized prompts for MidJourney, DALL-E & Stable Diffusion. Professional lighting, composition & artistic styles." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://randomprompts.org/ai-images-prompt" />
-
-        {/* Twitter Card Tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="AI Images Prompt Generator - Free AI Art Prompts" />
-        <meta name="twitter:description" content="Craft precision AI art prompts for MidJourney, DALL-E & Stable Diffusion. Professional lighting, composition techniques & artistic styles included!" />
-      </Helmet>
+      <SEO pageKey="aiImagesPrompt" />
 
       {/* Header */}
       <Header

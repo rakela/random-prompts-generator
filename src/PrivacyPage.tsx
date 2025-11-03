@@ -8,12 +8,7 @@ import { Shield } from 'lucide-react';
 const PrivacyPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
-      <SEO
-        path="privacy"
-        title="Privacy Policy - Random Prompts Generator"
-        description="Privacy policy for Random Prompts Generator. Learn how we protect your data and respect your privacy. No personal information collected, no cookies, completely transparent."
-        keywords="privacy policy, data protection, cookies, user data, Random Prompts privacy"
-      />
+      <SEO pageKey="privacy" />
 
       <Header />
 

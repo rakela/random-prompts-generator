@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { Helmet } from 'react-helmet-async';
+import SEO from './components/SEO';
 import { Copy, RefreshCw, Save, Download, Sparkles, PenTool, BookOpen, Crown, Github, Twitter, Heart, History, Share2, Star, Ghost } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Logo from './components/Logo';
@@ -93,23 +93,7 @@ const GhostfaceAIPromptPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
-      <Helmet>
-        <title>Ghostface AI Trend Prompt Generator - Viral MidJourney & DALL-E Prompts</title>
-        <meta name="description" content="Ride the Ghostface AI wave dominating TikTok and Instagram. Generate viral-ready Ghostface prompts mixing cyberpunk aesthetics with horror elements for MidJourney, DALL-E, and Stable Diffusion. Professional templates designed for maximum social media impact and engagement." />
-        <meta name="keywords" content="ghostface ai trend, ghostface prompt generator, midjourney ghostface prompts, ghostface ai art, viral ghostface prompts, ghostface tiktok trend, ai ghostface generator" />
-        <link rel="canonical" href="https://randomprompts.org/ghostface-ai-trend-prompt-generator" />
-
-        {/* Open Graph Tags */}
-        <meta property="og:title" content="Ghostface AI Trend Prompt Generator - Viral MidJourney & DALL-E Prompts" />
-        <meta property="og:description" content="Ride the viral Ghostface AI wave. Generate trending prompts for MidJourney, DALL-E & Stable Diffusion with cyberpunk horror aesthetics for TikTok & Instagram." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://randomprompts.org/ghostface-ai-trend-prompt-generator" />
-
-        {/* Twitter Card Tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Ghostface AI Trend Prompt Generator - Viral MidJourney & DALL-E Prompts" />
-        <meta name="twitter:description" content="Join the Ghostface AI trend! Viral-ready prompts for MidJourney, DALL-E & Stable Diffusion. Cyberpunk horror aesthetics for social media domination!" />
-      </Helmet>
+      <SEO pageKey="ghostfacePrompt" />
 
       {/* Header */}
       <Header

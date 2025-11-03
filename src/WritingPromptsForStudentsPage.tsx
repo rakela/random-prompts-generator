@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { Helmet } from 'react-helmet-async';
+import SEO from './components/SEO';
 import { Copy, RefreshCw, Save, Download, Sparkles, PenTool, BookOpen, Crown, Github, Twitter, Heart, History, Share2, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Logo from './components/Logo';
@@ -142,23 +142,7 @@ const WritingPromptsForStudentsPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
-      <Helmet>
-        <title>Writing Prompts for Students - Creative & Reflective Writing Ideas</title>
-        <meta name="description" content="Engage students through imaginative story starters and thought-provoking reflections. Writing prompts for students that strengthen critical thinking, boost creativity, and make classroom writing assignments meaningful. Educators trust these prompts for developing confident, expressive writers." />
-        <meta name="keywords" content="writing prompts for students, student writing prompts, creative writing for students, reflective writing prompts, classroom writing activities, educational writing prompts" />
-        <link rel="canonical" href="https://randomprompts.org/writing-prompts-for-students" />
-
-        {/* Open Graph Tags */}
-        <meta property="og:title" content="Writing Prompts for Students - Creative & Reflective Writing Ideas" />
-        <meta property="og:description" content="Engage students with imaginative story starters and reflections. Writing prompts that strengthen critical thinking, boost creativity, and develop confident writers." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://randomprompts.org/writing-prompts-for-students" />
-
-        {/* Twitter Card Tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Writing Prompts for Students - Creative & Reflective Writing Ideas" />
-        <meta name="twitter:description" content="Engage students with powerful writing prompts! Story starters & reflections that strengthen thinking, boost creativity & develop confident writers!" />
-      </Helmet>
+      <SEO pageKey="writingPromptsForStudents" />
 
       {/* Header */}
       <Header

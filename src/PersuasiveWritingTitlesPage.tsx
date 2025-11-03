@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { Helmet } from 'react-helmet-async';
+import SEO from './components/SEO';
 import { Copy, RefreshCw, Save, Download, Sparkles, PenTool, BookOpen, Crown, Share2, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Header from './components/Header';
@@ -137,23 +137,7 @@ const PersuasiveWritingTitlesPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
-      <Helmet>
-        <title>Persuasive Writing Titles - Debate Questions & Argumentative Essay Topics</title>
-        <meta name="description" content="Powerful persuasive writing titles that demand attention and invite debate. Tackle global crises, health controversies, technological dilemmas, and cultural flashpoints. These argumentative essay titles transform ordinary assignments into compelling intellectual discourse." />
-        <meta name="keywords" content="persuasive writing titles, argumentative essay titles, debate questions, persuasive essay topics, controversial topics, essay titles, debate prompts, argumentative writing ideas" />
-        <link rel="canonical" href="https://randomprompts.org/persuasive-writing-titles" />
-
-        {/* Open Graph Tags */}
-        <meta property="og:title" content="Persuasive Writing Titles - Debate Questions & Argumentative Essay Topics" />
-        <meta property="og:description" content="Powerful persuasive writing titles that demand debate. Global crises, health controversies, tech dilemmas & cultural flashpoints transform essays into discourse." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://randomprompts.org/persuasive-writing-titles" />
-
-        {/* Twitter Card Tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Persuasive Writing Titles - Debate Questions & Argumentative Essay Topics" />
-        <meta name="twitter:description" content="Powerful persuasive writing titles that demand attention! Global crises, health controversies & tech dilemmas. Transform essays into compelling discourse!" />
-      </Helmet>
+      <SEO pageKey="persuasiveWritingTitles" />
 
       {/* Header */}
       <Header

@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { Helmet } from 'react-helmet-async';
+import SEO from './components/SEO';
 import { Copy, RefreshCw, Save, Download, Sparkles, PenTool, BookOpen, Crown, Share2, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Header from './components/Header';
@@ -197,19 +197,7 @@ const ShortStoryPromptsPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
-      <Helmet>
-        <title>Short Story Prompts Generator - Free Fantasy & Fiction Story Ideas</title>
-        <meta name="description" content="Discover compelling short story prompts that bring fantasy worlds to life. Generate fiction ideas with intricate magic systems, rich cultures, and deep worldbuilding elements. Every short story prompt sparks imagination for authors crafting their next masterpiece." />
-        <meta name="keywords" content="short story prompts generator, short story prompts, story prompt generator, fantasy story prompts, fiction prompts, creative writing prompts, story ideas" />
-        <link rel="canonical" href="https://randomprompts.org/short-story-prompts-generator" />
-        <meta property="og:title" content="Short Story Prompts Generator - Free Fantasy Story Ideas" />
-        <meta property="og:description" content="Compelling short story prompts with intricate magic systems and rich worldbuilding. Fiction ideas that spark imagination for your next masterpiece." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://randomprompts.org/short-story-prompts-generator" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Short Story Prompts Generator - Free Fantasy Story Ideas" />
-        <meta name="twitter:description" content="Fantasy short story prompts with magic systems & worldbuilding depth. Fiction ideas that spark imagination for authors & storytellers!" />
-      </Helmet>
+      <SEO pageKey="shortStoryPrompts" />
 
       <Header
         promptHistory={promptHistory}
