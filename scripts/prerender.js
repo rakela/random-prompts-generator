@@ -86,6 +86,9 @@ routes.forEach(route => {
     `<meta name="twitter:description" content="${route.description}" />`
   );
 
+  // Note: og:image, og:site_name, og:locale, twitter:image, and image dimensions
+  // are NOT replaced as they should remain the same for all pages
+
   // Determine output path
   let outputPath;
   if (route.path === '/') {
