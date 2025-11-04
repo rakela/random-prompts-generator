@@ -317,6 +317,34 @@ const ShortStoryPromptsPage = () => {
                   <li>• Evocative locations beyond standard fantasy settings</li>
                 </ul>
               </div>
+
+              <h2 className="text-2xl font-bold text-gray-900 mb-4 mt-8">More Seasonal Writing Resources</h2>
+              <p className="text-gray-700 mb-4">
+                For additional fall-themed ideas check out <a href="https://www.writersdigest.com/write-better-fiction/50-fall-writing-prompts" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">50 Fall Writing Prompts – WritersDigest</a> and <a href="https://blog.reedsy.com/halloween-writing-prompts/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Halloween Writing Prompts – Reedsy</a>.
+              </p>
+            </div>
+          </div>
+
+          {/* Related Links */}
+          <div className="mt-12 bg-gray-50 rounded-lg p-6 border border-gray-200">
+            <h3 className="text-xl font-bold text-gray-900 mb-4">More Writing Resources</h3>
+            <div className="grid md:grid-cols-2 gap-4">
+              <Link to="/writing-prompts" className="text-amber-600 hover:underline flex items-center gap-2">
+                <PenTool size={16} />
+                Random Writing Prompts
+              </Link>
+              <Link to="/writing-prompts-for-students" className="text-amber-600 hover:underline flex items-center gap-2">
+                <PenTool size={16} />
+                Writing Prompts for Students
+              </Link>
+              <Link to="/october-writing-prompts" className="text-amber-600 hover:underline flex items-center gap-2">
+                <PenTool size={16} />
+                October Writing Prompts
+              </Link>
+              <Link to="/ai-blog-post-generator" className="text-amber-600 hover:underline flex items-center gap-2">
+                <BookOpen size={16} />
+                Blog Post Generator
+              </Link>
             </div>
           </div>
         </div>

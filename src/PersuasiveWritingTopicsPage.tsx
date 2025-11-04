@@ -608,6 +608,9 @@ const PersuasiveWritingTopicsPage = () => {
               <p className="text-gray-700 mb-4">
                 Each topic presents both sides of an issue, helping students understand that persuasive writing requires acknowledging counterarguments while building a strong case for their position. This approach develops nuanced thinking and sophisticated argumentation skills essential for academic and professional success.
               </p>
+              <p className="text-gray-700 mb-4">
+                Prefer shorter prompts? Try our <Link to="/writing-prompts" className="text-blue-600 hover:underline">Writing Prompts Generator</Link> or switch to seasonal visuals by visiting our <Link to="/ai-images-prompt" className="text-blue-600 hover:underline">AI Art Prompts page</Link>.
+              </p>
             </div>
           </div>
 

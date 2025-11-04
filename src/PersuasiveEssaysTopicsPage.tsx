@@ -700,6 +700,9 @@ const PersuasiveEssaysTopicsPage = () => {
               <p className="text-gray-700 mb-4">
                 Perfect for high school and college students, these persuasive essays topics cover contemporary issues in education, environment, technology, and ethics. Whether you're writing a persuasive essay for class, preparing for a debate, or practicing argumentative writing, these topics provide a solid foundation for developing compelling, evidence-based arguments.
               </p>
+              <p className="text-gray-700 mb-4">
+                Prefer shorter prompts? Try our <Link to="/writing-prompts" className="text-blue-600 hover:underline">Writing Prompts Generator</Link> or switch to seasonal visuals by visiting our <Link to="/ai-images-prompt" className="text-blue-600 hover:underline">AI Art Prompts page</Link>.
+              </p>
             </div>
           </div>
 

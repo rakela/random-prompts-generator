@@ -536,6 +536,9 @@ const PersuasiveWritingTitlesPage = () => {
               <p className="text-gray-700 mb-4">
                 Perfect for high school and college students developing persuasive writing skills, these titles encourage research, critical analysis, and the development of well-supported arguments. Whether you're writing a persuasive essay, preparing for a debate competition, or exploring argumentative writing, these titles provide compelling foundations for meaningful discourse.
               </p>
+              <p className="text-gray-700 mb-4">
+                Prefer shorter prompts? Try our <Link to="/writing-prompts" className="text-blue-600 hover:underline">Writing Prompts Generator</Link> or switch to seasonal visuals by visiting our <Link to="/ai-images-prompt" className="text-blue-600 hover:underline">AI Art Prompts page</Link>.
+              </p>
             </div>
           </div>
 

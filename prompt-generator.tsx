@@ -1201,6 +1201,14 @@ Random Prompts Generator for writing, AI art, blogging, stories, and character c
                 </p>
               </div>
             )}
+
+            {/* More Seasonal Writing Resources Section */}
+            <div className="prose prose-gray max-w-none mt-12">
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">More Seasonal Writing Resources</h2>
+              <p className="text-gray-700 mb-4">
+                For additional fall-themed ideas check out <a href="https://www.writersdigest.com/write-better-fiction/50-fall-writing-prompts" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">50 Fall Writing Prompts – WritersDigest</a> and <a href="https://blog.reedsy.com/halloween-writing-prompts/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Halloween Writing Prompts – Reedsy</a>.
+              </p>
+            </div>
           </div>
         </div>
 

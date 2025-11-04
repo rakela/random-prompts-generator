@@ -326,6 +326,29 @@ const RandomNameGeneratorPage = () => {
               </div>
             </div>
           </div>
+
+          {/* Related Links */}
+          <div className="mt-12 bg-gray-50 rounded-lg p-6 border border-gray-200">
+            <h3 className="text-xl font-bold text-gray-900 mb-4">More Creative Tools</h3>
+            <div className="grid md:grid-cols-2 gap-4">
+              <Link to="/writing-prompts" className="text-pink-600 hover:underline flex items-center gap-2">
+                <PenTool size={16} />
+                Writing Prompts Generator
+              </Link>
+              <Link to="/short-story-prompts-generator" className="text-pink-600 hover:underline flex items-center gap-2">
+                <Crown size={16} />
+                Short Story Prompts
+              </Link>
+              <Link to="/ai-images-prompt" className="text-pink-600 hover:underline flex items-center gap-2">
+                <Sparkles size={16} />
+                AI Art Prompts
+              </Link>
+              <Link to="/ai-blog-post-generator" className="text-pink-600 hover:underline flex items-center gap-2">
+                <BookOpen size={16} />
+                Blog Post Generator
+              </Link>
+            </div>
+          </div>
         </div>
 
         <section className="bg-white py-16 mt-16">
