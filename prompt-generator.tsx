@@ -1296,6 +1296,16 @@ Random Prompts Generator for writing, AI art, blogging, stories, and character c
             </div>
           </div>
         </section>
+
+        {/* Helpful Resources Section */}
+        <section className="bg-gray-50 py-16">
+          <div className="max-w-4xl mx-auto px-4">
+            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Helpful Resources</h2>
+            <p className="text-xl text-gray-600 mb-8 text-center">
+              Learn more about AI creativity at <a href="https://openai.com/blog" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">OpenAI Blog</a>, explore AI models at <a href="https://huggingface.co" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">HuggingFace</a>, stay updated with <a href="https://openai.com/research" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">OpenAI Research</a>, and master SEO fundamentals with <a href="https://moz.com/beginners-guide-to-seo" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Moz's Beginner's Guide to SEO</a>.
+            </p>
+          </div>
+        </section>
       </div>
 
       <Footer />

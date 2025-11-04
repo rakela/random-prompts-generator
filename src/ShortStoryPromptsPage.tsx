@@ -346,6 +346,13 @@ const ShortStoryPromptsPage = () => {
                 Blog Post Generator
               </Link>
             </div>
+
+            <div className="mt-8 bg-amber-50 rounded-lg p-6 border border-amber-200">
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Helpful Resources</h3>
+              <p className="text-gray-700">
+                Explore fantasy prompt examples at <a href="https://reedsy.com/writing-prompts/fantasy" target="_blank" rel="noopener noreferrer" className="text-amber-600 hover:underline">Reedsy Fantasy Writing Prompts</a> and join the worldbuilding community at <a href="https://reddit.com/r/worldbuilding" target="_blank" rel="noopener noreferrer" className="text-amber-600 hover:underline">Reddit r/worldbuilding</a>.
+              </p>
+            </div>
           </div>
         </div>
 

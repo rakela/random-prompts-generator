@@ -416,6 +416,11 @@ const BlogPostGeneratorPage = () => {
                 <li><Link to="/random-name-generator" className="text-blue-600 hover:underline">Character Name Generator</Link> - Create character names for case studies and examples</li>
                 <li><Link to="/" className="text-blue-600 hover:underline">All Prompt Generators</Link> - Access all our creative tools</li>
               </ul>
+
+              <h2 className="text-2xl font-bold text-gray-900 mb-4 mt-8">Helpful Resources</h2>
+              <p className="text-gray-700 mb-4">
+                Learn more about AI writing tools at <a href="https://copy.ai" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Copy.ai</a> and <a href="https://jasper.ai" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Jasper.ai</a>. For content marketing insights, explore <a href="https://neilpatel.com/blog" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Neil Patel's Blog</a> and <a href="https://hubspot.com/blog" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">HubSpot Blog</a> for blog strategy guidance.
+              </p>
             </div>
           </div>
         </div>
