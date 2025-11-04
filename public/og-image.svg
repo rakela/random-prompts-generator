@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1E40AF;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGradient)"/>
+
+  <!-- Logo icon (simplified version) -->
+  <g transform="translate(100, 180)">
+    <path d="M 60 0 L 90 40 L 60 80 L 30 40 Z" fill="#FFCE54" opacity="0.9"/>
+    <path d="M 0 40 L 30 0 L 60 40 L 30 80 Z" fill="#0b63d5" opacity="0.8"/>
+  </g>
+
+  <!-- Main text -->
+  <text x="220" y="260" font-family="Arial, sans-serif" font-size="64" font-weight="bold" fill="#FFFFFF">
+    Random Prompts
+  </text>
+  <text x="220" y="330" font-family="Arial, sans-serif" font-size="64" font-weight="bold" fill="#FFFFFF">
+    Generator
+  </text>
+
+  <!-- Subtitle -->
+  <text x="220" y="400" font-family="Arial, sans-serif" font-size="32" fill="#E0E7FF">
+    Writing, AI Art, Blogs &amp; More
+  </text>
+
+  <!-- Badge -->
+  <rect x="220" y="440" width="160" height="50" rx="25" fill="#FFCE54"/>
+  <text x="300" y="473" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#1E40AF" text-anchor="middle">
+    Free Tool
+  </text>
+
+  <!-- Domain -->
+  <text x="1100" y="590" font-family="Arial, sans-serif" font-size="24" fill="#E0E7FF" text-anchor="end">
+    randomprompts.org
+  </text>
+</svg>
