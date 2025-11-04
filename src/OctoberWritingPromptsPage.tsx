@@ -473,6 +473,9 @@ const OctoberWritingPromptsPage = () => {
               <p className="text-gray-700 mb-4">
                 Perfect for <Link to="/writing-prompts" className="text-blue-600 hover:underline">creative writing exercises</Link>, NaNoWriMo preparation, or exploring seasonal storytelling, October writing prompts help writers tap into the atmospheric richness of fall — mysterious fog, changing seasons, and the thin veil between worlds that makes October storytelling so compelling.
               </p>
+              <p className="text-gray-700 mb-4">
+                Prefer shorter prompts? Try our <Link to="/writing-prompts" className="text-blue-600 hover:underline">Writing Prompts Generator</Link> or switch to seasonal visuals by visiting our <Link to="/ai-images-prompt" className="text-blue-600 hover:underline">AI Art Prompts page</Link>.
+              </p>
             </div>
           </div>
 
