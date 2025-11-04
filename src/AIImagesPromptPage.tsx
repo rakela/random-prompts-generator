@@ -532,6 +532,11 @@ const AIImagesPromptPage = () => {
                 <li><Link to="/random-name-generator" className="text-blue-600 hover:underline">Character Name Generator</Link> - Create unique character names for your AI art subjects</li>
                 <li><Link to="/" className="text-blue-600 hover:underline">All Prompt Generators</Link> - Access all creative tools in one place</li>
               </ul>
+
+              <h2 className="text-2xl font-bold text-gray-900 mb-4 mt-8">Helpful Resources</h2>
+              <p className="text-gray-700 mb-4">
+                Learn more about AI art tools at <a href="https://midjourney.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">MidJourney</a> (AI art community) and explore additional AI art generation at <a href="https://leonardo.ai" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Leonardo.ai</a> (AI art tool).
+              </p>
             </div>
           </div>
         </div>
