@@ -48,3 +48,14 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     </HelmetProvider>
   </React.StrictMode>,
 )
+
+// Trigger event for vite-plugin-prerender after React Helmet updates meta tags
+// This ensures crawlers see the correct page-specific meta tags
+if (typeof window !== 'undefined') {
+  window.addEventListener('load', () => {
+    // Wait a bit for React Helmet to update DOM
+    setTimeout(() => {
+      document.dispatchEvent(new Event('render-event'))
+    }, 100)
+  })
+}
