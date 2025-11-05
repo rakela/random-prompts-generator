@@ -1306,6 +1306,39 @@ Random Prompts Generator for writing, AI art, blogging, stories, and character c
             </p>
           </div>
         </section>
+
+        {/* All Tools Section */}
+        <section className="py-16">
+          <div className="max-w-6xl mx-auto px-4">
+            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Explore All Our Free Tools</h2>
+            <div className="grid md:grid-cols-3 gap-6">
+              <Link to="/writing-prompts" className="bg-white p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">Writing Prompts</h3>
+                <p className="text-gray-600">Generate creative writing prompts with conflicts and plot twists</p>
+              </Link>
+              <Link to="/ai-images-prompt" className="bg-white p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">AI Art Prompts</h3>
+                <p className="text-gray-600">Professional prompts for MidJourney, DALL-E, and Stable Diffusion</p>
+              </Link>
+              <Link to="/ai-blog-post-generator" className="bg-white p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">Blog Post Generator</h3>
+                <p className="text-gray-600">SEO-optimized blog post ideas and content strategies</p>
+              </Link>
+              <Link to="/short-story-prompts-generator" className="bg-white p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">Short Story Prompts</h3>
+                <p className="text-gray-600">Fantasy worldbuilding and short fiction prompts</p>
+              </Link>
+              <Link to="/random-name-generator" className="bg-white p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">Character Names</h3>
+                <p className="text-gray-600">Generate unique fantasy and character names</p>
+              </Link>
+              <Link to="/october-writing-prompts" className="bg-white p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">October Prompts</h3>
+                <p className="text-gray-600">Halloween and fall-themed writing prompts</p>
+              </Link>
+            </div>
+          </div>
+        </section>
       </div>
 
       <Footer />

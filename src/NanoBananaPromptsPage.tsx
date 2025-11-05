@@ -588,6 +588,22 @@ const NanoBananaPromptsPage = () => {
                 <Crown size={16} />
                 Short Story Prompt Generator
               </Link>
+              <Link to="/october-writing-prompts" className="text-yellow-600 hover:underline flex items-center gap-2">
+                <PenTool size={16} />
+                October Writing Prompts
+              </Link>
+              <Link to="/random-name-generator" className="text-yellow-600 hover:underline flex items-center gap-2">
+                <Sparkles size={16} />
+                Character Name Generator
+              </Link>
+              <Link to="/ai-blog-post-generator" className="text-yellow-600 hover:underline flex items-center gap-2">
+                <BookOpen size={16} />
+                Blog Post Ideas
+              </Link>
+              <Link to="/" className="text-yellow-600 hover:underline flex items-center gap-2">
+                <Sparkles size={16} />
+                All Prompt Tools
+              </Link>
             </div>
           </div>
         </div>

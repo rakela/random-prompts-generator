@@ -533,6 +533,22 @@ const MidjourneyAIPromptsPage = () => {
                 <Sparkles size={16} />
                 Ghostface AI Trend Prompts
               </Link>
+              <Link to="/short-story-prompts-generator" className="text-purple-600 hover:underline flex items-center gap-2">
+                <Crown size={16} />
+                Short Story Prompts
+              </Link>
+              <Link to="/random-name-generator" className="text-purple-600 hover:underline flex items-center gap-2">
+                <Sparkles size={16} />
+                Character Name Generator
+              </Link>
+              <Link to="/ai-blog-post-generator" className="text-purple-600 hover:underline flex items-center gap-2">
+                <BookOpen size={16} />
+                Blog Post Ideas
+              </Link>
+              <Link to="/" className="text-purple-600 hover:underline flex items-center gap-2">
+                <Sparkles size={16} />
+                All Prompt Tools
+              </Link>
             </div>
           </div>
         </div>
