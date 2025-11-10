@@ -45,19 +45,10 @@ export default function GeminiAISnowPromptTutorialPage() {
       <SEO pageKey="geminiAISnowPromptTutorial" />
       <Header />
 
-      {/* Hero Section with Header Image */}
+      {/* Hero Section */}
       <section className="relative py-20 px-4 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-indigo-500/10 to-purple-600/10"></div>
         <div className="max-w-6xl mx-auto relative">
-          {/* Featured Image */}
-          <div className="mb-12 rounded-2xl overflow-hidden shadow-2xl">
-            <img
-              src="https://img2.freejobalert.com/news/2025/11/1-690ee56168e0f76857084-1200.webp"
-              alt="Gemini AI Snow Portrait Example"
-              className="w-full h-auto object-cover"
-            />
-          </div>
-
           <div className="text-center">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 rounded-full mb-6">
               <Sparkles className="w-4 h-4 text-blue-600" />
