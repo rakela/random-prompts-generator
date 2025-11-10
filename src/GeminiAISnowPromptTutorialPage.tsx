@@ -12,7 +12,7 @@ export default function GeminiAISnowPromptTutorialPage() {
       title: "Cinematic Triptych Snow Portrait",
       description: "Create a stunning vertical composite with three emotional frames showcasing winter elegance",
       prompt: "Create a vertical 9:16 cinematic composite in winter snow, split into three stacked frames. Top: close-up of her eye and cheek, snowflakes on lashes and rosy skin. Middle: ¾ profile gazing upward, holding a clear umbrella as snow falls. Bottom: chest-up portrait facing camera with quiet melancholy. Lighting: soft daylight, HDR tone, shallow depth (Canon EOS R5, 85mm f/1.2). Outfit: black wool coat, thick white scarf, hair tucked in, no hat. Mood: emotional, calm, Korean winter romance style.",
-      imageUrl: "https://images.unsplash.com/photo-1607748862156-7c548e7e98f4?w=800&q=80",
+      imageUrl: "https://i.ibb.co/Vc7HXTp6/1-690ee56168e0f76857084-1200.png",
       tags: ["Cinematic", "Vertical Format", "Triptych", "Emotional"],
       bestFor: "Social media stories, vertical displays, artistic portfolios"
     },
@@ -20,7 +20,7 @@ export default function GeminiAISnowPromptTutorialPage() {
       title: "Warm Winter Serenity Portrait",
       description: "A cozy, golden-hour winter scene that radiates warmth and tranquility",
       prompt: "Create a warm winter portrait of me wearing a cream sweater, with delicate snowflakes gently falling around me. Soft golden light bathes the scene, and the background is a blurred snowy landscape. The atmosphere should feel serene and cozy. The face remains exactly the same as in the provided reference photo, with no alterations.",
-      imageUrl: "https://images.unsplash.com/photo-1542931287-023b922fa89b?w=800&q=80",
+      imageUrl: "https://i.ibb.co/ZR9NPtNx/Gemini-Generated-Image-nyn6hznyn6hznyn6.png",
       tags: ["Warm Lighting", "Cozy", "Golden Hour", "Natural"],
       bestFor: "Personal portraits, holiday cards, lifestyle content"
     },
@@ -28,7 +28,7 @@ export default function GeminiAISnowPromptTutorialPage() {
       title: "Urban Winter Fashion Portrait",
       description: "Sophisticated city-style winter photography with modern urban elegance",
       prompt: "Create a chic city portrait of me in a fashionable winter look, with snow gently falling around modern streetlights. I'm wearing a stylish long coat, a cozy scarf, and fashionable boots. The scene should have an urban vibe with a touch of winter elegance. The face remains exactly the same as in the provided reference photo, with no alterations.",
-      imageUrl: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&q=80",
+      imageUrl: "https://i.ibb.co/67XyYWfV/Gemini-Generated-Image-9upitg9upitg9upi.png",
       tags: ["Urban Fashion", "City Vibe", "Stylish", "Modern"],
       bestFor: "Fashion photography, urban lifestyle, professional headshots"
     }
