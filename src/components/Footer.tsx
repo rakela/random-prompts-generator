@@ -44,6 +44,7 @@ const Footer: React.FC = () => {
               <li><Link to="/nano-banana-prompts" className="text-gray-400 hover:text-white transition-colors">Nano Banana Prompts</Link></li>
               <li><Link to="/october-writing-prompts" className="text-gray-400 hover:text-white transition-colors">October Writing Prompts</Link></li>
               <li><Link to="/ghostface-ai-trend-prompt-generator" className="text-gray-400 hover:text-white transition-colors">Ghostface AI Prompts</Link></li>
+              <li><Link to="/gemini-ai-snow-prompt-tutorial" className="text-gray-400 hover:text-white transition-colors">Gemini AI Snow Tutorial</Link></li>
               <li><Link to="/midjourney-ai-picture-generator" className="text-gray-400 hover:text-white transition-colors">MidJourney AI Prompts</Link></li>
               <li><Link to="/persuasive-writing-topics" className="text-gray-400 hover:text-white transition-colors">Persuasive Writing Topics</Link></li>
               <li><Link to="/persuasive-essays-topics" className="text-gray-400 hover:text-white transition-colors">Persuasive Essays Topics</Link></li>

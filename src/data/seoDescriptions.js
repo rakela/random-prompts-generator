@@ -61,6 +61,13 @@ export const seoDescriptions = {
     keywords: 'ghostface ai prompt, ghostface prompts, horror ai prompts, scream prompts, halloween ai art, horror character generator'
   },
 
+  geminiAISnowPromptTutorial: {
+    path: 'gemini-ai-snow-prompt-tutorial',
+    title: 'Gemini AI Snow Prompt Tutorial - Professional Winter Portrait Prompts',
+    description: 'Master Gemini AI snow portraits with professional prompts. Create stunning winter photography with ready-to-use templates & advanced techniques.',
+    keywords: 'gemini ai snow prompt tutorial, gemini ai snow, winter portrait prompts, snow photography ai, gemini ai winter, ai snow portraits, google gemini prompts'
+  },
+
   nanoBananaPrompts: {
     path: 'nano-banana-prompts',
     title: 'Nano Banana Prompts - NaNoWriMo Writing Prompts Generator',
