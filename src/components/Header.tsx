@@ -47,6 +47,12 @@ const Header: React.FC<HeaderProps> = ({ promptHistory = [], showHistory = false
                 <Link to="/gemini-ai-snow-prompt-tutorial" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
                   Gemini AI Snow Tutorial
                 </Link>
+                <Link to="/chatgpt-photo-editing-prompts" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
+                  ChatGPT Photo Editing
+                </Link>
+                <Link to="/gemini-photo-editing-prompts" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
+                  Gemini Photo Editing
+                </Link>
                 <Link to="/october-writing-prompts" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
                   October Writing Prompts
                 </Link>
@@ -125,6 +131,20 @@ const Header: React.FC<HeaderProps> = ({ promptHistory = [], showHistory = false
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     Gemini AI Snow Tutorial
+                  </Link>
+                  <Link
+                    to="/chatgpt-photo-editing-prompts"
+                    className="text-gray-600 hover:text-blue-600 transition-colors py-1.5"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    ChatGPT Photo Editing
+                  </Link>
+                  <Link
+                    to="/gemini-photo-editing-prompts"
+                    className="text-gray-600 hover:text-blue-600 transition-colors py-1.5"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Gemini Photo Editing
                   </Link>
                   <Link
                     to="/october-writing-prompts"

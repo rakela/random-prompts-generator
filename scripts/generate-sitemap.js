@@ -55,6 +55,21 @@ const routes = [
     changefreq: 'weekly'
   },
   {
+    path: 'gemini-ai-snow-prompt-tutorial',
+    priority: '0.9',
+    changefreq: 'weekly'
+  },
+  {
+    path: 'chatgpt-photo-editing-prompts',
+    priority: '0.9',
+    changefreq: 'weekly'
+  },
+  {
+    path: 'gemini-photo-editing-prompts',
+    priority: '0.9',
+    changefreq: 'weekly'
+  },
+  {
     path: 'october-writing-prompts',
     priority: '0.9',
     changefreq: 'weekly'
