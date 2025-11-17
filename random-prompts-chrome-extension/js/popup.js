@@ -401,8 +401,15 @@ const generatePrompt = (category) => {
   const data = promptData[category];
   if (!data) return null;
 
-  const template = weightedRandom(data.templates);
-  let prompt = processTemplate(template, data, category);
+  let prompt;
+
+  // Names category doesn't use templates
+  if (category === 'names') {
+    prompt = processTemplate(null, data, category);
+  } else {
+    const template = weightedRandom(data.templates);
+    prompt = processTemplate(template, data, category);
+  }
 
   prompt = enhancePrompt(prompt, category);
 
