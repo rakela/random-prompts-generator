@@ -10,6 +10,8 @@ import ShortStoryPromptsPage from './ShortStoryPromptsPage.tsx'
 import RandomNameGeneratorPage from './RandomNameGeneratorPage.tsx'
 import GhostfaceAIPromptPage from './GhostfaceAIPromptPage.tsx'
 import GeminiAISnowPromptTutorialPage from './GeminiAISnowPromptTutorialPage.tsx'
+import ChatGPTPhotoEditingPromptsPage from './ChatGPTPhotoEditingPromptsPage.tsx'
+import GeminiPhotoEditingPromptsPage from './GeminiPhotoEditingPromptsPage.tsx'
 import OctoberWritingPromptsPage from './OctoberWritingPromptsPage.tsx'
 import WritingPromptsForStudentsPage from './WritingPromptsForStudentsPage.tsx'
 import PersuasiveWritingTopicsPage from './PersuasiveWritingTopicsPage.tsx'
@@ -35,6 +37,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="/random-name-generator" element={<RandomNameGeneratorPage />} />
           <Route path="/ghostface-ai-trend-prompt-generator" element={<GhostfaceAIPromptPage />} />
           <Route path="/gemini-ai-snow-prompt-tutorial" element={<GeminiAISnowPromptTutorialPage />} />
+          <Route path="/chatgpt-photo-editing-prompts" element={<ChatGPTPhotoEditingPromptsPage />} />
+          <Route path="/gemini-photo-editing-prompts" element={<GeminiPhotoEditingPromptsPage />} />
           <Route path="/october-writing-prompts" element={<OctoberWritingPromptsPage />} />
           <Route path="/writing-prompts-for-students" element={<WritingPromptsForStudentsPage />} />
           <Route path="/persuasive-writing-topics" element={<PersuasiveWritingTopicsPage />} />

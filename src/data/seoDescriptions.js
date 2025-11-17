@@ -68,6 +68,20 @@ export const seoDescriptions = {
     keywords: 'gemini ai snow prompt tutorial, gemini ai snow, winter portrait prompts, snow photography ai, gemini ai winter, ai snow portraits, google gemini prompts'
   },
 
+  chatgptPhotoEditingPrompts: {
+    path: 'chatgpt-photo-editing-prompts',
+    title: 'ChatGPT Photo Editing Prompts - AI Photo Editor Prompts & Tips',
+    description: 'Master photo editing with ChatGPT prompts. Professional templates for portraits, landscapes, color grading & retouching with expert tips.',
+    keywords: 'chatgpt photo editing prompts, chatgpt photo editing, ai photo editing prompts, photo editing ai, chatgpt for photo editing, chatgpt prompts for editing photos'
+  },
+
+  geminiPhotoEditingPrompts: {
+    path: 'gemini-photo-editing-prompts',
+    title: 'Gemini Photo Editing Prompts - Google AI Photo Editor Guide',
+    description: 'Professional Gemini AI photo editing prompts & tutorial. Transform photos with expert techniques, color grading, and retouching guidance.',
+    keywords: 'gemini photo editing prompts, gemini ai photo editing, google gemini photo editor, gemini prompts for photos, ai photo editing gemini, gemini image editing'
+  },
+
   nanoBananaPrompts: {
     path: 'nano-banana-prompts',
     title: 'Nano Banana Prompts - NaNoWriMo Writing Prompts Generator',
