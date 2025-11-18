@@ -66,7 +66,7 @@ const promptData = {
     'The power of language and communication',
     'The consequences of pride and hubris',
     'The search for redemption through sacrifice',
-    'The nature of beauty and it's fleeting quality',
+    'The nature of beauty and its fleeting quality',
     'The conflict between past and future',
     'The price of loyalty and betrayal',
     'The impact of choices-butterfly effect',

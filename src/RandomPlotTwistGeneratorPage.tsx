@@ -15,7 +15,7 @@ const promptData = {
     'The entire story has been taking place in a virtual reality simulation.',
     'The protagonist is actually the antagonist from the future trying to prevent their own dark path.',
     'The love interest is working undercover for the enemy organization.',
-    'The prophecy everyone believed was actually misinterpreted, and it's true meaning changes everything.',
+    'The prophecy everyone believed was actually misinterpreted, and its true meaning changes everything.',
     'The main character has been dead the entire time and is a ghost unaware of their own death.',
     'The trusted sidekick has been sabotaging the mission from within.',
     'The world they're trying to save is actually a prison for dangerous beings, and "saving" it means releasing them.',

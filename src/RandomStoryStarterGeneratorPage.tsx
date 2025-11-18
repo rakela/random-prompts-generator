@@ -14,7 +14,7 @@ const promptData = {
       'When the security footage disappeared, Marcus knew someone inside the company was hiding something.',
       'The anonymous letter contained details about the crime that only the killer could have known.',
       'Every morning for a week, Emma found a single red rose on her doorstep. Today, there was a warning note instead.',
-      'The encrypted message led to a grave that, according to records, shouldnt exist.',
+      'The encrypted message led to a grave that, according to records, shouldn't exist.',
       'Three people in the city had the same dream last night, and now one of them is missing.',
       'The painting in the museum changed every time the curator looked away.',
       'The only witness to the crime refused to speak, but kept drawing the same symbol over and over.'
@@ -22,7 +22,7 @@ const promptData = {
     fantasy: [
       'The day Lira turned sixteen, she discovered her shadow no longer followed her commands.',
       'In a world where magic died a thousand years ago, Kael found a spell that still worked.',
-      'The dragons hadnt been seen in centuries, until one landed in the village square at dawn.',
+      'The dragons hadn't been seen in centuries, until one landed in the village square at dawn.',
       'Every seven years, one child from the kingdom disappeared into the Whispering Woods. This year, it was supposed to be her.',
       'The ancient crown chose the most unlikely heir: a street thief with no royal blood.',
       'When the stars began falling from the sky, the old prophecies suddenly didnt seem so impossible.',
@@ -40,7 +40,7 @@ const promptData = {
       'The neural implant was supposed to enhance memory. Instead, it started showing her the future.',
       'On Mars, they found ruins that predated human civilization on Earth by millions of years.',
       'The time loop reset every twenty-four hours, but she was the only one who remembered.',
-      'The alien signal wasnt a message-it was an infection that spread through radio waves.',
+      'The alien signal wasn't a message-it was an infection that spread through radio waves.',
       'The androids were supposed to lack emotions. No one expected them to develop empathy.'
     ],
     horror: [
@@ -56,7 +56,7 @@ const promptData = {
       'Every night at 3:33 AM, the phone rang. This time, she answered.'
     ],
     romance: [
-      'She had avoided her hometown for ten years, but her mothers illness brought her back-and face to face with the one who broke her heart.',
+      'She had avoided her hometown for ten years, but her mother's illness brought her back-and face to face with the one who broke her heart.',
       'The blind date was a disaster, until they got trapped in an elevator together for three hours.',
       'He pretended to be engaged to avoid his mothers matchmaking. The problem? He asked his best friend to play the part.',
       'The wedding planner and the best man hated each other instantly, which made working together on their best friends wedding complicated.',
@@ -81,7 +81,7 @@ const promptData = {
     ],
     thriller: [
       'The witness protection program gave her a new identity, but someone found her anyway.',
-      'He didnt remember the last forty-eight hours, but evidence suggested he committed a crime he would never do.',
+      'He didn't remember the last forty-eight hours, but evidence suggested he committed a crime he would never do.',
       'The journalist received documents that would expose a conspiracy at the highest level-if she lived long enough to publish them.',
       'The hacker collective recruited her for one job. Now they won't let her leave.',
       'On his first day as a prosecutor, Alex discovered evidence that could free a man on death row-and implicate his own mentor.',
@@ -92,7 +92,7 @@ const promptData = {
       'Every alibi checked out, every witness confirmed the story, but forensics didnt lie: someone was framing the wrong person.'
     ],
     literary: [
-      'On the morning of her mothers funeral, Grace found a letter that revealed everything she believed about her family was a lie.',
+      'On the morning of her mother's funeral, Grace found a letter that revealed everything she believed about her family was a lie.',
       'Twenty years after leaving his small town, David returned to discover the landscape of his childhood was being erased.',
       'The memoir was supposed to be therapeutic. Instead, it forced her to confront truths shed buried for decades.',
       'He spent his life collecting stories from strangers, until one of them turned out to be about him.',
@@ -383,7 +383,7 @@ const RandomStoryStarterGeneratorPage = () => {
                 <li className="flex gap-2"><span className="text-purple-600 font-bold">•</span> <span>Fantasy: "The day Lira turned sixteen, she discovered her shadow no longer followed her commands."</span></li>
                 <li className="flex gap-2"><span className="text-purple-600 font-bold">•</span> <span>Sci-Fi: "The colony ship received a message from Earth, impossible since Earth had been destroyed centuries ago."</span></li>
                 <li className="flex gap-2"><span className="text-purple-600 font-bold">•</span> <span>Horror: "The house at the end of the street had been empty for years, until last night when lights appeared in every window."</span></li>
-                <li className="flex gap-2"><span className="text-purple-600 font-bold">•</span> <span>Romance: "She had avoided her hometown for ten years, but her mothers illness brought her back-and face to face with the one who broke her heart."</span></li>
+                <li className="flex gap-2"><span className="text-purple-600 font-bold">•</span> <span>Romance: "She had avoided her hometown for ten years, but her mother's illness brought her back-and face to face with the one who broke her heart."</span></li>
               </ul>
             </div>
           </div>

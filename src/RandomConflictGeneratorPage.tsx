@@ -10,7 +10,7 @@ const promptData = {
     interpersonal: [
       'Two best friends fall in love with the same person and must choose between friendship and romance.',
       'A parent discovers their child has been lying about something significan't for years.',
-      'Business partners disagree fundamentally about the companys direction, threatening their friendship and the business.',
+      'Business partners disagree fundamentally about the company's direction, threatening their friendship and the business.',
       'Roommates have completely incompatible lifestyles but are locked into a year-long lease.',
       'Siblings fight over who should care for their aging parents while managing their own lives.',
       'A mentor realizes their protégé is about to make the same mistakes they did, but the protégé won't listen.',
@@ -20,7 +20,7 @@ const promptData = {
       'A therapist becomes personally invested in a clients problem, crossing professional boundaries.'
     ],
     internal: [
-      'A detective must decide whether to expose corruption that would destroy innocent peoples careers.',
+      'A detective must decide whether to expose corruption that would destroy innocent people's careers.',
       'An artist struggles between creating commercially successful work or staying true to their vision.',
       'A soldier questions whether following orders is more important than doing what they believe is right.',
       'A scientist discovers their research could be weaponized and must decide whether to publish.',
@@ -63,7 +63,7 @@ const promptData = {
       'A journalist must choose between protecting a source and preventing harm.',
       'An employee discovers their company is causing harm but speaking up means losing their job.',
       'Someone must decide whether to lie to protect an innocent person.',
-      'A person is asked to take credit for work they didnt do to advance an important cause.',
+      'A person is asked to take credit for work they didn't do to advance an important cause.',
       'Someone learns a truth that would hurt people they love if revealed.',
       'A professional faces choosing between their personal ethics and their duty to a client.'
     ],
@@ -380,7 +380,7 @@ const RandomConflictGeneratorPage = () => {
               <h3 className="text-xl font-bold text-gray-900 mb-4">Example Random Conflicts:</h3>
               <ul className="space-y-3 text-gray-700">
                 <li className="flex gap-2"><span className="text-red-600 font-bold">•</span> <span>Interpersonal: "Two best friends fall in love with the same person and must choose between friendship and romance."</span></li>
-                <li className="flex gap-2"><span className="text-red-600 font-bold">•</span> <span>Internal: "A detective must decide whether to expose corruption that would destroy innocent peoples careers."</span></li>
+                <li className="flex gap-2"><span className="text-red-600 font-bold">•</span> <span>Internal: "A detective must decide whether to expose corruption that would destroy innocent people's careers."</span></li>
                 <li className="flex gap-2"><span className="text-red-600 font-bold">•</span> <span>Moral: "A prosecutor knows the defendant is guilty but the evidence was obtained illegally."</span></li>
                 <li className="flex gap-2"><span className="text-red-600 font-bold">•</span> <span>Survival: "Trapped in a disaster zone, survivors must share limited resources while rescue seems unlikely."</span></li>
                 <li className="flex gap-2"><span className="text-red-600 font-bold">•</span> <span>Societal: "A small town is divided when a controversial development promises jobs but threatens the environment."</span></li>

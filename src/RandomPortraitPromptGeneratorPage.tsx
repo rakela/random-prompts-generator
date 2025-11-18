@@ -40,7 +40,7 @@ const RandomPortraitPromptGeneratorPage = () => {
       <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
         {isMultiple ? (
           <div className="mb-4 space-y-3">
-            {prompt.text.split('\\n\\n').map((item, index) => (
+            {prompt.text.split('\n\n').map((item, index) => (
               <div key={index} className="bg-gray-50 px-4 py-3 rounded border text-gray-800 leading-relaxed">{item}</div>
             ))}
           </div>

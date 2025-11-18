@@ -8,8 +8,8 @@ import Footer from './components/Footer';
 const promptData = {
   paragraphs: {
     descriptive: [
-      'The ancient forest stretched endlessly before them, it's canopy so thick that only scattered rays of golden sunlight pierced through to the moss-covered ground below. Every breath carried the scent of pine and earth, while the distant call of unknown birds echoed through the towering trees.',
-      'Waves crashed against the rocky shore with relentless fury, sending spray high into the air where it caught the afternoon light. The sea stretched to the horizon, a vast expanse of blue-green water that seemed to hold secrets in it's depths.',
+      'The ancient forest stretched endlessly before them, its canopy so thick that only scattered rays of golden sunlight pierced through to the moss-covered ground below. Every breath carried the scent of pine and earth, while the distant call of unknown birds echoed through the towering trees.',
+      'Waves crashed against the rocky shore with relentless fury, sending spray high into the air where it caught the afternoon light. The sea stretched to the horizon, a vast expanse of blue-green water that seemed to hold secrets in its depths.',
       'The abandoned mansion stood atop the hill, it's weathered facade a testament to decades of neglect. Ivy crawled up the crumbling walls, and broken windows stared out like empty eyes over the overgrown gardens below.',
       'In the heart of the city, neon lights flickered to life as evening descended. The streets filled with people, their faces illuminated by screens and storefronts, each lost in their own world yet moving in synchronized chaos.',
       'The desert stretched out in all directions, an endless sea of sand beneath a burning sky. Heat waves distorted the horizon, making distant dunes appear to shimmer and dance like mirages.',
@@ -20,16 +20,16 @@ const promptData = {
       'The marketplace bustled with activity, vendors calling out their wares over the din of haggling customers. Colorful fabrics hung from stalls, spices filled the air with exotic scents, and the crowd moved like a living river through the narrow lanes.'
     ],
     narrative: [
-      'She had always known this day would come. The letter sat on the table, unopened, it's presence filling the room with a tension that made breathing difficult. Whatever it contained would change everything.',
+      'She had always known this day would come. The letter sat on the table, unopened, its presence filling the room with a tension that made breathing difficult. Whatever it contained would change everything.',
       'The old man sat on the park bench, watching children play as he did every afternoon. But today was different. Today, he carried a secret that would soon shake the foundations of everything these people believed.',
       'When the power went out across the entire city, most people assumed it was just a temporary glitch. But Sarah knew better. She had seen the warning signs, the strange patterns in the data. This was only the beginning.',
-      'The package arrived on a Tuesday, addressed to someone who hadnt lived at this address for three years. Inside, Marcus found something that would lead him on a journey he never imagined.',
-      'Rain poured down as Elena ran through the empty streets, her heart pounding in her chest. Behind her, footsteps echoed off the wet pavement. She didnt dare look back.',
+      'The package arrived on a Tuesday, addressed to someone who hadn't lived at this address for three years. Inside, Marcus found something that would lead him on a journey he never imagined.',
+      'Rain poured down as Elena ran through the empty streets, her heart pounding in her chest. Behind her, footsteps echoed off the wet pavement. She didn't dare look back.',
       'The last train of the night pulled into the station right on schedule. Only three passengers got off, and one of them carried a briefcase that would change the course of history.',
       'He woke to find himself in a room he didnt recognize, with no memory of how he got there. On the nightstand, a note in his own handwriting read: "Trust no one, not even yourself."',
       'The discovery happened by accident, as the best ones often do. Dr. Chen was simply running a routine test when the impossible appeared on her screen, forcing her to question everything she thought she knew about reality.',
       'At precisely midnight, the phenomenon began. First in Tokyo, then spreading westward as the Earth turned, bringing with it questions that science could not answer.',
-      'She found the diary hidden beneath the floorboards of her new house, it's pages filled with entries from someone who lived there fifty years ago. The last entry was dated the day before a tragedy that was never solved.'
+      'She found the diary hidden beneath the floorboards of her new house, its pages filled with entries from someone who lived there fifty years ago. The last entry was dated the day before a tragedy that was never solved.'
     ],
     expository: [
       'Climate change represents one of the most significan't challenges facing humanity today. Rising global temperatures affect weather patterns, sea levels, and ecosystems worldwide, requiring immediate and coordinated action from governments, businesses, and individuals alike.',
@@ -74,7 +74,7 @@ const promptData = {
       '"Tell me again about the day we met," the old woman asked her husband of sixty years. He smiled, ready to tell the story one more time, the same way he had hundreds of times before, each telling a gift.',
       '"This is impossible," the scientist muttered, checking her calculations for the third time. Her assistant looked over her shoulder and gasped. "Its not impossible," he said slowly. "Its just highly improbable. And it's happening anyway."',
       '"I brought coffee," he said, holding up two cups. She looked up from her computer, exhaustion evident in her eyes. "What time is it?" "Time for you to take a break," he replied with a gentle smile.',
-      '"You promised," the child said, lower lip trembling. "I know, sweetheart," her mother replied, kneeling down to eye level. "And Ill make it up to you, I swear. This time will be different."',
+      '"You promised," the child said, lower lip trembling. "I know, sweetheart," her mother replied, kneeling down to eye level. "And I'll make it up to you, I swear. This time will be different."',
       '"The package," the stranger said, "contains something that belongs to you. Or rather, something you will need." Before she could respond, he was gone, leaving only the mysterious box on her doorstep.',
       '"Do you ever wonder," he asked, staring up at the stars, "if were looking at the same thing everyone else sees?" She considered this. "I think we all see something slightly different, and that's okay."',
       '"Last call," the bartender announced, wiping down the counter. The only remaining patron nodded slowly. "Funny how last calls always come too soon," he mused, "except when they don't come soon enough."'
@@ -357,8 +357,8 @@ const RandomParagraphGeneratorPage = () => {
             <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
               <h3 className="text-xl font-bold text-gray-900 mb-4">Example Random Paragraphs:</h3>
               <ul className="space-y-3 text-gray-700">
-                <li className="flex gap-2"><span className="text-blue-600 font-bold">•</span> <span>Descriptive: "The ancient forest stretched endlessly before them, it's canopy so thick that only scattered rays of golden sunlight pierced through..."</span></li>
-                <li className="flex gap-2"><span className="text-blue-600 font-bold">•</span> <span>Narrative: "She had always known this day would come. The letter sat on the table, unopened, it's presence filling the room with tension..."</span></li>
+                <li className="flex gap-2"><span className="text-blue-600 font-bold">•</span> <span>Descriptive: "The ancient forest stretched endlessly before them, its canopy so thick that only scattered rays of golden sunlight pierced through..."</span></li>
+                <li className="flex gap-2"><span className="text-blue-600 font-bold">•</span> <span>Narrative: "She had always known this day would come. The letter sat on the table, unopened, its presence filling the room with tension..."</span></li>
                 <li className="flex gap-2"><span className="text-blue-600 font-bold">•</span> <span>Expository: "Climate change represents one of the most significan't challenges facing humanity today..."</span></li>
                 <li className="flex gap-2"><span className="text-blue-600 font-bold">•</span> <span>Persuasive: "Schools should eliminate standardized testing in favor of more comprehensive assessment methods..."</span></li>
                 <li className="flex gap-2"><span className="text-blue-600 font-bold">•</span> <span>Creative: "Time moved differently in the space between heartbeats. In that infinitesimal moment, entire universes were born and died..."</span></li>
