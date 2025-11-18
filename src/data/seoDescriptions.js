@@ -124,6 +124,213 @@ export const seoDescriptions = {
     keywords: 'writing prompts for students, student writing prompts, creative writing for students, school writing prompts, classroom writing ideas'
   },
 
+  // NEW GENERATOR PAGES
+  // Writing & Story Generators
+  randomParagraphGenerator: {
+    path: 'random-paragraph-generator',
+    title: 'Random Paragraph Generator | Free Random Prompts Generator',
+    description: 'Generate random paragraphs instantly with this free online generator. Perfect for writers, AI creators, and brainstorming.',
+    keywords: 'random paragraph generator, paragraph generator, random text generator, lorem ipsum alternative, writing paragraph generator'
+  },
+
+  randomSentenceGenerator: {
+    path: 'random-sentence-generator',
+    title: 'Random Sentence Generator | Free Random Prompts Generator',
+    description: 'Generate random sentences instantly with this free online generator. Perfect for writers, AI creators, and brainstorming.',
+    keywords: 'random sentence generator, sentence generator, random text, creative writing sentences, sentence prompts'
+  },
+
+  randomDialogueGenerator: {
+    path: 'random-dialogue-generator',
+    title: 'Random Dialogue Generator | Free Random Prompts Generator',
+    description: 'Generate random dialogue instantly with this free online generator. Perfect for writers, AI creators, and brainstorming.',
+    keywords: 'random dialogue generator, dialogue prompts, conversation generator, character dialogue, writing dialogue'
+  },
+
+  randomCharacterGenerator: {
+    path: 'random-character-generator',
+    title: 'Random Character Generator | Free Random Prompts Generator',
+    description: 'Generate random character instantly with this free online generator. Perfect for writers, AI creators, and brainstorming.',
+    keywords: 'random character generator, character creator, character prompts, dnd character generator, story character'
+  },
+
+  randomStoryStarterGenerator: {
+    path: 'random-story-starter-generator',
+    title: 'Random Story Starter Generator | Free Random Prompts Generator',
+    description: 'Generate random story starter instantly with this free online generator. Perfect for writers, AI creators, and brainstorming.',
+    keywords: 'random story starter generator, story starters, writing prompts, story beginning, narrative prompts'
+  },
+
+  randomConflictGenerator: {
+    path: 'random-conflict-generator',
+    title: 'Random Conflict Generator | Free Random Prompts Generator',
+    description: 'Generate random conflict instantly with this free online generator. Perfect for writers, AI creators, and brainstorming.',
+    keywords: 'random conflict generator, story conflict, plot conflict, writing conflict, narrative tension'
+  },
+
+  randomPlotTwistGenerator: {
+    path: 'random-plot-twist-generator',
+    title: 'Random Plot Twist Generator | Free Random Prompts Generator',
+    description: 'Generate random plot twist instantly with this free online generator. Perfect for writers, AI creators, and brainstorming.',
+    keywords: 'random plot twist generator, plot twists, story twists, narrative surprise, twist ideas'
+  },
+
+  randomThemeGenerator: {
+    path: 'random-theme-generator',
+    title: 'Random Theme Generator | Free Random Prompts Generator',
+    description: 'Generate random theme instantly with this free online generator. Perfect for writers, AI creators, and brainstorming.',
+    keywords: 'random theme generator, story themes, writing themes, narrative themes, theme prompts'
+  },
+
+  randomSettingGenerator: {
+    path: 'random-setting-generator',
+    title: 'Random Setting Generator | Free Random Prompts Generator',
+    description: 'Generate random setting instantly with this free online generator. Perfect for writers, AI creators, and brainstorming.',
+    keywords: 'random setting generator, story setting, world setting, location generator, scene setting'
+  },
+
+  randomVillainGenerator: {
+    path: 'random-villain-generator',
+    title: 'Random Villain Generator | Free Random Prompts Generator',
+    description: 'Generate random villain instantly with this free online generator. Perfect for writers, AI creators, and brainstorming.',
+    keywords: 'random villain generator, villain creator, antagonist generator, evil character, villain prompts'
+  },
+
+  randomHeroGenerator: {
+    path: 'random-hero-generator',
+    title: 'Random Hero Generator | Free Random Prompts Generator',
+    description: 'Generate random hero instantly with this free online generator. Perfect for writers, AI creators, and brainstorming.',
+    keywords: 'random hero generator, hero creator, protagonist generator, main character, hero prompts'
+  },
+
+  randomWorldbuildingPromptsGenerator: {
+    path: 'random-worldbuilding-prompts-generator',
+    title: 'Random Worldbuilding Prompts Generator | Free Random Prompts Generator',
+    description: 'Generate random worldbuilding prompts instantly with this free online generator. Perfect for writers, AI creators, and brainstorming.',
+    keywords: 'random worldbuilding prompts generator, worldbuilding, fantasy world, world creation, worldbuilding prompts'
+  },
+
+  randomMagicSystemGenerator: {
+    path: 'random-magic-system-generator',
+    title: 'Random Magic System Generator | Free Random Prompts Generator',
+    description: 'Generate random magic system instantly with this free online generator. Perfect for writers, AI creators, and brainstorming.',
+    keywords: 'random magic system generator, magic system, fantasy magic, magic rules, magic worldbuilding'
+  },
+
+  randomEmotionPromptGenerator: {
+    path: 'random-emotion-prompt-generator',
+    title: 'Random Emotion Prompt Generator | Free Random Prompts Generator',
+    description: 'Generate random emotion prompt instantly with this free online generator. Perfect for writers, AI creators, and brainstorming.',
+    keywords: 'random emotion prompt generator, emotion prompts, feelings prompts, emotional writing, character emotions'
+  },
+
+  randomRelationshipPromptGenerator: {
+    path: 'random-relationship-prompt-generator',
+    title: 'Random Relationship Prompt Generator | Free Random Prompts Generator',
+    description: 'Generate random relationship prompt instantly with this free online generator. Perfect for writers, AI creators, and brainstorming.',
+    keywords: 'random relationship prompt generator, relationship prompts, character relationships, romance prompts, relationship dynamics'
+  },
+
+  // AI Art / Visual Prompts
+  randomAestheticPromptGenerator: {
+    path: 'random-aesthetic-prompt-generator',
+    title: 'Random Aesthetic Prompt Generator | Free Random Prompts Generator',
+    description: 'Generate random aesthetic prompt instantly with this free online generator. Perfect for writers, AI creators, and brainstorming.',
+    keywords: 'random aesthetic prompt generator, aesthetic prompts, visual aesthetic, art aesthetic, aesthetic ideas'
+  },
+
+  randomArtStyleGenerator: {
+    path: 'random-art-style-generator',
+    title: 'Random Art Style Generator | Free Random Prompts Generator',
+    description: 'Generate random art style instantly with this free online generator. Perfect for writers, AI creators, and brainstorming.',
+    keywords: 'random art style generator, art styles, artistic style, art movement, art style prompts'
+  },
+
+  randomPhotographyPromptGenerator: {
+    path: 'random-photography-prompt-generator',
+    title: 'Random Photography Prompt Generator | Free Random Prompts Generator',
+    description: 'Generate random photography prompt instantly with this free online generator. Perfect for writers, AI creators, and brainstorming.',
+    keywords: 'random photography prompt generator, photography prompts, photo ideas, photography inspiration, photo prompts'
+  },
+
+  randomCharacterDesignPromptGenerator: {
+    path: 'random-character-design-prompt-generator',
+    title: 'Random Character Design Prompt Generator | Free Random Prompts Generator',
+    description: 'Generate random character design prompt instantly with this free online generator. Perfect for writers, AI creators, and brainstorming.',
+    keywords: 'random character design prompt generator, character design, character art, character concept, design prompts'
+  },
+
+  randomEnvironmentDesignGenerator: {
+    path: 'random-environment-design-generator',
+    title: 'Random Environment Design Generator | Free Random Prompts Generator',
+    description: 'Generate random environment design instantly with this free online generator. Perfect for writers, AI creators, and brainstorming.',
+    keywords: 'random environment design generator, environment design, environment art, landscape design, setting design'
+  },
+
+  randomSciFiPromptGenerator: {
+    path: 'random-sci-fi-prompt-generator',
+    title: 'Random Sci-Fi Prompt Generator | Free Random Prompts Generator',
+    description: 'Generate random sci-fi prompt instantly with this free online generator. Perfect for writers, AI creators, and brainstorming.',
+    keywords: 'random sci-fi prompt generator, sci-fi prompts, science fiction prompts, scifi ideas, futuristic prompts'
+  },
+
+  randomFantasyArtPromptGenerator: {
+    path: 'random-fantasy-art-prompt-generator',
+    title: 'Random Fantasy Art Prompt Generator | Free Random Prompts Generator',
+    description: 'Generate random fantasy art prompt instantly with this free online generator. Perfect for writers, AI creators, and brainstorming.',
+    keywords: 'random fantasy art prompt generator, fantasy art prompts, fantasy art ideas, fantasy illustration, magical art'
+  },
+
+  randomAnimePromptGenerator: {
+    path: 'random-anime-prompt-generator',
+    title: 'Random Anime Prompt Generator | Free Random Prompts Generator',
+    description: 'Generate random anime prompt instantly with this free online generator. Perfect for writers, AI creators, and brainstorming.',
+    keywords: 'random anime prompt generator, anime prompts, anime art, anime character, manga prompts'
+  },
+
+  randomPortraitPromptGenerator: {
+    path: 'random-portrait-prompt-generator',
+    title: 'Random Portrait Prompt Generator | Free Random Prompts Generator',
+    description: 'Generate random portrait prompt instantly with this free online generator. Perfect for writers, AI creators, and brainstorming.',
+    keywords: 'random portrait prompt generator, portrait prompts, portrait art, face portrait, character portrait'
+  },
+
+  randomLightingStyleGenerator: {
+    path: 'random-lighting-style-generator',
+    title: 'Random Lighting Style Generator | Free Random Prompts Generator',
+    description: 'Generate random lighting style instantly with this free online generator. Perfect for writers, AI creators, and brainstorming.',
+    keywords: 'random lighting style generator, lighting styles, art lighting, photography lighting, lighting techniques'
+  },
+
+  // Creative Tools
+  randomObjectGenerator: {
+    path: 'random-object-generator',
+    title: 'Random Object Generator | Free Random Prompts Generator',
+    description: 'Generate random object instantly with this free online generator. Perfect for writers, AI creators, and brainstorming.',
+    keywords: 'random object generator, random objects, object prompts, random items, creative objects'
+  },
+
+  randomHobbyGenerator: {
+    path: 'random-hobby-generator',
+    title: 'Random Hobby Generator | Free Random Prompts Generator',
+    description: 'Generate random hobby instantly with this free online generator. Perfect for writers, AI creators, and brainstorming.',
+    keywords: 'random hobby generator, hobby ideas, random hobbies, hobby prompts, activity generator'
+  },
+
+  randomSuperpowerGenerator: {
+    path: 'random-superpower-generator',
+    title: 'Random Superpower Generator | Free Random Prompts Generator',
+    description: 'Generate random superpower instantly with this free online generator. Perfect for writers, AI creators, and brainstorming.',
+    keywords: 'random superpower generator, superpower ideas, random powers, superhero powers, ability generator'
+  },
+
+  randomIdeaGenerator: {
+    path: 'random-idea-generator',
+    title: 'Random Idea Generator | Free Random Prompts Generator',
+    description: 'Generate random idea instantly with this free online generator. Perfect for writers, AI creators, and brainstorming.',
+    keywords: 'random idea generator, random ideas, creative ideas, brainstorming, idea prompts'
+  },
+
   privacy: {
     path: 'privacy',
     title: 'Privacy Policy - Random Prompts Generator',
