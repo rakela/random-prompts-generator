@@ -118,10 +118,12 @@ const RandomNameGeneratorPage = () => {
           url: window.location.href
         });
       } catch (err) {
-        copyToClipboard(`${prompt.text}\n\nGenerated at: ${window.location.href}`);
+        copyToClipboard(`${prompt.text}
+Generated at: ${window.location.href}`);
       }
     } else {
-      copyToClipboard(`${prompt.text}\n\nGenerated at: ${window.location.href}`);
+      copyToClipboard(`${prompt.text}
+Generated at: ${window.location.href}`);
     }
   };
 
