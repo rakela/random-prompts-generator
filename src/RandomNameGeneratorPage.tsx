@@ -358,7 +358,7 @@ const RandomNameGeneratorPage = () => {
               <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">How does the random name generator work?</h3>
                 <p className="text-gray-700">
-                  Our random name generator combines culturally consistent first names and last names from elvish, dwarven, human, and exotic fantasy cultures. Each generated random name is designed to sound authentic and natural within its cultural context, perfect for fantasy characters, D&D campaigns, and creative writing.
+                  Our random name generator combines culturally consistent first names and last names from elvish, dwarven, human, and exotic fantasy cultures. Each generated random name is designed to sound authentic and natural within it's cultural context, perfect for fantasy characters, D&D campaigns, and creative writing.
                 </p>
               </div>
               <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
@@ -382,7 +382,7 @@ const RandomNameGeneratorPage = () => {
               <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">What name formats does the random name generator support?</h3>
                 <p className="text-gray-700">
-                  The random name generator offers four formats: Full Name (first and last), First Name Only, With Title (e.g., "Alaric the Bold"), and With House (e.g., "Thalorin of House Moonwhisper"). Select the format that best fits your character's background and social status.
+                  The random name generator offers four formats: Full Name (first and last), First Name Only, With Title (e.g., "Alaric the Bold"), and With House (e.g., "Thalorin of House Moonwhisper"). Select the format that best fit's your character's background and social status.
                 </p>
               </div>
             </div>

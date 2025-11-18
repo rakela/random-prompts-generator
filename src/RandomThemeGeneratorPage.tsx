@@ -11,7 +11,7 @@ const promptData = {
     'The struggle between individual freedom and societal expectations',
     'The nature of identity and self-discovery',
     'The cost of revenge and the cycle of violence',
-    'The complexity of human morality—good and evil are not absolute',
+    'The complexity of human morality-good and evil are not absolute',
     'The destructive nature of obsession',
     'The importance of sacrifice for the greater good',
     'The search for meaning and purpose in life',
@@ -23,7 +23,7 @@ const promptData = {
     'The illusion of control in a chaotic universe',
     'The conflict between appearance and reality',
     'The burden of guilt and the possibility of redemption',
-    'The nature of heroism—ordinary people in extraordinary circumstances',
+    'The nature of heroism-ordinary people in extraordinary circumstances',
     'The destruction caused by unchecked greed',
     'The tension between justice and mercy',
     'The loss of innocence and coming of age',
@@ -36,7 +36,7 @@ const promptData = {
     'The impact of trauma across generations',
     'The complexity of family loyalty',
     'The price of conformity versus authenticity',
-    'The nature of time—how it heals or destroys',
+    'The nature of time-how it heals or destroys',
     'The consequences of technology without wisdom',
     'The struggle between faith and doubt',
     'The power of memory and nostalgia',
@@ -45,7 +45,7 @@ const promptData = {
     'The cost of perfection and unattainable ideals',
     'The nature of truth in a world of perspectives',
     'The weight of legacy and expectations',
-    'The duality of human nature—capacity for both good and evil',
+    'The duality of human nature-capacity for both good and evil',
     'The illusion of happiness in material wealth',
     'The power of art and creativity to change the world',
     'The importance of empathy in understanding others',
@@ -66,15 +66,15 @@ const promptData = {
     'The power of language and communication',
     'The consequences of pride and hubris',
     'The search for redemption through sacrifice',
-    'The nature of beauty and its fleeting quality',
+    'The nature of beauty and it's fleeting quality',
     'The conflict between past and future',
     'The price of loyalty and betrayal',
-    'The impact of choices—butterfly effect',
-    'The nature of evil—is it born or made?',
+    'The impact of choices-butterfly effect',
+    'The nature of evil-is it born or made?',
     'The power of forgiveness',
     'The struggle between order and chaos',
     'The cost of survival',
-    'The nature of courage—facing fear',
+    'The nature of courage-facing fear',
     'The impact of prejudice and discrimination',
     'The search for justice in an unjust world',
     'The complexity of parent-child relationships',
@@ -281,7 +281,7 @@ const RandomThemeGeneratorPage = () => {
               <ul className="space-y-3 text-gray-700">
                 <li className="flex gap-2"><span className="text-emerald-600 font-bold">•</span> <span>"The corrupting influence of power and ambition"</span></li>
                 <li className="flex gap-2"><span className="text-emerald-600 font-bold">•</span> <span>"The struggle between individual freedom and societal expectations"</span></li>
-                <li className="flex gap-2"><span className="text-emerald-600 font-bold">•</span> <span>"The complexity of human morality—good and evil are not absolute"</span></li>
+                <li className="flex gap-2"><span className="text-emerald-600 font-bold">•</span> <span>"The complexity of human morality-good and evil are not absolute"</span></li>
                 <li className="flex gap-2"><span className="text-emerald-600 font-bold">•</span> <span>"The power of love to redeem and transform"</span></li>
                 <li className="flex gap-2"><span className="text-emerald-600 font-bold">•</span> <span>"The resilience of the human spirit"</span></li>
               </ul>

@@ -29,7 +29,7 @@ const promptData = {
       'The sword sang when she touched it, a sound no one had heard in living memory.',
       'In a city where everyone is born with magic, being powerless made him more dangerous than anyone realized.',
       'The mirror showed not reflections, but glimpses into parallel worlds where different choices had been made.',
-      'On her eighteenth birthday, the tattoo appeared on her wrist—a mark that identified her as the next Guardian.'
+      'On her eighteenth birthday, the tattoo appeared on her wrist-a mark that identified her as the next Guardian.'
     ],
     scifi: [
       'The colony ship received a message from Earth, impossible since Earth had been destroyed centuries ago.',
@@ -40,7 +40,7 @@ const promptData = {
       'The neural implant was supposed to enhance memory. Instead, it started showing her the future.',
       'On Mars, they found ruins that predated human civilization on Earth by millions of years.',
       'The time loop reset every twenty-four hours, but she was the only one who remembered.',
-      'The alien signal wasnt a message—it was an infection that spread through radio waves.',
+      'The alien signal wasnt a message-it was an infection that spread through radio waves.',
       'The androids were supposed to lack emotions. No one expected them to develop empathy.'
     ],
     horror: [
@@ -56,14 +56,14 @@ const promptData = {
       'Every night at 3:33 AM, the phone rang. This time, she answered.'
     ],
     romance: [
-      'She had avoided her hometown for ten years, but her mothers illness brought her back—and face to face with the one who broke her heart.',
+      'She had avoided her hometown for ten years, but her mothers illness brought her back-and face to face with the one who broke her heart.',
       'The blind date was a disaster, until they got trapped in an elevator together for three hours.',
       'He pretended to be engaged to avoid his mothers matchmaking. The problem? He asked his best friend to play the part.',
       'The wedding planner and the best man hated each other instantly, which made working together on their best friends wedding complicated.',
       'She inherited a bookshop in Scotland from an aunt she never knew, and met the attractive but frustrating local baker who seemed determined to help.',
       'The anonymous love letters had been arriving for months. When she finally discovered the sender, it was the last person she expected.',
       'Two rival travel bloggers ended up on the same adventure tour through New Zealand, forced to work together or lose the contest they both needed to win.',
-      'He moved back to his childhood home to heal after a divorce, only to find his first love living next door—and apparently single.',
+      'He moved back to his childhood home to heal after a divorce, only to find his first love living next door-and apparently single.',
       'The fake relationship for social media got more likes than expected, and feelings that felt dangerously real.',
       'She bid on a date at a charity auction as a joke. The winner? Her infuriating colleague from work.'
     ],
@@ -71,23 +71,23 @@ const promptData = {
       'The map was incomplete, but it was the only clue to the lost city where his grandfather had disappeared forty years ago.',
       'When the plane went down over the Amazon, survival meant trusting the mysterious woman who seemed to know the jungle too well.',
       'The treasure hunt started as a fun competition between friends. Now, someone was willing to kill for what they might find.',
-      'She had one week to cross the Sahara, retrieve the artifact, and make it back before the solar eclipse—and the curse—took effect.',
+      'She had one week to cross the Sahara, retrieve the artifact, and make it back before the solar eclipse-and the curse-took effect.',
       'The storm forced them to seek shelter in ancient ruins that, according to legend, swallowed anyone who entered.',
       'He inherited his uncles adventure company and immediately got a client requesting an expedition to a place that didnt appear on any map.',
       'The submarine lost power at the deepest point of the Mariana Trench, and something was moving outside the viewport.',
       'Racing across Europe with only a cryptic poem as a guide, they had to reach the final destination before their rivals.',
-      'The Arctic research team found something in the ice—something that had been deliberately buried.',
+      'The Arctic research team found something in the ice-something that had been deliberately buried.',
       'When the earthquake revealed a hidden chamber beneath the pyramids, the Egyptian government hired them to explore it. They should have refused.'
     ],
     thriller: [
       'The witness protection program gave her a new identity, but someone found her anyway.',
       'He didnt remember the last forty-eight hours, but evidence suggested he committed a crime he would never do.',
-      'The journalist received documents that would expose a conspiracy at the highest level—if she lived long enough to publish them.',
-      'The hacker collective recruited her for one job. Now they wont let her leave.',
-      'On his first day as a prosecutor, Alex discovered evidence that could free a man on death row—and implicate his own mentor.',
+      'The journalist received documents that would expose a conspiracy at the highest level-if she lived long enough to publish them.',
+      'The hacker collective recruited her for one job. Now they won't let her leave.',
+      'On his first day as a prosecutor, Alex discovered evidence that could free a man on death row-and implicate his own mentor.',
       'The perfect crime was solved too easily. Detective Morrison suspected the real killer wanted to be caught.',
       'She testified against the mob boss, and now her familys protection detail was dead.',
-      'The app seemed harmless—until it started predicting crimes before they happened.',
+      'The app seemed harmless-until it started predicting crimes before they happened.',
       'The diplomat was supposed to be negotiating peace. Instead, he uncovered a plot that could start World War III.',
       'Every alibi checked out, every witness confirmed the story, but forensics didnt lie: someone was framing the wrong person.'
     ],
@@ -383,7 +383,7 @@ const RandomStoryStarterGeneratorPage = () => {
                 <li className="flex gap-2"><span className="text-purple-600 font-bold">•</span> <span>Fantasy: "The day Lira turned sixteen, she discovered her shadow no longer followed her commands."</span></li>
                 <li className="flex gap-2"><span className="text-purple-600 font-bold">•</span> <span>Sci-Fi: "The colony ship received a message from Earth, impossible since Earth had been destroyed centuries ago."</span></li>
                 <li className="flex gap-2"><span className="text-purple-600 font-bold">•</span> <span>Horror: "The house at the end of the street had been empty for years, until last night when lights appeared in every window."</span></li>
-                <li className="flex gap-2"><span className="text-purple-600 font-bold">•</span> <span>Romance: "She had avoided her hometown for ten years, but her mothers illness brought her back—and face to face with the one who broke her heart."</span></li>
+                <li className="flex gap-2"><span className="text-purple-600 font-bold">•</span> <span>Romance: "She had avoided her hometown for ten years, but her mothers illness brought her back-and face to face with the one who broke her heart."</span></li>
               </ul>
             </div>
           </div>
@@ -418,7 +418,7 @@ const RandomStoryStarterGeneratorPage = () => {
               <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">What is a random story starter generator?</h3>
                 <p className="text-gray-700">
-                  A random story starter generator is a tool that creates compelling opening lines for stories across multiple genres. It provides the first sentence or premise that hooks readers and establishes the narrative direction, perfect for overcoming writers block or practicing creative writing.
+                  A random story starter generator is a tool that creates compelling opening lines for stories across multiple genres. It provides the first sentence or premise that hooks readers and establishe's the narrative direction, perfect for overcoming writers block or practicing creative writing.
                 </p>
               </div>
               <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">

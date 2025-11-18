@@ -8,19 +8,19 @@ import Footer from './components/Footer';
 const promptData = {
   paragraphs: {
     descriptive: [
-      'The ancient forest stretched endlessly before them, its canopy so thick that only scattered rays of golden sunlight pierced through to the moss-covered ground below. Every breath carried the scent of pine and earth, while the distant call of unknown birds echoed through the towering trees.',
-      'Waves crashed against the rocky shore with relentless fury, sending spray high into the air where it caught the afternoon light. The sea stretched to the horizon, a vast expanse of blue-green water that seemed to hold secrets in its depths.',
-      'The abandoned mansion stood atop the hill, its weathered facade a testament to decades of neglect. Ivy crawled up the crumbling walls, and broken windows stared out like empty eyes over the overgrown gardens below.',
+      'The ancient forest stretched endlessly before them, it's canopy so thick that only scattered rays of golden sunlight pierced through to the moss-covered ground below. Every breath carried the scent of pine and earth, while the distant call of unknown birds echoed through the towering trees.',
+      'Waves crashed against the rocky shore with relentless fury, sending spray high into the air where it caught the afternoon light. The sea stretched to the horizon, a vast expanse of blue-green water that seemed to hold secrets in it's depths.',
+      'The abandoned mansion stood atop the hill, it's weathered facade a testament to decades of neglect. Ivy crawled up the crumbling walls, and broken windows stared out like empty eyes over the overgrown gardens below.',
       'In the heart of the city, neon lights flickered to life as evening descended. The streets filled with people, their faces illuminated by screens and storefronts, each lost in their own world yet moving in synchronized chaos.',
       'The desert stretched out in all directions, an endless sea of sand beneath a burning sky. Heat waves distorted the horizon, making distant dunes appear to shimmer and dance like mirages.',
       'Snow blanketed the mountain village, transforming it into a winter wonderland. Smoke curled from chimneys, and warm light spilled from frosted windows, promising shelter from the bitter cold outside.',
       'The underground library was a labyrinth of towering bookshelves, each one packed with leather-bound volumes. The air smelled of old paper and dust, and the only sound was the soft echo of footsteps on the stone floor.',
       'Autumn had painted the countryside in shades of gold and crimson. Leaves drifted lazily through the crisp air, settling on winding paths that meandered through the rolling hills.',
-      'The space station orbited silently above the planet, its metal hull gleaming in the starlight. Through its viewports, Earth hung like a blue marble against the infinite black of space.',
+      'The space station orbited silently above the planet, it's metal hull gleaming in the starlight. Through it's viewports, Earth hung like a blue marble against the infinite black of space.',
       'The marketplace bustled with activity, vendors calling out their wares over the din of haggling customers. Colorful fabrics hung from stalls, spices filled the air with exotic scents, and the crowd moved like a living river through the narrow lanes.'
     ],
     narrative: [
-      'She had always known this day would come. The letter sat on the table, unopened, its presence filling the room with a tension that made breathing difficult. Whatever it contained would change everything.',
+      'She had always known this day would come. The letter sat on the table, unopened, it's presence filling the room with a tension that made breathing difficult. Whatever it contained would change everything.',
       'The old man sat on the park bench, watching children play as he did every afternoon. But today was different. Today, he carried a secret that would soon shake the foundations of everything these people believed.',
       'When the power went out across the entire city, most people assumed it was just a temporary glitch. But Sarah knew better. She had seen the warning signs, the strange patterns in the data. This was only the beginning.',
       'The package arrived on a Tuesday, addressed to someone who hadnt lived at this address for three years. Inside, Marcus found something that would lead him on a journey he never imagined.',
@@ -29,13 +29,13 @@ const promptData = {
       'He woke to find himself in a room he didnt recognize, with no memory of how he got there. On the nightstand, a note in his own handwriting read: "Trust no one, not even yourself."',
       'The discovery happened by accident, as the best ones often do. Dr. Chen was simply running a routine test when the impossible appeared on her screen, forcing her to question everything she thought she knew about reality.',
       'At precisely midnight, the phenomenon began. First in Tokyo, then spreading westward as the Earth turned, bringing with it questions that science could not answer.',
-      'She found the diary hidden beneath the floorboards of her new house, its pages filled with entries from someone who lived there fifty years ago. The last entry was dated the day before a tragedy that was never solved.'
+      'She found the diary hidden beneath the floorboards of her new house, it's pages filled with entries from someone who lived there fifty years ago. The last entry was dated the day before a tragedy that was never solved.'
     ],
     expository: [
-      'Climate change represents one of the most significant challenges facing humanity today. Rising global temperatures affect weather patterns, sea levels, and ecosystems worldwide, requiring immediate and coordinated action from governments, businesses, and individuals alike.',
+      'Climate change represents one of the most significan't challenges facing humanity today. Rising global temperatures affect weather patterns, sea levels, and ecosystems worldwide, requiring immediate and coordinated action from governments, businesses, and individuals alike.',
       'The human brain contains approximately 86 billion neurons, each capable of forming thousands of connections with other neurons. This complex network enables everything from basic motor functions to abstract thought, making it the most sophisticated organ in the known universe.',
       'Artificial intelligence has evolved rapidly over the past decade, moving from simple pattern recognition to systems that can generate art, write code, and even engage in creative problem-solving. This advancement raises important questions about the future of work and human-machine interaction.',
-      'The concept of democracy traces its roots to ancient Greece, where citizens gathered to debate and vote on matters of state. While modern democratic systems have evolved significantly, they still embody the fundamental principle that government derives its authority from the consent of the governed.',
+      'The concept of democracy traces it's roots to ancient Greece, where citizens gathered to debate and vote on matters of state. While modern democratic systems have evolved significan'tly, they still embody the fundamental principle that government derives it's authority from the consent of the governed.',
       'Renewable energy sources, including solar, wind, and hydroelectric power, offer sustainable alternatives to fossil fuels. As technology improves and costs decrease, these clean energy solutions become increasingly viable for meeting global energy demands.',
       'The internet has fundamentally transformed how humans communicate, share information, and conduct business. What began as a military research project has evolved into a global network connecting billions of devices and people.',
       'Ocean ecosystems support an incredible diversity of life, from microscopic plankton to the largest animals ever to exist on Earth. These marine environments also play a crucial role in regulating the planets climate and providing food for billions of people.',
@@ -53,7 +53,7 @@ const promptData = {
       'Social media platforms must be held accountable for the content they host. While free speech remains paramount, companies that profit from user engagement should bear responsibility for preventing the spread of misinformation and hate speech.',
       'Public libraries remain essential community resources in the digital age. Beyond books, they provide internet access, educational programs, and safe spaces for learning and gathering, serving as great equalizers in communities of all sizes.',
       'The traditional college degree is becoming obsolete for many careers. We should embrace alternative credentials, apprenticeships, and skill-based certifications that better prepare students for modern employment while reducing the burden of student debt.',
-      'Mandatory community service should be required for high school graduation. Volunteer work teaches empathy, builds character, and connects young people with their communities in meaningful ways that benefit both the individual and society.'
+      'Mandatory community service should be required for high school graduation. Volunteer work teache's empathy, builds character, and connects young people with their communities in meaningful ways that benefit both the individual and society.'
     ],
     creative: [
       'Time moved differently in the space between heartbeats. In that infinitesimal moment, entire universes were born and died, stories unfolded and concluded, and possibilities stretched out like threads in an infinite tapestry.',
@@ -68,16 +68,16 @@ const promptData = {
       'Mirrors didnt reflect reality but showed possibilities – parallel versions of the viewer, each one having made different choices, living different lives. Most people simply saw what they expected to see.'
     ],
     dialogue: [
-      '"I cant believe you did this," she said, her voice barely above a whisper. He tried to meet her eyes but found himself looking at his shoes instead. "I can explain," he started, but they both knew some actions went beyond explanation.',
+      '"I can't believe you did this," she said, her voice barely above a whisper. He tried to meet her eyes but found himself looking at his shoes instead. "I can explain," he started, but they both knew some actions went beyond explanation.',
       '"The data doesnt lie," Marcus insisted, spreading the documents across the table. "Someone in this room is the leak, and I intend to find out who." The silence that followed was deafening.',
-      '"You dont understand," she said, gripping the steering wheel tighter. "If we turn back now, everything weve worked for—" "I understand perfectly," he interrupted. "The question is, do you?"',
+      '"You don't understand," she said, gripping the steering wheel tighter. "If we turn back now, everything weve worked for-" "I understand perfectly," he interrupted. "The question is, do you?"',
       '"Tell me again about the day we met," the old woman asked her husband of sixty years. He smiled, ready to tell the story one more time, the same way he had hundreds of times before, each telling a gift.',
-      '"This is impossible," the scientist muttered, checking her calculations for the third time. Her assistant looked over her shoulder and gasped. "Its not impossible," he said slowly. "Its just highly improbable. And its happening anyway."',
+      '"This is impossible," the scientist muttered, checking her calculations for the third time. Her assistant looked over her shoulder and gasped. "Its not impossible," he said slowly. "Its just highly improbable. And it's happening anyway."',
       '"I brought coffee," he said, holding up two cups. She looked up from her computer, exhaustion evident in her eyes. "What time is it?" "Time for you to take a break," he replied with a gentle smile.',
       '"You promised," the child said, lower lip trembling. "I know, sweetheart," her mother replied, kneeling down to eye level. "And Ill make it up to you, I swear. This time will be different."',
       '"The package," the stranger said, "contains something that belongs to you. Or rather, something you will need." Before she could respond, he was gone, leaving only the mysterious box on her doorstep.',
-      '"Do you ever wonder," he asked, staring up at the stars, "if were looking at the same thing everyone else sees?" She considered this. "I think we all see something slightly different, and thats okay."',
-      '"Last call," the bartender announced, wiping down the counter. The only remaining patron nodded slowly. "Funny how last calls always come too soon," he mused, "except when they dont come soon enough."'
+      '"Do you ever wonder," he asked, staring up at the stars, "if were looking at the same thing everyone else sees?" She considered this. "I think we all see something slightly different, and that's okay."',
+      '"Last call," the bartender announced, wiping down the counter. The only remaining patron nodded slowly. "Funny how last calls always come too soon," he mused, "except when they don't come soon enough."'
     ]
   }
 };
@@ -357,9 +357,9 @@ const RandomParagraphGeneratorPage = () => {
             <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
               <h3 className="text-xl font-bold text-gray-900 mb-4">Example Random Paragraphs:</h3>
               <ul className="space-y-3 text-gray-700">
-                <li className="flex gap-2"><span className="text-blue-600 font-bold">•</span> <span>Descriptive: "The ancient forest stretched endlessly before them, its canopy so thick that only scattered rays of golden sunlight pierced through..."</span></li>
-                <li className="flex gap-2"><span className="text-blue-600 font-bold">•</span> <span>Narrative: "She had always known this day would come. The letter sat on the table, unopened, its presence filling the room with tension..."</span></li>
-                <li className="flex gap-2"><span className="text-blue-600 font-bold">•</span> <span>Expository: "Climate change represents one of the most significant challenges facing humanity today..."</span></li>
+                <li className="flex gap-2"><span className="text-blue-600 font-bold">•</span> <span>Descriptive: "The ancient forest stretched endlessly before them, it's canopy so thick that only scattered rays of golden sunlight pierced through..."</span></li>
+                <li className="flex gap-2"><span className="text-blue-600 font-bold">•</span> <span>Narrative: "She had always known this day would come. The letter sat on the table, unopened, it's presence filling the room with tension..."</span></li>
+                <li className="flex gap-2"><span className="text-blue-600 font-bold">•</span> <span>Expository: "Climate change represents one of the most significan't challenges facing humanity today..."</span></li>
                 <li className="flex gap-2"><span className="text-blue-600 font-bold">•</span> <span>Persuasive: "Schools should eliminate standardized testing in favor of more comprehensive assessment methods..."</span></li>
                 <li className="flex gap-2"><span className="text-blue-600 font-bold">•</span> <span>Creative: "Time moved differently in the space between heartbeats. In that infinitesimal moment, entire universes were born and died..."</span></li>
               </ul>

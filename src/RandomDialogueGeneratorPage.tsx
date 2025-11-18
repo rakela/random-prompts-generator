@@ -8,43 +8,43 @@ import Footer from './components/Footer';
 const promptData = {
   dialogue: {
     conflict: [
-      '"You said youd be there," she whispered, fighting back tears. "You promised."\n"I know, and Im sorry, but—"\n"No. No more excuses. Im done."',
+      '"You said youd be there," she whispered, fighting back tears. "You promised."\n"I know, and I'm sorry, but-"\n"No. No more excuses. I'm done."',
       '"This is your fault!" he shouted, slamming his fist on the table.\n"My fault?" She laughed bitterly. "You made your choice. Live with it."',
       '"I trusted you with everything," Marcus said quietly. "How could you betray me like this?"\n"It wasnt personal," came the cold reply. "It was business."',
-      '"Choose," the captain demanded. "Her or the mission. You cant save both."\n"Then Ill find a third option," Sarah replied, her voice steady despite her pounding heart.',
-      '"Youre making a mistake," the old man warned.\n"Maybe," she agreed, "but its my mistake to make."',
-      '"I cant do this anymore," he said, his voice breaking. "I cant keep pretending everythings fine."\n"Then stop pretending. Tell me the truth."',
-      '"The data says otherwise," Dr. Chen insisted, pointing at the screen.\n"Then your data is wrong!" her colleague shot back. "Ive seen it with my own eyes."',
-      '"You dont understand what youre asking," the stranger replied, backing away.\n"Then help me understand. Because right now, I have no other choice."',
-      '"Leave her out of this," Jake growled, stepping between them.\n"Too late for that," the villain smiled. "Shes already involved."',
+      '"Choose," the captain demanded. "Her or the mission. You can't save both."\n"Then Ill find a third option," Sarah replied, her voice steady despite her pounding heart.',
+      '"Youre making a mistake," the old man warned.\n"Maybe," she agreed, "but it's my mistake to make."',
+      '"I can't do this anymore," he said, his voice breaking. "I can't keep pretending everythings fine."\n"Then stop pretending. Tell me the truth."',
+      '"The data says otherwise," Dr. Chen insisted, pointing at the screen.\n"Then your data is wrong!" her colleague shot back. "I've seen it with my own eyes."',
+      '"You don't understand what you're asking," the stranger replied, backing away.\n"Then help me understand. Because right now, I have no other choice."',
+      '"Leave her out of this," Jake growled, stepping between them.\n"Too late for that," the villain smiled. "She's already involved."',
       '"I followed your orders," the lieutenant said through clenched teeth. "Good soldiers followed orders."\n"Then maybe," the general replied softly, "we need fewer good soldiers."'
     ],
     mysterious: [
       '"They told me youd come," the old woman said, not looking up from her knitting.\n"Who told you?"\n"The ones who know. They always know."',
-      '"The door in the basement," he whispered urgently. "Whatever you do, dont open it after midnight."\n"Why? Whats behind it?"\nHe was already gone.',
-      '"I remember you," she said, studying his face. "From the photograph. But youre supposed to be dead."\n"I am dead. At least, I should be."',
+      '"The door in the basement," he whispered urgently. "Whatever you do, don't open it after midnight."\n"Why? Whats behind it?"\nHe was already gone.',
+      '"I remember you," she said, studying his face. "From the photograph. But you're supposed to be dead."\n"I am dead. At least, I should be."',
       '"This place doesnt exist on any map," the driver said, pulling away quickly. "And you were never here."\nShe watched the car disappear into the fog.',
-      '"Everyone who investigates this case goes missing," the detective warned. "Everyone."\n"Then I guess Im about to become an exception," she replied.',
+      '"Everyone who investigates this case goes missing," the detective warned. "Everyone."\n"Then I guess I'm about to become an exception," she replied.',
       '"The numbers," he muttered, scribbling frantically. "Theyre communicating. Can you see it?"\n"All I see is a crazy person with too much coffee."',
-      '"She visits every year on this day," the innkeeper explained. "Always asks for room 237. Always checks out before sunrise. Never ages."\n"How long has this been happening?"\n"Seventy-three years."',
+      '"She visit's every year on this day," the innkeeper explained. "Always asks for room 237. Always checks out before sunrise. Never ages."\n"How long has this been happening?"\n"Seventy-three years."',
       '"Dont trust your reflection," the message read. "Its not always you looking back."\nHe folded the note carefully, glancing nervously at the mirror.',
       '"The library closes in five minutes," the librarian announced.\n"But I just got here."\n"That was three hours ago."\nHe checked his watch. She was right.',
-      '"Your brother asked me to give you this," the stranger said, handing over a sealed envelope.\n"I dont have a brother."\n"You did. Once."'
+      '"Your brother asked me to give you this," the stranger said, handing over a sealed envelope.\n"I don't have a brother."\n"You did. Once."'
     ],
     romantic: [
       '"I love you," he said simply. "I have for years. I just never had the courage to say it."\nShe looked up, tears streaming down her face. "You idiot. I loved you too. All this time..."',
       '"Dance with me," she offered, extending her hand.\n"Theres no music."\n"Then well make our own," she smiled.',
       '"Five more minutes," he mumbled, pulling her closer.\n"You said that an hour ago," she laughed.\n"And I meant it then too."',
-      '"I dont believe in fate," he said.\n"Neither do I," she replied. "But I believe in us. Isnt that enough?"\n"Its everything."',
+      '"I don't believe in fate," he said.\n"Neither do I," she replied. "But I believe in us. Isnt that enough?"\n"Its everything."',
       '"Were terrible for each other," she said, though she didnt pull away.\n"The worst," he agreed, closing the distance between them.\n"This is a bad idea."\n"The absolute worst."',
-      '"I brought you coffee," he said, setting the cup on her desk.\n"Its 3 AM. Why are you here?"\n"Because youre here. And someone needs to make sure you eat."',
-      '"I cant lose you," she whispered against his chest.\n"Youre not going to," he promised, holding her tighter. "Not now. Not ever."',
+      '"I brought you coffee," he said, setting the cup on her desk.\n"Its 3 AM. Why are you here?"\n"Because you're here. And someone needs to make sure you eat."',
+      '"I can't lose you," she whispered against his chest.\n"Youre not going to," he promised, holding her tighter. "Not now. Not ever."',
       '"Tell me again," she requested softly.\n"I love you."\n"Again."\n"I love you."\n"One more time?"\n"Every day for the rest of our lives."',
       '"What if this doesnt work?" she asked, fear evident in her voice.\n"Then well fail together," he replied, taking her hand. "But at least we tried."',
       '"You kept the ticket stub," he noticed, surprised.\n"I kept everything," she admitted. "Every movie, every concert, every moment. I couldnt let go."'
     ],
     humorous: [
-      '"I can explain," he started.\n"You better," she said, staring at the llama in their living room.\n"Okay, I cant explain."',
+      '"I can explain," he started.\n"You better," she said, staring at the llama in their living room.\n"Okay, I can't explain."',
       '"Instructions unclear," he announced. "I somehow built a working time machine."\n"From IKEA furniture?"\n"The instructions were in Swedish!"',
       '"Im not saying it was aliens," he whispered dramatically.\n"But?" she prompted.\n"But it was definitely aliens."',
       '"The cat is plotting something," she said, eyeing the feline suspiciously.\n"Honey, all cats are always plotting something. Its literally their thing."\n"This feels different. More... ambitious."',
@@ -52,14 +52,14 @@ const promptData = {
       '"Your resume says expert multitasker," the interviewer noted.\n"Yes."\n"Youre currently eating a sandwich, texting, and juggling."\n"And absolutely crushing this interview, if I may say so."',
       '"The good news is, I found your car."\n"And the bad news?"\n"Remember how you were worried about the parking ticket?"\n"Yes..."\n"Not your biggest problem anymore."',
       '"I am not a morning person," she growled into her coffee.\n"Its 2 PM."\n"Your point being?"',
-      '"We need to talk about your online shopping," he said gently.\n"I dont have a problem."\n"Theres a pallet of rubber ducks in the driveway."\n"Theyre for... charity."',
-      '"Trust me," he said confidently. "Ive done this before."\n"Really?"\n"Well, Ive watched someone do it on YouTube. Same thing."'
+      '"We need to talk about your online shopping," he said gently.\n"I don't have a problem."\n"Theres a pallet of rubber ducks in the driveway."\n"Theyre for... charity."',
+      '"Trust me," he said confidently. "I've done this before."\n"Really?"\n"Well, I've watched someone do it on YouTube. Same thing."'
     ],
     dramatic: [
-      '"If you walk out that door," he said quietly, "dont come back."\nShe paused, hand on the doorknob. "Goodbye, then."\nThe door closed with a soft click that echoed like thunder.',
+      '"If you walk out that door," he said quietly, "don't come back."\nShe paused, hand on the doorknob. "Goodbye, then."\nThe door closed with a soft click that echoed like thunder.',
       '"The test results came back," the doctor said, his expression grave.\n"And?"\n"You should sit down."\n"Just tell me. Please."',
       '"He didnt make it," the nurse said softly. "Im so sorry."\nThe world stopped. Everything went silent. Nothing would ever be the same.',
-      '"Youre my son!" his father shouted. "How could you side with them?"\n"Because theyre right," he replied steadily. "And you taught me to do whats right, no matter the cost."',
+      '"Youre my son!" his father shouted. "How could you side with them?"\n"Because they're right," he replied steadily. "And you taught me to do what's right, no matter the cost."',
       '"The jury has reached a verdict," the judge announced.\nHer hands trembled. Twenty years of fighting for this moment. Everything depended on the next words.',
       '"I hereby resign," she stated clearly into the microphone, cameras flashing.\nThe crowd erupted. History was being made.',
       '"Tell my family I loved them," he gasped, blood seeping through his fingers.\n"Tell them yourself," she insisted, pressing harder on the wound. "Youre going to be fine. Do you hear me? Youre going to be fine."',
@@ -74,7 +74,7 @@ const promptData = {
       '"Time is an illusion," the physicist insisted.\n"Tell that to my aging body," his friend laughed.\n"What if age is just the illusion of experiencing time?"',
       '"Why do we create?" she asked, brush poised over canvas.\n"To prove we existed," he suggested. "To leave something behind that says we were here."\n"Or maybe," she added, "because not creating would be a kind of death."',
       '"If consciousness is just neurons firing," he wondered aloud, "what makes love feel so real?"\n"Maybe reality and feeling are the same thing," she proposed. "Maybe what we feel is the only reality that matters."',
-      '"You cant change the past," he said.\n"But we change how we understand it," she countered. "Every memory is a new interpretation. The past is always becoming something different."',
+      '"You can't change the past," he said.\n"But we change how we understand it," she countered. "Every memory is a new interpretation. The past is always becoming something different."',
       '"Freedom or security?" the philosopher posed.\n"Neither is worth much without the other," his student replied. "And pursuing only one leads to losing both."',
       '"What makes a life meaningful?" she asked the dying man.\n"Not what you achieve," he whispered, "but what you give. What you leave behind in others hearts."',
       '"Are we our choices," he asked, "or our circumstances?"\n"Both," she answered. "And neither. Were the space between them – the constant negotiation of who we want to be."'
@@ -357,11 +357,11 @@ const RandomDialogueGeneratorPage = () => {
             <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
               <h3 className="text-xl font-bold text-gray-900 mb-4">Example Random Dialogues:</h3>
               <ul className="space-y-3 text-gray-700">
-                <li className="flex gap-2"><span className="text-blue-600 font-bold">•</span> <span>Conflict: "You said youd be there," she whispered. "You promised." "I know, and Im sorry, but—" "No. No more excuses."</span></li>
+                <li className="flex gap-2"><span className="text-blue-600 font-bold">•</span> <span>Conflict: "You said youd be there," she whispered. "You promised." "I know, and I'm sorry, but-" "No. No more excuses."</span></li>
                 <li className="flex gap-2"><span className="text-blue-600 font-bold">•</span> <span>Mysterious: "They told me youd come," the old woman said. "Who told you?" "The ones who know. They always know."</span></li>
                 <li className="flex gap-2"><span className="text-blue-600 font-bold">•</span> <span>Romantic: "I love you," he said simply. "I have for years." She looked up, tears streaming. "You idiot. I loved you too."</span></li>
                 <li className="flex gap-2"><span className="text-blue-600 font-bold">•</span> <span>Humorous: "I can explain," he started. "You better," she said, staring at the llama in their living room.</span></li>
-                <li className="flex gap-2"><span className="text-blue-600 font-bold">•</span> <span>Dramatic: "If you walk out that door," he said quietly, "dont come back." She paused. "Goodbye, then."</span></li>
+                <li className="flex gap-2"><span className="text-blue-600 font-bold">•</span> <span>Dramatic: "If you walk out that door," he said quietly, "don't come back." She paused. "Goodbye, then."</span></li>
               </ul>
             </div>
           </div>

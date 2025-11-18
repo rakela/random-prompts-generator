@@ -8,35 +8,35 @@ import Footer from './components/Footer';
 const promptData = {
   twists: [
     'The trusted mentor who has been guiding the protagonist is actually the main antagonist.',
-    'The missing person everyone is searching for has been dead since the beginning—the person they've been following is an imposter.',
-    'The protagonist discovers they are an unreliable narrator suffering from amnesia, and theyve been remembering events incorrectly.',
+    'The missing person everyone is searching for has been dead since the beginning-the person they've been following is an imposter.',
+    'The protagonist discovers they are an unreliable narrator suffering from amnesia, and they've been remembering events incorrectly.',
     'The "villain" the hero defeated was actually trying to prevent a much greater catastrophe.',
     'Everyone the protagonist knows is an actor hired for an elaborate experiment or reality show.',
     'The entire story has been taking place in a virtual reality simulation.',
     'The protagonist is actually the antagonist from the future trying to prevent their own dark path.',
     'The love interest is working undercover for the enemy organization.',
-    'The prophecy everyone believed was actually misinterpreted, and its true meaning changes everything.',
+    'The prophecy everyone believed was actually misinterpreted, and it's true meaning changes everything.',
     'The main character has been dead the entire time and is a ghost unaware of their own death.',
     'The trusted sidekick has been sabotaging the mission from within.',
     'The world they're trying to save is actually a prison for dangerous beings, and "saving" it means releasing them.',
     'The protagonist's memories are fabricated, implanted by someone else.',
     'The person believed to be dead staged their own death and has been orchestrating events from the shadows.',
     'The cure they've been seeking will actually make the problem worse.',
-    'The protagonist discovers theyre the clone, not the original.',
+    'The protagonist discovers they're the clone, not the original.',
     'The antagonist is actually the protagonist from a different timeline trying to prevent disaster.',
     'The alien invasion is actually a rescue mission from humanities future.',
     'The magical/supernatural elements are actually advanced technology misunderstood.',
     'The chosen one prophecy was created as manipulation, not divine prediction.',
     'The protagonist's closest ally has been mind-controlled the entire time.',
-    'The treasure/artifact/goal they've been seeking doesn't actually exist—its a test or distraction.',
+    'The treasure/artifact/goal they've been seeking doesn't actually exist-it's a test or distraction.',
     'The sanctuary they've been trying to reach is actually more dangerous than where they fled from.',
-    'The protagonist discovers they're not human—they're an advanced AI, android, or alien.',
+    'The protagonist discovers they're not human-they're an advanced AI, android, or alien.',
     'The person who seemed powerless has actually been the most powerful character all along.',
     'The "real world" scenes are actually the dream/simulation, not the other way around.',
     'The villain's evil plan is actually necessary to prevent an even worse outcome.',
     'The organization fighting the protagonists is actually on the side of good.',
     'The character presumed to be the main protagonist is actually just a side character in someone else's story.',
-    'The apocalypse they're trying to prevent already happened—they're living in the aftermath.',
+    'The apocalypse they're trying to prevent already happened-they're living in the aftermath.',
     'The protagonist's special ability is actually a curse placed by an enemy, not a gift.',
     'The historical records everyone believes are completely fabricated.',
     'The child being protected is actually more dangerous than any threat they face.',
@@ -47,15 +47,15 @@ const promptData = {
     'The person they thought betrayed them was actually protecting them all along.',
     'The protagonist realizes they're the reincarnation of the ancient evil they're fighting.',
     'The utopia they've reached is maintained by secretly terrible means.',
-    'The protagonist discovers they've been time-looping and forgetting—this is attempt number 1,000.',
-    'The friendly AI has been manipulating events to ensure its own existence.',
-    'The protagonist's tragic backstory never actually happened—it was implanted.',
+    'The protagonist discovers they've been time-looping and forgetting-this is attempt number 1,000.',
+    'The friendly AI has been manipulating events to ensure it's own existence.',
+    'The protagonist's tragic backstory never actually happened-it was implanted.',
     'The two enemies discover they're actually the same person from different timelines.',
     'The magical system they rely on is powered by something deeply unethical.',
     'The "prophetic visions" are actually memories from a past timeline.',
     'The different characters are actually different personalities of the same person.',
     'The hero's victory actually fulfills the villain's ultimate plan.',
-    'The quest was designed to fail from the beginning—the journey itself was the real goal.',
+    'The quest was designed to fail from the beginning-the journey itself was the real goal.',
     'The character they killed earlier is revealed to be alive and crucial to the solution.',
     'The protagonist discovers they're narrating their own trial or judgment.',
     'The advanced civilization they discovered is actually humanity's forgotten past.',
@@ -67,18 +67,18 @@ const promptData = {
     'The magical/fantasy world is real, and the "real world" is the illusion.',
     'The character who seemed to be helping is actually farming the protagonist's experiences for entertainment.',
     'The protagonist discovers they're a character in a story and can see the author/reader.',
-    'The apocalypse isn't being prevented—it's being caused by their attempts to stop it.',
-    'The protagonist was never special—they were just in the right place at the right time.',
+    'The apocalypse isn't being prevented-it's being caused by their attempts to stop it.',
+    'The protagonist was never special-they were just in the right place at the right time.',
     'The war both sides are fighting is actually being orchestrated by a third party.',
     'The protagonist's entire personality is based on someone else they absorbed/killed.',
     'The "evil empire" is actually from the future trying to prevent a worse timeline.',
     'The protagonist discovers they're the monster from someone else's horror story.',
     'The magic/powers everyone uses has terrible long-term consequences no one knows about.',
-    'The protagonist has been solving the wrong mystery—the real crime is something else entirely.',
+    'The protagonist has been solving the wrong mystery-the real crime is something else entirely.',
     'The character everyone thought was ordinary was actually a god/demon/powerful being in disguise.',
-    'The protagonist's memories of being the hero are false—they were actually the villain.',
+    'The protagonist's memories of being the hero are false-they were actually the villain.',
     'The seemingly random events were all orchestrated as an elaborate message or test.',
-    'The person they've been talking to doesn't exist—it's their own fractured psyche.',
+    'The person they've been talking to doesn't exist-it's their own fractured psyche.',
     'The protagonist is patient zero of the catastrophe they're trying to stop.',
     'The happy ending they achieved is actually the beginning of something terrible.',
     'The entire cast realizes they're in a time loop someone else is controlling.',
@@ -382,7 +382,7 @@ const RandomPlotTwistGeneratorPage = () => {
               <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">What makes a good plot twist?</h3>
                 <p className="text-gray-700">
-                  A good plot twist is both surprising and inevitable—it shocks readers while making perfect sense in retrospect. The best twists recontextualize earlier events, forcing readers to reconsider what they thought they knew. Our random plot twist generator creates twists with these qualities.
+                  A good plot twist is both surprising and inevitable-it shocks readers while making perfect sense in retrospect. The best twists recontextualize earlier events, forcing readers to reconsider what they thought they knew. Our random plot twist generator creates twists with these qualities.
                 </p>
               </div>
               <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
@@ -394,13 +394,13 @@ const RandomPlotTwistGeneratorPage = () => {
               <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">How do I incorporate a plot twist effectively?</h3>
                 <p className="text-gray-700">
-                  Effective plot twists require careful foreshadowing—plant subtle clues throughout your story that readers will only recognize in hindsight. The twist should feel earned, not arbitrary. Use our generated twists as frameworks, then build your narrative to support and justify the revelation.
+                  Effective plot twists require careful foreshadowing-plant subtle clues throughout your story that readers will only recognize in hindsight. The twist should feel earned, not arbitrary. Use our generated twists as frameworks, then build your narrative to support and justify the revelation.
                 </p>
               </div>
               <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">Do plot twists work in all genres?</h3>
                 <p className="text-gray-700">
-                  Yes! Plot twists enhance stories across all genres including mystery, thriller, fantasy, science fiction, romance, horror, and literary fiction. The type of twist should match your genre conventions—mysteries might reveal whodunit, while sci-fi might subvert reality itself.
+                  Yes! Plot twists enhance stories across all genres including mystery, thriller, fantasy, science fiction, romance, horror, and literary fiction. The type of twist should match your genre conventions-mysteries might reveal whodunit, while sci-fi might subvert reality itself.
                 </p>
               </div>
             </div>
