@@ -39,16 +39,16 @@ const Header: React.FC = () => {
                 </svg>
               </button>
               <div className="absolute top-full left-0 mt-2 w-64 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-600 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                <Link href="/ai-art-prompts/ghostface/" className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border-b border-gray-100 dark:border-gray-600">
+                <Link href="/ghostface-ai-trend-prompt-generator" className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border-b border-gray-100 dark:border-gray-600">
                   Ghostface AI Trend
                 </Link>
-                <Link href="/ai-art-prompts/gemini-snow/" className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border-b border-gray-100 dark:border-gray-600">
+                <Link href="/gemini-ai-snow-prompt-tutorial" className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border-b border-gray-100 dark:border-gray-600">
                   Gemini AI Snow Tutorial
                 </Link>
-                <Link href="/ai-art-prompts/chatgpt-photo/" className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border-b border-gray-100 dark:border-gray-600">
+                <Link href="/chatgpt-photo-editing-prompts" className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border-b border-gray-100 dark:border-gray-600">
                   ChatGPT Photo Editing
                 </Link>
-                <Link href="/ai-art-prompts/gemini-photo/" className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border-b border-gray-100 dark:border-gray-600">
+                <Link href="/gemini-photo-editing-prompts" className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border-b border-gray-100 dark:border-gray-600">
                   Gemini Photo Editing
                 </Link>
                 <Link href="/writing-prompts/october/" className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border-b border-gray-100 dark:border-gray-600">
@@ -76,7 +76,7 @@ const Header: React.FC = () => {
                     </Link>
                   </div>
                 </div>
-                <Link href="/ai-art-prompts/midjourney/" className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border-b border-gray-100 dark:border-gray-600">
+                <Link href="/midjourney-ai-picture-generator" className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border-b border-gray-100 dark:border-gray-600">
                   Midjourney AI Prompts
                 </Link>
                 <Link href="/writing-prompts/nano-banana/" className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700">
@@ -136,25 +136,25 @@ const Header: React.FC = () => {
               <div className="border-t border-gray-100 dark:border-gray-700 pt-3">
                 <div className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Prompts</div>
                 <div className="flex flex-col space-y-2 pl-3">
-                  <Link href="/ai-art-prompts/ghostface/"
+                  <Link href="/ghostface-ai-trend-prompt-generator"
                     className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-1.5"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     Ghostface AI Trend
                   </Link>
-                  <Link href="/ai-art-prompts/gemini-snow/"
+                  <Link href="/gemini-ai-snow-prompt-tutorial"
                     className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-1.5"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     Gemini AI Snow Tutorial
                   </Link>
-                  <Link href="/ai-art-prompts/chatgpt-photo/"
+                  <Link href="/chatgpt-photo-editing-prompts"
                     className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-1.5"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     ChatGPT Photo Editing
                   </Link>
-                  <Link href="/ai-art-prompts/gemini-photo/"
+                  <Link href="/gemini-photo-editing-prompts"
                     className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-1.5"
                     onClick={() => setMobileMenuOpen(false)}
                   >
@@ -196,7 +196,7 @@ const Header: React.FC = () => {
                     </Link>
                   </div>
 
-                  <Link href="/ai-art-prompts/midjourney/"
+                  <Link href="/midjourney-ai-picture-generator"
                     className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-1.5"
                     onClick={() => setMobileMenuOpen(false)}
                   >

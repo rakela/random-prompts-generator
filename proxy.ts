@@ -49,7 +49,16 @@ const redirects: Record<string, string> = {
 
   // AI Art Prompts
   '/ai-art-prompts': '/ai-art-prompts/images/',
-  '/midjourney-ai-picture-generator': '/ai-art-prompts/midjourney/',
+  '/ai-images-prompt': '/ai-art-prompts/images/',
+
+  // Redirect Hub & Spoke URLs to keyword-rich URLs for featured prompts
+  '/ai-art-prompts/midjourney': '/midjourney-ai-picture-generator',
+  '/ai-art-prompts/ghostface': '/ghostface-ai-trend-prompt-generator',
+  '/ai-art-prompts/gemini-snow': '/gemini-ai-snow-prompt-tutorial',
+  '/ai-art-prompts/chatgpt-photo': '/chatgpt-photo-editing-prompts',
+  '/ai-art-prompts/gemini-photo': '/gemini-photo-editing-prompts',
+
+  // Other AI art prompts
   '/aesthetic-ai-prompts': '/ai-art-prompts/aesthetic/',
   '/photography-prompts': '/ai-art-prompts/photography/',
   '/portrait-prompts': '/ai-art-prompts/portrait/',
@@ -64,11 +73,6 @@ const redirects: Record<string, string> = {
   '/digital-art-prompts': '/ai-art-prompts/digital/',
   '/3d-art-prompts': '/ai-art-prompts/3d/',
   '/pixel-art-prompts': '/ai-art-prompts/pixel/',
-  '/ghostface-ai-trend-prompt-generator': '/ai-art-prompts/ghostface/',
-  '/gemini-ai-snow-prompt-tutorial': '/ai-art-prompts/gemini-snow/',
-  '/chatgpt-photo-editing-prompts': '/ai-art-prompts/chatgpt-photo/',
-  '/gemini-photo-editing-prompts': '/ai-art-prompts/gemini-photo/',
-  '/ai-images-prompt': '/ai-art-prompts/images/',
   '/random-aesthetic-prompt-generator': '/ai-art-prompts/aesthetic/',
   '/random-art-style-generator': '/ai-art-prompts/art-style/',
   '/random-photography-prompt-generator': '/ai-art-prompts/photography/',
