@@ -60,13 +60,13 @@ export default function ChatGPTPhotoEditingPromptsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-purple-50 to-pink-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 dark:from-gray-900 via-purple-50 dark:via-gray-800 to-pink-50 dark:to-gray-900">
       <SEO pageKey="chatgptPhotoEditingPrompts" />
       <Header />
 
       {/* Hero Section */}
       <section className="relative py-20 px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-600/10 via-pink-500/10 to-blue-600/10"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-600/10 dark:from-purple-400/5 via-pink-500/10 dark:via-pink-400/5 to-blue-600/10 dark:to-blue-400/5"></div>
         <div className="max-w-6xl mx-auto relative">
           <div className="text-center">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-100 rounded-full mb-6">
@@ -338,7 +338,7 @@ export default function ChatGPTPhotoEditingPromptsPage() {
 
       {/* Advanced Tips Section */}
       <section className="max-w-4xl mx-auto px-4 py-12">
-        <div className="bg-gradient-to-br from-pink-50 to-purple-50 rounded-2xl shadow-xl p-8">
+        <div className="bg-gradient-to-br from-pink-50 dark:from-gray-800 to-purple-50 dark:to-gray-700 rounded-2xl shadow-xl p-8">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">
             Advanced Photo Editing Techniques with ChatGPT
           </h2>
@@ -459,7 +459,7 @@ export default function ChatGPTPhotoEditingPromptsPage() {
           <div className="grid md:grid-cols-2 gap-4">
             <a
               href="/gemini-photo-editing-prompts"
-              className="flex items-center gap-3 p-4 bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl hover:shadow-md transition-shadow"
+              className="flex items-center gap-3 p-4 bg-gradient-to-r from-purple-50 dark:from-gray-800 to-pink-50 dark:to-gray-700 rounded-xl hover:shadow-md transition-shadow"
             >
               <Wand2 className="w-6 h-6 text-purple-600" />
               <div>
@@ -470,7 +470,7 @@ export default function ChatGPTPhotoEditingPromptsPage() {
 
             <a
               href="/ai-images-prompt"
-              className="flex items-center gap-3 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl hover:shadow-md transition-shadow"
+              className="flex items-center gap-3 p-4 bg-gradient-to-r from-blue-50 dark:from-gray-800 to-indigo-50 dark:to-gray-700 rounded-xl hover:shadow-md transition-shadow"
             >
               <ImageIcon className="w-6 h-6 text-blue-600" />
               <div>
@@ -481,7 +481,7 @@ export default function ChatGPTPhotoEditingPromptsPage() {
 
             <a
               href="/midjourney-ai-picture-generator"
-              className="flex items-center gap-3 p-4 bg-gradient-to-r from-purple-50 to-indigo-50 rounded-xl hover:shadow-md transition-shadow"
+              className="flex items-center gap-3 p-4 bg-gradient-to-r from-purple-50 dark:from-gray-800 to-indigo-50 dark:to-gray-700 rounded-xl hover:shadow-md transition-shadow"
             >
               <Sparkles className="w-6 h-6 text-purple-600" />
               <div>
@@ -492,7 +492,7 @@ export default function ChatGPTPhotoEditingPromptsPage() {
 
             <a
               href="/gemini-ai-snow-prompt-tutorial"
-              className="flex items-center gap-3 p-4 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl hover:shadow-md transition-shadow"
+              className="flex items-center gap-3 p-4 bg-gradient-to-r from-blue-50 dark:from-gray-800 to-cyan-50 dark:to-gray-700 rounded-xl hover:shadow-md transition-shadow"
             >
               <ImageIcon className="w-6 h-6 text-blue-600" />
               <div>

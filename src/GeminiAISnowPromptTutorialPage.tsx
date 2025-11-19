@@ -42,13 +42,13 @@ export default function GeminiAISnowPromptTutorialPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 dark:from-gray-900 via-blue-50 dark:via-gray-800 to-indigo-50 dark:to-gray-900">
       <SEO pageKey="geminiAISnowPromptTutorial" />
       <Header />
 
       {/* Hero Section */}
       <section className="relative py-20 px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-indigo-500/10 to-purple-600/10"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 dark:from-blue-400/5 via-indigo-500/10 dark:via-indigo-400/5 to-purple-600/10 dark:to-purple-400/5"></div>
         <div className="max-w-6xl mx-auto relative">
           <div className="text-center">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 rounded-full mb-6">
@@ -299,7 +299,7 @@ export default function GeminiAISnowPromptTutorialPage() {
 
       {/* Advanced Tips Section */}
       <section className="max-w-4xl mx-auto px-4 py-12">
-        <div className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-2xl shadow-xl p-8">
+        <div className="bg-gradient-to-br from-purple-50 dark:from-gray-800 to-indigo-50 dark:to-gray-700 rounded-2xl shadow-xl p-8">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">
             Advanced Techniques for Winter Portrait Prompts
           </h2>
@@ -369,7 +369,7 @@ export default function GeminiAISnowPromptTutorialPage() {
           <div className="grid md:grid-cols-2 gap-4">
             <a
               href="/ai-images-prompt"
-              className="flex items-center gap-3 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl hover:shadow-md transition-shadow"
+              className="flex items-center gap-3 p-4 bg-gradient-to-r from-blue-50 dark:from-gray-800 to-indigo-50 dark:to-gray-700 rounded-xl hover:shadow-md transition-shadow"
             >
               <ImageIcon className="w-6 h-6 text-blue-600" />
               <div>
@@ -380,7 +380,7 @@ export default function GeminiAISnowPromptTutorialPage() {
 
             <a
               href="/midjourney-ai-picture-generator"
-              className="flex items-center gap-3 p-4 bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl hover:shadow-md transition-shadow"
+              className="flex items-center gap-3 p-4 bg-gradient-to-r from-purple-50 dark:from-gray-800 to-pink-50 dark:to-gray-700 rounded-xl hover:shadow-md transition-shadow"
             >
               <Sparkles className="w-6 h-6 text-purple-600" />
               <div>
@@ -391,7 +391,7 @@ export default function GeminiAISnowPromptTutorialPage() {
 
             <a
               href="/writing-prompts"
-              className="flex items-center gap-3 p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl hover:shadow-md transition-shadow"
+              className="flex items-center gap-3 p-4 bg-gradient-to-r from-green-50 dark:from-gray-800 to-emerald-50 dark:to-gray-700 rounded-xl hover:shadow-md transition-shadow"
             >
               <BookOpen className="w-6 h-6 text-green-600" />
               <div>
@@ -402,7 +402,7 @@ export default function GeminiAISnowPromptTutorialPage() {
 
             <a
               href="/ghostface-ai-trend-prompt-generator"
-              className="flex items-center gap-3 p-4 bg-gradient-to-r from-orange-50 to-red-50 rounded-xl hover:shadow-md transition-shadow"
+              className="flex items-center gap-3 p-4 bg-gradient-to-r from-orange-50 dark:from-gray-800 to-red-50 dark:to-gray-700 rounded-xl hover:shadow-md transition-shadow"
             >
               <ImageIcon className="w-6 h-6 text-orange-600" />
               <div>
