@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Github, History, Menu, X } from 'lucide-react';
+import { Github, History, Menu, X, Moon, Sun } from 'lucide-react';
 import Logo from './Logo';
+import { useTheme } from '../hooks/useTheme';
 
 interface HeaderProps {
   promptHistory?: any[];
@@ -11,20 +12,21 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ promptHistory = [], showHistory = false, onHistoryToggle }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   return (
-    <header className="bg-white shadow-sm border-b border-gray-200">
+    <header className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700 transition-colors">
       <div className="max-w-6xl mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center space-x-2">
             <Logo size={28} />
-            <span className="text-xl font-bold text-gray-900">Random Prompts</span>
+            <span className="text-xl font-bold text-gray-900 dark:text-gray-100">Random Prompts</span>
           </Link>
 
           {/* Mobile menu toggle button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
+            className="md:hidden p-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -32,7 +34,7 @@ const Header: React.FC<HeaderProps> = ({ promptHistory = [], showHistory = false
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6">
-            <Link to="/" className="text-gray-600 hover:text-blue-600 transition-colors">Home</Link>
+            <Link to="/" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Home</Link>
             <div className="relative group">
               <button className="text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-1">
                 Prompts
@@ -192,14 +194,22 @@ const Header: React.FC<HeaderProps> = ({ promptHistory = [], showHistory = false
                 </div>
               </div>
             </div>
-            <a href="https://github.com/rakela/random-prompts-generator" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-gray-600 hover:text-blue-600 transition-colors">
+            <button
+              onClick={toggleTheme}
+              className="p-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
+              aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+              title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+            >
+              {theme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
+            </button>
+            <a href="https://github.com/rakela/random-prompts-generator" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
               <Github size={16} />
               GitHub
             </a>
             {onHistoryToggle && (
               <button
                 onClick={onHistoryToggle}
-                className="flex items-center gap-1 text-gray-600 hover:text-blue-600 transition-colors"
+                className="flex items-center gap-1 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
               >
                 <History size={16} />
                 History ({promptHistory.length})
@@ -210,7 +220,7 @@ const Header: React.FC<HeaderProps> = ({ promptHistory = [], showHistory = false
 
         {/* Mobile Navigation Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden mt-4 py-4 border-t border-gray-200">
+          <div className="md:hidden mt-4 py-4 border-t border-gray-200 dark:border-gray-700">
             <nav className="flex flex-col space-y-3">
               <Link
                 to="/"
@@ -394,11 +404,19 @@ const Header: React.FC<HeaderProps> = ({ promptHistory = [], showHistory = false
                 </div>
               </div>
 
+              <button
+                onClick={toggleTheme}
+                className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-2 border-t border-gray-100 dark:border-gray-700 pt-3 text-left"
+              >
+                {theme === 'light' ? <Moon size={16} /> : <Sun size={16} />}
+                {theme === 'light' ? 'Dark' : 'Light'} Mode
+              </button>
+
               <a
                 href="https://github.com/rakela/random-prompts-generator"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors py-2 border-t border-gray-100 pt-3"
+                className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-2"
               >
                 <Github size={16} />
                 GitHub
@@ -410,7 +428,7 @@ const Header: React.FC<HeaderProps> = ({ promptHistory = [], showHistory = false
                     onHistoryToggle();
                     setMobileMenuOpen(false);
                   }}
-                  className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors py-2 text-left"
+                  className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-2 text-left"
                 >
                   <History size={16} />
                   History ({promptHistory.length})

@@ -77,20 +77,20 @@ const RandomVillainGeneratorPage = () => {
     if (!prompt) return null;
     const isMultiple = prompt.isMultiple;
     return (
-      <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+      <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow-sm transition-colors">
         {isMultiple ? (
           <div className="mb-4 space-y-4">
             {prompt.text.split('\n\n---\n\n').map((villain, index) => (
-              <div key={index} className="bg-gray-50 px-4 py-3 rounded border text-gray-800 leading-relaxed whitespace-pre-line">
+              <div key={index} className="bg-gray-50 px-4 py-3 rounded border text-gray-800 dark:text-gray-200 leading-relaxed whitespace-pre-line">
                 {villain}
               </div>
             ))}
           </div>
         ) : (
-          <p className="text-gray-800 text-base leading-relaxed mb-4 whitespace-pre-line">{prompt.text}</p>
+          <p className="text-gray-800 dark:text-gray-200 text-base leading-relaxed mb-4 whitespace-pre-line">{prompt.text}</p>
         )}
         <div className="flex flex-wrap gap-2">
-          <button onClick={() => copyToClipboard(prompt.text)} className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-md text-sm transition-colors"><Copy size={14} /> Copy</button>
+          <button onClick={() => copyToClipboard(prompt.text)} className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 dark:text-gray-300 rounded-md text-sm transition-colors"><Copy size={14} /> Copy</button>
           <button onClick={() => savePrompt(prompt)} className="inline-flex items-center gap-2 px-3 py-1.5 bg-green-100 hover:bg-green-200 text-green-700 rounded-md text-sm transition-colors"><Save size={14} /> Save</button>
           <button onClick={() => toggleFavorite(prompt)} className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-md text-sm transition-colors ${favorites.some(fav => fav.id === prompt.id) ? 'bg-yellow-100 hover:bg-yellow-200 text-yellow-700' : 'bg-gray-100 hover:bg-gray-200 text-gray-700'}`}><Star size={14} fill={favorites.some(fav => fav.id === prompt.id) ? 'currentColor' : 'none'} /> Favorite</button>
           <button onClick={() => sharePrompt(prompt)} className="inline-flex items-center gap-2 px-3 py-1.5 bg-indigo-100 hover:bg-indigo-200 text-indigo-700 rounded-md text-sm transition-colors"><Share2 size={14} /> Share</button>
@@ -113,16 +113,16 @@ const RandomVillainGeneratorPage = () => {
         </div>
       </div>
       <div className="max-w-6xl mx-auto px-4">
-        <div className="flex flex-wrap justify-center gap-2 mb-8 border-b border-gray-200">
-          <Link to="/writing-prompts" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"><PenTool size={18} /> Writing</Link>
-          <Link to="/random-character-generator" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"><Crown size={18} /> Characters</Link>
-          <Link to="/random-hero-generator" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"><Sparkles size={18} /> Heroes</Link>
+        <div className="flex flex-wrap justify-center gap-2 mb-8 border-b border-gray-200 dark:border-gray-700">
+          <Link to="/writing-prompts" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"><PenTool size={18} /> Writing</Link>
+          <Link to="/random-character-generator" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"><Crown size={18} /> Characters</Link>
+          <Link to="/random-hero-generator" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"><Sparkles size={18} /> Heroes</Link>
         </div>
       </div>
       <div className="max-w-6xl mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-1 gap-4 mb-6">
-            <select value={controls.count} onChange={(e) => updateControl('count', e.target.value)} className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent">
+            <select value={controls.count} onChange={(e) => updateControl('count', e.target.value)} className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent">
               <option value="single">Single Villain</option>
               <option value="multiple">Generate 3 Villains</option>
               <option value="batch">Generate 5 Villains</option>
@@ -137,15 +137,15 @@ const RandomVillainGeneratorPage = () => {
           {savedPrompts.length > 0 && (
             <div className="mt-12">
               <div className="flex items-center justify-between mb-6">
-                <h3 className="text-2xl font-bold text-gray-900">Saved Villains</h3>
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Saved Villains</h3>
                 <button onClick={exportPrompts} className="inline-flex items-center gap-2 px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg transition-colors"><Download size={16} /> Export All</button>
               </div>
             </div>
           )}
           <div className="mt-16 space-y-8">
             <div className="prose prose-gray max-w-none">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Random Villain Generator</h2>
-              <p className="text-gray-700 mb-4">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">Random Villain Generator</h2>
+              <p className="text-gray-700 dark:text-gray-300 mb-4">
                 Our random villain generator creates complex, multi-dimensional antagonists with clear motivations, dangerous methods, compelling traits, and exploitable weaknesses. Generate random villains for novels, screenplays, D&D campaigns, and creative storytelling.
               </p>
               <div className="bg-red-50 p-4 rounded-lg mt-4">
@@ -159,8 +159,8 @@ const RandomVillainGeneratorPage = () => {
               </div>
             </div>
           </div>
-          <div className="mt-12 bg-gray-50 rounded-lg p-6 border border-gray-200">
-            <h3 className="text-xl font-bold text-gray-900 mb-4">Related Tools</h3>
+          <div className="mt-12 bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+            <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Related Tools</h3>
             <div className="grid md:grid-cols-2 gap-4">
               <Link to="/random-hero-generator" className="text-red-700 hover:underline flex items-center gap-2"><Sparkles size={16} />Hero Generator</Link>
               <Link to="/random-character-generator" className="text-red-700 hover:underline flex items-center gap-2"><Crown size={16} />Character Generator</Link>
@@ -169,21 +169,21 @@ const RandomVillainGeneratorPage = () => {
             </div>
           </div>
         </div>
-        <section className="bg-white py-16 mt-16">
+        <section className="bg-white dark:bg-gray-800 py-16 mt-16 transition-colors">
           <div className="max-w-4xl mx-auto px-4">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-8 text-center">Frequently Asked Questions</h2>
             <div className="space-y-6">
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">What makes a good villain?</h3>
-                <p className="text-gray-700">A good villain has clear motivations that make sense from their perspective, poses a genuine threat to the protagonist, and ideally has relatable human qualities that create complexity. The best villains believe they are the hero of their own story.</p>
+              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">What makes a good villain?</h3>
+                <p className="text-gray-700 dark:text-gray-300">A good villain has clear motivations that make sense from their perspective, poses a genuine threat to the protagonist, and ideally has relatable human qualities that create complexity. The best villains believe they are the hero of their own story.</p>
               </div>
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Can I use generated villains in my projects?</h3>
-                <p className="text-gray-700">Yes! All random villains generated by RandomPrompts.org are free to use in your creative writing, D&D campaigns, novels, screenplays, and storytelling projects.</p>
+              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Can I use generated villains in my projects?</h3>
+                <p className="text-gray-700 dark:text-gray-300">Yes! All random villains generated by RandomPrompts.org are free to use in your creative writing, D&D campaigns, novels, screenplays, and storytelling projects.</p>
               </div>
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Why include a weakness for villains?</h3>
-                <p className="text-gray-700">A villain's weakness makes them defeatable and creates dramatic tension. It also humanizes them and provides story opportunities. The most interesting weaknesses are tied to the villain's strengths or motivations.</p>
+              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Why include a weakness for villains?</h3>
+                <p className="text-gray-700 dark:text-gray-300">A villain's weakness makes them defeatable and creates dramatic tension. It also humanizes them and provides story opportunities. The most interesting weaknesses are tied to the villain's strengths or motivations.</p>
               </div>
             </div>
           </div>

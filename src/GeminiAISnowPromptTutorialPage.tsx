@@ -58,7 +58,7 @@ export default function GeminiAISnowPromptTutorialPage() {
             <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
               Gemini AI Snow Prompt Tutorial
             </h1>
-            <p className="text-xl text-gray-700 max-w-3xl mx-auto mb-8">
+            <p className="text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto mb-8">
               Master the art of creating stunning winter snow portraits with Google's Gemini AI.
               Learn professional techniques and ready-to-use prompts for breathtaking winter photography.
             </p>
@@ -68,19 +68,19 @@ export default function GeminiAISnowPromptTutorialPage() {
 
       {/* Introduction Section */}
       <section className="max-w-4xl mx-auto px-4 py-12">
-        <div className="bg-white rounded-2xl shadow-xl p-8 mb-12">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 mb-12 transition-colors">
           <div className="flex items-start gap-4 mb-6">
             <BookOpen className="w-8 h-8 text-blue-600 flex-shrink-0 mt-1" />
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
                 Why Gemini AI for Snow Portrait Generation?
               </h2>
-              <p className="text-gray-700 leading-relaxed mb-4">
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
                 Google's Gemini AI has revolutionized image generation with its advanced understanding of natural language
                 and ability to create photorealistic winter scenes. Unlike other AI tools, Gemini excels at capturing the
                 delicate nuances of snow, lighting, and atmospheric mood that make winter portraits truly captivating.
               </p>
-              <p className="text-gray-700 leading-relaxed mb-4">
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
                 This tutorial provides you with three professional-grade prompts designed specifically for creating
                 stunning winter snow portraits. Each prompt has been carefully crafted to maximize Gemini AI's capabilities
                 and deliver consistent, high-quality results.
@@ -93,7 +93,7 @@ export default function GeminiAISnowPromptTutorialPage() {
               <Lightbulb className="w-5 h-5" />
               Pro Tips for Best Results
             </h3>
-            <ul className="space-y-2 text-gray-700">
+            <ul className="space-y-2 text-gray-700 dark:text-gray-300">
               <li className="flex items-start gap-2">
                 <span className="text-blue-600 font-bold">•</span>
                 <span><strong>Upload a reference photo</strong> when using face-specific prompts for consistent results</span>
@@ -118,10 +118,10 @@ export default function GeminiAISnowPromptTutorialPage() {
       {/* Prompts Section */}
       <section className="max-w-6xl mx-auto px-4 py-12">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
             3 Professional Snow Portrait Prompts
           </h2>
-          <p className="text-xl text-gray-600">
+          <p className="text-xl text-gray-600 dark:text-gray-400">
             Copy any prompt below and paste it directly into Gemini AI to create stunning winter portraits
           </p>
         </div>
@@ -130,7 +130,7 @@ export default function GeminiAISnowPromptTutorialPage() {
           {prompts.map((item, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300"
+              className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 transition-colors"
             >
               <div className="grid md:grid-cols-2 gap-0">
                 {/* Image Section */}
@@ -146,7 +146,7 @@ export default function GeminiAISnowPromptTutorialPage() {
                       {item.tags.map((tag, tagIndex) => (
                         <span
                           key={tagIndex}
-                          className="px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-medium text-gray-800"
+                          className="px-3 py-1 bg-white dark:bg-gray-800/90 backdrop-blur-sm rounded-full text-xs font-medium text-gray-800 dark:text-gray-200 transition-colors"
                         >
                           {tag}
                         </span>
@@ -162,10 +162,10 @@ export default function GeminiAISnowPromptTutorialPage() {
                       <ImageIcon className="w-6 h-6 text-blue-600" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                      <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">
                         {item.title}
                       </h3>
-                      <p className="text-gray-600 mb-4">
+                      <p className="text-gray-600 dark:text-gray-400 mb-4">
                         {item.description}
                       </p>
                     </div>
@@ -173,7 +173,7 @@ export default function GeminiAISnowPromptTutorialPage() {
 
                   <div className="bg-gray-50 rounded-xl p-4 mb-4">
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm font-semibold text-gray-700">PROMPT:</span>
+                      <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">PROMPT:</span>
                       <button
                         onClick={() => copyToClipboard(item.prompt, index)}
                         className="flex items-center gap-2 px-3 py-1.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
@@ -191,7 +191,7 @@ export default function GeminiAISnowPromptTutorialPage() {
                         )}
                       </button>
                     </div>
-                    <p className="text-sm text-gray-700 leading-relaxed">
+                    <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
                       {item.prompt}
                     </p>
                   </div>
@@ -213,8 +213,8 @@ export default function GeminiAISnowPromptTutorialPage() {
 
       {/* How to Use Section */}
       <section className="max-w-4xl mx-auto px-4 py-12">
-        <div className="bg-white rounded-2xl shadow-xl p-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 transition-colors">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">
             How to Use These Prompts with Gemini AI
           </h2>
 
@@ -224,10 +224,10 @@ export default function GeminiAISnowPromptTutorialPage() {
                 1
               </div>
               <div>
-                <h3 className="font-bold text-lg text-gray-900 mb-2">
+                <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100 mb-2">
                   Access Gemini AI
                 </h3>
-                <p className="text-gray-700">
+                <p className="text-gray-700 dark:text-gray-300">
                   Visit <a href="https://gemini.google.com" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">gemini.google.com</a> and
                   sign in with your Google account. Make sure you have access to Gemini's image generation features (available in supported regions).
                 </p>
@@ -239,10 +239,10 @@ export default function GeminiAISnowPromptTutorialPage() {
                 2
               </div>
               <div>
-                <h3 className="font-bold text-lg text-gray-900 mb-2">
+                <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100 mb-2">
                   Upload Your Reference Photo (Optional)
                 </h3>
-                <p className="text-gray-700">
+                <p className="text-gray-700 dark:text-gray-300">
                   For prompts that specify "the face remains exactly the same as in the provided reference photo,"
                   upload a clear, well-lit photo of the person you want in the portrait. This ensures facial consistency.
                 </p>
@@ -254,10 +254,10 @@ export default function GeminiAISnowPromptTutorialPage() {
                 3
               </div>
               <div>
-                <h3 className="font-bold text-lg text-gray-900 mb-2">
+                <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100 mb-2">
                   Copy and Paste the Prompt
                 </h3>
-                <p className="text-gray-700">
+                <p className="text-gray-700 dark:text-gray-300">
                   Click the "Copy" button on any prompt above, then paste it into Gemini AI's chat interface.
                   Press Enter to generate your image.
                 </p>
@@ -269,10 +269,10 @@ export default function GeminiAISnowPromptTutorialPage() {
                 4
               </div>
               <div>
-                <h3 className="font-bold text-lg text-gray-900 mb-2">
+                <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100 mb-2">
                   Refine and Iterate
                 </h3>
-                <p className="text-gray-700">
+                <p className="text-gray-700 dark:text-gray-300">
                   If you want to adjust the result, you can modify specific details like clothing colors,
                   lighting intensity, or background elements. Generate multiple versions to find your perfect shot.
                 </p>
@@ -284,10 +284,10 @@ export default function GeminiAISnowPromptTutorialPage() {
                 5
               </div>
               <div>
-                <h3 className="font-bold text-lg text-gray-900 mb-2">
+                <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100 mb-2">
                   Download and Share
                 </h3>
-                <p className="text-gray-700">
+                <p className="text-gray-700 dark:text-gray-300">
                   Once you're satisfied with your result, download the high-resolution image and share it on social media,
                   use it in your portfolio, or print it for physical display.
                 </p>
@@ -300,16 +300,16 @@ export default function GeminiAISnowPromptTutorialPage() {
       {/* Advanced Tips Section */}
       <section className="max-w-4xl mx-auto px-4 py-12">
         <div className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-2xl shadow-xl p-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">
             Advanced Techniques for Winter Portrait Prompts
           </h2>
 
           <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-white rounded-xl p-6">
-              <h3 className="font-bold text-lg text-gray-900 mb-3">
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 transition-colors">
+              <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100 mb-3">
                 Lighting Mastery
               </h3>
-              <ul className="space-y-2 text-gray-700 text-sm">
+              <ul className="space-y-2 text-gray-700 dark:text-gray-300 text-sm">
                 <li><strong>Golden Hour:</strong> Use "warm golden light" for cozy, inviting portraits</li>
                 <li><strong>Blue Hour:</strong> Specify "twilight blue tones" for dramatic, moody scenes</li>
                 <li><strong>Overcast:</strong> "Soft diffused light" creates even, flattering illumination</li>
@@ -317,11 +317,11 @@ export default function GeminiAISnowPromptTutorialPage() {
               </ul>
             </div>
 
-            <div className="bg-white rounded-xl p-6">
-              <h3 className="font-bold text-lg text-gray-900 mb-3">
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 transition-colors">
+              <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100 mb-3">
                 Composition Tricks
               </h3>
-              <ul className="space-y-2 text-gray-700 text-sm">
+              <ul className="space-y-2 text-gray-700 dark:text-gray-300 text-sm">
                 <li><strong>Rule of Thirds:</strong> Position subject off-center for dynamic balance</li>
                 <li><strong>Leading Lines:</strong> Use "snow-covered path" to guide viewer's eye</li>
                 <li><strong>Frame Within Frame:</strong> "Through frosted window" adds depth</li>
@@ -329,11 +329,11 @@ export default function GeminiAISnowPromptTutorialPage() {
               </ul>
             </div>
 
-            <div className="bg-white rounded-xl p-6">
-              <h3 className="font-bold text-lg text-gray-900 mb-3">
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 transition-colors">
+              <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100 mb-3">
                 Color Palette Ideas
               </h3>
-              <ul className="space-y-2 text-gray-700 text-sm">
+              <ul className="space-y-2 text-gray-700 dark:text-gray-300 text-sm">
                 <li><strong>Cool Tones:</strong> Navy, charcoal, and ice blue for sophistication</li>
                 <li><strong>Warm Accents:</strong> Burgundy, mustard, rust for visual pop</li>
                 <li><strong>Neutrals:</strong> Cream, beige, camel for timeless elegance</li>
@@ -341,11 +341,11 @@ export default function GeminiAISnowPromptTutorialPage() {
               </ul>
             </div>
 
-            <div className="bg-white rounded-xl p-6">
-              <h3 className="font-bold text-lg text-gray-900 mb-3">
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 transition-colors">
+              <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100 mb-3">
                 Mood & Emotion
               </h3>
-              <ul className="space-y-2 text-gray-700 text-sm">
+              <ul className="space-y-2 text-gray-700 dark:text-gray-300 text-sm">
                 <li><strong>Serene:</strong> "Peaceful expression, gentle snowfall"</li>
                 <li><strong>Joyful:</strong> "Laughing, catching snowflakes"</li>
                 <li><strong>Contemplative:</strong> "Quiet melancholy, gazing into distance"</li>
@@ -358,11 +358,11 @@ export default function GeminiAISnowPromptTutorialPage() {
 
       {/* Related Resources */}
       <section className="max-w-4xl mx-auto px-4 py-12 mb-12">
-        <div className="bg-white rounded-2xl shadow-xl p-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 transition-colors">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">
             Explore More AI Prompt Generators
           </h2>
-          <p className="text-gray-700 mb-6">
+          <p className="text-gray-700 dark:text-gray-300 mb-6">
             Looking for more creative prompts? Check out our other AI generators and tools:
           </p>
 
@@ -373,8 +373,8 @@ export default function GeminiAISnowPromptTutorialPage() {
             >
               <ImageIcon className="w-6 h-6 text-blue-600" />
               <div>
-                <div className="font-semibold text-gray-900">AI Art Prompt Generator</div>
-                <div className="text-sm text-gray-600">Create stunning AI art prompts</div>
+                <div className="font-semibold text-gray-900 dark:text-gray-100">AI Art Prompt Generator</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">Create stunning AI art prompts</div>
               </div>
             </a>
 
@@ -384,8 +384,8 @@ export default function GeminiAISnowPromptTutorialPage() {
             >
               <Sparkles className="w-6 h-6 text-purple-600" />
               <div>
-                <div className="font-semibold text-gray-900">Midjourney AI Generator</div>
-                <div className="text-sm text-gray-600">Professional Midjourney prompts</div>
+                <div className="font-semibold text-gray-900 dark:text-gray-100">Midjourney AI Generator</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">Professional Midjourney prompts</div>
               </div>
             </a>
 
@@ -395,8 +395,8 @@ export default function GeminiAISnowPromptTutorialPage() {
             >
               <BookOpen className="w-6 h-6 text-green-600" />
               <div>
-                <div className="font-semibold text-gray-900">Writing Prompts</div>
-                <div className="text-sm text-gray-600">Spark your creativity</div>
+                <div className="font-semibold text-gray-900 dark:text-gray-100">Writing Prompts</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">Spark your creativity</div>
               </div>
             </a>
 
@@ -406,8 +406,8 @@ export default function GeminiAISnowPromptTutorialPage() {
             >
               <ImageIcon className="w-6 h-6 text-orange-600" />
               <div>
-                <div className="font-semibold text-gray-900">Ghostface AI Trend</div>
-                <div className="text-sm text-gray-600">Trending AI portrait style</div>
+                <div className="font-semibold text-gray-900 dark:text-gray-100">Ghostface AI Trend</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">Trending AI portrait style</div>
               </div>
             </a>
           </div>

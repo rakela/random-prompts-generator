@@ -184,20 +184,20 @@ const RandomDialogueGeneratorPage = () => {
     const isMultiple = prompt.isMultiple;
 
     return (
-      <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+      <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow-sm transition-colors">
         {isMultiple ? (
           <div className="mb-4 space-y-4">
             {prompt.text.split('\n\n---\n\n').map((dialogue, index) => (
-              <div key={index} className="bg-gray-50 px-4 py-3 rounded border text-gray-800 leading-relaxed whitespace-pre-line">
+              <div key={index} className="bg-gray-50 px-4 py-3 rounded border text-gray-800 dark:text-gray-200 leading-relaxed whitespace-pre-line">
                 {dialogue}
               </div>
             ))}
           </div>
         ) : (
-          <p className="text-gray-800 text-lg leading-relaxed mb-4 whitespace-pre-line">{prompt.text}</p>
+          <p className="text-gray-800 dark:text-gray-200 text-lg leading-relaxed mb-4 whitespace-pre-line">{prompt.text}</p>
         )}
         <div className="flex flex-wrap gap-2">
-          <button onClick={() => copyToClipboard(prompt.text)} className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-md text-sm transition-colors">
+          <button onClick={() => copyToClipboard(prompt.text)} className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 dark:text-gray-300 rounded-md text-sm transition-colors">
             <Copy size={14} /> Copy {isMultiple ? 'All' : ''}
           </button>
           <button onClick={() => savePrompt(prompt)} className="inline-flex items-center gap-2 px-3 py-1.5 bg-green-100 hover:bg-green-200 text-green-700 rounded-md text-sm transition-colors">
@@ -237,21 +237,21 @@ const RandomDialogueGeneratorPage = () => {
       </div>
 
       <div className="max-w-6xl mx-auto px-4">
-        <div className="flex flex-wrap justify-center gap-2 mb-8 border-b border-gray-200">
-          <Link to="/writing-prompts" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50">
+        <div className="flex flex-wrap justify-center gap-2 mb-8 border-b border-gray-200 dark:border-gray-700">
+          <Link to="/writing-prompts" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700">
             <PenTool size={18} /> Writing
           </Link>
-          <Link to="/ai-images-prompt" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50">
+          <Link to="/ai-images-prompt" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72Z"></path>
               <path d="m14 7 3 3"></path><path d="M5 6v4"></path><path d="M19 14v4"></path><path d="M10 2v2"></path><path d="M7 8H3"></path><path d="M21 16h-4"></path><path d="M11 3H9"></path>
             </svg>
             AI Images
           </Link>
-          <Link to="/ai-blog-post-generator" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50">
+          <Link to="/ai-blog-post-generator" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700">
             <BookOpen size={18} /> Blog post
           </Link>
-          <Link to="/short-story-prompts-generator" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50">
+          <Link to="/short-story-prompts-generator" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700">
             <Crown size={18} /> Short stories
           </Link>
         </div>
@@ -260,7 +260,7 @@ const RandomDialogueGeneratorPage = () => {
       <div className="max-w-6xl mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-            <select value={controls.type} onChange={(e) => updateControl('type', e.target.value)} className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+            <select value={controls.type} onChange={(e) => updateControl('type', e.target.value)} className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
               <option value="any">Any Type</option>
               <option value="conflict">Conflict</option>
               <option value="mysterious">Mysterious</option>
@@ -269,7 +269,7 @@ const RandomDialogueGeneratorPage = () => {
               <option value="dramatic">Dramatic</option>
               <option value="philosophical">Philosophical</option>
             </select>
-            <select value={controls.count} onChange={(e) => updateControl('count', e.target.value)} className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+            <select value={controls.count} onChange={(e) => updateControl('count', e.target.value)} className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
               <option value="single">Single Dialogue</option>
               <option value="multiple">Generate 3 Dialogues</option>
               <option value="batch">Generate 5 Dialogues</option>
@@ -285,9 +285,9 @@ const RandomDialogueGeneratorPage = () => {
           {generatedPrompt && renderPromptCard(generatedPrompt)}
 
           {showHistory && (
-            <div className="mt-8 bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+            <div className="mt-8 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow-sm transition-colors">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold text-gray-900">Recent Dialogues</h3>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Recent Dialogues</h3>
                 <button onClick={() => setPromptHistory([])} className="text-sm text-gray-500 hover:text-red-600 transition-colors">Clear History</button>
               </div>
               {promptHistory.length === 0 ? (
@@ -298,11 +298,11 @@ const RandomDialogueGeneratorPage = () => {
                     <div key={prompt.id} className="bg-gray-50 rounded-lg p-3 border border-gray-100">
                       <div className="flex items-start justify-between gap-3">
                         <div className="flex-1">
-                          <p className="text-sm text-gray-800 leading-relaxed line-clamp-3 whitespace-pre-line">{prompt.text}</p>
+                          <p className="text-sm text-gray-800 dark:text-gray-200 leading-relaxed line-clamp-3 whitespace-pre-line">{prompt.text}</p>
                           <span className="text-xs text-gray-400 mt-2 block">{new Date(prompt.timestamp).toLocaleTimeString()}</span>
                         </div>
                         <div className="flex items-center gap-1">
-                          <button onClick={() => copyToClipboard(prompt.text)} className="p-1 text-gray-400 hover:text-gray-600 transition-colors" title="Copy">
+                          <button onClick={() => copyToClipboard(prompt.text)} className="p-1 text-gray-400 hover:text-gray-600 dark:text-gray-400 transition-colors" title="Copy">
                             <Copy size={14} />
                           </button>
                           <button onClick={() => toggleFavorite(prompt)} className={`p-1 transition-colors ${favorites.some(fav => fav.id === prompt.id) ? 'text-yellow-600 hover:text-yellow-700' : 'text-gray-400 hover:text-yellow-600'}`} title="Favorite">
@@ -320,15 +320,15 @@ const RandomDialogueGeneratorPage = () => {
           {savedPrompts.length > 0 && (
             <div className="mt-12">
               <div className="flex items-center justify-between mb-6">
-                <h3 className="text-2xl font-bold text-gray-900">Saved Dialogues</h3>
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Saved Dialogues</h3>
                 <button onClick={exportPrompts} className="inline-flex items-center gap-2 px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg transition-colors">
                   <Download size={16} /> Export All
                 </button>
               </div>
               <div className="grid gap-4">
                 {savedPrompts.slice(-5).map((prompt, index) => (
-                  <div key={index} className="bg-gray-50 border border-gray-200 rounded-lg p-4">
-                    <p className="text-gray-800 whitespace-pre-line">{prompt.text}</p>
+                  <div key={index} className="bg-gray-50 border border-gray-200 dark:border-gray-700 rounded-lg p-4">
+                    <p className="text-gray-800 dark:text-gray-200 whitespace-pre-line">{prompt.text}</p>
                   </div>
                 ))}
               </div>
@@ -337,11 +337,11 @@ const RandomDialogueGeneratorPage = () => {
 
           <div className="mt-16 space-y-8">
             <div className="prose prose-gray max-w-none">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Random Dialogue Generator</h2>
-              <p className="text-gray-700 mb-4">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">Random Dialogue Generator</h2>
+              <p className="text-gray-700 dark:text-gray-300 mb-4">
                 Our random dialogue generator creates authentic, engaging conversations across multiple tones and contexts including conflict-driven arguments, mysterious exchanges, romantic interactions, humorous banter, dramatic confrontations, and philosophical discussions. Generate random dialogue for character development, script writing, and story creation.
               </p>
-              <p className="text-gray-700 mb-4">
+              <p className="text-gray-700 dark:text-gray-300 mb-4">
                 This free dialogue generator produces high-quality character conversations perfect for novels, screenplays, creative writing exercises, and storytelling practice. Each generated dialogue captures realistic character voices, emotional depth, and narrative tension.
               </p>
               <div className="bg-blue-50 p-4 rounded-lg mt-4">
@@ -355,9 +355,9 @@ const RandomDialogueGeneratorPage = () => {
               </div>
             </div>
 
-            <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Example Random Dialogues:</h3>
-              <ul className="space-y-3 text-gray-700">
+            <div className="bg-gray-50 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Example Random Dialogues:</h3>
+              <ul className="space-y-3 text-gray-700 dark:text-gray-300">
                 <li className="flex gap-2"><span className="text-blue-600 font-bold">•</span> <span>Conflict: "You said you'd be there," she whispered. "You promised." "I know, and I'm sorry, but-" "No. No more excuses."</span></li>
                 <li className="flex gap-2"><span className="text-blue-600 font-bold">•</span> <span>Mysterious: "They told me you'd come," the old woman said. "Who told you?" "The ones who know. They always know."</span></li>
                 <li className="flex gap-2"><span className="text-blue-600 font-bold">•</span> <span>Romantic: "I love you," he said simply. "I have for years." She looked up, tears streaming. "You idiot. I loved you too."</span></li>
@@ -367,8 +367,8 @@ const RandomDialogueGeneratorPage = () => {
             </div>
           </div>
 
-          <div className="mt-12 bg-gray-50 rounded-lg p-6 border border-gray-200">
-            <h3 className="text-xl font-bold text-gray-900 mb-4">Related Writing Tools</h3>
+          <div className="mt-12 bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+            <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Related Writing Tools</h3>
             <div className="grid md:grid-cols-2 gap-4">
               <Link to="/random-character-generator" className="text-blue-600 hover:underline flex items-center gap-2">
                 <PenTool size={16} />
@@ -390,31 +390,31 @@ const RandomDialogueGeneratorPage = () => {
           </div>
         </div>
 
-        <section className="bg-white py-16 mt-16">
+        <section className="bg-white dark:bg-gray-800 py-16 mt-16 transition-colors">
           <div className="max-w-4xl mx-auto px-4">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-8 text-center">Frequently Asked Questions</h2>
             <div className="space-y-6">
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">What is a random dialogue generator?</h3>
-                <p className="text-gray-700">
+              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">What is a random dialogue generator?</h3>
+                <p className="text-gray-700 dark:text-gray-300">
                   A random dialogue generator is a tool that creates realistic character conversations across various tones including conflict, mystery, romance, humor, drama, and philosophical discussions. Its perfect for character development, script writing, and storytelling practice.
                 </p>
               </div>
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">How can random dialogue help with writing?</h3>
-                <p className="text-gray-700">
+              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">How can random dialogue help with writing?</h3>
+                <p className="text-gray-700 dark:text-gray-300">
                   Random dialogue provides examples of character voice, emotional authenticity, and narrative tension. Use generated dialogues to study conversation structure, practice different tones, develop character relationships, or overcome dialogue writing blocks. They re excellent for learning how to write realistic conversations.
                 </p>
               </div>
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Can I use generated dialogues in my stories?</h3>
-                <p className="text-gray-700">
+              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Can I use generated dialogues in my stories?</h3>
+                <p className="text-gray-700 dark:text-gray-300">
                   Yes! All random dialogues generated by RandomPrompts.org are free to use as inspiration, practice examples, or starting points for your novels, screenplays, short stories, and creative writing projects. Adapt them to fit your characters and narrative needs.
                 </p>
               </div>
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">What dialogue types are available?</h3>
-                <p className="text-gray-700">
+              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">What dialogue types are available?</h3>
+                <p className="text-gray-700 dark:text-gray-300">
                   Our random dialogue generator offers six distinct types: conflict dialogues for tension and arguments, mysterious conversations for intrigue, romantic exchanges for love stories, humorous banter for comedy, dramatic confrontations for intense scenes, and philosophical discussions for deeper themes.
                 </p>
               </div>

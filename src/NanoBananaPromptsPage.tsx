@@ -265,17 +265,17 @@ const NanoBananaPromptsPage = () => {
 
       {/* Tab Navigation */}
       <div className="max-w-6xl mx-auto px-4">
-        <div className="flex flex-wrap justify-center gap-2 mb-8 border-b border-gray-200">
+        <div className="flex flex-wrap justify-center gap-2 mb-8 border-b border-gray-200 dark:border-gray-700">
           <Link
             to="/writing-prompts"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"
           >
             <PenTool size={18} />
             Writing
           </Link>
           <Link
             to="/ai-images-prompt"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72Z"></path>
@@ -291,21 +291,21 @@ const NanoBananaPromptsPage = () => {
           </Link>
           <Link
             to="/ai-blog-post-generator"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"
           >
             <BookOpen size={18} />
             Blog post
           </Link>
           <Link
             to="/short-story-prompts-generator"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"
           >
             <Crown size={18} />
             Short stories
           </Link>
           <Link
             to="/random-name-generator"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"
           >
             <Sparkles size={18} />
             Names
@@ -324,7 +324,7 @@ const NanoBananaPromptsPage = () => {
                 placeholder="Search prompts..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full px-4 py-3 pl-10 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+                className="w-full px-4 py-3 pl-10 rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
               />
               <Filter className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
             </div>
@@ -351,9 +351,9 @@ const NanoBananaPromptsPage = () => {
 
           {/* History Panel */}
           {showHistory && (
-            <div className="mt-8 bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+            <div className="mt-8 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow-sm transition-colors">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold text-gray-900">Recent Prompts</h3>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Recent Prompts</h3>
                 <button
                   onClick={() => setPromptHistory([])}
                   className="text-sm text-gray-500 hover:text-red-600 transition-colors"
@@ -369,7 +369,7 @@ const NanoBananaPromptsPage = () => {
                     <div key={prompt.id} className="bg-gray-50 rounded-lg p-3 border border-gray-100">
                       <div className="flex items-start justify-between gap-3">
                         <div className="flex-1">
-                          <p className="text-sm text-gray-700">{prompt.prompt}</p>
+                          <p className="text-sm text-gray-700 dark:text-gray-300">{prompt.prompt}</p>
                           <span className="text-xs text-gray-400 mt-1 inline-block">
                             {new Date(prompt.timestamp).toLocaleTimeString()}
                           </span>
@@ -377,7 +377,7 @@ const NanoBananaPromptsPage = () => {
                         <div className="flex items-center gap-1">
                           <button
                             onClick={() => copyToClipboard(prompt.prompt)}
-                            className="p-1 text-gray-400 hover:text-gray-600 transition-colors"
+                            className="p-1 text-gray-400 hover:text-gray-600 dark:text-gray-400 transition-colors"
                             title="Copy"
                           >
                             <Copy size={14} />
@@ -404,17 +404,17 @@ const NanoBananaPromptsPage = () => {
 
           {/* All Prompts Display */}
           <div className="mt-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6 text-center">
               {selectedCategory === 'all' ? 'All Nano Banana Prompts' : `${categoryInfo[selectedCategory].label} Prompts`}
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               {paginatedPrompts.map((prompt) => (
-                <div key={prompt.id} className="bg-white border border-yellow-200 rounded-lg p-4 hover:shadow-lg transition-all hover:-translate-y-1 flex flex-col">
+                <div key={prompt.id} className="bg-white dark:bg-gray-800 border border-yellow-200 rounded-lg p-4 hover:shadow-lg transition-all hover:-translate-y-1 flex flex-col transition-colors">
                   <div className="w-full h-32 bg-gradient-to-br from-yellow-100 to-orange-100 rounded-lg flex items-center justify-center mb-3">
                     <span className="text-4xl">🍌</span>
                   </div>
-                  <p className="text-gray-800 text-sm leading-relaxed flex-1 mb-3 line-clamp-4">{prompt.prompt}</p>
+                  <p className="text-gray-800 dark:text-gray-200 text-sm leading-relaxed flex-1 mb-3 line-clamp-4">{prompt.prompt}</p>
                   <button
                     onClick={() => copyToClipboard(prompt.prompt)}
                     className="w-full py-2 px-3 bg-yellow-500 hover:bg-yellow-600 text-white rounded-md text-sm transition-colors flex items-center justify-center gap-2"
@@ -484,18 +484,18 @@ const NanoBananaPromptsPage = () => {
 
             {/* Generated Prompt Card */}
             {generatedPrompt && (
-              <div className="bg-white border-2 border-yellow-300 rounded-lg p-6 shadow-xl mb-8">
+              <div className="bg-white dark:bg-gray-800 border-2 border-yellow-300 rounded-lg p-6 shadow-xl mb-8 transition-colors">
                 <div className="mb-4">
                   <div className="bg-gray-100 rounded-lg h-48 flex items-center justify-center mb-4 overflow-hidden">
                     <div className="text-6xl">🍌</div>
                   </div>
-                  <p className="text-gray-800 text-lg leading-relaxed">{generatedPrompt.prompt}</p>
+                  <p className="text-gray-800 dark:text-gray-200 text-lg leading-relaxed">{generatedPrompt.prompt}</p>
                 </div>
 
                 <div className="flex flex-wrap gap-2 mt-4">
                   <button
                     onClick={() => copyToClipboard(generatedPrompt.prompt)}
-                    className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-md text-sm transition-colors"
+                    className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 dark:text-gray-300 rounded-md text-sm transition-colors"
                   >
                     <Copy size={14} />
                     Copy
@@ -541,7 +541,7 @@ const NanoBananaPromptsPage = () => {
           {savedPrompts.length > 0 && (
             <div className="mt-12">
               <div className="flex items-center justify-between mb-6">
-                <h3 className="text-2xl font-bold text-gray-900">Saved Prompts</h3>
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Saved Prompts</h3>
                 <button
                   onClick={exportPrompts}
                   className="inline-flex items-center gap-2 px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg transition-colors"
@@ -552,8 +552,8 @@ const NanoBananaPromptsPage = () => {
               </div>
               <div className="grid gap-4">
                 {savedPrompts.slice(-5).map((prompt) => (
-                  <div key={prompt.id} className="bg-gray-50 border border-gray-200 rounded-lg p-4">
-                    <p className="text-gray-800">{prompt.prompt}</p>
+                  <div key={prompt.id} className="bg-gray-50 border border-gray-200 dark:border-gray-700 rounded-lg p-4">
+                    <p className="text-gray-800 dark:text-gray-200">{prompt.prompt}</p>
                   </div>
                 ))}
               </div>
@@ -561,8 +561,8 @@ const NanoBananaPromptsPage = () => {
           )}
 
           {/* Related Links */}
-          <div className="mt-12 bg-white rounded-lg p-6 border border-gray-200">
-            <h3 className="text-xl font-bold text-gray-900 mb-4">More Prompt Resources</h3>
+          <div className="mt-12 bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700 transition-colors">
+            <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">More Prompt Resources</h3>
             <div className="grid md:grid-cols-2 gap-4">
               <Link to="/ai-images-prompt" className="text-yellow-600 hover:underline flex items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -610,41 +610,41 @@ const NanoBananaPromptsPage = () => {
         </div>
 
         {/* FAQ Section */}
-        <section className="bg-white py-16 mt-16 rounded-lg">
+        <section className="bg-white dark:bg-gray-800 py-16 mt-16 rounded-lg transition-colors">
           <div className="max-w-4xl mx-auto px-4">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-8 text-center">Frequently Asked Questions</h2>
             <div className="space-y-6">
               <div className="bg-yellow-50 rounded-lg p-6 border border-yellow-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">What is the nano banana prompt generator?</h3>
-                <p className="text-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">What is the nano banana prompt generator?</h3>
+                <p className="text-gray-700 dark:text-gray-300">
                   This tool helps you automatically generate detailed and creative prompts related to nano banana for AI-image generation, 3D modeling, collectibles, and artwork.
                 </p>
               </div>
 
               <div className="bg-yellow-50 rounded-lg p-6 border border-yellow-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">How can I achieve the best results with my nano banana images?</h3>
-                <p className="text-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">How can I achieve the best results with my nano banana images?</h3>
+                <p className="text-gray-700 dark:text-gray-300">
                   Focus on clear subject descriptions combined with specific style keywords, lighting conditions, poses, and accessories. For example, use terms like "soft plush toy", "chibi doll", "transparent capsule", or "studio lighting" to create more precise and compelling artwork.
                 </p>
               </div>
 
               <div className="bg-yellow-50 rounded-lg p-6 border border-yellow-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Can I create 3D figurine designs with these prompts?</h3>
-                <p className="text-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Can I create 3D figurine designs with these prompts?</h3>
+                <p className="text-gray-700 dark:text-gray-300">
                   Absolutely! Our prompts include detailed specifications for scale (1/7, 1/6), materials (acrylic, plush, metal), base designs, packaging concepts, and lighting setups—perfect for designing collectible 3D figurines.
                 </p>
               </div>
 
               <div className="bg-yellow-50 rounded-lg p-6 border border-yellow-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Does this cost anything to use?</h3>
-                <p className="text-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Does this cost anything to use?</h3>
+                <p className="text-gray-700 dark:text-gray-300">
                   No, the core functionality is completely free to use.
                 </p>
               </div>
 
               <div className="bg-yellow-50 rounded-lg p-6 border border-yellow-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">What can I do with the generated prompts?</h3>
-                <p className="text-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">What can I do with the generated prompts?</h3>
+                <p className="text-gray-700 dark:text-gray-300">
                   Use them in popular AI image tools like MidJourney, Stable Diffusion, DALL·E, or Nano Banana AI editor. They're also valuable for 3D modeling projects, packaging mockups, collectible design, and branding work.
                 </p>
               </div>

@@ -162,17 +162,17 @@ const PersuasiveWritingTitlesPage = () => {
 
       {/* Tab Navigation */}
       <div className="max-w-6xl mx-auto px-4">
-        <div className="flex flex-wrap justify-center gap-2 mb-8 border-b border-gray-200">
+        <div className="flex flex-wrap justify-center gap-2 mb-8 border-b border-gray-200 dark:border-gray-700">
           <Link
             to="/writing-prompts"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"
           >
             <PenTool size={18} />
             Writing
           </Link>
           <Link
             to="/ai-images-prompt"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72Z"></path>
@@ -188,21 +188,21 @@ const PersuasiveWritingTitlesPage = () => {
           </Link>
           <Link
             to="/ai-blog-post-generator"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"
           >
             <BookOpen size={18} />
             Blog post
           </Link>
           <Link
             to="/short-story-prompts-generator"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"
           >
             <Crown size={18} />
             Short stories
           </Link>
           <Link
             to="/random-name-generator"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"
           >
             <Sparkles size={18} />
             Names
@@ -281,18 +281,18 @@ const PersuasiveWritingTitlesPage = () => {
 
           {/* Generated Prompt Card */}
           {generatedPrompt && (
-            <div className="bg-white border border-rose-200 rounded-lg p-6 shadow-lg mb-8">
+            <div className="bg-white dark:bg-gray-800 border border-rose-200 rounded-lg p-6 shadow-lg mb-8 transition-colors">
               <div className="flex items-start gap-4 mb-4">
                 <div className="text-4xl">{getCategoryEmoji(getCategoryForTitle(generatedPrompt.title))}</div>
                 <div className="flex-1">
-                  <h3 className="text-2xl font-bold text-gray-900">{generatedPrompt.title}</h3>
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100">{generatedPrompt.title}</h3>
                 </div>
               </div>
 
               <div className="flex flex-wrap gap-2 mt-4">
                 <button
                   onClick={() => copyToClipboard(generatedPrompt.fullText)}
-                  className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-md text-sm transition-colors"
+                  className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 dark:text-gray-300 rounded-md text-sm transition-colors"
                 >
                   <Copy size={14} />
                   Copy
@@ -335,9 +335,9 @@ const PersuasiveWritingTitlesPage = () => {
 
           {/* History Panel */}
           {showHistory && (
-            <div className="mt-8 bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+            <div className="mt-8 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow-sm transition-colors">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold text-gray-900">Recent Titles</h3>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Recent Titles</h3>
                 <button
                   onClick={() => setPromptHistory([])}
                   className="text-sm text-gray-500 hover:text-red-600 transition-colors"
@@ -355,7 +355,7 @@ const PersuasiveWritingTitlesPage = () => {
                         <div className="flex-1">
                           <div className="flex items-center gap-2 mb-1">
                             <span className="text-lg">{getCategoryEmoji(getCategoryForTitle(prompt.title))}</span>
-                            <span className="font-semibold text-gray-900">{prompt.title}</span>
+                            <span className="font-semibold text-gray-900 dark:text-gray-100">{prompt.title}</span>
                           </div>
                           <span className="text-xs text-gray-400 mt-1 inline-block">
                             {new Date(prompt.timestamp).toLocaleTimeString()}
@@ -364,7 +364,7 @@ const PersuasiveWritingTitlesPage = () => {
                         <div className="flex items-center gap-1">
                           <button
                             onClick={() => copyToClipboard(prompt.fullText)}
-                            className="p-1 text-gray-400 hover:text-gray-600 transition-colors"
+                            className="p-1 text-gray-400 hover:text-gray-600 dark:text-gray-400 transition-colors"
                             title="Copy"
                           >
                             <Copy size={14} />
@@ -391,7 +391,7 @@ const PersuasiveWritingTitlesPage = () => {
 
           {/* All Prompts Display */}
           <div className="mt-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">All Persuasive Writing Titles</h2>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6 text-center">All Persuasive Writing Titles</h2>
 
             {/* Global & Environmental Issues */}
             <div className="mb-8">
@@ -404,11 +404,11 @@ const PersuasiveWritingTitlesPage = () => {
                     <div className="flex items-start justify-between gap-3">
                       <div className="flex items-center gap-3 flex-1">
                         <span className="text-2xl">🌎</span>
-                        <h4 className="font-semibold text-gray-900">{index + 1}. {title}</h4>
+                        <h4 className="font-semibold text-gray-900 dark:text-gray-100">{index + 1}. {title}</h4>
                       </div>
                       <button
                         onClick={() => copyToClipboard(title)}
-                        className="p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
+                        className="p-2 text-gray-400 hover:text-gray-600 dark:text-gray-400 transition-colors flex-shrink-0"
                         title="Copy title"
                       >
                         <Copy size={16} />
@@ -430,11 +430,11 @@ const PersuasiveWritingTitlesPage = () => {
                     <div className="flex items-start justify-between gap-3">
                       <div className="flex items-center gap-3 flex-1">
                         <span className="text-2xl">🧠</span>
-                        <h4 className="font-semibold text-gray-900">{index + 6}. {title}</h4>
+                        <h4 className="font-semibold text-gray-900 dark:text-gray-100">{index + 6}. {title}</h4>
                       </div>
                       <button
                         onClick={() => copyToClipboard(title)}
-                        className="p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
+                        className="p-2 text-gray-400 hover:text-gray-600 dark:text-gray-400 transition-colors flex-shrink-0"
                         title="Copy title"
                       >
                         <Copy size={16} />
@@ -456,11 +456,11 @@ const PersuasiveWritingTitlesPage = () => {
                     <div className="flex items-start justify-between gap-3">
                       <div className="flex items-center gap-3 flex-1">
                         <span className="text-2xl">⚙️</span>
-                        <h4 className="font-semibold text-gray-900">{index + 11}. {title}</h4>
+                        <h4 className="font-semibold text-gray-900 dark:text-gray-100">{index + 11}. {title}</h4>
                       </div>
                       <button
                         onClick={() => copyToClipboard(title)}
-                        className="p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
+                        className="p-2 text-gray-400 hover:text-gray-600 dark:text-gray-400 transition-colors flex-shrink-0"
                         title="Copy title"
                       >
                         <Copy size={16} />
@@ -482,11 +482,11 @@ const PersuasiveWritingTitlesPage = () => {
                     <div className="flex items-start justify-between gap-3">
                       <div className="flex items-center gap-3 flex-1">
                         <span className="text-2xl">💬</span>
-                        <h4 className="font-semibold text-gray-900">{index + 16}. {title}</h4>
+                        <h4 className="font-semibold text-gray-900 dark:text-gray-100">{index + 16}. {title}</h4>
                       </div>
                       <button
                         onClick={() => copyToClipboard(title)}
-                        className="p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
+                        className="p-2 text-gray-400 hover:text-gray-600 dark:text-gray-400 transition-colors flex-shrink-0"
                         title="Copy title"
                       >
                         <Copy size={16} />
@@ -502,7 +502,7 @@ const PersuasiveWritingTitlesPage = () => {
           {savedPrompts.length > 0 && (
             <div className="mt-12">
               <div className="flex items-center justify-between mb-6">
-                <h3 className="text-2xl font-bold text-gray-900">Saved Titles</h3>
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Saved Titles</h3>
                 <button
                   onClick={exportPrompts}
                   className="inline-flex items-center gap-2 px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg transition-colors"
@@ -513,10 +513,10 @@ const PersuasiveWritingTitlesPage = () => {
               </div>
               <div className="grid gap-3">
                 {savedPrompts.slice(-5).map((prompt, index) => (
-                  <div key={index} className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                  <div key={index} className="bg-gray-50 border border-gray-200 dark:border-gray-700 rounded-lg p-4">
                     <div className="flex items-center gap-3">
                       <span className="text-2xl">{getCategoryEmoji(getCategoryForTitle(prompt.title))}</span>
-                      <h4 className="font-semibold text-gray-900">{prompt.title}</h4>
+                      <h4 className="font-semibold text-gray-900 dark:text-gray-100">{prompt.title}</h4>
                     </div>
                   </div>
                 ))}
@@ -527,25 +527,25 @@ const PersuasiveWritingTitlesPage = () => {
           {/* SEO Content Section */}
           <div className="mt-16 space-y-8">
             <div className="prose prose-gray max-w-none">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Persuasive Writing Titles for Essays and Debates</h2>
-              <p className="text-gray-700 mb-4">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">Persuasive Writing Titles for Essays and Debates</h2>
+              <p className="text-gray-700 dark:text-gray-300 mb-4">
                 Persuasive writing titles serve as powerful starting points for argumentative essays, research papers, classroom debates, and persuasive speeches. These carefully curated titles cover contemporary issues across global affairs, health, technology, and culture—topics that resonate with today's audiences and offer rich opportunities for critical thinking and persuasive argumentation.
               </p>
-              <p className="text-gray-700 mb-4">
+              <p className="text-gray-700 dark:text-gray-300 mb-4">
                 Each persuasive writing title is framed as a thought-provoking question that invites exploration of multiple perspectives. From climate change and AI ethics to social media impact and cultural debates, these titles address real-world issues that students encounter in their daily lives, making the writing process more engaging and relevant.
               </p>
-              <p className="text-gray-700 mb-4">
+              <p className="text-gray-700 dark:text-gray-300 mb-4">
                 Perfect for high school and college students developing persuasive writing skills, these titles encourage research, critical analysis, and the development of well-supported arguments. Whether you're writing a persuasive essay, preparing for a debate competition, or exploring argumentative writing, these titles provide compelling foundations for meaningful discourse.
               </p>
-              <p className="text-gray-700 mb-4">
+              <p className="text-gray-700 dark:text-gray-300 mb-4">
                 Prefer shorter prompts? Try our <Link to="/writing-prompts" className="text-blue-600 hover:underline">Writing Prompts Generator</Link> or switch to seasonal visuals by visiting our <Link to="/ai-images-prompt" className="text-blue-600 hover:underline">AI Art Prompts page</Link>.
               </p>
             </div>
           </div>
 
           {/* Related Links */}
-          <div className="mt-12 bg-gray-50 rounded-lg p-6 border border-gray-200">
-            <h3 className="text-xl font-bold text-gray-900 mb-4">More Writing Resources</h3>
+          <div className="mt-12 bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+            <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">More Writing Resources</h3>
             <div className="grid md:grid-cols-2 gap-4">
               <Link to="/persuasive-essays-topics" className="text-rose-600 hover:underline flex items-center gap-2">
                 <PenTool size={16} />
@@ -568,41 +568,41 @@ const PersuasiveWritingTitlesPage = () => {
         </div>
 
         {/* FAQ Section */}
-        <section className="bg-white py-16 mt-16">
+        <section className="bg-white dark:bg-gray-800 py-16 mt-16 transition-colors">
           <div className="max-w-4xl mx-auto px-4">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-8 text-center">Frequently Asked Questions</h2>
             <div className="space-y-6">
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">What makes a good persuasive writing title?</h3>
-                <p className="text-gray-700">
+              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">What makes a good persuasive writing title?</h3>
+                <p className="text-gray-700 dark:text-gray-300">
                   A good persuasive writing title presents a debatable question on a relevant topic with clear opposing viewpoints. It should be specific enough to guide research and argument development while broad enough to allow for comprehensive exploration of the issue.
                 </p>
               </div>
 
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">How do I turn these titles into full essays?</h3>
-                <p className="text-gray-700">
+              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">How do I turn these titles into full essays?</h3>
+                <p className="text-gray-700 dark:text-gray-300">
                   Start by choosing a title that interests you, research both sides of the issue, develop a clear thesis statement taking a position, gather evidence supporting your argument, acknowledge counterarguments, and structure your essay with a strong introduction, body paragraphs, and conclusion.
                 </p>
               </div>
 
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Can I modify these persuasive writing titles?</h3>
-                <p className="text-gray-700">
+              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Can I modify these persuasive writing titles?</h3>
+                <p className="text-gray-700 dark:text-gray-300">
                   Absolutely! These persuasive writing titles serve as starting points. You can narrow the focus, adjust the wording, add specific contexts, or combine elements from multiple titles to create the perfect topic for your assignment or interest area.
                 </p>
               </div>
 
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Are these titles suitable for debates?</h3>
-                <p className="text-gray-700">
+              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Are these titles suitable for debates?</h3>
+                <p className="text-gray-700 dark:text-gray-300">
                   Yes! These persuasive writing titles work excellently as debate topics. Each title presents a clear question with multiple valid perspectives, making them ideal for structured debates, classroom discussions, speech competitions, and argumentative presentations.
                 </p>
               </div>
 
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">What's the difference between persuasive titles and argumentative titles?</h3>
-                <p className="text-gray-700">
+              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">What's the difference between persuasive titles and argumentative titles?</h3>
+                <p className="text-gray-700 dark:text-gray-300">
                   While often used interchangeably, persuasive titles may appeal more to emotion and values, while argumentative titles focus on logic and evidence. Our titles work for both approaches—they present debatable questions that can be argued through logical reasoning or persuasive appeals depending on your assignment requirements.
                 </p>
               </div>

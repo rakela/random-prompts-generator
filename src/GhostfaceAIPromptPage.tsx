@@ -121,17 +121,17 @@ const GhostfaceAIPromptPage = () => {
 
       {/* Tab Navigation */}
       <div className="max-w-6xl mx-auto px-4">
-        <div className="flex flex-wrap justify-center gap-2 mb-8 border-b border-gray-200">
+        <div className="flex flex-wrap justify-center gap-2 mb-8 border-b border-gray-200 dark:border-gray-700">
           <Link
             to="/writing-prompts"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"
           >
             <PenTool size={18} />
             Writing
           </Link>
           <Link
             to="/ai-images-prompt"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72Z"></path>
@@ -147,21 +147,21 @@ const GhostfaceAIPromptPage = () => {
           </Link>
           <Link
             to="/ai-blog-post-generator"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"
           >
             <BookOpen size={18} />
             Blog post
           </Link>
           <Link
             to="/short-story-prompts-generator"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"
           >
             <Crown size={18} />
             Short stories
           </Link>
           <Link
             to="/random-name-generator"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"
           >
             <Sparkles size={18} />
             Names
@@ -174,11 +174,11 @@ const GhostfaceAIPromptPage = () => {
         <div className="max-w-4xl mx-auto">
           {/* Introduction */}
           <div className="bg-gradient-to-r from-purple-50 to-red-50 rounded-lg p-6 mb-8 border border-purple-200">
-            <h2 className="text-2xl font-bold text-gray-900 mb-3">🎭 Viral Ghostface AI Art Prompts</h2>
-            <p className="text-gray-700 mb-3">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-3">🎭 Viral Ghostface AI Art Prompts</h2>
+            <p className="text-gray-700 dark:text-gray-300 mb-3">
               The <strong>Ghostface AI trend</strong> has taken TikTok, Instagram, and social media by storm. Create stunning, viral-worthy AI art using these professionally crafted prompts for <Link to="/ai-images-prompt" className="text-purple-600 hover:underline">MidJourney</Link>, DALL-E, and Stable Diffusion.
             </p>
-            <p className="text-gray-700">
+            <p className="text-gray-700 dark:text-gray-300">
               From <strong>cyberpunk neon aesthetics</strong> to <strong>horror mansion scenes</strong> and <strong>viral selfie trends</strong>, these Ghostface prompts combine cinematic lighting, ultra-realistic details, and trending styles perfect for content creators and AI art enthusiasts.
             </p>
           </div>
@@ -197,13 +197,13 @@ const GhostfaceAIPromptPage = () => {
           {/* Prompts Grid */}
           <div className="space-y-8 mb-12">
             {ghostfacePrompts.map((item, index) => (
-              <div key={item.id} className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+              <div key={item.id} className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow transition-colors">
                 <div className="flex items-start gap-4 mb-4">
                   <span className="text-4xl">{item.icon}</span>
                   <div className="flex-1">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">{index + 1}. {item.title}</h3>
-                    <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
-                      <p className="text-gray-800 text-sm leading-relaxed font-mono">{item.prompt}</p>
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">{index + 1}. {item.title}</h3>
+                    <div className="bg-gray-50 rounded-lg p-4 border border-gray-200 dark:border-gray-700">
+                      <p className="text-gray-800 dark:text-gray-200 text-sm leading-relaxed font-mono">{item.prompt}</p>
                     </div>
                   </div>
                 </div>
@@ -280,16 +280,16 @@ const GhostfaceAIPromptPage = () => {
           {/* SEO Content Section */}
           <div className="mt-16 space-y-8">
             <div className="prose prose-gray max-w-none">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Why Ghostface AI Art is Trending</h2>
-              <p className="text-gray-700 mb-4">
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">Why Ghostface AI Art is Trending</h2>
+              <p className="text-gray-700 dark:text-gray-300 mb-4">
                 The <strong>Ghostface AI trend</strong> combines horror iconography with cutting-edge AI art generation, creating visually stunning images that resonate across social media platforms. From <strong>cyberpunk neon aesthetics</strong> to <strong>luxury horror editorials</strong>, these prompts tap into viral content trends that drive engagement.
               </p>
-              <p className="text-gray-700 mb-4">
+              <p className="text-gray-700 dark:text-gray-300 mb-4">
                 Our professionally crafted <strong>Ghostface prompt templates</strong> include technical parameters like <code>--ar 16:9</code> for widescreen compositions, <code>--chaos 20</code> for creative variation, and <code>--style raw</code> for ultra-realistic results. Each prompt is optimized for <Link to="/ai-images-prompt" className="text-blue-600 hover:underline">MidJourney v6</Link>, DALL-E 3, and Stable Diffusion XL.
               </p>
 
-              <h3 className="text-2xl font-bold text-gray-900 mb-3 mt-8">Popular Ghostface AI Styles</h3>
-              <ul className="list-disc list-inside space-y-2 text-gray-700 mb-4">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-3 mt-8">Popular Ghostface AI Styles</h3>
+              <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300 mb-4">
                 <li><strong>Cyberpunk Ghostface:</strong> Neon-lit urban environments with rain-soaked streets and moody atmospheric lighting</li>
                 <li><strong>Horror Aesthetic:</strong> Moonlit forests, mansion interiors, and classic slasher film compositions</li>
                 <li><strong>Fashion Editorial:</strong> Luxury settings with tailored suits, elegant poses, and film noir styling</li>
@@ -298,11 +298,11 @@ const GhostfaceAIPromptPage = () => {
                 <li><strong>Surreal Concepts:</strong> Nano banana memes, cosmic surrealism, and viral humor aesthetics</li>
               </ul>
 
-              <h3 className="text-2xl font-bold text-gray-900 mb-3 mt-8">Tips for Viral Ghostface AI Content</h3>
-              <p className="text-gray-700 mb-4">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-3 mt-8">Tips for Viral Ghostface AI Content</h3>
+              <p className="text-gray-700 dark:text-gray-300 mb-4">
                 To maximize engagement with your Ghostface AI art, consider these content strategies: Use <strong>9:16 aspect ratio</strong> (--ar 9:16) for vertical TikTok and Instagram Reels formats. Experiment with the <code>--chaos</code> parameter (15-25) to create unique variations that stand out. Combine multiple prompts in sequences to create <Link to="/short-story-prompts-generator" className="text-blue-600 hover:underline">storytelling content</Link> that keeps viewers engaged.
               </p>
-              <p className="text-gray-700 mb-4">
+              <p className="text-gray-700 dark:text-gray-300 mb-4">
                 The <strong>Ghostface selfie trend</strong> particularly resonates with younger audiences, combining horror aesthetics with relatable selfie culture. Try customizing outfits, LED colors, and room decor to match your brand or aesthetic. For content creators, these prompts work excellently as <Link to="/ai-blog-post-generator" className="text-blue-600 hover:underline">blog post visuals</Link>, video thumbnails, and social media headers.
               </p>
 
@@ -320,8 +320,8 @@ const GhostfaceAIPromptPage = () => {
           </div>
 
           {/* Related Links Section */}
-          <div className="mt-12 bg-gray-50 rounded-lg p-6 border border-gray-200">
-            <h3 className="text-xl font-bold text-gray-900 mb-4">🔗 More AI Prompt Generators</h3>
+          <div className="mt-12 bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+            <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">🔗 More AI Prompt Generators</h3>
             <div className="grid md:grid-cols-2 gap-4">
               <Link to="/ai-images-prompt" className="text-blue-600 hover:underline flex items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -346,41 +346,41 @@ const GhostfaceAIPromptPage = () => {
         </div>
 
         {/* FAQ Section */}
-        <section className="bg-white py-16 mt-16">
+        <section className="bg-white dark:bg-gray-800 py-16 mt-16 transition-colors">
           <div className="max-w-4xl mx-auto px-4">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-8 text-center">Frequently Asked Questions</h2>
             <div className="space-y-6">
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">What is the Ghostface AI trend?</h3>
-                <p className="text-gray-700">
+              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">What is the Ghostface AI trend?</h3>
+                <p className="text-gray-700 dark:text-gray-300">
                   The Ghostface AI trend involves using AI image generators like MidJourney and DALL-E to create artistic interpretations of the iconic Ghostface character in various aesthetic styles — from cyberpunk and horror to fashion editorials and viral selfie trends.
                 </p>
               </div>
 
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Which AI tools work with these Ghostface prompts?</h3>
-                <p className="text-gray-700">
+              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Which AI tools work with these Ghostface prompts?</h3>
+                <p className="text-gray-700 dark:text-gray-300">
                   These prompts are optimized for <strong>MidJourney v6</strong> (with parameters like --ar, --v 6, --chaos), but also work with <strong>DALL-E 3</strong>, <strong>Stable Diffusion XL</strong>, and <strong>Leonardo.ai</strong>. You may need to adjust or remove specific parameters depending on the platform.
                 </p>
               </div>
 
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Can I use these AI-generated Ghostface images commercially?</h3>
-                <p className="text-gray-700">
+              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Can I use these AI-generated Ghostface images commercially?</h3>
+                <p className="text-gray-700 dark:text-gray-300">
                   The prompts themselves are free to use. However, commercial usage of AI-generated images depends on your AI platform's terms of service and potential copyright considerations around the Ghostface character. Always review platform policies and consider transformative use guidelines.
                 </p>
               </div>
 
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">How do I make Ghostface AI art go viral on TikTok?</h3>
-                <p className="text-gray-700">
+              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">How do I make Ghostface AI art go viral on TikTok?</h3>
+                <p className="text-gray-700 dark:text-gray-300">
                   Use vertical formats (--ar 9:16), trending audio, and relevant hashtags like #GhostfaceAI #MidJourney #AIArt. Post during peak hours, create series or storytelling sequences, and engage with trending Ghostface content to boost visibility. The selfie trend format (prompt #4) performs especially well.
                 </p>
               </div>
 
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">What does the --chaos parameter do in MidJourney?</h3>
-                <p className="text-gray-700">
+              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">What does the --chaos parameter do in MidJourney?</h3>
+                <p className="text-gray-700 dark:text-gray-300">
                   The <code>--chaos</code> parameter (0-100) controls how varied and unexpected the AI results are. Higher values (20-25) create more unique, experimental images, while lower values produce more predictable results. It's perfect for discovering surprising creative directions.
                 </p>
               </div>

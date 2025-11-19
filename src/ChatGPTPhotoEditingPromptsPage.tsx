@@ -76,7 +76,7 @@ export default function ChatGPTPhotoEditingPromptsPage() {
             <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent">
               ChatGPT Prompts for Photo Editing
             </h1>
-            <p className="text-xl text-gray-700 max-w-3xl mx-auto mb-8">
+            <p className="text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto mb-8">
               Master AI-powered photo editing with ChatGPT. Learn how to write effective prompts
               and get professional-quality results with ready-to-use editing templates.
             </p>
@@ -86,25 +86,25 @@ export default function ChatGPTPhotoEditingPromptsPage() {
 
       {/* Introduction Section */}
       <section className="max-w-4xl mx-auto px-4 py-12">
-        <div className="bg-white rounded-2xl shadow-xl p-8 mb-12">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 mb-12 transition-colors">
           <div className="flex items-start gap-4 mb-6">
             <BookOpen className="w-8 h-8 text-purple-600 flex-shrink-0 mt-1" />
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
                 How to Use ChatGPT for Photo Editing
               </h2>
-              <p className="text-gray-700 leading-relaxed mb-4">
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
                 While ChatGPT cannot directly edit images, it excels at providing detailed, professional
                 photo editing instructions that you can implement in tools like Photoshop, Lightroom,
                 GIMP, or mobile apps. By using well-crafted prompts, you can get expert-level editing
                 guidance tailored to your specific photos.
               </p>
-              <p className="text-gray-700 leading-relaxed mb-4">
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
                 For AI tools that do edit images directly (like Adobe Firefly, Canva AI, or specialized
                 photo editing AI), these prompts serve as perfect templates. Simply describe your image
                 and paste the editing instructions for instant professional results.
               </p>
-              <p className="text-gray-700 leading-relaxed mb-4">
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
                 This page provides six professional photo editing prompt templates covering everything
                 from portrait retouching to cinematic color grading. Each template has been optimized
                 for clarity and effectiveness.
@@ -117,7 +117,7 @@ export default function ChatGPTPhotoEditingPromptsPage() {
               <Lightbulb className="w-5 h-5" />
               Essential Tips for Writing Photo Editing Prompts
             </h3>
-            <ul className="space-y-2 text-gray-700">
+            <ul className="space-y-2 text-gray-700 dark:text-gray-300">
               <li className="flex items-start gap-2">
                 <span className="text-purple-600 font-bold">•</span>
                 <span><strong>Be specific about adjustments:</strong> Instead of "make it better," specify "increase contrast by 20% and add warm tones"</span>
@@ -150,10 +150,10 @@ export default function ChatGPTPhotoEditingPromptsPage() {
       {/* Prompts Section */}
       <section className="max-w-6xl mx-auto px-4 py-12">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
             6 Professional Photo Editing Prompt Templates
           </h2>
-          <p className="text-xl text-gray-600">
+          <p className="text-xl text-gray-600 dark:text-gray-400">
             Copy any prompt and customize it for your specific photo editing needs
           </p>
         </div>
@@ -162,7 +162,7 @@ export default function ChatGPTPhotoEditingPromptsPage() {
           {prompts.map((item, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300"
+              className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 transition-colors"
             >
               <div className="p-8">
                 <div className="flex items-start gap-3 mb-4">
@@ -170,10 +170,10 @@ export default function ChatGPTPhotoEditingPromptsPage() {
                     <ImageIcon className="w-6 h-6 text-purple-600" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">
                       {item.title}
                     </h3>
-                    <p className="text-gray-600 mb-4">
+                    <p className="text-gray-600 dark:text-gray-400 mb-4">
                       {item.description}
                     </p>
                     <div className="flex flex-wrap gap-2 mb-4">
@@ -191,7 +191,7 @@ export default function ChatGPTPhotoEditingPromptsPage() {
 
                 <div className="bg-gray-50 rounded-xl p-4 mb-4">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-semibold text-gray-700">PROMPT:</span>
+                    <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">PROMPT:</span>
                     <button
                       onClick={() => copyToClipboard(item.prompt, index)}
                       className="flex items-center gap-2 px-3 py-1.5 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors text-sm font-medium"
@@ -209,7 +209,7 @@ export default function ChatGPTPhotoEditingPromptsPage() {
                       )}
                     </button>
                   </div>
-                  <p className="text-sm text-gray-700 leading-relaxed">
+                  <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
                     {item.prompt}
                   </p>
                 </div>
@@ -230,8 +230,8 @@ export default function ChatGPTPhotoEditingPromptsPage() {
 
       {/* How to Use Section */}
       <section className="max-w-4xl mx-auto px-4 py-12">
-        <div className="bg-white rounded-2xl shadow-xl p-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 transition-colors">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">
             How to Use These Prompts Effectively
           </h2>
 
@@ -241,10 +241,10 @@ export default function ChatGPTPhotoEditingPromptsPage() {
                 1
               </div>
               <div>
-                <h3 className="font-bold text-lg text-gray-900 mb-2">
+                <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100 mb-2">
                   Choose Your Editing Tool
                 </h3>
-                <p className="text-gray-700">
+                <p className="text-gray-700 dark:text-gray-300">
                   Decide whether you're using ChatGPT to get editing instructions for manual editing
                   (Photoshop, Lightroom, GIMP) or pasting prompts into AI editing tools
                   (Adobe Firefly, Canva AI, Photoleap, etc.). For manual editing, ask ChatGPT for
@@ -258,10 +258,10 @@ export default function ChatGPTPhotoEditingPromptsPage() {
                 2
               </div>
               <div>
-                <h3 className="font-bold text-lg text-gray-900 mb-2">
+                <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100 mb-2">
                   Describe Your Photo
                 </h3>
-                <p className="text-gray-700">
+                <p className="text-gray-700 dark:text-gray-300">
                   Start by describing your current photo to ChatGPT: "I have a portrait photo taken
                   indoors with fluorescent lighting. The subject is a woman in her 30s wearing a blue
                   dress. The background is a white wall." This context helps generate better instructions.
@@ -274,10 +274,10 @@ export default function ChatGPTPhotoEditingPromptsPage() {
                 3
               </div>
               <div>
-                <h3 className="font-bold text-lg text-gray-900 mb-2">
+                <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100 mb-2">
                   Paste and Customize the Prompt
                 </h3>
-                <p className="text-gray-700">
+                <p className="text-gray-700 dark:text-gray-300">
                   Copy one of the prompt templates above and paste it into ChatGPT. Then customize it
                   based on your specific needs. For example, change "warm tones" to "cool tones" or
                   adjust the intensity of effects based on your preference.
@@ -290,10 +290,10 @@ export default function ChatGPTPhotoEditingPromptsPage() {
                 4
               </div>
               <div>
-                <h3 className="font-bold text-lg text-gray-900 mb-2">
+                <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100 mb-2">
                   Get Step-by-Step Instructions
                 </h3>
-                <p className="text-gray-700">
+                <p className="text-gray-700 dark:text-gray-300">
                   If using manual editing software, ask ChatGPT: "Please provide step-by-step instructions
                   for achieving this in Adobe Lightroom Classic" or your preferred tool. ChatGPT will
                   break down each adjustment into specific sliders, tools, and settings.
@@ -306,10 +306,10 @@ export default function ChatGPTPhotoEditingPromptsPage() {
                 5
               </div>
               <div>
-                <h3 className="font-bold text-lg text-gray-900 mb-2">
+                <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100 mb-2">
                   Iterate and Refine
                 </h3>
-                <p className="text-gray-700">
+                <p className="text-gray-700 dark:text-gray-300">
                   After your first edit, you can show results back to ChatGPT (if using GPT-4 with vision)
                   or describe the outcome: "The skin looks too smooth" or "The colors are too saturated."
                   ChatGPT will provide refinement suggestions to perfect your edit.
@@ -322,10 +322,10 @@ export default function ChatGPTPhotoEditingPromptsPage() {
                 6
               </div>
               <div>
-                <h3 className="font-bold text-lg text-gray-900 mb-2">
+                <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100 mb-2">
                   Save Your Presets
                 </h3>
-                <p className="text-gray-700">
+                <p className="text-gray-700 dark:text-gray-300">
                   Once you find editing settings you love, save them as presets in your editing software.
                   This way, you can apply the same professional look to future photos with one click.
                   Ask ChatGPT to document all exact settings for easy recreation.
@@ -339,16 +339,16 @@ export default function ChatGPTPhotoEditingPromptsPage() {
       {/* Advanced Tips Section */}
       <section className="max-w-4xl mx-auto px-4 py-12">
         <div className="bg-gradient-to-br from-pink-50 to-purple-50 rounded-2xl shadow-xl p-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">
             Advanced Photo Editing Techniques with ChatGPT
           </h2>
 
           <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-white rounded-xl p-6">
-              <h3 className="font-bold text-lg text-gray-900 mb-3">
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 transition-colors">
+              <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100 mb-3">
                 Color Theory Guidance
               </h3>
-              <ul className="space-y-2 text-gray-700 text-sm">
+              <ul className="space-y-2 text-gray-700 dark:text-gray-300 text-sm">
                 <li><strong>Complementary Colors:</strong> Ask ChatGPT to suggest color schemes that create visual impact</li>
                 <li><strong>Split-Toning:</strong> Request specific color combinations for highlights and shadows</li>
                 <li><strong>HSL Adjustments:</strong> Get targeted advice for adjusting specific color ranges</li>
@@ -356,11 +356,11 @@ export default function ChatGPTPhotoEditingPromptsPage() {
               </ul>
             </div>
 
-            <div className="bg-white rounded-xl p-6">
-              <h3 className="font-bold text-lg text-gray-900 mb-3">
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 transition-colors">
+              <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100 mb-3">
                 Technical Corrections
               </h3>
-              <ul className="space-y-2 text-gray-700 text-sm">
+              <ul className="space-y-2 text-gray-700 dark:text-gray-300 text-sm">
                 <li><strong>Exposure Recovery:</strong> Fix underexposed or overexposed areas without losing detail</li>
                 <li><strong>White Balance:</strong> Correct color casts from different lighting sources</li>
                 <li><strong>Noise Reduction:</strong> Balance clarity with natural grain for high-ISO photos</li>
@@ -368,11 +368,11 @@ export default function ChatGPTPhotoEditingPromptsPage() {
               </ul>
             </div>
 
-            <div className="bg-white rounded-xl p-6">
-              <h3 className="font-bold text-lg text-gray-900 mb-3">
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 transition-colors">
+              <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100 mb-3">
                 Creative Enhancements
               </h3>
-              <ul className="space-y-2 text-gray-700 text-sm">
+              <ul className="space-y-2 text-gray-700 dark:text-gray-300 text-sm">
                 <li><strong>Selective Adjustments:</strong> Edit specific areas using masks and layers</li>
                 <li><strong>Dodging & Burning:</strong> Add dimension with targeted lightening and darkening</li>
                 <li><strong>Frequency Separation:</strong> Retouch skin while preserving texture</li>
@@ -380,11 +380,11 @@ export default function ChatGPTPhotoEditingPromptsPage() {
               </ul>
             </div>
 
-            <div className="bg-white rounded-xl p-6">
-              <h3 className="font-bold text-lg text-gray-900 mb-3">
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 transition-colors">
+              <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100 mb-3">
                 Style Replication
               </h3>
-              <ul className="space-y-2 text-gray-700 text-sm">
+              <ul className="space-y-2 text-gray-700 dark:text-gray-300 text-sm">
                 <li><strong>Match Reference Photos:</strong> Describe a look you love and get replication steps</li>
                 <li><strong>Film Emulation:</strong> Recreate specific film stocks like Portra, Ektar, or Tri-X</li>
                 <li><strong>Photographer Styles:</strong> Learn techniques from famous photographers</li>
@@ -397,47 +397,47 @@ export default function ChatGPTPhotoEditingPromptsPage() {
 
       {/* Best Practices Section */}
       <section className="max-w-4xl mx-auto px-4 py-12">
-        <div className="bg-white rounded-2xl shadow-xl p-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 transition-colors">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">
             Best Practices for ChatGPT Photo Editing Prompts
           </h2>
 
           <div className="space-y-4">
             <div className="border-l-4 border-purple-600 pl-4">
-              <h3 className="font-bold text-gray-900 mb-2">Always Work Non-Destructively</h3>
-              <p className="text-gray-700 text-sm">
+              <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Always Work Non-Destructively</h3>
+              <p className="text-gray-700 dark:text-gray-300 text-sm">
                 Ask ChatGPT for non-destructive editing workflows using adjustment layers, smart objects,
                 and history states. This allows you to refine edits without permanently altering your original image.
               </p>
             </div>
 
             <div className="border-l-4 border-purple-600 pl-4">
-              <h3 className="font-bold text-gray-900 mb-2">Request Before/After Comparisons</h3>
-              <p className="text-gray-700 text-sm">
+              <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Request Before/After Comparisons</h3>
+              <p className="text-gray-700 dark:text-gray-300 text-sm">
                 Ask for checkpoints throughout the editing process: "After each major adjustment, I'll check
                 the result." This helps catch over-editing early and maintain a natural look.
               </p>
             </div>
 
             <div className="border-l-4 border-purple-600 pl-4">
-              <h3 className="font-bold text-gray-900 mb-2">Learn the "Why" Behind Edits</h3>
-              <p className="text-gray-700 text-sm">
+              <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Learn the "Why" Behind Edits</h3>
+              <p className="text-gray-700 dark:text-gray-300 text-sm">
                 Don't just ask "what to do" – ask "why." Request: "Explain why we're adding teal to shadows
                 and orange to highlights." Understanding the reasoning improves your skills long-term.
               </p>
             </div>
 
             <div className="border-l-4 border-purple-600 pl-4">
-              <h3 className="font-bold text-gray-900 mb-2">Specify Output Requirements</h3>
-              <p className="text-gray-700 text-sm">
+              <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Specify Output Requirements</h3>
+              <p className="text-gray-700 dark:text-gray-300 text-sm">
                 Mention your final use case: "This will be printed at 16x20 inches" or "This is for Instagram."
                 Different outputs require different editing approaches for optimal results.
               </p>
             </div>
 
             <div className="border-l-4 border-purple-600 pl-4">
-              <h3 className="font-bold text-gray-900 mb-2">Build a Prompt Library</h3>
-              <p className="text-gray-700 text-sm">
+              <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2">Build a Prompt Library</h3>
+              <p className="text-gray-700 dark:text-gray-300 text-sm">
                 Save your most successful prompts and ChatGPT's best responses in a document. Over time,
                 you'll build a personalized library of editing techniques that work for your style.
               </p>
@@ -448,11 +448,11 @@ export default function ChatGPTPhotoEditingPromptsPage() {
 
       {/* Related Resources */}
       <section className="max-w-4xl mx-auto px-4 py-12 mb-12">
-        <div className="bg-white rounded-2xl shadow-xl p-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 transition-colors">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">
             More AI Prompt Generators & Tools
           </h2>
-          <p className="text-gray-700 mb-6">
+          <p className="text-gray-700 dark:text-gray-300 mb-6">
             Explore our other AI tools and prompt generators for creative projects:
           </p>
 
@@ -463,8 +463,8 @@ export default function ChatGPTPhotoEditingPromptsPage() {
             >
               <Wand2 className="w-6 h-6 text-purple-600" />
               <div>
-                <div className="font-semibold text-gray-900">Gemini Photo Editing Prompts</div>
-                <div className="text-sm text-gray-600">Edit photos with Google Gemini AI</div>
+                <div className="font-semibold text-gray-900 dark:text-gray-100">Gemini Photo Editing Prompts</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">Edit photos with Google Gemini AI</div>
               </div>
             </a>
 
@@ -474,8 +474,8 @@ export default function ChatGPTPhotoEditingPromptsPage() {
             >
               <ImageIcon className="w-6 h-6 text-blue-600" />
               <div>
-                <div className="font-semibold text-gray-900">AI Art Prompt Generator</div>
-                <div className="text-sm text-gray-600">Create stunning AI art prompts</div>
+                <div className="font-semibold text-gray-900 dark:text-gray-100">AI Art Prompt Generator</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">Create stunning AI art prompts</div>
               </div>
             </a>
 
@@ -485,8 +485,8 @@ export default function ChatGPTPhotoEditingPromptsPage() {
             >
               <Sparkles className="w-6 h-6 text-purple-600" />
               <div>
-                <div className="font-semibold text-gray-900">Midjourney AI Generator</div>
-                <div className="text-sm text-gray-600">Professional Midjourney prompts</div>
+                <div className="font-semibold text-gray-900 dark:text-gray-100">Midjourney AI Generator</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">Professional Midjourney prompts</div>
               </div>
             </a>
 
@@ -496,8 +496,8 @@ export default function ChatGPTPhotoEditingPromptsPage() {
             >
               <ImageIcon className="w-6 h-6 text-blue-600" />
               <div>
-                <div className="font-semibold text-gray-900">Gemini Snow Portrait Tutorial</div>
-                <div className="text-sm text-gray-600">Winter portrait AI generation</div>
+                <div className="font-semibold text-gray-900 dark:text-gray-100">Gemini Snow Portrait Tutorial</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">Winter portrait AI generation</div>
               </div>
             </a>
           </div>

@@ -76,7 +76,7 @@ export default function GeminiPhotoEditingPromptsPage() {
             <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 bg-clip-text text-transparent">
               Gemini Photo Editing Prompts
             </h1>
-            <p className="text-xl text-gray-700 max-w-3xl mx-auto mb-8">
+            <p className="text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto mb-8">
               Harness the power of Google Gemini AI for professional photo editing.
               Expert prompts and tutorials for stunning image transformations.
             </p>
@@ -86,26 +86,26 @@ export default function GeminiPhotoEditingPromptsPage() {
 
       {/* Introduction Section */}
       <section className="max-w-4xl mx-auto px-4 py-12">
-        <div className="bg-white rounded-2xl shadow-xl p-8 mb-12">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 mb-12 transition-colors">
           <div className="flex items-start gap-4 mb-6">
             <BookOpen className="w-8 h-8 text-cyan-600 flex-shrink-0 mt-1" />
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
                 Why Use Gemini AI for Photo Editing?
               </h2>
-              <p className="text-gray-700 leading-relaxed mb-4">
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
                 Google's Gemini AI brings advanced multimodal capabilities to photo editing, combining
                 powerful image understanding with natural language processing. Whether you're editing
                 with AI-powered tools or getting expert guidance for manual editing, Gemini excels
                 at providing detailed, professional-quality editing instructions.
               </p>
-              <p className="text-gray-700 leading-relaxed mb-4">
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
                 Gemini can analyze your photos, understand context, and provide tailored editing advice
                 that considers lighting, composition, subject matter, and artistic intent. For AI editing
                 tools that accept text prompts, Gemini's suggestions can be directly applied for
                 instant professional results.
               </p>
-              <p className="text-gray-700 leading-relaxed mb-4">
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
                 This page provides six professional photo editing prompt templates optimized for Gemini AI,
                 covering everything from portrait enhancement to artistic transformations. Each template
                 is crafted for clarity and maximum effectiveness with Google's AI technology.
@@ -118,7 +118,7 @@ export default function GeminiPhotoEditingPromptsPage() {
               <Lightbulb className="w-5 h-5" />
               Pro Tips for Gemini Photo Editing Prompts
             </h3>
-            <ul className="space-y-2 text-gray-700">
+            <ul className="space-y-2 text-gray-700 dark:text-gray-300">
               <li className="flex items-start gap-2">
                 <span className="text-cyan-600 font-bold">•</span>
                 <span><strong>Upload your image first:</strong> Gemini can analyze your actual photo and provide contextual advice</span>
@@ -151,10 +151,10 @@ export default function GeminiPhotoEditingPromptsPage() {
       {/* Prompts Section */}
       <section className="max-w-6xl mx-auto px-4 py-12">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
             6 Professional Gemini Photo Editing Prompts
           </h2>
-          <p className="text-xl text-gray-600">
+          <p className="text-xl text-gray-600 dark:text-gray-400">
             Copy these prompts and use them with Gemini AI for professional photo editing guidance
           </p>
         </div>
@@ -163,7 +163,7 @@ export default function GeminiPhotoEditingPromptsPage() {
           {prompts.map((item, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300"
+              className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 transition-colors"
             >
               <div className="p-8">
                 <div className="flex items-start gap-3 mb-4">
@@ -171,10 +171,10 @@ export default function GeminiPhotoEditingPromptsPage() {
                     <ImageIcon className="w-6 h-6 text-cyan-600" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">
                       {item.title}
                     </h3>
-                    <p className="text-gray-600 mb-4">
+                    <p className="text-gray-600 dark:text-gray-400 mb-4">
                       {item.description}
                     </p>
                     <div className="flex flex-wrap gap-2 mb-4">
@@ -192,7 +192,7 @@ export default function GeminiPhotoEditingPromptsPage() {
 
                 <div className="bg-gray-50 rounded-xl p-4 mb-4">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-semibold text-gray-700">PROMPT:</span>
+                    <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">PROMPT:</span>
                     <button
                       onClick={() => copyToClipboard(item.prompt, index)}
                       className="flex items-center gap-2 px-3 py-1.5 bg-cyan-600 text-white rounded-lg hover:bg-cyan-700 transition-colors text-sm font-medium"
@@ -210,7 +210,7 @@ export default function GeminiPhotoEditingPromptsPage() {
                       )}
                     </button>
                   </div>
-                  <p className="text-sm text-gray-700 leading-relaxed">
+                  <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
                     {item.prompt}
                   </p>
                 </div>
@@ -231,8 +231,8 @@ export default function GeminiPhotoEditingPromptsPage() {
 
       {/* How to Use Section */}
       <section className="max-w-4xl mx-auto px-4 py-12">
-        <div className="bg-white rounded-2xl shadow-xl p-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 transition-colors">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">
             How to Use These Prompts with Gemini AI
           </h2>
 
@@ -242,10 +242,10 @@ export default function GeminiPhotoEditingPromptsPage() {
                 1
               </div>
               <div>
-                <h3 className="font-bold text-lg text-gray-900 mb-2">
+                <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100 mb-2">
                   Access Gemini AI
                 </h3>
-                <p className="text-gray-700">
+                <p className="text-gray-700 dark:text-gray-300">
                   Visit <a href="https://gemini.google.com" className="text-cyan-600 hover:underline" target="_blank" rel="noopener noreferrer">gemini.google.com</a> and
                   sign in with your Google account. Gemini's advanced model (Gemini Advanced) offers enhanced
                   image understanding capabilities, though the free version works well for most editing guidance.
@@ -258,10 +258,10 @@ export default function GeminiPhotoEditingPromptsPage() {
                 2
               </div>
               <div>
-                <h3 className="font-bold text-lg text-gray-900 mb-2">
+                <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100 mb-2">
                   Upload Your Photo
                 </h3>
-                <p className="text-gray-700">
+                <p className="text-gray-700 dark:text-gray-300">
                   Click the image upload button in Gemini's chat interface and upload the photo you want
                   to edit. Gemini will analyze the image and provide contextual editing advice based on
                   the actual content, lighting, composition, and subject matter of your photo.
@@ -274,10 +274,10 @@ export default function GeminiPhotoEditingPromptsPage() {
                 3
               </div>
               <div>
-                <h3 className="font-bold text-lg text-gray-900 mb-2">
+                <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100 mb-2">
                   Paste Your Editing Prompt
                 </h3>
-                <p className="text-gray-700">
+                <p className="text-gray-700 dark:text-gray-300">
                   Copy one of the prompt templates above and paste it into Gemini's chat. Customize the
                   prompt based on your specific needs. For example, you might add: "I'm using Adobe Lightroom"
                   or "I want this for Instagram" to get more tailored advice.
@@ -290,10 +290,10 @@ export default function GeminiPhotoEditingPromptsPage() {
                 4
               </div>
               <div>
-                <h3 className="font-bold text-lg text-gray-900 mb-2">
+                <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100 mb-2">
                   Review Gemini's Analysis & Guidance
                 </h3>
-                <p className="text-gray-700">
+                <p className="text-gray-700 dark:text-gray-300">
                   Gemini will provide detailed editing instructions tailored to your specific image. It may
                   identify issues you hadn't noticed (like slight color casts or composition problems) and
                   suggest specific adjustments with reasoning behind each recommendation.
@@ -306,10 +306,10 @@ export default function GeminiPhotoEditingPromptsPage() {
                 5
               </div>
               <div>
-                <h3 className="font-bold text-lg text-gray-900 mb-2">
+                <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100 mb-2">
                   Apply Edits in Your Software
                 </h3>
-                <p className="text-gray-700">
+                <p className="text-gray-700 dark:text-gray-300">
                   Take Gemini's guidance and apply the edits in your chosen software (Photoshop, Lightroom,
                   GIMP, Snapseed, etc.). If you're using an AI editing tool that accepts text prompts,
                   you can often use Gemini's suggestions directly as editing instructions.
@@ -322,10 +322,10 @@ export default function GeminiPhotoEditingPromptsPage() {
                 6
               </div>
               <div>
-                <h3 className="font-bold text-lg text-gray-900 mb-2">
+                <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100 mb-2">
                   Get Feedback and Refine
                 </h3>
-                <p className="text-gray-700">
+                <p className="text-gray-700 dark:text-gray-300">
                   Upload your edited result back to Gemini and ask: "How does this look? What could be
                   improved?" Gemini can compare the before and after, identify any issues (like over-processing
                   or unnatural colors), and suggest refinements to perfect your edit.
@@ -339,16 +339,16 @@ export default function GeminiPhotoEditingPromptsPage() {
       {/* Advanced Tips Section */}
       <section className="max-w-4xl mx-auto px-4 py-12">
         <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl shadow-xl p-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">
             Advanced Gemini Photo Editing Techniques
           </h2>
 
           <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-white rounded-xl p-6">
-              <h3 className="font-bold text-lg text-gray-900 mb-3">
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 transition-colors">
+              <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100 mb-3">
                 Contextual Analysis
               </h3>
-              <ul className="space-y-2 text-gray-700 text-sm">
+              <ul className="space-y-2 text-gray-700 dark:text-gray-300 text-sm">
                 <li><strong>Scene Understanding:</strong> Gemini can identify the scene type and suggest appropriate edits</li>
                 <li><strong>Lighting Assessment:</strong> Get analysis of current lighting and how to improve it</li>
                 <li><strong>Composition Advice:</strong> Receive suggestions for cropping and reframing</li>
@@ -356,11 +356,11 @@ export default function GeminiPhotoEditingPromptsPage() {
               </ul>
             </div>
 
-            <div className="bg-white rounded-xl p-6">
-              <h3 className="font-bold text-lg text-gray-900 mb-3">
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 transition-colors">
+              <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100 mb-3">
                 Style Matching
               </h3>
-              <ul className="space-y-2 text-gray-700 text-sm">
+              <ul className="space-y-2 text-gray-700 dark:text-gray-300 text-sm">
                 <li><strong>Reference Matching:</strong> Upload a reference photo and ask Gemini to match the style</li>
                 <li><strong>Artist Emulation:</strong> Request editing in the style of famous photographers</li>
                 <li><strong>Trend Analysis:</strong> Ask about current photo editing trends and how to achieve them</li>
@@ -368,11 +368,11 @@ export default function GeminiPhotoEditingPromptsPage() {
               </ul>
             </div>
 
-            <div className="bg-white rounded-xl p-6">
-              <h3 className="font-bold text-lg text-gray-900 mb-3">
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 transition-colors">
+              <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100 mb-3">
                 Technical Problem Solving
               </h3>
-              <ul className="space-y-2 text-gray-700 text-sm">
+              <ul className="space-y-2 text-gray-700 dark:text-gray-300 text-sm">
                 <li><strong>Exposure Issues:</strong> Fix underexposed, overexposed, or unbalanced lighting</li>
                 <li><strong>Color Correction:</strong> Correct color casts, white balance problems, and skin tones</li>
                 <li><strong>Noise & Grain:</strong> Balance noise reduction with detail preservation</li>
@@ -380,11 +380,11 @@ export default function GeminiPhotoEditingPromptsPage() {
               </ul>
             </div>
 
-            <div className="bg-white rounded-xl p-6">
-              <h3 className="font-bold text-lg text-gray-900 mb-3">
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 transition-colors">
+              <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100 mb-3">
                 Workflow Optimization
               </h3>
-              <ul className="space-y-2 text-gray-700 text-sm">
+              <ul className="space-y-2 text-gray-700 dark:text-gray-300 text-sm">
                 <li><strong>Batch Editing:</strong> Get consistent editing approaches for photo series</li>
                 <li><strong>Preset Creation:</strong> Ask for preset values to replicate looks across photos</li>
                 <li><strong>Efficiency Tips:</strong> Learn keyboard shortcuts and workflow optimizations</li>
@@ -397,19 +397,19 @@ export default function GeminiPhotoEditingPromptsPage() {
 
       {/* Writing Good Prompts Guide */}
       <section className="max-w-4xl mx-auto px-4 py-12">
-        <div className="bg-white rounded-2xl shadow-xl p-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 transition-colors">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">
             How to Write Effective Photo Editing Prompts for Gemini
           </h2>
 
           <div className="space-y-6">
             <div>
-              <h3 className="font-bold text-xl text-gray-900 mb-3">1. Start with Context</h3>
-              <p className="text-gray-700 mb-2">
+              <h3 className="font-bold text-xl text-gray-900 dark:text-gray-100 mb-3">1. Start with Context</h3>
+              <p className="text-gray-700 dark:text-gray-300 mb-2">
                 Always begin by describing your photo and your editing goals:
               </p>
               <div className="bg-gray-50 rounded-lg p-4 border-l-4 border-cyan-600">
-                <p className="text-sm text-gray-700 italic">
+                <p className="text-sm text-gray-700 dark:text-gray-300 italic">
                   "I have a portrait photo taken outdoors during golden hour. The subject is backlit,
                   causing their face to be too dark. I want to brighten the face while maintaining the
                   warm, glowing atmosphere of the backlight. I'm using Lightroom."
@@ -418,31 +418,31 @@ export default function GeminiPhotoEditingPromptsPage() {
             </div>
 
             <div>
-              <h3 className="font-bold text-xl text-gray-900 mb-3">2. Be Specific About Adjustments</h3>
-              <p className="text-gray-700 mb-2">
+              <h3 className="font-bold text-xl text-gray-900 dark:text-gray-100 mb-3">2. Be Specific About Adjustments</h3>
+              <p className="text-gray-700 dark:text-gray-300 mb-2">
                 Use precise language about what you want changed:
               </p>
               <div className="bg-gray-50 rounded-lg p-4">
                 <div className="grid md:grid-cols-2 gap-4 text-sm">
                   <div>
                     <p className="font-bold text-red-600 mb-1">❌ Vague:</p>
-                    <p className="text-gray-700">"Make it look better"</p>
+                    <p className="text-gray-700 dark:text-gray-300">"Make it look better"</p>
                   </div>
                   <div>
                     <p className="font-bold text-green-600 mb-1">✅ Specific:</p>
-                    <p className="text-gray-700">"Increase exposure by 0.5 stops, add +20 to shadows, and apply +10 vibrance"</p>
+                    <p className="text-gray-700 dark:text-gray-300">"Increase exposure by 0.5 stops, add +20 to shadows, and apply +10 vibrance"</p>
                   </div>
                 </div>
               </div>
             </div>
 
             <div>
-              <h3 className="font-bold text-xl text-gray-900 mb-3">3. Define Your Desired Style</h3>
-              <p className="text-gray-700 mb-2">
+              <h3 className="font-bold text-xl text-gray-900 dark:text-gray-100 mb-3">3. Define Your Desired Style</h3>
+              <p className="text-gray-700 dark:text-gray-300 mb-2">
                 Use style references that Gemini can understand:
               </p>
               <div className="bg-gray-50 rounded-lg p-4 border-l-4 border-cyan-600">
-                <p className="text-sm text-gray-700 italic">
+                <p className="text-sm text-gray-700 dark:text-gray-300 italic">
                   "I want a moody, cinematic look similar to the TV show 'Euphoria'—high contrast,
                   heavy teal and orange color grading, with dramatic lighting and slightly desaturated midtones."
                 </p>
@@ -450,12 +450,12 @@ export default function GeminiPhotoEditingPromptsPage() {
             </div>
 
             <div>
-              <h3 className="font-bold text-xl text-gray-900 mb-3">4. Mention Your Constraints</h3>
-              <p className="text-gray-700 mb-2">
+              <h3 className="font-bold text-xl text-gray-900 dark:text-gray-100 mb-3">4. Mention Your Constraints</h3>
+              <p className="text-gray-700 dark:text-gray-300 mb-2">
                 Tell Gemini about any limitations or requirements:
               </p>
               <div className="bg-gray-50 rounded-lg p-4">
-                <ul className="space-y-2 text-sm text-gray-700">
+                <ul className="space-y-2 text-sm text-gray-700 dark:text-gray-300">
                   <li className="flex items-start gap-2">
                     <span className="text-cyan-600">→</span>
                     <span>"I'm a beginner, so please explain each step simply"</span>
@@ -477,12 +477,12 @@ export default function GeminiPhotoEditingPromptsPage() {
             </div>
 
             <div>
-              <h3 className="font-bold text-xl text-gray-900 mb-3">5. Ask for Reasoning</h3>
-              <p className="text-gray-700 mb-2">
+              <h3 className="font-bold text-xl text-gray-900 dark:text-gray-100 mb-3">5. Ask for Reasoning</h3>
+              <p className="text-gray-700 dark:text-gray-300 mb-2">
                 Request explanations to improve your skills:
               </p>
               <div className="bg-gray-50 rounded-lg p-4 border-l-4 border-cyan-600">
-                <p className="text-sm text-gray-700 italic">
+                <p className="text-sm text-gray-700 dark:text-gray-300 italic">
                   "Please explain why each adjustment is necessary and how it improves the image.
                   I want to understand the principles so I can apply them to future photos."
                 </p>
@@ -490,15 +490,15 @@ export default function GeminiPhotoEditingPromptsPage() {
             </div>
 
             <div>
-              <h3 className="font-bold text-xl text-gray-900 mb-3">6. Request Structure</h3>
-              <p className="text-gray-700 mb-2">
+              <h3 className="font-bold text-xl text-gray-900 dark:text-gray-100 mb-3">6. Request Structure</h3>
+              <p className="text-gray-700 dark:text-gray-300 mb-2">
                 Ask for organized, actionable responses:
               </p>
               <div className="bg-gray-50 rounded-lg p-4">
-                <p className="text-sm text-gray-700 mb-2">
+                <p className="text-sm text-gray-700 dark:text-gray-300 mb-2">
                   "Please provide your editing guidance in this format:
                 </p>
-                <ol className="list-decimal list-inside space-y-1 text-sm text-gray-700 ml-4">
+                <ol className="list-decimal list-inside space-y-1 text-sm text-gray-700 dark:text-gray-300 ml-4">
                   <li>Initial analysis of the photo's strengths and weaknesses</li>
                   <li>Step-by-step editing instructions with specific values</li>
                   <li>Before/after comparison points to check progress</li>
@@ -513,72 +513,72 @@ export default function GeminiPhotoEditingPromptsPage() {
 
       {/* Common Use Cases */}
       <section className="max-w-4xl mx-auto px-4 py-12">
-        <div className="bg-white rounded-2xl shadow-xl p-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 transition-colors">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">
             Common Photo Editing Scenarios with Gemini
           </h2>
 
           <div className="space-y-4">
-            <details className="border-b border-gray-200 pb-4">
-              <summary className="font-bold text-lg text-gray-900 cursor-pointer hover:text-cyan-600">
+            <details className="border-b border-gray-200 dark:border-gray-700 pb-4">
+              <summary className="font-bold text-lg text-gray-900 dark:text-gray-100 cursor-pointer hover:text-cyan-600">
                 "My photo is too dark/bright"
               </summary>
-              <p className="text-gray-700 text-sm mt-2 ml-6">
+              <p className="text-gray-700 dark:text-gray-300 text-sm mt-2 ml-6">
                 Ask Gemini: "This photo is underexposed. Please analyze which areas need brightening
                 and provide specific exposure, shadows, highlights, and whites adjustments. Also suggest
                 whether I should use graduated filters or localized adjustments for different areas."
               </p>
             </details>
 
-            <details className="border-b border-gray-200 pb-4">
-              <summary className="font-bold text-lg text-gray-900 cursor-pointer hover:text-cyan-600">
+            <details className="border-b border-gray-200 dark:border-gray-700 pb-4">
+              <summary className="font-bold text-lg text-gray-900 dark:text-gray-100 cursor-pointer hover:text-cyan-600">
                 "The colors look wrong/unnatural"
               </summary>
-              <p className="text-gray-700 text-sm mt-2 ml-6">
+              <p className="text-gray-700 dark:text-gray-300 text-sm mt-2 ml-6">
                 Ask Gemini: "The white balance in this photo seems off—there's an orange/yellow cast.
                 What temperature and tint adjustments should I make? Should I also adjust individual
                 color channels in the HSL panel? Please analyze skin tones to ensure they remain natural."
               </p>
             </details>
 
-            <details className="border-b border-gray-200 pb-4">
-              <summary className="font-bold text-lg text-gray-900 cursor-pointer hover:text-cyan-600">
+            <details className="border-b border-gray-200 dark:border-gray-700 pb-4">
+              <summary className="font-bold text-lg text-gray-900 dark:text-gray-100 cursor-pointer hover:text-cyan-600">
                 "I want to replicate a specific style"
               </summary>
-              <p className="text-gray-700 text-sm mt-2 ml-6">
+              <p className="text-gray-700 dark:text-gray-300 text-sm mt-2 ml-6">
                 Upload a reference photo and ask: "I want my photo to have a similar look to this reference
                 image. Please analyze the color grading, contrast, and tonal characteristics of the reference,
                 then provide step-by-step instructions to achieve this style on my photo."
               </p>
             </details>
 
-            <details className="border-b border-gray-200 pb-4">
-              <summary className="font-bold text-lg text-gray-900 cursor-pointer hover:text-cyan-600">
+            <details className="border-b border-gray-200 dark:border-gray-700 pb-4">
+              <summary className="font-bold text-lg text-gray-900 dark:text-gray-100 cursor-pointer hover:text-cyan-600">
                 "My subject doesn't stand out enough"
               </summary>
-              <p className="text-gray-700 text-sm mt-2 ml-6">
+              <p className="text-gray-700 dark:text-gray-300 text-sm mt-2 ml-6">
                 Ask Gemini: "The subject in this photo blends too much with the background. How can I
                 create better separation? Should I use selective sharpening, luminosity adjustments,
                 color contrast, or background blurring? Please suggest the most effective approach for this specific image."
               </p>
             </details>
 
-            <details className="border-b border-gray-200 pb-4">
-              <summary className="font-bold text-lg text-gray-900 cursor-pointer hover:text-cyan-600">
+            <details className="border-b border-gray-200 dark:border-gray-700 pb-4">
+              <summary className="font-bold text-lg text-gray-900 dark:text-gray-100 cursor-pointer hover:text-cyan-600">
                 "I want to remove distractions/objects"
               </summary>
-              <p className="text-gray-700 text-sm mt-2 ml-6">
+              <p className="text-gray-700 dark:text-gray-300 text-sm mt-2 ml-6">
                 Ask Gemini: "There are distracting elements in this photo [describe what they are and where].
                 What's the best approach to remove them? Should I use content-aware fill, clone stamp, or
                 another technique? Please provide step-by-step instructions for my editing software."
               </p>
             </details>
 
-            <details className="border-b border-gray-200 pb-4">
-              <summary className="font-bold text-lg text-gray-900 cursor-pointer hover:text-cyan-600">
+            <details className="border-b border-gray-200 dark:border-gray-700 pb-4">
+              <summary className="font-bold text-lg text-gray-900 dark:text-gray-100 cursor-pointer hover:text-cyan-600">
                 "I want to enhance but keep it natural"
               </summary>
-              <p className="text-gray-700 text-sm mt-2 ml-6">
+              <p className="text-gray-700 dark:text-gray-300 text-sm mt-2 ml-6">
                 Ask Gemini: "I want to enhance this photo while keeping it completely natural and realistic—
                 no over-processed look. Please suggest subtle adjustments that improve the image without
                 making it obvious that editing was done. Include specific value ranges to stay within natural limits."
@@ -590,11 +590,11 @@ export default function GeminiPhotoEditingPromptsPage() {
 
       {/* Related Resources */}
       <section className="max-w-4xl mx-auto px-4 py-12 mb-12">
-        <div className="bg-white rounded-2xl shadow-xl p-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 transition-colors">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">
             More AI Prompt Tools & Tutorials
           </h2>
-          <p className="text-gray-700 mb-6">
+          <p className="text-gray-700 dark:text-gray-300 mb-6">
             Explore our collection of AI tools and tutorials for creative projects:
           </p>
 
@@ -605,8 +605,8 @@ export default function GeminiPhotoEditingPromptsPage() {
             >
               <ImageIcon className="w-6 h-6 text-purple-600" />
               <div>
-                <div className="font-semibold text-gray-900">ChatGPT Photo Editing Prompts</div>
-                <div className="text-sm text-gray-600">Edit photos with ChatGPT guidance</div>
+                <div className="font-semibold text-gray-900 dark:text-gray-100">ChatGPT Photo Editing Prompts</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">Edit photos with ChatGPT guidance</div>
               </div>
             </a>
 
@@ -616,8 +616,8 @@ export default function GeminiPhotoEditingPromptsPage() {
             >
               <Sparkles className="w-6 h-6 text-blue-600" />
               <div>
-                <div className="font-semibold text-gray-900">Gemini Snow Portrait Tutorial</div>
-                <div className="text-sm text-gray-600">Create stunning winter portraits</div>
+                <div className="font-semibold text-gray-900 dark:text-gray-100">Gemini Snow Portrait Tutorial</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">Create stunning winter portraits</div>
               </div>
             </a>
 
@@ -627,8 +627,8 @@ export default function GeminiPhotoEditingPromptsPage() {
             >
               <ImageIcon className="w-6 h-6 text-indigo-600" />
               <div>
-                <div className="font-semibold text-gray-900">AI Art Prompt Generator</div>
-                <div className="text-sm text-gray-600">Generate AI art prompts</div>
+                <div className="font-semibold text-gray-900 dark:text-gray-100">AI Art Prompt Generator</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">Generate AI art prompts</div>
               </div>
             </a>
 
@@ -638,8 +638,8 @@ export default function GeminiPhotoEditingPromptsPage() {
             >
               <Sparkles className="w-6 h-6 text-pink-600" />
               <div>
-                <div className="font-semibold text-gray-900">Midjourney AI Prompts</div>
-                <div className="text-sm text-gray-600">Professional Midjourney prompts</div>
+                <div className="font-semibold text-gray-900 dark:text-gray-100">Midjourney AI Prompts</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">Professional Midjourney prompts</div>
               </div>
             </a>
           </div>

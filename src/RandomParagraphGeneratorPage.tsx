@@ -184,20 +184,20 @@ const RandomParagraphGeneratorPage = () => {
     const isMultiple = prompt.isMultiple;
 
     return (
-      <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+      <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow-sm transition-colors">
         {isMultiple ? (
           <div className="mb-4 space-y-4">
             {prompt.text.split('\n\n').map((paragraph, index) => (
-              <div key={index} className="bg-gray-50 px-4 py-3 rounded border text-gray-800 leading-relaxed">
+              <div key={index} className="bg-gray-50 px-4 py-3 rounded border text-gray-800 dark:text-gray-200 leading-relaxed">
                 {paragraph}
               </div>
             ))}
           </div>
         ) : (
-          <p className="text-gray-800 text-lg leading-relaxed mb-4">{prompt.text}</p>
+          <p className="text-gray-800 dark:text-gray-200 text-lg leading-relaxed mb-4">{prompt.text}</p>
         )}
         <div className="flex flex-wrap gap-2">
-          <button onClick={() => copyToClipboard(prompt.text)} className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-md text-sm transition-colors">
+          <button onClick={() => copyToClipboard(prompt.text)} className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 dark:text-gray-300 rounded-md text-sm transition-colors">
             <Copy size={14} /> Copy {isMultiple ? 'All' : ''}
           </button>
           <button onClick={() => savePrompt(prompt)} className="inline-flex items-center gap-2 px-3 py-1.5 bg-green-100 hover:bg-green-200 text-green-700 rounded-md text-sm transition-colors">
@@ -237,21 +237,21 @@ const RandomParagraphGeneratorPage = () => {
       </div>
 
       <div className="max-w-6xl mx-auto px-4">
-        <div className="flex flex-wrap justify-center gap-2 mb-8 border-b border-gray-200">
-          <Link to="/writing-prompts" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50">
+        <div className="flex flex-wrap justify-center gap-2 mb-8 border-b border-gray-200 dark:border-gray-700">
+          <Link to="/writing-prompts" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700">
             <PenTool size={18} /> Writing
           </Link>
-          <Link to="/ai-images-prompt" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50">
+          <Link to="/ai-images-prompt" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72Z"></path>
               <path d="m14 7 3 3"></path><path d="M5 6v4"></path><path d="M19 14v4"></path><path d="M10 2v2"></path><path d="M7 8H3"></path><path d="M21 16h-4"></path><path d="M11 3H9"></path>
             </svg>
             AI Images
           </Link>
-          <Link to="/ai-blog-post-generator" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50">
+          <Link to="/ai-blog-post-generator" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700">
             <BookOpen size={18} /> Blog post
           </Link>
-          <Link to="/short-story-prompts-generator" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50">
+          <Link to="/short-story-prompts-generator" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700">
             <Crown size={18} /> Short stories
           </Link>
         </div>
@@ -260,7 +260,7 @@ const RandomParagraphGeneratorPage = () => {
       <div className="max-w-6xl mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-            <select value={controls.type} onChange={(e) => updateControl('type', e.target.value)} className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+            <select value={controls.type} onChange={(e) => updateControl('type', e.target.value)} className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
               <option value="any">Any Type</option>
               <option value="descriptive">Descriptive</option>
               <option value="narrative">Narrative</option>
@@ -269,7 +269,7 @@ const RandomParagraphGeneratorPage = () => {
               <option value="creative">Creative</option>
               <option value="dialogue">Dialogue</option>
             </select>
-            <select value={controls.count} onChange={(e) => updateControl('count', e.target.value)} className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+            <select value={controls.count} onChange={(e) => updateControl('count', e.target.value)} className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
               <option value="single">Single Paragraph</option>
               <option value="multiple">Generate 3 Paragraphs</option>
               <option value="batch">Generate 5 Paragraphs</option>
@@ -285,9 +285,9 @@ const RandomParagraphGeneratorPage = () => {
           {generatedPrompt && renderPromptCard(generatedPrompt)}
 
           {showHistory && (
-            <div className="mt-8 bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+            <div className="mt-8 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow-sm transition-colors">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold text-gray-900">Recent Paragraphs</h3>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Recent Paragraphs</h3>
                 <button onClick={() => setPromptHistory([])} className="text-sm text-gray-500 hover:text-red-600 transition-colors">Clear History</button>
               </div>
               {promptHistory.length === 0 ? (
@@ -298,11 +298,11 @@ const RandomParagraphGeneratorPage = () => {
                     <div key={prompt.id} className="bg-gray-50 rounded-lg p-3 border border-gray-100">
                       <div className="flex items-start justify-between gap-3">
                         <div className="flex-1">
-                          <p className="text-sm text-gray-800 leading-relaxed line-clamp-3">{prompt.text}</p>
+                          <p className="text-sm text-gray-800 dark:text-gray-200 leading-relaxed line-clamp-3">{prompt.text}</p>
                           <span className="text-xs text-gray-400 mt-2 block">{new Date(prompt.timestamp).toLocaleTimeString()}</span>
                         </div>
                         <div className="flex items-center gap-1">
-                          <button onClick={() => copyToClipboard(prompt.text)} className="p-1 text-gray-400 hover:text-gray-600 transition-colors" title="Copy">
+                          <button onClick={() => copyToClipboard(prompt.text)} className="p-1 text-gray-400 hover:text-gray-600 dark:text-gray-400 transition-colors" title="Copy">
                             <Copy size={14} />
                           </button>
                           <button onClick={() => toggleFavorite(prompt)} className={`p-1 transition-colors ${favorites.some(fav => fav.id === prompt.id) ? 'text-yellow-600 hover:text-yellow-700' : 'text-gray-400 hover:text-yellow-600'}`} title="Favorite">
@@ -320,15 +320,15 @@ const RandomParagraphGeneratorPage = () => {
           {savedPrompts.length > 0 && (
             <div className="mt-12">
               <div className="flex items-center justify-between mb-6">
-                <h3 className="text-2xl font-bold text-gray-900">Saved Paragraphs</h3>
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Saved Paragraphs</h3>
                 <button onClick={exportPrompts} className="inline-flex items-center gap-2 px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg transition-colors">
                   <Download size={16} /> Export All
                 </button>
               </div>
               <div className="grid gap-4">
                 {savedPrompts.slice(-5).map((prompt, index) => (
-                  <div key={index} className="bg-gray-50 border border-gray-200 rounded-lg p-4">
-                    <p className="text-gray-800">{prompt.text}</p>
+                  <div key={index} className="bg-gray-50 border border-gray-200 dark:border-gray-700 rounded-lg p-4">
+                    <p className="text-gray-800 dark:text-gray-200">{prompt.text}</p>
                   </div>
                 ))}
               </div>
@@ -337,11 +337,11 @@ const RandomParagraphGeneratorPage = () => {
 
           <div className="mt-16 space-y-8">
             <div className="prose prose-gray max-w-none">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Random Paragraph Generator</h2>
-              <p className="text-gray-700 mb-4">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">Random Paragraph Generator</h2>
+              <p className="text-gray-700 dark:text-gray-300 mb-4">
                 Our random paragraph generator creates diverse, well-structured paragraphs across multiple writing styles including descriptive, narrative, expository, persuasive, creative, and dialogue-based content. Generate random paragraphs for writing practice, content inspiration, or creative brainstorming sessions.
               </p>
-              <p className="text-gray-700 mb-4">
+              <p className="text-gray-700 dark:text-gray-300 mb-4">
                 This free paragraph generator produces high-quality random paragraphs suitable for various purposes: creative writing exercises, blog content ideas, story development, academic writing practice, and more. Each generated paragraph is unique and designed to inspire your next writing project.
               </p>
               <div className="bg-blue-50 p-4 rounded-lg mt-4">
@@ -355,9 +355,9 @@ const RandomParagraphGeneratorPage = () => {
               </div>
             </div>
 
-            <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Example Random Paragraphs:</h3>
-              <ul className="space-y-3 text-gray-700">
+            <div className="bg-gray-50 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Example Random Paragraphs:</h3>
+              <ul className="space-y-3 text-gray-700 dark:text-gray-300">
                 <li className="flex gap-2"><span className="text-blue-600 font-bold">•</span> <span>Descriptive: "The ancient forest stretched endlessly before them, its canopy so thick that only scattered rays of golden sunlight pierced through..."</span></li>
                 <li className="flex gap-2"><span className="text-blue-600 font-bold">•</span> <span>Narrative: "She had always known this day would come. The letter sat on the table, unopened, its presence filling the room with tension..."</span></li>
                 <li className="flex gap-2"><span className="text-blue-600 font-bold">•</span> <span>Expository: "Climate change represents one of the most significant challenges facing humanity today..."</span></li>
@@ -367,8 +367,8 @@ const RandomParagraphGeneratorPage = () => {
             </div>
           </div>
 
-          <div className="mt-12 bg-gray-50 rounded-lg p-6 border border-gray-200">
-            <h3 className="text-xl font-bold text-gray-900 mb-4">Related Writing Tools</h3>
+          <div className="mt-12 bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+            <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Related Writing Tools</h3>
             <div className="grid md:grid-cols-2 gap-4">
               <Link to="/random-sentence-generator" className="text-blue-600 hover:underline flex items-center gap-2">
                 <PenTool size={16} />
@@ -390,31 +390,31 @@ const RandomParagraphGeneratorPage = () => {
           </div>
         </div>
 
-        <section className="bg-white py-16 mt-16">
+        <section className="bg-white dark:bg-gray-800 py-16 mt-16 transition-colors">
           <div className="max-w-4xl mx-auto px-4">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-8 text-center">Frequently Asked Questions</h2>
             <div className="space-y-6">
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">What is a random paragraph generator?</h3>
-                <p className="text-gray-700">
+              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">What is a random paragraph generator?</h3>
+                <p className="text-gray-700 dark:text-gray-300">
                   A random paragraph generator is a tool that creates well-structured paragraphs across different writing styles including descriptive, narrative, expository, persuasive, creative, and dialogue-based content. Its perfect for writing practice, inspiration, and creative projects.
                 </p>
               </div>
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Can I use generated paragraphs in my writing projects?</h3>
-                <p className="text-gray-700">
+              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Can I use generated paragraphs in my writing projects?</h3>
+                <p className="text-gray-700 dark:text-gray-300">
                   Yes! All random paragraphs generated by RandomPrompts.org are free to use for inspiration, practice, or as starting points for your creative writing, blog posts, stories, and other projects. Use them to overcome writers block or spark new ideas.
                 </p>
               </div>
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">What paragraph types can I generate?</h3>
-                <p className="text-gray-700">
+              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">What paragraph types can I generate?</h3>
+                <p className="text-gray-700 dark:text-gray-300">
                   Our random paragraph generator offers six different types: descriptive paragraphs for vivid imagery, narrative paragraphs for storytelling, expository paragraphs for informational content, persuasive paragraphs for arguments, creative paragraphs for imaginative writing, and dialogue paragraphs for conversations.
                 </p>
               </div>
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">How can random paragraphs help with writing practice?</h3>
-                <p className="text-gray-700">
+              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">How can random paragraphs help with writing practice?</h3>
+                <p className="text-gray-700 dark:text-gray-300">
                   Random paragraphs provide excellent writing prompts and examples of different writing styles. Use them to study paragraph structure, practice rewriting in different tones, analyze writing techniques, or as inspiration for your own creative work. They re ideal for students, teachers, and writers developing their skills.
                 </p>
               </div>
