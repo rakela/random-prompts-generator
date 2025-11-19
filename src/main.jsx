@@ -53,6 +53,10 @@ import RandomObjectGeneratorPage from './RandomObjectGeneratorPage.tsx'
 import RandomHobbyGeneratorPage from './RandomHobbyGeneratorPage.tsx'
 import RandomSuperpowerGeneratorPage from './RandomSuperpowerGeneratorPage.tsx'
 import RandomIdeaGeneratorPage from './RandomIdeaGeneratorPage.tsx'
+// CATEGORY LANDING PAGES
+import WritingGeneratorsPage from './WritingGeneratorsPage.tsx'
+import AIArtGeneratorsPage from './AIArtGeneratorsPage.tsx'
+import CreativeGeneratorsPage from './CreativeGeneratorsPage.tsx'
 import { SpeedInsights } from '@vercel/speed-insights/react'
 import ThemeProvider from './components/ThemeProvider'
 import './index.css'
@@ -64,6 +68,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <BrowserRouter>
         <Routes>
           <Route path="/" element={<PromptGenerator />} />
+          {/* CATEGORY LANDING PAGES */}
+          <Route path="/writing-generators" element={<WritingGeneratorsPage />} />
+          <Route path="/ai-art-generators" element={<AIArtGeneratorsPage />} />
+          <Route path="/creative-generators" element={<CreativeGeneratorsPage />} />
           <Route path="/writing-prompts" element={<WritingPromptsPage />} />
           <Route path="/ai-images-prompt" element={<AIImagesPromptPage />} />
           <Route path="/ai-blog-post-generator" element={<BlogPostGeneratorPage />} />
