@@ -60,7 +60,7 @@ const RandomFantasyArtPromptGeneratorPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 dark:from-gray-900 to-white dark:to-gray-800">
       <SEO pageKey="randomFantasyArtPromptGenerator" />
       <Header promptHistory={promptHistory} showHistory={showHistory} onHistoryToggle={() => setShowHistory(!showHistory)} />
       <div className="bg-gradient-to-r from-purple-600 to-fuchsia-600 text-white py-16">
@@ -94,6 +94,13 @@ const RandomFantasyArtPromptGeneratorPage = () => {
               <div className="flex items-center justify-between mb-6">
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Saved Items</h3>
                 <button onClick={exportPrompts} className="inline-flex items-center gap-2 px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg transition-colors"><Download size={16} /> Export All</button>
+              </div>
+              <div className="grid gap-4">
+                {savedPrompts.slice(-5).map((prompt, index) => (
+                  <div key={index} className="bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-700 rounded-lg p-4">
+                    <p className="text-gray-800 dark:text-gray-200">{prompt.text}</p>
+                  </div>
+                ))}
               </div>
             </div>
           )}
