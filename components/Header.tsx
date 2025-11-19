@@ -76,7 +76,7 @@ const Header: React.FC = () => {
                     </Link>
                   </div>
                 </div>
-                <Link href="/ai-art-prompts/midjourney/" className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border-b border-gray-100 dark:border-gray-600">
+                <Link href="/midjourney-ai-picture-generator" className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border-b border-gray-100 dark:border-gray-600">
                   Midjourney AI Prompts
                 </Link>
                 <Link href="/writing-prompts/nano-banana/" className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700">
@@ -196,7 +196,7 @@ const Header: React.FC = () => {
                     </Link>
                   </div>
 
-                  <Link href="/ai-art-prompts/midjourney/"
+                  <Link href="/midjourney-ai-picture-generator"
                     className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-1.5"
                     onClick={() => setMobileMenuOpen(false)}
                   >
