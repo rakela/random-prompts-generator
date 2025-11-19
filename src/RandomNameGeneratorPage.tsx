@@ -78,7 +78,7 @@ const RandomNameGeneratorPage = () => {
     
     const prompt = {
       id: Date.now(),
-      text: batchSize === 1 ? names[0] : names.join('\\n'),
+      text: batchSize === 1 ? names[0] : names.join('\n'),
       category: 'names',
       timestamp: new Date().toISOString(),
       isMultiple: batchSize > 1
@@ -150,7 +150,7 @@ const RandomNameGeneratorPage = () => {
           <div className="mb-4">
             <h3 className="font-semibold text-gray-900 mb-3">Generated Names:</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-              {prompt.text.split('\\n').map((name, index) => (
+              {prompt.text.split('\n').map((name, index) => (
                 <div key={index} className="bg-gray-50 px-3 py-2 rounded border text-gray-800">
                   {name}
                 </div>
