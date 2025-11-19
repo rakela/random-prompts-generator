@@ -4,6 +4,7 @@ import { Copy, RefreshCw, Save, Download, Sparkles, PenTool, BookOpen, Crown, Sh
 import { Link } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import useLocalStorage from './hooks/useLocalStorage';
 
 const promptData = {
   villains: {
@@ -41,9 +42,9 @@ const processTemplate = (data) => {
 
 const RandomVillainGeneratorPage = () => {
   const [generatedPrompt, setGeneratedPrompt] = useState(null);
-  const [savedPrompts, setSavedPrompts] = useState([]);
-  const [promptHistory, setPromptHistory] = useState([]);
-  const [favorites, setFavorites] = useState([]);
+  const [savedPrompts, setSavedPrompts] = useLocalStorage('random-villain-generator-saved-prompts', []);
+  const [promptHistory, setPromptHistory] = useLocalStorage('random-villain-generator-prompt-history', []);
+  const [favorites, setFavorites] = useLocalStorage('random-villain-generator-favorites', []);
   const [showHistory, setShowHistory] = useState(false);
   const [controls, setControls] = useState({ count: 'single' });
 

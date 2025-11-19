@@ -4,15 +4,16 @@ import { Copy, RefreshCw, Save, Download, Sparkles, PenTool, BookOpen, Crown, Sh
 import { Link } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import useLocalStorage from './hooks/useLocalStorage';
 
 const promptData = { items: ['Antique pocket watch with chain', 'Leather-bound journal with brass clasp', 'Crystal prism reflecting rainbow', 'Vintage typewriter with keys', 'Wooden rocking chair with cushions', 'Brass telescope on tripod', 'Ornate hand mirror with frame', 'Clay coffee mug with handmade texture', 'Weathered compass with engraving', 'Glass terrarium with plants', 'Metal lantern with candle', 'Ceramic vase with flowers', 'Wooden music box playing tune', 'Silk scarf with pattern', 'Bronze key with intricate design', 'Paper umbrella with painting', 'Wax sealed letter with stamp', 'Silver locket with photo', 'Leather satchel with buckles', 'Stone sculpture abstract form', 'Metal wind chimes singing', 'Wooden treasure chest with lock', 'Glass snow globe with scene', 'Fabric tapestry with story', 'Ceramic teapot steaming', 'Bronze sundial marking time', 'Wooden mask ceremonial art', 'Metal sextant for navigation', 'Paper fan folding elegant', 'Stone mortar and pestle ancient'] };
 const weightedRandom = (items) => items[Math.floor(Math.random() * items.length)];
 
 const RandomObjectGeneratorPage = () => {
   const [generatedPrompt, setGeneratedPrompt] = useState(null);
-  const [savedPrompts, setSavedPrompts] = useState([]);
-  const [promptHistory, setPromptHistory] = useState([]);
-  const [favorites, setFavorites] = useState([]);
+  const [savedPrompts, setSavedPrompts] = useLocalStorage('random-object-generator-saved-prompts', []);
+  const [promptHistory, setPromptHistory] = useLocalStorage('random-object-generator-prompt-history', []);
+  const [favorites, setFavorites] = useLocalStorage('random-object-generator-favorites', []);
   const [showHistory, setShowHistory] = useState(false);
   const [controls, setControls] = useState({ count: 'single' });
 

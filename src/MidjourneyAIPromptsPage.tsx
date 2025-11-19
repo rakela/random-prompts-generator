@@ -4,6 +4,7 @@ import { Copy, RefreshCw, Save, Download, Sparkles, PenTool, BookOpen, Crown, Hi
 import { Link } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import useLocalStorage from './hooks/useLocalStorage';
 
 // Midjourney Prompts Data organized by category
 const midjourneyPrompts = {
@@ -80,9 +81,9 @@ const categoryInfo = {
 const MidjourneyAIPromptsPage = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [generatedPrompt, setGeneratedPrompt] = useState(null);
-  const [savedPrompts, setSavedPrompts] = useState([]);
-  const [promptHistory, setPromptHistory] = useState([]);
-  const [favorites, setFavorites] = useState([]);
+  const [savedPrompts, setSavedPrompts] = useLocalStorage('midjourney-a-i-prompts-saved-prompts', []);
+  const [promptHistory, setPromptHistory] = useLocalStorage('midjourney-a-i-prompts-prompt-history', []);
+  const [favorites, setFavorites] = useLocalStorage('midjourney-a-i-prompts-favorites', []);
   const [showHistory, setShowHistory] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);

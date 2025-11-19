@@ -3,6 +3,7 @@ import { Copy, RefreshCw, Save, Download, Sparkles, PenTool, BookOpen, Crown, Sh
 import { Link } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import useLocalStorage from './hooks/useLocalStorage';
 import SEO from './components/SEO';
 
 // High-quality data dictionaries for AI art generation
@@ -110,9 +111,9 @@ const enhanceAIArtPrompt = (prompt) => {
 
 const AIImagesPromptPage = () => {
   const [generatedPrompt, setGeneratedPrompt] = useState(null);
-  const [savedPrompts, setSavedPrompts] = useState([]);
-  const [promptHistory, setPromptHistory] = useState([]);
-  const [favorites, setFavorites] = useState([]);
+  const [savedPrompts, setSavedPrompts] = useLocalStorage('a-i-images-prompt-saved-prompts', []);
+  const [promptHistory, setPromptHistory] = useLocalStorage('a-i-images-prompt-prompt-history', []);
+  const [favorites, setFavorites] = useLocalStorage('a-i-images-prompt-favorites', []);
   const [showHistory, setShowHistory] = useState(false);
   const [controls, setControls] = useState({
     style: 'any',

@@ -4,15 +4,16 @@ import { Copy, RefreshCw, Save, Download, Sparkles, PenTool, BookOpen, Crown, Sh
 import { Link } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import useLocalStorage from './hooks/useLocalStorage';
 
 const promptData = { items: ['Dystopian megacity with towering arcologies and perpetual smog', 'Sleek spaceship interior with holographic displays', 'Abandoned space station drifting through asteroid field', 'Cybernetic enhancement laboratory with surgical bays', 'Time machine with swirling temporal vortex', 'Robot uprising aftermath with destroyed machines', 'Alien planet with bioluminescent life forms', 'Underground bunker after nuclear war', 'Floating metropolis above polluted earth', 'Genetic engineering facility with clone tanks', 'Wormhole portal between distant galaxies', 'Terraformed Mars colony under dome', 'Nanotech swarm constructing megastructure', 'Virtual reality world glitching and breaking', 'Generational ship traveling through deep space', 'Parallel dimension bleeding into reality', 'AI consciousness manifesting in digital space', 'Quantum computer processing infinite possibilities', 'Abandoned mining operation on distant moon', 'First contact with ancient alien artifact', 'Post-human society of uploaded minds', 'Dyson sphere under construction around star', 'Cryogenic facility preserving millions', 'Teleportation hub with multiple destinations', 'Memory extraction and modification center', 'Sentient city with buildings that grow', 'Alternate timeline showing different history', 'Microscopic world explored by shrunken explorers', 'Orbital ring city around gas giant', 'Reality simulation breaking down revealing truth'] };
 const weightedRandom = (items) => items[Math.floor(Math.random() * items.length)];
 
 const RandomSciFiPromptGeneratorPage = () => {
   const [generatedPrompt, setGeneratedPrompt] = useState(null);
-  const [savedPrompts, setSavedPrompts] = useState([]);
-  const [promptHistory, setPromptHistory] = useState([]);
-  const [favorites, setFavorites] = useState([]);
+  const [savedPrompts, setSavedPrompts] = useLocalStorage('random-sci-fi-prompt-generator-saved-prompts', []);
+  const [promptHistory, setPromptHistory] = useLocalStorage('random-sci-fi-prompt-generator-prompt-history', []);
+  const [favorites, setFavorites] = useLocalStorage('random-sci-fi-prompt-generator-favorites', []);
   const [showHistory, setShowHistory] = useState(false);
   const [controls, setControls] = useState({ count: 'single' });
 

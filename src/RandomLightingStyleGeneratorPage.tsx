@@ -4,15 +4,16 @@ import { Copy, RefreshCw, Save, Download, Sparkles, PenTool, BookOpen, Crown, Sh
 import { Link } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import useLocalStorage from './hooks/useLocalStorage';
 
 const promptData = { items: ['Golden hour warm soft natural glow', 'Harsh midday sun creating strong shadows', 'Blue hour twilight moody atmospheric', 'Rembrandt lighting dramatic single source', 'Butterfly lighting glamorous beauty style', 'Split lighting half face illuminated', 'Rim lighting creating glowing edge outline', 'Backlighting creating silhouette effect', 'Soft diffused overcast even illumination', 'Dappled sunlight through leaves pattern', 'Neon signs colorful urban night glow', 'Candlelight warm flickering intimate', 'Studio three-point lighting professional', 'Window light natural directional soft', 'Sunset dramatic warm orange glow', 'Moonlight cool mysterious silver tone', 'Artificial spotlight theatrical dramatic', 'Firelight dancing warm chaotic glow', 'Fluorescent flat harsh institutional', 'Chiaroscuro high contrast dramatic', 'Ambient soft shadowless diffused', 'Colored gels creating mood lighting', 'Sunrise gentle morning warm light', 'Fog diffusing creating dreamy soft', 'Underwater caustic patterns dancing', 'Lightning storm dramatic bright flash', 'Aurora borealis colorful ethereal glow', 'City lights bokeh background blur', 'Dusk fading warm to cool transition', 'Spotlight through dust dramatic rays'] };
 const weightedRandom = (items) => items[Math.floor(Math.random() * items.length)];
 
 const RandomLightingStyleGeneratorPage = () => {
   const [generatedPrompt, setGeneratedPrompt] = useState(null);
-  const [savedPrompts, setSavedPrompts] = useState([]);
-  const [promptHistory, setPromptHistory] = useState([]);
-  const [favorites, setFavorites] = useState([]);
+  const [savedPrompts, setSavedPrompts] = useLocalStorage('random-lighting-style-generator-saved-prompts', []);
+  const [promptHistory, setPromptHistory] = useLocalStorage('random-lighting-style-generator-prompt-history', []);
+  const [favorites, setFavorites] = useLocalStorage('random-lighting-style-generator-favorites', []);
   const [showHistory, setShowHistory] = useState(false);
   const [controls, setControls] = useState({ count: 'single' });
 

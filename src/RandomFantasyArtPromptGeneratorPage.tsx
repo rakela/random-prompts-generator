@@ -4,15 +4,16 @@ import { Copy, RefreshCw, Save, Download, Sparkles, PenTool, BookOpen, Crown, Sh
 import { Link } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import useLocalStorage from './hooks/useLocalStorage';
 
 const promptData = { items: ['Dragon perched on mountain peak breathing fire', 'Fairy circle in moonlit forest glade', 'Wizard dueling with magical energy beams', 'Phoenix rising from ashe\'s in golden flames', 'Mermaid in underwater coral palace', 'Unicorn in enchanted meadow with rainbow', 'Dark sorcerer summoning demon through portal', 'Griffin guarding treasure hoard in cave', 'Elven archer in ancient tree city', 'Centaur warriors charging into battle', 'Crystal cavern with magical glowing gems', 'Giant treant awakening in old forest', 'Pegasus flying through storm clouds', 'Dwarven forge creating magical weapons', 'Mystical library with floating books', 'Portal between magical realms opening', 'Enchanted sword embedded in stone', 'Witch brewing potion in tower laboratory', 'Battle between angels and demons', 'Sleeping dragon surrounded by gold', 'Magical duel in ancient arena', 'Fairy palace made of flower petals', 'Necromancer raising undead army', 'Griffon nesting in mountain eyrie', 'Underwater kingdom with sea creatures', 'Magical transformation mid-spell', 'Ancient golem guarding temple', 'Druid communing with nature spirits', 'Castle floating in clouds', 'Crystal ball showing prophecy'] };
 const weightedRandom = (items) => items[Math.floor(Math.random() * items.length)];
 
 const RandomFantasyArtPromptGeneratorPage = () => {
   const [generatedPrompt, setGeneratedPrompt] = useState(null);
-  const [savedPrompts, setSavedPrompts] = useState([]);
-  const [promptHistory, setPromptHistory] = useState([]);
-  const [favorites, setFavorites] = useState([]);
+  const [savedPrompts, setSavedPrompts] = useLocalStorage('random-fantasy-art-prompt-generator-saved-prompts', []);
+  const [promptHistory, setPromptHistory] = useLocalStorage('random-fantasy-art-prompt-generator-prompt-history', []);
+  const [favorites, setFavorites] = useLocalStorage('random-fantasy-art-prompt-generator-favorites', []);
   const [showHistory, setShowHistory] = useState(false);
   const [controls, setControls] = useState({ count: 'single' });
 

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import Logo from './components/Logo';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import useLocalStorage from './hooks/useLocalStorage';
 
 // Persuasive Writing Topics Data
 const persuasiveTopics = {
@@ -120,9 +121,9 @@ const persuasiveTopics = {
 
 const PersuasiveWritingTopicsPage = () => {
   const [generatedPrompt, setGeneratedPrompt] = useState(null);
-  const [savedPrompts, setSavedPrompts] = useState([]);
-  const [promptHistory, setPromptHistory] = useState([]);
-  const [favorites, setFavorites] = useState([]);
+  const [savedPrompts, setSavedPrompts] = useLocalStorage('persuasive-writing-topics-saved-prompts', []);
+  const [promptHistory, setPromptHistory] = useLocalStorage('persuasive-writing-topics-prompt-history', []);
+  const [favorites, setFavorites] = useLocalStorage('persuasive-writing-topics-favorites', []);
   const [showHistory, setShowHistory] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('all');
 

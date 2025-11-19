@@ -4,15 +4,16 @@ import { Copy, RefreshCw, Save, Download, Sparkles, PenTool, BookOpen, Crown, Sh
 import { Link } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import useLocalStorage from './hooks/useLocalStorage';
 
 const promptData = { items: ['Vaporwave sunset with neon grids and palm trees', 'Dark academia library with candles and leather books', 'Cottagecore garden with wildflowers and vintage furniture', 'Cyberpunk street market with holographic signs', 'Gothic cathedral interior with stained glass', 'Minimalist zen garden with stones and sand', 'Steampunk laboratory with brass instruments', 'Art deco ballroom with geometric patterns', 'Pastel fairy garden with mushrooms and crystals', 'Industrial warehouse with exposed brick and metal', 'Baroque palace with gold leaf and mirrors', 'Bohemian bedroom with plants and tapestries', 'Retro diner with checkered floors and jukebox', 'Ethereal forest with glowing plants', 'Brutalist architecture with concrete and shadows', 'Victorian parlor with velvet and lace', 'Futuristic cityscape with floating buildings', 'Rustic cabin with wooden beams and fireplace', 'Art nouveau cafe with flowing organic shapes', 'Tropical paradise with vibrant colors', 'Nordic minimalism with clean lines and natural wood', 'Desert oasis with sand dunes and stars', 'Underwater ruins with coral and fish', 'Space station with windows to stars', 'Haunted mansion with cobwebs and portraits', 'Japanese zen temple with cherry blossoms', 'Medieval castle with torche\'s and banners', 'Modern luxury penthouse with city views', 'Abandoned theme park overgrown with nature', 'Crystal cave with prismatic light'] };
 const weightedRandom = (items) => items[Math.floor(Math.random() * items.length)];
 
 const RandomAestheticPromptGeneratorPage = () => {
   const [generatedPrompt, setGeneratedPrompt] = useState(null);
-  const [savedPrompts, setSavedPrompts] = useState([]);
-  const [promptHistory, setPromptHistory] = useState([]);
-  const [favorites, setFavorites] = useState([]);
+  const [savedPrompts, setSavedPrompts] = useLocalStorage('random-aesthetic-prompt-generator-saved-prompts', []);
+  const [promptHistory, setPromptHistory] = useLocalStorage('random-aesthetic-prompt-generator-prompt-history', []);
+  const [favorites, setFavorites] = useLocalStorage('random-aesthetic-prompt-generator-favorites', []);
   const [showHistory, setShowHistory] = useState(false);
   const [controls, setControls] = useState({ count: 'single' });
 

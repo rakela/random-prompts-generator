@@ -4,15 +4,16 @@ import { Copy, RefreshCw, Save, Download, Sparkles, PenTool, BookOpen, Crown, Sh
 import { Link } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import useLocalStorage from './hooks/useLocalStorage';
 
 const promptData = { items: ['Learning a musical instrument and playing songs', 'Gardening and growing your own food', 'Photography capturing moments and beauty', 'Painting or drawing creating visual art', 'Writing stories poems or journals', 'Woodworking building furniture and crafts', 'Cooking exploring new cuisines and recipes', 'Rock climbing scaling indoor and outdoor walls', 'Birdwatching identifying species in nature', 'Astronomy observing stars and planets', 'Pottery throwing clay on a wheel', 'Hiking exploring trails and mountains', 'Knitting or crocheting making textiles', 'Calligraphy practicing beautiful lettering', 'Origami folding intricate paper designs', 'Archery developing precision and focus', 'Beekeeping maintaining honey bee hives', 'Foraging identifying edible wild plants', 'Metalworking smithing and welding', 'Dancing various styles and techniques', 'Board gaming strategy and social play', 'Martial arts practicing discipline and technique', 'Aquarium keeping maintaining aquatic ecosystems', 'Coin or stamp collecting curating collections', 'Magic tricks learning sleight of hand', 'Geocaching outdoor treasure hunting', 'Home brewing making beer or wine', 'Baking bread mastering fermentation', 'Model building assembling miniatures', 'Language learning becoming multilingual'] };
 const weightedRandom = (items) => items[Math.floor(Math.random() * items.length)];
 
 const RandomHobbyGeneratorPage = () => {
   const [generatedPrompt, setGeneratedPrompt] = useState(null);
-  const [savedPrompts, setSavedPrompts] = useState([]);
-  const [promptHistory, setPromptHistory] = useState([]);
-  const [favorites, setFavorites] = useState([]);
+  const [savedPrompts, setSavedPrompts] = useLocalStorage('random-hobby-generator-saved-prompts', []);
+  const [promptHistory, setPromptHistory] = useLocalStorage('random-hobby-generator-prompt-history', []);
+  const [favorites, setFavorites] = useLocalStorage('random-hobby-generator-favorites', []);
   const [showHistory, setShowHistory] = useState(false);
   const [controls, setControls] = useState({ count: 'single' });
 

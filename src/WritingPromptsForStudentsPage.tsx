@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import Logo from './components/Logo';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import useLocalStorage from './hooks/useLocalStorage';
 
 // Writing Prompts for Students Data
 const studentPrompts = {
@@ -66,9 +67,9 @@ const studentPrompts = {
 
 const WritingPromptsForStudentsPage = () => {
   const [generatedPrompt, setGeneratedPrompt] = useState(null);
-  const [savedPrompts, setSavedPrompts] = useState([]);
-  const [promptHistory, setPromptHistory] = useState([]);
-  const [favorites, setFavorites] = useState([]);
+  const [savedPrompts, setSavedPrompts] = useLocalStorage('writing-prompts-for-students-saved-prompts', []);
+  const [promptHistory, setPromptHistory] = useLocalStorage('writing-prompts-for-students-prompt-history', []);
+  const [favorites, setFavorites] = useLocalStorage('writing-prompts-for-students-favorites', []);
   const [showHistory, setShowHistory] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('all');
 

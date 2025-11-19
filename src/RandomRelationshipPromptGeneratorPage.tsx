@@ -4,15 +4,16 @@ import { Copy, RefreshCw, Save, Download, Sparkles, PenTool, BookOpen, Crown, Sh
 import { Link } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import useLocalStorage from './hooks/useLocalStorage';
 
 const promptData = { items: ['Childhood friends reuniting after twenty years apart', 'Rivals forced to work together on a project', 'Mentor and student roles reversing over time', 'Siblings separated by a family secret', 'Enemies discovering they share a common goal', 'Strangers trapped together during a crisis', 'Former lovers meeting again by chance', 'Parent and child reconnecting after estrangement', 'Coworkers developing an unexpected friendship', 'Two people pretending to be in a relationship', 'Best friends falling for the same person', 'A relationship built on mutual deception', 'Protector and protected switching roles', 'Long-distance friends growing apart', 'Arranged marriage partners finding real love', 'Pen pals meeting for the first time', 'Found family bonds stronger than blood', 'Teacher learning from their student', 'Neighbors who have never spoken', 'Online friends meeting in person', 'Partners with opposite communication styles', 'Family members competing for inheritance', 'Friends with completely different values', 'A relationship recovering from betrayal', 'Unlikely allies in a larger conflict', 'Generations with different perspectives', 'Two people who bring out each others worst', 'A bond formed through shared trauma', 'Professional relationship becoming personal', 'People who complete each others sentences'] };
 const weightedRandom = (items) => items[Math.floor(Math.random() * items.length)];
 
 const RandomRelationshipPromptGeneratorPage = () => {
   const [generatedPrompt, setGeneratedPrompt] = useState(null);
-  const [savedPrompts, setSavedPrompts] = useState([]);
-  const [promptHistory, setPromptHistory] = useState([]);
-  const [favorites, setFavorites] = useState([]);
+  const [savedPrompts, setSavedPrompts] = useLocalStorage('random-relationship-prompt-generator-saved-prompts', []);
+  const [promptHistory, setPromptHistory] = useLocalStorage('random-relationship-prompt-generator-prompt-history', []);
+  const [favorites, setFavorites] = useLocalStorage('random-relationship-prompt-generator-favorites', []);
   const [showHistory, setShowHistory] = useState(false);
   const [controls, setControls] = useState({ count: 'single' });
 
