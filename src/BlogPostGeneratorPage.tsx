@@ -218,10 +218,10 @@ const BlogPostGeneratorPage = () => {
 
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex flex-wrap justify-center gap-2 mb-8 border-b border-gray-200 dark:border-gray-700">
-          <Link to="/writing-prompts" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700">
+          <Link to="/writing-prompts" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600  hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-700">
             <PenTool size={18} /> Writing
           </Link>
-          <Link to="/ai-images-prompt" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700">
+          <Link to="/ai-images-prompt" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600  hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-700">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72Z"></path>
               <path d="m14 7 3 3"></path><path d="M5 6v4"></path><path d="M19 14v4"></path><path d="M10 2v2"></path><path d="M7 8H3"></path><path d="M21 16h-4"></path><path d="M11 3H9"></path>
@@ -231,10 +231,10 @@ const BlogPostGeneratorPage = () => {
           <Link to="/ai-blog-post-generator" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-green-600 border-b-2 border-green-600 bg-green-50">
             <BookOpen size={18} /> Blog post
           </Link>
-          <Link to="/short-story-prompts-generator" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700">
+          <Link to="/short-story-prompts-generator" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600  hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-700">
             <Crown size={18} /> Short stories
           </Link>
-          <Link to="/random-name-generator" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700">
+          <Link to="/random-name-generator" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600  hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-700">
             <Sparkles size={18} /> Names
           </Link>
         </div>
@@ -261,7 +261,7 @@ const BlogPostGeneratorPage = () => {
               ) : (
                 <div className="space-y-3 max-h-96 overflow-y-auto">
                   {promptHistory.map((prompt) => (
-                    <div key={prompt.id} className="bg-gray-50 rounded-lg p-3 border border-gray-100">
+                    <div key={prompt.id} className="bg-gray-50 dark:bg-gray-700 rounded-lg p-3 border border-gray-100">
                       <div className="flex items-start justify-between gap-3">
                         <div className="flex-1">
                           <p className="text-sm text-gray-800 dark:text-gray-200 leading-relaxed">{prompt.text}</p>
@@ -293,7 +293,7 @@ const BlogPostGeneratorPage = () => {
               </div>
               <div className="grid gap-4">
                 {savedPrompts.slice(-5).map((prompt, index) => (
-                  <div key={index} className="bg-gray-50 border border-gray-200 dark:border-gray-700 rounded-lg p-4">
+                  <div key={index} className="bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-700 rounded-lg p-4">
                     <p className="text-gray-800 dark:text-gray-200">{prompt.text}</p>
                   </div>
                 ))}
@@ -382,7 +382,7 @@ const BlogPostGeneratorPage = () => {
               <p className="text-gray-700 dark:text-gray-300 mb-4">
                 Here are examples of how to transform our AI-generated blog ideas into SEO-optimized content:
               </p>
-              <div className="bg-gray-50 border-l-4 border-green-500 p-4 mb-4">
+              <div className="bg-gray-50 dark:bg-gray-700 border-l-4 border-green-500 p-4 mb-4">
                 <p className="font-semibold text-gray-900 dark:text-gray-100 mb-2">Example 1: Tutorial Format</p>
                 <p className="text-gray-700 dark:text-gray-300 mb-2"><strong>Generated Idea:</strong> "How to achieve remote work productivity for developers in 30 days"</p>
                 <p className="text-gray-700 dark:text-gray-300 mb-2"><strong>SEO Optimization:</strong></p>
@@ -394,7 +394,7 @@ const BlogPostGeneratorPage = () => {
                 </ul>
               </div>
 
-              <div className="bg-gray-50 border-l-4 border-green-500 p-4 mb-4">
+              <div className="bg-gray-50 dark:bg-gray-700 border-l-4 border-green-500 p-4 mb-4">
                 <p className="font-semibold text-gray-900 dark:text-gray-100 mb-2">Example 2: Comparison Format</p>
                 <p className="text-gray-700 dark:text-gray-300 mb-2"><strong>Generated Idea:</strong> "Tool comparison: Best project management software for small teams"</p>
                 <p className="text-gray-700 dark:text-gray-300 mb-2"><strong>SEO Optimization:</strong></p>
@@ -430,31 +430,31 @@ const BlogPostGeneratorPage = () => {
           <div className="max-w-4xl mx-auto px-4">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-8 text-center">Frequently Asked Questions</h2>
             <div className="space-y-6">
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+              <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">What is an AI blog post generator?</h3>
                 <p className="text-gray-700 dark:text-gray-300">
                   An AI blog post generator is a tool that creates SEO-optimized blog post ideas, topics, and outlines using AI algorithms. Our AI blog post generator combines proven formats, compelling hooks, and searchable niches to generate blog content ideas that drive traffic and engagement.
                 </p>
               </div>
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+              <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">How do I use the AI blog post generator?</h3>
                 <p className="text-gray-700 dark:text-gray-300">
                   Click "Generate Blog Post Idea" to instantly create a complete blog post concept. Each idea includes the topic, format, angle, and opening hook. Copy your favorite ideas, save them for later, or regenerate to explore different blog post concepts. Use the ideas as starting points for your blog content.
                 </p>
               </div>
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+              <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Are blog posts from this AI blog post generator SEO-friendly?</h3>
                 <p className="text-gray-700 dark:text-gray-300">
                   Yes! Our AI blog post generator creates ideas with built-in SEO value including long-tail keywords, searchable niches, and proven content formats that rank well. Each blog post idea is designed to target specific search queries and audience needs for maximum organic traffic.
                 </p>
               </div>
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+              <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Can I use AI blog post generator ideas for commercial blogs?</h3>
                 <p className="text-gray-700 dark:text-gray-300">
                   Absolutely! All blog post ideas generated by our AI blog post generator are free to use for personal or commercial projects. Use them for your business blog, client projects, content marketing, or any blogging purpose without attribution requirements.
                 </p>
               </div>
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+              <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">What makes this AI blog post generator different?</h3>
                 <p className="text-gray-700 dark:text-gray-300">
                   Our AI blog post generator focuses on SEO-optimized, specific blog post ideas with proven formats and compelling hooks. Instead of generic topics, you get complete blog post concepts with niche focus, content angle, format recommendations, and attention-grabbing opening hooks ready to expand into full articles.

@@ -152,7 +152,7 @@ const RandomNameGeneratorPage = () => {
             <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-3">Generated Names:</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
               {prompt.text.split('\n').map((name, index) => (
-                <div key={index} className="bg-gray-50 px-3 py-2 rounded border text-gray-800 dark:text-gray-200">
+                <div key={index} className="bg-gray-50 dark:bg-gray-700 px-3 py-2 rounded border text-gray-800 dark:text-gray-200">
                   {name}
                 </div>
               ))}
@@ -203,20 +203,20 @@ const RandomNameGeneratorPage = () => {
 
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex flex-wrap justify-center gap-2 mb-8 border-b border-gray-200 dark:border-gray-700">
-          <Link to="/writing-prompts" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700">
+          <Link to="/writing-prompts" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600  hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-700">
             <PenTool size={18} /> Writing
           </Link>
-          <Link to="/ai-images-prompt" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700">
+          <Link to="/ai-images-prompt" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600  hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-700">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72Z"></path>
               <path d="m14 7 3 3"></path><path d="M5 6v4"></path><path d="M19 14v4"></path><path d="M10 2v2"></path><path d="M7 8H3"></path><path d="M21 16h-4"></path><path d="M11 3H9"></path>
             </svg>
             AI Images
           </Link>
-          <Link to="/ai-blog-post-generator" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700">
+          <Link to="/ai-blog-post-generator" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600  hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-700">
             <BookOpen size={18} /> Blog post
           </Link>
-          <Link to="/short-story-prompts-generator" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700">
+          <Link to="/short-story-prompts-generator" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600  hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-700">
             <Crown size={18} /> Short stories
           </Link>
           <Link to="/random-name-generator" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-pink-600 border-b-2 border-pink-600 bg-pink-50">
@@ -228,20 +228,20 @@ const RandomNameGeneratorPage = () => {
       <div className="max-w-6xl mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-            <select value={controls.type} onChange={(e) => updateControl('type', e.target.value)} className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+            <select value={controls.type} onChange={(e) => updateControl('type', e.target.value)} className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent dark:bg-gray-800 dark:text-gray-100">
               <option value="full">Full Name</option>
               <option value="first">First Name Only</option>
               <option value="title">With Title</option>
               <option value="house">With House</option>
             </select>
-            <select value={controls.origin} onChange={(e) => updateControl('origin', e.target.value)} className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+            <select value={controls.origin} onChange={(e) => updateControl('origin', e.target.value)} className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent dark:bg-gray-800 dark:text-gray-100">
               <option value="any">Any Culture</option>
               <option value="elvish">Elvish</option>
               <option value="dwarven">Dwarven</option>
               <option value="human">Human</option>
               <option value="exotic">Exotic</option>
             </select>
-            <select value={controls.count} onChange={(e) => updateControl('count', e.target.value)} className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+            <select value={controls.count} onChange={(e) => updateControl('count', e.target.value)} className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent dark:bg-gray-800 dark:text-gray-100">
               <option value="single">Single Name</option>
               <option value="multiple">Generate 5 Names</option>
               <option value="batch">Batch of 10</option>
@@ -267,7 +267,7 @@ const RandomNameGeneratorPage = () => {
               ) : (
                 <div className="space-y-3 max-h-96 overflow-y-auto">
                   {promptHistory.map((prompt) => (
-                    <div key={prompt.id} className="bg-gray-50 rounded-lg p-3 border border-gray-100">
+                    <div key={prompt.id} className="bg-gray-50 dark:bg-gray-700 rounded-lg p-3 border border-gray-100">
                       <div className="flex items-start justify-between gap-3">
                         <div className="flex-1">
                           <p className="text-sm text-gray-800 dark:text-gray-200 leading-relaxed">{prompt.text}</p>
@@ -299,7 +299,7 @@ const RandomNameGeneratorPage = () => {
               </div>
               <div className="grid gap-4">
                 {savedPrompts.slice(-5).map((prompt, index) => (
-                  <div key={index} className="bg-gray-50 border border-gray-200 dark:border-gray-700 rounded-lg p-4">
+                  <div key={index} className="bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-700 rounded-lg p-4">
                     <p className="text-gray-800 dark:text-gray-200">{prompt.text}</p>
                   </div>
                 ))}
@@ -329,7 +329,7 @@ const RandomNameGeneratorPage = () => {
           </div>
 
           {/* Related Links */}
-          <div className="mt-12 bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+          <div className="mt-12 bg-gray-50 dark:bg-gray-700 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
             <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">More Creative Tools</h3>
             <div className="grid md:grid-cols-2 gap-4">
               <Link to="/writing-prompts" className="text-pink-600 hover:underline flex items-center gap-2">
@@ -356,31 +356,31 @@ const RandomNameGeneratorPage = () => {
           <div className="max-w-4xl mx-auto px-4">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-8 text-center">Frequently Asked Questions</h2>
             <div className="space-y-6">
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+              <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">How does the random name generator work?</h3>
                 <p className="text-gray-700 dark:text-gray-300">
                   Our random name generator combines culturally consistent first names and last names from elvish, dwarven, human, and exotic fantasy cultures. Each generated random name is designed to sound authentic and natural within its cultural context, perfect for fantasy characters, D&D campaigns, and creative writing.
                 </p>
               </div>
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+              <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Can I use random names for my D&D characters?</h3>
                 <p className="text-gray-700 dark:text-gray-300">
                   Absolutely! This random name generator is perfect for D&D character creation. Generate authentic elvish names for your elf characters, dwarven names for dwarves, human names for human characters, or exotic names for tieflings, dragonborn, and other fantasy races. All random names are free to use in your campaigns.
                 </p>
               </div>
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+              <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Are random names copyrighted?</h3>
                 <p className="text-gray-700 dark:text-gray-300">
                   No. All random names generated by RandomPrompts.org are free to use for personal or commercial projects including novels, games, D&D campaigns, screenplays, and any creative work. The random names are procedurally generated and belong to you once created.
                 </p>
               </div>
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+              <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Can I generate multiple random names at once?</h3>
                 <p className="text-gray-700 dark:text-gray-300">
                   Yes! Our random name generator offers batch generation. Choose "Generate 5 Names" to create 5 random names simultaneously, or "Batch of 10" for 10 names. Perfect when you need multiple NPCs, character options, or a list of fantasy names for your worldbuilding project.
                 </p>
               </div>
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+              <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">What name formats does the random name generator support?</h3>
                 <p className="text-gray-700 dark:text-gray-300">
                   The random name generator offers four formats: Full Name (first and last), First Name Only, With Title (e.g., "Alaric the Bold"), and With House (e.g., "Thalorin of House Moonwhisper"). Select the format that best fits your character's background and social status.

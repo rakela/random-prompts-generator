@@ -69,6 +69,9 @@ const Footer: React.FC = () => {
               <a href="https://www.producthunt.com/products/random-prompts-generator?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-random&#0045;prompts&#0045;generator" target="_blank" rel="noopener noreferrer">
                 <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1031771&theme=neutral&t=1761741756475" alt="Random Prompts Generator - Generate endless ideas for writing, art, and stories | Product Hunt" style={{ width: '250px', height: '54px' }} width={250} height={54} />
               </a>
+              <a href="https://startupfa.me/s/randomprompts.org?utm_source=randomprompts.org" target="_blank" rel="noopener noreferrer">
+                <img src="https://startupfa.me/badges/featured-badge.webp" alt="randomprompts.org - Featured on Startup Fame" width="171" height="54" />
+              </a>
               <a href="https://turbo0.com/item/random-prompts-generator" target="_blank" rel="noopener noreferrer">
                 <img src="https://img.turbo0.com/badge-listed-light.svg" alt="Listed on Turbo0" style={{ height: '54px', width: 'auto' }} />
               </a>

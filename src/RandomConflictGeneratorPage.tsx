@@ -212,7 +212,7 @@ const RandomConflictGeneratorPage = () => {
         {isMultiple ? (
           <div className="mb-4 space-y-3">
             {prompt.text.split('\n\n').map((conflict, index) => (
-              <div key={index} className="bg-gray-50 px-4 py-3 rounded border text-gray-800 dark:text-gray-200 leading-relaxed">
+              <div key={index} className="bg-gray-50 dark:bg-gray-700 px-4 py-3 rounded border text-gray-800 dark:text-gray-200 leading-relaxed">
                 {conflict}
               </div>
             ))}
@@ -262,16 +262,16 @@ const RandomConflictGeneratorPage = () => {
 
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex flex-wrap justify-center gap-2 mb-8 border-b border-gray-200 dark:border-gray-700">
-          <Link to="/writing-prompts" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700">
+          <Link to="/writing-prompts" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600  hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-700">
             <PenTool size={18} /> Writing
           </Link>
-          <Link to="/short-story-prompts-generator" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700">
+          <Link to="/short-story-prompts-generator" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600  hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-700">
             <Crown size={18} /> Short stories
           </Link>
-          <Link to="/random-plot-twist-generator" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700">
+          <Link to="/random-plot-twist-generator" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600  hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-700">
             <Sparkles size={18} /> Plot Twists
           </Link>
-          <Link to="/random-character-generator" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700">
+          <Link to="/random-character-generator" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600  hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-700">
             <BookOpen size={18} /> Characters
           </Link>
         </div>
@@ -280,7 +280,7 @@ const RandomConflictGeneratorPage = () => {
       <div className="max-w-6xl mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-            <select value={controls.type} onChange={(e) => updateControl('type', e.target.value)} className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent">
+            <select value={controls.type} onChange={(e) => updateControl('type', e.target.value)} className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent dark:bg-gray-800 dark:text-gray-100">
               <option value="any">Any Type</option>
               <option value="interpersonal">Interpersonal</option>
               <option value="internal">Internal</option>
@@ -291,7 +291,7 @@ const RandomConflictGeneratorPage = () => {
               <option value="technological">Technological</option>
               <option value="power">Power</option>
             </select>
-            <select value={controls.count} onChange={(e) => updateControl('count', e.target.value)} className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent">
+            <select value={controls.count} onChange={(e) => updateControl('count', e.target.value)} className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent dark:bg-gray-800 dark:text-gray-100">
               <option value="single">Single Conflict</option>
               <option value="multiple">Generate 5 Conflicts</option>
               <option value="batch">Generate 10 Conflicts</option>
@@ -317,7 +317,7 @@ const RandomConflictGeneratorPage = () => {
               ) : (
                 <div className="space-y-3 max-h-96 overflow-y-auto">
                   {promptHistory.map((prompt) => (
-                    <div key={prompt.id} className="bg-gray-50 rounded-lg p-3 border border-gray-100">
+                    <div key={prompt.id} className="bg-gray-50 dark:bg-gray-700 rounded-lg p-3 border border-gray-100">
                       <div className="flex items-start justify-between gap-3">
                         <div className="flex-1">
                           <p className="text-sm text-gray-800 dark:text-gray-200 leading-relaxed line-clamp-2">{prompt.text}</p>
@@ -349,7 +349,7 @@ const RandomConflictGeneratorPage = () => {
               </div>
               <div className="grid gap-4">
                 {savedPrompts.slice(-5).map((prompt, index) => (
-                  <div key={index} className="bg-gray-50 border border-gray-200 dark:border-gray-700 rounded-lg p-4">
+                  <div key={index} className="bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-700 rounded-lg p-4">
                     <p className="text-gray-800 dark:text-gray-200">{prompt.text}</p>
                   </div>
                 ))}
@@ -377,7 +377,7 @@ const RandomConflictGeneratorPage = () => {
               </div>
             </div>
 
-            <div className="bg-gray-50 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+            <div className="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
               <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Example Random Conflicts:</h3>
               <ul className="space-y-3 text-gray-700 dark:text-gray-300">
                 <li className="flex gap-2"><span className="text-red-600 font-bold">•</span> <span>Interpersonal: "Two best friends fall in love with the same person and must choose between friendship and romance."</span></li>
@@ -389,7 +389,7 @@ const RandomConflictGeneratorPage = () => {
             </div>
           </div>
 
-          <div className="mt-12 bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+          <div className="mt-12 bg-gray-50 dark:bg-gray-700 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
             <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Related Writing Tools</h3>
             <div className="grid md:grid-cols-2 gap-4">
               <Link to="/random-plot-twist-generator" className="text-red-600 hover:underline flex items-center gap-2">
@@ -416,25 +416,25 @@ const RandomConflictGeneratorPage = () => {
           <div className="max-w-4xl mx-auto px-4">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-8 text-center">Frequently Asked Questions</h2>
             <div className="space-y-6">
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+              <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">What is a random conflict generator?</h3>
                 <p className="text-gray-700 dark:text-gray-300">
                   A random conflict generator is a tool that creates compelling conflicts for stories, including interpersonal struggles, internal dilemmas, moral quandaries, and high-stakes scenarios. Conflict is essential for narrative tension, character development, and engaging storytelling.
                 </p>
               </div>
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+              <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Why is conflict important in storytelling?</h3>
                 <p className="text-gray-700 dark:text-gray-300">
                   Conflict drives every good story by creating tension, forcing characters to make difficult choices, and revealing their true nature under pressure. Without conflict, stories lack stakes and momentum. Our random conflict generator provides the central challenges that make stories compelling.
                 </p>
               </div>
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+              <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Can I use generated conflicts in my writing?</h3>
                 <p className="text-gray-700 dark:text-gray-300">
                   Yes! All random conflicts generated by RandomPrompts.org are free to use in your novels, short stories, screenplays, D&D campaigns, and creative projects. Adapt them to fit your characters, setting, and narrative needs.
                 </p>
               </div>
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+              <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">What types of conflicts are available?</h3>
                 <p className="text-gray-700 dark:text-gray-300">
                   Our random conflict generator offers eight types: interpersonal (person vs. person), internal (person vs. self), societal (person vs. society), survival (person vs. nature), moral (ethical dilemmas), supernatural (fantasy conflicts), technological (sci-fi challenges), and power (political/authority conflicts).
