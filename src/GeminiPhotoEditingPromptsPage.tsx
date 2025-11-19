@@ -190,7 +190,7 @@ export default function GeminiPhotoEditingPromptsPage() {
                   </div>
                 </div>
 
-                <div className="bg-gray-50 rounded-xl p-4 mb-4">
+                <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-4 mb-4">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">PROMPT:</span>
                     <button
@@ -408,7 +408,7 @@ export default function GeminiPhotoEditingPromptsPage() {
               <p className="text-gray-700 dark:text-gray-300 mb-2">
                 Always begin by describing your photo and your editing goals:
               </p>
-              <div className="bg-gray-50 rounded-lg p-4 border-l-4 border-cyan-600">
+              <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 border-l-4 border-cyan-600">
                 <p className="text-sm text-gray-700 dark:text-gray-300 italic">
                   "I have a portrait photo taken outdoors during golden hour. The subject is backlit,
                   causing their face to be too dark. I want to brighten the face while maintaining the
@@ -422,7 +422,7 @@ export default function GeminiPhotoEditingPromptsPage() {
               <p className="text-gray-700 dark:text-gray-300 mb-2">
                 Use precise language about what you want changed:
               </p>
-              <div className="bg-gray-50 rounded-lg p-4">
+              <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
                 <div className="grid md:grid-cols-2 gap-4 text-sm">
                   <div>
                     <p className="font-bold text-red-600 mb-1">❌ Vague:</p>
@@ -441,7 +441,7 @@ export default function GeminiPhotoEditingPromptsPage() {
               <p className="text-gray-700 dark:text-gray-300 mb-2">
                 Use style references that Gemini can understand:
               </p>
-              <div className="bg-gray-50 rounded-lg p-4 border-l-4 border-cyan-600">
+              <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 border-l-4 border-cyan-600">
                 <p className="text-sm text-gray-700 dark:text-gray-300 italic">
                   "I want a moody, cinematic look similar to the TV show 'Euphoria'—high contrast,
                   heavy teal and orange color grading, with dramatic lighting and slightly desaturated midtones."
@@ -454,7 +454,7 @@ export default function GeminiPhotoEditingPromptsPage() {
               <p className="text-gray-700 dark:text-gray-300 mb-2">
                 Tell Gemini about any limitations or requirements:
               </p>
-              <div className="bg-gray-50 rounded-lg p-4">
+              <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
                 <ul className="space-y-2 text-sm text-gray-700 dark:text-gray-300">
                   <li className="flex items-start gap-2">
                     <span className="text-cyan-600">→</span>
@@ -481,7 +481,7 @@ export default function GeminiPhotoEditingPromptsPage() {
               <p className="text-gray-700 dark:text-gray-300 mb-2">
                 Request explanations to improve your skills:
               </p>
-              <div className="bg-gray-50 rounded-lg p-4 border-l-4 border-cyan-600">
+              <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 border-l-4 border-cyan-600">
                 <p className="text-sm text-gray-700 dark:text-gray-300 italic">
                   "Please explain why each adjustment is necessary and how it improves the image.
                   I want to understand the principles so I can apply them to future photos."
@@ -494,7 +494,7 @@ export default function GeminiPhotoEditingPromptsPage() {
               <p className="text-gray-700 dark:text-gray-300 mb-2">
                 Ask for organized, actionable responses:
               </p>
-              <div className="bg-gray-50 rounded-lg p-4">
+              <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
                 <p className="text-sm text-gray-700 dark:text-gray-300 mb-2">
                   "Please provide your editing guidance in this format:
                 </p>

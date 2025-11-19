@@ -247,14 +247,14 @@ const PersuasiveEssaysTopicsPage = () => {
         <div className="flex flex-wrap justify-center gap-2 mb-8 border-b border-gray-200 dark:border-gray-700">
           <Link
             to="/writing-prompts"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600  hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-700"
           >
             <PenTool size={18} />
             Writing
           </Link>
           <Link
             to="/ai-images-prompt"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600  hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-700"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72Z"></path>
@@ -270,21 +270,21 @@ const PersuasiveEssaysTopicsPage = () => {
           </Link>
           <Link
             to="/ai-blog-post-generator"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600  hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-700"
           >
             <BookOpen size={18} />
             Blog post
           </Link>
           <Link
             to="/short-story-prompts-generator"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600  hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-700"
           >
             <Crown size={18} />
             Short stories
           </Link>
           <Link
             to="/random-name-generator"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600  hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-700"
           >
             <Sparkles size={18} />
             Names
@@ -458,7 +458,7 @@ const PersuasiveEssaysTopicsPage = () => {
               ) : (
                 <div className="space-y-3 max-h-96 overflow-y-auto">
                   {promptHistory.map((prompt) => (
-                    <div key={prompt.id} className="bg-gray-50 rounded-lg p-3 border border-gray-100">
+                    <div key={prompt.id} className="bg-gray-50 dark:bg-gray-700 rounded-lg p-3 border border-gray-100">
                       <div className="flex items-start justify-between gap-3">
                         <div className="flex-1">
                           <div className="flex items-center gap-2 mb-1">
@@ -674,7 +674,7 @@ const PersuasiveEssaysTopicsPage = () => {
               </div>
               <div className="grid gap-4">
                 {savedPrompts.slice(-5).map((prompt, index) => (
-                  <div key={index} className="bg-gray-50 border border-gray-200 dark:border-gray-700 rounded-lg p-4">
+                  <div key={index} className="bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-700 rounded-lg p-4">
                     <div className="flex items-start gap-3">
                       <span className="text-2xl">{prompt.emoji}</span>
                       <div className="flex-1">
@@ -708,7 +708,7 @@ const PersuasiveEssaysTopicsPage = () => {
           </div>
 
           {/* Related Links */}
-          <div className="mt-12 bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+          <div className="mt-12 bg-gray-50 dark:bg-gray-700 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
             <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">More Writing Resources</h3>
             <div className="grid md:grid-cols-2 gap-4">
               <Link to="/persuasive-writing-topics" className="text-indigo-600 hover:underline flex items-center gap-2">
@@ -736,35 +736,35 @@ const PersuasiveEssaysTopicsPage = () => {
           <div className="max-w-4xl mx-auto px-4">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-8 text-center">Frequently Asked Questions</h2>
             <div className="space-y-6">
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+              <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">What makes these persuasive essays topics different?</h3>
                 <p className="text-gray-700 dark:text-gray-300">
                   Our persuasive essays topics include complete argumentative structures with thesis statements, supporting arguments, counterpoints, and rebuttals. This comprehensive approach teaches students how to build balanced, well-reasoned persuasive essays rather than one-sided arguments.
                 </p>
               </div>
 
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+              <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">How do I use these persuasive essay topics effectively?</h3>
                 <p className="text-gray-700 dark:text-gray-300">
                   Start with the thesis statement to understand the position, review the supporting arguments to see how evidence builds the case, study the counterpoint to learn opposing views, and analyze the rebuttal to understand how to address objections. Then develop your own essay using this structure as a guide.
                 </p>
               </div>
 
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+              <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Can I modify these persuasive essay arguments?</h3>
                 <p className="text-gray-700 dark:text-gray-300">
                   Absolutely! These persuasive essays topics serve as frameworks. You can adapt the arguments, add your own research and evidence, incorporate additional counterpoints, and develop more detailed rebuttals based on your own critical thinking and analysis.
                 </p>
               </div>
 
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+              <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Are these topics suitable for all grade levels?</h3>
                 <p className="text-gray-700 dark:text-gray-300">
                   These persuasive essays topics are designed primarily for high school and college students. Middle school students can use simplified versions, while advanced students can expand on the arguments with deeper research, additional evidence, and more sophisticated reasoning.
                 </p>
               </div>
 
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+              <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">What's the difference between persuasive essays and argumentative essays?</h3>
                 <p className="text-gray-700 dark:text-gray-300">
                   Persuasive essays aim to convince readers through emotion, logic, and credibility, while argumentative essays focus primarily on logical reasoning and evidence. Our topics work for both styles since they include logical arguments (for argumentative essays) and engaging real-world issues (for persuasive essays).

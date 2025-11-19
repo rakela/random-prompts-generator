@@ -81,7 +81,7 @@ const RandomVillainGeneratorPage = () => {
         {isMultiple ? (
           <div className="mb-4 space-y-4">
             {prompt.text.split('\n\n---\n\n').map((villain, index) => (
-              <div key={index} className="bg-gray-50 px-4 py-3 rounded border text-gray-800 dark:text-gray-200 leading-relaxed whitespace-pre-line">
+              <div key={index} className="bg-gray-50 dark:bg-gray-700 px-4 py-3 rounded border text-gray-800 dark:text-gray-200 leading-relaxed whitespace-pre-line">
                 {villain}
               </div>
             ))}
@@ -114,15 +114,15 @@ const RandomVillainGeneratorPage = () => {
       </div>
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex flex-wrap justify-center gap-2 mb-8 border-b border-gray-200 dark:border-gray-700">
-          <Link to="/writing-prompts" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"><PenTool size={18} /> Writing</Link>
-          <Link to="/random-character-generator" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"><Crown size={18} /> Characters</Link>
-          <Link to="/random-hero-generator" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"><Sparkles size={18} /> Heroes</Link>
+          <Link to="/writing-prompts" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600  hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-700"><PenTool size={18} /> Writing</Link>
+          <Link to="/random-character-generator" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600  hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-700"><Crown size={18} /> Characters</Link>
+          <Link to="/random-hero-generator" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600  hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-700"><Sparkles size={18} /> Heroes</Link>
         </div>
       </div>
       <div className="max-w-6xl mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-1 gap-4 mb-6">
-            <select value={controls.count} onChange={(e) => updateControl('count', e.target.value)} className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent">
+            <select value={controls.count} onChange={(e) => updateControl('count', e.target.value)} className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent dark:bg-gray-800 dark:text-gray-100">
               <option value="single">Single Villain</option>
               <option value="multiple">Generate 3 Villains</option>
               <option value="batch">Generate 5 Villains</option>
@@ -159,7 +159,7 @@ const RandomVillainGeneratorPage = () => {
               </div>
             </div>
           </div>
-          <div className="mt-12 bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+          <div className="mt-12 bg-gray-50 dark:bg-gray-700 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
             <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Related Tools</h3>
             <div className="grid md:grid-cols-2 gap-4">
               <Link to="/random-hero-generator" className="text-red-700 hover:underline flex items-center gap-2"><Sparkles size={16} />Hero Generator</Link>
@@ -173,15 +173,15 @@ const RandomVillainGeneratorPage = () => {
           <div className="max-w-4xl mx-auto px-4">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-8 text-center">Frequently Asked Questions</h2>
             <div className="space-y-6">
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+              <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">What makes a good villain?</h3>
                 <p className="text-gray-700 dark:text-gray-300">A good villain has clear motivations that make sense from their perspective, poses a genuine threat to the protagonist, and ideally has relatable human qualities that create complexity. The best villains believe they are the hero of their own story.</p>
               </div>
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+              <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Can I use generated villains in my projects?</h3>
                 <p className="text-gray-700 dark:text-gray-300">Yes! All random villains generated by RandomPrompts.org are free to use in your creative writing, D&D campaigns, novels, screenplays, and storytelling projects.</p>
               </div>
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+              <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Why include a weakness for villains?</h3>
                 <p className="text-gray-700 dark:text-gray-300">A villain's weakness makes them defeatable and creates dramatic tension. It also humanizes them and provides story opportunities. The most interesting weaknesses are tied to the villain's strengths or motivations.</p>
               </div>

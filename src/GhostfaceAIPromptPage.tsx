@@ -124,14 +124,14 @@ const GhostfaceAIPromptPage = () => {
         <div className="flex flex-wrap justify-center gap-2 mb-8 border-b border-gray-200 dark:border-gray-700">
           <Link
             to="/writing-prompts"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600  hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-700"
           >
             <PenTool size={18} />
             Writing
           </Link>
           <Link
             to="/ai-images-prompt"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600  hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-700"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72Z"></path>
@@ -147,21 +147,21 @@ const GhostfaceAIPromptPage = () => {
           </Link>
           <Link
             to="/ai-blog-post-generator"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600  hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-700"
           >
             <BookOpen size={18} />
             Blog post
           </Link>
           <Link
             to="/short-story-prompts-generator"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600  hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-700"
           >
             <Crown size={18} />
             Short stories
           </Link>
           <Link
             to="/random-name-generator"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600  hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-700"
           >
             <Sparkles size={18} />
             Names
@@ -202,7 +202,7 @@ const GhostfaceAIPromptPage = () => {
                   <span className="text-4xl">{item.icon}</span>
                   <div className="flex-1">
                     <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">{index + 1}. {item.title}</h3>
-                    <div className="bg-gray-50 rounded-lg p-4 border border-gray-200 dark:border-gray-700">
+                    <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 border border-gray-200 dark:border-gray-700">
                       <p className="text-gray-800 dark:text-gray-200 text-sm leading-relaxed font-mono">{item.prompt}</p>
                     </div>
                   </div>
@@ -320,7 +320,7 @@ const GhostfaceAIPromptPage = () => {
           </div>
 
           {/* Related Links Section */}
-          <div className="mt-12 bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+          <div className="mt-12 bg-gray-50 dark:bg-gray-700 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
             <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">🔗 More AI Prompt Generators</h3>
             <div className="grid md:grid-cols-2 gap-4">
               <Link to="/ai-images-prompt" className="text-blue-600 hover:underline flex items-center gap-2">
@@ -350,35 +350,35 @@ const GhostfaceAIPromptPage = () => {
           <div className="max-w-4xl mx-auto px-4">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-8 text-center">Frequently Asked Questions</h2>
             <div className="space-y-6">
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+              <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">What is the Ghostface AI trend?</h3>
                 <p className="text-gray-700 dark:text-gray-300">
                   The Ghostface AI trend involves using AI image generators like MidJourney and DALL-E to create artistic interpretations of the iconic Ghostface character in various aesthetic styles — from cyberpunk and horror to fashion editorials and viral selfie trends.
                 </p>
               </div>
 
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+              <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Which AI tools work with these Ghostface prompts?</h3>
                 <p className="text-gray-700 dark:text-gray-300">
                   These prompts are optimized for <strong>MidJourney v6</strong> (with parameters like --ar, --v 6, --chaos), but also work with <strong>DALL-E 3</strong>, <strong>Stable Diffusion XL</strong>, and <strong>Leonardo.ai</strong>. You may need to adjust or remove specific parameters depending on the platform.
                 </p>
               </div>
 
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+              <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Can I use these AI-generated Ghostface images commercially?</h3>
                 <p className="text-gray-700 dark:text-gray-300">
                   The prompts themselves are free to use. However, commercial usage of AI-generated images depends on your AI platform's terms of service and potential copyright considerations around the Ghostface character. Always review platform policies and consider transformative use guidelines.
                 </p>
               </div>
 
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+              <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">How do I make Ghostface AI art go viral on TikTok?</h3>
                 <p className="text-gray-700 dark:text-gray-300">
                   Use vertical formats (--ar 9:16), trending audio, and relevant hashtags like #GhostfaceAI #MidJourney #AIArt. Post during peak hours, create series or storytelling sequences, and engage with trending Ghostface content to boost visibility. The selfie trend format (prompt #4) performs especially well.
                 </p>
               </div>
 
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+              <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">What does the --chaos parameter do in MidJourney?</h3>
                 <p className="text-gray-700 dark:text-gray-300">
                   The <code>--chaos</code> parameter (0-100) controls how varied and unexpected the AI results are. Higher values (20-25) create more unique, experimental images, while lower values produce more predictable results. It's perfect for discovering surprising creative directions.

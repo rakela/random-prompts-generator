@@ -271,7 +271,7 @@ const AIImagesPromptPage = () => {
         <div className="flex flex-wrap justify-center gap-2 mb-8 border-b border-gray-200 dark:border-gray-700">
           <Link
             to="/writing-prompts"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600  hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-700"
           >
             <PenTool size={18} />
             Writing
@@ -294,21 +294,21 @@ const AIImagesPromptPage = () => {
           </Link>
           <Link
             to="/ai-blog-post-generator"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600  hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-700"
           >
             <BookOpen size={18} />
             Blog post
           </Link>
           <Link
             to="/short-story-prompts-generator"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600  hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-700"
           >
             <Crown size={18} />
             Short stories
           </Link>
           <Link
             to="/random-name-generator"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600  hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-700"
           >
             <Sparkles size={18} />
             Names
@@ -325,7 +325,7 @@ const AIImagesPromptPage = () => {
             <select
               value={controls.style}
               onChange={(e) => updateControl('style', e.target.value)}
-              className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-800 dark:text-gray-100"
             >
               <option value="any">Any Medium</option>
               <option value="digital">Digital Art</option>
@@ -336,7 +336,7 @@ const AIImagesPromptPage = () => {
             <select
               value={controls.mood}
               onChange={(e) => updateControl('mood', e.target.value)}
-              className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-800 dark:text-gray-100"
             >
               <option value="any">Any Subject</option>
               <option value="portrait">Portrait</option>
@@ -348,7 +348,7 @@ const AIImagesPromptPage = () => {
             <select
               value={controls.quality}
               onChange={(e) => updateControl('quality', e.target.value)}
-              className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-800 dark:text-gray-100"
             >
               <option value="standard">Standard Quality</option>
               <option value="high">High Quality</option>
@@ -387,7 +387,7 @@ const AIImagesPromptPage = () => {
               ) : (
                 <div className="space-y-3 max-h-96 overflow-y-auto">
                   {promptHistory.map((prompt) => (
-                    <div key={prompt.id} className="bg-gray-50 rounded-lg p-3 border border-gray-100">
+                    <div key={prompt.id} className="bg-gray-50 dark:bg-gray-700 rounded-lg p-3 border border-gray-100">
                       <div className="flex items-start justify-between gap-3">
                         <div className="flex-1">
                           <p className="text-sm text-gray-800 dark:text-gray-200 leading-relaxed">{prompt.text}</p>
@@ -438,7 +438,7 @@ const AIImagesPromptPage = () => {
               </div>
               <div className="grid gap-4">
                 {savedPrompts.slice(-5).map((prompt, index) => (
-                  <div key={index} className="bg-gray-50 border border-gray-200 dark:border-gray-700 rounded-lg p-4">
+                  <div key={index} className="bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-700 rounded-lg p-4">
                     <p className="text-gray-800 dark:text-gray-200">{prompt.text}</p>
                   </div>
                 ))}
@@ -547,35 +547,35 @@ const AIImagesPromptPage = () => {
           <div className="max-w-4xl mx-auto px-4">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-8 text-center">Frequently Asked Questions</h2>
             <div className="space-y-6">
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+              <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">What is an AI images prompt?</h3>
                 <p className="text-gray-700 dark:text-gray-300">
                   An AI images prompt is a detailed text description that tells AI art generators like MidJourney, DALL-E, or Stable Diffusion exactly what image to create. The best AI images prompt includes specific details about subject, style, lighting, composition, and quality to produce professional results.
                 </p>
               </div>
 
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+              <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">How do I use AI images prompts effectively?</h3>
                 <p className="text-gray-700 dark:text-gray-300">
                   Copy the generated AI images prompt and paste it directly into your AI art generator (MidJourney, DALL-E, Stable Diffusion). For best results, use prompts that include specific technical terms, lighting descriptions, and style references. Our generator creates prompts optimized for professional AI image generation.
                 </p>
               </div>
 
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+              <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Can I use these AI images prompts for commercial projects?</h3>
                 <p className="text-gray-700 dark:text-gray-300">
                   Yes. All AI images prompts generated by RandomPrompts.org are free to use for personal or commercial projects. Check your AI art platform's terms (MidJourney, DALL-E, etc.) regarding commercial use of generated images.
                 </p>
               </div>
 
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+              <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Which AI art generators work with these prompts?</h3>
                 <p className="text-gray-700 dark:text-gray-300">
                   Our AI images prompts work with all major AI art platforms including MidJourney, DALL-E 2, DALL-E 3, Stable Diffusion, Leonardo AI, and more. The prompts use universal terminology that produces excellent results across different AI image generation platforms.
                 </p>
               </div>
 
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+              <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">What makes a good AI images prompt?</h3>
                 <p className="text-gray-700 dark:text-gray-300">
                   A professional AI images prompt includes: specific subject descriptions, art style or technique, lighting setup, composition angle, quality modifiers, and optional artist references. Our generator combines these elements automatically to create detailed prompts that produce stunning AI-generated images.
