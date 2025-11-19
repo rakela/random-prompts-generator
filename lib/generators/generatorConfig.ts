@@ -5,7 +5,7 @@ export interface GeneratorMetadata {
   description: string;
   h1: string;
   keywords: string;
-  category: 'writing' | 'ai-art' | 'creative' | 'blog';
+  category: 'writing' | 'ai-art' | 'drawing' | 'special';
   path: string;
   legacyPath?: string; // Old URL for redirects
   icon?: string; // Lucide icon name
@@ -15,14 +15,14 @@ export const generatorConfig: Record<string, GeneratorMetadata> = {
   // WRITING GENERATORS
   'writing-prompts': {
     id: 'writing-prompts',
-    slug: 'prompts',
+    slug: 'writing-prompts',
     title: 'Random Writing Prompts Generator - Creative Story Ideas',
     description: 'Generate creative writing prompts with unique characters, conflicts, settings, and plot twists. Perfect for overcoming writer\'s block.',
     h1: 'Writing Prompts Generator',
     keywords: 'writing prompts, creative writing, story ideas, plot generator, character ideas',
     category: 'writing',
-    path: '/generators/writing/prompts/',
-    legacyPath: '/writing-prompts',
+    path: '/writing-prompts/',
+    legacyPath: null,
     icon: 'PenTool'
   },
   'paragraph': {
@@ -33,7 +33,7 @@ export const generatorConfig: Record<string, GeneratorMetadata> = {
     h1: 'Random Paragraph Generator',
     keywords: 'random paragraph, text generator, sample text, writing practice',
     category: 'writing',
-    path: '/generators/writing/paragraph/',
+    path: '/writing-prompts/paragraph/',
     legacyPath: '/random-paragraph-generator',
     icon: 'FileText'
   },
@@ -45,7 +45,7 @@ export const generatorConfig: Record<string, GeneratorMetadata> = {
     h1: 'Random Sentence Generator',
     keywords: 'random sentence, sentence generator, writing practice, creative sentences',
     category: 'writing',
-    path: '/generators/writing/sentence/',
+    path: '/writing-prompts/sentence/',
     legacyPath: '/random-sentence-generator',
     icon: 'Type'
   },
@@ -57,7 +57,7 @@ export const generatorConfig: Record<string, GeneratorMetadata> = {
     h1: 'Random Dialogue Generator',
     keywords: 'dialogue generator, character dialogue, conversation prompts, story dialogue',
     category: 'writing',
-    path: '/generators/writing/dialogue/',
+    path: '/writing-prompts/dialogue/',
     legacyPath: '/random-dialogue-generator',
     icon: 'MessageSquare'
   },
@@ -69,7 +69,7 @@ export const generatorConfig: Record<string, GeneratorMetadata> = {
     h1: 'Character Generator',
     keywords: 'character generator, character creation, story characters, character traits',
     category: 'writing',
-    path: '/generators/writing/character/',
+    path: '/writing-prompts/character/',
     legacyPath: '/random-character-generator',
     icon: 'User'
   },
@@ -81,7 +81,7 @@ export const generatorConfig: Record<string, GeneratorMetadata> = {
     h1: 'Story Starter Generator',
     keywords: 'story starter, opening lines, story beginning, writing prompts',
     category: 'writing',
-    path: '/generators/writing/story-starter/',
+    path: '/writing-prompts/story-starter/',
     legacyPath: '/random-story-starter-generator',
     icon: 'Sparkles'
   },
@@ -93,7 +93,7 @@ export const generatorConfig: Record<string, GeneratorMetadata> = {
     h1: 'Conflict Generator',
     keywords: 'conflict generator, story conflict, plot tension, character conflict',
     category: 'writing',
-    path: '/generators/writing/conflict/',
+    path: '/writing-prompts/conflict/',
     legacyPath: '/random-conflict-generator',
     icon: 'Zap'
   },
@@ -105,7 +105,7 @@ export const generatorConfig: Record<string, GeneratorMetadata> = {
     h1: 'Plot Twist Generator',
     keywords: 'plot twist, story twist, plot surprises, story revelations',
     category: 'writing',
-    path: '/generators/writing/plot-twist/',
+    path: '/writing-prompts/plot-twist/',
     legacyPath: '/random-plot-twist-generator',
     icon: 'RefreshCw'
   },
@@ -117,7 +117,7 @@ export const generatorConfig: Record<string, GeneratorMetadata> = {
     h1: 'Theme Generator',
     keywords: 'theme generator, story themes, writing themes, literary themes',
     category: 'writing',
-    path: '/generators/writing/theme/',
+    path: '/writing-prompts/theme/',
     legacyPath: '/random-theme-generator',
     icon: 'BookOpen'
   },
@@ -129,7 +129,7 @@ export const generatorConfig: Record<string, GeneratorMetadata> = {
     h1: 'Setting Generator',
     keywords: 'setting generator, story locations, world settings, story places',
     category: 'writing',
-    path: '/generators/writing/setting/',
+    path: '/writing-prompts/setting/',
     legacyPath: '/random-setting-generator',
     icon: 'MapPin'
   },
@@ -141,7 +141,7 @@ export const generatorConfig: Record<string, GeneratorMetadata> = {
     h1: 'Villain Generator',
     keywords: 'villain generator, antagonist creator, story villains, bad guy generator',
     category: 'writing',
-    path: '/generators/writing/villain/',
+    path: '/writing-prompts/villain/',
     legacyPath: '/random-villain-generator',
     icon: 'Skull'
   },
@@ -153,7 +153,7 @@ export const generatorConfig: Record<string, GeneratorMetadata> = {
     h1: 'Hero Generator',
     keywords: 'hero generator, protagonist creator, main character, hero traits',
     category: 'writing',
-    path: '/generators/writing/hero/',
+    path: '/writing-prompts/hero/',
     legacyPath: '/random-hero-generator',
     icon: 'Shield'
   },
@@ -165,7 +165,7 @@ export const generatorConfig: Record<string, GeneratorMetadata> = {
     h1: 'Worldbuilding Generator',
     keywords: 'worldbuilding, world creation, fantasy worlds, world generator',
     category: 'writing',
-    path: '/generators/writing/worldbuilding/',
+    path: '/writing-prompts/worldbuilding/',
     legacyPath: '/random-worldbuilding-prompts-generator',
     icon: 'Globe'
   },
@@ -177,7 +177,7 @@ export const generatorConfig: Record<string, GeneratorMetadata> = {
     h1: 'Magic System Generator',
     keywords: 'magic system, fantasy magic, magic rules, magic generator',
     category: 'writing',
-    path: '/generators/writing/magic-system/',
+    path: '/writing-prompts/magic-system/',
     legacyPath: '/random-magic-system-generator',
     icon: 'Wand2'
   },
@@ -189,7 +189,7 @@ export const generatorConfig: Record<string, GeneratorMetadata> = {
     h1: 'Emotion Prompt Generator',
     keywords: 'emotion prompts, emotional writing, character emotions, feelings generator',
     category: 'writing',
-    path: '/generators/writing/emotion/',
+    path: '/writing-prompts/emotion/',
     legacyPath: '/random-emotion-prompt-generator',
     icon: 'Heart'
   },
@@ -201,7 +201,7 @@ export const generatorConfig: Record<string, GeneratorMetadata> = {
     h1: 'Relationship Prompt Generator',
     keywords: 'relationship prompts, character relationships, romance prompts, character dynamics',
     category: 'writing',
-    path: '/generators/writing/relationship/',
+    path: '/writing-prompts/relationship/',
     legacyPath: '/random-relationship-prompt-generator',
     icon: 'Users'
   },
@@ -213,7 +213,7 @@ export const generatorConfig: Record<string, GeneratorMetadata> = {
     h1: 'Short Story Prompts',
     keywords: 'short story prompts, story ideas, flash fiction, short stories',
     category: 'writing',
-    path: '/generators/writing/short-story/',
+    path: '/writing-prompts/short-story/',
     legacyPath: '/short-story-prompts-generator',
     icon: 'Book'
   },
@@ -225,7 +225,7 @@ export const generatorConfig: Record<string, GeneratorMetadata> = {
     h1: 'October Writing Prompts',
     keywords: 'october prompts, halloween writing, fall prompts, spooky stories',
     category: 'writing',
-    path: '/generators/writing/october/',
+    path: '/writing-prompts/october/',
     legacyPath: '/october-writing-prompts',
     icon: 'Ghost'
   },
@@ -237,7 +237,7 @@ export const generatorConfig: Record<string, GeneratorMetadata> = {
     h1: 'Writing Prompts for Students',
     keywords: 'student writing prompts, education prompts, classroom writing, student exercises',
     category: 'writing',
-    path: '/generators/writing/students/',
+    path: '/writing-prompts/students/',
     legacyPath: '/writing-prompts-for-students',
     icon: 'GraduationCap'
   },
@@ -249,7 +249,7 @@ export const generatorConfig: Record<string, GeneratorMetadata> = {
     h1: 'Persuasive Writing Topics',
     keywords: 'persuasive topics, debate topics, argument ideas, persuasive writing',
     category: 'writing',
-    path: '/generators/writing/persuasive-topics/',
+    path: '/writing-prompts/persuasive-topics/',
     legacyPath: '/persuasive-writing-topics',
     icon: 'MessageCircle'
   },
@@ -261,7 +261,7 @@ export const generatorConfig: Record<string, GeneratorMetadata> = {
     h1: 'Persuasive Essay Topics',
     keywords: 'persuasive essays, essay topics, academic writing, essay ideas',
     category: 'writing',
-    path: '/generators/writing/persuasive-essays/',
+    path: '/writing-prompts/persuasive-essays/',
     legacyPath: '/persuasive-essays-topics',
     icon: 'FileEdit'
   },
@@ -273,7 +273,7 @@ export const generatorConfig: Record<string, GeneratorMetadata> = {
     h1: 'Persuasive Writing Titles',
     keywords: 'persuasive titles, essay titles, catchy titles, writing titles',
     category: 'writing',
-    path: '/generators/writing/persuasive-titles/',
+    path: '/writing-prompts/persuasive-titles/',
     legacyPath: '/persuasive-writing-titles',
     icon: 'Type'
   },
@@ -287,7 +287,7 @@ export const generatorConfig: Record<string, GeneratorMetadata> = {
     h1: 'AI Image Prompts Generator',
     keywords: 'AI art prompts, MidJourney prompts, DALL-E prompts, AI image generator, Stable Diffusion',
     category: 'ai-art',
-    path: '/generators/ai-art/images/',
+    path: '/ai-art-prompts/images/',
     legacyPath: '/ai-images-prompt',
     icon: 'Image'
   },
@@ -299,7 +299,7 @@ export const generatorConfig: Record<string, GeneratorMetadata> = {
     h1: 'Aesthetic Prompt Generator',
     keywords: 'aesthetic prompts, visual style, aesthetic generator, art style',
     category: 'ai-art',
-    path: '/generators/ai-art/aesthetic/',
+    path: '/ai-art-prompts/aesthetic/',
     legacyPath: '/random-aesthetic-prompt-generator',
     icon: 'Palette'
   },
@@ -311,7 +311,7 @@ export const generatorConfig: Record<string, GeneratorMetadata> = {
     h1: 'Art Style Generator',
     keywords: 'art style, art techniques, artistic styles, art generator',
     category: 'ai-art',
-    path: '/generators/ai-art/art-style/',
+    path: '/ai-art-prompts/art-style/',
     legacyPath: '/random-art-style-generator',
     icon: 'Brush'
   },
@@ -323,7 +323,7 @@ export const generatorConfig: Record<string, GeneratorMetadata> = {
     h1: 'Photography Prompt Generator',
     keywords: 'photography prompts, photo ideas, photography generator, camera angles',
     category: 'ai-art',
-    path: '/generators/ai-art/photography/',
+    path: '/ai-art-prompts/photography/',
     legacyPath: '/random-photography-prompt-generator',
     icon: 'Camera'
   },
@@ -335,7 +335,7 @@ export const generatorConfig: Record<string, GeneratorMetadata> = {
     h1: 'Character Design Generator',
     keywords: 'character design, character art, character prompts, design generator',
     category: 'ai-art',
-    path: '/generators/ai-art/character-design/',
+    path: '/ai-art-prompts/character-design/',
     legacyPath: '/random-character-design-prompt-generator',
     icon: 'User'
   },
@@ -347,7 +347,7 @@ export const generatorConfig: Record<string, GeneratorMetadata> = {
     h1: 'Environment Design Generator',
     keywords: 'environment design, landscape generator, scene design, background art',
     category: 'ai-art',
-    path: '/generators/ai-art/environment/',
+    path: '/ai-art-prompts/environment/',
     legacyPath: '/random-environment-design-generator',
     icon: 'Mountain'
   },
@@ -359,7 +359,7 @@ export const generatorConfig: Record<string, GeneratorMetadata> = {
     h1: 'Sci-Fi Prompt Generator',
     keywords: 'sci-fi prompts, science fiction, futuristic art, sci-fi generator',
     category: 'ai-art',
-    path: '/generators/ai-art/sci-fi/',
+    path: '/ai-art-prompts/sci-fi/',
     legacyPath: '/random-sci-fi-prompt-generator',
     icon: 'Rocket'
   },
@@ -371,7 +371,7 @@ export const generatorConfig: Record<string, GeneratorMetadata> = {
     h1: 'Fantasy Art Generator',
     keywords: 'fantasy art, magic art, dragon art, fantasy prompts',
     category: 'ai-art',
-    path: '/generators/ai-art/fantasy/',
+    path: '/ai-art-prompts/fantasy/',
     legacyPath: '/random-fantasy-art-prompt-generator',
     icon: 'Crown'
   },
@@ -383,7 +383,7 @@ export const generatorConfig: Record<string, GeneratorMetadata> = {
     h1: 'Anime Prompt Generator',
     keywords: 'anime prompts, manga art, anime generator, anime characters',
     category: 'ai-art',
-    path: '/generators/ai-art/anime/',
+    path: '/ai-art-prompts/anime/',
     legacyPath: '/random-anime-prompt-generator',
     icon: 'Star'
   },
@@ -395,7 +395,7 @@ export const generatorConfig: Record<string, GeneratorMetadata> = {
     h1: 'Portrait Generator',
     keywords: 'portrait prompts, face art, portrait generator, character portraits',
     category: 'ai-art',
-    path: '/generators/ai-art/portrait/',
+    path: '/ai-art-prompts/portrait/',
     legacyPath: '/random-portrait-prompt-generator',
     icon: 'User'
   },
@@ -407,7 +407,7 @@ export const generatorConfig: Record<string, GeneratorMetadata> = {
     h1: 'Lighting Style Generator',
     keywords: 'lighting styles, lighting techniques, photo lighting, art lighting',
     category: 'ai-art',
-    path: '/generators/ai-art/lighting/',
+    path: '/ai-art-prompts/lighting/',
     legacyPath: '/random-lighting-style-generator',
     icon: 'Sun'
   },
@@ -419,7 +419,7 @@ export const generatorConfig: Record<string, GeneratorMetadata> = {
     h1: 'MidJourney Prompts',
     keywords: 'midjourney prompts, midjourney generator, AI art, midjourney ideas',
     category: 'ai-art',
-    path: '/generators/ai-art/midjourney/',
+    path: '/ai-art-prompts/midjourney/',
     legacyPath: '/midjourney-ai-picture-generator',
     icon: 'Sparkles'
   },
@@ -431,7 +431,7 @@ export const generatorConfig: Record<string, GeneratorMetadata> = {
     h1: 'Ghostface AI Prompts',
     keywords: 'ghostface AI, AI trend, viral AI, ghostface prompts',
     category: 'ai-art',
-    path: '/generators/ai-art/ghostface/',
+    path: '/ai-art-prompts/ghostface/',
     legacyPath: '/ghostface-ai-trend-prompt-generator',
     icon: 'Ghost'
   },
@@ -443,7 +443,7 @@ export const generatorConfig: Record<string, GeneratorMetadata> = {
     h1: 'Gemini Snow Prompts',
     keywords: 'gemini AI, snow effects, AI tutorial, gemini prompts',
     category: 'ai-art',
-    path: '/generators/ai-art/gemini-snow/',
+    path: '/ai-art-prompts/gemini-snow/',
     legacyPath: '/gemini-ai-snow-prompt-tutorial',
     icon: 'Snowflake'
   },
@@ -455,7 +455,7 @@ export const generatorConfig: Record<string, GeneratorMetadata> = {
     h1: 'ChatGPT Photo Editing',
     keywords: 'chatgpt photo, photo editing, AI photo, chatgpt prompts',
     category: 'ai-art',
-    path: '/generators/ai-art/chatgpt-photo/',
+    path: '/ai-art-prompts/chatgpt-photo/',
     legacyPath: '/chatgpt-photo-editing-prompts',
     icon: 'Image'
   },
@@ -467,21 +467,21 @@ export const generatorConfig: Record<string, GeneratorMetadata> = {
     h1: 'Gemini Photo Editing',
     keywords: 'gemini photo, photo editing, google AI, gemini prompts',
     category: 'ai-art',
-    path: '/generators/ai-art/gemini-photo/',
+    path: '/ai-art-prompts/gemini-photo/',
     legacyPath: '/gemini-photo-editing-prompts',
     icon: 'Edit'
   },
 
-  // BLOG GENERATORS
+  // BLOG/CONTENT GENERATORS
   'blog-post': {
     id: 'blog-post',
-    slug: 'post',
+    slug: 'blog-post',
     title: 'AI Blog Post Generator - Blog Content Ideas',
     description: 'Generate SEO-optimized blog post ideas with titles, hooks, and content angles.',
     h1: 'Blog Post Generator',
     keywords: 'blog post generator, blog ideas, content ideas, blog topics',
-    category: 'blog',
-    path: '/generators/blog/post/',
+    category: 'writing',
+    path: '/ai-blog-post-generator/',
     legacyPath: '/ai-blog-post-generator',
     icon: 'FileText'
   },
@@ -492,13 +492,13 @@ export const generatorConfig: Record<string, GeneratorMetadata> = {
     description: 'Generate nano-sized creative prompts for quick content and micro-blogging.',
     h1: 'Nano Banana Prompts',
     keywords: 'nano prompts, micro content, short prompts, quick ideas',
-    category: 'blog',
-    path: '/generators/blog/nano-banana/',
+    category: 'writing',
+    path: '/writing-prompts/nano-banana/',
     legacyPath: '/nano-banana-prompts',
     icon: 'Zap'
   },
 
-  // CREATIVE GENERATORS
+  // DRAWING/CREATIVE IDEA GENERATORS
   'names': {
     id: 'names',
     slug: 'names',
@@ -507,7 +507,7 @@ export const generatorConfig: Record<string, GeneratorMetadata> = {
     h1: 'Random Name Generator',
     keywords: 'name generator, fantasy names, character names, random names',
     category: 'creative',
-    path: '/generators/creative/names/',
+    path: '/drawing-ideas/names/',
     legacyPath: '/random-name-generator',
     icon: 'User'
   },
@@ -519,7 +519,7 @@ export const generatorConfig: Record<string, GeneratorMetadata> = {
     h1: 'Random Object Generator',
     keywords: 'random object, item generator, object prompts, creative objects',
     category: 'creative',
-    path: '/generators/creative/objects/',
+    path: '/drawing-ideas/objects/',
     legacyPath: '/random-object-generator',
     icon: 'Package'
   },
@@ -531,7 +531,7 @@ export const generatorConfig: Record<string, GeneratorMetadata> = {
     h1: 'Random Hobby Generator',
     keywords: 'hobby generator, random hobbies, activity ideas, new interests',
     category: 'creative',
-    path: '/generators/creative/hobbies/',
+    path: '/drawing-ideas/hobbies/',
     legacyPath: '/random-hobby-generator',
     icon: 'Heart'
   },
@@ -543,7 +543,7 @@ export const generatorConfig: Record<string, GeneratorMetadata> = {
     h1: 'Random Superpower Generator',
     keywords: 'superpower generator, random powers, abilities generator, super abilities',
     category: 'creative',
-    path: '/generators/creative/superpowers/',
+    path: '/drawing-ideas/superpowers/',
     legacyPath: '/random-superpower-generator',
     icon: 'Zap'
   },
@@ -555,14 +555,14 @@ export const generatorConfig: Record<string, GeneratorMetadata> = {
     h1: 'Random Idea Generator',
     keywords: 'idea generator, random ideas, creative ideas, brainstorming',
     category: 'creative',
-    path: '/generators/creative/ideas/',
+    path: '/drawing-ideas/ideas/',
     legacyPath: '/random-idea-generator',
     icon: 'Lightbulb'
   },
 };
 
 // Helper function to get all generators by category
-export const getGeneratorsByCategory = (category: 'writing' | 'ai-art' | 'creative' | 'blog'): GeneratorMetadata[] => {
+export const getGeneratorsByCategory = (category: 'writing' | 'ai-art' | 'drawing'): GeneratorMetadata[] => {
   return Object.values(generatorConfig).filter(gen => gen.category === category);
 };
 
