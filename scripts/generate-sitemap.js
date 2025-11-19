@@ -20,6 +20,10 @@ const DOMAIN = 'https://randomprompts.org';
 // Add new routes here to keep sitemap in sync
 const routes = [
   { path: '', priority: '1.0', changefreq: 'weekly' },
+  // Category Landing Pages
+  { path: 'writing-generators', priority: '0.9', changefreq: 'weekly' },
+  { path: 'ai-art-generators', priority: '0.9', changefreq: 'weekly' },
+  { path: 'creative-generators', priority: '0.9', changefreq: 'weekly' },
   // Main prompts pages
   { path: 'writing-prompts', priority: '0.9', changefreq: 'weekly' },
   { path: 'ai-images-prompt', priority: '0.9', changefreq: 'weekly' },
