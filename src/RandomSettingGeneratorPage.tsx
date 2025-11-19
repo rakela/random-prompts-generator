@@ -24,7 +24,7 @@ const promptData = {
     'A space colony on Mars, domed against the harsh environment',
     'A Victorian-era sanatorium deep in the mountains, still operating',
     'A massive generation ship traveling between stars for centuries',
-    'A tropical island resort hiding darker secrets beneath it's paradise facade',
+    'A tropical island resort hiding darker secrets beneath it\'s paradise facade',
     'A post-apocalyptic community living in the remains of a shopping mall',
     'An exclusive boarding school isolated in the Scottish Highlands',
     'A magical forest where the trees are conscious and watchful',

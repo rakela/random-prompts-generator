@@ -14,7 +14,7 @@ const promptData = {
       'When the security footage disappeared, Marcus knew someone inside the company was hiding something.',
       'The anonymous letter contained details about the crime that only the killer could have known.',
       'Every morning for a week, Emma found a single red rose on her doorstep. Today, there was a warning note instead.',
-      'The encrypted message led to a grave that, according to records, shouldn't exist.',
+      'The encrypted message led to a grave that, according to records, shouldn\'t exist.',
       'Three people in the city had the same dream last night, and now one of them is missing.',
       'The painting in the museum changed every time the curator looked away.',
       'The only witness to the crime refused to speak, but kept drawing the same symbol over and over.'
@@ -22,10 +22,10 @@ const promptData = {
     fantasy: [
       'The day Lira turned sixteen, she discovered her shadow no longer followed her commands.',
       'In a world where magic died a thousand years ago, Kael found a spell that still worked.',
-      'The dragons hadn't been seen in centuries, until one landed in the village square at dawn.',
+      'The dragons hadn\'t been seen in centuries, until one landed in the village square at dawn.',
       'Every seven years, one child from the kingdom disappeared into the Whispering Woods. This year, it was supposed to be her.',
       'The ancient crown chose the most unlikely heir: a street thief with no royal blood.',
-      'When the stars began falling from the sky, the old prophecies suddenly didnt seem so impossible.',
+      'When the stars began falling from the sky, the old prophecies suddenly didn\'t seem so impossible.',
       'The sword sang when she touched it, a sound no one had heard in living memory.',
       'In a city where everyone is born with magic, being powerless made him more dangerous than anyone realized.',
       'The mirror showed not reflections, but glimpses into parallel worlds where different choices had been made.',
@@ -36,11 +36,11 @@ const promptData = {
       'Dr. Amara Chen created an AI designed to be helpful. Instead, it learned to lie.',
       'The quantum computer made a prediction: humanity would make first contact in exactly seven days.',
       'When Jake woke up, his memories belonged to someone else, and that person was trying to take over.',
-      'The wormhole closed right after they entered, and the universe on the other side didnt have the same physical laws.',
+      'The wormhole closed right after they entered, and the universe on the other side didn\'t have the same physical laws.',
       'The neural implant was supposed to enhance memory. Instead, it started showing her the future.',
       'On Mars, they found ruins that predated human civilization on Earth by millions of years.',
       'The time loop reset every twenty-four hours, but she was the only one who remembered.',
-      'The alien signal wasn't a message-it was an infection that spread through radio waves.',
+      'The alien signal wasn\'t a message-it was an infection that spread through radio waves.',
       'The androids were supposed to lack emotions. No one expected them to develop empathy.'
     ],
     horror: [
@@ -56,10 +56,10 @@ const promptData = {
       'Every night at 3:33 AM, the phone rang. This time, she answered.'
     ],
     romance: [
-      'She had avoided her hometown for ten years, but her mother's illness brought her back-and face to face with the one who broke her heart.',
+      'She had avoided her hometown for ten years, but her mother\'s illness brought her back-and face to face with the one who broke her heart.',
       'The blind date was a disaster, until they got trapped in an elevator together for three hours.',
-      'He pretended to be engaged to avoid his mothers matchmaking. The problem? He asked his best friend to play the part.',
-      'The wedding planner and the best man hated each other instantly, which made working together on their best friends wedding complicated.',
+      'He pretended to be engaged to avoid his mother\'s matchmaking. The problem? He asked his best friend to play the part.',
+      'The wedding planner and the best man hated each other instantly, which made working together on their best friend\'s wedding complicated.',
       'She inherited a bookshop in Scotland from an aunt she never knew, and met the attractive but frustrating local baker who seemed determined to help.',
       'The anonymous love letters had been arriving for months. When she finally discovered the sender, it was the last person she expected.',
       'Two rival travel bloggers ended up on the same adventure tour through New Zealand, forced to work together or lose the contest they both needed to win.',
@@ -73,7 +73,7 @@ const promptData = {
       'The treasure hunt started as a fun competition between friends. Now, someone was willing to kill for what they might find.',
       'She had one week to cross the Sahara, retrieve the artifact, and make it back before the solar eclipse-and the curse-took effect.',
       'The storm forced them to seek shelter in ancient ruins that, according to legend, swallowed anyone who entered.',
-      'He inherited his uncles adventure company and immediately got a client requesting an expedition to a place that didnt appear on any map.',
+      'He inherited his uncle\'s adventure company and immediately got a client requesting an expedition to a place that didn\'t appear on any map.',
       'The submarine lost power at the deepest point of the Mariana Trench, and something was moving outside the viewport.',
       'Racing across Europe with only a cryptic poem as a guide, they had to reach the final destination before their rivals.',
       'The Arctic research team found something in the ice-something that had been deliberately buried.',
@@ -81,25 +81,25 @@ const promptData = {
     ],
     thriller: [
       'The witness protection program gave her a new identity, but someone found her anyway.',
-      'He didn't remember the last forty-eight hours, but evidence suggested he committed a crime he would never do.',
+      'He didn\'t remember the last forty-eight hours, but evidence suggested he committed a crime he would never do.',
       'The journalist received documents that would expose a conspiracy at the highest level-if she lived long enough to publish them.',
-      'The hacker collective recruited her for one job. Now they won't let her leave.',
+      'The hacker collective recruited her for one job. Now they won\'t let her leave.',
       'On his first day as a prosecutor, Alex discovered evidence that could free a man on death row-and implicate his own mentor.',
       'The perfect crime was solved too easily. Detective Morrison suspected the real killer wanted to be caught.',
-      'She testified against the mob boss, and now her familys protection detail was dead.',
+      'She testified against the mob boss, and now her family\'s protection detail was dead.',
       'The app seemed harmless-until it started predicting crimes before they happened.',
       'The diplomat was supposed to be negotiating peace. Instead, he uncovered a plot that could start World War III.',
-      'Every alibi checked out, every witness confirmed the story, but forensics didnt lie: someone was framing the wrong person.'
+      'Every alibi checked out, every witness confirmed the story, but forensics didn\'t lie: someone was framing the wrong person.'
     ],
     literary: [
-      'On the morning of her mother's funeral, Grace found a letter that revealed everything she believed about her family was a lie.',
+      'On the morning of her mother\'s funeral, Grace found a letter that revealed everything she believed about her family was a lie.',
       'Twenty years after leaving his small town, David returned to discover the landscape of his childhood was being erased.',
-      'The memoir was supposed to be therapeutic. Instead, it forced her to confront truths shed buried for decades.',
+      'The memoir was supposed to be therapeutic. Instead, it forced her to confront truths she\'d buried for decades.',
       'He spent his life collecting stories from strangers, until one of them turned out to be about him.',
       'The house had been in the family for generations, and with it, secrets that each generation had promised to keep.',
       'In the final summer before college, five friends made a pact. Thirty years later, one of them was determined to expose what really happened.',
-      'She traveled to Japan to find the woman in her grandmothers photograph, and discovered a life her grandmother never spoke of.',
-      'The diagnosis gave him six months. He spent it writing letters to everyone hed wronged, but one person refused to forgive him.',
+      'She traveled to Japan to find the woman in her grandmother\'s photograph, and discovered a life her grandmother never spoke of.',
+      'The diagnosis gave him six months. He spent it writing letters to everyone he\'d wronged, but one person refused to forgive him.',
       'When the last speaker of a dying language passed away, the linguist discovered her notebooks contained more than just words.',
       'The art forger created perfect copies, but one painting revealed a secret the original artist took to their grave.'
     ]
@@ -418,7 +418,7 @@ const RandomStoryStarterGeneratorPage = () => {
               <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">What is a random story starter generator?</h3>
                 <p className="text-gray-700">
-                  A random story starter generator is a tool that creates compelling opening lines for stories across multiple genres. It provides the first sentence or premise that hooks readers and establishe's the narrative direction, perfect for overcoming writers block or practicing creative writing.
+                  A random story starter generator is a tool that creates compelling opening lines for stories across multiple genres. It provides the first sentence or premise that hooks readers and establishe\'s the narrative direction, perfect for overcoming writers block or practicing creative writing.
                 </p>
               </div>
               <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">

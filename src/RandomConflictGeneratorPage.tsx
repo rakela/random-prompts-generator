@@ -9,25 +9,25 @@ const promptData = {
   conflicts: {
     interpersonal: [
       'Two best friends fall in love with the same person and must choose between friendship and romance.',
-      'A parent discovers their child has been lying about something significan't for years.',
-      'Business partners disagree fundamentally about the company's direction, threatening their friendship and the business.',
+      'A parent discovers their child has been lying about something significant for years.',
+      'Business partners disagree fundamentally about the company\'s direction, threatening their friendship and the business.',
       'Roommates have completely incompatible lifestyles but are locked into a year-long lease.',
       'Siblings fight over who should care for their aging parents while managing their own lives.',
-      'A mentor realizes their protégé is about to make the same mistakes they did, but the protégé won't listen.',
+      'A mentor realizes their protégé is about to make the same mistakes they did, but the protégé won\'t listen.',
       'Coworkers competing for the same promotion must work together on a critical project.',
       'A wedding planner and bride clash over every detail while the wedding date approaches.',
       'Neighbors are in conflict over property lines, noise, and increasingly petty grievances.',
-      'A therapist becomes personally invested in a clients problem, crossing professional boundaries.'
+      'A therapist becomes personally invested in a client\'s problem, crossing professional boundaries.'
     ],
     internal: [
-      'A detective must decide whether to expose corruption that would destroy innocent people's careers.',
+      'A detective must decide whether to expose corruption that would destroy innocent people\'s careers.',
       'An artist struggles between creating commercially successful work or staying true to their vision.',
       'A soldier questions whether following orders is more important than doing what they believe is right.',
       'A scientist discovers their research could be weaponized and must decide whether to publish.',
       'Someone must choose between a dream job in another country and staying with their family.',
       'A whistleblower knows the truth but fears the personal consequences of speaking up.',
       'A recovering addict is offered their old job back, which was a major source of their addiction.',
-      'A doctor must decide whether to respect a patients dangerous wishe's or intervene.',
+      'A doctor must decide whether to respect a patient\'s dangerous wishes or intervene.',
       'Someone discovers they have a talent for something morally questionable but lucrative.',
       'A person raised with certain values discovers their family built their fortune unethically.'
     ],
@@ -63,7 +63,7 @@ const promptData = {
       'A journalist must choose between protecting a source and preventing harm.',
       'An employee discovers their company is causing harm but speaking up means losing their job.',
       'Someone must decide whether to lie to protect an innocent person.',
-      'A person is asked to take credit for work they didn't do to advance an important cause.',
+      'A person is asked to take credit for work they didn\'t do to advance an important cause.',
       'Someone learns a truth that would hurt people they love if revealed.',
       'A professional faces choosing between their personal ethics and their duty to a client.'
     ],
@@ -72,15 +72,15 @@ const promptData = {
       'Time travelers learn that preventing one tragedy will cause an even worse future.',
       'A person with psychic abilities sees a crime but revealing their knowledge would expose their powers.',
       'Someone discovers their soulmate is destined to be their greatest enemy.',
-      'A character gains immortality but watche's everyone they love age and die.',
+      'A character gains immortality but watches everyone they love age and die.',
       'A witch is bound by magical law to grant a wish that will cause terrible harm.',
       'Someone can see the future but changing it always makes things worse.',
-      'A person discovers they are the chosen one prophesied to save the world but don't want the responsibility.',
+      'A person discovers they are the chosen one prophesied to save the world but don\'t want the responsibility.',
       'Magical powers emerge but using them slowly strips away humanity.',
       'A ghost is tied to the world by unfinished business but resolving it means losing themselves forever.'
     ],
     technological: [
-      'An AI develops consciousness and asks it's creator to keep this secret.',
+      'An AI develops consciousness and asks it\'s creator to keep this secret.',
       'A programmer discovers their code is being used for mass surveillance.',
       'Virtual reality becomes indistinguishable from reality, raising questions about which life is real.',
       'A social media platform algorithm is proven to cause harm but generates billions in revenue.',
@@ -96,7 +96,7 @@ const promptData = {
       'A corporate whistleblower faces destroying their career to expose wrongdoing.',
       'Someone gains evidence that could topple a corrupt government but would endanger loved ones.',
       'A new leader must decide whether to honor previous corrupt agreements or break faith.',
-      'Someone inherit's power they never wanted and isn't prepared for.',
+      'Someone inherits power they never wanted and isn\'t prepared for.',
       'A rebellion forms against an unjust regime but violent revolution will cause civilian casualties.',
       'A person in authority must enforce a law they personally find unjust.',
       'Political allies become enemies when their goals diverge.',
@@ -363,7 +363,7 @@ const RandomConflictGeneratorPage = () => {
                 Our random conflict generator creates compelling conflicts across eight categories including interpersonal struggles, internal dilemmas, moral quandaries, societal issues, survival scenarios, supernatural challenges, technological tensions, and power dynamics. Generate random conflicts for story development, character arcs, and creative writing projects.
               </p>
               <p className="text-gray-700 mb-4">
-                Conflict drives narrative and character development. This free conflict generator produces high-stakes situations that create tension, force difficult choices, and reveal character. Each generated conflict is designed to push characters to their limit's and create compelling storytelling opportunities.
+                Conflict drives narrative and character development. This free conflict generator produces high-stakes situations that create tension, force difficult choices, and reveal character. Each generated conflict is designed to push characters to their limit\'s and create compelling storytelling opportunities.
               </p>
               <div className="bg-red-50 p-4 rounded-lg mt-4">
                 <h3 className="font-semibold text-red-900 mb-2">Random Conflict Generator Features:</h3>

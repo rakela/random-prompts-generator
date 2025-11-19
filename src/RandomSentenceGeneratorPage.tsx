@@ -19,7 +19,7 @@ const promptData = {
       'Beyond the mountains lay a world untouched by modern civilization.',
       'Her laughter filled the room, dispelling the heavy silence.',
       'The compass spun wildly, pointing nowhere and everywhere at once.',
-      'Footprints in the snow led to a place that shouldn't exist.',
+      'Footprints in the snow led to a place that shouldn\'t exist.',
       'The old clock struck thirteen, though it had been broken for years.',
       'Beneath the ordinary facade, something extraordinary was awakening.',
       'The letter arrived on the anniversary of his disappearance.',
@@ -30,15 +30,15 @@ const promptData = {
       'His shadow moved independently, a warning of things to come.'
     ],
     mysterious: [
-      'The door that wasn't there yesterday beckoned with silent promise.',
+      'The door that wasn\'t there yesterday beckoned with silent promise.',
       'Every mirror in the house showed a different reflection.',
       'The stranger knew her name though theyd never met before.',
       'Objects rearranged themselves when no one was watching.',
       'The message appeared in a language that hadnt existed for centuries.',
       'Dreams became reality, but not in the way anyone expected.',
-      'The photograph showed people who hadn't been there when it was taken.',
+      'The photograph showed people who hadn\'t been there when it was taken.',
       'Time moved differently inside the abandoned mansion.',
-      'The antique music box played songs that hadn't been written yet.',
+      'The antique music box played songs that hadn\'t been written yet.',
       'Shadows lengthened in directions they shouldnt.',
       'The missing persons case connected to events from fifty years ago.',
       'Her reflection smiled when she didnt.',
@@ -143,9 +143,9 @@ const promptData = {
       'The cat knocked the vase off the shelf with the precision of a trained assassin.',
       'His attempt at cooking resulted in smoke alarms and a fire department visit.',
       'She opened the closet, and an avalanche of random objects tumbled out.',
-      'The meeting that could have been an email stretched into it's third hour.',
+      'The meeting that could have been an email stretched into it\'s third hour.',
       'His dance moves suggested someone fighting invisible bees.',
-      'The WiFi password was changed, bringing civilization to it's knees.',
+      'The WiFi password was changed, bringing civilization to it\'s knees.',
       'She promised to wake up early, a lie she told herself every night.',
       'The assembly instructions were clearly written by someone who hated humanity.',
       'His parallel parking attempt made nearby pedestrians nervous.',
@@ -166,7 +166,7 @@ const promptData = {
       'Time flowed like honey, sweet and slow through summer afternoons.',
       'Her words bloomed like flowers in the garden of his mind.',
       'Shadows danced with light in an eternal, graceful waltz.',
-      'The wind carried secrets between the branche's of sleeping trees.',
+      'The wind carried secrets between the branche\'s of sleeping trees.',
       'Memories scattered like petals on the surface of a still pond.',
       'Silence sang louder than any symphony in the space between heartbeats.',
       'Dreams painted reality in colors borrowed from forgotten hopes.',
@@ -466,7 +466,7 @@ const RandomSentenceGeneratorPage = () => {
               <h3 className="text-xl font-bold text-gray-900 mb-4">Example Random Sentences:</h3>
               <ul className="space-y-3 text-gray-700">
                 <li className="flex gap-2"><span className="text-blue-600 font-bold">•</span> <span>Story Starter: "The stars shimmered above the ancient temple, revealing secrets lost to time."</span></li>
-                <li className="flex gap-2"><span className="text-blue-600 font-bold">•</span> <span>Mysterious: "The door that wasn't there yesterday beckoned with silent promise."</span></li>
+                <li className="flex gap-2"><span className="text-blue-600 font-bold">•</span> <span>Mysterious: "The door that wasn\'t there yesterday beckoned with silent promise."</span></li>
                 <li className="flex gap-2"><span className="text-blue-600 font-bold">•</span> <span>Emotional: "Tears of joy streamed down her face as the plane touched down."</span></li>
                 <li className="flex gap-2"><span className="text-blue-600 font-bold">•</span> <span>Action: "The glass shattered as she rolled beneath the hail of gunfire."</span></li>
                 <li className="flex gap-2"><span className="text-blue-600 font-bold">•</span> <span>Poetic: "Stars whispered ancient lullabies to the dreaming earth below."</span></li>
