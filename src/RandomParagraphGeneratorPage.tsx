@@ -1,10 +1,11 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import SEO from './components/SEO';
-import { Copy, RefreshCw, Save, Download, Sparkles, PenTool, BookOpen, Crown, Share2, Star } from 'lucide-react';
+import { Copy, RefreshCw, Save, Download, Sparkles, PenTool, BookOpen, Crown, Share2, Star, Link2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import useLocalStorage from './hooks/useLocalStorage';
+import usePromptFromUrl from './hooks/usePromptFromUrl';
 
 const promptData = {
   paragraphs: {
@@ -103,6 +104,22 @@ const RandomParagraphGeneratorPage = () => {
     type: 'any',
     count: 'single'
   });
+  const { sharedPrompt, sharePromptViaUrl, clearPromptFromUrl } = usePromptFromUrl();
+
+  // Load shared prompt from URL on mount
+  useEffect(() => {
+    if (sharedPrompt && !generatedPrompt) {
+      const prompt = {
+        id: Date.now(),
+        text: sharedPrompt,
+        category: 'paragraph',
+        timestamp: new Date().toISOString(),
+        isMultiple: false,
+        shared: true
+      };
+      setGeneratedPrompt(prompt);
+    }
+  }, [sharedPrompt]);
 
   const generatePrompt = useCallback(() => {
     const data = promptData.paragraphs;
@@ -145,6 +162,16 @@ const RandomParagraphGeneratorPage = () => {
       setFavorites(prev => prev.filter(fav => fav.id !== prompt.id));
     } else {
       setFavorites(prev => [...prev, { ...prompt, favorited: true }]);
+    }
+  };
+
+  const sharePromptLink = async (prompt) => {
+    const shareableUrl = sharePromptViaUrl(prompt.text);
+    if (shareableUrl) {
+      await copyToClipboard(shareableUrl);
+      alert('Shareable link copied to clipboard!');
+    } else {
+      alert('Prompt too long to share via URL. Try the regular share button instead.');
     }
   };
 
@@ -208,6 +235,9 @@ const RandomParagraphGeneratorPage = () => {
           </button>
           <button onClick={() => sharePrompt(prompt)} className="inline-flex items-center gap-2 px-3 py-1.5 bg-indigo-100 hover:bg-indigo-200 text-indigo-700 rounded-md text-sm transition-colors">
             <Share2 size={14} /> Share
+          </button>
+          <button onClick={() => sharePromptLink(prompt)} className="inline-flex items-center gap-2 px-3 py-1.5 bg-purple-100 hover:bg-purple-200 text-purple-700 rounded-md text-sm transition-colors" title="Copy shareable link to clipboard">
+            <Link2 size={14} /> Copy Link
           </button>
           <button onClick={() => generatePrompt()} className="inline-flex items-center gap-2 px-3 py-1.5 bg-blue-100 hover:bg-blue-200 text-blue-700 rounded-md text-sm transition-colors">
             <RefreshCw size={14} /> Regenerate
