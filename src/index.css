@@ -2,6 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+/* CSS Variables for Theming */
+:root {
+  /* Light mode colors */
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f9fafb;
+  --color-text-primary: #111827;
+  --color-text-secondary: #6b7280;
+  --color-border: #e5e7eb;
+  --color-card-bg: #ffffff;
+}
+
+.dark {
+  /* Dark mode colors */
+  --color-bg-primary: #111827;
+  --color-bg-secondary: #1f2937;
+  --color-text-primary: #f9fafb;
+  --color-text-secondary: #d1d5db;
+  --color-border: #374151;
+  --color-card-bg: #1f2937;
+}
+
 /* Prevent horizontal overflow on all pages */
 html {
   overflow-x: hidden;
@@ -14,6 +35,9 @@ body {
   position: relative;
   margin: 0;
   padding: 0;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 #root {

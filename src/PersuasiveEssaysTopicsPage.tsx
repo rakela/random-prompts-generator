@@ -244,17 +244,17 @@ const PersuasiveEssaysTopicsPage = () => {
 
       {/* Tab Navigation */}
       <div className="max-w-6xl mx-auto px-4">
-        <div className="flex flex-wrap justify-center gap-2 mb-8 border-b border-gray-200">
+        <div className="flex flex-wrap justify-center gap-2 mb-8 border-b border-gray-200 dark:border-gray-700">
           <Link
             to="/writing-prompts"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"
           >
             <PenTool size={18} />
             Writing
           </Link>
           <Link
             to="/ai-images-prompt"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72Z"></path>
@@ -270,21 +270,21 @@ const PersuasiveEssaysTopicsPage = () => {
           </Link>
           <Link
             to="/ai-blog-post-generator"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"
           >
             <BookOpen size={18} />
             Blog post
           </Link>
           <Link
             to="/short-story-prompts-generator"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"
           >
             <Crown size={18} />
             Short stories
           </Link>
           <Link
             to="/random-name-generator"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"
           >
             <Sparkles size={18} />
             Names
@@ -363,21 +363,21 @@ const PersuasiveEssaysTopicsPage = () => {
 
           {/* Generated Prompt Card */}
           {generatedPrompt && (
-            <div className="bg-white border border-indigo-200 rounded-lg p-6 shadow-lg mb-8">
+            <div className="bg-white dark:bg-gray-800 border border-indigo-200 rounded-lg p-6 shadow-lg mb-8 transition-colors">
               <div className="flex items-start gap-4 mb-4">
                 <div className="text-4xl">{generatedPrompt.emoji}</div>
                 <div className="flex-1">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3">{generatedPrompt.title}</h3>
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-3">{generatedPrompt.title}</h3>
 
                   <div className="space-y-3">
                     <div>
                       <h4 className="font-semibold text-indigo-700 mb-1">Thesis:</h4>
-                      <p className="text-gray-700">{generatedPrompt.thesis}</p>
+                      <p className="text-gray-700 dark:text-gray-300">{generatedPrompt.thesis}</p>
                     </div>
 
                     <div>
                       <h4 className="font-semibold text-indigo-700 mb-1">Arguments:</h4>
-                      <ul className="list-decimal list-inside space-y-1 text-gray-700">
+                      <ul className="list-decimal list-inside space-y-1 text-gray-700 dark:text-gray-300">
                         {generatedPrompt.arguments.map((arg, index) => (
                           <li key={index}>{arg}</li>
                         ))}
@@ -386,12 +386,12 @@ const PersuasiveEssaysTopicsPage = () => {
 
                     <div>
                       <h4 className="font-semibold text-orange-700 mb-1">Counterpoint:</h4>
-                      <p className="text-gray-700">{generatedPrompt.counterpoint}</p>
+                      <p className="text-gray-700 dark:text-gray-300">{generatedPrompt.counterpoint}</p>
                     </div>
 
                     <div>
                       <h4 className="font-semibold text-green-700 mb-1">Rebuttal:</h4>
-                      <p className="text-gray-700">{generatedPrompt.rebuttal}</p>
+                      <p className="text-gray-700 dark:text-gray-300">{generatedPrompt.rebuttal}</p>
                     </div>
                   </div>
                 </div>
@@ -400,7 +400,7 @@ const PersuasiveEssaysTopicsPage = () => {
               <div className="flex flex-wrap gap-2 mt-4">
                 <button
                   onClick={() => copyToClipboard(generatedPrompt.fullText)}
-                  className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-md text-sm transition-colors"
+                  className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 dark:text-gray-300 rounded-md text-sm transition-colors"
                 >
                   <Copy size={14} />
                   Copy
@@ -443,9 +443,9 @@ const PersuasiveEssaysTopicsPage = () => {
 
           {/* History Panel */}
           {showHistory && (
-            <div className="mt-8 bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+            <div className="mt-8 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow-sm transition-colors">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold text-gray-900">Recent Topics</h3>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Recent Topics</h3>
                 <button
                   onClick={() => setPromptHistory([])}
                   className="text-sm text-gray-500 hover:text-red-600 transition-colors"
@@ -463,9 +463,9 @@ const PersuasiveEssaysTopicsPage = () => {
                         <div className="flex-1">
                           <div className="flex items-center gap-2 mb-1">
                             <span className="text-lg">{prompt.emoji}</span>
-                            <span className="font-semibold text-gray-900">{prompt.title}</span>
+                            <span className="font-semibold text-gray-900 dark:text-gray-100">{prompt.title}</span>
                           </div>
-                          <p className="text-sm text-gray-700 mb-1"><strong>Thesis:</strong> {prompt.thesis}</p>
+                          <p className="text-sm text-gray-700 dark:text-gray-300 mb-1"><strong>Thesis:</strong> {prompt.thesis}</p>
                           <span className="text-xs text-gray-400 mt-1 inline-block">
                             {new Date(prompt.timestamp).toLocaleTimeString()}
                           </span>
@@ -473,7 +473,7 @@ const PersuasiveEssaysTopicsPage = () => {
                         <div className="flex items-center gap-1">
                           <button
                             onClick={() => copyToClipboard(prompt.fullText)}
-                            className="p-1 text-gray-400 hover:text-gray-600 transition-colors"
+                            className="p-1 text-gray-400 hover:text-gray-600 dark:text-gray-400 transition-colors"
                             title="Copy"
                           >
                             <Copy size={14} />
@@ -500,7 +500,7 @@ const PersuasiveEssaysTopicsPage = () => {
 
           {/* All Prompts Display */}
           <div className="mt-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">All Persuasive Essays Topics</h2>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6 text-center">All Persuasive Essays Topics</h2>
 
             {/* Education & School */}
             <div className="mb-8">
@@ -513,24 +513,24 @@ const PersuasiveEssaysTopicsPage = () => {
                     <div className="flex items-start gap-3">
                       <span className="text-2xl">{prompt.emoji}</span>
                       <div className="flex-1">
-                        <h4 className="font-bold text-gray-900 mb-2">{index + 1}. {prompt.title}</h4>
+                        <h4 className="font-bold text-gray-900 dark:text-gray-100 mb-2">{index + 1}. {prompt.title}</h4>
                         <div className="space-y-2 text-sm">
-                          <p className="text-gray-700"><strong className="text-indigo-700">Thesis:</strong> {prompt.thesis}</p>
+                          <p className="text-gray-700 dark:text-gray-300"><strong className="text-indigo-700">Thesis:</strong> {prompt.thesis}</p>
                           <div>
                             <strong className="text-indigo-700">Arguments:</strong>
-                            <ul className="list-disc list-inside ml-2 text-gray-700">
+                            <ul className="list-disc list-inside ml-2 text-gray-700 dark:text-gray-300">
                               {prompt.arguments.map((arg, i) => (
                                 <li key={i}>{arg}</li>
                               ))}
                             </ul>
                           </div>
-                          <p className="text-gray-700"><strong className="text-orange-700">Counterpoint:</strong> {prompt.counterpoint}</p>
-                          <p className="text-gray-700"><strong className="text-green-700">Rebuttal:</strong> {prompt.rebuttal}</p>
+                          <p className="text-gray-700 dark:text-gray-300"><strong className="text-orange-700">Counterpoint:</strong> {prompt.counterpoint}</p>
+                          <p className="text-gray-700 dark:text-gray-300"><strong className="text-green-700">Rebuttal:</strong> {prompt.rebuttal}</p>
                         </div>
                       </div>
                       <button
                         onClick={() => copyToClipboard(`${prompt.title}\n\nThesis: ${prompt.thesis}\n\nArguments:\n${prompt.arguments.map((arg, i) => `${i + 1}. ${arg}`).join('\n')}\n\nCounterpoint: ${prompt.counterpoint}\n\nRebuttal: ${prompt.rebuttal}`)}
-                        className="p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
+                        className="p-2 text-gray-400 hover:text-gray-600 dark:text-gray-400 transition-colors flex-shrink-0"
                         title="Copy prompt"
                       >
                         <Copy size={16} />
@@ -552,24 +552,24 @@ const PersuasiveEssaysTopicsPage = () => {
                     <div className="flex items-start gap-3">
                       <span className="text-2xl">{prompt.emoji}</span>
                       <div className="flex-1">
-                        <h4 className="font-bold text-gray-900 mb-2">{index + 4}. {prompt.title}</h4>
+                        <h4 className="font-bold text-gray-900 dark:text-gray-100 mb-2">{index + 4}. {prompt.title}</h4>
                         <div className="space-y-2 text-sm">
-                          <p className="text-gray-700"><strong className="text-green-700">Thesis:</strong> {prompt.thesis}</p>
+                          <p className="text-gray-700 dark:text-gray-300"><strong className="text-green-700">Thesis:</strong> {prompt.thesis}</p>
                           <div>
                             <strong className="text-green-700">Arguments:</strong>
-                            <ul className="list-disc list-inside ml-2 text-gray-700">
+                            <ul className="list-disc list-inside ml-2 text-gray-700 dark:text-gray-300">
                               {prompt.arguments.map((arg, i) => (
                                 <li key={i}>{arg}</li>
                               ))}
                             </ul>
                           </div>
-                          <p className="text-gray-700"><strong className="text-orange-700">Counterpoint:</strong> {prompt.counterpoint}</p>
-                          <p className="text-gray-700"><strong className="text-green-700">Rebuttal:</strong> {prompt.rebuttal}</p>
+                          <p className="text-gray-700 dark:text-gray-300"><strong className="text-orange-700">Counterpoint:</strong> {prompt.counterpoint}</p>
+                          <p className="text-gray-700 dark:text-gray-300"><strong className="text-green-700">Rebuttal:</strong> {prompt.rebuttal}</p>
                         </div>
                       </div>
                       <button
                         onClick={() => copyToClipboard(`${prompt.title}\n\nThesis: ${prompt.thesis}\n\nArguments:\n${prompt.arguments.map((arg, i) => `${i + 1}. ${arg}`).join('\n')}\n\nCounterpoint: ${prompt.counterpoint}\n\nRebuttal: ${prompt.rebuttal}`)}
-                        className="p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
+                        className="p-2 text-gray-400 hover:text-gray-600 dark:text-gray-400 transition-colors flex-shrink-0"
                         title="Copy prompt"
                       >
                         <Copy size={16} />
@@ -591,24 +591,24 @@ const PersuasiveEssaysTopicsPage = () => {
                     <div className="flex items-start gap-3">
                       <span className="text-2xl">{prompt.emoji}</span>
                       <div className="flex-1">
-                        <h4 className="font-bold text-gray-900 mb-2">{index + 7}. {prompt.title}</h4>
+                        <h4 className="font-bold text-gray-900 dark:text-gray-100 mb-2">{index + 7}. {prompt.title}</h4>
                         <div className="space-y-2 text-sm">
-                          <p className="text-gray-700"><strong className="text-blue-700">Thesis:</strong> {prompt.thesis}</p>
+                          <p className="text-gray-700 dark:text-gray-300"><strong className="text-blue-700">Thesis:</strong> {prompt.thesis}</p>
                           <div>
                             <strong className="text-blue-700">Arguments:</strong>
-                            <ul className="list-disc list-inside ml-2 text-gray-700">
+                            <ul className="list-disc list-inside ml-2 text-gray-700 dark:text-gray-300">
                               {prompt.arguments.map((arg, i) => (
                                 <li key={i}>{arg}</li>
                               ))}
                             </ul>
                           </div>
-                          <p className="text-gray-700"><strong className="text-orange-700">Counterpoint:</strong> {prompt.counterpoint}</p>
-                          <p className="text-gray-700"><strong className="text-green-700">Rebuttal:</strong> {prompt.rebuttal}</p>
+                          <p className="text-gray-700 dark:text-gray-300"><strong className="text-orange-700">Counterpoint:</strong> {prompt.counterpoint}</p>
+                          <p className="text-gray-700 dark:text-gray-300"><strong className="text-green-700">Rebuttal:</strong> {prompt.rebuttal}</p>
                         </div>
                       </div>
                       <button
                         onClick={() => copyToClipboard(`${prompt.title}\n\nThesis: ${prompt.thesis}\n\nArguments:\n${prompt.arguments.map((arg, i) => `${i + 1}. ${arg}`).join('\n')}\n\nCounterpoint: ${prompt.counterpoint}\n\nRebuttal: ${prompt.rebuttal}`)}
-                        className="p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
+                        className="p-2 text-gray-400 hover:text-gray-600 dark:text-gray-400 transition-colors flex-shrink-0"
                         title="Copy prompt"
                       >
                         <Copy size={16} />
@@ -630,24 +630,24 @@ const PersuasiveEssaysTopicsPage = () => {
                     <div className="flex items-start gap-3">
                       <span className="text-2xl">{prompt.emoji}</span>
                       <div className="flex-1">
-                        <h4 className="font-bold text-gray-900 mb-2">{index + 9}. {prompt.title}</h4>
+                        <h4 className="font-bold text-gray-900 dark:text-gray-100 mb-2">{index + 9}. {prompt.title}</h4>
                         <div className="space-y-2 text-sm">
-                          <p className="text-gray-700"><strong className="text-purple-700">Thesis:</strong> {prompt.thesis}</p>
+                          <p className="text-gray-700 dark:text-gray-300"><strong className="text-purple-700">Thesis:</strong> {prompt.thesis}</p>
                           <div>
                             <strong className="text-purple-700">Arguments:</strong>
-                            <ul className="list-disc list-inside ml-2 text-gray-700">
+                            <ul className="list-disc list-inside ml-2 text-gray-700 dark:text-gray-300">
                               {prompt.arguments.map((arg, i) => (
                                 <li key={i}>{arg}</li>
                               ))}
                             </ul>
                           </div>
-                          <p className="text-gray-700"><strong className="text-orange-700">Counterpoint:</strong> {prompt.counterpoint}</p>
-                          <p className="text-gray-700"><strong className="text-green-700">Rebuttal:</strong> {prompt.rebuttal}</p>
+                          <p className="text-gray-700 dark:text-gray-300"><strong className="text-orange-700">Counterpoint:</strong> {prompt.counterpoint}</p>
+                          <p className="text-gray-700 dark:text-gray-300"><strong className="text-green-700">Rebuttal:</strong> {prompt.rebuttal}</p>
                         </div>
                       </div>
                       <button
                         onClick={() => copyToClipboard(`${prompt.title}\n\nThesis: ${prompt.thesis}\n\nArguments:\n${prompt.arguments.map((arg, i) => `${i + 1}. ${arg}`).join('\n')}\n\nCounterpoint: ${prompt.counterpoint}\n\nRebuttal: ${prompt.rebuttal}`)}
-                        className="p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
+                        className="p-2 text-gray-400 hover:text-gray-600 dark:text-gray-400 transition-colors flex-shrink-0"
                         title="Copy prompt"
                       >
                         <Copy size={16} />
@@ -663,7 +663,7 @@ const PersuasiveEssaysTopicsPage = () => {
           {savedPrompts.length > 0 && (
             <div className="mt-12">
               <div className="flex items-center justify-between mb-6">
-                <h3 className="text-2xl font-bold text-gray-900">Saved Topics</h3>
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Saved Topics</h3>
                 <button
                   onClick={exportPrompts}
                   className="inline-flex items-center gap-2 px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg transition-colors"
@@ -674,12 +674,12 @@ const PersuasiveEssaysTopicsPage = () => {
               </div>
               <div className="grid gap-4">
                 {savedPrompts.slice(-5).map((prompt, index) => (
-                  <div key={index} className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                  <div key={index} className="bg-gray-50 border border-gray-200 dark:border-gray-700 rounded-lg p-4">
                     <div className="flex items-start gap-3">
                       <span className="text-2xl">{prompt.emoji}</span>
                       <div className="flex-1">
-                        <h4 className="font-bold text-gray-900 mb-1">{prompt.title}</h4>
-                        <p className="text-sm text-gray-700">{prompt.thesis}</p>
+                        <h4 className="font-bold text-gray-900 dark:text-gray-100 mb-1">{prompt.title}</h4>
+                        <p className="text-sm text-gray-700 dark:text-gray-300">{prompt.thesis}</p>
                       </div>
                     </div>
                   </div>
@@ -691,25 +691,25 @@ const PersuasiveEssaysTopicsPage = () => {
           {/* SEO Content Section */}
           <div className="mt-16 space-y-8">
             <div className="prose prose-gray max-w-none">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Persuasive Essays Topics with Complete Arguments</h2>
-              <p className="text-gray-700 mb-4">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">Persuasive Essays Topics with Complete Arguments</h2>
+              <p className="text-gray-700 dark:text-gray-300 mb-4">
                 Persuasive essays topics require more than just a question—they need a clear thesis, supporting arguments, acknowledgment of counterpoints, and effective rebuttals. Our comprehensive persuasive essays topics provide all these elements, helping students develop well-structured, convincing essays that demonstrate critical thinking and strong argumentation skills.
               </p>
-              <p className="text-gray-700 mb-4">
+              <p className="text-gray-700 dark:text-gray-300 mb-4">
                 Each persuasive essay topic includes a thesis statement that clearly states a position, three supporting arguments backed by logic and evidence, a counterpoint that acknowledges opposing views, and a rebuttal that addresses those objections. This complete structure teaches students how to build persuasive essays that are balanced, well-reasoned, and academically rigorous.
               </p>
-              <p className="text-gray-700 mb-4">
+              <p className="text-gray-700 dark:text-gray-300 mb-4">
                 Perfect for high school and college students, these persuasive essays topics cover contemporary issues in education, environment, technology, and ethics. Whether you're writing a persuasive essay for class, preparing for a debate, or practicing argumentative writing, these topics provide a solid foundation for developing compelling, evidence-based arguments.
               </p>
-              <p className="text-gray-700 mb-4">
+              <p className="text-gray-700 dark:text-gray-300 mb-4">
                 Prefer shorter prompts? Try our <Link to="/writing-prompts" className="text-blue-600 hover:underline">Writing Prompts Generator</Link> or switch to seasonal visuals by visiting our <Link to="/ai-images-prompt" className="text-blue-600 hover:underline">AI Art Prompts page</Link>.
               </p>
             </div>
           </div>
 
           {/* Related Links */}
-          <div className="mt-12 bg-gray-50 rounded-lg p-6 border border-gray-200">
-            <h3 className="text-xl font-bold text-gray-900 mb-4">More Writing Resources</h3>
+          <div className="mt-12 bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+            <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">More Writing Resources</h3>
             <div className="grid md:grid-cols-2 gap-4">
               <Link to="/persuasive-writing-topics" className="text-indigo-600 hover:underline flex items-center gap-2">
                 <PenTool size={16} />
@@ -732,41 +732,41 @@ const PersuasiveEssaysTopicsPage = () => {
         </div>
 
         {/* FAQ Section */}
-        <section className="bg-white py-16 mt-16">
+        <section className="bg-white dark:bg-gray-800 py-16 mt-16 transition-colors">
           <div className="max-w-4xl mx-auto px-4">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-8 text-center">Frequently Asked Questions</h2>
             <div className="space-y-6">
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">What makes these persuasive essays topics different?</h3>
-                <p className="text-gray-700">
+              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">What makes these persuasive essays topics different?</h3>
+                <p className="text-gray-700 dark:text-gray-300">
                   Our persuasive essays topics include complete argumentative structures with thesis statements, supporting arguments, counterpoints, and rebuttals. This comprehensive approach teaches students how to build balanced, well-reasoned persuasive essays rather than one-sided arguments.
                 </p>
               </div>
 
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">How do I use these persuasive essay topics effectively?</h3>
-                <p className="text-gray-700">
+              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">How do I use these persuasive essay topics effectively?</h3>
+                <p className="text-gray-700 dark:text-gray-300">
                   Start with the thesis statement to understand the position, review the supporting arguments to see how evidence builds the case, study the counterpoint to learn opposing views, and analyze the rebuttal to understand how to address objections. Then develop your own essay using this structure as a guide.
                 </p>
               </div>
 
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Can I modify these persuasive essay arguments?</h3>
-                <p className="text-gray-700">
+              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Can I modify these persuasive essay arguments?</h3>
+                <p className="text-gray-700 dark:text-gray-300">
                   Absolutely! These persuasive essays topics serve as frameworks. You can adapt the arguments, add your own research and evidence, incorporate additional counterpoints, and develop more detailed rebuttals based on your own critical thinking and analysis.
                 </p>
               </div>
 
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Are these topics suitable for all grade levels?</h3>
-                <p className="text-gray-700">
+              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Are these topics suitable for all grade levels?</h3>
+                <p className="text-gray-700 dark:text-gray-300">
                   These persuasive essays topics are designed primarily for high school and college students. Middle school students can use simplified versions, while advanced students can expand on the arguments with deeper research, additional evidence, and more sophisticated reasoning.
                 </p>
               </div>
 
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">What's the difference between persuasive essays and argumentative essays?</h3>
-                <p className="text-gray-700">
+              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">What's the difference between persuasive essays and argumentative essays?</h3>
+                <p className="text-gray-700 dark:text-gray-300">
                   Persuasive essays aim to convince readers through emotion, logic, and credibility, while argumentative essays focus primarily on logical reasoning and evidence. Our topics work for both styles since they include logical arguments (for argumentative essays) and engaging real-world issues (for persuasive essays).
                 </p>
               </div>

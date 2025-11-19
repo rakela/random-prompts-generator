@@ -54,12 +54,14 @@ import RandomHobbyGeneratorPage from './RandomHobbyGeneratorPage.tsx'
 import RandomSuperpowerGeneratorPage from './RandomSuperpowerGeneratorPage.tsx'
 import RandomIdeaGeneratorPage from './RandomIdeaGeneratorPage.tsx'
 import { SpeedInsights } from '@vercel/speed-insights/react'
+import ThemeProvider from './components/ThemeProvider'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <HelmetProvider>
-      <BrowserRouter>
+    <ThemeProvider>
+      <HelmetProvider>
+        <BrowserRouter>
         <Routes>
           <Route path="/" element={<PromptGenerator />} />
           <Route path="/writing-prompts" element={<WritingPromptsPage />} />
@@ -115,6 +117,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         </Routes>
         <SpeedInsights />
       </BrowserRouter>
-    </HelmetProvider>
+      </HelmetProvider>
+    </ThemeProvider>
   </React.StrictMode>,
 )

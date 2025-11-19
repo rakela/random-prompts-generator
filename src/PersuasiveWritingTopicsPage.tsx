@@ -225,17 +225,17 @@ const PersuasiveWritingTopicsPage = () => {
 
       {/* Tab Navigation */}
       <div className="max-w-6xl mx-auto px-4">
-        <div className="flex flex-wrap justify-center gap-2 mb-8 border-b border-gray-200">
+        <div className="flex flex-wrap justify-center gap-2 mb-8 border-b border-gray-200 dark:border-gray-700">
           <Link
             to="/writing-prompts"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"
           >
             <PenTool size={18} />
             Writing
           </Link>
           <Link
             to="/ai-images-prompt"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72Z"></path>
@@ -251,21 +251,21 @@ const PersuasiveWritingTopicsPage = () => {
           </Link>
           <Link
             to="/ai-blog-post-generator"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"
           >
             <BookOpen size={18} />
             Blog post
           </Link>
           <Link
             to="/short-story-prompts-generator"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"
           >
             <Crown size={18} />
             Short stories
           </Link>
           <Link
             to="/random-name-generator"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"
           >
             <Sparkles size={18} />
             Names
@@ -344,19 +344,19 @@ const PersuasiveWritingTopicsPage = () => {
 
           {/* Generated Prompt Card */}
           {generatedPrompt && (
-            <div className="bg-white border border-orange-200 rounded-lg p-6 shadow-lg mb-8">
+            <div className="bg-white dark:bg-gray-800 border border-orange-200 rounded-lg p-6 shadow-lg mb-8 transition-colors">
               <div className="flex items-start gap-4 mb-4">
                 <div className="text-4xl">{generatedPrompt.emoji}</div>
                 <div className="flex-1">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">{generatedPrompt.title}</h3>
-                  <p className="text-gray-700 text-lg leading-relaxed">{generatedPrompt.description}</p>
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">{generatedPrompt.title}</h3>
+                  <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">{generatedPrompt.description}</p>
                 </div>
               </div>
 
               <div className="flex flex-wrap gap-2 mt-4">
                 <button
                   onClick={() => copyToClipboard(generatedPrompt.fullText)}
-                  className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-md text-sm transition-colors"
+                  className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 dark:text-gray-300 rounded-md text-sm transition-colors"
                 >
                   <Copy size={14} />
                   Copy
@@ -399,9 +399,9 @@ const PersuasiveWritingTopicsPage = () => {
 
           {/* History Panel */}
           {showHistory && (
-            <div className="mt-8 bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+            <div className="mt-8 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow-sm transition-colors">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold text-gray-900">Recent Topics</h3>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Recent Topics</h3>
                 <button
                   onClick={() => setPromptHistory([])}
                   className="text-sm text-gray-500 hover:text-red-600 transition-colors"
@@ -419,9 +419,9 @@ const PersuasiveWritingTopicsPage = () => {
                         <div className="flex-1">
                           <div className="flex items-center gap-2 mb-1">
                             <span className="text-lg">{prompt.emoji}</span>
-                            <span className="font-semibold text-gray-900">{prompt.title}</span>
+                            <span className="font-semibold text-gray-900 dark:text-gray-100">{prompt.title}</span>
                           </div>
-                          <p className="text-sm text-gray-700">{prompt.description}</p>
+                          <p className="text-sm text-gray-700 dark:text-gray-300">{prompt.description}</p>
                           <span className="text-xs text-gray-400 mt-1 inline-block">
                             {new Date(prompt.timestamp).toLocaleTimeString()}
                           </span>
@@ -429,7 +429,7 @@ const PersuasiveWritingTopicsPage = () => {
                         <div className="flex items-center gap-1">
                           <button
                             onClick={() => copyToClipboard(prompt.fullText)}
-                            className="p-1 text-gray-400 hover:text-gray-600 transition-colors"
+                            className="p-1 text-gray-400 hover:text-gray-600 dark:text-gray-400 transition-colors"
                             title="Copy"
                           >
                             <Copy size={14} />
@@ -456,7 +456,7 @@ const PersuasiveWritingTopicsPage = () => {
 
           {/* All Prompts Display */}
           <div className="mt-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">All Persuasive Writing Topics</h2>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6 text-center">All Persuasive Writing Topics</h2>
 
             {/* School & Education */}
             <div className="mb-8">
@@ -469,12 +469,12 @@ const PersuasiveWritingTopicsPage = () => {
                     <div className="flex items-start gap-3">
                       <span className="text-2xl">{prompt.emoji}</span>
                       <div className="flex-1">
-                        <h4 className="font-bold text-gray-900 mb-1">{index + 1}. {prompt.title}</h4>
-                        <p className="text-gray-700">{prompt.description}</p>
+                        <h4 className="font-bold text-gray-900 dark:text-gray-100 mb-1">{index + 1}. {prompt.title}</h4>
+                        <p className="text-gray-700 dark:text-gray-300">{prompt.description}</p>
                       </div>
                       <button
                         onClick={() => copyToClipboard(`${prompt.title} — ${prompt.description}`)}
-                        className="p-2 text-gray-400 hover:text-gray-600 transition-colors"
+                        className="p-2 text-gray-400 hover:text-gray-600 dark:text-gray-400 transition-colors"
                         title="Copy prompt"
                       >
                         <Copy size={16} />
@@ -496,12 +496,12 @@ const PersuasiveWritingTopicsPage = () => {
                     <div className="flex items-start gap-3">
                       <span className="text-2xl">{prompt.emoji}</span>
                       <div className="flex-1">
-                        <h4 className="font-bold text-gray-900 mb-1">{index + 6}. {prompt.title}</h4>
-                        <p className="text-gray-700">{prompt.description}</p>
+                        <h4 className="font-bold text-gray-900 dark:text-gray-100 mb-1">{index + 6}. {prompt.title}</h4>
+                        <p className="text-gray-700 dark:text-gray-300">{prompt.description}</p>
                       </div>
                       <button
                         onClick={() => copyToClipboard(`${prompt.title} — ${prompt.description}`)}
-                        className="p-2 text-gray-400 hover:text-gray-600 transition-colors"
+                        className="p-2 text-gray-400 hover:text-gray-600 dark:text-gray-400 transition-colors"
                         title="Copy prompt"
                       >
                         <Copy size={16} />
@@ -523,12 +523,12 @@ const PersuasiveWritingTopicsPage = () => {
                     <div className="flex items-start gap-3">
                       <span className="text-2xl">{prompt.emoji}</span>
                       <div className="flex-1">
-                        <h4 className="font-bold text-gray-900 mb-1">{index + 11}. {prompt.title}</h4>
-                        <p className="text-gray-700">{prompt.description}</p>
+                        <h4 className="font-bold text-gray-900 dark:text-gray-100 mb-1">{index + 11}. {prompt.title}</h4>
+                        <p className="text-gray-700 dark:text-gray-300">{prompt.description}</p>
                       </div>
                       <button
                         onClick={() => copyToClipboard(`${prompt.title} — ${prompt.description}`)}
-                        className="p-2 text-gray-400 hover:text-gray-600 transition-colors"
+                        className="p-2 text-gray-400 hover:text-gray-600 dark:text-gray-400 transition-colors"
                         title="Copy prompt"
                       >
                         <Copy size={16} />
@@ -550,12 +550,12 @@ const PersuasiveWritingTopicsPage = () => {
                     <div className="flex items-start gap-3">
                       <span className="text-2xl">{prompt.emoji}</span>
                       <div className="flex-1">
-                        <h4 className="font-bold text-gray-900 mb-1">{index + 16}. {prompt.title}</h4>
-                        <p className="text-gray-700">{prompt.description}</p>
+                        <h4 className="font-bold text-gray-900 dark:text-gray-100 mb-1">{index + 16}. {prompt.title}</h4>
+                        <p className="text-gray-700 dark:text-gray-300">{prompt.description}</p>
                       </div>
                       <button
                         onClick={() => copyToClipboard(`${prompt.title} — ${prompt.description}`)}
-                        className="p-2 text-gray-400 hover:text-gray-600 transition-colors"
+                        className="p-2 text-gray-400 hover:text-gray-600 dark:text-gray-400 transition-colors"
                         title="Copy prompt"
                       >
                         <Copy size={16} />
@@ -571,7 +571,7 @@ const PersuasiveWritingTopicsPage = () => {
           {savedPrompts.length > 0 && (
             <div className="mt-12">
               <div className="flex items-center justify-between mb-6">
-                <h3 className="text-2xl font-bold text-gray-900">Saved Topics</h3>
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Saved Topics</h3>
                 <button
                   onClick={exportPrompts}
                   className="inline-flex items-center gap-2 px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg transition-colors"
@@ -582,12 +582,12 @@ const PersuasiveWritingTopicsPage = () => {
               </div>
               <div className="grid gap-4">
                 {savedPrompts.slice(-5).map((prompt, index) => (
-                  <div key={index} className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                  <div key={index} className="bg-gray-50 border border-gray-200 dark:border-gray-700 rounded-lg p-4">
                     <div className="flex items-start gap-3">
                       <span className="text-2xl">{prompt.emoji}</span>
                       <div className="flex-1">
-                        <h4 className="font-bold text-gray-900 mb-1">{prompt.title}</h4>
-                        <p className="text-gray-700">{prompt.description}</p>
+                        <h4 className="font-bold text-gray-900 dark:text-gray-100 mb-1">{prompt.title}</h4>
+                        <p className="text-gray-700 dark:text-gray-300">{prompt.description}</p>
                       </div>
                     </div>
                   </div>
@@ -599,25 +599,25 @@ const PersuasiveWritingTopicsPage = () => {
           {/* SEO Content Section */}
           <div className="mt-16 space-y-8">
             <div className="prose prose-gray max-w-none">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Persuasive Writing Topics for Students</h2>
-              <p className="text-gray-700 mb-4">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">Persuasive Writing Topics for Students</h2>
+              <p className="text-gray-700 dark:text-gray-300 mb-4">
                 Persuasive writing topics help students develop critical thinking, argumentation skills, and the ability to express and defend their opinions effectively. These carefully curated topics cover relevant, contemporary issues that resonate with students' lives and experiences.
               </p>
-              <p className="text-gray-700 mb-4">
+              <p className="text-gray-700 dark:text-gray-300 mb-4">
                 From school policies and environmental concerns to technology ethics and social responsibility, these persuasive writing topics encourage students to research, think critically, consider multiple perspectives, and build compelling arguments. Perfect for persuasive essays, classroom debates, speech competitions, or <Link to="/writing-prompts-for-students" className="text-orange-600 hover:underline">writing assignments</Link>, these topics challenge students to engage with real-world issues and develop their voice as thoughtful, articulate writers.
               </p>
-              <p className="text-gray-700 mb-4">
+              <p className="text-gray-700 dark:text-gray-300 mb-4">
                 Each topic presents both sides of an issue, helping students understand that persuasive writing requires acknowledging counterarguments while building a strong case for their position. This approach develops nuanced thinking and sophisticated argumentation skills essential for academic and professional success.
               </p>
-              <p className="text-gray-700 mb-4">
+              <p className="text-gray-700 dark:text-gray-300 mb-4">
                 Prefer shorter prompts? Try our <Link to="/writing-prompts" className="text-blue-600 hover:underline">Writing Prompts Generator</Link> or switch to seasonal visuals by visiting our <Link to="/ai-images-prompt" className="text-blue-600 hover:underline">AI Art Prompts page</Link>.
               </p>
             </div>
           </div>
 
           {/* Related Links */}
-          <div className="mt-12 bg-gray-50 rounded-lg p-6 border border-gray-200">
-            <h3 className="text-xl font-bold text-gray-900 mb-4">More Writing Resources</h3>
+          <div className="mt-12 bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+            <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">More Writing Resources</h3>
             <div className="grid md:grid-cols-2 gap-4">
               <Link to="/writing-prompts" className="text-orange-600 hover:underline flex items-center gap-2">
                 <PenTool size={16} />
@@ -640,41 +640,41 @@ const PersuasiveWritingTopicsPage = () => {
         </div>
 
         {/* FAQ Section */}
-        <section className="bg-white py-16 mt-16">
+        <section className="bg-white dark:bg-gray-800 py-16 mt-16 transition-colors">
           <div className="max-w-4xl mx-auto px-4">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-8 text-center">Frequently Asked Questions</h2>
             <div className="space-y-6">
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">What makes a good persuasive writing topic?</h3>
-                <p className="text-gray-700">
+              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">What makes a good persuasive writing topic?</h3>
+                <p className="text-gray-700 dark:text-gray-300">
                   A good persuasive writing topic is debatable, relevant to students' lives, and has multiple valid perspectives. It should encourage critical thinking, research, and the development of well-reasoned arguments supported by evidence.
                 </p>
               </div>
 
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">How do persuasive writing topics help students?</h3>
-                <p className="text-gray-700">
+              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">How do persuasive writing topics help students?</h3>
+                <p className="text-gray-700 dark:text-gray-300">
                   Persuasive writing topics help students develop essential skills including critical thinking, research abilities, logical reasoning, evidence-based argumentation, and clear communication. They also teach students to consider multiple perspectives and construct compelling arguments.
                 </p>
               </div>
 
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Can these topics be used for classroom debates?</h3>
-                <p className="text-gray-700">
+              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Can these topics be used for classroom debates?</h3>
+                <p className="text-gray-700 dark:text-gray-300">
                   Absolutely! These persuasive writing topics work excellently for classroom debates, speech competitions, essay assignments, research projects, and discussion activities. Each topic presents multiple viewpoints, making them ideal for structured debates and class discussions.
                 </p>
               </div>
 
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">What's the difference between persuasive and argumentative writing?</h3>
-                <p className="text-gray-700">
+              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">What's the difference between persuasive and argumentative writing?</h3>
+                <p className="text-gray-700 dark:text-gray-300">
                   While similar, persuasive writing aims to convince readers through emotional appeals, logic, and credibility, while argumentative writing focuses more heavily on logical reasoning and evidence. Both require strong critical thinking and research skills, and these topics work well for either approach.
                 </p>
               </div>
 
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Are these topics age-appropriate for all students?</h3>
-                <p className="text-gray-700">
+              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Are these topics age-appropriate for all students?</h3>
+                <p className="text-gray-700 dark:text-gray-300">
                   These topics are designed primarily for middle school and high school students. Teachers can adapt the complexity and depth of exploration based on grade level and student abilities. Topics cover contemporary issues that resonate with today's students.
                 </p>
               </div>

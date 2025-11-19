@@ -208,17 +208,17 @@ const MidjourneyAIPromptsPage = () => {
 
       {/* Tab Navigation */}
       <div className="max-w-6xl mx-auto px-4">
-        <div className="flex flex-wrap justify-center gap-2 mb-8 border-b border-gray-200">
+        <div className="flex flex-wrap justify-center gap-2 mb-8 border-b border-gray-200 dark:border-gray-700">
           <Link
             to="/writing-prompts"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"
           >
             <PenTool size={18} />
             Writing
           </Link>
           <Link
             to="/ai-images-prompt"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72Z"></path>
@@ -234,21 +234,21 @@ const MidjourneyAIPromptsPage = () => {
           </Link>
           <Link
             to="/ai-blog-post-generator"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"
           >
             <BookOpen size={18} />
             Blog post
           </Link>
           <Link
             to="/short-story-prompts-generator"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"
           >
             <Crown size={18} />
             Short stories
           </Link>
           <Link
             to="/random-name-generator"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"
           >
             <Sparkles size={18} />
             Names
@@ -267,7 +267,7 @@ const MidjourneyAIPromptsPage = () => {
                 placeholder="Search prompts..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full px-4 py-3 pl-10 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="w-full px-4 py-3 pl-10 rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
               />
               <Filter className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
             </div>
@@ -294,9 +294,9 @@ const MidjourneyAIPromptsPage = () => {
 
           {/* History Panel */}
           {showHistory && (
-            <div className="mt-8 bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+            <div className="mt-8 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow-sm transition-colors">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold text-gray-900">Recent Prompts</h3>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Recent Prompts</h3>
                 <button
                   onClick={() => setPromptHistory([])}
                   className="text-sm text-gray-500 hover:text-red-600 transition-colors"
@@ -312,7 +312,7 @@ const MidjourneyAIPromptsPage = () => {
                     <div key={`${prompt.id}-${prompt.timestamp}`} className="bg-gray-50 rounded-lg p-3 border border-gray-100">
                       <div className="flex items-start justify-between gap-3">
                         <div className="flex-1">
-                          <p className="text-sm text-gray-700">{prompt.prompt}</p>
+                          <p className="text-sm text-gray-700 dark:text-gray-300">{prompt.prompt}</p>
                           <span className="text-xs text-gray-400 mt-1 inline-block">
                             {new Date(prompt.timestamp).toLocaleTimeString()}
                           </span>
@@ -320,7 +320,7 @@ const MidjourneyAIPromptsPage = () => {
                         <div className="flex items-center gap-1">
                           <button
                             onClick={() => copyToClipboard(prompt.prompt)}
-                            className="p-1 text-gray-400 hover:text-gray-600 transition-colors"
+                            className="p-1 text-gray-400 hover:text-gray-600 dark:text-gray-400 transition-colors"
                             title="Copy"
                           >
                             <Copy size={14} />
@@ -347,17 +347,17 @@ const MidjourneyAIPromptsPage = () => {
 
           {/* All Prompts Display */}
           <div className="mt-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6 text-center">
               {selectedCategory === 'all' ? 'All Midjourney AI Prompts' : `${categoryInfo[selectedCategory].label} Prompts`}
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               {paginatedPrompts.map((prompt) => (
-                <div key={prompt.id} className="bg-white border border-purple-200 rounded-lg p-4 hover:shadow-lg transition-all hover:-translate-y-1 flex flex-col">
+                <div key={prompt.id} className="bg-white dark:bg-gray-800 border border-purple-200 rounded-lg p-4 hover:shadow-lg transition-all hover:-translate-y-1 flex flex-col transition-colors">
                   <div className="w-full h-32 bg-gradient-to-br from-purple-100 via-blue-100 to-pink-100 rounded-lg flex items-center justify-center mb-3">
                     <span className="text-4xl">{categoryInfo[selectedCategory]?.emoji || '🎨'}</span>
                   </div>
-                  <p className="text-gray-800 text-sm leading-relaxed flex-1 mb-3 line-clamp-4">{prompt.prompt}</p>
+                  <p className="text-gray-800 dark:text-gray-200 text-sm leading-relaxed flex-1 mb-3 line-clamp-4">{prompt.prompt}</p>
                   <button
                     onClick={() => copyToClipboard(prompt.prompt)}
                     className="w-full py-2 px-3 bg-purple-600 hover:bg-purple-700 text-white rounded-md text-sm transition-colors flex items-center justify-center gap-2"
@@ -427,19 +427,19 @@ const MidjourneyAIPromptsPage = () => {
 
             {/* Generated Prompt Card */}
             {generatedPrompt && (
-              <div className="bg-white border-2 border-purple-300 rounded-lg p-6 shadow-xl mb-8">
+              <div className="bg-white dark:bg-gray-800 border-2 border-purple-300 rounded-lg p-6 shadow-xl mb-8 transition-colors">
                 <div className="mb-4">
                   <div className="bg-gradient-to-br from-purple-100 via-blue-100 to-pink-100 rounded-lg h-48 flex items-center justify-center mb-4 overflow-hidden">
                     <div className="text-6xl">🎨</div>
                   </div>
-                  <p className="text-gray-800 text-lg leading-relaxed">{generatedPrompt.prompt}</p>
+                  <p className="text-gray-800 dark:text-gray-200 text-lg leading-relaxed">{generatedPrompt.prompt}</p>
                   <p className="text-sm text-gray-500 mt-2">{generatedPrompt.category}</p>
                 </div>
 
                 <div className="flex flex-wrap gap-2 mt-4">
                   <button
                     onClick={() => copyToClipboard(generatedPrompt.prompt)}
-                    className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-md text-sm transition-colors"
+                    className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 dark:text-gray-300 rounded-md text-sm transition-colors"
                   >
                     <Copy size={14} />
                     Copy
@@ -485,7 +485,7 @@ const MidjourneyAIPromptsPage = () => {
           {savedPrompts.length > 0 && (
             <div className="mt-12">
               <div className="flex items-center justify-between mb-6">
-                <h3 className="text-2xl font-bold text-gray-900">Saved Prompts</h3>
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Saved Prompts</h3>
                 <button
                   onClick={exportPrompts}
                   className="inline-flex items-center gap-2 px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg transition-colors"
@@ -496,8 +496,8 @@ const MidjourneyAIPromptsPage = () => {
               </div>
               <div className="grid gap-4">
                 {savedPrompts.slice(-5).map((prompt, index) => (
-                  <div key={`${prompt.id}-saved-${index}`} className="bg-gray-50 border border-gray-200 rounded-lg p-4">
-                    <p className="text-gray-800">{prompt.prompt}</p>
+                  <div key={`${prompt.id}-saved-${index}`} className="bg-gray-50 border border-gray-200 dark:border-gray-700 rounded-lg p-4">
+                    <p className="text-gray-800 dark:text-gray-200">{prompt.prompt}</p>
                     <p className="text-sm text-gray-500 mt-1">{prompt.category}</p>
                   </div>
                 ))}
@@ -506,8 +506,8 @@ const MidjourneyAIPromptsPage = () => {
           )}
 
           {/* Related Links */}
-          <div className="mt-12 bg-white rounded-lg p-6 border border-gray-200">
-            <h3 className="text-xl font-bold text-gray-900 mb-4">More Prompt Resources</h3>
+          <div className="mt-12 bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700 transition-colors">
+            <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">More Prompt Resources</h3>
             <div className="grid md:grid-cols-2 gap-4">
               <Link to="/ai-images-prompt" className="text-purple-600 hover:underline flex items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -555,81 +555,81 @@ const MidjourneyAIPromptsPage = () => {
         </div>
 
         {/* SEO Content Section */}
-        <section className="bg-white py-16 mt-16 rounded-lg">
+        <section className="bg-white dark:bg-gray-800 py-16 mt-16 rounded-lg transition-colors">
           <div className="max-w-4xl mx-auto px-4">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8">Professional Midjourney AI Prompts for Stunning Visual Art</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-8">Professional Midjourney AI Prompts for Stunning Visual Art</h2>
 
-            <div className="prose prose-lg max-w-none text-gray-700 space-y-6">
+            <div className="prose prose-lg max-w-none text-gray-700 dark:text-gray-300 space-y-6">
               <p>
                 Welcome to the ultimate collection of Midjourney AI prompts designed to help you create breathtaking visual art across multiple genres and styles. Whether you're an experienced AI artist or just starting your creative journey, these carefully crafted prompts will inspire your next masterpiece.
               </p>
 
-              <h3 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Explore 8 Diverse Categories</h3>
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-8 mb-4">Explore 8 Diverse Categories</h3>
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-lg border border-green-200">
-                  <h4 className="text-xl font-semibold text-gray-900 mb-2">🌅 Nature & Landscapes</h4>
-                  <p className="text-gray-700">
+                  <h4 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">🌅 Nature & Landscapes</h4>
+                  <p className="text-gray-700 dark:text-gray-300">
                     Create stunning natural scenes from glowing autumn forests to frozen crystal caves. Perfect for landscape photography and environmental art enthusiasts.
                   </p>
                 </div>
 
                 <div className="bg-gradient-to-br from-slate-50 to-gray-50 p-6 rounded-lg border border-slate-200">
-                  <h4 className="text-xl font-semibold text-gray-900 mb-2">🏙️ Architecture & Cityscapes</h4>
-                  <p className="text-gray-700">
+                  <h4 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">🏙️ Architecture & Cityscapes</h4>
+                  <p className="text-gray-700 dark:text-gray-300">
                     Generate futuristic cities, Victorian mansions, and Mediterranean villages with cinematic composition and dramatic lighting.
                   </p>
                 </div>
 
                 <div className="bg-gradient-to-br from-purple-50 to-violet-50 p-6 rounded-lg border border-purple-200">
-                  <h4 className="text-xl font-semibold text-gray-900 mb-2">🎭 Fantasy & Characters</h4>
-                  <p className="text-gray-700">
+                  <h4 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">🎭 Fantasy & Characters</h4>
+                  <p className="text-gray-700 dark:text-gray-300">
                     Bring fantasy characters to life - from cyberpunk samurai to vampire queens, with highly detailed armor and magical effects.
                   </p>
                 </div>
 
                 <div className="bg-gradient-to-br from-rose-50 to-pink-50 p-6 rounded-lg border border-rose-200">
-                  <h4 className="text-xl font-semibold text-gray-900 mb-2">🖼️ Art & Concept Styles</h4>
-                  <p className="text-gray-700">
+                  <h4 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">🖼️ Art & Concept Styles</h4>
+                  <p className="text-gray-700 dark:text-gray-300">
                     Explore artistic styles from surreal portraits to minimalist ink illustrations, Renaissance oil paintings to cyberpunk scenes.
                   </p>
                 </div>
 
                 <div className="bg-gradient-to-br from-red-50 to-rose-50 p-6 rounded-lg border border-red-200">
-                  <h4 className="text-xl font-semibold text-gray-900 mb-2">🎅 Classic Christmas Scenes</h4>
-                  <p className="text-gray-700">
+                  <h4 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">🎅 Classic Christmas Scenes</h4>
+                  <p className="text-gray-700 dark:text-gray-300">
                     Create warm, nostalgic Christmas imagery - from Santa flying over snowy villages to cozy family moments by the fireplace.
                   </p>
                 </div>
 
                 <div className="bg-gradient-to-br from-emerald-50 to-teal-50 p-6 rounded-lg border border-emerald-200">
-                  <h4 className="text-xl font-semibold text-gray-900 mb-2">🎁 Magical & Fantasy Holiday</h4>
-                  <p className="text-gray-700">
+                  <h4 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">🎁 Magical & Fantasy Holiday</h4>
+                  <p className="text-gray-700 dark:text-gray-300">
                     Design enchanted winter scenes with elf villages, ice queens, glowing reindeer, and whimsical gingerbread houses.
                   </p>
                 </div>
 
                 <div className="bg-gradient-to-br from-cyan-50 to-blue-50 p-6 rounded-lg border border-cyan-200">
-                  <h4 className="text-xl font-semibold text-gray-900 mb-2">🌟 Winter Aesthetic & Minimal</h4>
-                  <p className="text-gray-700">
+                  <h4 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">🌟 Winter Aesthetic & Minimal</h4>
+                  <p className="text-gray-700 dark:text-gray-300">
                     Generate minimalist Scandinavian interiors, elegant flat lays, and modern winter photography with clean lines.
                   </p>
                 </div>
 
                 <div className="bg-gradient-to-br from-amber-50 to-yellow-50 p-6 rounded-lg border border-amber-200">
-                  <h4 className="text-xl font-semibold text-gray-900 mb-2">🕯️ Spiritual & Cinematic</h4>
-                  <p className="text-gray-700">
+                  <h4 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">🕯️ Spiritual & Cinematic</h4>
+                  <p className="text-gray-700 dark:text-gray-300">
                     Craft atmospheric scenes with dramatic lighting - from candlelit cathedrals to ethereal winter landscapes.
                   </p>
                 </div>
               </div>
 
-              <h3 className="text-2xl font-bold text-gray-900 mt-8 mb-4">How to Use These Midjourney Prompts</h3>
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-8 mb-4">How to Use These Midjourney Prompts</h3>
               <p>
                 Each prompt has been carefully crafted with specific details about lighting, composition, style, and mood. Simply copy any prompt and paste it into Midjourney, Stable Diffusion, DALL-E, or your preferred AI image generation tool. The prompts include technical parameters like "8K resolution," "ultra-realistic lighting," and "cinematic composition" to help you achieve professional-quality results.
               </p>
 
-              <h3 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Tips for Best Results</h3>
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-8 mb-4">Tips for Best Results</h3>
               <ul className="list-disc pl-6 space-y-2">
                 <li>Start with our curated prompts and adjust parameters to match your vision</li>
                 <li>Combine multiple style keywords for unique results (e.g., "cyberpunk + baroque")</li>
@@ -642,48 +642,48 @@ const MidjourneyAIPromptsPage = () => {
         </section>
 
         {/* FAQ Section */}
-        <section className="bg-white py-16 mt-8 rounded-lg">
+        <section className="bg-white dark:bg-gray-800 py-16 mt-8 rounded-lg transition-colors">
           <div className="max-w-4xl mx-auto px-4">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-8 text-center">Frequently Asked Questions</h2>
             <div className="space-y-6">
               <div className="bg-purple-50 rounded-lg p-6 border border-purple-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">What is Midjourney and how do I use these prompts?</h3>
-                <p className="text-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">What is Midjourney and how do I use these prompts?</h3>
+                <p className="text-gray-700 dark:text-gray-300">
                   Midjourney is a powerful AI image generation tool. To use these prompts, simply copy any prompt from our collection and paste it into Midjourney's Discord bot using the /imagine command. You can also use these prompts with other AI art tools like Stable Diffusion, DALL-E, or Leonardo AI.
                 </p>
               </div>
 
               <div className="bg-purple-50 rounded-lg p-6 border border-purple-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">How can I get the best results with Midjourney prompts?</h3>
-                <p className="text-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">How can I get the best results with Midjourney prompts?</h3>
+                <p className="text-gray-700 dark:text-gray-300">
                   For optimal results, use detailed descriptions that include style keywords (e.g., "cinematic," "ultra-realistic"), lighting conditions (e.g., "golden hour," "dramatic lighting"), and technical specifications (e.g., "8K," "high resolution"). Our prompts are already optimized with these elements, but feel free to customize them to match your creative vision.
                 </p>
               </div>
 
               <div className="bg-purple-50 rounded-lg p-6 border border-purple-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Are these prompts suitable for beginners?</h3>
-                <p className="text-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Are these prompts suitable for beginners?</h3>
+                <p className="text-gray-700 dark:text-gray-300">
                   Absolutely! These prompts are designed to work well for both beginners and experienced AI artists. Simply copy and paste them as-is for great results, or use them as a foundation to learn prompt engineering by tweaking different elements.
                 </p>
               </div>
 
               <div className="bg-purple-50 rounded-lg p-6 border border-purple-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Can I use the generated images commercially?</h3>
-                <p className="text-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Can I use the generated images commercially?</h3>
+                <p className="text-gray-700 dark:text-gray-300">
                   The prompts themselves are free to use. However, the commercial usage rights of the generated images depend on the terms of service of the AI tool you're using (Midjourney, Stable Diffusion, etc.). Please check their respective licensing agreements for details on commercial use.
                 </p>
               </div>
 
               <div className="bg-purple-50 rounded-lg p-6 border border-purple-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">How often are new prompts added?</h3>
-                <p className="text-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">How often are new prompts added?</h3>
+                <p className="text-gray-700 dark:text-gray-300">
                   We regularly update our collection with new prompts across various categories. Bookmark this page and check back frequently to discover fresh inspiration for your AI art projects.
                 </p>
               </div>
 
               <div className="bg-purple-50 rounded-lg p-6 border border-purple-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">What makes a good Midjourney prompt?</h3>
-                <p className="text-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">What makes a good Midjourney prompt?</h3>
+                <p className="text-gray-700 dark:text-gray-300">
                   A great Midjourney prompt includes: a clear subject, specific style references, lighting details, mood descriptors, technical quality parameters (like 8K or ultra-detailed), and composition notes (like cinematic or wide-angle). All our prompts incorporate these elements to help you create stunning AI art.
                 </p>
               </div>

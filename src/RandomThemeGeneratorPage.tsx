@@ -167,18 +167,18 @@ const RandomThemeGeneratorPage = () => {
     if (!prompt) return null;
     const isMultiple = prompt.isMultiple;
     return (
-      <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+      <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow-sm transition-colors">
         {isMultiple ? (
           <div className="mb-4 space-y-3">
             {prompt.text.split('\n\n').map((theme, index) => (
-              <div key={index} className="bg-gray-50 px-4 py-3 rounded border text-gray-800 leading-relaxed">{theme}</div>
+              <div key={index} className="bg-gray-50 px-4 py-3 rounded border text-gray-800 dark:text-gray-200 leading-relaxed">{theme}</div>
             ))}
           </div>
         ) : (
-          <p className="text-gray-800 text-lg leading-relaxed mb-4">{prompt.text}</p>
+          <p className="text-gray-800 dark:text-gray-200 text-lg leading-relaxed mb-4">{prompt.text}</p>
         )}
         <div className="flex flex-wrap gap-2">
-          <button onClick={() => copyToClipboard(prompt.text)} className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-md text-sm transition-colors"><Copy size={14} /> Copy {isMultiple ? 'All' : ''}</button>
+          <button onClick={() => copyToClipboard(prompt.text)} className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 dark:text-gray-300 rounded-md text-sm transition-colors"><Copy size={14} /> Copy {isMultiple ? 'All' : ''}</button>
           <button onClick={() => savePrompt(prompt)} className="inline-flex items-center gap-2 px-3 py-1.5 bg-green-100 hover:bg-green-200 text-green-700 rounded-md text-sm transition-colors"><Save size={14} /> Save</button>
           <button onClick={() => toggleFavorite(prompt)} className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-md text-sm transition-colors ${favorites.some(fav => fav.id === prompt.id) ? 'bg-yellow-100 hover:bg-yellow-200 text-yellow-700' : 'bg-gray-100 hover:bg-gray-200 text-gray-700'}`}><Star size={14} fill={favorites.some(fav => fav.id === prompt.id) ? 'currentColor' : 'none'} /> Favorite</button>
           <button onClick={() => sharePrompt(prompt)} className="inline-flex items-center gap-2 px-3 py-1.5 bg-indigo-100 hover:bg-indigo-200 text-indigo-700 rounded-md text-sm transition-colors"><Share2 size={14} /> Share</button>
@@ -201,17 +201,17 @@ const RandomThemeGeneratorPage = () => {
         </div>
       </div>
       <div className="max-w-6xl mx-auto px-4">
-        <div className="flex flex-wrap justify-center gap-2 mb-8 border-b border-gray-200">
-          <Link to="/writing-prompts" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"><PenTool size={18} /> Writing</Link>
-          <Link to="/short-story-prompts-generator" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"><Crown size={18} /> Short stories</Link>
-          <Link to="/random-conflict-generator" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"><BookOpen size={18} /> Conflicts</Link>
-          <Link to="/random-character-generator" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"><Sparkles size={18} /> Characters</Link>
+        <div className="flex flex-wrap justify-center gap-2 mb-8 border-b border-gray-200 dark:border-gray-700">
+          <Link to="/writing-prompts" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"><PenTool size={18} /> Writing</Link>
+          <Link to="/short-story-prompts-generator" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"><Crown size={18} /> Short stories</Link>
+          <Link to="/random-conflict-generator" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"><BookOpen size={18} /> Conflicts</Link>
+          <Link to="/random-character-generator" className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"><Sparkles size={18} /> Characters</Link>
         </div>
       </div>
       <div className="max-w-6xl mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-1 gap-4 mb-6">
-            <select value={controls.count} onChange={(e) => updateControl('count', e.target.value)} className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent">
+            <select value={controls.count} onChange={(e) => updateControl('count', e.target.value)} className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent">
               <option value="single">Single Theme</option>
               <option value="multiple">Generate 5 Themes</option>
               <option value="batch">Generate 10 Themes</option>
@@ -222,9 +222,9 @@ const RandomThemeGeneratorPage = () => {
           </div>
           {generatedPrompt && renderPromptCard(generatedPrompt)}
           {showHistory && (
-            <div className="mt-8 bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+            <div className="mt-8 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow-sm transition-colors">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold text-gray-900">Recent Themes</h3>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Recent Themes</h3>
                 <button onClick={() => setPromptHistory([])} className="text-sm text-gray-500 hover:text-red-600 transition-colors">Clear History</button>
               </div>
               {promptHistory.length === 0 ? (
@@ -235,11 +235,11 @@ const RandomThemeGeneratorPage = () => {
                     <div key={prompt.id} className="bg-gray-50 rounded-lg p-3 border border-gray-100">
                       <div className="flex items-start justify-between gap-3">
                         <div className="flex-1">
-                          <p className="text-sm text-gray-800 leading-relaxed line-clamp-2">{prompt.text}</p>
+                          <p className="text-sm text-gray-800 dark:text-gray-200 leading-relaxed line-clamp-2">{prompt.text}</p>
                           <span className="text-xs text-gray-400 mt-2 block">{new Date(prompt.timestamp).toLocaleTimeString()}</span>
                         </div>
                         <div className="flex items-center gap-1">
-                          <button onClick={() => copyToClipboard(prompt.text)} className="p-1 text-gray-400 hover:text-gray-600 transition-colors" title="Copy"><Copy size={14} /></button>
+                          <button onClick={() => copyToClipboard(prompt.text)} className="p-1 text-gray-400 hover:text-gray-600 dark:text-gray-400 transition-colors" title="Copy"><Copy size={14} /></button>
                           <button onClick={() => toggleFavorite(prompt)} className={`p-1 transition-colors ${favorites.some(fav => fav.id === prompt.id) ? 'text-yellow-600 hover:text-yellow-700' : 'text-gray-400 hover:text-yellow-600'}`} title="Favorite"><Star size={14} fill={favorites.some(fav => fav.id === prompt.id) ? 'currentColor' : 'none'} /></button>
                         </div>
                       </div>
@@ -252,21 +252,21 @@ const RandomThemeGeneratorPage = () => {
           {savedPrompts.length > 0 && (
             <div className="mt-12">
               <div className="flex items-center justify-between mb-6">
-                <h3 className="text-2xl font-bold text-gray-900">Saved Themes</h3>
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Saved Themes</h3>
                 <button onClick={exportPrompts} className="inline-flex items-center gap-2 px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg transition-colors"><Download size={16} /> Export All</button>
               </div>
               <div className="grid gap-4">
                 {savedPrompts.slice(-5).map((prompt, index) => (
-                  <div key={index} className="bg-gray-50 border border-gray-200 rounded-lg p-4"><p className="text-gray-800">{prompt.text}</p></div>
+                  <div key={index} className="bg-gray-50 border border-gray-200 dark:border-gray-700 rounded-lg p-4"><p className="text-gray-800 dark:text-gray-200">{prompt.text}</p></div>
                 ))}
               </div>
             </div>
           )}
           <div className="mt-16 space-y-8">
             <div className="prose prose-gray max-w-none">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Random Theme Generator</h2>
-              <p className="text-gray-700 mb-4">Our random theme generator creates powerful literary themes and universal truths perfect for novels, short stories, essays, and creative writing. Generate random themes exploring human nature, morality, society, and the human condition.</p>
-              <p className="text-gray-700 mb-4">Themes provide depth and meaning to stories by exploring universal ideas through specific narratives. This free theme generator produces thought-provoking concepts that resonate across cultures and time periods.</p>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">Random Theme Generator</h2>
+              <p className="text-gray-700 dark:text-gray-300 mb-4">Our random theme generator creates powerful literary themes and universal truths perfect for novels, short stories, essays, and creative writing. Generate random themes exploring human nature, morality, society, and the human condition.</p>
+              <p className="text-gray-700 dark:text-gray-300 mb-4">Themes provide depth and meaning to stories by exploring universal ideas through specific narratives. This free theme generator produces thought-provoking concepts that resonate across cultures and time periods.</p>
               <div className="bg-emerald-50 p-4 rounded-lg mt-4">
                 <h3 className="font-semibold text-emerald-900 mb-2">Random Theme Generator Features:</h3>
                 <ul className="text-emerald-800 text-sm space-y-1">
@@ -277,9 +277,9 @@ const RandomThemeGeneratorPage = () => {
                 </ul>
               </div>
             </div>
-            <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Example Random Themes:</h3>
-              <ul className="space-y-3 text-gray-700">
+            <div className="bg-gray-50 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Example Random Themes:</h3>
+              <ul className="space-y-3 text-gray-700 dark:text-gray-300">
                 <li className="flex gap-2"><span className="text-emerald-600 font-bold">•</span> <span>"The corrupting influence of power and ambition"</span></li>
                 <li className="flex gap-2"><span className="text-emerald-600 font-bold">•</span> <span>"The struggle between individual freedom and societal expectations"</span></li>
                 <li className="flex gap-2"><span className="text-emerald-600 font-bold">•</span> <span>"The complexity of human morality-good and evil are not absolute"</span></li>
@@ -288,8 +288,8 @@ const RandomThemeGeneratorPage = () => {
               </ul>
             </div>
           </div>
-          <div className="mt-12 bg-gray-50 rounded-lg p-6 border border-gray-200">
-            <h3 className="text-xl font-bold text-gray-900 mb-4">Related Writing Tools</h3>
+          <div className="mt-12 bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+            <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Related Writing Tools</h3>
             <div className="grid md:grid-cols-2 gap-4">
               <Link to="/writing-prompts" className="text-emerald-600 hover:underline flex items-center gap-2"><PenTool size={16} />Writing Prompts</Link>
               <Link to="/random-conflict-generator" className="text-emerald-600 hover:underline flex items-center gap-2"><Sparkles size={16} />Conflict Generator</Link>
@@ -298,25 +298,25 @@ const RandomThemeGeneratorPage = () => {
             </div>
           </div>
         </div>
-        <section className="bg-white py-16 mt-16">
+        <section className="bg-white dark:bg-gray-800 py-16 mt-16 transition-colors">
           <div className="max-w-4xl mx-auto px-4">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-8 text-center">Frequently Asked Questions</h2>
             <div className="space-y-6">
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">What is a literary theme?</h3>
-                <p className="text-gray-700">A literary theme is a universal idea or message explored throughout a story. Themes give stories depth and meaning by examining fundamental aspects of human experience like love, power, identity, mortality, and morality.</p>
+              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">What is a literary theme?</h3>
+                <p className="text-gray-700 dark:text-gray-300">A literary theme is a universal idea or message explored throughout a story. Themes give stories depth and meaning by examining fundamental aspects of human experience like love, power, identity, mortality, and morality.</p>
               </div>
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">How do I use a theme in my writing?</h3>
-                <p className="text-gray-700">Use themes as the foundation for your story's meaning. Let the theme inform your plot, characters, and conflicts. Show the theme through actions and consequences rather than stating it directly. Our random theme generator provides starting points for meaningful narratives.</p>
+              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">How do I use a theme in my writing?</h3>
+                <p className="text-gray-700 dark:text-gray-300">Use themes as the foundation for your story's meaning. Let the theme inform your plot, characters, and conflicts. Show the theme through actions and consequences rather than stating it directly. Our random theme generator provides starting points for meaningful narratives.</p>
               </div>
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Can a story have multiple themes?</h3>
-                <p className="text-gray-700">Yes! Most complex stories explore multiple related themes. You might have one primary theme and several secondary themes that complement and enrich the main idea. Use our generator to find connected themes for your narrative.</p>
+              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Can a story have multiple themes?</h3>
+                <p className="text-gray-700 dark:text-gray-300">Yes! Most complex stories explore multiple related themes. You might have one primary theme and several secondary themes that complement and enrich the main idea. Use our generator to find connected themes for your narrative.</p>
               </div>
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Are generated themes free to use?</h3>
-                <p className="text-gray-700">Yes! All random themes generated by RandomPrompts.org are free to use in your creative writing, novels, short stories, essays, and academic work. These universal concepts are meant to inspire your unique storytelling.</p>
+              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Are generated themes free to use?</h3>
+                <p className="text-gray-700 dark:text-gray-300">Yes! All random themes generated by RandomPrompts.org are free to use in your creative writing, novels, short stories, essays, and academic work. These universal concepts are meant to inspire your unique storytelling.</p>
               </div>
             </div>
           </div>
