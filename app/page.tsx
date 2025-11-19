@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useCallback } from 'react';
-import { Copy, RefreshCw, Save, Download, Sparkles, Wand2, PenTool, BookOpen, Crown, Zap, History, Share2, Star } from 'lucide-react';
+import { Copy, RefreshCw, Save, Download, Sparkles, Wand2, PenTool, BookOpen, Crown, Zap, History, Share2, Star, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 import { generatePrompt as generatePromptFn } from '@/lib/generators/promptEngine';
 import { promptData, PromptCategory } from '@/lib/generators/promptData';
@@ -505,32 +505,68 @@ export default function HomePage() {
         </div>
       </div>
 
+      {/* Category Hubs Section */}
+      <section className="bg-gray-50 dark:bg-gray-900 py-16">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-4 text-gray-900 dark:text-gray-100">Explore All Generators</h2>
+          <p className="text-center text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto">
+            Browse our complete collection of prompt generators organized by category
+          </p>
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
+            <Link href="/writing-prompts/" className="bg-gradient-to-br from-blue-500 to-purple-600 text-white p-8 rounded-xl hover:shadow-2xl transition-all transform hover:-translate-y-1">
+              <BookOpen size={40} className="mb-4" />
+              <h3 className="font-bold text-2xl mb-2">Writing Prompts</h3>
+              <p className="text-blue-100 mb-4">24 generators for creative writing, stories, essays, and more</p>
+              <div className="inline-flex items-center gap-2 text-sm font-semibold">
+                View All <ChevronRight size={16} />
+              </div>
+            </Link>
+            <Link href="/ai-art-prompts/" className="bg-gradient-to-br from-purple-500 to-pink-600 text-white p-8 rounded-xl hover:shadow-2xl transition-all transform hover:-translate-y-1">
+              <Wand2 size={40} className="mb-4" />
+              <h3 className="font-bold text-2xl mb-2">AI Art Prompts</h3>
+              <p className="text-purple-100 mb-4">16 generators for Midjourney, DALL-E, and AI art creation</p>
+              <div className="inline-flex items-center gap-2 text-sm font-semibold">
+                View All <ChevronRight size={16} />
+              </div>
+            </Link>
+            <Link href="/drawing-ideas/" className="bg-gradient-to-br from-green-500 to-teal-600 text-white p-8 rounded-xl hover:shadow-2xl transition-all transform hover:-translate-y-1">
+              <PenTool size={40} className="mb-4" />
+              <h3 className="font-bold text-2xl mb-2">Drawing Ideas</h3>
+              <p className="text-green-100 mb-4">5 generators for character names, objects, and creative ideas</p>
+              <div className="inline-flex items-center gap-2 text-sm font-semibold">
+                View All <ChevronRight size={16} />
+              </div>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Featured Tools Section */}
       <section className="bg-white dark:bg-gray-800 py-16">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-gray-100">Featured Prompt Generators</h2>
+          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-gray-100">Popular Generators</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <Link href="/generators/writing/prompts/" className="bg-white dark:bg-gray-700 p-6 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-lg transition-shadow">
+            <Link href="/writing-prompts/prompts/" className="bg-white dark:bg-gray-700 p-6 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-lg transition-shadow">
               <h3 className="font-semibold text-lg mb-2 text-gray-900 dark:text-gray-100">Writing Prompts</h3>
               <p className="text-gray-600 dark:text-gray-400 text-sm">Creative writing prompts with unique characters and plots</p>
             </Link>
-            <Link href="/generators/ai-art/images/" className="bg-white dark:bg-gray-700 p-6 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-lg transition-shadow">
+            <Link href="/ai-art-prompts/images/" className="bg-white dark:bg-gray-700 p-6 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-lg transition-shadow">
               <h3 className="font-semibold text-lg mb-2 text-gray-900 dark:text-gray-100">AI Art Prompts</h3>
               <p className="text-gray-600 dark:text-gray-400 text-sm">Professional prompts for MidJourney and DALL-E</p>
             </Link>
-            <Link href="/generators/blog/post/" className="bg-white dark:bg-gray-700 p-6 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-lg transition-shadow">
+            <Link href="/ai-blog-post-generator/" className="bg-white dark:bg-gray-700 p-6 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-lg transition-shadow">
               <h3 className="font-semibold text-lg mb-2 text-gray-900 dark:text-gray-100">Blog Post Ideas</h3>
               <p className="text-gray-600 dark:text-gray-400 text-sm">SEO-optimized blog content ideas and hooks</p>
             </Link>
-            <Link href="/generators/writing/short-story/" className="bg-white dark:bg-gray-700 p-6 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-lg transition-shadow">
+            <Link href="/writing-prompts/short-story/" className="bg-white dark:bg-gray-700 p-6 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-lg transition-shadow">
               <h3 className="font-semibold text-lg mb-2 text-gray-900 dark:text-gray-100">Short Story Prompts</h3>
               <p className="text-gray-600 dark:text-gray-400 text-sm">Complete prompts for flash fiction and short stories</p>
             </Link>
-            <Link href="/generators/creative/names/" className="bg-white dark:bg-gray-700 p-6 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-lg transition-shadow">
+            <Link href="/drawing-ideas/names/" className="bg-white dark:bg-gray-700 p-6 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-lg transition-shadow">
               <h3 className="font-semibold text-lg mb-2 text-gray-900 dark:text-gray-100">Character Names</h3>
               <p className="text-gray-600 dark:text-gray-400 text-sm">Fantasy names from multiple cultures and origins</p>
             </Link>
-            <Link href="/october-writing-prompts" className="bg-white dark:bg-gray-700 p-6 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-lg transition-shadow">
+            <Link href="/writing-prompts/october/" className="bg-white dark:bg-gray-700 p-6 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-lg transition-shadow">
               <h3 className="font-semibold text-lg mb-2 text-gray-900 dark:text-gray-100">October Prompts</h3>
               <p className="text-gray-600 dark:text-gray-400 text-sm">Spooky Halloween and autumn-themed prompts</p>
             </Link>
