@@ -33,6 +33,15 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
+  icons: {
+    icon: [
+      { url: '/logo.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico', sizes: 'any' }
+    ],
+    apple: [
+      { url: '/logo.svg', type: 'image/svg+xml' }
+    ],
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
