@@ -239,7 +239,7 @@ const RandomParagraphGeneratorPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 dark:from-gray-900 to-white dark:to-gray-800">
       <SEO pageKey="randomParagraphGenerator" />
 
       <Header

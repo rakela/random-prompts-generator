@@ -200,7 +200,7 @@ const PersuasiveWritingTopicsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 dark:from-gray-900 to-white dark:to-gray-800">
       <SEO pageKey="persuasiveWritingTopics" />
 
       {/* Header */}
@@ -465,7 +465,7 @@ const PersuasiveWritingTopicsPage = () => {
               </h3>
               <div className="grid gap-4">
                 {persuasiveTopics.school.map((prompt, index) => (
-                  <div key={index} className="bg-gradient-to-r from-orange-50 to-red-50 border border-orange-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                  <div key={index} className="bg-gradient-to-r from-orange-50 dark:from-gray-800 to-red-50 dark:to-gray-700 border border-orange-200 rounded-lg p-4 hover:shadow-md transition-shadow">
                     <div className="flex items-start gap-3">
                       <span className="text-2xl">{prompt.emoji}</span>
                       <div className="flex-1">
@@ -492,7 +492,7 @@ const PersuasiveWritingTopicsPage = () => {
               </h3>
               <div className="grid gap-4">
                 {persuasiveTopics.environment.map((prompt, index) => (
-                  <div key={index} className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                  <div key={index} className="bg-gradient-to-r from-green-50 dark:from-gray-800 to-emerald-50 dark:to-gray-700 border border-green-200 rounded-lg p-4 hover:shadow-md transition-shadow">
                     <div className="flex items-start gap-3">
                       <span className="text-2xl">{prompt.emoji}</span>
                       <div className="flex-1">
@@ -519,7 +519,7 @@ const PersuasiveWritingTopicsPage = () => {
               </h3>
               <div className="grid gap-4">
                 {persuasiveTopics.technology.map((prompt, index) => (
-                  <div key={index} className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                  <div key={index} className="bg-gradient-to-r from-blue-50 dark:from-gray-800 to-indigo-50 dark:to-gray-700 border border-blue-200 rounded-lg p-4 hover:shadow-md transition-shadow">
                     <div className="flex items-start gap-3">
                       <span className="text-2xl">{prompt.emoji}</span>
                       <div className="flex-1">
@@ -546,7 +546,7 @@ const PersuasiveWritingTopicsPage = () => {
               </h3>
               <div className="grid gap-4">
                 {persuasiveTopics.ethics.map((prompt, index) => (
-                  <div key={index} className="bg-gradient-to-r from-purple-50 to-pink-50 border border-purple-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                  <div key={index} className="bg-gradient-to-r from-purple-50 dark:from-gray-800 to-pink-50 dark:to-gray-700 border border-purple-200 rounded-lg p-4 hover:shadow-md transition-shadow">
                     <div className="flex items-start gap-3">
                       <span className="text-2xl">{prompt.emoji}</span>
                       <div className="flex-1">

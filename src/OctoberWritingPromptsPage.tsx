@@ -142,7 +142,7 @@ const OctoberWritingPromptsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 dark:from-gray-900 to-white dark:to-gray-800">
       <SEO pageKey="octoberWritingPrompts" />
 
       {/* Header */}
@@ -414,7 +414,7 @@ const OctoberWritingPromptsPage = () => {
               </h3>
               <div className="grid gap-4">
                 {octoberPrompts.halloween.map((prompt, index) => (
-                  <div key={index} className="bg-gradient-to-r from-purple-50 to-pink-50 border border-purple-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                  <div key={index} className="bg-gradient-to-r from-purple-50 dark:from-gray-800 to-pink-50 dark:to-gray-700 border border-purple-200 rounded-lg p-4 hover:shadow-md transition-shadow">
                     <div className="flex items-start gap-3">
                       <span className="text-2xl">{prompt.emoji}</span>
                       <div className="flex-1">

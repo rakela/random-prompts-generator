@@ -60,13 +60,13 @@ export default function GeminiPhotoEditingPromptsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-cyan-50 to-blue-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 dark:from-gray-900 via-cyan-50 dark:via-gray-800 to-blue-50 dark:to-gray-900">
       <SEO pageKey="geminiPhotoEditingPrompts" />
       <Header />
 
       {/* Hero Section */}
       <section className="relative py-20 px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan-600/10 via-blue-500/10 to-indigo-600/10"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-cyan-600/10 dark:from-cyan-400/5 via-blue-500/10 dark:via-blue-400/5 to-indigo-600/10 dark:to-indigo-400/5"></div>
         <div className="max-w-6xl mx-auto relative">
           <div className="text-center">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-cyan-100 rounded-full mb-6">
@@ -338,7 +338,7 @@ export default function GeminiPhotoEditingPromptsPage() {
 
       {/* Advanced Tips Section */}
       <section className="max-w-4xl mx-auto px-4 py-12">
-        <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl shadow-xl p-8">
+        <div className="bg-gradient-to-br from-blue-50 dark:from-gray-800 to-cyan-50 dark:to-gray-700 rounded-2xl shadow-xl p-8">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">
             Advanced Gemini Photo Editing Techniques
           </h2>
@@ -601,7 +601,7 @@ export default function GeminiPhotoEditingPromptsPage() {
           <div className="grid md:grid-cols-2 gap-4">
             <a
               href="/chatgpt-photo-editing-prompts"
-              className="flex items-center gap-3 p-4 bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl hover:shadow-md transition-shadow"
+              className="flex items-center gap-3 p-4 bg-gradient-to-r from-purple-50 dark:from-gray-800 to-pink-50 dark:to-gray-700 rounded-xl hover:shadow-md transition-shadow"
             >
               <ImageIcon className="w-6 h-6 text-purple-600" />
               <div>
@@ -612,7 +612,7 @@ export default function GeminiPhotoEditingPromptsPage() {
 
             <a
               href="/gemini-ai-snow-prompt-tutorial"
-              className="flex items-center gap-3 p-4 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl hover:shadow-md transition-shadow"
+              className="flex items-center gap-3 p-4 bg-gradient-to-r from-blue-50 dark:from-gray-800 to-cyan-50 dark:to-gray-700 rounded-xl hover:shadow-md transition-shadow"
             >
               <Sparkles className="w-6 h-6 text-blue-600" />
               <div>
@@ -623,7 +623,7 @@ export default function GeminiPhotoEditingPromptsPage() {
 
             <a
               href="/ai-images-prompt"
-              className="flex items-center gap-3 p-4 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl hover:shadow-md transition-shadow"
+              className="flex items-center gap-3 p-4 bg-gradient-to-r from-indigo-50 dark:from-gray-800 to-purple-50 dark:to-gray-700 rounded-xl hover:shadow-md transition-shadow"
             >
               <ImageIcon className="w-6 h-6 text-indigo-600" />
               <div>
@@ -634,7 +634,7 @@ export default function GeminiPhotoEditingPromptsPage() {
 
             <a
               href="/midjourney-ai-picture-generator"
-              className="flex items-center gap-3 p-4 bg-gradient-to-r from-pink-50 to-purple-50 rounded-xl hover:shadow-md transition-shadow"
+              className="flex items-center gap-3 p-4 bg-gradient-to-r from-pink-50 dark:from-gray-800 to-purple-50 dark:to-gray-700 rounded-xl hover:shadow-md transition-shadow"
             >
               <Sparkles className="w-6 h-6 text-pink-600" />
               <div>

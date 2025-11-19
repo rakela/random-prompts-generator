@@ -137,7 +137,7 @@ const PersuasiveWritingTitlesPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 dark:from-gray-900 to-white dark:to-gray-800">
       <SEO pageKey="persuasiveWritingTitles" />
 
       {/* Header */}
@@ -400,7 +400,7 @@ const PersuasiveWritingTitlesPage = () => {
               </h3>
               <div className="grid gap-3">
                 {persuasiveWritingTitles.global.map((title, index) => (
-                  <div key={index} className="bg-gradient-to-r from-blue-50 to-cyan-50 border border-blue-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                  <div key={index} className="bg-gradient-to-r from-blue-50 dark:from-gray-800 to-cyan-50 dark:to-gray-700 border border-blue-200 rounded-lg p-4 hover:shadow-md transition-shadow">
                     <div className="flex items-start justify-between gap-3">
                       <div className="flex items-center gap-3 flex-1">
                         <span className="text-2xl">🌎</span>
@@ -426,7 +426,7 @@ const PersuasiveWritingTitlesPage = () => {
               </h3>
               <div className="grid gap-3">
                 {persuasiveWritingTitles.health.map((title, index) => (
-                  <div key={index} className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                  <div key={index} className="bg-gradient-to-r from-green-50 dark:from-gray-800 to-emerald-50 dark:to-gray-700 border border-green-200 rounded-lg p-4 hover:shadow-md transition-shadow">
                     <div className="flex items-start justify-between gap-3">
                       <div className="flex items-center gap-3 flex-1">
                         <span className="text-2xl">🧠</span>
