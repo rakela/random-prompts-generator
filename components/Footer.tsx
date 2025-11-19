@@ -31,25 +31,24 @@ const Footer: React.FC = () => {
             <h3 className="font-semibold mb-4">Generators</h3>
             <ul className="space-y-2 text-sm">
               <li><Link href="/" className="text-gray-400 hover:text-white transition-colors">All Generators</Link></li>
-              <li><Link href="/generators/writing/" className="text-gray-400 hover:text-white transition-colors">Writing Generators</Link></li>
-              <li><Link href="/generators/ai-art/" className="text-gray-400 hover:text-white transition-colors">AI Art Generators</Link></li>
-              <li><Link href="/generators/creative/" className="text-gray-400 hover:text-white transition-colors">Creative Generators</Link></li>
-              <li><Link href="/generators/blog/" className="text-gray-400 hover:text-white transition-colors">Blog Generators</Link></li>
+              <li><Link href="/writing-prompts/" className="text-gray-400 hover:text-white transition-colors">Writing Prompts</Link></li>
+              <li><Link href="/ai-art-prompts/" className="text-gray-400 hover:text-white transition-colors">AI Art Prompts</Link></li>
+              <li><Link href="/drawing-ideas/" className="text-gray-400 hover:text-white transition-colors">Drawing Ideas</Link></li>
             </ul>
           </div>
 
           <div>
             <h3 className="font-semibold mb-4">Popular Tools</h3>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/generators/writing/prompts/" className="text-gray-400 hover:text-white transition-colors">Writing Prompts</Link></li>
-              <li><Link href="/generators/ai-art/images/" className="text-gray-400 hover:text-white transition-colors">AI Image Prompts</Link></li>
-              <li><Link href="/generators/blog/post/" className="text-gray-400 hover:text-white transition-colors">Blog Post Generator</Link></li>
-              <li><Link href="/generators/writing/short-story/" className="text-gray-400 hover:text-white transition-colors">Short Story Prompts</Link></li>
-              <li><Link href="/generators/creative/names/" className="text-gray-400 hover:text-white transition-colors">Name Generator</Link></li>
-              <li><Link href="/generators/writing/students/" className="text-gray-400 hover:text-white transition-colors">Student Prompts</Link></li>
-              <li><Link href="/generators/writing/october/" className="text-gray-400 hover:text-white transition-colors">October Prompts</Link></li>
-              <li><Link href="/generators/blog/nano-banana/" className="text-gray-400 hover:text-white transition-colors">Nano Banana</Link></li>
-              <li><Link href="/generators/writing/persuasive-topics/" className="text-gray-400 hover:text-white transition-colors">Persuasive Topics</Link></li>
+              <li><Link href="/writing-prompts/paragraph/" className="text-gray-400 hover:text-white transition-colors">Paragraph Generator</Link></li>
+              <li><Link href="/ai-art-prompts/images/" className="text-gray-400 hover:text-white transition-colors">AI Image Prompts</Link></li>
+              <li><Link href="/ai-blog-post-generator/" className="text-gray-400 hover:text-white transition-colors">Blog Post Generator</Link></li>
+              <li><Link href="/writing-prompts/short-story/" className="text-gray-400 hover:text-white transition-colors">Short Story Prompts</Link></li>
+              <li><Link href="/drawing-ideas/names/" className="text-gray-400 hover:text-white transition-colors">Name Generator</Link></li>
+              <li><Link href="/writing-prompts/students/" className="text-gray-400 hover:text-white transition-colors">Student Prompts</Link></li>
+              <li><Link href="/writing-prompts/october/" className="text-gray-400 hover:text-white transition-colors">October Prompts</Link></li>
+              <li><Link href="/writing-prompts/nano-banana/" className="text-gray-400 hover:text-white transition-colors">Nano Banana</Link></li>
+              <li><Link href="/writing-prompts/persuasive-topics/" className="text-gray-400 hover:text-white transition-colors">Persuasive Topics</Link></li>
             </ul>
           </div>
 

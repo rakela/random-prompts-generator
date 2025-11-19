@@ -51,10 +51,10 @@ const Header: React.FC = () => {
                 <Link href="/gemini-photo-editing-prompts" className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border-b border-gray-100 dark:border-gray-600">
                   Gemini Photo Editing
                 </Link>
-                <Link href="/generators/writing/october/" className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border-b border-gray-100 dark:border-gray-600">
+                <Link href="/writing-prompts/october/" className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border-b border-gray-100 dark:border-gray-600">
                   October Writing Prompts
                 </Link>
-                <Link href="/generators/writing/students/" className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border-b border-gray-100 dark:border-gray-600">
+                <Link href="/writing-prompts/students/" className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border-b border-gray-100 dark:border-gray-600">
                   Writing Prompts for Students
                 </Link>
                 <div className="relative group/submenu">
@@ -65,21 +65,21 @@ const Header: React.FC = () => {
                     </svg>
                   </button>
                   <div className="absolute left-full top-0 ml-1 w-64 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-600 opacity-0 invisible group-hover/submenu:opacity-100 group-hover/submenu:visible transition-all duration-200 z-50">
-                    <Link href="/generators/writing/persuasive-topics/" className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border-b border-gray-100 dark:border-gray-600">
+                    <Link href="/writing-prompts/persuasive-topics/" className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border-b border-gray-100 dark:border-gray-600">
                       Persuasive Writing Topics
                     </Link>
-                    <Link href="/generators/writing/persuasive-essays/" className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border-b border-gray-100 dark:border-gray-600">
+                    <Link href="/writing-prompts/persuasive-essays/" className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border-b border-gray-100 dark:border-gray-600">
                       Persuasive Essays Topics
                     </Link>
-                    <Link href="/generators/writing/persuasive-titles/" className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700">
+                    <Link href="/writing-prompts/persuasive-titles/" className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700">
                       Persuasive Writing Titles
                     </Link>
                   </div>
                 </div>
-                <Link href="/midjourney-ai-picture-generator" className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border-b border-gray-100 dark:border-gray-600">
+                <Link href="/ai-art-prompts/midjourney/" className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border-b border-gray-100 dark:border-gray-600">
                   Midjourney AI Prompts
                 </Link>
-                <Link href="/generators/blog/nano-banana/" className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700">
+                <Link href="/writing-prompts/nano-banana/" className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700">
                   Nano Banana Prompts
                 </Link>
               </div>
@@ -92,21 +92,17 @@ const Header: React.FC = () => {
                 </svg>
               </button>
               <div className="absolute top-full left-0 mt-2 w-64 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-600 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                {/* Writing Generators */}
-                <Link href="/generators/writing/" className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border-b border-gray-100 dark:border-gray-600 font-medium">
-                  Writing Generators →
+                {/* Writing Prompts Hub */}
+                <Link href="/writing-prompts/" className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border-b border-gray-100 dark:border-gray-600 font-medium">
+                  Writing Prompts →
                 </Link>
-                {/* AI Art Generators */}
-                <Link href="/generators/ai-art/" className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border-b border-gray-100 dark:border-gray-600 font-medium">
-                  AI Art Generators →
+                {/* AI Art Prompts Hub */}
+                <Link href="/ai-art-prompts/" className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border-b border-gray-100 dark:border-gray-600 font-medium">
+                  AI Art Prompts →
                 </Link>
-                {/* Creative Generators */}
-                <Link href="/generators/creative/" className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border-b border-gray-100 dark:border-gray-600 font-medium">
-                  Creative Generators →
-                </Link>
-                {/* Blog Generators */}
-                <Link href="/generators/blog/" className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 font-medium">
-                  Blog Generators →
+                {/* Drawing Ideas Hub */}
+                <Link href="/drawing-ideas/" className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 font-medium">
+                  Drawing Ideas →
                 </Link>
               </div>
             </div>
@@ -164,13 +160,13 @@ const Header: React.FC = () => {
                   >
                     Gemini Photo Editing
                   </Link>
-                  <Link href="/generators/writing/october/"
+                  <Link href="/writing-prompts/october/"
                     className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-1.5"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     October Writing Prompts
                   </Link>
-                  <Link href="/generators/writing/students/"
+                  <Link href="/writing-prompts/students/"
                     className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-1.5"
                     onClick={() => setMobileMenuOpen(false)}
                   >
@@ -180,19 +176,19 @@ const Header: React.FC = () => {
                   {/* Persuasive Writing Submenu */}
                   <div className="pl-3 border-l-2 border-gray-200 dark:border-gray-600 space-y-2">
                     <div className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Persuasive Writing</div>
-                    <Link href="/generators/writing/persuasive-topics/"
+                    <Link href="/writing-prompts/persuasive-topics/"
                       className="block text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-1"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       Persuasive Writing Topics
                     </Link>
-                    <Link href="/generators/writing/persuasive-essays/"
+                    <Link href="/writing-prompts/persuasive-essays/"
                       className="block text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-1"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       Persuasive Essays Topics
                     </Link>
-                    <Link href="/generators/writing/persuasive-titles/"
+                    <Link href="/writing-prompts/persuasive-titles/"
                       className="block text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-1"
                       onClick={() => setMobileMenuOpen(false)}
                     >
@@ -200,13 +196,13 @@ const Header: React.FC = () => {
                     </Link>
                   </div>
 
-                  <Link href="/midjourney-ai-picture-generator"
+                  <Link href="/ai-art-prompts/midjourney/"
                     className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-1.5"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     Midjourney AI Prompts
                   </Link>
-                  <Link href="/generators/blog/nano-banana/"
+                  <Link href="/writing-prompts/nano-banana/"
                     className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-1.5"
                     onClick={() => setMobileMenuOpen(false)}
                   >
@@ -219,17 +215,14 @@ const Header: React.FC = () => {
               <div className="border-t border-gray-100 dark:border-gray-700 pt-3">
                 <div className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Generators</div>
                 <div className="flex flex-col space-y-2 pl-3">
-                  <Link href="/generators/writing/" className="block text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-1.5 font-medium" onClick={() => setMobileMenuOpen(false)}>
-                    Writing Generators →
+                  <Link href="/writing-prompts/" className="block text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-1.5 font-medium" onClick={() => setMobileMenuOpen(false)}>
+                    Writing Prompts →
                   </Link>
-                  <Link href="/generators/ai-art/" className="block text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-1.5 font-medium" onClick={() => setMobileMenuOpen(false)}>
-                    AI Art Generators →
+                  <Link href="/ai-art-prompts/" className="block text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-1.5 font-medium" onClick={() => setMobileMenuOpen(false)}>
+                    AI Art Prompts →
                   </Link>
-                  <Link href="/generators/creative/" className="block text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-1.5 font-medium" onClick={() => setMobileMenuOpen(false)}>
-                    Creative Generators →
-                  </Link>
-                  <Link href="/generators/blog/" className="block text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-1.5 font-medium" onClick={() => setMobileMenuOpen(false)}>
-                    Blog Generators →
+                  <Link href="/drawing-ideas/" className="block text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-1.5 font-medium" onClick={() => setMobileMenuOpen(false)}>
+                    Drawing Ideas →
                   </Link>
                 </div>
               </div>

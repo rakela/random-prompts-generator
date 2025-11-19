@@ -506,7 +506,7 @@ export const generatorConfig: Record<string, GeneratorMetadata> = {
     description: 'Generate random fantasy names for characters including elvish, dwarven, and human names.',
     h1: 'Random Name Generator',
     keywords: 'name generator, fantasy names, character names, random names',
-    category: 'creative',
+    category: 'drawing',
     path: '/drawing-ideas/names/',
     legacyPath: '/random-name-generator',
     icon: 'User'
@@ -518,7 +518,7 @@ export const generatorConfig: Record<string, GeneratorMetadata> = {
     description: 'Generate random objects for creative writing, drawing prompts, and brainstorming.',
     h1: 'Random Object Generator',
     keywords: 'random object, item generator, object prompts, creative objects',
-    category: 'creative',
+    category: 'drawing',
     path: '/drawing-ideas/objects/',
     legacyPath: '/random-object-generator',
     icon: 'Package'
@@ -530,7 +530,7 @@ export const generatorConfig: Record<string, GeneratorMetadata> = {
     description: 'Generate random hobbies and activities to discover new interests and pastimes.',
     h1: 'Random Hobby Generator',
     keywords: 'hobby generator, random hobbies, activity ideas, new interests',
-    category: 'creative',
+    category: 'drawing',
     path: '/drawing-ideas/hobbies/',
     legacyPath: '/random-hobby-generator',
     icon: 'Heart'
@@ -542,7 +542,7 @@ export const generatorConfig: Record<string, GeneratorMetadata> = {
     description: 'Generate random superpowers and abilities for characters and creative projects.',
     h1: 'Random Superpower Generator',
     keywords: 'superpower generator, random powers, abilities generator, super abilities',
-    category: 'creative',
+    category: 'drawing',
     path: '/drawing-ideas/superpowers/',
     legacyPath: '/random-superpower-generator',
     icon: 'Zap'
@@ -554,7 +554,7 @@ export const generatorConfig: Record<string, GeneratorMetadata> = {
     description: 'Generate random creative ideas for projects, brainstorming, and innovation.',
     h1: 'Random Idea Generator',
     keywords: 'idea generator, random ideas, creative ideas, brainstorming',
-    category: 'creative',
+    category: 'drawing',
     path: '/drawing-ideas/ideas/',
     legacyPath: '/random-idea-generator',
     icon: 'Lightbulb'
