@@ -413,56 +413,18 @@ export default function HomePage() {
       {/* Main Content */}
       <div className="max-w-6xl mx-auto px-4 py-8">
         {/* Tab Navigation */}
-        <div className="flex flex-wrap justify-center gap-2 mb-8 border-b border-gray-200 dark:border-gray-700">
-          <Link
-            href="/generators/writing/prompts/"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-t-lg"
-          >
-            <PenTool size={18} />
-            Writing
-          </Link>
-          <Link
-            href="/generators/ai-art/images/"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-t-lg"
-          >
-            <Wand2 size={18} />
-            AI Images
-          </Link>
-          <Link
-            href="/generators/blog/post/"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-t-lg"
-          >
-            <BookOpen size={18} />
-            Blog post
-          </Link>
-          <Link
-            href="/generators/writing/short-story/"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-t-lg"
-          >
-            <Crown size={18} />
-            Short stories
-          </Link>
-          <Link
-            href="/generators/creative/names/"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-t-lg"
-          >
-            <Sparkles size={18} />
-            Names
-          </Link>
-        </div>
-
-        {/* Local Tab Selection */}
         <div className="flex flex-wrap justify-center gap-2 mb-6">
           {tabs.map((tab) => {
             const Icon = tab.icon;
+            const color = getTabColor(tab.id);
             return (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex items-center gap-2 px-6 py-3 font-medium rounded-lg transition-all ${
                   activeTab === tab.id
-                    ? 'bg-blue-600 text-white shadow-lg'
-                    : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700'
+                    ? `bg-${color}-600 text-white shadow-lg`
+                    : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700'
                 }`}
               >
                 <Icon size={18} />
@@ -478,12 +440,19 @@ export default function HomePage() {
           {renderControls(activeTab)}
 
           {/* Generate Button */}
-          <div className="text-center mb-8">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
             <button
               onClick={() => generatePrompt()}
               className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors shadow-lg"
             >
               Generate Prompt
+            </button>
+            <button
+              onClick={() => setShowHistory(!showHistory)}
+              className="flex items-center gap-2 px-6 py-3 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 rounded-lg font-medium transition-colors"
+            >
+              <History size={18} />
+              {showHistory ? 'Hide' : 'Show'} History ({promptHistory.length})
             </button>
           </div>
 

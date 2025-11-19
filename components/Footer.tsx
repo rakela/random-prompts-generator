@@ -28,29 +28,28 @@ const Footer: React.FC = () => {
           </div>
 
           <div>
-            <h3 className="font-semibold mb-4">Quick Links</h3>
+            <h3 className="font-semibold mb-4">Generators</h3>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/" className="text-gray-400 hover:text-white transition-colors">All Prompts</Link></li>
-              <li><Link href="/writing-prompts" className="text-gray-400 hover:text-white transition-colors">Writing Prompts</Link></li>
-              <li><Link href="/ai-images-prompt" className="text-gray-400 hover:text-white transition-colors">AI Images Prompt</Link></li>
-              <li><Link href="/ai-blog-post-generator" className="text-gray-400 hover:text-white transition-colors">Blog Post Generator</Link></li>
-              <li><Link href="/short-story-prompts-generator" className="text-gray-400 hover:text-white transition-colors">Short Story Prompts</Link></li>
-              <li><Link href="/random-name-generator" className="text-gray-400 hover:text-white transition-colors">Random Name Generator</Link></li>
+              <li><Link href="/" className="text-gray-400 hover:text-white transition-colors">All Generators</Link></li>
+              <li><Link href="/generators/writing/" className="text-gray-400 hover:text-white transition-colors">Writing Generators</Link></li>
+              <li><Link href="/generators/ai-art/" className="text-gray-400 hover:text-white transition-colors">AI Art Generators</Link></li>
+              <li><Link href="/generators/creative/" className="text-gray-400 hover:text-white transition-colors">Creative Generators</Link></li>
+              <li><Link href="/generators/blog/" className="text-gray-400 hover:text-white transition-colors">Blog Generators</Link></li>
             </ul>
           </div>
 
           <div>
-            <h3 className="font-semibold mb-4">Specialized Prompts</h3>
+            <h3 className="font-semibold mb-4">Popular Tools</h3>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/writing-prompts-for-students" className="text-gray-400 hover:text-white transition-colors">Writing Prompts for Students</Link></li>
-              <li><Link href="/nano-banana-prompts" className="text-gray-400 hover:text-white transition-colors">Nano Banana Prompts</Link></li>
-              <li><Link href="/october-writing-prompts" className="text-gray-400 hover:text-white transition-colors">October Writing Prompts</Link></li>
-              <li><Link href="/ghostface-ai-trend-prompt-generator" className="text-gray-400 hover:text-white transition-colors">Ghostface AI Prompts</Link></li>
-              <li><Link href="/gemini-ai-snow-prompt-tutorial" className="text-gray-400 hover:text-white transition-colors">Gemini AI Snow Tutorial</Link></li>
-              <li><Link href="/midjourney-ai-picture-generator" className="text-gray-400 hover:text-white transition-colors">MidJourney AI Prompts</Link></li>
-              <li><Link href="/persuasive-writing-topics" className="text-gray-400 hover:text-white transition-colors">Persuasive Writing Topics</Link></li>
-              <li><Link href="/persuasive-essays-topics" className="text-gray-400 hover:text-white transition-colors">Persuasive Essays Topics</Link></li>
-              <li><Link href="/persuasive-writing-titles" className="text-gray-400 hover:text-white transition-colors">Persuasive Writing Titles</Link></li>
+              <li><Link href="/generators/writing/prompts/" className="text-gray-400 hover:text-white transition-colors">Writing Prompts</Link></li>
+              <li><Link href="/generators/ai-art/images/" className="text-gray-400 hover:text-white transition-colors">AI Image Prompts</Link></li>
+              <li><Link href="/generators/blog/post/" className="text-gray-400 hover:text-white transition-colors">Blog Post Generator</Link></li>
+              <li><Link href="/generators/writing/short-story/" className="text-gray-400 hover:text-white transition-colors">Short Story Prompts</Link></li>
+              <li><Link href="/generators/creative/names/" className="text-gray-400 hover:text-white transition-colors">Name Generator</Link></li>
+              <li><Link href="/generators/writing/students/" className="text-gray-400 hover:text-white transition-colors">Student Prompts</Link></li>
+              <li><Link href="/generators/writing/october/" className="text-gray-400 hover:text-white transition-colors">October Prompts</Link></li>
+              <li><Link href="/generators/blog/nano-banana/" className="text-gray-400 hover:text-white transition-colors">Nano Banana</Link></li>
+              <li><Link href="/generators/writing/persuasive-topics/" className="text-gray-400 hover:text-white transition-colors">Persuasive Topics</Link></li>
             </ul>
           </div>
 
