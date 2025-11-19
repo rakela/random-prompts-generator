@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import ExportMenu from './components/ExportMenu';
 import useLocalStorage from './hooks/useLocalStorage';
 import usePromptFromUrl from './hooks/usePromptFromUrl';
+import SEOContent from './components/SEOContent';
 
 const promptData = {
   paragraphs: {
@@ -438,6 +439,11 @@ const RandomParagraphGeneratorPage = () => {
               </div>
             </div>
           </div>
+
+          <SEOContent
+            title="Random Paragraph Generator"
+            category="Writing"
+          />
         </section>
       </div>
 
