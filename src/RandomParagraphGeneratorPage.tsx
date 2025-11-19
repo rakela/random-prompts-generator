@@ -1,9 +1,10 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import SEO from './components/SEO';
-import { Copy, RefreshCw, Save, Download, Sparkles, PenTool, BookOpen, Crown, Share2, Star, Link2 } from 'lucide-react';
+import { Copy, RefreshCw, Save, Sparkles, PenTool, BookOpen, Crown, Share2, Star, Link2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import ExportMenu from './components/ExportMenu';
 import useLocalStorage from './hooks/useLocalStorage';
 import usePromptFromUrl from './hooks/usePromptFromUrl';
 
@@ -191,17 +192,6 @@ const RandomParagraphGeneratorPage = () => {
     }
   };
 
-  const exportPrompts = () => {
-    const dataStr = JSON.stringify(savedPrompts, null, 2);
-    const dataBlob = new Blob([dataStr], { type: 'application/json' });
-    const url = URL.createObjectURL(dataBlob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = 'saved-paragraphs.json';
-    link.click();
-    URL.revokeObjectURL(url);
-  };
-
   const updateControl = (key, value) => {
     setControls(prev => ({ ...prev, [key]: value }));
   };
@@ -351,9 +341,7 @@ const RandomParagraphGeneratorPage = () => {
             <div className="mt-12">
               <div className="flex items-center justify-between mb-6">
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Saved Paragraphs</h3>
-                <button onClick={exportPrompts} className="inline-flex items-center gap-2 px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg transition-colors">
-                  <Download size={16} /> Export All
-                </button>
+                <ExportMenu prompts={savedPrompts} category="paragraph" />
               </div>
               <div className="grid gap-4">
                 {savedPrompts.slice(-5).map((prompt, index) => (
