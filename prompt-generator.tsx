@@ -658,7 +658,7 @@ const PromptGenerator = () => {
             <select 
               value={categoryControls.genre}
               onChange={(e) => updateControl('genre', e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
             >
               <option value="any">Any Story Type</option>
               <option value="character-driven">Character-Driven</option>
@@ -669,7 +669,7 @@ const PromptGenerator = () => {
             <select 
               value={categoryControls.tone}
               onChange={(e) => updateControl('tone', e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
             >
               <option value="any">Any Complexity</option>
               <option value="simple">Simple Conflict</option>
@@ -677,10 +677,10 @@ const PromptGenerator = () => {
               <option value="moral">Moral Dilemma</option>
               <option value="psychological">Psychological</option>
             </select>
-            <select 
+            <select
               value={categoryControls.length}
               onChange={(e) => updateControl('length', e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
             >
               <option value="any">Any Length</option>
               <option value="flash">Flash Fiction</option>
@@ -697,7 +697,7 @@ const PromptGenerator = () => {
             <select 
               value={categoryControls.style}
               onChange={(e) => updateControl('style', e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
             >
               <option value="any">Any Medium</option>
               <option value="digital">Digital Art</option>
@@ -708,7 +708,7 @@ const PromptGenerator = () => {
             <select 
               value={categoryControls.mood}
               onChange={(e) => updateControl('mood', e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
             >
               <option value="any">Any Subject</option>
               <option value="portrait">Portrait</option>
@@ -720,7 +720,7 @@ const PromptGenerator = () => {
             <select 
               value={categoryControls.quality}
               onChange={(e) => updateControl('quality', e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
             >
               <option value="standard">Standard Quality</option>
               <option value="high">High Quality</option>
@@ -736,7 +736,7 @@ const PromptGenerator = () => {
             <select 
               value={categoryControls.topic}
               onChange={(e) => updateControl('topic', e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+              className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
             >
               <option value="any">Any Niche</option>
               {data.niches.slice(0, 8).map((niche, index) => (
@@ -746,7 +746,7 @@ const PromptGenerator = () => {
             <select 
               value={categoryControls.format}
               onChange={(e) => updateControl('format', e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+              className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
             >
               <option value="any">Any Format</option>
               {data.formats.slice(0, 8).map((format, index) => (
@@ -756,7 +756,7 @@ const PromptGenerator = () => {
             <select 
               value={categoryControls.angle}
               onChange={(e) => updateControl('angle', e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+              className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
             >
               <option value="any">Any Angle</option>
               {data.angles.slice(0, 8).map((angle, index) => (
@@ -772,7 +772,7 @@ const PromptGenerator = () => {
             <select 
               value={categoryControls.race}
               onChange={(e) => updateControl('race', e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+              className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
             >
               <option value="any">Any Magic System</option>
               {data.magicSystems.slice(0, 8).map((magic, index) => (
@@ -782,7 +782,7 @@ const PromptGenerator = () => {
             <select 
               value={categoryControls.magic}
               onChange={(e) => updateControl('magic', e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+              className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
             >
               <option value="any">Any Culture</option>
               {data.cultures.slice(0, 8).map((culture, index) => (
@@ -792,7 +792,7 @@ const PromptGenerator = () => {
             <select 
               value={categoryControls.setting}
               onChange={(e) => updateControl('setting', e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+              className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
             >
               <option value="any">Any Location</option>
               {data.locations.slice(0, 8).map((location, index) => (
@@ -808,7 +808,7 @@ const PromptGenerator = () => {
             <select
               value={categoryControls.type}
               onChange={(e) => updateControl('type', e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+              className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
             >
               <option value="all">All Persuasive Topics</option>
               <option value="topics">Essay Topics Only</option>
@@ -823,7 +823,7 @@ const PromptGenerator = () => {
             <select
               value={categoryControls.type}
               onChange={(e) => updateControl('type', e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+              className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
             >
               <option value="full">Full Name</option>
               <option value="first">First Name Only</option>
@@ -833,7 +833,7 @@ const PromptGenerator = () => {
             <select
               value={categoryControls.origin}
               onChange={(e) => updateControl('origin', e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+              className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
             >
               <option value="any">Any Culture</option>
               <option value="elvish">Elvish</option>
@@ -844,7 +844,7 @@ const PromptGenerator = () => {
             <select
               value={categoryControls.count}
               onChange={(e) => updateControl('count', e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+              className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
             >
               <option value="single">Single Name</option>
               <option value="multiple">Generate 5 Names</option>
@@ -864,33 +864,33 @@ const PromptGenerator = () => {
     const isMultipleNames = prompt.category === 'names' && prompt.isMultiple;
 
     return (
-      <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+      <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow-sm">
         {isMultipleNames ? (
           <div className="mb-4">
-            <h3 className="font-semibold text-gray-900 mb-3">Generated Names:</h3>
+            <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-3">Generated Names:</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
               {prompt.text.split('\n').map((name, index) => (
-                <div key={index} className="bg-gray-50 px-3 py-2 rounded border text-gray-800">
+                <div key={index} className="bg-gray-50 dark:bg-gray-700 px-3 py-2 rounded border dark:border-gray-600 text-gray-800 dark:text-gray-100">
                   {name}
                 </div>
               ))}
             </div>
           </div>
         ) : (
-          <p className="text-gray-800 text-lg leading-relaxed mb-4">{prompt.text}</p>
+          <p className="text-gray-800 dark:text-gray-100 text-lg leading-relaxed mb-4">{prompt.text}</p>
         )}
         
         <div className="flex flex-wrap gap-2">
           <button
             onClick={() => copyToClipboard(prompt.text)}
-            className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-md text-sm transition-colors"
+            className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 rounded-md text-sm transition-colors"
           >
             <Copy size={14} />
             Copy {isMultipleNames ? 'All' : ''}
           </button>
           <button
             onClick={() => savePrompt(prompt)}
-            className="inline-flex items-center gap-2 px-3 py-1.5 bg-green-100 hover:bg-green-200 text-green-700 rounded-md text-sm transition-colors"
+            className="inline-flex items-center gap-2 px-3 py-1.5 bg-green-100 dark:bg-green-900/30 hover:bg-green-200 dark:hover:bg-green-900/50 text-green-700 dark:text-green-400 rounded-md text-sm transition-colors"
           >
             <Save size={14} />
             Save
@@ -908,14 +908,14 @@ const PromptGenerator = () => {
           </button>
           <button
             onClick={() => sharePrompt(prompt)}
-            className="inline-flex items-center gap-2 px-3 py-1.5 bg-indigo-100 hover:bg-indigo-200 text-indigo-700 rounded-md text-sm transition-colors"
+            className="inline-flex items-center gap-2 px-3 py-1.5 bg-indigo-100 dark:bg-indigo-900/30 hover:bg-indigo-200 dark:hover:bg-indigo-900/50 text-indigo-700 dark:text-indigo-400 rounded-md text-sm transition-colors"
           >
             <Share2 size={14} />
             Share
           </button>
           <button
             onClick={() => generatePrompt(prompt.category)}
-            className="inline-flex items-center gap-2 px-3 py-1.5 bg-blue-100 hover:bg-blue-200 text-blue-700 rounded-md text-sm transition-colors"
+            className="inline-flex items-center gap-2 px-3 py-1.5 bg-blue-100 dark:bg-blue-900/30 hover:bg-blue-200 dark:hover:bg-blue-900/50 text-blue-700 dark:text-blue-400 rounded-md text-sm transition-colors"
           >
             <RefreshCw size={14} />
             Regenerate
@@ -965,35 +965,35 @@ Random Prompts Generator for writing, AI art, blogging, stories, and character c
         <div className="flex flex-wrap justify-center gap-2 mb-8 border-b border-gray-200">
           <Link
             to="/writing-prompts"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"
           >
             <PenTool size={18} />
             Writing
           </Link>
           <Link
             to="/ai-images-prompt"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"
           >
             <Wand2 size={18} />
             AI Images
           </Link>
           <Link
             to="/ai-blog-post-generator"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"
           >
             <BookOpen size={18} />
             Blog post
           </Link>
           <Link
             to="/short-story-prompts-generator"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"
           >
             <Crown size={18} />
             Short stories
           </Link>
           <Link
             to="/random-name-generator"
-            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+            className="flex items-center gap-2 px-6 py-3 font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700"
           >
             <Sparkles size={18} />
             Names
@@ -1020,9 +1020,9 @@ Random Prompts Generator for writing, AI art, blogging, stories, and character c
 
           {/* History Panel */}
           {showHistory && (
-            <div className="mt-8 bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+            <div className="mt-8 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow-sm">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold text-gray-900">Recent Prompts</h3>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Recent Prompts</h3>
                 <button
                   onClick={() => setPromptHistory([])}
                   className="text-sm text-gray-500 hover:text-red-600 transition-colors"
@@ -1035,10 +1035,10 @@ Random Prompts Generator for writing, AI art, blogging, stories, and character c
               ) : (
                 <div className="space-y-3 max-h-96 overflow-y-auto">
                   {promptHistory.map((prompt, index) => (
-                    <div key={prompt.id} className="bg-gray-50 rounded-lg p-3 border border-gray-100">
+                    <div key={prompt.id} className="bg-gray-50 dark:bg-gray-700 rounded-lg p-3 border border-gray-100 dark:border-gray-600">
                       <div className="flex items-start justify-between gap-3">
                         <div className="flex-1">
-                          <p className="text-sm text-gray-800 leading-relaxed">{prompt.text}</p>
+                          <p className="text-sm text-gray-800 dark:text-gray-100 leading-relaxed">{prompt.text}</p>
                           <div className="flex items-center gap-2 mt-2">
                             <span className={`px-2 py-1 text-xs rounded-full bg-${getTabColor(prompt.category)}-100 text-${getTabColor(prompt.category)}-700`}>
                               {prompt.category}
@@ -1269,7 +1269,7 @@ Random Prompts Generator for writing, AI art, blogging, stories, and character c
         </section>
 
         {/* FAQ Section */}
-        <section className="bg-white py-16">
+        <section className="bg-white dark:bg-gray-800 py-16">
           <div className="max-w-4xl mx-auto px-4">
             <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
             <div className="space-y-6">
@@ -1312,27 +1312,27 @@ Random Prompts Generator for writing, AI art, blogging, stories, and character c
           <div className="max-w-6xl mx-auto px-4">
             <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Explore All Our Free Tools</h2>
             <div className="grid md:grid-cols-3 gap-6">
-              <Link to="/writing-prompts" className="bg-white p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
+              <Link to="/writing-prompts" className="bg-white dark:bg-gray-700 p-6 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-lg transition-shadow">
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">Writing Prompts</h3>
                 <p className="text-gray-600">Generate creative writing prompts with conflicts and plot twists</p>
               </Link>
-              <Link to="/ai-images-prompt" className="bg-white p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
+              <Link to="/ai-images-prompt" className="bg-white dark:bg-gray-700 p-6 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-lg transition-shadow">
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">AI Art Prompts</h3>
                 <p className="text-gray-600">Professional prompts for MidJourney, DALL-E, and Stable Diffusion</p>
               </Link>
-              <Link to="/ai-blog-post-generator" className="bg-white p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
+              <Link to="/ai-blog-post-generator" className="bg-white dark:bg-gray-700 p-6 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-lg transition-shadow">
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">Blog Post Generator</h3>
                 <p className="text-gray-600">SEO-optimized blog post ideas and content strategies</p>
               </Link>
-              <Link to="/short-story-prompts-generator" className="bg-white p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
+              <Link to="/short-story-prompts-generator" className="bg-white dark:bg-gray-700 p-6 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-lg transition-shadow">
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">Short Story Prompts</h3>
                 <p className="text-gray-600">Fantasy worldbuilding and short fiction prompts</p>
               </Link>
-              <Link to="/random-name-generator" className="bg-white p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
+              <Link to="/random-name-generator" className="bg-white dark:bg-gray-700 p-6 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-lg transition-shadow">
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">Character Names</h3>
                 <p className="text-gray-600">Generate unique fantasy and character names</p>
               </Link>
-              <Link to="/october-writing-prompts" className="bg-white p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
+              <Link to="/october-writing-prompts" className="bg-white dark:bg-gray-700 p-6 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-lg transition-shadow">
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">October Prompts</h3>
                 <p className="text-gray-600">Halloween and fall-themed writing prompts</p>
               </Link>
