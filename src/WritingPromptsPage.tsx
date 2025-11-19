@@ -3,6 +3,7 @@ import { Copy, RefreshCw, Save, Download, Sparkles, PenTool, BookOpen, Crown, Sh
 import { Link } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import useLocalStorage from './hooks/useLocalStorage';
 import SEO from './components/SEO';
 
 // High-quality data dictionaries for generation
@@ -131,9 +132,9 @@ const enhanceWritingPrompt = (prompt) => {
 
 const WritingPromptsPage = () => {
   const [generatedPrompt, setGeneratedPrompt] = useState(null);
-  const [savedPrompts, setSavedPrompts] = useState([]);
-  const [promptHistory, setPromptHistory] = useState([]);
-  const [favorites, setFavorites] = useState([]);
+  const [savedPrompts, setSavedPrompts] = useLocalStorage('writing-prompts-saved-prompts', []);
+  const [promptHistory, setPromptHistory] = useLocalStorage('writing-prompts-prompt-history', []);
+  const [favorites, setFavorites] = useLocalStorage('writing-prompts-favorites', []);
   const [showHistory, setShowHistory] = useState(false);
   const [controls, setControls] = useState({
     genre: 'any',

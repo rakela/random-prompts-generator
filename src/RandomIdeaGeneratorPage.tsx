@@ -4,15 +4,16 @@ import { Copy, RefreshCw, Save, Download, Sparkles, PenTool, BookOpen, Crown, Sh
 import { Link } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import useLocalStorage from './hooks/useLocalStorage';
 
 const promptData = { items: ['A mobile app that solves everyday annoyance', 'A social platform for niche hobby community', 'An educational game teaching valuable skill', 'A sustainable solution to environmental problem', 'A service connecting people who need help', 'An invention making household chore easier', 'A story set in unique unexplored setting', 'A business model disrupting traditional industry', 'An art project combining unlikely mediums', 'A charity focusing on overlooked cause', 'A workout routine for specific lifestyle', 'A recipe using unusual ingredient combinations', 'A festival celebrating underappreciated culture', 'A podcast exploring fascinating topic', 'A board game with innovative mechanics', 'A fashion line with sustainable materials', 'A tool helping people learn faster', 'A garden design for small urban spaces', 'A travel guide to hidden gem locations', 'A book club with unique selection process', 'A mentorship program for specific skill', 'A competition format for creative challenge', 'A therapy method using unconventional approach', 'A museum exhibit on overlooked history', 'A restaurant concept with unique twist', 'A streaming service for niche content', 'A transportation solution for local problem', 'A workspace design improving productivity', 'A community event building connections', 'A product redesign improving accessibility'] };
 const weightedRandom = (items) => items[Math.floor(Math.random() * items.length)];
 
 const RandomIdeaGeneratorPage = () => {
   const [generatedPrompt, setGeneratedPrompt] = useState(null);
-  const [savedPrompts, setSavedPrompts] = useState([]);
-  const [promptHistory, setPromptHistory] = useState([]);
-  const [favorites, setFavorites] = useState([]);
+  const [savedPrompts, setSavedPrompts] = useLocalStorage('random-idea-generator-saved-prompts', []);
+  const [promptHistory, setPromptHistory] = useLocalStorage('random-idea-generator-prompt-history', []);
+  const [favorites, setFavorites] = useLocalStorage('random-idea-generator-favorites', []);
   const [showHistory, setShowHistory] = useState(false);
   const [controls, setControls] = useState({ count: 'single' });
 

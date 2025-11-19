@@ -4,6 +4,7 @@ import { Copy, RefreshCw, Save, Download, Sparkles, PenTool, BookOpen, Crown, Sh
 import { Link } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import useLocalStorage from './hooks/useLocalStorage';
 
 // Blog post generation data
 const promptData = {
@@ -99,9 +100,9 @@ const enhanceBlogPrompt = (prompt) => {
 
 const BlogPostGeneratorPage = () => {
   const [generatedPrompt, setGeneratedPrompt] = useState(null);
-  const [savedPrompts, setSavedPrompts] = useState([]);
-  const [promptHistory, setPromptHistory] = useState([]);
-  const [favorites, setFavorites] = useState([]);
+  const [savedPrompts, setSavedPrompts] = useLocalStorage('blog-post-generator-saved-prompts', []);
+  const [promptHistory, setPromptHistory] = useLocalStorage('blog-post-generator-prompt-history', []);
+  const [favorites, setFavorites] = useLocalStorage('blog-post-generator-favorites', []);
   const [showHistory, setShowHistory] = useState(false);
 
   const generatePrompt = useCallback(() => {

@@ -4,15 +4,16 @@ import { Copy, RefreshCw, Save, Download, Sparkles, PenTool, BookOpen, Crown, Sh
 import { Link } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import useLocalStorage from './hooks/useLocalStorage';
 
 const promptData = { items: ['Magic powered by emotions - stronger feelings create stronger magic', 'Spell casting requires physical sacrifice like blood or memories', 'Magic is genetic but skips generations unpredictably', 'Casters must speak backwards to invoke spells', 'Magic requires drawing power from ley lines or nodes', 'Each person has one specific magical ability they are born with', 'Magic is performed through complex dance movements', 'Spells are stored in tattoos that fade when used', 'Magic requires a familiar or bonded creature', 'Casting causes the user to age slightly each time', 'Magic is powered by the phases of multiple moons', 'Spells must be sung in an ancient language', 'Magic corrupts the user slowly over time', 'Elemental magic depends on proximity to that element', 'Casting requires burning specific rare materials', 'Magic strength depends on the casters name', 'Spells are powered by captured starlight', 'Magic requires physical touch to transfer', 'Each spell cast shortens the casters lifespan', 'Magic is mathematics made real through willpower', 'Spells require elaborate written runes', 'Magic is borrowed from otherworldly beings', 'Casting is limited by the casters emotional state', 'Magic requires brewing complex potions first', 'Spells have unpredictable side effects', 'Magic is stronger in certain locations', 'Casting requires team synchronization', 'Magic is powered by the casters dreams', 'Spells must be inherited, not learned', 'Magic requires balance - every spell needs equal opposite'] };
 const weightedRandom = (items) => items[Math.floor(Math.random() * items.length)];
 
 const RandomMagicSystemGeneratorPage = () => {
   const [generatedPrompt, setGeneratedPrompt] = useState(null);
-  const [savedPrompts, setSavedPrompts] = useState([]);
-  const [promptHistory, setPromptHistory] = useState([]);
-  const [favorites, setFavorites] = useState([]);
+  const [savedPrompts, setSavedPrompts] = useLocalStorage('random-magic-system-generator-saved-prompts', []);
+  const [promptHistory, setPromptHistory] = useLocalStorage('random-magic-system-generator-prompt-history', []);
+  const [favorites, setFavorites] = useLocalStorage('random-magic-system-generator-favorites', []);
   const [showHistory, setShowHistory] = useState(false);
   const [controls, setControls] = useState({ count: 'single' });
 

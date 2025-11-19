@@ -4,15 +4,16 @@ import { Copy, RefreshCw, Save, Download, Sparkles, PenTool, BookOpen, Crown, Sh
 import { Link } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import useLocalStorage from './hooks/useLocalStorage';
 
 const promptData = { items: ['Golden hour portrait with warm backlighting', 'Long exposure of a busy street at night', 'Macro shot of morning dew on a spider web', 'Silhouette against a dramatic sunset', 'Black and white street photography in rain', 'Aerial view of geometric farmlands', 'Reflection in a puddle creating symmetry', 'Motion blur of a dancer mid-movement', 'Bokeh lights in the background of a portrait', 'Minimalist composition with negative space', 'Through the window frame storytelling', 'Shadow play with strong directional light', 'Double exposure blending portrait with landscape', 'Low angle shot looking up at architecture', 'Candid moment of genuine laughter', 'Symmetrical architecture reflected in water', 'Foggy morning landscape with layers', 'High contrast black and white portrait', 'Leading lines drawing eye to subject', 'Urban exploration of abandoned building', 'Product photography with dramatic shadows', 'Street corner at blue hour', 'Time-lapse of moving clouds', 'Extreme close-up of texture', 'Environmental portrait showing context', 'Geometric patterns in modern architecture', 'Lifestyle photo of morning routine', 'Landscape with dramatic weather', 'Light painting with long exposure', 'Documentary style slice of life'] };
 const weightedRandom = (items) => items[Math.floor(Math.random() * items.length)];
 
 const RandomPhotographyPromptGeneratorPage = () => {
   const [generatedPrompt, setGeneratedPrompt] = useState(null);
-  const [savedPrompts, setSavedPrompts] = useState([]);
-  const [promptHistory, setPromptHistory] = useState([]);
-  const [favorites, setFavorites] = useState([]);
+  const [savedPrompts, setSavedPrompts] = useLocalStorage('random-photography-prompt-generator-saved-prompts', []);
+  const [promptHistory, setPromptHistory] = useLocalStorage('random-photography-prompt-generator-prompt-history', []);
+  const [favorites, setFavorites] = useLocalStorage('random-photography-prompt-generator-favorites', []);
   const [showHistory, setShowHistory] = useState(false);
   const [controls, setControls] = useState({ count: 'single' });
 

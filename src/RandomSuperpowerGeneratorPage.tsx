@@ -4,15 +4,16 @@ import { Copy, RefreshCw, Save, Download, Sparkles, PenTool, BookOpen, Crown, Sh
 import { Link } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import useLocalStorage from './hooks/useLocalStorage';
 
 const promptData = { items: ['Telekinesis moving objects with mind', 'Invisibility becoming unseen at will', 'Super strength lifting incredible weight', 'Flight soaring through the air', 'Telepathy reading minds hearing thoughts', 'Time manipulation freezing or reversing time', 'Teleportation instant travel anywhere', 'Shape-shifting transforming into anything', 'Healing factor regenerating from injuries', 'Energy projection shooting beams or blasts', 'Super speed moving faster than eye can see', 'Intangibility phasing through solid matter', 'Force field creation protective barriers', 'Weather control commanding elements', 'X-ray vision seeing through objects', 'Technopathy controlling machines with mind', 'Plant manipulation growing controlling vegetation', 'Animal communication speaking with creatures', 'Probability manipulation affecting chance and luck', 'Duplication creating copies of self', 'Size alteration growing or shrinking', 'Density control becoming hard or intangible', 'Sonic scream destructive sound waves', 'Shadow manipulation controlling darkness', 'Ice creation freezing water making ice', 'Fire generation creating controlling flames', 'Electricity manipulation controlling lightning', 'Gravity control altering gravitational force', 'Dream walking entering others dreams', 'Immortality living forever not aging'] };
 const weightedRandom = (items) => items[Math.floor(Math.random() * items.length)];
 
 const RandomSuperpowerGeneratorPage = () => {
   const [generatedPrompt, setGeneratedPrompt] = useState(null);
-  const [savedPrompts, setSavedPrompts] = useState([]);
-  const [promptHistory, setPromptHistory] = useState([]);
-  const [favorites, setFavorites] = useState([]);
+  const [savedPrompts, setSavedPrompts] = useLocalStorage('random-superpower-generator-saved-prompts', []);
+  const [promptHistory, setPromptHistory] = useLocalStorage('random-superpower-generator-prompt-history', []);
+  const [favorites, setFavorites] = useLocalStorage('random-superpower-generator-favorites', []);
   const [showHistory, setShowHistory] = useState(false);
   const [controls, setControls] = useState({ count: 'single' });
 

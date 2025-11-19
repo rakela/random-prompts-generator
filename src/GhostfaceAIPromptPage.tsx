@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import Logo from './components/Logo';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import useLocalStorage from './hooks/useLocalStorage';
 
 // Ghostface AI prompt data
 const ghostfacePrompts = [
@@ -54,8 +55,8 @@ const ghostfacePrompts = [
 
 const GhostfaceAIPromptPage = () => {
   const [copiedId, setCopiedId] = useState(null);
-  const [savedPrompts, setSavedPrompts] = useState([]);
-  const [favorites, setFavorites] = useState([]);
+  const [savedPrompts, setSavedPrompts] = useLocalStorage('ghostface-a-i-prompt-saved-prompts', []);
+  const [favorites, setFavorites] = useLocalStorage('ghostface-a-i-prompt-favorites', []);
 
   const copyToClipboard = async (text, id) => {
     try {

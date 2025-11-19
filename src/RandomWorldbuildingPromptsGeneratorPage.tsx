@@ -4,15 +4,16 @@ import { Copy, RefreshCw, Save, Download, Sparkles, PenTool, BookOpen, Crown, Sh
 import { Link } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import useLocalStorage from './hooks/useLocalStorage';
 
 const promptData = { items: ['What unique method do people in your world use to tell time?', 'How does magic or technology affect daily life?', 'What is the most valuable resource in your world and why?', 'What taboo exists that everyone respects?', 'How do different species or cultures view death?', 'What ancient mystery still puzzles scholars?', 'What is the origin story of your worlds creation?', 'How do people travel long distances?', 'What role does religion or spirituality play?', 'What happened during the last great war?', 'How is social hierarchy determined?', 'What natural phenomenon is unique to your world?', 'How do people communicate across vast distances?', 'What legendary creature is real but rare?', 'What discovery changed everything?', 'How do seasons or climate affect society?', 'What is forbidden and why?', 'How does law and justice work?', 'What unites different kingdoms or nations?', 'What divides them?', 'How has history shaped current politics?', 'What ruins remain from ancient civilizations?', 'How do people entertain themselves?', 'What childhood rite of passage is universal?', 'What recent event changed everything?', 'How does education work?', 'What supernatural threat exists?', 'How do people mark important life events?', 'What technological innovation is most important?', 'What aspect of your world breaks our reality rules?'] };
 const weightedRandom = (items) => items[Math.floor(Math.random() * items.length)];
 
 const RandomWorldbuildingPromptsGeneratorPage = () => {
   const [generatedPrompt, setGeneratedPrompt] = useState(null);
-  const [savedPrompts, setSavedPrompts] = useState([]);
-  const [promptHistory, setPromptHistory] = useState([]);
-  const [favorites, setFavorites] = useState([]);
+  const [savedPrompts, setSavedPrompts] = useLocalStorage('random-worldbuilding-prompts-generator-saved-prompts', []);
+  const [promptHistory, setPromptHistory] = useLocalStorage('random-worldbuilding-prompts-generator-prompt-history', []);
+  const [favorites, setFavorites] = useLocalStorage('random-worldbuilding-prompts-generator-favorites', []);
   const [showHistory, setShowHistory] = useState(false);
   const [controls, setControls] = useState({ count: 'single' });
 

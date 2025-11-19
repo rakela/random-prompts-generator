@@ -4,15 +4,16 @@ import { Copy, RefreshCw, Save, Download, Sparkles, PenTool, BookOpen, Crown, Sh
 import { Link } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import useLocalStorage from './hooks/useLocalStorage';
 
 const promptData = { items: ['Warrior with battle scars and weathered armor', 'Elegant mage with flowing robes and mystical staff', 'Stealthy rogue with dark leather and hidden weapons', 'Noble knight with shining plate armor', 'Wild barbarian with tribal tattoos and fur', 'Mysterious assassin with concealed face', 'Wise elder with beard and ancient robes', 'Young adventurer with practical travel gear', 'Cyberpunk hacker with neon augments', 'Post-apocalyptic survivor with makeshift armor', 'Space marine with high-tech combat suit', 'Fantasy ranger with bow and nature motifs', 'Pirate captain with tricorn hat and cutlass', 'Steam-powered engineer with goggles and tools', 'Monk warrior with simple robes and discipline', 'Demonic entity with horns and dark energy', 'Angelic being with wings and holy light', 'Shapeshifter mid-transformation', 'Time traveler with anachronistic clothing', 'Bounty hunter with practical combat gear', 'Cultist with ceremonial robes and symbols', 'Street fighter with urban athletic wear', 'Detective in period-appropriate investigation attire', 'Merchant with exotic traveling clothes', 'Gladiator with iconic arena equipment', 'Witch with pointed hat and mystical accessories', 'Samurai with traditional armor and katana', 'Viking with braids and Nordic patterns', 'Cybernetic android with visible tech', 'Elegant vampire with period fashion'] };
 const weightedRandom = (items) => items[Math.floor(Math.random() * items.length)];
 
 const RandomCharacterDesignPromptGeneratorPage = () => {
   const [generatedPrompt, setGeneratedPrompt] = useState(null);
-  const [savedPrompts, setSavedPrompts] = useState([]);
-  const [promptHistory, setPromptHistory] = useState([]);
-  const [favorites, setFavorites] = useState([]);
+  const [savedPrompts, setSavedPrompts] = useLocalStorage('random-character-design-prompt-generator-saved-prompts', []);
+  const [promptHistory, setPromptHistory] = useLocalStorage('random-character-design-prompt-generator-prompt-history', []);
+  const [favorites, setFavorites] = useLocalStorage('random-character-design-prompt-generator-favorites', []);
   const [showHistory, setShowHistory] = useState(false);
   const [controls, setControls] = useState({ count: 'single' });
 

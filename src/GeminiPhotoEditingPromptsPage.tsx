@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Copy, Check, Sparkles, Image as ImageIcon, BookOpen, Lightbulb, Zap } from 'lucide-react';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import useLocalStorage from './hooks/useLocalStorage';
 import SEO from './components/SEO';
 
 export default function GeminiPhotoEditingPromptsPage() {

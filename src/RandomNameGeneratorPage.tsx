@@ -4,6 +4,7 @@ import { Copy, RefreshCw, Save, Download, Sparkles, PenTool, BookOpen, Crown, Sh
 import { Link } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import useLocalStorage from './hooks/useLocalStorage';
 
 const promptData = {
   names: {
@@ -55,9 +56,9 @@ const processTemplate = (data, controls) => {
 
 const RandomNameGeneratorPage = () => {
   const [generatedPrompt, setGeneratedPrompt] = useState(null);
-  const [savedPrompts, setSavedPrompts] = useState([]);
-  const [promptHistory, setPromptHistory] = useState([]);
-  const [favorites, setFavorites] = useState([]);
+  const [savedPrompts, setSavedPrompts] = useLocalStorage('random-name-generator-saved-prompts', []);
+  const [promptHistory, setPromptHistory] = useLocalStorage('random-name-generator-prompt-history', []);
+  const [favorites, setFavorites] = useLocalStorage('random-name-generator-favorites', []);
   const [showHistory, setShowHistory] = useState(false);
   const [controls, setControls] = useState({
     type: 'full',

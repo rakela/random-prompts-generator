@@ -4,15 +4,16 @@ import { Copy, RefreshCw, Save, Download, Sparkles, PenTool, BookOpen, Crown, Sh
 import { Link } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import useLocalStorage from './hooks/useLocalStorage';
 
 const promptData = { items: ['The moment relief washe\'s over after weeks of tension', 'Overwhelming grief that comes in unexpected waves', 'The quiet joy of a perfect morning', 'Betrayal from someone trusted completely', 'Pride mixed with bittersweet sadness', 'Crushing disappointment after high hopes', 'The warmth of belonging after feeling alone', 'Paralyzing fear that freezes all thought', 'Unexpected jealousy toward a best friend', 'Contentment in a simple moment', 'Rage barely contained beneath calm exterior', 'Nostalgia for a time that cannot return', 'Anxiety manifesting as physical symptoms', 'Love that terrifies with its intensity', 'Shame that colors everything', 'Wonder at something truly beautiful', 'Frustration at being misunderstood', 'Gratitude that brings tears', 'Loneliness in a crowded room', 'Anticipation before life changes', 'Regret for words that cannot be unsaid', 'Empathy that overwhelms boundaries', 'Confusion between what is felt and shown', 'Numbness after too much emotion', 'Hope despite all evidence against it', 'Guilt that won\'t fade', 'Serenity hard-won after struggle', 'Excitement tinged with dread', 'Compassion for an enemy', 'Acceptance of the inevitable'] };
 const weightedRandom = (items) => items[Math.floor(Math.random() * items.length)];
 
 const RandomEmotionPromptGeneratorPage = () => {
   const [generatedPrompt, setGeneratedPrompt] = useState(null);
-  const [savedPrompts, setSavedPrompts] = useState([]);
-  const [promptHistory, setPromptHistory] = useState([]);
-  const [favorites, setFavorites] = useState([]);
+  const [savedPrompts, setSavedPrompts] = useLocalStorage('random-emotion-prompt-generator-saved-prompts', []);
+  const [promptHistory, setPromptHistory] = useLocalStorage('random-emotion-prompt-generator-prompt-history', []);
+  const [favorites, setFavorites] = useLocalStorage('random-emotion-prompt-generator-favorites', []);
   const [showHistory, setShowHistory] = useState(false);
   const [controls, setControls] = useState({ count: 'single' });
 

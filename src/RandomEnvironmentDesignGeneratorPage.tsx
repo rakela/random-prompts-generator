@@ -4,15 +4,16 @@ import { Copy, RefreshCw, Save, Download, Sparkles, PenTool, BookOpen, Crown, Sh
 import { Link } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import useLocalStorage from './hooks/useLocalStorage';
 
 const promptData = { items: ['Floating islands connected by bridges in the clouds', 'Underground city carved from massive caverns', 'Desert oasis city with white stone and water features', 'Post-apocalyptic overgrown urban ruins', 'Futuristic city with vertical layered architecture', 'Ancient temple deep in untouched jungle', 'Ice palace on a frozen tundra', 'Steampunk industrial city with smokestacks', 'Treehouse village in giant forest', 'Crystal cave system with prismatic light', 'Coastal cliffside village at sunset', 'Space colony dome on barren planet', 'Medieval mountain fortress', 'Cyberpunk neon alley with rain reflections', 'Magical academy campus with towers', 'Abandoned subway station overtaken by nature', 'Desert ruins half-buried in sand', 'Underwater research facility with viewports', 'Volcano rim settlement with lava rivers', 'Peaceful countryside with rolling hills', 'Dystopian factory complex with pollution', 'Elven forest city integrated with nature', 'Arctic research base during aurora', 'Ancient library with endless bookshelves', 'Marketplace in fantasy bazaar', 'Ruined battlefield with monuments', 'Space elevator connecting earth to orbit', 'Hidden rebel base in canyon', 'Luxury resort on tropical island', 'Portal nexus between dimensions'] };
 const weightedRandom = (items) => items[Math.floor(Math.random() * items.length)];
 
 const RandomEnvironmentDesignGeneratorPage = () => {
   const [generatedPrompt, setGeneratedPrompt] = useState(null);
-  const [savedPrompts, setSavedPrompts] = useState([]);
-  const [promptHistory, setPromptHistory] = useState([]);
-  const [favorites, setFavorites] = useState([]);
+  const [savedPrompts, setSavedPrompts] = useLocalStorage('random-environment-design-generator-saved-prompts', []);
+  const [promptHistory, setPromptHistory] = useLocalStorage('random-environment-design-generator-prompt-history', []);
+  const [favorites, setFavorites] = useLocalStorage('random-environment-design-generator-favorites', []);
   const [showHistory, setShowHistory] = useState(false);
   const [controls, setControls] = useState({ count: 'single' });
 

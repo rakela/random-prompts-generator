@@ -4,15 +4,16 @@ import { Copy, RefreshCw, Save, Download, Sparkles, PenTool, BookOpen, Crown, Sh
 import { Link } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import useLocalStorage from './hooks/useLocalStorage';
 
 const promptData = { items: ['A reluctant farm boy who discovers their royal heritage', 'A grizzled veteran learning to trust again', 'A reformed thief using skills for good', 'A young healer discovering inner strength', 'A scholar forced to become a warrior', 'A street kid with hidden magical ability', 'An exiled prince seeking redemption', 'A gentle giant protecting the innocent', 'A brilliant inventor fighting injustice', 'A cursed individual seeking to break their curse', 'A time traveler trying to fix the past', 'A pacifist forced to take up arms', 'A disabled person with extraordinary abilities', 'A former villain seeking atonement', 'A prophesied hero who doubts their destiny', 'An AI learning what it means to be human', 'A sidekick stepping into the spotlight', 'A coward finding courage', 'An ordinary person in extraordinary circumstances', 'A leader who never wanted power', 'A lone wolf learning teamwork', 'A betrayed friend seeking justice', 'A child prodigy with adult responsibilities', 'An unlikely chosen one', 'A hero from another dimension', 'A shape-shifter hiding their true form', 'A telepath overwhelmed by others thoughts', 'A immortal who has lost hope', 'A clone discovering their individuality', 'A robot developing emotions'] };
 const weightedRandom = (items) => items[Math.floor(Math.random() * items.length)];
 
 const RandomHeroGeneratorPage = () => {
   const [generatedPrompt, setGeneratedPrompt] = useState(null);
-  const [savedPrompts, setSavedPrompts] = useState([]);
-  const [promptHistory, setPromptHistory] = useState([]);
-  const [favorites, setFavorites] = useState([]);
+  const [savedPrompts, setSavedPrompts] = useLocalStorage('random-hero-generator-saved-prompts', []);
+  const [promptHistory, setPromptHistory] = useLocalStorage('random-hero-generator-prompt-history', []);
+  const [favorites, setFavorites] = useLocalStorage('random-hero-generator-favorites', []);
   const [showHistory, setShowHistory] = useState(false);
   const [controls, setControls] = useState({ count: 'single' });
 
