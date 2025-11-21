@@ -3,336 +3,311 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-  <!-- Homepage -->
   <url>
-    <loc>https://randomprompts.org/</loc>
-    <lastmod>2025-11-19</lastmod>
+    <loc>https://randomprompts.org</loc>
+    <lastmod>2025-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-
-  <!-- Category Hubs -->
   <url>
-    <loc>https://randomprompts.org/writing-prompts/</loc>
-    <lastmod>2025-11-19</lastmod>
+    <loc>https://randomprompts.org/writing-prompts</loc>
+    <lastmod>2025-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://randomprompts.org/ai-art-prompts/</loc>
-    <lastmod>2025-11-19</lastmod>
+    <loc>https://randomprompts.org/ai-images-prompt</loc>
+    <lastmod>2025-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://randomprompts.org/drawing-ideas/</loc>
-    <lastmod>2025-11-19</lastmod>
+    <loc>https://randomprompts.org/ai-blog-post-generator</loc>
+    <lastmod>2025-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- Blog Post Generator (Standalone) -->
   <url>
-    <loc>https://randomprompts.org/ai-blog-post-generator/</loc>
-    <lastmod>2025-11-19</lastmod>
+    <loc>https://randomprompts.org/short-story-prompts-generator</loc>
+    <lastmod>2025-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- Writing Prompts Generators -->
   <url>
-    <loc>https://randomprompts.org/writing-prompts/prompts/</loc>
-    <lastmod>2025-11-19</lastmod>
+    <loc>https://randomprompts.org/random-name-generator</loc>
+    <lastmod>2025-11-20</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://randomprompts.org/writing-prompts/paragraph/</loc>
-    <lastmod>2025-11-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://randomprompts.org/writing-prompts/sentence/</loc>
-    <lastmod>2025-11-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://randomprompts.org/writing-prompts/dialogue/</loc>
-    <lastmod>2025-11-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://randomprompts.org/writing-prompts/character/</loc>
-    <lastmod>2025-11-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://randomprompts.org/writing-prompts/story-starter/</loc>
-    <lastmod>2025-11-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://randomprompts.org/writing-prompts/conflict/</loc>
-    <lastmod>2025-11-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://randomprompts.org/writing-prompts/plot-twist/</loc>
-    <lastmod>2025-11-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://randomprompts.org/writing-prompts/theme/</loc>
-    <lastmod>2025-11-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://randomprompts.org/writing-prompts/setting/</loc>
-    <lastmod>2025-11-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://randomprompts.org/writing-prompts/villain/</loc>
-    <lastmod>2025-11-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://randomprompts.org/writing-prompts/hero/</loc>
-    <lastmod>2025-11-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://randomprompts.org/writing-prompts/worldbuilding/</loc>
-    <lastmod>2025-11-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://randomprompts.org/writing-prompts/magic-system/</loc>
-    <lastmod>2025-11-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://randomprompts.org/writing-prompts/emotion/</loc>
-    <lastmod>2025-11-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://randomprompts.org/writing-prompts/relationship/</loc>
-    <lastmod>2025-11-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://randomprompts.org/writing-prompts/short-story/</loc>
-    <lastmod>2025-11-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://randomprompts.org/writing-prompts/october/</loc>
-    <lastmod>2025-11-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://randomprompts.org/writing-prompts/students/</loc>
-    <lastmod>2025-11-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://randomprompts.org/writing-prompts/persuasive-topics/</loc>
-    <lastmod>2025-11-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://randomprompts.org/writing-prompts/persuasive-essays/</loc>
-    <lastmod>2025-11-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://randomprompts.org/writing-prompts/persuasive-titles/</loc>
-    <lastmod>2025-11-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://randomprompts.org/writing-prompts/nano-banana/</loc>
-    <lastmod>2025-11-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://randomprompts.org/writing-prompts/poetry/</loc>
-    <lastmod>2025-11-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://randomprompts.org/writing-prompts/journal/</loc>
-    <lastmod>2025-11-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- AI Art Prompts Generators -->
-  <url>
-    <loc>https://randomprompts.org/ai-art-prompts/images/</loc>
-    <lastmod>2025-11-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://randomprompts.org/ai-art-prompts/aesthetic/</loc>
-    <lastmod>2025-11-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://randomprompts.org/ai-art-prompts/art-style/</loc>
-    <lastmod>2025-11-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://randomprompts.org/ai-art-prompts/photography/</loc>
-    <lastmod>2025-11-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://randomprompts.org/ai-art-prompts/character/</loc>
-    <lastmod>2025-11-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://randomprompts.org/ai-art-prompts/environment/</loc>
-    <lastmod>2025-11-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://randomprompts.org/ai-art-prompts/sci-fi/</loc>
-    <lastmod>2025-11-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://randomprompts.org/ai-art-prompts/fantasy/</loc>
-    <lastmod>2025-11-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://randomprompts.org/ai-art-prompts/anime/</loc>
-    <lastmod>2025-11-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://randomprompts.org/ai-art-prompts/portrait/</loc>
-    <lastmod>2025-11-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://randomprompts.org/ai-art-prompts/lighting/</loc>
-    <lastmod>2025-11-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://randomprompts.org/midjourney-ai-picture-generator</loc>
-    <lastmod>2025-11-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://randomprompts.org/ghostface-ai-trend-prompt-generator</loc>
-    <lastmod>2025-11-19</lastmod>
+    <lastmod>2025-11-20</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://randomprompts.org/gemini-ai-snow-prompt-tutorial</loc>
-    <lastmod>2025-11-19</lastmod>
+    <lastmod>2025-11-20</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://randomprompts.org/chatgpt-photo-editing-prompts</loc>
-    <lastmod>2025-11-19</lastmod>
+    <lastmod>2025-11-20</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://randomprompts.org/gemini-photo-editing-prompts</loc>
-    <lastmod>2025-11-19</lastmod>
+    <lastmod>2025-11-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://randomprompts.org/october-writing-prompts</loc>
+    <lastmod>2025-11-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://randomprompts.org/writing-prompts-for-students</loc>
+    <lastmod>2025-11-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://randomprompts.org/persuasive-writing-topics</loc>
+    <lastmod>2025-11-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://randomprompts.org/persuasive-essays-topics</loc>
+    <lastmod>2025-11-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://randomprompts.org/persuasive-writing-titles</loc>
+    <lastmod>2025-11-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://randomprompts.org/nano-banana-prompts</loc>
+    <lastmod>2025-11-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://randomprompts.org/midjourney-ai-picture-generator</loc>
+    <lastmod>2025-11-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://randomprompts.org/christmas-writing-prompts</loc>
+    <lastmod>2025-11-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://randomprompts.org/writing-generators</loc>
+    <lastmod>2025-11-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://randomprompts.org/ai-art-generators</loc>
+    <lastmod>2025-11-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://randomprompts.org/creative-idea-generators</loc>
+    <lastmod>2025-11-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://randomprompts.org/random-paragraph-generator</loc>
+    <lastmod>2025-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-
-  <!-- Drawing Ideas Generators -->
   <url>
-    <loc>https://randomprompts.org/drawing-ideas/names/</loc>
-    <lastmod>2025-11-19</lastmod>
+    <loc>https://randomprompts.org/random-sentence-generator</loc>
+    <lastmod>2025-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://randomprompts.org/drawing-ideas/objects/</loc>
-    <lastmod>2025-11-19</lastmod>
+    <loc>https://randomprompts.org/random-story-starter-generator</loc>
+    <lastmod>2025-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://randomprompts.org/drawing-ideas/hobbies/</loc>
-    <lastmod>2025-11-19</lastmod>
+    <loc>https://randomprompts.org/random-dialogue-generator</loc>
+    <lastmod>2025-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://randomprompts.org/drawing-ideas/superpowers/</loc>
-    <lastmod>2025-11-19</lastmod>
+    <loc>https://randomprompts.org/random-theme-generator</loc>
+    <lastmod>2025-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://randomprompts.org/drawing-ideas/ideas/</loc>
-    <lastmod>2025-11-19</lastmod>
+    <loc>https://randomprompts.org/random-conflict-generator</loc>
+    <lastmod>2025-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-
-  <!-- Static Pages -->
   <url>
-    <loc>https://randomprompts.org/privacy/</loc>
-    <lastmod>2025-11-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.3</priority>
+    <loc>https://randomprompts.org/random-plot-twist-generator</loc>
+    <lastmod>2025-11-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://randomprompts.org/terms/</loc>
-    <lastmod>2025-11-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.3</priority>
+    <loc>https://randomprompts.org/random-character-generator</loc>
+    <lastmod>2025-11-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://randomprompts.org/random-relationship-prompt-generator</loc>
+    <lastmod>2025-11-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://randomprompts.org/random-setting-generator</loc>
+    <lastmod>2025-11-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://randomprompts.org/random-villain-generator</loc>
+    <lastmod>2025-11-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://randomprompts.org/random-hero-generator</loc>
+    <lastmod>2025-11-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://randomprompts.org/random-worldbuilding-prompts-generator</loc>
+    <lastmod>2025-11-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://randomprompts.org/random-magic-system-generator</loc>
+    <lastmod>2025-11-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://randomprompts.org/random-emotion-prompt-generator</loc>
+    <lastmod>2025-11-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://randomprompts.org/random-aesthetic-prompt-generator</loc>
+    <lastmod>2025-11-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://randomprompts.org/random-art-style-generator</loc>
+    <lastmod>2025-11-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://randomprompts.org/random-photography-prompt-generator</loc>
+    <lastmod>2025-11-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://randomprompts.org/random-sci-fi-prompt-generator</loc>
+    <lastmod>2025-11-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://randomprompts.org/random-fantasy-art-prompt-generator</loc>
+    <lastmod>2025-11-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://randomprompts.org/random-environment-design-generator</loc>
+    <lastmod>2025-11-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://randomprompts.org/random-anime-prompt-generator</loc>
+    <lastmod>2025-11-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://randomprompts.org/random-character-design-prompt-generator</loc>
+    <lastmod>2025-11-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://randomprompts.org/random-portrait-prompt-generator</loc>
+    <lastmod>2025-11-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://randomprompts.org/random-lighting-style-generator</loc>
+    <lastmod>2025-11-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://randomprompts.org/random-hobby-generator</loc>
+    <lastmod>2025-11-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://randomprompts.org/random-object-generator</loc>
+    <lastmod>2025-11-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://randomprompts.org/random-superpower-generator</loc>
+    <lastmod>2025-11-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://randomprompts.org/random-idea-generator</loc>
+    <lastmod>2025-11-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://randomprompts.org/random-fantasy-name-generator</loc>
+    <lastmod>2025-11-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
 
 </urlset>
