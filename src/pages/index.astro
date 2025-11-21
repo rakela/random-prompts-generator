@@ -5,8 +5,32 @@ import AstroFooter from '../components/AstroFooter.astro';
 import PromptGenerator from '../components/PromptGenerator';
 import '../styles/global.css';
 import { getSEOData } from '../data/seo';
+import prompts from '../data/prompts.json';
 
 const seo = getSEOData('home');
+
+// Extract unique categories from prompts for navigation
+const categories = [...new Set(prompts.map(prompt => prompt.category))];
+const categoryInfo = {
+  'fantasy': {
+    title: 'Fantasy Writing Prompts',
+    description: 'Magical worlds, mythical creatures, and epic adventures',
+    icon: '✨',
+    color: 'purple'
+  },
+  'sci-fi': {
+    title: 'Sci-Fi Writing Prompts',
+    description: 'Space exploration, futuristic tech, and alien encounters',
+    icon: '🚀',
+    color: 'blue'
+  },
+  'romance': {
+    title: 'Romance Writing Prompts',
+    description: 'Love stories, emotional journeys, and heartfelt connections',
+    icon: '💕',
+    color: 'pink'
+  }
+};
 ---
 
 <BaseLayout seo={seo}>
@@ -100,6 +124,75 @@ const seo = getSEOData('home');
             <p class="text-gray-600">Halloween and fall-themed writing prompts</p>
           </a>
         </div>
+    </div>
+  </section>
+
+  <!-- Category-Based Generators Section -->
+  <section class="py-16 bg-gradient-to-br from-purple-50 to-blue-50">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Genre-Specific Writing Prompts</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Dive deep into your favorite genres with our specialized prompt generators.
+          Each category features unique, curated prompts designed for that specific genre.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        {categories.map(category => {
+          const info = categoryInfo[category] || {
+            title: `${category.charAt(0).toUpperCase() + category.slice(1)} Prompts`,
+            description: `Explore ${category} writing prompts`,
+            icon: '📝',
+            color: 'gray'
+          };
+          const promptCount = prompts.filter(p => p.category === category).length;
+
+          const colorClasses = {
+            purple: 'from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700',
+            blue: 'from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700',
+            pink: 'from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700',
+            gray: 'from-gray-500 to-gray-600 hover:from-gray-600 hover:to-gray-700'
+          };
+
+          return (
+            <a
+              href={`/prompts/${category}`}
+              class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden"
+            >
+              <div class={`bg-gradient-to-r ${colorClasses[info.color]} p-6 text-white`}>
+                <div class="text-5xl mb-3">{info.icon}</div>
+                <h3 class="text-2xl font-bold mb-2">{info.title}</h3>
+                <p class="text-sm opacity-90">{promptCount}+ unique prompts</p>
+              </div>
+              <div class="p-6">
+                <p class="text-gray-600 mb-4">{info.description}</p>
+                <div class="flex items-center text-purple-600 font-semibold group-hover:translate-x-2 transition-transform">
+                  <span>Explore {category} prompts</span>
+                  <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+      <div class="text-center mt-12">
+        <p class="text-gray-600 mb-4">
+          Each category features interactive generators with locking, history, and copy functionality
+        </p>
+        <div class="flex flex-wrap justify-center gap-4 text-sm">
+          <span class="px-4 py-2 bg-white rounded-full shadow-sm text-gray-700">
+            🔒 Lock your favorite prompts
+          </span>
+          <span class="px-4 py-2 bg-white rounded-full shadow-sm text-gray-700">
+            📜 Browse prompt history
+          </span>
+          <span class="px-4 py-2 bg-white rounded-full shadow-sm text-gray-700">
+            📋 One-click copy
+          </span>
+        </div>
+      </div>
     </div>
   </section>
 
