@@ -229,6 +229,18 @@ export const generatorConfig: Record<string, GeneratorMetadata> = {
     legacyPath: '/october-writing-prompts',
     icon: 'Ghost'
   },
+  'christmas-writing': {
+    id: 'christmas-writing',
+    slug: 'christmas',
+    title: 'Christmas Writing Prompts - Holiday Story Ideas',
+    description: 'Generate festive Christmas and holiday-themed writing prompts for the season.',
+    h1: 'Christmas Writing Prompts',
+    keywords: 'christmas prompts, holiday writing, festive stories, winter prompts, christmas stories',
+    category: 'writing',
+    path: '/writing-prompts/christmas/',
+    legacyPath: '/christmas-writing-prompts',
+    icon: 'Gift'
+  },
   'students-writing': {
     id: 'students-writing',
     slug: 'students',

@@ -46,6 +46,30 @@ export default function WritingGeneratorPage({ params }: { params: { slug: strin
     notFound();
   }
 
+  // Determine gradient colors based on slug
+  const getGradientColors = (slug: string) => {
+    switch (slug) {
+      case 'christmas':
+        return 'bg-gradient-to-r from-red-600 to-green-600';
+      case 'october':
+        return 'bg-gradient-to-r from-orange-600 to-purple-700';
+      default:
+        return 'bg-gradient-to-r from-blue-600 to-purple-600';
+    }
+  };
+
+  // Determine button colors based on slug
+  const getButtonColor = (slug: string) => {
+    switch (slug) {
+      case 'christmas':
+        return 'bg-red-600 hover:bg-red-700';
+      case 'october':
+        return 'bg-orange-600 hover:bg-orange-700';
+      default:
+        return 'bg-purple-600 hover:bg-purple-700';
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 dark:from-gray-900 to-white dark:to-gray-800">
       {/* Breadcrumbs */}
@@ -64,15 +88,15 @@ export default function WritingGeneratorPage({ params }: { params: { slug: strin
       </nav>
 
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16">
+      <div className={`${getGradientColors(params.slug)} text-white py-16`}>
         <div className="max-w-4xl mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">{generator.h1}</h1>
-          <p className="text-xl opacity-90 mb-6">{generator.description}</p>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">{generator.h1}</h1>
+          <p className="text-xl text-white opacity-90 mb-6">{generator.description}</p>
         </div>
       </div>
 
       {/* Generator Client Component */}
-      <GeneratorClient generator={generator} category="writing" />
+      <GeneratorClient generator={generator} category="writing" buttonColor={getButtonColor(params.slug)} />
 
       {/* SEO Content */}
       <div className="max-w-4xl mx-auto px-4 py-12">

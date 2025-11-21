@@ -17,9 +17,10 @@ interface Prompt {
 interface GeneratorClientProps {
   generator: GeneratorMetadata;
   category: PromptCategory;
+  buttonColor?: string;
 }
 
-export default function GeneratorClient({ generator, category }: GeneratorClientProps) {
+export default function GeneratorClient({ generator, category, buttonColor = "bg-purple-600 hover:bg-purple-700" }: GeneratorClientProps) {
   const [generatedPrompt, setGeneratedPrompt] = useState<Prompt | null>(null);
   const [savedPrompts, setSavedPrompts] = useLocalStorage<Prompt[]>(`saved-${generator.id}`, []);
   const [favorites, setFavorites] = useLocalStorage<Prompt[]>(`favorites-${generator.id}`, []);
@@ -79,7 +80,7 @@ export default function GeneratorClient({ generator, category }: GeneratorClient
       <div className="text-center mb-8">
         <button
           onClick={generatePrompt}
-          className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors shadow-lg"
+          className={`${buttonColor} text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors shadow-lg`}
         >
           Generate {generator.h1}
         </button>
