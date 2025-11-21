@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import AstroHeader from '../../components/AstroHeader.astro';
+import AstroFooter from '../../components/AstroFooter.astro';
 import CategoryPromptGenerator from '../../components/CategoryPromptGenerator.jsx';
 import prompts from '../../data/categoryPrompts.json';
 
@@ -64,157 +66,151 @@ const schema = {
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
   </Fragment>
 
+  <AstroHeader />
+
   <!-- Hero Section -->
-  <section class="py-12 px-4 bg-gradient-to-br from-purple-50 to-blue-50 dark:from-gray-900 dark:to-gray-800">
-    <div class="max-w-4xl mx-auto text-center">
-      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+  <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">
         {capitalizedCategory} Writing Prompts Generator
       </h1>
-      <p class="text-xl text-gray-600 dark:text-gray-300 mb-6">
-        Generate unique {categoryName} story ideas and creative writing prompts instantly
+      <p class="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
+        Generate unique {categoryName} story ideas and creative writing prompts instantly.
+        Perfect for writers, authors, and storytellers looking for {categoryName} inspiration.
       </p>
-      <div class="flex flex-wrap justify-center gap-3 text-sm text-gray-600 dark:text-gray-400">
-        <span class="px-4 py-2 bg-white dark:bg-gray-700 rounded-full shadow-sm">
+      <div class="flex flex-wrap justify-center gap-3 text-sm">
+        <span class="px-4 py-2 bg-white/20 rounded-full backdrop-blur-sm">
           ✨ {categoryPrompts.length}+ Prompts
         </span>
-        <span class="px-4 py-2 bg-white dark:bg-gray-700 rounded-full shadow-sm">
+        <span class="px-4 py-2 bg-white/20 rounded-full backdrop-blur-sm">
           🎲 Random Generation
         </span>
-        <span class="px-4 py-2 bg-white dark:bg-gray-700 rounded-full shadow-sm">
+        <span class="px-4 py-2 bg-white/20 rounded-full backdrop-blur-sm">
           📋 Copy & Save
         </span>
       </div>
     </div>
-  </section>
+  </div>
 
   <!-- Interactive Generator Component -->
-  <section class="py-12 px-4">
-    <div class="max-w-4xl mx-auto">
-      <CategoryPromptGenerator
-        initialPrompts={categoryPrompts}
-        category={categoryName}
-        client:load
-      />
+  <div class="max-w-6xl mx-auto px-4 py-8">
+    <CategoryPromptGenerator
+      initialPrompts={categoryPrompts}
+      category={categoryName}
+      client:load
+    />
+  </div>
+
+  <!-- SEO Content Section -->
+  <section class="bg-gray-50 py-16">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">
+        How to Use These {capitalizedCategory} Prompts
+      </h2>
+
+      <div class="text-gray-700 space-y-4 mb-12">
+        <p>
+          Overcoming writer's block in the {categoryName} genre can be challenging, but our {categoryName} writing
+          prompts generator makes it effortless. Whether you're a seasoned author or just starting your creative
+          writing journey, these carefully crafted prompts will spark your imagination and help you develop
+          compelling {categoryName} stories.
+        </p>
+
+        <p>
+          <strong>Getting Started:</strong> Simply click the "Generate New Prompt" button to receive a fresh
+          {categoryName} writing idea. Found one you love? Use the lock button to save it while you explore
+          other options, or click the copy button to add it to your writing notebook. Our generator features
+          over {categoryPrompts.length} unique {categoryName} prompts, ensuring you'll always have fresh inspiration.
+        </p>
+
+        <p>
+          <strong>Best Practices:</strong> Don't feel constrained by the prompt—use it as a starting point and
+          let your creativity take over. Combine elements from multiple prompts, change character perspectives,
+          or adapt the setting to match your unique vision. The goal is to break through creative barriers and
+          get your words flowing.
+        </p>
+      </div>
+
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">
+        Why {capitalizedCategory} Writing Prompts Work
+      </h2>
+
+      <div class="text-gray-700 space-y-4 mb-12">
+        <p>
+          {capitalizedCategory} writing prompts are more than just random ideas—they're carefully designed to
+          engage specific elements that make {categoryName} stories compelling. Each prompt in our generator
+          incorporates key ingredients that resonate with {categoryName} readers and provide clear narrative
+          direction for writers.
+        </p>
+
+        <p>
+          Research shows that writers who use prompts regularly develop stronger creative muscles and overcome
+          writer's block more quickly. By removing the pressure of starting from a blank page, prompts allow
+          you to focus on what matters most: crafting engaging {categoryName} narratives that captivate your
+          audience.
+        </p>
+      </div>
     </div>
   </section>
 
-  <!-- SEO Content Section -->
-  <article class="prose lg:prose-xl mx-auto mt-16 px-4 max-w-4xl">
-    <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">
-      How to Use These {capitalizedCategory} Prompts
-    </h2>
+  <!-- FAQ Section -->
+  <section class="bg-white py-16">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">
+        Frequently Asked Questions About {capitalizedCategory} Writing
+      </h2>
 
-    <div class="text-gray-700 dark:text-gray-300 space-y-4 mb-12">
-      <p>
-        Overcoming writer's block in the {categoryName} genre can be challenging, but our {categoryName} writing
-        prompts generator makes it effortless. Whether you're a seasoned author or just starting your creative
-        writing journey, these carefully crafted prompts will spark your imagination and help you develop
-        compelling {categoryName} stories.
-      </p>
+      <div class="space-y-6">
+        <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <h3 class="text-xl font-semibold text-gray-900 mb-3">
+            What makes a good {categoryName} writing prompt?
+          </h3>
+          <p class="text-gray-700">
+            A good {categoryName} prompt provides enough structure to guide your story while leaving room for
+            creative interpretation. It should include compelling elements specific to the {categoryName} genre—such
+            as unique conflicts, interesting characters, or thought-provoking scenarios—while avoiding overly
+            prescriptive details that limit your creativity.
+          </p>
+        </div>
 
-      <p>
-        <strong>Getting Started:</strong> Simply click the "Generate New Prompt" button to receive a fresh
-        {categoryName} writing idea. Found one you love? Use the lock button to save it while you explore
-        other options, or click the copy button to add it to your writing notebook. Our generator features
-        over {categoryPrompts.length} unique {categoryName} prompts, ensuring you'll always have fresh inspiration.
-      </p>
+        <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <h3 class="text-xl font-semibold text-gray-900 mb-3">
+            Can I use these prompts for published work?
+          </h3>
+          <p class="text-gray-700">
+            Absolutely! All prompts generated by our tool are free to use for any purpose, including commercial
+            publication. The prompts are designed as creative springboards—the unique story you create from them
+            is entirely your own original work. We encourage writers to develop these {categoryName} ideas into
+            full stories, novels, or any other creative projects.
+          </p>
+        </div>
 
-      <p>
-        <strong>Best Practices:</strong> Don't feel constrained by the prompt—use it as a starting point and
-        let your creativity take over. Combine elements from multiple prompts, change character perspectives,
-        or adapt the setting to match your unique vision. The goal is to break through creative barriers and
-        get your words flowing.
-      </p>
-    </div>
+        <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <h3 class="text-xl font-semibold text-gray-900 mb-3">
+            How often should I use writing prompts?
+          </h3>
+          <p class="text-gray-700">
+            Many successful {categoryName} writers incorporate prompts into their daily or weekly writing practice.
+            Even if you're working on a long-term project, spending 15-30 minutes with a prompt can serve as an
+            excellent warm-up exercise, help you explore new techniques, or provide a creative break when you're
+            feeling stuck on your main work.
+          </p>
+        </div>
 
-    <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">
-      Why {capitalizedCategory} Writing Prompts Work
-    </h2>
-
-    <div class="text-gray-700 dark:text-gray-300 space-y-4 mb-12">
-      <p>
-        {capitalizedCategory} writing prompts are more than just random ideas—they're carefully designed to
-        engage specific elements that make {categoryName} stories compelling. Each prompt in our generator
-        incorporates key ingredients that resonate with {categoryName} readers and provide clear narrative
-        direction for writers.
-      </p>
-
-      <p>
-        Research shows that writers who use prompts regularly develop stronger creative muscles and overcome
-        writer's block more quickly. By removing the pressure of starting from a blank page, prompts allow
-        you to focus on what matters most: crafting engaging {categoryName} narratives that captivate your
-        audience.
-      </p>
-    </div>
-
-    <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">
-      Frequently Asked Questions About {capitalizedCategory} Writing
-    </h2>
-
-    <div class="space-y-8 mb-12">
-      <div>
-        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-          What makes a good {categoryName} writing prompt?
-        </h3>
-        <p class="text-gray-700 dark:text-gray-300">
-          A good {categoryName} prompt provides enough structure to guide your story while leaving room for
-          creative interpretation. It should include compelling elements specific to the {categoryName} genre—such
-          as unique conflicts, interesting characters, or thought-provoking scenarios—while avoiding overly
-          prescriptive details that limit your creativity.
-        </p>
-      </div>
-
-      <div>
-        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-          Can I use these prompts for published work?
-        </h3>
-        <p class="text-gray-700 dark:text-gray-300">
-          Absolutely! All prompts generated by our tool are free to use for any purpose, including commercial
-          publication. The prompts are designed as creative springboards—the unique story you create from them
-          is entirely your own original work. We encourage writers to develop these {categoryName} ideas into
-          full stories, novels, or any other creative projects.
-        </p>
-      </div>
-
-      <div>
-        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-          How often should I use writing prompts?
-        </h3>
-        <p class="text-gray-700 dark:text-gray-300">
-          Many successful {categoryName} writers incorporate prompts into their daily or weekly writing practice.
-          Even if you're working on a long-term project, spending 15-30 minutes with a prompt can serve as an
-          excellent warm-up exercise, help you explore new techniques, or provide a creative break when you're
-          feeling stuck on your main work.
-        </p>
-      </div>
-
-      <div>
-        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-          What if I don't like the generated prompt?
-        </h3>
-        <p class="text-gray-700 dark:text-gray-300">
-          Simply click "Generate New Prompt" to receive another idea! Our {categoryName} prompt generator contains
-          {categoryPrompts.length}+ unique combinations, so you can keep exploring until you find one that resonates
-          with you. You can also use the history feature to revisit previously generated prompts if you change your
-          mind.
-        </p>
+        <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <h3 class="text-xl font-semibold text-gray-900 mb-3">
+            What if I don't like the generated prompt?
+          </h3>
+          <p class="text-gray-700">
+            Simply click "Generate New Prompt" to receive another idea! Our {categoryName} prompt generator contains
+            {categoryPrompts.length}+ unique combinations, so you can keep exploring until you find one that resonates
+            with you. You can also use the history feature to revisit previously generated prompts if you change your
+            mind.
+          </p>
+        </div>
       </div>
     </div>
+  </section>
 
-    <div class="bg-purple-50 dark:bg-gray-800 p-8 rounded-lg border-l-4 border-purple-500 mb-12">
-      <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-        Ready to Start Writing?
-      </h3>
-      <p class="text-gray-700 dark:text-gray-300 mb-4">
-        Don't let writer's block hold you back. Our {categoryName} writing prompts generator provides endless
-        inspiration to fuel your creative writing journey. Generate your next great {categoryName} story idea now!
-      </p>
-      <a
-        href="#top"
-        class="inline-block px-6 py-3 bg-purple-600 text-white font-semibold rounded-lg hover:bg-purple-700 transition-colors"
-      >
-        Generate More Prompts
-      </a>
-    </div>
-  </article>
+  <AstroFooter />
 </BaseLayout>
