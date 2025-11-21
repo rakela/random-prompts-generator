@@ -1,11 +1,11 @@
-import prompts from '../data/prompts.json';
+import categoryPrompts from '../data/categoryPrompts.json';
 
 const SITE_URL = 'https://randomprompts.org';
 
 // Generate sitemap XML
 export async function GET(context) {
-  // Extract unique categories from prompts
-  const categories = [...new Set(prompts.map(prompt => prompt.category))];
+  // Extract unique categories from category prompts
+  const categories = [...new Set(categoryPrompts.map(prompt => prompt.category))];
 
   // Define all static pages
   const staticPages = [

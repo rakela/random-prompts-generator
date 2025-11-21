@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import PromptGenerator from '../../components/PromptGenerator.jsx';
-import prompts from '../../data/prompts.json';
+import CategoryPromptGenerator from '../../components/CategoryPromptGenerator.jsx';
+import prompts from '../../data/categoryPrompts.json';
 
 // Generate static paths for each unique category
 export function getStaticPaths() {
@@ -90,7 +90,7 @@ const schema = {
   <!-- Interactive Generator Component -->
   <section class="py-12 px-4">
     <div class="max-w-4xl mx-auto">
-      <PromptGenerator
+      <CategoryPromptGenerator
         initialPrompts={categoryPrompts}
         category={categoryName}
         client:load

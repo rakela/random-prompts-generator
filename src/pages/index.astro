@@ -5,12 +5,12 @@ import AstroFooter from '../components/AstroFooter.astro';
 import PromptGenerator from '../components/PromptGenerator';
 import '../styles/global.css';
 import { getSEOData } from '../data/seo';
-import prompts from '../data/prompts.json';
+import categoryPrompts from '../data/categoryPrompts.json';
 
 const seo = getSEOData('home');
 
-// Extract unique categories from prompts for navigation
-const categories = [...new Set(prompts.map(prompt => prompt.category))];
+// Extract unique categories from category prompts for navigation
+const categories = [...new Set(categoryPrompts.map(prompt => prompt.category))];
 const categoryInfo = {
   'fantasy': {
     title: 'Fantasy Writing Prompts',
@@ -145,7 +145,7 @@ const categoryInfo = {
             icon: '📝',
             color: 'gray'
           };
-          const promptCount = prompts.filter(p => p.category === category).length;
+          const promptCount = categoryPrompts.filter(p => p.category === category).length;
 
           const colorClasses = {
             purple: 'from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700',
