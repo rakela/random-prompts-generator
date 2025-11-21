@@ -1,0 +1,467 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AstroHeader from '../components/AstroHeader.astro';
+import AstroFooter from '../components/AstroFooter.astro';
+import '../styles/global.css';
+import { getSEOData } from '../data/seo';
+
+const seo = getSEOData('persuasiveWritingTopics');
+
+// Persuasive Writing Topics Data
+const persuasiveTopics = {
+  school: [
+    {
+      title: "Should schools ban homework?",
+      description: "Many students argue homework causes stress and limits free time, while teachers believe it reinforces learning. Should homework be replaced with project-based learning or shorter, more meaningful assignments?",
+      emoji: "📚"
+    },
+    {
+      title: "Should students be allowed to use phones in class?",
+      description: "Phones can help with research, organization, and communication — but they also distract and enable cheating. Should schools integrate phones into learning or ban them entirely?",
+      emoji: "📱"
+    },
+    {
+      title: "Should school start times be later in the morning?",
+      description: "Research shows teens need more sleep. Would starting school later improve focus and grades, or would it interfere with parents' schedules and after-school activities?",
+      emoji: "⏰"
+    },
+    {
+      title: "Is online learning better than traditional classrooms?",
+      description: "Online education offers flexibility and access, but some say it reduces interaction and motivation. Which environment leads to better learning outcomes?",
+      emoji: "💻"
+    },
+    {
+      title: "Should uniforms be mandatory in all schools?",
+      description: "Uniforms promote equality and discipline, but they can suppress individuality. Should students have freedom of expression through clothing, or do uniforms create a better learning environment?",
+      emoji: "👔"
+    }
+  ],
+  environment: [
+    {
+      title: "Should plastic bottles and bags be banned?",
+      description: "Plastic pollution is destroying oceans and wildlife. Would banning plastic help the planet, or would it create new challenges for consumers and businesses?",
+      emoji: "♻️"
+    },
+    {
+      title: "Is it everyone's duty to recycle?",
+      description: "Recycling helps the environment, but not everyone does it properly. Should governments enforce stricter recycling laws, or is education and personal responsibility enough?",
+      emoji: "🌍"
+    },
+    {
+      title: "Should animals be used for scientific testing?",
+      description: "Animal testing has saved lives through medical research but raises ethical concerns. Is it ever justifiable to harm animals for the benefit of humans?",
+      emoji: "🐭"
+    },
+    {
+      title: "Should zoos be banned or reimagined?",
+      description: "Zoos protect endangered species but also confine animals. Should we close zoos completely or transform them into sanctuaries focused on conservation and education?",
+      emoji: "🦁"
+    },
+    {
+      title: "Is climate change the biggest threat to humanity?",
+      description: "Rising temperatures, sea levels, and natural disasters affect millions. Should climate action take priority over issues like poverty or education?",
+      emoji: "🌡️"
+    }
+  ],
+  technology: [
+    {
+      title: "Should children under 13 be allowed on social media?",
+      description: "Platforms expose kids to creativity — and to danger. Should social media companies restrict access for minors, or should parents decide?",
+      emoji: "📲"
+    },
+    {
+      title: "Does technology make people less social?",
+      description: "While tech connects us globally, it can also isolate us behind screens. Are we losing real human connection in exchange for convenience?",
+      emoji: "🤖"
+    },
+    {
+      title: "Should AI-generated content be labeled or restricted?",
+      description: "AI can create realistic images, essays, and even news. Should there be transparency laws to help users identify what's real vs. AI-made?",
+      emoji: "🤖"
+    },
+    {
+      title: "Is screen time more harmful than helpful for students?",
+      description: "Screens are part of learning and entertainment, but overuse harms sleep, focus, and mood. Should schools limit screen-based assignments?",
+      emoji: "📺"
+    },
+    {
+      title: "Should influencers be responsible for what they promote?",
+      description: "From products to lifestyles, influencers shape opinions — especially among teens. Should they face penalties for promoting harmful or false messages?",
+      emoji: "⭐"
+    }
+  ],
+  ethics: [
+    {
+      title: "Should people become vegetarian to save the planet?",
+      description: "Meat production causes deforestation and emissions, yet many depend on it for nutrition and culture. Would a plant-based lifestyle truly solve environmental issues?",
+      emoji: "🥗"
+    },
+    {
+      title: "Is it fair to judge people by appearance?",
+      description: "First impressions are powerful but often misleading. Should society make more effort to see beyond looks, or are judgments based on appearance natural and unavoidable?",
+      emoji: "👀"
+    },
+    {
+      title: "Should college education be free for everyone?",
+      description: "Free education could open opportunities for all, but it would also raise taxes and strain budgets. Is higher education a right or a privilege?",
+      emoji: "🎓"
+    },
+    {
+      title: "Should voting be mandatory?",
+      description: "Democracy depends on participation, but forcing people to vote may reduce genuine engagement. Would mandatory voting strengthen democracy or weaken it?",
+      emoji: "🗳️"
+    },
+    {
+      title: "Should parents control how much screen time their kids get?",
+      description: "Technology shapes childhood today — both positively and negatively. Should parents enforce strict digital rules, or should kids learn self-control naturally?",
+      emoji: "⏱️"
+    }
+  ]
+};
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 text-white py-16">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">
+        Persuasive Writing Topics
+      </h1>
+
+      <p class="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
+        Explore thought-provoking persuasive writing topics and debate ideas for students. From school policies to technology ethics, these topics help develop critical thinking, argumentation skills, and persuasive writing abilities.
+      </p>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="max-w-6xl mx-auto px-4 py-8">
+    <div class="max-w-4xl mx-auto">
+
+      <!-- Random Generator Section -->
+      <div class="bg-white rounded-2xl shadow-xl p-8 mb-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4 text-center">🎲 Random Topic Generator</h2>
+        <p class="text-gray-600 text-center mb-6">Generate a random persuasive writing topic instantly</p>
+        <div class="text-center mb-6">
+          <button id="generate-random" class="px-8 py-3 bg-gradient-to-r from-orange-600 to-pink-600 text-white rounded-lg font-semibold hover:from-orange-700 hover:to-pink-700 transition-all shadow-lg">
+            Generate Random Topic
+          </button>
+        </div>
+        <div id="random-prompt-display" class="hidden bg-gradient-to-r from-orange-50 to-pink-50 border border-orange-200 rounded-lg p-6">
+          <div class="flex items-start gap-3 mb-4">
+            <span id="random-prompt-emoji" class="text-3xl"></span>
+            <div class="flex-1">
+              <h3 id="random-prompt-title" class="text-xl font-bold text-gray-900 mb-2"></h3>
+              <p id="random-prompt-description" class="text-gray-700"></p>
+            </div>
+          </div>
+          <div class="flex gap-2 justify-end">
+            <button id="copy-random" class="px-4 py-2 bg-white border border-orange-200 rounded-lg text-orange-700 hover:bg-orange-50 transition-colors text-sm font-medium">
+              Copy Topic
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- All Prompts Display -->
+      <div class="mt-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">All Persuasive Writing Topics</h2>
+
+        <!-- School & Education -->
+        <div class="mb-8">
+          <h3 class="text-xl font-bold text-orange-700 mb-4 flex items-center gap-2">
+            📚 School & Education
+          </h3>
+          <div class="grid gap-4">
+            {persuasiveTopics.school.map((prompt, index) => (
+              <div class="bg-gradient-to-r from-orange-50 to-red-50 border border-orange-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                <div class="flex items-start gap-3">
+                  <span class="text-2xl">{prompt.emoji}</span>
+                  <div class="flex-1">
+                    <h4 class="font-bold text-gray-900 mb-1">{index + 1}. {prompt.title}</h4>
+                    <p class="text-gray-700">{prompt.description}</p>
+                  </div>
+                  <button
+                    class="copy-btn p-2 text-gray-400 hover:text-gray-600 transition-colors"
+                    data-text={`${prompt.title} — ${prompt.description}`}
+                    title="Copy prompt"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Environment & Society -->
+        <div class="mb-8">
+          <h3 class="text-xl font-bold text-green-700 mb-4 flex items-center gap-2">
+            🌍 Environment & Society
+          </h3>
+          <div class="grid gap-4">
+            {persuasiveTopics.environment.map((prompt, index) => (
+              <div class="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                <div class="flex items-start gap-3">
+                  <span class="text-2xl">{prompt.emoji}</span>
+                  <div class="flex-1">
+                    <h4 class="font-bold text-gray-900 mb-1">{index + 6}. {prompt.title}</h4>
+                    <p class="text-gray-700">{prompt.description}</p>
+                  </div>
+                  <button
+                    class="copy-btn p-2 text-gray-400 hover:text-gray-600 transition-colors"
+                    data-text={`${prompt.title} — ${prompt.description}`}
+                    title="Copy prompt"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Technology & Media -->
+        <div class="mb-8">
+          <h3 class="text-xl font-bold text-blue-700 mb-4 flex items-center gap-2">
+            💻 Technology & Media
+          </h3>
+          <div class="grid gap-4">
+            {persuasiveTopics.technology.map((prompt, index) => (
+              <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                <div class="flex items-start gap-3">
+                  <span class="text-2xl">{prompt.emoji}</span>
+                  <div class="flex-1">
+                    <h4 class="font-bold text-gray-900 mb-1">{index + 11}. {prompt.title}</h4>
+                    <p class="text-gray-700">{prompt.description}</p>
+                  </div>
+                  <button
+                    class="copy-btn p-2 text-gray-400 hover:text-gray-600 transition-colors"
+                    data-text={`${prompt.title} — ${prompt.description}`}
+                    title="Copy prompt"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Ethics & Lifestyle -->
+        <div class="mb-8">
+          <h3 class="text-xl font-bold text-purple-700 mb-4 flex items-center gap-2">
+            💡 Ethics & Lifestyle
+          </h3>
+          <div class="grid gap-4">
+            {persuasiveTopics.ethics.map((prompt, index) => (
+              <div class="bg-gradient-to-r from-purple-50 to-pink-50 border border-purple-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                <div class="flex items-start gap-3">
+                  <span class="text-2xl">{prompt.emoji}</span>
+                  <div class="flex-1">
+                    <h4 class="font-bold text-gray-900 mb-1">{index + 16}. {prompt.title}</h4>
+                    <p class="text-gray-700">{prompt.description}</p>
+                  </div>
+                  <button
+                    class="copy-btn p-2 text-gray-400 hover:text-gray-600 transition-colors"
+                    data-text={`${prompt.title} — ${prompt.description}`}
+                    title="Copy prompt"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- SEO Content Section -->
+      <div class="mt-16 space-y-8">
+        <div class="prose prose-gray max-w-none">
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">Persuasive Writing Topics for Students</h2>
+          <p class="text-gray-700 mb-4">
+            Persuasive writing topics help students develop critical thinking, argumentation skills, and the ability to express and defend their opinions effectively. These carefully curated topics cover relevant, contemporary issues that resonate with students' lives and experiences.
+          </p>
+          <p class="text-gray-700 mb-4">
+            From school policies and environmental concerns to technology ethics and social responsibility, these persuasive writing topics encourage students to research, think critically, consider multiple perspectives, and build compelling arguments. Perfect for persuasive essays, classroom debates, speech competitions, or <a href="/writing-prompts-for-students" class="text-orange-600 hover:underline">writing assignments</a>, these topics challenge students to engage with real-world issues and develop their voice as thoughtful, articulate writers.
+          </p>
+          <p class="text-gray-700 mb-4">
+            Each topic presents both sides of an issue, helping students understand that persuasive writing requires acknowledging counterarguments while building a strong case for their position. This approach develops nuanced thinking and sophisticated argumentation skills essential for academic and professional success.
+          </p>
+          <p class="text-gray-700 mb-4">
+            Prefer shorter prompts? Try our <a href="/writing-prompts" class="text-blue-600 hover:underline">Writing Prompts Generator</a> or switch to seasonal visuals by visiting our <a href="/ai-images-prompt" class="text-blue-600 hover:underline">AI Art Prompts page</a>.
+          </p>
+        </div>
+      </div>
+
+      <!-- Related Links -->
+      <div class="mt-12 bg-gray-50 rounded-lg p-6 border border-gray-200">
+        <h3 class="text-xl font-bold text-gray-900 mb-4">More Writing Resources</h3>
+        <div class="grid md:grid-cols-2 gap-4">
+          <a href="/writing-prompts" class="text-orange-600 hover:underline flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+              <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+              <path d="M2 2l7.586 7.586"></path>
+            </svg>
+            Random Writing Prompts
+          </a>
+          <a href="/writing-prompts-for-students" class="text-orange-600 hover:underline flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+              <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+              <path d="M2 2l7.586 7.586"></path>
+            </svg>
+            Writing Prompts for Students
+          </a>
+          <a href="/short-story-prompts-generator" class="text-orange-600 hover:underline flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"></path>
+              <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+              <path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"></path>
+            </svg>
+            Short Story Prompt Generator
+          </a>
+          <a href="/october-writing-prompts" class="text-orange-600 hover:underline flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+              <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+              <path d="M2 2l7.586 7.586"></path>
+            </svg>
+            October Writing Prompts
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <section class="bg-white py-16 mt-16">
+      <div class="max-w-4xl mx-auto px-4">
+        <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+        <div class="space-y-6">
+          <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">What makes a good persuasive writing topic?</h3>
+            <p class="text-gray-700">
+              A good persuasive writing topic is debatable, relevant to students' lives, and has multiple valid perspectives. It should encourage critical thinking, research, and the development of well-reasoned arguments supported by evidence.
+            </p>
+          </div>
+
+          <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">How do persuasive writing topics help students?</h3>
+            <p class="text-gray-700">
+              Persuasive writing topics help students develop essential skills including critical thinking, research abilities, logical reasoning, evidence-based argumentation, and clear communication. They also teach students to consider multiple perspectives and construct compelling arguments.
+            </p>
+          </div>
+
+          <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">Can these topics be used for classroom debates?</h3>
+            <p class="text-gray-700">
+              Absolutely! These persuasive writing topics work excellently for classroom debates, speech competitions, essay assignments, research projects, and discussion activities. Each topic presents multiple viewpoints, making them ideal for structured debates and class discussions.
+            </p>
+          </div>
+
+          <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">What's the difference between persuasive and argumentative writing?</h3>
+            <p class="text-gray-700">
+              While similar, persuasive writing aims to convince readers through emotional appeals, logic, and credibility, while argumentative writing focuses more heavily on logical reasoning and evidence. Both require strong critical thinking and research skills, and these topics work well for either approach.
+            </p>
+          </div>
+
+          <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">Are these topics age-appropriate for all students?</h3>
+            <p class="text-gray-700">
+              These topics are designed primarily for middle school and high school students. Teachers can adapt the complexity and depth of exploration based on grade level and student abilities. Topics cover contemporary issues that resonate with today's students.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <AstroFooter />
+
+  <!-- Copy to clipboard functionality -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const copyButtons = document.querySelectorAll('.copy-btn');
+
+      copyButtons.forEach(button => {
+        button.addEventListener('click', async () => {
+          const text = button.getAttribute('data-text');
+
+          try {
+            await navigator.clipboard.writeText(text);
+
+            // Visual feedback
+            const originalHTML = button.innerHTML;
+            button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+            button.classList.add('text-green-600');
+
+            setTimeout(() => {
+              button.innerHTML = originalHTML;
+              button.classList.remove('text-green-600');
+            }, 2000);
+          } catch (err) {
+            console.error('Failed to copy:', err);
+          }
+        });
+      });
+    });
+  </script>
+
+  <!-- Random Generator Script -->
+  <script define:vars={{ persuasiveTopics }}>
+    const allPromptsData = persuasiveTopics;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const generateRandomBtn = document.getElementById('generate-random');
+      const randomPromptDisplay = document.getElementById('random-prompt-display');
+      const copyRandomBtn = document.getElementById('copy-random');
+      let currentPrompt = null;
+
+      generateRandomBtn.addEventListener('click', () => {
+        const categories = Object.keys(allPromptsData);
+        const randomCategory = categories[Math.floor(Math.random() * categories.length)];
+        const promptsInCategory = allPromptsData[randomCategory];
+        const randomPrompt = promptsInCategory[Math.floor(Math.random() * promptsInCategory.length)];
+
+        currentPrompt = randomPrompt;
+        document.getElementById('random-prompt-emoji').textContent = randomPrompt.emoji;
+        document.getElementById('random-prompt-title').textContent = randomPrompt.title;
+        document.getElementById('random-prompt-description').textContent = randomPrompt.description;
+        randomPromptDisplay.classList.remove('hidden');
+      });
+
+      copyRandomBtn.addEventListener('click', async () => {
+        if (currentPrompt) {
+          const text = `${currentPrompt.title} — ${currentPrompt.description}`;
+          try {
+            await navigator.clipboard.writeText(text);
+            const originalText = copyRandomBtn.textContent;
+            copyRandomBtn.textContent = 'Copied!';
+            setTimeout(() => {
+              copyRandomBtn.textContent = originalText;
+            }, 2000);
+          } catch (err) {
+            console.error('Failed to copy:', err);
+          }
+        }
+      });
+    });
+  </script>
+</BaseLayout>

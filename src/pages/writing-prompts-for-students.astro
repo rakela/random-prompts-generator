@@ -1,0 +1,285 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AstroHeader from '../components/AstroHeader.astro';
+import AstroFooter from '../components/AstroFooter.astro';
+import '../styles/global.css';
+import { getSEOData } from '../data/seo';
+
+const seo = getSEOData('writingPromptsForStudents');
+
+// Writing Prompts for Students Data
+const studentPrompts = {
+  creative: [
+    {
+      title: "The Door That Wasn't There Yesterday",
+      description: "You wake up and find a new door in your room. What happens when you open it?",
+      emoji: "🚪"
+    },
+    {
+      title: "A Message from the Future",
+      description: "You receive a text from your future self warning you about something. What does it say?",
+      emoji: "📱"
+    },
+    {
+      title: "The Day the Internet Disappeared",
+      description: "Describe how life changes when the world suddenly loses access to the internet.",
+      emoji: "🌐"
+    },
+    {
+      title: "The Secret Library",
+      description: "You discover a hidden library where books write themselves as you read them.",
+      emoji: "📚"
+    },
+    {
+      title: "The Last Tree on Earth",
+      description: "Write from the perspective of the last tree surviving in a futuristic world.",
+      emoji: "🌳"
+    }
+  ],
+  reflective: [
+    {
+      title: "A Lesson I Learned the Hard Way",
+      description: "Describe a mistake that taught you something important.",
+      emoji: "💡"
+    },
+    {
+      title: "My Favorite Place in the World",
+      description: "Write about a place that makes you feel calm, happy, or inspired.",
+      emoji: "🏞️"
+    },
+    {
+      title: "If I Could Talk to My Younger Self",
+      description: "What advice would you give to yourself five years ago?",
+      emoji: "⏳"
+    },
+    {
+      title: "The Power of Kindness",
+      description: "Write about a moment when someone's kindness changed your day (or your life).",
+      emoji: "💝"
+    },
+    {
+      title: "What Makes a Hero?",
+      description: "Who do you consider a hero in your life and why?",
+      emoji: "🦸"
+    }
+  ]
+};
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white py-16">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">
+        Writing Prompts for Students
+      </h1>
+
+      <p class="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
+        Discover engaging writing prompts designed specifically for students. From creative storytelling to personal reflection, these prompts help develop writing skills and inspire creative thinking.
+      </p>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="max-w-6xl mx-auto px-4 py-8">
+    <div class="max-w-4xl mx-auto">
+      <!-- All Prompts Display -->
+      <div class="mt-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">All Writing Prompts for Students</h2>
+
+        <!-- Creative Writing Prompts -->
+        <div class="mb-8">
+          <h3 class="text-xl font-bold text-blue-700 mb-4 flex items-center gap-2">
+            ✏️ Creative Writing Prompts
+          </h3>
+          <div class="grid gap-4">
+            {studentPrompts.creative.map((prompt, index) => (
+              <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                <div class="flex items-start gap-3">
+                  <span class="text-2xl">{prompt.emoji}</span>
+                  <div class="flex-1">
+                    <h4 class="font-bold text-gray-900 mb-1">{index + 1}. {prompt.title}</h4>
+                    <p class="text-gray-700">{prompt.description}</p>
+                  </div>
+                  <button
+                    class="copy-btn p-2 text-gray-400 hover:text-gray-600 transition-colors"
+                    data-text={`${prompt.title} — ${prompt.description}`}
+                    title="Copy prompt"
+                  >
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Reflective / Personal Prompts -->
+        <div class="mb-8">
+          <h3 class="text-xl font-bold text-purple-700 mb-4 flex items-center gap-2">
+            💭 Reflective / Personal Prompts
+          </h3>
+          <div class="grid gap-4">
+            {studentPrompts.reflective.map((prompt, index) => (
+              <div class="bg-gradient-to-r from-purple-50 to-pink-50 border border-purple-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                <div class="flex items-start gap-3">
+                  <span class="text-2xl">{prompt.emoji}</span>
+                  <div class="flex-1">
+                    <h4 class="font-bold text-gray-900 mb-1">{index + 6}. {prompt.title}</h4>
+                    <p class="text-gray-700">{prompt.description}</p>
+                  </div>
+                  <button
+                    class="copy-btn p-2 text-gray-400 hover:text-gray-600 transition-colors"
+                    data-text={`${prompt.title} — ${prompt.description}`}
+                    title="Copy prompt"
+                  >
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- SEO Content Section -->
+      <div class="mt-16 space-y-8">
+        <div class="prose prose-gray max-w-none">
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">Writing Prompts for Students</h2>
+          <p class="text-gray-700 mb-4">
+            Writing prompts for students are powerful tools that spark creativity, develop critical thinking skills, and build confidence in written expression. These carefully crafted prompts combine imaginative storytelling with personal reflection, helping students explore both creative fiction and meaningful self-examination.
+          </p>
+          <p class="text-gray-700 mb-4">
+            Perfect for <a href="/writing-prompts" class="text-blue-600 hover:underline">creative writing assignments</a>, classroom activities, homework exercises, or journal writing, these prompts encourage students to think deeply, express themselves clearly, and develop their unique voice as writers. From fantastical scenarios that ignite imagination to thoughtful reflections that build emotional intelligence, these prompts support comprehensive writing development.
+          </p>
+
+          <h2 class="text-2xl font-bold text-gray-900 mb-4 mt-8">More Seasonal Writing Resources</h2>
+          <p class="text-gray-700 mb-4">
+            For additional fall-themed ideas check out <a href="https://www.writersdigest.com/write-better-fiction/50-fall-writing-prompts" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">50 Fall Writing Prompts – WritersDigest</a> and <a href="https://blog.reedsy.com/halloween-writing-prompts/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Halloween Writing Prompts – Reedsy</a>.
+          </p>
+        </div>
+      </div>
+
+      <!-- Related Links -->
+      <div class="mt-12 bg-white rounded-2xl shadow-xl p-8">
+        <h3 class="text-3xl font-bold text-gray-900 mb-6">Explore More Writing Resources</h3>
+        <p class="text-gray-700 mb-6">
+          Looking for more creative prompts? Check out our other generators and tools:
+        </p>
+        <div class="grid md:grid-cols-2 gap-4">
+          <a href="/writing-prompts" class="flex items-center gap-3 p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl hover:shadow-md transition-shadow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-600">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+            </svg>
+            <div>
+              <div class="font-semibold text-gray-900">Writing Prompts</div>
+              <div class="text-sm text-gray-600">Spark your creativity</div>
+            </div>
+          </a>
+          <a href="/short-story-prompts-generator" class="flex items-center gap-3 p-4 bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl hover:shadow-md transition-shadow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-600">
+              <circle cx="12" cy="8" r="6"></circle>
+              <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path>
+            </svg>
+            <div>
+              <div class="font-semibold text-gray-900">Short Story Prompts</div>
+              <div class="text-sm text-gray-600">Fantasy and worldbuilding</div>
+            </div>
+          </a>
+          <a href="/october-writing-prompts" class="flex items-center gap-3 p-4 bg-gradient-to-r from-orange-50 to-red-50 rounded-xl hover:shadow-md transition-shadow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-orange-600">
+              <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+            </svg>
+            <div>
+              <div class="font-semibold text-gray-900">October Writing Prompts</div>
+              <div class="text-sm text-gray-600">Halloween and fall themes</div>
+            </div>
+          </a>
+          <a href="/ai-blog-post-generator" class="flex items-center gap-3 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl hover:shadow-md transition-shadow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <circle cx="9" cy="9" r="2"></circle>
+              <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path>
+            </svg>
+            <div>
+              <div class="font-semibold text-gray-900">Blog Post Generator</div>
+              <div class="text-sm text-gray-600">SEO-optimized content ideas</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <section class="bg-white py-16 mt-16">
+      <div class="max-w-4xl mx-auto px-4">
+        <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+        <div class="space-y-6">
+          <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">What are writing prompts for students?</h3>
+            <p class="text-gray-700">
+              Writing prompts for students are carefully designed story starters and thought-provoking questions that help students practice writing skills, develop creativity, and explore personal reflection. They provide a starting point that makes it easier to begin writing and overcome writer's block.
+            </p>
+          </div>
+
+          <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">How do writing prompts help students?</h3>
+            <p class="text-gray-700">
+              Writing prompts help students develop essential skills including creative thinking, self-expression, grammar and composition, critical reasoning, and emotional intelligence. They provide structure while encouraging imagination, making writing practice more engaging and effective.
+            </p>
+          </div>
+
+          <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">Can teachers use these prompts in the classroom?</h3>
+            <p class="text-gray-700">
+              Absolutely! These writing prompts are perfect for classroom use, homework assignments, writing workshops, creative writing clubs, or independent study. They work well for various grade levels and can be adapted to different skill levels and learning objectives.
+            </p>
+          </div>
+
+          <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">What's the difference between creative and reflective prompts?</h3>
+            <p class="text-gray-700">
+              Creative writing prompts focus on imagination and storytelling, encouraging students to create fictional narratives and explore "what if" scenarios. Reflective prompts encourage personal exploration, helping students examine their experiences, values, and perspectives through introspective writing.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <AstroFooter />
+
+  <script>
+    // Copy to clipboard functionality
+    document.addEventListener('DOMContentLoaded', () => {
+      const copyButtons = document.querySelectorAll('.copy-btn');
+
+      copyButtons.forEach(button => {
+        button.addEventListener('click', async () => {
+          const text = button.getAttribute('data-text');
+          if (text) {
+            try {
+              await navigator.clipboard.writeText(text);
+              const originalHTML = button.innerHTML;
+              button.innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>';
+              button.classList.add('text-green-600');
+              setTimeout(() => {
+                button.innerHTML = originalHTML;
+                button.classList.remove('text-green-600');
+              }, 2000);
+            } catch (err) {
+              console.error('Failed to copy:', err);
+            }
+          }
+        });
+      });
+    });
+  </script>
+</BaseLayout>

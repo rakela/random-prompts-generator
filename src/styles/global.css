@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Prevent horizontal overflow on all pages */
+html {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Toast Animation */
+@keyframes slide-in {
+  from {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in {
+  animation: slide-in 0.3s ease-out;
+}
+.megamenu-container {
+    width: 750px !important;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0 auto;
+}
+.megamenu-container .grid{
+    display: flex !important;
+    flex-direction: row;
+}
+.megamenu-container .grid .px-3{
+  padding-left: 0 !important;
+}

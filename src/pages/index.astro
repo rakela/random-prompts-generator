@@ -1,0 +1,138 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AstroHeader from '../components/AstroHeader.astro';
+import AstroFooter from '../components/AstroFooter.astro';
+import PromptGenerator from '../components/PromptGenerator';
+import '../styles/global.css';
+import { getSEOData } from '../data/seo';
+
+const seo = getSEOData('home');
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">
+        Random Prompts Generator
+      </h1>
+
+      <p class="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
+        Random Prompts Generator for writing, AI art, blogging, stories, and character creation, all in one clean, powerful tool. Instantly generate professional-quality prompts for ChatGPT, MidJourney, and creative writing.
+      </p>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="max-w-6xl mx-auto px-4 py-8">
+    {/* Prompt Generator Component */}
+    <PromptGenerator client:load category="writing" />
+  </div>
+
+  <!-- Features Section -->
+  <section class="bg-gray-50 py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Why Choose Our Prompt Generator?</h2>
+        <p class="text-xl text-gray-600 mb-12">Professional-quality prompts designed for real-world creative work</p>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="text-center">
+            <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="text-blue-600 w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">Instant Generation</h3>
+            <p class="text-gray-600">Generate unlimited prompts instantly with our advanced algorithms</p>
+          </div>
+          <div class="text-center">
+            <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="text-purple-600 w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">Professional Quality</h3>
+            <p class="text-gray-600">Prompts crafted with industry terminology and proven techniques</p>
+          </div>
+          <div class="text-center">
+            <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="text-green-600 w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">Save & Export</h3>
+            <p class="text-gray-600">Save your favorite prompts and export them for future use</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- All Tools Section -->
+  <section class="py-16">
+    <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Explore All Our Free Tools</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          <a href="/writing-prompts" class="bg-white p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">Writing Prompts</h3>
+            <p class="text-gray-600">Generate creative writing prompts with conflicts and plot twists</p>
+          </a>
+          <a href="/ai-images-prompt" class="bg-white p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">AI Art Prompts</h3>
+            <p class="text-gray-600">Professional prompts for MidJourney, DALL-E, and Stable Diffusion</p>
+          </a>
+          <a href="/ai-blog-post-generator" class="bg-white p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">Blog Post Generator</h3>
+            <p class="text-gray-600">SEO-optimized blog post ideas and content strategies</p>
+          </a>
+          <a href="/short-story-prompts-generator" class="bg-white p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">Short Story Prompts</h3>
+            <p class="text-gray-600">Fantasy worldbuilding and short fiction prompts</p>
+          </a>
+          <a href="/random-name-generator" class="bg-white p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">Character Names</h3>
+            <p class="text-gray-600">Generate unique fantasy and character names</p>
+          </a>
+          <a href="/october-writing-prompts" class="bg-white p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">October Prompts</h3>
+            <p class="text-gray-600">Halloween and fall-themed writing prompts</p>
+          </a>
+        </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="bg-white py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+        <div class="space-y-6">
+          <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">What is a random prompts generator?</h3>
+            <p class="text-gray-700">
+              It's a tool that instantly creates unique ideas for writing, AI art, blogs, and worldbuilding using curated templates and parameters like genre, tone, and style.
+            </p>
+          </div>
+
+          <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">Is the Random Prompts Generator free to use?</h3>
+            <p class="text-gray-700">
+              Yes. You can generate unlimited prompts for free. Optional pro features may include saving, bulk export, and an API.
+            </p>
+          </div>
+
+          <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">Can I use the generated prompts commercially?</h3>
+            <p class="text-gray-700">
+              Yes. Prompts are yours to use for personal or commercial projects; attribution is appreciated but not required.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <AstroFooter />
+</BaseLayout>

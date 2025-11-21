@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AstroHeader from '../components/AstroHeader.astro';
+import AstroFooter from '../components/AstroFooter.astro';
+import PromptGenerator from '../components/PromptGenerator';
+import '../styles/global.css';
+import { getSEOData } from '../data/seo';
+
+const seo = getSEOData('randomNameGenerator');
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-r from-pink-600 to-purple-600 text-white py-16">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">
+        Random Name Generator
+      </h1>
+
+      <p class="text-lg opacity-80 mb-8 max-w-2xl mx-auto">
+        Generate unique fantasy character names for stories & games. Random name generator with elvish, dwarven, human & exotic names. Free & unlimited.
+      </p>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="max-w-6xl mx-auto px-4 py-8">
+    {/* Prompt Generator Component */}
+    <PromptGenerator client:load category="names" />
+
+    {/* SEO Content Section */}
+    <div class="mt-16 space-y-8">
+      <div class="prose prose-gray max-w-none">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Fantasy Character Name Generator</h2>
+        <p class="text-gray-700 mb-4">
+          Generate authentic fantasy character names with cultural consistency and meaningful combinations. Our name generator creates names that sound natural within their fantasy cultures while suggesting character backgrounds and personalities.
+        </p>
+        <p class="text-gray-700 mb-4">
+          Each name is crafted from culturally consistent elements (Elvish, Dwarven, Human, Exotic) with optional titles and house affiliations that suggest the character's role, background, and social status within their world.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <AstroFooter />
+</BaseLayout>

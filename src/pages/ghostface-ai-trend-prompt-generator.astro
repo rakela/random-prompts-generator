@@ -1,0 +1,351 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AstroHeader from '../components/AstroHeader.astro';
+import AstroFooter from '../components/AstroFooter.astro';
+import '../styles/global.css';
+import { getSEOData } from '../data/seo';
+
+const seo = getSEOData('ghostfacePrompt');
+
+const ghostfacePrompts = [
+  {
+    id: 1,
+    title: "Neon Ghostface in the City",
+    icon: "🎭",
+    prompt: "Ghostface wearing a glossy black robe and reflective neon mask, standing in a rainy cyberpunk alley, neon signs glowing pink and blue, reflections on wet pavement, smoke rising, cinematic lighting, ultra-realistic, high detail, moody cyberpunk atmosphere, DSLR bokeh, 8K --ar 16:9 --v 6 --style raw --q 2 --chaos 20"
+  },
+  {
+    id: 2,
+    title: "Ghostface Under the Full Moon",
+    icon: "🌕",
+    prompt: "Ghostface silhouette holding a knife, standing in a misty forest under a glowing full moon, fog drifting through tall trees, cinematic horror composition, blue-silver moonlight, eerie shadows, high-resolution 8K detail, dramatic lighting, haunting tone --ar 16:9 --v 6 --style raw --q 2 --chaos 15"
+  },
+  {
+    id: 3,
+    title: "Ghostface in a Luxury Mansion",
+    icon: "🩸",
+    prompt: "Modern Ghostface in a black tailored suit and mask, inside an elegant mansion with marble floors and golden chandeliers, cracked mirror behind him, red accent glow, cinematic horror fashion editorial, film noir aesthetic, soft shadows, ultra-detailed, 8K realism --ar 9:16 --v 6 --style raw --q 2 --chaos 10"
+  },
+  {
+    id: 4,
+    title: "Ghostface Selfie Trend",
+    icon: "📸",
+    prompt: "Female Ghostface taking a mirror selfie with smartphone, stylish outfit (black skirt, crop top, mask on), purple and red LED lights, neon room decor, cinematic selfie aesthetic, ultra-realistic lighting, social media vibe, viral TikTok style, soft background blur --ar 9:16 --v 6 --style raw --q 2 --chaos 25"
+  },
+  {
+    id: 5,
+    title: "Ghostface on the Run",
+    icon: "🔥",
+    prompt: "Ghostface sprinting through a burning street at night, fire and smoke behind, sparks flying, orange light reflecting on mask, cinematic motion blur, action horror scene, Hollywood style still frame, dynamic camera angle, photorealistic 8K --ar 21:9 --v 6 --style raw --q 2 --chaos 20"
+  },
+  {
+    id: 6,
+    title: "Ghostface Eating the Nano Banana",
+    icon: "🍌",
+    prompt: "Ghostface holding a glowing nano banana the size of a keychain, staring at it like a secret artifact, futuristic kitchen background, soft cinematic lighting, golden reflections, high-detail textures, surreal minimalist tone, ultra-realistic 8K macro photography, shallow depth of field --ar 16:9 --v 6 --style raw --q 2 --chaos 20"
+  },
+  {
+    id: 7,
+    title: "Nano Banana Universe – Ghostface Edition",
+    icon: "⚡",
+    prompt: "Tiny nano banana floating in space with Ghostface reflected inside its glossy surface, cosmic lighting, glowing energy waves, cinematic sci-fi tone, ultra-realistic space particles, macro shot focus, golden blue color palette, futuristic surrealism, 8K --ar 21:9 --v 6 --style raw --q 2 --chaos 25"
+  }
+];
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-r from-purple-900 via-red-900 to-black text-white py-16">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <div class="flex items-center justify-center gap-3 mb-4">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+          <path d="M2 13a6 6 0 1 0 12 0 4 4 0 1 0-8 0 2 2 0 0 0 4 0"></path>
+          <circle cx="10" cy="13" r="8"></circle>
+          <path d="M2 21h12c4.4 0 8-3.6 8-8V7a2 2 0 1 0-4 0v6"></path>
+          <path d="M18 3 19.1 5.2"></path>
+          <path d="M22 3 20.9 5.2"></path>
+        </svg>
+        <h1 class="text-4xl md:text-5xl font-bold">
+          Ghostface AI Trend Prompt Generator
+        </h1>
+      </div>
+
+      <p class="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
+        Create viral Ghostface AI art for TikTok, Instagram, and social media. Professional MidJourney and DALL-E prompts featuring cyberpunk aesthetics, horror vibes, and trending Ghostface styles. Generate cinematic AI images that go viral.
+      </p>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="max-w-6xl mx-auto px-4 py-8">
+    <div class="max-w-4xl mx-auto">
+      <!-- Introduction -->
+      <div class="bg-gradient-to-r from-purple-50 to-red-50 rounded-lg p-6 mb-8 border border-purple-200">
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">🎭 Viral Ghostface AI Art Prompts</h2>
+        <p class="text-gray-700 mb-3">
+          The <strong>Ghostface AI trend</strong> has taken TikTok, Instagram, and social media by storm. Create stunning, viral-worthy AI art using these professionally crafted prompts for <a href="/ai-images-prompt" class="text-purple-600 hover:underline">MidJourney</a>, DALL-E, and Stable Diffusion.
+        </p>
+        <p class="text-gray-700">
+          From <strong>cyberpunk neon aesthetics</strong> to <strong>horror mansion scenes</strong> and <strong>viral selfie trends</strong>, these Ghostface prompts combine cinematic lighting, ultra-realistic details, and trending styles perfect for content creators and AI art enthusiasts.
+        </p>
+      </div>
+
+      <!-- Export Button -->
+      <div class="text-center mb-8">
+        <button id="export-prompts" class="inline-flex items-center gap-2 px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-semibold transition-colors shadow-lg">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          Export All Prompts
+        </button>
+      </div>
+
+      <!-- Prompts Grid -->
+      <div class="space-y-8 mb-12">
+        {ghostfacePrompts.map((item, index) => (
+          <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex items-start gap-4 mb-4">
+              <span class="text-4xl">{item.icon}</span>
+              <div class="flex-1">
+                <h3 class="text-xl font-bold text-gray-900 mb-2">{index + 1}. {item.title}</h3>
+                <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                  <p class="text-gray-800 text-sm leading-relaxed font-mono">{item.prompt}</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap gap-2 ml-16">
+              <button class="copy-btn inline-flex items-center gap-2 px-3 py-1.5 rounded-md text-sm transition-colors bg-gray-100 hover:bg-gray-200 text-gray-700" data-prompt={item.prompt}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                Copy Prompt
+              </button>
+            </div>
+
+            {(item.id === 6 || item.id === 7) && (
+              <div class="ml-16 mt-4 bg-amber-50 rounded-lg p-3 border border-amber-200">
+                <p class="text-sm text-amber-900">
+                  <strong>Concept:</strong> {item.id === 6
+                    ? "Merges the humor of \"nano banana\" scale with Ghostface's dark persona — perfect for meme-style viral edits and surreal AI art."
+                    : "Cinematic surrealism — the banana becomes a cosmic symbol, reflecting Ghostface's mask inside for a dreamy, viral AI trend look that stands out on social media."}
+                </p>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+
+      <!-- How to Use Section -->
+      <div class="bg-blue-50 rounded-lg p-6 mb-12 border border-blue-200">
+        <h2 class="text-2xl font-bold text-blue-900 mb-4">🎨 How to Use These Ghostface AI Prompts</h2>
+        <div class="space-y-3 text-blue-800">
+          <div class="flex items-start gap-2">
+            <span class="font-bold">1.</span>
+            <p><strong>Copy your favorite prompt</strong> using the "Copy Prompt" button above.</p>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="font-bold">2.</span>
+            <p><strong>Paste into your AI tool:</strong> Use with <a href="https://www.midjourney.com" target="_blank" rel="noopener noreferrer" class="underline">MidJourney</a>, <a href="https://openai.com/dall-e-2" target="_blank" rel="noopener noreferrer" class="underline">DALL-E</a>, or <a href="https://stability.ai" target="_blank" rel="noopener noreferrer" class="underline">Stable Diffusion</a>.</p>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="font-bold">3.</span>
+            <p><strong>Customize parameters:</strong> Adjust --ar (aspect ratio), --chaos (variation), or --style for different effects.</p>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="font-bold">4.</span>
+            <p><strong>Generate & share:</strong> Create your Ghostface AI art and share on TikTok, Instagram, or Twitter with #GhostfaceAI</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEO Content Section -->
+      <div class="mt-16 space-y-8">
+        <div class="prose prose-gray max-w-none">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">Why Ghostface AI Art is Trending</h2>
+          <p class="text-gray-700 mb-4">
+            The <strong>Ghostface AI trend</strong> combines horror iconography with cutting-edge AI art generation, creating visually stunning images that resonate across social media platforms. From <strong>cyberpunk neon aesthetics</strong> to <strong>luxury horror editorials</strong>, these prompts tap into viral content trends that drive engagement.
+          </p>
+          <p class="text-gray-700 mb-4">
+            Our professionally crafted <strong>Ghostface prompt templates</strong> include technical parameters like <code>--ar 16:9</code> for widescreen compositions, <code>--chaos 20</code> for creative variation, and <code>--style raw</code> for ultra-realistic results. Each prompt is optimized for <a href="/ai-images-prompt" class="text-blue-600 hover:underline">MidJourney v6</a>, DALL-E 3, and Stable Diffusion XL.
+          </p>
+
+          <h3 class="text-2xl font-bold text-gray-900 mb-3 mt-8">Popular Ghostface AI Styles</h3>
+          <ul class="list-disc list-inside space-y-2 text-gray-700 mb-4">
+            <li><strong>Cyberpunk Ghostface:</strong> Neon-lit urban environments with rain-soaked streets and moody atmospheric lighting</li>
+            <li><strong>Horror Aesthetic:</strong> Moonlit forests, mansion interiors, and classic slasher film compositions</li>
+            <li><strong>Fashion Editorial:</strong> Luxury settings with tailored suits, elegant poses, and film noir styling</li>
+            <li><strong>Viral Selfie Trend:</strong> Mirror selfies with LED lighting, perfect for TikTok and Instagram content</li>
+            <li><strong>Action Scenes:</strong> Dynamic motion blur, fire effects, and Hollywood-style cinematography</li>
+            <li><strong>Surreal Concepts:</strong> Nano banana memes, cosmic surrealism, and viral humor aesthetics</li>
+          </ul>
+
+          <h3 class="text-2xl font-bold text-gray-900 mb-3 mt-8">Tips for Viral Ghostface AI Content</h3>
+          <p class="text-gray-700 mb-4">
+            To maximize engagement with your Ghostface AI art, consider these content strategies: Use <strong>9:16 aspect ratio</strong> (--ar 9:16) for vertical TikTok and Instagram Reels formats. Experiment with the <code>--chaos</code> parameter (15-25) to create unique variations that stand out. Combine multiple prompts in sequences to create <a href="/short-story-prompts-generator" class="text-blue-600 hover:underline">storytelling content</a> that keeps viewers engaged.
+          </p>
+          <p class="text-gray-700 mb-4">
+            The <strong>Ghostface selfie trend</strong> particularly resonates with younger audiences, combining horror aesthetics with relatable selfie culture. Try customizing outfits, LED colors, and room decor to match your brand or aesthetic. For content creators, these prompts work excellently as <a href="/ai-blog-post-generator" class="text-blue-600 hover:underline">blog post visuals</a>, video thumbnails, and social media headers.
+          </p>
+
+          <div class="bg-purple-50 p-6 rounded-lg mt-6 border border-purple-200">
+            <h3 class="font-semibold text-purple-900 mb-3 text-xl">Pro Tips for AI Artists:</h3>
+            <ul class="text-purple-800 space-y-2">
+              <li>✓ <strong>Batch generate</strong> multiple variations to find the perfect shot</li>
+              <li>✓ <strong>Combine elements</strong> from different prompts for unique compositions</li>
+              <li>✓ <strong>Use upscaling</strong> tools to enhance detail for print or high-res displays</li>
+              <li>✓ <strong>Add text overlays</strong> in editing apps to create meme-ready content</li>
+              <li>✓ <strong>Track trending hashtags</strong> like #GhostfaceAI, #AIArt, #MidJourneyArt</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Related Links Section -->
+      <div class="mt-12 bg-white rounded-2xl shadow-xl p-8">
+        <h3 class="text-3xl font-bold text-gray-900 mb-6">Explore More AI Prompt Generators</h3>
+        <p class="text-gray-700 mb-6">
+          Looking for more creative prompts? Check out our other AI generators and tools:
+        </p>
+        <div class="grid md:grid-cols-2 gap-4">
+          <a href="/ai-images-prompt" class="flex items-center gap-3 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl hover:shadow-md transition-shadow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <circle cx="9" cy="9" r="2"></circle>
+              <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path>
+            </svg>
+            <div>
+              <div class="font-semibold text-gray-900">AI Art Prompt Generator</div>
+              <div class="text-sm text-gray-600">Create stunning AI art prompts</div>
+            </div>
+          </a>
+          <a href="/writing-prompts" class="flex items-center gap-3 p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl hover:shadow-md transition-shadow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-600">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+            </svg>
+            <div>
+              <div class="font-semibold text-gray-900">Writing Prompts</div>
+              <div class="text-sm text-gray-600">Spark your creativity</div>
+            </div>
+          </a>
+          <a href="/short-story-prompts-generator" class="flex items-center gap-3 p-4 bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl hover:shadow-md transition-shadow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-600">
+              <circle cx="12" cy="8" r="6"></circle>
+              <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path>
+            </svg>
+            <div>
+              <div class="font-semibold text-gray-900">Short Story Prompts</div>
+              <div class="text-sm text-gray-600">Fantasy and worldbuilding</div>
+            </div>
+          </a>
+          <a href="/october-writing-prompts" class="flex items-center gap-3 p-4 bg-gradient-to-r from-orange-50 to-red-50 rounded-xl hover:shadow-md transition-shadow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-orange-600">
+              <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+            </svg>
+            <div>
+              <div class="font-semibold text-gray-900">October Writing Prompts</div>
+              <div class="text-sm text-gray-600">Halloween and fall themes</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <section class="bg-white py-16 mt-16">
+      <div class="max-w-4xl mx-auto px-4">
+        <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+        <div class="space-y-6">
+          <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">What is the Ghostface AI trend?</h3>
+            <p class="text-gray-700">
+              The Ghostface AI trend involves using AI image generators like MidJourney and DALL-E to create artistic interpretations of the iconic Ghostface character in various aesthetic styles — from cyberpunk and horror to fashion editorials and viral selfie trends.
+            </p>
+          </div>
+
+          <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">Which AI tools work with these Ghostface prompts?</h3>
+            <p class="text-gray-700">
+              These prompts are optimized for <strong>MidJourney v6</strong> (with parameters like --ar, --v 6, --chaos), but also work with <strong>DALL-E 3</strong>, <strong>Stable Diffusion XL</strong>, and <strong>Leonardo.ai</strong>. You may need to adjust or remove specific parameters depending on the platform.
+            </p>
+          </div>
+
+          <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">Can I use these AI-generated Ghostface images commercially?</h3>
+            <p class="text-gray-700">
+              The prompts themselves are free to use. However, commercial usage of AI-generated images depends on your AI platform's terms of service and potential copyright considerations around the Ghostface character. Always review platform policies and consider transformative use guidelines.
+            </p>
+          </div>
+
+          <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">How do I make Ghostface AI art go viral on TikTok?</h3>
+            <p class="text-gray-700">
+              Use vertical formats (--ar 9:16), trending audio, and relevant hashtags like #GhostfaceAI #MidJourney #AIArt. Post during peak hours, create series or storytelling sequences, and engage with trending Ghostface content to boost visibility. The selfie trend format (prompt #4) performs especially well.
+            </p>
+          </div>
+
+          <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">What does the --chaos parameter do in MidJourney?</h3>
+            <p class="text-gray-700">
+              The <code>--chaos</code> parameter (0-100) controls how varied and unexpected the AI results are. Higher values (20-25) create more unique, experimental images, while lower values produce more predictable results. It's perfect for discovering surprising creative directions.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <AstroFooter />
+
+  <script>
+    // Copy functionality
+    document.querySelectorAll('.copy-btn').forEach(button => {
+      button.addEventListener('click', async () => {
+        const prompt = button.getAttribute('data-prompt');
+        try {
+          await navigator.clipboard.writeText(prompt);
+          const originalText = button.innerHTML;
+          button.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            Copied!
+          `;
+          button.classList.remove('bg-gray-100', 'hover:bg-gray-200', 'text-gray-700');
+          button.classList.add('bg-green-100', 'text-green-700');
+
+          setTimeout(() => {
+            button.innerHTML = originalText;
+            button.classList.remove('bg-green-100', 'text-green-700');
+            button.classList.add('bg-gray-100', 'hover:bg-gray-200', 'text-gray-700');
+          }, 2000);
+        } catch (err) {
+          console.error('Failed to copy:', err);
+        }
+      });
+    });
+
+    // Export functionality
+    document.getElementById('export-prompts')?.addEventListener('click', () => {
+      const prompts = Array.from(document.querySelectorAll('.copy-btn')).map((btn, index) => {
+        const title = document.querySelectorAll('h3')[index + 3]?.textContent || `Prompt ${index + 1}`;
+        const prompt = btn.getAttribute('data-prompt');
+        return `${title}\n${prompt}\n\n---\n`;
+      }).join('\n');
+
+      const blob = new Blob([prompts], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'ghostface-ai-prompts.txt';
+      link.click();
+      URL.revokeObjectURL(url);
+    });
+  </script>
+</BaseLayout>

@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AstroHeader from '../components/AstroHeader.astro';
+import AstroFooter from '../components/AstroFooter.astro';
+import PromptGenerator from '../components/PromptGenerator';
+import '../styles/global.css';
+import { getSEOData } from '../data/seo';
+
+const seo = getSEOData('shortStoryPrompts');
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-r from-amber-600 to-orange-600 text-white py-16">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">
+        Short Story Prompts Generator
+      </h1>
+
+      <p class="text-lg opacity-80 mb-8 max-w-2xl mx-auto">
+        Generate creative short story prompts instantly with our free short story prompts generator. Create unique fiction story ideas with compelling characters, plot twists, and intriguing conflicts for your next short story or creative writing project.
+      </p>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="max-w-6xl mx-auto px-4 py-8">
+    {/* Prompt Generator Component */}
+    <PromptGenerator client:load category="writing" />
+
+    {/* SEO Content Section */}
+    <div class="mt-16 space-y-8">
+      <div class="prose prose-gray max-w-none">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Advanced Short Story Prompts Generator</h2>
+        <p class="text-gray-700 mb-4">
+          Our short story prompts generator creates intricate short story prompts with compelling characters, unexpected plot twists, and engaging conflicts that go beyond typical story ideas. Each prompt features unique protagonists with complex motivations, intriguing story openings, dramatic conflicts, and surprising revelations that create memorable narratives perfect for flash fiction, short stories, and creative writing exercises.
+        </p>
+        <p class="text-gray-700 mb-4">
+          Generate creative writing prompts featuring diverse protagonists (memory thieves, time loop victims, dream architects), mysterious story openings (mysterious letters, impossible phone calls, hidden doors), moral dilemmas, and mind-bending plot twists that drive compelling narratives for fiction writers and creative authors.
+        </p>
+        <div class="bg-amber-50 p-4 rounded-lg mt-4">
+          <h3 class="font-semibold text-amber-900 mb-2">Short Story Prompts Generator Features:</h3>
+          <ul class="text-amber-800 text-sm space-y-1">
+            <li>• Unique protagonists with compelling backstories</li>
+            <li>• Intriguing story openings that hook readers</li>
+            <li>• Complex moral conflicts and dilemmas</li>
+            <li>• Unexpected plot twists and revelations</li>
+          </ul>
+        </div>
+
+        <h2 class="text-2xl font-bold text-gray-900 mb-4 mt-8">More Seasonal Writing Resources</h2>
+        <p class="text-gray-700 mb-4">
+          For additional creative writing inspiration, check out <a href="https://www.writersdigest.com/write-better-fiction/short-story-tips" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Writer's Digest Short Story Tips</a> and <a href="https://blog.reedsy.com/short-story-ideas/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Reedsy Short Story Ideas</a>.
+        </p>
+      </div>
+
+      {/* More Writing Resources Section */}
+      <div class="prose prose-gray max-w-none mt-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">More Writing Resources</h2>
+        <div class="grid md:grid-cols-2 gap-4">
+          <a href="/writing-prompts" class="block p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
+            <h3 class="font-semibold text-blue-900 mb-2">Writing Prompts</h3>
+            <p class="text-blue-800 text-sm">General creative writing prompts with plot twists</p>
+          </a>
+          <a href="/october-writing-prompts" class="block p-4 bg-orange-50 rounded-lg hover:bg-orange-100 transition-colors">
+            <h3 class="font-semibold text-orange-900 mb-2">October Writing Prompts</h3>
+            <p class="text-orange-800 text-sm">Halloween and autumn-themed story ideas</p>
+          </a>
+          <a href="/writing-prompts-for-students" class="block p-4 bg-green-50 rounded-lg hover:bg-green-100 transition-colors">
+            <h3 class="font-semibold text-green-900 mb-2">Writing Prompts for Students</h3>
+            <p class="text-green-800 text-sm">Educational creative writing exercises</p>
+          </a>
+          <a href="/nano-banana-prompts" class="block p-4 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors">
+            <h3 class="font-semibold text-purple-900 mb-2">Nano Banana Prompts</h3>
+            <p class="text-purple-800 text-sm">NaNoWriMo writing inspiration</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <AstroFooter />
+</BaseLayout>

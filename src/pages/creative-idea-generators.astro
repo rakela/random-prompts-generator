@@ -1,0 +1,120 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AstroHeader from '../components/AstroHeader.astro';
+import AstroFooter from '../components/AstroFooter.astro';
+import '../styles/global.css';
+import { getSEOData } from '../data/seo';
+
+const seo = getSEOData('creativeIdeaGenerators');
+
+const generators = [
+  {
+    title: 'Random Hobby Generator',
+    description: 'Discover random hobbies for characters or real life inspiration. Perfect for writers, coaches, and self-discovery.',
+    url: '/random-hobby-generator'
+  },
+  {
+    title: 'Random Object Generator',
+    description: 'Get random objects to spark story ideas, drawing prompts, and writing exercises.',
+    url: '/random-object-generator'
+  },
+  {
+    title: 'Random Superpower Generator',
+    description: 'Generate random superpowers with strengths, limits, and drawbacks for comics and RPGs.',
+    url: '/random-superpower-generator'
+  },
+  {
+    title: 'Random Idea Generator',
+    description: 'Create random ideas for projects, stories, content, and brainstorming sessions.',
+    url: '/random-idea-generator'
+  },
+  {
+    title: 'Fantasy Name Generator',
+    description: 'Generate random fantasy names for characters, places, and creatures in your stories and games.',
+    url: '/random-fantasy-name-generator'
+  }
+];
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-r from-green-600 to-teal-600 text-white py-16">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">
+        Creative Idea Generators
+      </h1>
+      <p class="text-lg opacity-90 mb-8 max-w-3xl mx-auto">
+        Spark your imagination with random creative idea generators. Perfect for brainstorming, character development, worldbuilding, and overcoming creative blocks in writing, art, and game design.
+      </p>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="max-w-6xl mx-auto px-4 py-12">
+    <!-- Generators Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+      {generators.map((generator) => (
+        <a
+          href={generator.url}
+          class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-xl hover:border-green-300 transition-all duration-200 group"
+        >
+          <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-green-600 transition-colors">
+            {generator.title}
+          </h3>
+          <p class="text-gray-600 mb-4">
+            {generator.description}
+          </p>
+          <div class="flex items-center text-green-600 font-semibold text-sm group-hover:gap-2 transition-all">
+            Try it now
+            <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <!-- SEO Content Section -->
+    <div class="mt-16 space-y-8">
+      <div class="prose prose-gray max-w-none">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Random Idea Generators for Creativity & Brainstorming</h2>
+        <p class="text-gray-700 mb-4 text-lg">
+          Our creative idea generators provide instant inspiration for writers, artists, game designers, and anyone seeking creative direction. From character traits and fantasy names to superpowers and random objects, these tools help spark new ideas when you need them most.
+        </p>
+        <p class="text-gray-700 mb-4">
+          Perfect for breaking creative blocks, adding unexpected elements to your projects, or simply exploring new creative directions. Each generator creates unique, thought-provoking prompts that can be used directly or adapted to fit your specific needs.
+        </p>
+
+        <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Use Cases for Creative Generators</h3>
+        <ul class="list-disc pl-6 text-gray-700 mb-6 space-y-2">
+          <li><strong>Character Development:</strong> Generate unique hobbies, names, and traits for memorable characters</li>
+          <li><strong>Game Design:</strong> Create superpowers, fantasy names, and character abilities for RPGs and tabletop games</li>
+          <li><strong>Writing Exercises:</strong> Use random objects and ideas as creative constraints for flash fiction</li>
+          <li><strong>Worldbuilding:</strong> Generate fantasy names for locations, creatures, and magic systems</li>
+          <li><strong>Brainstorming:</strong> Break creative blocks with unexpected random elements</li>
+          <li><strong>Education:</strong> Create engaging prompts for creative writing classes and workshops</li>
+        </ul>
+
+        <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Why Use Random Idea Generators?</h3>
+        <div class="bg-green-50 p-6 rounded-lg mb-6">
+          <ul class="text-green-900 space-y-2">
+            <li>• <strong>Instant Inspiration:</strong> Get creative prompts in seconds, not hours</li>
+            <li>• <strong>Unexpected Combinations:</strong> Discover ideas you wouldn't have thought of on your own</li>
+            <li>• <strong>Versatile Applications:</strong> Use for writing, gaming, art, and general creativity</li>
+            <li>• <strong>Break Patterns:</strong> Force yourself out of creative ruts with random elements</li>
+            <li>• <strong>Educational Value:</strong> Perfect for teaching creative thinking and improvisation</li>
+          </ul>
+        </div>
+
+        <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Related Resources</h3>
+        <p class="text-gray-700 mb-4">
+          Looking for more creative tools? Check out our <a href="/writing-generators" class="text-green-600 hover:underline font-semibold">Writing Generators</a> for storytelling prompts, explore <a href="/random-name-generator" class="text-green-600 hover:underline">Random Name Generator</a> for character names, or try our <a href="/ai-art-generators" class="text-green-600 hover:underline">AI Art Generators</a> for visual inspiration.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <AstroFooter />
+</BaseLayout>

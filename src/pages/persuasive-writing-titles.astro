@@ -1,0 +1,386 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AstroHeader from '../components/AstroHeader.astro';
+import AstroFooter from '../components/AstroFooter.astro';
+import '../styles/global.css';
+import { getSEOData } from '../data/seo';
+
+const seo = getSEOData('persuasiveWritingTitles');
+
+// Persuasive Writing Titles Data
+const persuasiveWritingTitles = {
+  global: [
+    "Should governments impose a carbon tax to fight climate change?",
+    "Is space exploration worth the environmental cost?",
+    "Should countries ban bottled water to reduce plastic waste?",
+    "Is nuclear energy a safe alternative to fossil fuels?",
+    "Should wealthy nations be required to help poorer countries fight climate change?"
+  ],
+  health: [
+    "Should mental health days be mandatory in schools and workplaces?",
+    "Is social media addiction as harmful as substance abuse?",
+    "Should fast food companies be held responsible for obesity?",
+    "Should junk food advertising to children be banned?",
+    "Should therapy be free and accessible for everyone?"
+  ],
+  technology: [
+    "Should AI be allowed to create art, music, and literature?",
+    "Are privacy rights more important than national security in the digital age?",
+    "Should robots be granted legal rights if they become sentient?",
+    "Should schools teach prompt engineering as a core skill?",
+    "Should deepfake technology be banned completely?"
+  ],
+  culture: [
+    "Should celebrities and influencers be role models for society?",
+    "Should cancel culture be seen as accountability or censorship?",
+    "Is traditional media still trustworthy in the digital era?",
+    "Should cultural appropriation be punished by law?",
+    "Should patriotism be taught in schools, or does it create division?"
+  ]
+};
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-r from-rose-600 via-pink-600 to-fuchsia-600 text-white py-16">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">
+        Persuasive Writing Titles
+      </h1>
+
+      <p class="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
+        Explore thought-provoking persuasive writing titles on global issues, health, technology, and culture. Perfect for argumentative essays, classroom debates, research papers, and developing compelling persuasive arguments.
+      </p>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="max-w-6xl mx-auto px-4 py-8">
+    <div class="max-w-4xl mx-auto">
+
+      <!-- Random Generator Section -->
+      <div class="bg-white rounded-2xl shadow-xl p-8 mb-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4 text-center">🎲 Random Title Generator</h2>
+        <p class="text-gray-600 text-center mb-6">Generate a random persuasive writing title instantly</p>
+        <div class="text-center mb-6">
+          <button id="generate-random" class="px-8 py-3 bg-gradient-to-r from-rose-600 to-fuchsia-600 text-white rounded-lg font-semibold hover:from-rose-700 hover:to-fuchsia-700 transition-all shadow-lg">
+            Generate Random Title
+          </button>
+        </div>
+        <div id="random-prompt-display" class="hidden bg-gradient-to-r from-rose-50 to-pink-50 border border-rose-200 rounded-lg p-6">
+          <div class="flex items-start gap-3 mb-4">
+            <span id="random-prompt-emoji" class="text-3xl"></span>
+            <div class="flex-1">
+              <h3 id="random-prompt-title" class="text-lg font-semibold text-gray-900"></h3>
+            </div>
+          </div>
+          <div class="flex gap-2 justify-end">
+            <button id="copy-random" class="px-4 py-2 bg-white border border-rose-200 rounded-lg text-rose-700 hover:bg-rose-50 transition-colors text-sm font-medium">
+              Copy Title
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- All Prompts Display -->
+      <div class="mt-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">All Persuasive Writing Titles</h2>
+
+        <!-- Global & Environmental Issues -->
+        <div class="mb-8">
+          <h3 class="text-xl font-bold text-blue-700 mb-4 flex items-center gap-2">
+            🌎 Global & Environmental Issues
+          </h3>
+          <div class="grid gap-3">
+            {persuasiveWritingTitles.global.map((title, index) => (
+              <div class="bg-gradient-to-r from-blue-50 to-cyan-50 border border-blue-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex items-center gap-3 flex-1">
+                    <span class="text-2xl">🌎</span>
+                    <h4 class="font-semibold text-gray-900">{index + 1}. {title}</h4>
+                  </div>
+                  <button
+                    class="copy-btn p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
+                    data-text={title}
+                    title="Copy title"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Health & Psychology -->
+        <div class="mb-8">
+          <h3 class="text-xl font-bold text-green-700 mb-4 flex items-center gap-2">
+            🧠 Health & Psychology
+          </h3>
+          <div class="grid gap-3">
+            {persuasiveWritingTitles.health.map((title, index) => (
+              <div class="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex items-center gap-3 flex-1">
+                    <span class="text-2xl">🧠</span>
+                    <h4 class="font-semibold text-gray-900">{index + 6}. {title}</h4>
+                  </div>
+                  <button
+                    class="copy-btn p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
+                    data-text={title}
+                    title="Copy title"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Technology & AI -->
+        <div class="mb-8">
+          <h3 class="text-xl font-bold text-purple-700 mb-4 flex items-center gap-2">
+            ⚙️ Technology & AI
+          </h3>
+          <div class="grid gap-3">
+            {persuasiveWritingTitles.technology.map((title, index) => (
+              <div class="bg-gradient-to-r from-purple-50 to-violet-50 border border-purple-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex items-center gap-3 flex-1">
+                    <span class="text-2xl">⚙️</span>
+                    <h4 class="font-semibold text-gray-900">{index + 11}. {title}</h4>
+                  </div>
+                  <button
+                    class="copy-btn p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
+                    data-text={title}
+                    title="Copy title"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Culture & Society -->
+        <div class="mb-8">
+          <h3 class="text-xl font-bold text-orange-700 mb-4 flex items-center gap-2">
+            💬 Culture & Society
+          </h3>
+          <div class="grid gap-3">
+            {persuasiveWritingTitles.culture.map((title, index) => (
+              <div class="bg-gradient-to-r from-orange-50 to-amber-50 border border-orange-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex items-center gap-3 flex-1">
+                    <span class="text-2xl">💬</span>
+                    <h4 class="font-semibold text-gray-900">{index + 16}. {title}</h4>
+                  </div>
+                  <button
+                    class="copy-btn p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
+                    data-text={title}
+                    title="Copy title"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- SEO Content Section -->
+      <div class="mt-16 space-y-8">
+        <div class="prose prose-gray max-w-none">
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">Persuasive Writing Titles for Essays and Debates</h2>
+          <p class="text-gray-700 mb-4">
+            Persuasive writing titles serve as powerful starting points for argumentative essays, research papers, classroom debates, and persuasive speeches. These carefully curated titles cover contemporary issues across global affairs, health, technology, and culture—topics that resonate with today's audiences and offer rich opportunities for critical thinking and persuasive argumentation.
+          </p>
+          <p class="text-gray-700 mb-4">
+            Each persuasive writing title is framed as a thought-provoking question that invites exploration of multiple perspectives. From climate change and AI ethics to social media impact and cultural debates, these titles address real-world issues that students encounter in their daily lives, making the writing process more engaging and relevant.
+          </p>
+          <p class="text-gray-700 mb-4">
+            Perfect for high school and college students developing persuasive writing skills, these titles encourage research, critical analysis, and the development of well-supported arguments. Whether you're writing a persuasive essay, preparing for a debate competition, or exploring argumentative writing, these titles provide compelling foundations for meaningful discourse.
+          </p>
+          <p class="text-gray-700 mb-4">
+            Prefer shorter prompts? Try our <a href="/writing-prompts" class="text-blue-600 hover:underline">Writing Prompts Generator</a> or switch to seasonal visuals by visiting our <a href="/ai-images-prompt" class="text-blue-600 hover:underline">AI Art Prompts page</a>.
+          </p>
+        </div>
+      </div>
+
+      <!-- Related Links -->
+      <div class="mt-12 bg-gray-50 rounded-lg p-6 border border-gray-200">
+        <h3 class="text-xl font-bold text-gray-900 mb-4">More Writing Resources</h3>
+        <div class="grid md:grid-cols-2 gap-4">
+          <a href="/persuasive-essays-topics" class="text-rose-600 hover:underline flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+              <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+              <path d="M2 2l7.586 7.586"></path>
+            </svg>
+            Persuasive Essays Topics
+          </a>
+          <a href="/persuasive-writing-topics" class="text-rose-600 hover:underline flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+              <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+              <path d="M2 2l7.586 7.586"></path>
+            </svg>
+            Persuasive Writing Topics
+          </a>
+          <a href="/writing-prompts-for-students" class="text-rose-600 hover:underline flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+              <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+              <path d="M2 2l7.586 7.586"></path>
+            </svg>
+            Writing Prompts for Students
+          </a>
+          <a href="/writing-prompts" class="text-rose-600 hover:underline flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+              <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+              <path d="M2 2l7.586 7.586"></path>
+            </svg>
+            Random Writing Prompts
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <section class="bg-white py-16 mt-16">
+      <div class="max-w-4xl mx-auto px-4">
+        <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+        <div class="space-y-6">
+          <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">What makes a good persuasive writing title?</h3>
+            <p class="text-gray-700">
+              A good persuasive writing title presents a debatable question on a relevant topic with clear opposing viewpoints. It should be specific enough to guide research and argument development while broad enough to allow for comprehensive exploration of the issue.
+            </p>
+          </div>
+
+          <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">How do I turn these titles into full essays?</h3>
+            <p class="text-gray-700">
+              Start by choosing a title that interests you, research both sides of the issue, develop a clear thesis statement taking a position, gather evidence supporting your argument, acknowledge counterarguments, and structure your essay with a strong introduction, body paragraphs, and conclusion.
+            </p>
+          </div>
+
+          <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">Can I modify these persuasive writing titles?</h3>
+            <p class="text-gray-700">
+              Absolutely! These persuasive writing titles serve as starting points. You can narrow the focus, adjust the wording, add specific contexts, or combine elements from multiple titles to create the perfect topic for your assignment or interest area.
+            </p>
+          </div>
+
+          <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">Are these titles suitable for debates?</h3>
+            <p class="text-gray-700">
+              Yes! These persuasive writing titles work excellently as debate topics. Each title presents a clear question with multiple valid perspectives, making them ideal for structured debates, classroom discussions, speech competitions, and argumentative presentations.
+            </p>
+          </div>
+
+          <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">What's the difference between persuasive titles and argumentative titles?</h3>
+            <p class="text-gray-700">
+              While often used interchangeably, persuasive titles may appeal more to emotion and values, while argumentative titles focus on logic and evidence. Our titles work for both approaches—they present debatable questions that can be argued through logical reasoning or persuasive appeals depending on your assignment requirements.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <AstroFooter />
+
+  <!-- Copy to clipboard functionality -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const copyButtons = document.querySelectorAll('.copy-btn');
+
+      copyButtons.forEach(button => {
+        button.addEventListener('click', async () => {
+          const text = button.getAttribute('data-text');
+
+          try {
+            await navigator.clipboard.writeText(text);
+
+            // Visual feedback
+            const originalHTML = button.innerHTML;
+            button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+            button.classList.add('text-green-600');
+
+            setTimeout(() => {
+              button.innerHTML = originalHTML;
+              button.classList.remove('text-green-600');
+            }, 2000);
+          } catch (err) {
+            console.error('Failed to copy:', err);
+          }
+        });
+      });
+    });
+  </script>
+
+  <!-- Random Generator Script -->
+  <script define:vars={{ persuasiveWritingTitles }}>
+    const allTitlesData = persuasiveWritingTitles;
+    const categoryEmojis = {
+      global: '🌎',
+      health: '🧠',
+      technology: '⚙️',
+      culture: '💬'
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const generateRandomBtn = document.getElementById('generate-random');
+      const randomPromptDisplay = document.getElementById('random-prompt-display');
+      const copyRandomBtn = document.getElementById('copy-random');
+      let currentTitle = null;
+
+      generateRandomBtn.addEventListener('click', () => {
+        const categories = Object.keys(allTitlesData);
+        const randomCategory = categories[Math.floor(Math.random() * categories.length)];
+        const titlesInCategory = allTitlesData[randomCategory];
+        const randomTitle = titlesInCategory[Math.floor(Math.random() * titlesInCategory.length)];
+
+        currentTitle = randomTitle;
+        document.getElementById('random-prompt-emoji').textContent = categoryEmojis[randomCategory] || '📝';
+        document.getElementById('random-prompt-title').textContent = randomTitle;
+        randomPromptDisplay.classList.remove('hidden');
+      });
+
+      copyRandomBtn.addEventListener('click', async () => {
+        if (currentTitle) {
+          try {
+            await navigator.clipboard.writeText(currentTitle);
+            const originalText = copyRandomBtn.textContent;
+            copyRandomBtn.textContent = 'Copied!';
+            setTimeout(() => {
+              copyRandomBtn.textContent = originalText;
+            }, 2000);
+          } catch (err) {
+            console.error('Failed to copy:', err);
+          }
+        }
+      });
+    });
+  </script>
+</BaseLayout>

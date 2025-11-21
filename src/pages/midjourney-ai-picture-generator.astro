@@ -1,0 +1,629 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AstroHeader from '../components/AstroHeader.astro';
+import AstroFooter from '../components/AstroFooter.astro';
+import '../styles/global.css';
+import { getSEOData } from '../data/seo';
+
+const seo = getSEOData('midjourneyPrompts');
+
+// Midjourney Prompts Data organized by category
+const midjourneyPrompts = {
+  'nature-landscapes': [
+    { prompt: "A glowing autumn forest at sunrise, mist over golden trees, ultra-realistic lighting, 8K, cinematic mood", category: "Nature & Landscapes" },
+    { prompt: "Ancient cherry blossom tree on a mountain peak, petals flowing in the wind, Japanese art style, soft lighting", category: "Nature & Landscapes" },
+    { prompt: "Storm over an ocean cliff, dramatic sky, painterly brush strokes, Rembrandt lighting", category: "Nature & Landscapes" },
+    { prompt: "Frozen waterfall in a crystal cave, glowing ice reflections, hyper-detailed fantasy scene", category: "Nature & Landscapes" },
+    { prompt: "Desert at twilight with bioluminescent plants, surreal colors, dreamlike atmosphere", category: "Nature & Landscapes" }
+  ],
+  'architecture-cityscapes': [
+    { prompt: "Futuristic floating city above the clouds, neon glow, cyberpunk palette, ultra-realistic render", category: "Architecture & Cityscapes" },
+    { prompt: "Abandoned Victorian mansion overtaken by vines, golden-hour lighting, gothic atmosphere", category: "Architecture & Cityscapes" },
+    { prompt: "Mediterranean seaside village at dusk, warm lights and cobblestone streets, cinematic composition", category: "Architecture & Cityscapes" },
+    { prompt: "Modern glass house in the forest, minimal design, morning fog, photo-realistic", category: "Architecture & Cityscapes" },
+    { prompt: "Ancient city carved into a canyon, torch-lit paths, cinematic wide-angle view", category: "Architecture & Cityscapes" }
+  ],
+  'fantasy-characters': [
+    { prompt: "Female sorceress with silver hair casting light magic, floating particles, fantasy armor, highly detailed", category: "Fantasy & Characters" },
+    { prompt: "Cyberpunk samurai standing in neon rain, katana reflection, dramatic lighting, 8K resolution", category: "Fantasy & Characters" },
+    { prompt: "Vampire queen in a moonlit ballroom, gothic fashion, ethereal lighting, baroque style", category: "Fantasy & Characters" },
+    { prompt: "Ghostly knight emerging from fog, spectral armor, cinematic realism, dark fantasy atmosphere", category: "Fantasy & Characters" },
+    { prompt: "AI goddess made of crystal and circuits, glowing eyes, futuristic sacred energy", category: "Fantasy & Characters" }
+  ],
+  'art-concept-styles': [
+    { prompt: "Dreamy surreal portrait of a woman with galaxies in her hair, double exposure effect, fine-art photography style", category: "Art & Concept Styles" },
+    { prompt: "Minimalist ink illustration of a fox under a full moon, Japanese sumi-e style, high contrast", category: "Art & Concept Styles" },
+    { prompt: "Ancient ruins floating in space, cosmic dust, mystical lighting, cinematic depth of field", category: "Art & Concept Styles" },
+    { prompt: "Renaissance-style oil painting of astronauts exploring a temple, classical lighting and textures", category: "Art & Concept Styles" },
+    { prompt: "Cyberpunk café on a rainy night, reflections on wet pavement, warm neon lights, cinematic framing", category: "Art & Concept Styles" }
+  ],
+  'christmas-classic': [
+    { prompt: "Santa Claus flying over a snowy village at night, glowing windows, reindeer in the sky, cinematic lighting, ultra-detailed, 8K", category: "Classic Christmas Scenes" },
+    { prompt: "Warm cozy living room with fireplace, Christmas tree, and children opening presents, golden glow, soft shadows, photo-realistic", category: "Classic Christmas Scenes" },
+    { prompt: "Victorian Christmas street market at dusk, gas lamps, horse carriages, snow falling, painterly style, nostalgic mood", category: "Classic Christmas Scenes" },
+    { prompt: "Rustic cabin in snowy woods, candlelight through windows, smoke from chimney, tranquil night, ultra-realistic lighting", category: "Classic Christmas Scenes" },
+    { prompt: "Modern family Christmas dinner, laughter, festive table decorations, natural light, cinematic realism", category: "Classic Christmas Scenes" }
+  ],
+  'christmas-magical': [
+    { prompt: "Elf village hidden in a snow-covered forest, twinkling lights, glowing mushrooms, magical realism, fantasy illustration", category: "Magical & Fantasy Holiday Themes" },
+    { prompt: "Ice queen in a crystal palace, snow swirling around her, ethereal atmosphere, fantasy portrait, soft lighting", category: "Magical & Fantasy Holiday Themes" },
+    { prompt: "Reindeer with glowing antlers running through the aurora borealis, majestic and surreal composition", category: "Magical & Fantasy Holiday Themes" },
+    { prompt: "Gingerbread house in a candy forest, colorful lights, whimsical, storybook illustration, detailed textures", category: "Magical & Fantasy Holiday Themes" },
+    { prompt: "Snow globe world with a tiny cozy town inside, magical sparkles, bokeh background, macro lens effect", category: "Magical & Fantasy Holiday Themes" }
+  ],
+  'christmas-minimal': [
+    { prompt: "Minimalist Scandinavian Christmas interior, wooden decor, warm light, clean lines, modern photography style", category: "Winter Aesthetic & Minimal Christmas" },
+    { prompt: "Christmas ornaments in flat lay style, neutral tones, elegant product photography composition", category: "Winter Aesthetic & Minimal Christmas" },
+    { prompt: "Frosted pine branches with fairy lights, soft focus macro, cozy winter mood board aesthetic", category: "Winter Aesthetic & Minimal Christmas" },
+    { prompt: "Winter morning in the city, snowflakes falling slowly, coffee cup steam, street photography vibe", category: "Winter Aesthetic & Minimal Christmas" },
+    { prompt: "Luxury holiday branding flat lay, gold and white tones, ribbons, candles, elegant lighting", category: "Winter Aesthetic & Minimal Christmas" }
+  ],
+  'christmas-spiritual': [
+    { prompt: "Midnight Christmas Mass in a cathedral, candlelit interior, stained glass reflections, dramatic composition", category: "Spiritual & Cinematic Atmosphere" },
+    { prompt: "Nativity scene reimagined in a modern minimalist style, soft natural light, artistic realism", category: "Spiritual & Cinematic Atmosphere" },
+    { prompt: "Lonely streetlight in snowfall, single red scarf on a bench, poetic, cinematic solitude scene", category: "Spiritual & Cinematic Atmosphere" },
+    { prompt: "Christmas angel descending through the snow, ethereal light rays, peaceful mood, fantasy art style", category: "Spiritual & Cinematic Atmosphere" },
+    { prompt: "Winter night over a frozen lake reflecting the northern lights, serene and magical atmosphere, 8K landscape", category: "Spiritual & Cinematic Atmosphere" }
+  ]
+};
+
+const categoryInfo = {
+  'nature-landscapes': { label: 'Nature & Landscapes', icon: '🌅', color: 'green' },
+  'architecture-cityscapes': { label: 'Architecture & Cityscapes', icon: '🏙️', color: 'slate' },
+  'fantasy-characters': { label: 'Fantasy & Characters', icon: '🎭', color: 'purple' },
+  'art-concept-styles': { label: 'Art & Concept Styles', icon: '🖼️', color: 'rose' },
+  'christmas-classic': { label: 'Classic Christmas Scenes', icon: '🎅', color: 'red' },
+  'christmas-magical': { label: 'Magical & Fantasy Holiday', icon: '🎁', color: 'emerald' },
+  'christmas-minimal': { label: 'Winter Aesthetic & Minimal', icon: '🌟', color: 'cyan' },
+  'christmas-spiritual': { label: 'Spiritual & Cinematic', icon: '🕯️', color: 'amber' }
+};
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-r from-purple-600 via-blue-600 to-pink-600 text-white py-16">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">
+        Midjourney AI Picture Generator
+      </h1>
+
+      <p class="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
+        Explore 40+ professional Midjourney AI prompts for creating stunning images across 8 unique categories. From breathtaking landscapes to fantasy characters, magical Christmas scenes to cyberpunk cityscapes - find the perfect prompt for your next AI art masterpiece.
+      </p>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="max-w-6xl mx-auto px-4 py-8">
+    <div class="max-w-4xl mx-auto">
+
+      <!-- Random Generator Section -->
+      <div class="bg-white rounded-2xl shadow-xl p-8 mb-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4 text-center">🎲 Random Prompt Generator</h2>
+        <p class="text-gray-600 text-center mb-6">Generate a random Midjourney prompt instantly</p>
+        <div class="text-center mb-6">
+          <button id="generate-random" class="px-8 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition-all shadow-lg">
+            Generate Random Prompt
+          </button>
+        </div>
+        <div id="random-prompt-display" class="hidden bg-gradient-to-r from-purple-50 to-blue-50 border border-purple-200 rounded-lg p-6">
+          <div class="flex items-start gap-3">
+            <div class="flex-1">
+              <p class="text-sm text-purple-600 font-semibold mb-2" id="random-prompt-category"></p>
+              <p class="text-gray-800" id="random-prompt-text"></p>
+            </div>
+            <button id="copy-random" class="p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0" title="Copy prompt">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- All Prompts Display -->
+      <div class="mt-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">All Midjourney AI Prompts</h2>
+
+        <!-- Nature & Landscapes -->
+        <div class="mb-8">
+          <h3 class="text-xl font-bold text-green-700 mb-4 flex items-center gap-2">
+            🌅 Nature & Landscapes
+          </h3>
+          <div class="grid gap-4">
+            {midjourneyPrompts['nature-landscapes'].map((item, index) => (
+              <div class="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                <div class="flex items-start gap-3">
+                  <div class="flex-1">
+                    <p class="text-gray-700">{item.prompt}</p>
+                  </div>
+                  <button
+                    class="copy-btn p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
+                    data-text={item.prompt}
+                    title="Copy prompt"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Architecture & Cityscapes -->
+        <div class="mb-8">
+          <h3 class="text-xl font-bold text-slate-700 mb-4 flex items-center gap-2">
+            🏙️ Architecture & Cityscapes
+          </h3>
+          <div class="grid gap-4">
+            {midjourneyPrompts['architecture-cityscapes'].map((item, index) => (
+              <div class="bg-gradient-to-r from-slate-50 to-gray-50 border border-slate-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                <div class="flex items-start gap-3">
+                  <div class="flex-1">
+                    <p class="text-gray-700">{item.prompt}</p>
+                  </div>
+                  <button
+                    class="copy-btn p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
+                    data-text={item.prompt}
+                    title="Copy prompt"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Fantasy & Characters -->
+        <div class="mb-8">
+          <h3 class="text-xl font-bold text-purple-700 mb-4 flex items-center gap-2">
+            🎭 Fantasy & Characters
+          </h3>
+          <div class="grid gap-4">
+            {midjourneyPrompts['fantasy-characters'].map((item, index) => (
+              <div class="bg-gradient-to-r from-purple-50 to-violet-50 border border-purple-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                <div class="flex items-start gap-3">
+                  <div class="flex-1">
+                    <p class="text-gray-700">{item.prompt}</p>
+                  </div>
+                  <button
+                    class="copy-btn p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
+                    data-text={item.prompt}
+                    title="Copy prompt"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Art & Concept Styles -->
+        <div class="mb-8">
+          <h3 class="text-xl font-bold text-rose-700 mb-4 flex items-center gap-2">
+            🖼️ Art & Concept Styles
+          </h3>
+          <div class="grid gap-4">
+            {midjourneyPrompts['art-concept-styles'].map((item, index) => (
+              <div class="bg-gradient-to-r from-rose-50 to-pink-50 border border-rose-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                <div class="flex items-start gap-3">
+                  <div class="flex-1">
+                    <p class="text-gray-700">{item.prompt}</p>
+                  </div>
+                  <button
+                    class="copy-btn p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
+                    data-text={item.prompt}
+                    title="Copy prompt"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Classic Christmas Scenes -->
+        <div class="mb-8">
+          <h3 class="text-xl font-bold text-red-700 mb-4 flex items-center gap-2">
+            🎅 Classic Christmas Scenes
+          </h3>
+          <div class="grid gap-4">
+            {midjourneyPrompts['christmas-classic'].map((item, index) => (
+              <div class="bg-gradient-to-r from-red-50 to-rose-50 border border-red-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                <div class="flex items-start gap-3">
+                  <div class="flex-1">
+                    <p class="text-gray-700">{item.prompt}</p>
+                  </div>
+                  <button
+                    class="copy-btn p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
+                    data-text={item.prompt}
+                    title="Copy prompt"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Magical & Fantasy Holiday -->
+        <div class="mb-8">
+          <h3 class="text-xl font-bold text-emerald-700 mb-4 flex items-center gap-2">
+            🎁 Magical & Fantasy Holiday
+          </h3>
+          <div class="grid gap-4">
+            {midjourneyPrompts['christmas-magical'].map((item, index) => (
+              <div class="bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                <div class="flex items-start gap-3">
+                  <div class="flex-1">
+                    <p class="text-gray-700">{item.prompt}</p>
+                  </div>
+                  <button
+                    class="copy-btn p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
+                    data-text={item.prompt}
+                    title="Copy prompt"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Winter Aesthetic & Minimal -->
+        <div class="mb-8">
+          <h3 class="text-xl font-bold text-cyan-700 mb-4 flex items-center gap-2">
+            🌟 Winter Aesthetic & Minimal
+          </h3>
+          <div class="grid gap-4">
+            {midjourneyPrompts['christmas-minimal'].map((item, index) => (
+              <div class="bg-gradient-to-r from-cyan-50 to-blue-50 border border-cyan-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                <div class="flex items-start gap-3">
+                  <div class="flex-1">
+                    <p class="text-gray-700">{item.prompt}</p>
+                  </div>
+                  <button
+                    class="copy-btn p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
+                    data-text={item.prompt}
+                    title="Copy prompt"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Spiritual & Cinematic -->
+        <div class="mb-8">
+          <h3 class="text-xl font-bold text-amber-700 mb-4 flex items-center gap-2">
+            🕯️ Spiritual & Cinematic
+          </h3>
+          <div class="grid gap-4">
+            {midjourneyPrompts['christmas-spiritual'].map((item, index) => (
+              <div class="bg-gradient-to-r from-amber-50 to-yellow-50 border border-amber-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                <div class="flex items-start gap-3">
+                  <div class="flex-1">
+                    <p class="text-gray-700">{item.prompt}</p>
+                  </div>
+                  <button
+                    class="copy-btn p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
+                    data-text={item.prompt}
+                    title="Copy prompt"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- SEO Content Section -->
+      <div class="mt-16 space-y-8">
+        <div class="prose prose-gray max-w-none">
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">Professional Midjourney AI Prompts for Stunning Visual Art</h2>
+          <p class="text-gray-700 mb-4">
+            Welcome to the ultimate collection of Midjourney AI prompts designed to help you create breathtaking visual art across multiple genres and styles. Whether you're an experienced AI artist or just starting your creative journey, these carefully crafted prompts will inspire your next masterpiece.
+          </p>
+
+          <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">Explore 8 Diverse Categories</h3>
+
+          <div class="grid md:grid-cols-2 gap-6 mb-6">
+            <div class="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-lg border border-green-200">
+              <h4 class="text-lg font-semibold text-gray-900 mb-2">🌅 Nature & Landscapes</h4>
+              <p class="text-gray-700">
+                Create stunning natural scenes from glowing autumn forests to frozen crystal caves. Perfect for landscape photography and environmental art enthusiasts.
+              </p>
+            </div>
+
+            <div class="bg-gradient-to-br from-slate-50 to-gray-50 p-6 rounded-lg border border-slate-200">
+              <h4 class="text-lg font-semibold text-gray-900 mb-2">🏙️ Architecture & Cityscapes</h4>
+              <p class="text-gray-700">
+                Generate futuristic cities, Victorian mansions, and Mediterranean villages with cinematic composition and dramatic lighting.
+              </p>
+            </div>
+
+            <div class="bg-gradient-to-br from-purple-50 to-violet-50 p-6 rounded-lg border border-purple-200">
+              <h4 class="text-lg font-semibold text-gray-900 mb-2">🎭 Fantasy & Characters</h4>
+              <p class="text-gray-700">
+                Bring fantasy characters to life - from cyberpunk samurai to vampire queens, with highly detailed armor and magical effects.
+              </p>
+            </div>
+
+            <div class="bg-gradient-to-br from-rose-50 to-pink-50 p-6 rounded-lg border border-rose-200">
+              <h4 class="text-lg font-semibold text-gray-900 mb-2">🖼️ Art & Concept Styles</h4>
+              <p class="text-gray-700">
+                Explore artistic styles from surreal portraits to minimalist ink illustrations, Renaissance oil paintings to cyberpunk scenes.
+              </p>
+            </div>
+
+            <div class="bg-gradient-to-br from-red-50 to-rose-50 p-6 rounded-lg border border-red-200">
+              <h4 class="text-lg font-semibold text-gray-900 mb-2">🎅 Classic Christmas Scenes</h4>
+              <p class="text-gray-700">
+                Create warm, nostalgic Christmas imagery - from Santa flying over snowy villages to cozy family moments by the fireplace.
+              </p>
+            </div>
+
+            <div class="bg-gradient-to-br from-emerald-50 to-teal-50 p-6 rounded-lg border border-emerald-200">
+              <h4 class="text-lg font-semibold text-gray-900 mb-2">🎁 Magical & Fantasy Holiday</h4>
+              <p class="text-gray-700">
+                Design enchanted winter scenes with elf villages, ice queens, glowing reindeer, and whimsical gingerbread houses.
+              </p>
+            </div>
+
+            <div class="bg-gradient-to-br from-cyan-50 to-blue-50 p-6 rounded-lg border border-cyan-200">
+              <h4 class="text-lg font-semibold text-gray-900 mb-2">🌟 Winter Aesthetic & Minimal</h4>
+              <p class="text-gray-700">
+                Generate minimalist Scandinavian interiors, elegant flat lays, and modern winter photography with clean lines.
+              </p>
+            </div>
+
+            <div class="bg-gradient-to-br from-amber-50 to-yellow-50 p-6 rounded-lg border border-amber-200">
+              <h4 class="text-lg font-semibold text-gray-900 mb-2">🕯️ Spiritual & Cinematic</h4>
+              <p class="text-gray-700">
+                Craft atmospheric scenes with dramatic lighting - from candlelit cathedrals to ethereal winter landscapes.
+              </p>
+            </div>
+          </div>
+
+          <h3 class="text-xl font-bold text-gray-900 mt-8 mb-3">How to Use These Midjourney Prompts</h3>
+          <p class="text-gray-700 mb-4">
+            Each prompt has been carefully crafted with specific details about lighting, composition, style, and mood. Simply copy any prompt and paste it into Midjourney, Stable Diffusion, DALL-E, or your preferred AI image generation tool. The prompts include technical parameters like "8K resolution," "ultra-realistic lighting," and "cinematic composition" to help you achieve professional-quality results.
+          </p>
+
+          <h3 class="text-xl font-bold text-gray-900 mt-8 mb-3">Tips for Best Results</h3>
+          <ul class="list-disc pl-6 space-y-2 text-gray-700">
+            <li>Start with our curated prompts and adjust parameters to match your vision</li>
+            <li>Combine multiple style keywords for unique results (e.g., "cyberpunk + baroque")</li>
+            <li>Experiment with different lighting conditions to change the mood</li>
+            <li>Use specific technical terms like "8K," "ultra-detailed," or "photo-realistic" for higher quality</li>
+            <li>Save your favorite prompts for easy access and future reference</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Related Links -->
+      <div class="mt-12 bg-gray-50 rounded-lg p-6 border border-gray-200">
+        <h3 class="text-xl font-bold text-gray-900 mb-4">More Prompt Resources</h3>
+        <div class="grid md:grid-cols-2 gap-4">
+          <a href="/ai-images-prompt" class="text-purple-600 hover:underline flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72Z"></path>
+              <path d="m14 7 3 3"></path>
+              <path d="M5 6v4"></path>
+              <path d="M19 14v4"></path>
+              <path d="M10 2v2"></path>
+              <path d="M7 8H3"></path>
+              <path d="M21 16h-4"></path>
+              <path d="M11 3H9"></path>
+            </svg>
+            AI Images Prompt Generator
+          </a>
+          <a href="/writing-prompts" class="text-purple-600 hover:underline flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+              <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+              <path d="M2 2l7.586 7.586"></path>
+            </svg>
+            Random Writing Prompts
+          </a>
+          <a href="/nano-banana-prompts" class="text-purple-600 hover:underline flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M12 16v-4"></path>
+              <path d="M12 8h.01"></path>
+            </svg>
+            Nano Banana Prompts
+          </a>
+          <a href="/ghostface-ai-trend-prompt-generator" class="text-purple-600 hover:underline flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M12 16v-4"></path>
+              <path d="M12 8h.01"></path>
+            </svg>
+            Ghostface AI Trend Prompts
+          </a>
+          <a href="/short-story-prompts-generator" class="text-purple-600 hover:underline flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"></path>
+              <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+              <path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"></path>
+            </svg>
+            Short Story Prompts
+          </a>
+          <a href="/random-name-generator" class="text-purple-600 hover:underline flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M12 16v-4"></path>
+              <path d="M12 8h.01"></path>
+            </svg>
+            Character Name Generator
+          </a>
+          <a href="/ai-blog-post-generator" class="text-purple-600 hover:underline flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path>
+            </svg>
+            Blog Post Ideas
+          </a>
+          <a href="/" class="text-purple-600 hover:underline flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M12 16v-4"></path>
+              <path d="M12 8h.01"></path>
+            </svg>
+            All Prompt Tools
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <section class="bg-white py-16 mt-16">
+      <div class="max-w-4xl mx-auto px-4">
+        <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+        <div class="space-y-6">
+          <div class="bg-purple-50 rounded-lg p-6 border border-purple-200">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">What is Midjourney and how do I use these prompts?</h3>
+            <p class="text-gray-700">
+              Midjourney is a powerful AI image generation tool. To use these prompts, simply copy any prompt from our collection and paste it into Midjourney's Discord bot using the /imagine command. You can also use these prompts with other AI art tools like Stable Diffusion, DALL-E, or Leonardo AI.
+            </p>
+          </div>
+
+          <div class="bg-purple-50 rounded-lg p-6 border border-purple-200">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">How can I get the best results with Midjourney prompts?</h3>
+            <p class="text-gray-700">
+              For optimal results, use detailed descriptions that include style keywords (e.g., "cinematic," "ultra-realistic"), lighting conditions (e.g., "golden hour," "dramatic lighting"), and technical specifications (e.g., "8K," "high resolution"). Our prompts are already optimized with these elements, but feel free to customize them to match your creative vision.
+            </p>
+          </div>
+
+          <div class="bg-purple-50 rounded-lg p-6 border border-purple-200">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">Are these prompts suitable for beginners?</h3>
+            <p class="text-gray-700">
+              Absolutely! These prompts are designed to work well for both beginners and experienced AI artists. Simply copy and paste them as-is for great results, or use them as a foundation to learn prompt engineering by tweaking different elements.
+            </p>
+          </div>
+
+          <div class="bg-purple-50 rounded-lg p-6 border border-purple-200">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">Can I use the generated images commercially?</h3>
+            <p class="text-gray-700">
+              The prompts themselves are free to use. However, the commercial usage rights of the generated images depend on the terms of service of the AI tool you're using (Midjourney, Stable Diffusion, etc.). Please check their respective licensing agreements for details on commercial use.
+            </p>
+          </div>
+
+          <div class="bg-purple-50 rounded-lg p-6 border border-purple-200">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">How often are new prompts added?</h3>
+            <p class="text-gray-700">
+              We regularly update our collection with new prompts across various categories. Bookmark this page and check back frequently to discover fresh inspiration for your AI art projects.
+            </p>
+          </div>
+
+          <div class="bg-purple-50 rounded-lg p-6 border border-purple-200">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">What makes a good Midjourney prompt?</h3>
+            <p class="text-gray-700">
+              A great Midjourney prompt includes: a clear subject, specific style references, lighting details, mood descriptors, technical quality parameters (like 8K or ultra-detailed), and composition notes (like cinematic or wide-angle). All our prompts incorporate these elements to help you create stunning AI art.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <AstroFooter />
+
+  <!-- Random generator and copy functionality -->
+  <script define:vars={{ midjourneyPrompts }}>
+    const allPromptsData = midjourneyPrompts;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const copyButtons = document.querySelectorAll('.copy-btn');
+      const generateRandomBtn = document.getElementById('generate-random');
+      const randomPromptDisplay = document.getElementById('random-prompt-display');
+      const copyRandomBtn = document.getElementById('copy-random');
+
+      // Copy functionality for prompt cards
+      copyButtons.forEach(button => {
+        button.addEventListener('click', async () => {
+          const text = button.getAttribute('data-text');
+          try {
+            await navigator.clipboard.writeText(text);
+            const originalHTML = button.innerHTML;
+            button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+            button.classList.add('text-green-600');
+            setTimeout(() => {
+              button.innerHTML = originalHTML;
+              button.classList.remove('text-green-600');
+            }, 2000);
+          } catch (err) {
+            console.error('Failed to copy:', err);
+          }
+        });
+      });
+
+      // Random prompt generator
+      generateRandomBtn.addEventListener('click', () => {
+        const categories = Object.keys(allPromptsData);
+        const randomCategory = categories[Math.floor(Math.random() * categories.length)];
+        const promptsInCategory = allPromptsData[randomCategory];
+        const randomPrompt = promptsInCategory[Math.floor(Math.random() * promptsInCategory.length)];
+
+        document.getElementById('random-prompt-category').textContent = randomPrompt.category;
+        document.getElementById('random-prompt-text').textContent = randomPrompt.prompt;
+        randomPromptDisplay.classList.remove('hidden');
+
+        copyRandomBtn.setAttribute('data-text', randomPrompt.prompt);
+      });
+
+      // Copy random prompt
+      copyRandomBtn.addEventListener('click', async () => {
+        const text = copyRandomBtn.getAttribute('data-text');
+        try {
+          await navigator.clipboard.writeText(text);
+          const originalHTML = copyRandomBtn.innerHTML;
+          copyRandomBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+          copyRandomBtn.classList.add('text-green-600');
+          setTimeout(() => {
+            copyRandomBtn.innerHTML = originalHTML;
+            copyRandomBtn.classList.remove('text-green-600');
+          }, 2000);
+        } catch (err) {
+          console.error('Failed to copy:', err);
+        }
+      });
+    });
+  </script>
+</BaseLayout>

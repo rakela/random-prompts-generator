@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AstroHeader from '../components/AstroHeader.astro';
+import AstroFooter from '../components/AstroFooter.astro';
+import PromptGenerator from '../components/PromptGenerator';
+import '../styles/global.css';
+import { getSEOData } from '../data/seo';
+
+const seo = getSEOData('blogPostGenerator');
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-r from-green-600 to-teal-600 text-white py-16">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">
+        AI Blog Post Generator
+      </h1>
+
+      <p class="text-lg opacity-80 mb-8 max-w-2xl mx-auto">
+        Generate SEO-optimized blog post ideas instantly with our free AI blog post generator. Create engaging content topics with proven formats, compelling hooks, and data-driven angles designed to drive traffic and reader engagement.
+      </p>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="max-w-6xl mx-auto px-4 py-8">
+    {/* Prompt Generator Component */}
+    <PromptGenerator client:load category="blog" />
+
+    {/* SEO Content Section */}
+    <div class="mt-16 space-y-8">
+      <div class="prose prose-gray max-w-none">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">SEO-Optimized AI Blog Post Generator</h2>
+        <p class="text-gray-700 mb-4">
+          Our AI blog post generator creates SEO-optimized blog post ideas with built-in SEO value, compelling hooks, and proven content formats. Each generated idea includes specific niches, ready-made angles, and emotional hooks that encourage clicks and social shares. Generate blog topics designed to rank well in search engines and engage your target audience from the first sentence.
+        </p>
+        <p class="text-gray-700 mb-4">
+          Every blog post idea combines specific searchable niches (like "remote work productivity for developers" or "sustainable fashion on a budget"), proven content formats (step-by-step tutorials, myth-busting listicles, data-driven analysis), data-driven angles, and compelling hooks that drive engagement and conversions for content marketers and bloggers.
+        </p>
+        <div class="bg-green-50 p-4 rounded-lg mt-4">
+          <h3 class="font-semibold text-green-900 mb-2">AI Blog Post Generator Features:</h3>
+          <ul class="text-green-800 text-sm space-y-1">
+            <li>• Long-tail keyword opportunities built into every topic</li>
+            <li>• Proven content formats that rank well in search engines</li>
+            <li>• Emotional hooks designed to drive engagement and social shares</li>
+            <li>• Specific, searchable niche topics for targeted content marketing</li>
+          </ul>
+        </div>
+
+        <h2 class="text-2xl font-bold text-gray-900 mb-4 mt-8">SEO-Friendly Blog Ideas</h2>
+        <p class="text-gray-700 mb-4">
+          The best blog post ideas combine search intent, emotional appeal, and actionable value. Our AI blog post generator creates topics that address all three elements for maximum impact and search visibility.
+        </p>
+
+        <h2 class="text-2xl font-bold text-gray-900 mb-4 mt-8">How AI Writes Blog Posts</h2>
+        <h3 class="text-xl font-semibold text-gray-900 mb-3 mt-6">The AI Content Creation Process</h3>
+        <p class="text-gray-700 mb-4">
+          Modern AI blog post generators use advanced language models to create content outlines, generate topic ideas, and even write full blog posts. Understanding how the process works helps you get better results and create more engaging content.
+        </p>
+
+        <h3 class="text-xl font-semibold text-gray-900 mb-3 mt-6">Best Practices for AI-Generated Content</h3>
+        <ul class="list-disc pl-6 text-gray-700 mb-4 space-y-2">
+          <li>Always fact-check AI-generated content for accuracy</li>
+          <li>Add personal insights and expertise to make content unique</li>
+          <li>Optimize for your target keywords while maintaining natural flow</li>
+          <li>Include multimedia elements (images, videos) to enhance engagement</li>
+          <li>Edit for brand voice and style consistency</li>
+        </ul>
+
+        <h2 class="text-2xl font-bold text-gray-900 mb-4 mt-8">Benefits of AI Content Creation</h2>
+        <p class="text-gray-700 mb-4">
+          AI blog post generators save time, overcome writer's block, and help you maintain a consistent content calendar. Use generated ideas as inspiration, then add your unique perspective and expertise to create truly valuable content.
+        </p>
+
+        <h2 class="text-2xl font-bold text-gray-900 mb-4 mt-8">SEO Writing Examples</h2>
+        <p class="text-gray-700 mb-4">
+          Effective SEO blog posts balance keyword optimization with reader value. Study high-ranking content in your niche to understand what works, then use our generator to create topics that follow proven patterns while adding your unique angle.
+        </p>
+
+        <h2 class="text-2xl font-bold text-gray-900 mb-4 mt-8">Related Content Tools</h2>
+        <p class="text-gray-700 mb-4">
+          Enhance your content creation workflow with <a href="https://www.semrush.com/writing-assistant/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">SEMrush Writing Assistant</a> for SEO optimization and <a href="https://www.grammarly.com" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Grammarly</a> for grammar and style improvements.
+        </p>
+
+        <h2 class="text-2xl font-bold text-gray-900 mb-4 mt-8">Helpful Resources</h2>
+        <p class="text-gray-700 mb-4">
+          Learn more about content marketing at <a href="https://contentmarketinginstitute.com" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Content Marketing Institute</a> and <a href="https://moz.com/beginners-guide-to-seo" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Moz's Beginner's Guide to SEO</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <AstroFooter />
+</BaseLayout>

@@ -1,0 +1,641 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AstroHeader from '../components/AstroHeader.astro';
+import AstroFooter from '../components/AstroFooter.astro';
+import '../styles/global.css';
+import { getSEOData } from '../data/seo';
+
+const seo = getSEOData('nanoBananaPrompts');
+
+// Nano Banana Prompts Data organized by category
+const nanoBananaPrompts = {
+  '3d-figurine': [
+    "Turn a portrait photo into a 1/6 scale nano banana figurine standing on a glossy wooden base with a clear acrylic cover, capturing realistic facial details and clothing folds.",
+    "Design a nano banana 3D action figure of a superhero version of yourself, posed dynamically on a rocky base with dramatic lighting and a miniature city skyline in the background.",
+    "Create a nano banana-themed collectible figure inside a toy box with colorful artwork, including a transparent window showing the figure posed with accessories like a tiny banana sword.",
+    "Generate a nano banana character wearing futuristic armor, displayed on a rotating stand with LED lights and a holographic nameplate.",
+    "Craft a nano banana figurine as a chibi adventurer holding a staff, standing on a grassy base with tiny mushrooms and lanterns.",
+    "Model a nano banana 3D sculpture of a robot chef cooking with bananas, placed on a kitchen-themed base with utensils and food details.",
+    "Design a nano banana pirate figurine with a banana-shaped sword, perched on a treasure chest base surrounded by golden coins.",
+    "Create a nano banana astronaut figure floating above a lunar surface base with a small flag and stars painted on the backdrop.",
+    "Turn a photo of your pet into a nano banana-inspired animal figurine wearing a tiny banana hat, standing on a circular platform with engraved name.",
+    "Sculpt a nano banana warrior riding a dragon, captured mid-flight, with swirling clouds and flames forming the base.",
+    "Design a nano banana mermaid figure with a shimmering tail and shell accessories, displayed on a water-themed base with clear resin waves.",
+    "Create a nano banana steampunk inventor figurine with gears and goggles, standing next to a miniature machine on a metallic base."
+  ],
+  'plush-toy': [
+    "Generate a close-up, warmly lit photograph of a hand-crocheted plush nano banana doll with oversized head, expressive face, visible stitching, soft pastel tones, studio background.",
+    "Design a nano banana plush toy as a sleepy moon creature, with embroidered stars and a crescent-shaped body, placed on a fluffy pillow background.",
+    "Create a nano banana plush dragon with tiny wings and horns, soft textured fabric, and vibrant rainbow colors, captured against a neutral backdrop.",
+    "Generate a nano banana plush robot with square body and antenna ears, featuring sewn-on buttons and metallic fabrics.",
+    "Design a nano banana plush unicorn with glittery mane, satin horn, and heart-shaped cheeks, photographed in a whimsical pastel set.",
+    "Create a nano banana plush cat wearing pajamas, hugging a small banana pillow, in a cozy bedroom scene.",
+    "Craft a nano banana plush dinosaur with polka-dot pattern, smiling face, and felt spikes, shot on a grassy play mat.",
+    "Design a nano banana plush fairy with tiny wings, floral crown, and sparkle accents, placed inside a miniature forest diorama.",
+    "Generate a nano banana plush octopus with eight adorable tentacles, big eyes, and soft velvety fabric, posed on a sandy beach.",
+    "Create a nano banana plush penguin wearing a banana scarf, standing on a polar ice setting with soft snow textures.",
+    "Design a nano banana plush superhero with cape and mask, dynamic pose, vibrant colors, and stitched emblem on chest.",
+    "Create a nano banana plush alien with antennae, multiple eyes, and galaxy-themed fabric, floating against a starry backdrop."
+  ],
+  'capsule-diorama': [
+    "Transparent gashapon capsule diorama holding a nano banana-styled character, dramatic cinematic lighting, colored base matching theme, label with name or alias, photorealistic miniature collectible look.",
+    "Generate a nano banana astronaut diorama inside a clear capsule with tiny planets and stars, illuminated by internal LED.",
+    "Create a nano banana fairy forest scene within a capsule, featuring miniature trees, glowing mushrooms, and a tiny fairy figure.",
+    "Design a nano banana underwater world inside a transparent capsule, with a miniature mermaid, coral reefs, and bubbles.",
+    "Craft a nano banana space battle diorama inside a capsule with tiny spaceships, laser beams, and asteroid terrain.",
+    "Generate a nano banana circus scene inside a capsule featuring a clown figurine, miniature circus tent, and ring.",
+    "Create a nano banana Japanese garden diorama inside a capsule, complete with cherry blossom trees, koi pond, and a small bridge.",
+    "Design a nano banana Halloween-themed capsule with a witch character, pumpkins, and bats, lit by eerie purple lights.",
+    "Make a nano banana beach vacation diorama inside a capsule with a surfer figure, waves, and palm tree.",
+    "Craft a nano banana futuristic cityscape inside a capsule with skyscrapers, neon lights, and flying cars.",
+    "Create a nano banana medieval castle diorama inside a capsule, complete with knights, dragons, and a keep.",
+    "Design a nano banana spring meadow diorama inside a capsule with flowers, butterflies, and a picnic scene."
+  ],
+  'portrait-character': [
+    "Generate a set of 9 half-body portraits following different poses and unique settings, each nano banana themed, rich textures, varied lighting conditions, vibrant colors.",
+    "Create a nano banana character portrait in anime style with big eyes, pastel color palette, and intricate hair details.",
+    "Design a photorealistic nano banana portrait of a warrior queen with elaborate armor, glowing banana symbol, and dramatic lighting.",
+    "Generate a nano banana-themed vintage polaroid photo of a couple in retro outfits, colors slightly faded and grainy.",
+    "Create a nano banana cyberpunk portrait with neon lights, reflective surfaces, and futuristic accessories.",
+    "Design a nano banana steampunk portrait featuring goggles, brass gears, and Victorian attire.",
+    "Generate a nano banana fantasy portrait of an elf with pointed ears, glowing eyes, and nature-inspired clothing.",
+    "Create a nano banana watercolor portrait of a young girl with flowing hair, gentle brush strokes, and soft color transitions.",
+    "Design a nano banana surrealistic portrait where the subject's hair flows into a river of bananas, blending reality and imagination.",
+    "Generate a nano banana portrait of a futuristic astronaut with a reflective helmet showing a banana galaxy.",
+    "Create a nano banana noir-style portrait of a detective in a dark alley with dramatic shadows and a banana cigarette.",
+    "Design a nano banana high-fashion editorial portrait with minimalist background and bold banana-themed accessories."
+  ],
+  'synthwave-retro': [
+    "Create an image in synthwave style: neon grid, strong shadows, retro colors, nano banana image prompt style, glowing edges, dramatic reflections.",
+    "Generate a nano banana vaporwave collage with pastel gradients, ancient statues, and pixelated bananas.",
+    "Design a nano banana 8-bit video game scene with pixel art characters collecting bananas in a retro arcade environment.",
+    "Create a nano banana 1980s-inspired poster featuring a banana-shaped sports car driving through a neon city.",
+    "Generate a nano banana retro-futuristic landscape with chrome structures, wireframe mountains, and a giant banana sun.",
+    "Design a nano banana outrun-themed scene with a spaceship shaped like a banana racing along a neon-lit highway.",
+    "Create a nano banana synth-pop album cover with abstract banana shapes, vibrant colors, and bold typography.",
+    "Generate a nano banana 1980s arcade cabinet design with a game about collecting bananas across cosmic levels.",
+    "Design a nano banana pixelated portrait reminiscent of early computer graphics.",
+    "Create a nano banana poster with retro VHS aesthetic, glitch effects, and a cosmic banana hero.",
+    "Generate a nano banana 1990s magazine cover featuring futuristic fashion and banana-themed patterns.",
+    "Design a nano banana retrowave surfing scene with waves made of neon lines and a banana surfboard."
+  ],
+  'fantasy-scifi': [
+    "Replace outfit of subject in photo with fantasy armor, maintain facial identity and pose, with metallic textures and dynamic lighting, nano banana 3d figurines concept.",
+    "Create a nano banana dragon-rider scene with a hero flying on a banana-shaped dragon above fiery mountains.",
+    "Generate a nano banana steampunk airship sailing through clouds with banana-shaped balloon and brass details.",
+    "Design a nano banana cosmic warrior wielding a glowing banana sword amidst a swirling galaxy.",
+    "Create a nano banana futuristic city with floating banana-shaped skyscrapers and flying cars.",
+    "Generate a nano banana underwater kingdom with mermaids, sea creatures, and luminous banana coral.",
+    "Design a nano banana enchanted forest with giant banana trees, glowing fairies, and mystical creatures.",
+    "Create a nano banana desert sci-fi scene with a lone traveller and a giant banana monolith under twin suns.",
+    "Generate a nano banana space exploration scene with astronauts discovering a banana-shaped asteroid.",
+    "Design a nano banana dystopian landscape with banana-shaped towers and a dark, moody atmosphere.",
+    "Create a nano banana cyber-dragon with mechanical wings, glowing circuits, and banana-inspired armor.",
+    "Generate a nano banana fairy tale castle built from bananas, surrounded by talking animals and magical lights."
+  ],
+  'photo-editing': [
+    "Change the weather in a landscape photo to a foggy sunrise, subject remains same, light diffused, mood evocative, nano banana image prompt theme.",
+    "Turn a black-and-white photo into a colorful nano banana-themed image with vibrant hues and soft gradients.",
+    "Replace the background of a portrait with a nano banana jungle scene filled with giant banana leaves and warm light.",
+    "Add a glowing halo of floating bananas around the subject's head in a photo, creating a whimsical aura.",
+    "Convert a nighttime city photograph into a neon banana dreamscape with yellow and magenta tones.",
+    "Edit a beach photo to include a banana-shaped surfboard and banana peel footprints in the sand.",
+    "Replace the sky in a landscape image with a swirling galaxy containing banana constellations.",
+    "Add realistic banana butterflies fluttering around the subject in a garden photo.",
+    "Adjust lighting in a studio portrait to cast banana-shaped shadows on the background.",
+    "Insert a tiny nano banana spaceship hovering above a city skyline at dusk.",
+    "Colorize an old family photo with subtle nano banana hues and retro pastel tones.",
+    "Add snow and banana-themed ornaments to a summer landscape to transform it into a nano banana winter wonderland."
+  ],
+  'social-media': [
+    "Create a series of nano banana avatar icons for social media, each with different expressions and accessories.",
+    "Design a nano banana logo for a gaming channel, combining a stylized banana with futuristic typography.",
+    "Generate a nano banana-themed promotional poster for a music festival, featuring abstract banana graphics and bold fonts.",
+    "Create a nano banana badge design for a community forum with minimalist banana and star elements.",
+    "Design a set of nano banana stickers for messaging apps, each depicting a different mood or activity.",
+    "Generate a nano banana-infused brand style guide, including color palette, patterns, and iconography.",
+    "Create a nano banana cover photo for a tech blog, featuring a futuristic landscape and subtle banana motifs.",
+    "Design a nano banana-themed YouTube thumbnail template with energetic colors and playful banana icons.",
+    "Generate a series of nano banana Instagram story backgrounds with gradient colors and doodle bananas.",
+    "Create a nano banana-themed business card design with modern typography and a sleek banana logo.",
+    "Design a nano banana merchandise mockup showing t-shirts and mugs with banana-themed graphics.",
+    "Generate a nano banana Twitch overlay design with dynamic frames, animated bananas, and neon accents."
+  ]
+};
+
+const categoryInfo = {
+  '3d-figurine': { label: '3D Figurine Design', icon: '🗿', color: 'purple' },
+  'plush-toy': { label: 'Plush Toy', icon: '🧸', color: 'pink' },
+  'capsule-diorama': { label: 'Capsule Diorama', icon: '💊', color: 'indigo' },
+  'portrait-character': { label: 'Portrait & Character', icon: '👤', color: 'rose' },
+  'synthwave-retro': { label: 'Synthwave/Retro & Styles', icon: '🌆', color: 'cyan' },
+  'fantasy-scifi': { label: 'Fantasy & Sci-Fi', icon: '🚀', color: 'violet' },
+  'photo-editing': { label: 'Photo Editing & Enhancement', icon: '✨', color: 'amber' },
+  'social-media': { label: 'Social Media & Branding', icon: '📱', color: 'emerald' }
+};
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-r from-yellow-500 via-orange-500 to-pink-500 text-white py-16">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">
+        Nano Banana Prompts
+      </h1>
+
+      <p class="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
+        Explore 96+ creative nano banana prompts for AI image generation across 8 unique categories. From 3D figurines to plush toys, capsule dioramas to synthwave art - find the perfect prompt for your next creative project.
+      </p>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="max-w-6xl mx-auto px-4 py-8">
+    <div class="max-w-4xl mx-auto">
+
+      <!-- Random Generator Section -->
+      <div class="bg-white rounded-2xl shadow-xl p-8 mb-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4 text-center">🎲 Random Nano Banana Prompt Generator</h2>
+        <p class="text-gray-600 text-center mb-6">Generate a random nano banana prompt from any category instantly</p>
+        <div class="text-center mb-6">
+          <button id="generate-random" class="px-8 py-3 bg-gradient-to-r from-yellow-500 to-orange-500 text-white rounded-lg font-semibold hover:from-yellow-600 hover:to-orange-600 transition-all shadow-lg">
+            Generate Random Prompt
+          </button>
+        </div>
+        <div id="random-prompt-display" class="hidden bg-gradient-to-r from-yellow-50 to-orange-50 border border-yellow-200 rounded-lg p-6">
+          <div class="mb-3">
+            <span id="random-prompt-category" class="inline-flex items-center gap-2 px-3 py-1 bg-white rounded-full text-sm font-semibold text-gray-700 border border-yellow-300">
+              <span id="random-prompt-icon"></span>
+              <span id="random-prompt-category-label"></span>
+            </span>
+          </div>
+          <div class="flex items-start gap-3 mb-4">
+            <span class="text-3xl flex-shrink-0">🍌</span>
+            <div class="flex-1">
+              <p id="random-prompt-text" class="text-gray-700"></p>
+            </div>
+          </div>
+          <div class="flex gap-2 justify-end">
+            <button id="copy-random" class="px-4 py-2 bg-white border border-yellow-200 rounded-lg text-yellow-700 hover:bg-yellow-50 transition-colors text-sm font-medium">
+              Copy Prompt
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- All Prompts Display -->
+      <div class="mt-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">All Nano Banana Prompts</h2>
+
+        <!-- 3D Figurine Design -->
+        <div class="mb-8">
+          <h3 class="text-xl font-bold text-purple-700 mb-4 flex items-center gap-2">
+            🗿 3D Figurine Design
+          </h3>
+          <div class="grid gap-4">
+            {nanoBananaPrompts['3d-figurine'].map((prompt, index) => (
+              <div class="bg-gradient-to-r from-purple-50 to-violet-50 border border-purple-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                <div class="flex items-start gap-3">
+                  <span class="text-2xl flex-shrink-0">🍌</span>
+                  <div class="flex-1">
+                    <p class="text-gray-700">{prompt}</p>
+                  </div>
+                  <button
+                    class="copy-btn p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
+                    data-text={prompt}
+                    title="Copy prompt"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Plush Toy -->
+        <div class="mb-8">
+          <h3 class="text-xl font-bold text-pink-700 mb-4 flex items-center gap-2">
+            🧸 Plush Toy
+          </h3>
+          <div class="grid gap-4">
+            {nanoBananaPrompts['plush-toy'].map((prompt, index) => (
+              <div class="bg-gradient-to-r from-pink-50 to-rose-50 border border-pink-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                <div class="flex items-start gap-3">
+                  <span class="text-2xl flex-shrink-0">🍌</span>
+                  <div class="flex-1">
+                    <p class="text-gray-700">{prompt}</p>
+                  </div>
+                  <button
+                    class="copy-btn p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
+                    data-text={prompt}
+                    title="Copy prompt"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Capsule Diorama -->
+        <div class="mb-8">
+          <h3 class="text-xl font-bold text-indigo-700 mb-4 flex items-center gap-2">
+            💊 Capsule Diorama
+          </h3>
+          <div class="grid gap-4">
+            {nanoBananaPrompts['capsule-diorama'].map((prompt, index) => (
+              <div class="bg-gradient-to-r from-indigo-50 to-blue-50 border border-indigo-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                <div class="flex items-start gap-3">
+                  <span class="text-2xl flex-shrink-0">🍌</span>
+                  <div class="flex-1">
+                    <p class="text-gray-700">{prompt}</p>
+                  </div>
+                  <button
+                    class="copy-btn p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
+                    data-text={prompt}
+                    title="Copy prompt"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Portrait & Character -->
+        <div class="mb-8">
+          <h3 class="text-xl font-bold text-rose-700 mb-4 flex items-center gap-2">
+            👤 Portrait & Character
+          </h3>
+          <div class="grid gap-4">
+            {nanoBananaPrompts['portrait-character'].map((prompt, index) => (
+              <div class="bg-gradient-to-r from-rose-50 to-pink-50 border border-rose-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                <div class="flex items-start gap-3">
+                  <span class="text-2xl flex-shrink-0">🍌</span>
+                  <div class="flex-1">
+                    <p class="text-gray-700">{prompt}</p>
+                  </div>
+                  <button
+                    class="copy-btn p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
+                    data-text={prompt}
+                    title="Copy prompt"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Synthwave/Retro & Styles -->
+        <div class="mb-8">
+          <h3 class="text-xl font-bold text-cyan-700 mb-4 flex items-center gap-2">
+            🌆 Synthwave/Retro & Styles
+          </h3>
+          <div class="grid gap-4">
+            {nanoBananaPrompts['synthwave-retro'].map((prompt, index) => (
+              <div class="bg-gradient-to-r from-cyan-50 to-blue-50 border border-cyan-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                <div class="flex items-start gap-3">
+                  <span class="text-2xl flex-shrink-0">🍌</span>
+                  <div class="flex-1">
+                    <p class="text-gray-700">{prompt}</p>
+                  </div>
+                  <button
+                    class="copy-btn p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
+                    data-text={prompt}
+                    title="Copy prompt"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Fantasy & Sci-Fi -->
+        <div class="mb-8">
+          <h3 class="text-xl font-bold text-violet-700 mb-4 flex items-center gap-2">
+            🚀 Fantasy & Sci-Fi
+          </h3>
+          <div class="grid gap-4">
+            {nanoBananaPrompts['fantasy-scifi'].map((prompt, index) => (
+              <div class="bg-gradient-to-r from-violet-50 to-purple-50 border border-violet-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                <div class="flex items-start gap-3">
+                  <span class="text-2xl flex-shrink-0">🍌</span>
+                  <div class="flex-1">
+                    <p class="text-gray-700">{prompt}</p>
+                  </div>
+                  <button
+                    class="copy-btn p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
+                    data-text={prompt}
+                    title="Copy prompt"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Photo Editing & Enhancement -->
+        <div class="mb-8">
+          <h3 class="text-xl font-bold text-amber-700 mb-4 flex items-center gap-2">
+            ✨ Photo Editing & Enhancement
+          </h3>
+          <div class="grid gap-4">
+            {nanoBananaPrompts['photo-editing'].map((prompt, index) => (
+              <div class="bg-gradient-to-r from-amber-50 to-yellow-50 border border-amber-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                <div class="flex items-start gap-3">
+                  <span class="text-2xl flex-shrink-0">🍌</span>
+                  <div class="flex-1">
+                    <p class="text-gray-700">{prompt}</p>
+                  </div>
+                  <button
+                    class="copy-btn p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
+                    data-text={prompt}
+                    title="Copy prompt"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Social Media & Branding -->
+        <div class="mb-8">
+          <h3 class="text-xl font-bold text-emerald-700 mb-4 flex items-center gap-2">
+            📱 Social Media & Branding
+          </h3>
+          <div class="grid gap-4">
+            {nanoBananaPrompts['social-media'].map((prompt, index) => (
+              <div class="bg-gradient-to-r from-emerald-50 to-green-50 border border-emerald-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                <div class="flex items-start gap-3">
+                  <span class="text-2xl flex-shrink-0">🍌</span>
+                  <div class="flex-1">
+                    <p class="text-gray-700">{prompt}</p>
+                  </div>
+                  <button
+                    class="copy-btn p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
+                    data-text={prompt}
+                    title="Copy prompt"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- SEO Content Section -->
+      <div class="mt-16 space-y-8">
+        <div class="prose prose-gray max-w-none">
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">Creative Nano Banana Prompts for AI Image Generation</h2>
+          <p class="text-gray-700 mb-4">
+            This comprehensive collection of nano banana prompts offers 96+ detailed and creative prompts across 8 unique categories, perfect for AI image generation, 3D modeling, collectible design, and digital art projects. Whether you're creating adorable plush toys, intricate 3D figurines, or futuristic synthwave art, these prompts provide the perfect foundation for your creative vision.
+          </p>
+          <p class="text-gray-700 mb-4">
+            Each prompt is carefully crafted with specific details about style, lighting, composition, and mood to help you achieve professional-quality results. From capsule dioramas and character portraits to photo editing techniques and social media branding, our nano banana prompts cover every creative need. Use them in popular AI image tools like <a href="/midjourney-ai-picture-generator" class="text-yellow-600 hover:underline">Midjourney</a>, Stable Diffusion, DALL-E, or the Nano Banana AI editor.
+          </p>
+          <p class="text-gray-700 mb-4">
+            Whether you're a digital artist, collectible designer, social media creator, or just exploring the creative possibilities of AI art, these nano banana prompts provide endless inspiration. Each category offers unique prompts optimized for different creative applications, from highly detailed 3D collectible figurines to whimsical plush toy designs and retro synthwave aesthetics.
+          </p>
+          <p class="text-gray-700 mb-4">
+            Looking for more AI art inspiration? Explore our <a href="/ai-images-prompt" class="text-yellow-600 hover:underline">AI Art Prompts Generator</a> or discover creative writing ideas with our <a href="/writing-prompts" class="text-yellow-600 hover:underline">Writing Prompts collection</a>.
+          </p>
+        </div>
+      </div>
+
+      <!-- Related Links -->
+      <div class="mt-12 bg-gray-50 rounded-lg p-6 border border-gray-200">
+        <h3 class="text-xl font-bold text-gray-900 mb-4">More Prompt Resources</h3>
+        <div class="grid md:grid-cols-2 gap-4">
+          <a href="/ai-images-prompt" class="text-yellow-600 hover:underline flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72Z"></path>
+              <path d="m14 7 3 3"></path>
+              <path d="M5 6v4"></path>
+              <path d="M19 14v4"></path>
+              <path d="M10 2v2"></path>
+              <path d="M7 8H3"></path>
+              <path d="M21 16h-4"></path>
+              <path d="M11 3H9"></path>
+            </svg>
+            AI Images Prompt Generator
+          </a>
+          <a href="/writing-prompts" class="text-yellow-600 hover:underline flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+              <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+              <path d="M2 2l7.586 7.586"></path>
+            </svg>
+            Random Writing Prompts
+          </a>
+          <a href="/midjourney-ai-picture-generator" class="text-yellow-600 hover:underline flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72Z"></path>
+              <path d="m14 7 3 3"></path>
+              <path d="M5 6v4"></path>
+              <path d="M19 14v4"></path>
+              <path d="M10 2v2"></path>
+              <path d="M7 8H3"></path>
+              <path d="M21 16h-4"></path>
+              <path d="M11 3H9"></path>
+            </svg>
+            Midjourney AI Prompts
+          </a>
+          <a href="/ghostface-ai-trend-prompt-generator" class="text-yellow-600 hover:underline flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M12 16v-4"></path>
+              <path d="M12 8h.01"></path>
+            </svg>
+            Ghostface AI Trend Prompts
+          </a>
+          <a href="/short-story-prompts-generator" class="text-yellow-600 hover:underline flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"></path>
+              <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+              <path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"></path>
+            </svg>
+            Short Story Prompt Generator
+          </a>
+          <a href="/random-name-generator" class="text-yellow-600 hover:underline flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M12 16v-4"></path>
+              <path d="M12 8h.01"></path>
+            </svg>
+            Character Name Generator
+          </a>
+          <a href="/ai-blog-post-generator" class="text-yellow-600 hover:underline flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path>
+            </svg>
+            Blog Post Ideas
+          </a>
+          <a href="/" class="text-yellow-600 hover:underline flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M12 16v-4"></path>
+              <path d="M12 8h.01"></path>
+            </svg>
+            All Prompt Tools
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <section class="bg-white py-16 mt-16">
+      <div class="max-w-4xl mx-auto px-4">
+        <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+        <div class="space-y-6">
+          <div class="bg-yellow-50 rounded-lg p-6 border border-yellow-200">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">What is the nano banana prompt generator?</h3>
+            <p class="text-gray-700">
+              This tool helps you automatically generate detailed and creative prompts related to nano banana for AI-image generation, 3D modeling, collectibles, and artwork.
+            </p>
+          </div>
+
+          <div class="bg-yellow-50 rounded-lg p-6 border border-yellow-200">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">How can I achieve the best results with my nano banana images?</h3>
+            <p class="text-gray-700">
+              Focus on clear subject descriptions combined with specific style keywords, lighting conditions, poses, and accessories. For example, use terms like "soft plush toy", "chibi doll", "transparent capsule", or "studio lighting" to create more precise and compelling artwork.
+            </p>
+          </div>
+
+          <div class="bg-yellow-50 rounded-lg p-6 border border-yellow-200">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">Can I create 3D figurine designs with these prompts?</h3>
+            <p class="text-gray-700">
+              Absolutely! Our prompts include detailed specifications for scale (1/7, 1/6), materials (acrylic, plush, metal), base designs, packaging concepts, and lighting setups—perfect for designing collectible 3D figurines.
+            </p>
+          </div>
+
+          <div class="bg-yellow-50 rounded-lg p-6 border border-yellow-200">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">Does this cost anything to use?</h3>
+            <p class="text-gray-700">
+              No, the core functionality is completely free to use.
+            </p>
+          </div>
+
+          <div class="bg-yellow-50 rounded-lg p-6 border border-yellow-200">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">What can I do with the generated prompts?</h3>
+            <p class="text-gray-700">
+              Use them in popular AI image tools like MidJourney, Stable Diffusion, DALL·E, or Nano Banana AI editor. They're also valuable for 3D modeling projects, packaging mockups, collectible design, and branding work.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <AstroFooter />
+
+  <!-- Copy to clipboard functionality -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const copyButtons = document.querySelectorAll('.copy-btn');
+
+      copyButtons.forEach(button => {
+        button.addEventListener('click', async () => {
+          const text = button.getAttribute('data-text');
+
+          try {
+            await navigator.clipboard.writeText(text);
+
+            // Visual feedback
+            const originalHTML = button.innerHTML;
+            button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+            button.classList.add('text-green-600');
+
+            setTimeout(() => {
+              button.innerHTML = originalHTML;
+              button.classList.remove('text-green-600');
+            }, 2000);
+          } catch (err) {
+            console.error('Failed to copy:', err);
+          }
+        });
+      });
+    });
+  </script>
+
+  <!-- Random Generator Script -->
+  <script define:vars={{ nanoBananaPrompts, categoryInfo }}>
+    const allPromptsData = nanoBananaPrompts;
+    const categoriesInfo = categoryInfo;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const generateRandomBtn = document.getElementById('generate-random');
+      const randomPromptDisplay = document.getElementById('random-prompt-display');
+      const copyRandomBtn = document.getElementById('copy-random');
+      let currentPrompt = null;
+
+      generateRandomBtn.addEventListener('click', () => {
+        const categories = Object.keys(allPromptsData);
+        const randomCategory = categories[Math.floor(Math.random() * categories.length)];
+        const promptsInCategory = allPromptsData[randomCategory];
+        const randomPrompt = promptsInCategory[Math.floor(Math.random() * promptsInCategory.length)];
+
+        currentPrompt = randomPrompt;
+        const categoryMeta = categoriesInfo[randomCategory];
+
+        document.getElementById('random-prompt-icon').textContent = categoryMeta.icon;
+        document.getElementById('random-prompt-category-label').textContent = categoryMeta.label;
+        document.getElementById('random-prompt-text').textContent = randomPrompt;
+        randomPromptDisplay.classList.remove('hidden');
+      });
+
+      copyRandomBtn.addEventListener('click', async () => {
+        if (currentPrompt) {
+          try {
+            await navigator.clipboard.writeText(currentPrompt);
+            const originalText = copyRandomBtn.textContent;
+            copyRandomBtn.textContent = 'Copied!';
+            setTimeout(() => {
+              copyRandomBtn.textContent = originalText;
+            }, 2000);
+          } catch (err) {
+            console.error('Failed to copy:', err);
+          }
+        }
+      });
+    });
+  </script>
+</BaseLayout>
