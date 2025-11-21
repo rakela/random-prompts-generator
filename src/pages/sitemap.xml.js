@@ -11,6 +11,7 @@ const staticPageUrls = [
   'ai-images-prompt',
   'ai-blog-post-generator',
   'short-story-prompts-generator',
+  'story-starters-generator',
   'random-name-generator',
   // Category pages
   'ai-art-generators',

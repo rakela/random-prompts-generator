@@ -39,6 +39,12 @@ export const seoData: Record<string, SEOData> = {
     description: 'Generate creative short story prompts with compelling conflicts & plot twists. Free random story prompt generator for flash fiction & short stories.',
     keywords: 'short story prompts, story prompts generator, random story prompts, flash fiction prompts, short story ideas, creative story generator'
   },
+  storyStartersGenerator: {
+    path: 'story-starters-generator',
+    title: 'Story Starters Generator - Free Opening Lines & Story Hooks',
+    description: 'Free story starters generator with compelling opening lines & intriguing scenarios. Kickstart your creative writing with powerful story beginnings & hooks.',
+    keywords: 'story starters generator, story starters, opening lines generator, story hooks, story beginnings, creative writing starters, first line generator'
+  },
   randomNameGenerator: {
     path: 'random-name-generator',
     title: 'Random Name Generator - Fantasy & Character Names',

@@ -1,0 +1,124 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AstroHeader from '../components/AstroHeader.astro';
+import AstroFooter from '../components/AstroFooter.astro';
+import PromptGenerator from '../components/PromptGenerator';
+import '../styles/global.css';
+import { getSEOData } from '../data/seo';
+
+const seo = getSEOData('storyStartersGenerator');
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">
+        Story Starters Generator
+      </h1>
+
+      <p class="text-lg opacity-80 mb-8 max-w-2xl mx-auto">
+        Free story starters generator with compelling opening lines, intriguing scenarios & unique story hooks. Kickstart your creative writing with powerful story beginnings.
+      </p>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="max-w-6xl mx-auto px-4 py-8">
+    {/* Prompt Generator Component */}
+    <PromptGenerator client:load category="writing" />
+
+    {/* SEO Content Section */}
+    <div class="mt-16 space-y-8">
+      <div class="prose prose-gray max-w-none">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Story Starters Generator - Powerful Opening Lines for Your Stories</h2>
+        <p class="text-gray-700 mb-4">
+          Our story starters generator creates compelling opening lines and intriguing scenarios designed to kickstart your creative writing journey. Whether you're working on a novel, short story, or flash fiction, these story starters provide the perfect launching point for your narrative. Each generated starter combines proven storytelling techniques with unique twists to capture readers' attention from the very first sentence.
+        </p>
+        <p class="text-gray-700 mb-4">
+          A great story starter does more than just begin a tale—it sets the tone, introduces conflict, and hooks your reader immediately. Our generator produces story starters featuring mysterious situations, compelling characters, and thought-provoking scenarios that demand exploration. From "The last person on Earth hears a knock at the door" to complex emotional openings, each starter is crafted to inspire creativity and overcome writer's block.
+        </p>
+        <div class="bg-blue-50 p-4 rounded-lg mt-4">
+          <h3 class="font-semibold text-blue-900 mb-2">What Makes a Great Story Starter:</h3>
+          <ul class="text-blue-800 text-sm space-y-1">
+            <li>• Immediate intrigue that hooks the reader</li>
+            <li>• Built-in conflict or tension from the first line</li>
+            <li>• Unique scenarios that spark imagination</li>
+            <li>• Flexibility to develop in multiple directions</li>
+          </ul>
+        </div>
+      </div>
+
+      {/* How to Use Section */}
+      <div class="prose prose-gray max-w-none mt-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">How to Use Story Starters Effectively</h2>
+        <p class="text-gray-700 mb-4">
+          Story starters are more than just opening sentences—they're creative springboards. Here's how to get the most from our story starters generator:
+        </p>
+        <div class="grid md:grid-cols-2 gap-6 mt-6">
+          <div class="bg-gray-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-gray-900 mb-2">For Daily Writing Practice</h4>
+            <p class="text-gray-700 text-sm">
+              Generate a new story starter each day and write for 15-30 minutes. This builds your creative muscles and helps you explore different genres and styles without the pressure of a complete story.
+            </p>
+          </div>
+          <div class="bg-gray-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-gray-900 mb-2">For Novel Planning</h4>
+            <p class="text-gray-700 text-sm">
+              Use story starters to brainstorm potential novel openings. Generate multiple starters and develop the ones that resonate most with your intended story direction.
+            </p>
+          </div>
+          <div class="bg-gray-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-gray-900 mb-2">For Flash Fiction</h4>
+            <p class="text-gray-700 text-sm">
+              Story starters are perfect for flash fiction challenges. The built-in conflict and intrigue provide everything you need to craft a complete micro-story.
+            </p>
+          </div>
+          <div class="bg-gray-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-gray-900 mb-2">For Writing Groups</h4>
+            <p class="text-gray-700 text-sm">
+              Share a story starter with your writing group and compare how each writer develops the same opening into different stories. It's a great exercise in creative interpretation.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* FAQ Section */}
+      <div class="prose prose-gray max-w-none mt-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+        <div class="space-y-4">
+          <div class="bg-gray-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-gray-900 mb-2">What's the difference between a story starter and a writing prompt?</h4>
+            <p class="text-gray-700 text-sm">
+              While both are designed to inspire creativity, story starters specifically focus on opening lines or scenarios that begin a narrative, while writing prompts can be broader concepts, themes, or complete story ideas. Story starters give you the first moment of your story, leaving you to develop what comes next.
+            </p>
+          </div>
+          <div class="bg-gray-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-gray-900 mb-2">Can I use these story starters for published work?</h4>
+            <p class="text-gray-700 text-sm">
+              Absolutely! All story starters generated by our tool are free to use for any purpose, including commercial publication. The story you develop from these starters is entirely your own original work.
+            </p>
+          </div>
+          <div class="bg-gray-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-gray-900 mb-2">How do I overcome writer's block with story starters?</h4>
+            <p class="text-gray-700 text-sm">
+              Don't overthink it! Generate a starter and immediately begin writing whatever comes to mind. The goal is to get words on the page. You can always revise later—the important thing is breaking through the initial creative barrier.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* More Writing Resources Section */}
+      <div class="prose prose-gray max-w-none mt-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">More Writing Resources</h2>
+        <p class="text-gray-700 mb-4">
+          Explore more creative writing tools: check out our <a href="/writing-prompts" class="text-blue-600 hover:underline">Writing Prompts Generator</a> for complete story ideas, <a href="/random-character-generator" class="text-blue-600 hover:underline">Character Generator</a> for protagonist development, and <a href="/random-plot-twist-generator" class="text-blue-600 hover:underline">Plot Twist Generator</a> to add unexpected turns to your stories.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <AstroFooter />
+</BaseLayout>
