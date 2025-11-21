@@ -11,7 +11,7 @@ import { Lock, Unlock, Copy, ArrowLeft, RefreshCw, Check } from 'lucide-react';
  * - History navigation to revisit previous prompts
  * - Responsive design with smooth animations
  */
-export default function PromptGenerator({ initialPrompts, category }) {
+export default function CategoryPromptGenerator({ initialPrompts, category }) {
   // State Management
   const [currentPrompt, setCurrentPrompt] = useState(null);
   const [isLocked, setIsLocked] = useState(false);
@@ -140,23 +140,26 @@ export default function PromptGenerator({ initialPrompts, category }) {
   if (!currentPrompt) {
     return (
       <div className="flex items-center justify-center py-12">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
       </div>
     );
   }
+
+  // Capitalize category for display
+  const capitalizedCategory = category ? category.charAt(0).toUpperCase() + category.slice(1) : '';
 
   return (
     <div className="w-full max-w-4xl mx-auto">
       {/* Main Prompt Display Card */}
       <div className={`
-        relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8 md:p-12 mb-6
+        relative bg-white rounded-2xl shadow-lg border border-gray-200 p-6 md:p-8 mb-6
         transition-all duration-300 transform
         ${isLocked ? 'ring-4 ring-yellow-400 ring-opacity-50' : ''}
         ${isGenerating ? 'scale-95 opacity-50' : 'scale-100 opacity-100'}
       `}>
         {/* Lock Indicator Badge */}
         {isLocked && (
-          <div className="absolute top-4 right-4 px-3 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 rounded-full text-sm font-semibold flex items-center gap-2">
+          <div className="absolute top-4 right-4 px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm font-semibold flex items-center gap-2">
             <Lock className="w-4 h-4" />
             <span>Locked</span>
           </div>
@@ -164,25 +167,25 @@ export default function PromptGenerator({ initialPrompts, category }) {
 
         {/* Prompt Text Display */}
         <div className="mb-6">
-          <div className="flex items-center gap-2 mb-4">
-            <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full text-sm font-semibold">
-              {category}
+          <div className="flex items-center flex-wrap gap-2 mb-4">
+            <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-semibold capitalize">
+              {capitalizedCategory}
             </span>
             {currentPrompt.tags && currentPrompt.tags.length > 0 && (
-              <div className="flex flex-wrap gap-2">
+              <>
                 {currentPrompt.tags.slice(0, 3).map((tag, index) => (
                   <span
                     key={index}
-                    className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded text-xs"
+                    className="px-2 py-1 bg-gray-100 text-gray-600 rounded text-xs"
                   >
                     #{tag}
                   </span>
                 ))}
-              </div>
+              </>
             )}
           </div>
 
-          <p className="text-lg md:text-xl leading-relaxed text-gray-800 dark:text-gray-100">
+          <p className="text-lg md:text-xl leading-relaxed text-gray-800">
             {currentPrompt.text}
           </p>
         </div>
@@ -196,7 +199,7 @@ export default function PromptGenerator({ initialPrompts, category }) {
               flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all
               ${isLocked
                 ? 'bg-yellow-500 hover:bg-yellow-600 text-white'
-                : 'bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200'
+                : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
               }
             `}
             title={isLocked ? 'Unlock prompt' : 'Lock prompt'}
@@ -246,8 +249,8 @@ export default function PromptGenerator({ initialPrompts, category }) {
             className={`
               flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all
               ${history.length === 0
-                ? 'bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-600 cursor-not-allowed'
-                : 'bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200'
+                ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
               }
             `}
             title="Go to previous prompt"
@@ -267,10 +270,10 @@ export default function PromptGenerator({ initialPrompts, category }) {
             w-full md:w-auto px-8 py-4 rounded-xl font-bold text-lg
             transition-all duration-300 transform
             ${isLocked
-              ? 'bg-gray-300 dark:bg-gray-700 text-gray-500 dark:text-gray-500 cursor-not-allowed'
+              ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
               : isGenerating
-              ? 'bg-purple-400 text-white scale-95'
-              : 'bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white shadow-lg hover:shadow-xl hover:scale-105'
+              ? 'bg-blue-400 text-white scale-95'
+              : 'bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl hover:scale-105'
             }
           `}
           title={isLocked ? 'Unlock to generate new prompt' : 'Generate a new prompt'}
@@ -283,7 +286,7 @@ export default function PromptGenerator({ initialPrompts, category }) {
 
         {/* Lock Warning Message */}
         {isLocked && (
-          <p className="text-sm text-yellow-600 dark:text-yellow-400 flex items-center gap-2">
+          <p className="text-sm text-yellow-600 flex items-center gap-2">
             <Lock className="w-4 h-4" />
             <span>Prompt is locked. Click "Unlock" to generate a new one.</span>
           </p>
@@ -291,7 +294,7 @@ export default function PromptGenerator({ initialPrompts, category }) {
 
         {/* History Counter */}
         {history.length > 0 && (
-          <p className="text-sm text-gray-600 dark:text-gray-400">
+          <p className="text-sm text-gray-500">
             {history.length} prompt{history.length !== 1 ? 's' : ''} in history
           </p>
         )}
@@ -299,13 +302,13 @@ export default function PromptGenerator({ initialPrompts, category }) {
 
       {/* Optional: Display Tags Legend */}
       {currentPrompt.tags && currentPrompt.tags.length > 3 && (
-        <div className="mt-6 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-          <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">All tags:</p>
+        <div className="mt-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
+          <p className="text-sm text-gray-600 mb-2">All tags:</p>
           <div className="flex flex-wrap gap-2">
             {currentPrompt.tags.map((tag, index) => (
               <span
                 key={index}
-                className="px-2 py-1 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded text-xs border border-gray-200 dark:border-gray-600"
+                className="px-2 py-1 bg-white text-gray-600 rounded text-xs border border-gray-200"
               >
                 #{tag}
               </span>
