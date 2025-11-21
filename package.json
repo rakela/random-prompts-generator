@@ -7,13 +7,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "dev:old": "vite",
-    "build:old": "npm run generate-og-image && npm run generate-sitemap && vite build && npm run prerender",
-    "generate-og-image": "node scripts/create-og-image-png.js",
-    "generate-sitemap": "node scripts/generate-sitemap.js",
-    "prerender": "node scripts/prerender.js",
-    "preview": "vite preview"
+    "lint": "next lint"
   },
   "dependencies": {
     "@vercel/speed-insights": "^1.2.0",
