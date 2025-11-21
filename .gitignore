@@ -33,6 +33,7 @@ dist-ssr
 # Build outputs
 build/
 out/
+.astro/
 
 # Vercel
 .vercel
