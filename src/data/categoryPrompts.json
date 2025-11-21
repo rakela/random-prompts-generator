@@ -1,0 +1,92 @@
+[
+  {
+    "id": "fantasy-001",
+    "text": "In a world where magic is powered by memories, a young mage discovers that erasing painful memories doesn't just remove the hurt—it also erases the person you were. Write about their journey as they must choose between healing their trauma or losing their identity entirely.",
+    "category": "fantasy",
+    "tags": ["magic", "memory", "identity", "coming-of-age"]
+  },
+  {
+    "id": "fantasy-002",
+    "text": "The dragons have returned after a thousand years, but they're not the fearsome beasts of legend—they're tired, broken, and asking for asylum. Your protagonist is the reluctant diplomat who must convince a terrified kingdom to shelter the very creatures their ancestors fought to extinction.",
+    "category": "fantasy",
+    "tags": ["dragons", "diplomacy", "redemption", "political"]
+  },
+  {
+    "id": "sci-fi-001",
+    "text": "A lone astronaut on a decades-long journey to a distant star system discovers that Earth sent a second, faster ship that will arrive before them. Now obsolete and facing the psychological toll of isolation, they must decide whether to continue their mission or take a darker path.",
+    "category": "sci-fi",
+    "tags": ["space", "isolation", "technology", "psychological"]
+  },
+  {
+    "id": "sci-fi-002",
+    "text": "In 2157, human consciousness can be uploaded to the cloud, achieving digital immortality. Your protagonist works as a 'digital hospice nurse,' helping newly uploaded minds adjust to their bodiless existence. One day, they encounter a patient who claims the upload process is actually stealing souls, not preserving them.",
+    "category": "sci-fi",
+    "tags": ["AI", "consciousness", "immortality", "ethics"]
+  },
+  {
+    "id": "sci-fi-003",
+    "text": "First contact with aliens reveals that humans are the only species in the galaxy that experiences time linearly. Every other civilization exists in all moments simultaneously. Write about humanity's struggle to communicate, trade, and compete with beings who already know every possible outcome.",
+    "category": "sci-fi",
+    "tags": ["aliens", "time", "first-contact", "philosophy"]
+  },
+  {
+    "id": "romance-001",
+    "text": "Two rival food truck owners are forced to share a prime location during a city-wide food festival. Between stolen recipes, sabotaged ingredients, and increasingly creative insults, they discover that their culinary chemistry extends beyond the kitchen.",
+    "category": "romance",
+    "tags": ["rivals-to-lovers", "food", "contemporary", "humor"]
+  },
+  {
+    "id": "romance-002",
+    "text": "A wedding photographer falls for a funeral director. Their relationship blooms as they navigate the intersection of life's most celebrated and most somber moments, learning that love exists in the space between joy and grief.",
+    "category": "romance",
+    "tags": ["opposites-attract", "emotional", "contemporary", "bittersweet"]
+  },
+  {
+    "id": "fantasy-003",
+    "text": "Your character discovers they're a 'null'—someone completely immune to magic. In a society where magical ability determines your social class, they're worthless. Until a magical plague begins spreading, and they're the only one who can touch the infected without falling ill.",
+    "category": "fantasy",
+    "tags": ["magic", "plague", "outcast", "hero"]
+  },
+  {
+    "id": "sci-fi-004",
+    "text": "A quantum physicist accidentally creates a device that lets them observe parallel universes. They become obsessed with watching alternate versions of their life, especially one where they made different choices and found happiness. When the device starts to break down, they must decide whether to fix it or destroy it and accept their reality.",
+    "category": "sci-fi",
+    "tags": ["parallel-universes", "choice", "obsession", "quantum"]
+  },
+  {
+    "id": "romance-003",
+    "text": "After a messy divorce, a romance novelist swears off love and moves to a remote lighthouse to finish their book. Their solitude is interrupted by a marine biologist studying migration patterns nearby. As they're forced to coexist in close quarters through a harsh winter, they must confront whether they're ready to write their own love story again.",
+    "category": "romance",
+    "tags": ["second-chance", "isolated-setting", "healing", "slow-burn"]
+  },
+  {
+    "id": "fantasy-004",
+    "text": "In a kingdom where names have power, there exists a secret society of nameless assassins who can't be magically tracked or cursed. Your protagonist is a royal heir who voluntarily gives up their name to join them, seeking to avenge their family's murder—only to discover their target is the one person who still remembers their true name.",
+    "category": "fantasy",
+    "tags": ["assassins", "revenge", "names", "magic-system"]
+  },
+  {
+    "id": "sci-fi-005",
+    "text": "Humanity has colonized Mars, but a mysterious signal from Earth suddenly stops. All communication goes dark. A crew is sent back to investigate, only to find that Earth has somehow jumped forward 500 years in just 3 months. Now they must unravel what happened and decide whether to return to Mars with the truth or keep the colony in blissful ignorance.",
+    "category": "sci-fi",
+    "tags": ["mars", "mystery", "time-anomaly", "colonization"]
+  },
+  {
+    "id": "romance-004",
+    "text": "Two people who've been catfishing each other on a dating app for months finally agree to meet—but they both show up in disguise, still too afraid to reveal their true selves. Write about the comedy of errors that unfolds as they try to maintain their false identities while genuinely falling for each other.",
+    "category": "romance",
+    "tags": ["mistaken-identity", "online-dating", "comedy", "modern"]
+  },
+  {
+    "id": "fantasy-005",
+    "text": "Every person is born with a familiar—a magical animal companion that reflects their soul. Your protagonist's familiar is a moth, considered the weakest and most shameful of all bonds. But when an ancient evil returns that can only be defeated in darkness, the moths and their bonded become the kingdom's last hope.",
+    "category": "fantasy",
+    "tags": ["familiars", "underdog", "prophecy", "animals"]
+  },
+  {
+    "id": "sci-fi-006",
+    "text": "In a future where emotions can be bought and sold, your protagonist runs an underground clinic that helps people experience 'authentic' feelings again. When a high-ranking government official seeks their help, they uncover a conspiracy: the emotion market is being manipulated to control the population's ability to feel rebellion.",
+    "category": "sci-fi",
+    "tags": ["dystopia", "emotions", "conspiracy", "rebellion"]
+  }
+]

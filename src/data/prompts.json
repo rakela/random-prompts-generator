@@ -1,92 +1,422 @@
-[
-  {
-    "id": "fantasy-001",
-    "text": "In a world where magic is powered by memories, a young mage discovers that erasing painful memories doesn't just remove the hurt—it also erases the person you were. Write about their journey as they must choose between healing their trauma or losing their identity entirely.",
-    "category": "fantasy",
-    "tags": ["magic", "memory", "identity", "coming-of-age"]
+{
+  "writing": {
+    "openings": [
+      "A mysterious letter arrives with no return address",
+      "The last person on Earth hears a knock at the door",
+      "Your character wakes up with someone else's memories",
+      "A child finds a door in their bedroom that wasn't there yesterday",
+      "The GPS leads your character to a place that doesn't exist on any map",
+      "Your character receives a phone call from themselves",
+      "A time capsule is opened 50 years early",
+      "Your character discovers their reflection is acting independently",
+      "A stranger approaches claiming to be from the future",
+      "Your character finds a diary that predicts their life perfectly"
+    ],
+    "conflicts": [
+      "must choose between saving their child or saving a thousand strangers",
+      "discovers their life-saving medication is slowly poisoning someone they love",
+      "learns their memory of a traumatic event was deliberately implanted",
+      "finds out their soulmate is their mortal enemy in disguise",
+      "realizes they're the only one who remembers the world before it changed",
+      "must betray their deepest principles to save their family",
+      "discovers they're living in a simulation but escaping means abandoning everyone inside",
+      "learns their healing powers come at the cost of shortening others' lives",
+      "finds out their deceased parent is alive but has become their greatest enemy",
+      "must use their fear of heights to rescue someone from a collapsing tower"
+    ],
+    "settings": [
+      "a floating city that only appears during solar eclipses",
+      "an underground library where books rewrite themselves",
+      "a small town where time moves backward every midnight",
+      "a space station orbiting a dying star",
+      "a school for children who remember their past lives",
+      "a hospital where patients' dreams become reality",
+      "a lighthouse that guides souls instead of ships",
+      "a coffee shop that exists in multiple dimensions simultaneously",
+      "an antique store where every item has a dangerous history",
+      "a forest where the trees whisper secrets of the dead"
+    ],
+    "protagonists": [
+      "a memory thief who can steal and experience others' recollections",
+      "a retired superhero living under witness protection",
+      "a therapist who absorbs their patients' traumas",
+      "a time loop victim who ages while everyone else resets",
+      "a prophet who sees multiple futures but can't control which becomes real",
+      "a ghost who doesn't know they're dead",
+      "a dream architect who builds worlds in people's sleep",
+      "a voice actor who discovers their recordings can alter reality",
+      "a cartographer mapping places that exist only in stories",
+      "a funeral director who can speak with the recently deceased"
+    ],
+    "revelations": [
+      "the narrator has been the villain all along",
+      "everyone except the protagonist is an AI",
+      "the story is happening in reverse chronological order",
+      "the protagonist is their own time-traveling descendant",
+      "the entire conflict was manufactured by the protagonist's future self",
+      "death in this world just means waking up in another",
+      "the protagonist is the only real person in a philosophical thought experiment",
+      "the story is being told by the protagonist to their killer",
+      "each chapter is a different iteration of the same day",
+      "the protagonist has been dead since chapter one"
+    ],
+    "templates": [
+      "{openings}, but when your protagonist {conflicts}, they discover that {revelations}. Set in {settings}.",
+      "Your protagonist is {protagonists} who lives in {settings}. When they {conflicts}, {revelations}.",
+      "In {settings}, {openings}. Your protagonist, {protagonists}, must {conflicts} while facing the truth that {revelations}.",
+      "Write about {protagonists} in {settings}. The story begins when {openings}, forcing them to {conflicts}, ultimately revealing that {revelations}.",
+      "{protagonists} discovers {revelations} when {openings} in {settings}. Now they must {conflicts} to set things right."
+    ]
   },
-  {
-    "id": "fantasy-002",
-    "text": "The dragons have returned after a thousand years, but they're not the fearsome beasts of legend—they're tired, broken, and asking for asylum. Your protagonist is the reluctant diplomat who must convince a terrified kingdom to shelter the very creatures their ancestors fought to extinction.",
-    "category": "fantasy",
-    "tags": ["dragons", "diplomacy", "redemption", "political"]
+  "aiArt": {
+    "techniques": [
+      "hyperrealistic digital painting",
+      "concept art",
+      "matte painting",
+      "photorealistic 3D render",
+      "oil painting masterpiece",
+      "watercolor illustration",
+      "pencil sketch portrait",
+      "acrylic painting",
+      "charcoal drawing",
+      "digital art illustration"
+    ],
+    "subjects": [
+      "ethereal elven warrior with glowing tattoos",
+      "steampunk airship soaring through storm clouds",
+      "cyberpunk samurai in neon-lit alleyway",
+      "ancient dragon perched atop crystalline mountains",
+      "space marine battling alien creatures on distant planet",
+      "mystical forest guardian with antler crown",
+      "robotic angel with mechanical wings",
+      "underwater palace with bioluminescent details",
+      "post-apocalyptic survivor in gas mask",
+      "celestial being made of stars and nebulae"
+    ],
+    "lighting": [
+      "dramatic chiaroscuro lighting",
+      "golden hour rim lighting",
+      "volumetric god rays",
+      "neon accent lighting",
+      "soft box studio lighting",
+      "harsh spotlight from above",
+      "bioluminescent ambient glow",
+      "candlelight and shadows",
+      "aurora borealis backdrop",
+      "lens flare and bloom effects",
+      "moody atmospheric lighting",
+      "backlit silhouette"
+    ],
+    "composition": [
+      "extreme close-up portrait",
+      "wide establishing shot",
+      "dramatic low angle",
+      "bird's eye view",
+      "dutch angle composition",
+      "symmetrical framing",
+      "rule of thirds composition",
+      "leading lines",
+      "depth of field focus",
+      "macro detail shot",
+      "panoramic landscape",
+      "tilt-shift miniature effect"
+    ],
+    "quality": [
+      "trending on ArtStation",
+      "highly detailed",
+      "award-winning photography",
+      "museum quality",
+      "photorealistic",
+      "hyper-detailed",
+      "studio quality",
+      "masterpiece",
+      "8K resolution",
+      "ultra-realistic"
+    ],
+    "artists": [
+      "painted by Greg Rutkowski",
+      "in the style of Alphonse Mucha",
+      "reminiscent of H.R. Giger",
+      "inspired by Hayao Miyazaki",
+      "like a John Singer Sargent portrait",
+      "in Caravaggio's style",
+      "digital art by Loish",
+      "concept art by Feng Zhu",
+      "illustration by James Jean",
+      "photography by Annie Leibovitz"
+    ],
+    "templates": [
+      "{subjects}, {techniques}, {lighting}, {composition}, {quality}, {artists}",
+      "{composition} of {subjects}, {techniques} with {lighting}, {quality}, {artists}",
+      "{subjects} rendered as {techniques}, featuring {lighting} and {composition}, {quality}, {artists}",
+      "Professional {techniques} showing {subjects}, {lighting}, {composition}, {quality}, {artists}",
+      "{artists} style {techniques} of {subjects}, {lighting}, {composition}, {quality}"
+    ]
   },
-  {
-    "id": "sci-fi-001",
-    "text": "A lone astronaut on a decades-long journey to a distant star system discovers that Earth sent a second, faster ship that will arrive before them. Now obsolete and facing the psychological toll of isolation, they must decide whether to continue their mission or take a darker path.",
-    "category": "sci-fi",
-    "tags": ["space", "isolation", "technology", "psychological"]
+  "blog": {
+    "niches": [
+      "remote work productivity for developers",
+      "sustainable fashion on a budget",
+      "cryptocurrency for beginners over 50",
+      "plant-based meal prep for busy families",
+      "digital minimalism for social media addicts",
+      "freelance writing for introverts",
+      "smart home automation for renters",
+      "meditation techniques for anxiety relief",
+      "side hustles for teachers",
+      "budget travel for digital nomads"
+    ],
+    "formats": [
+      "step-by-step tutorial with screenshots",
+      "ultimate beginner's guide",
+      "myth-busting listicle",
+      "before and after case study",
+      "tool comparison and review",
+      "interview with industry expert",
+      "personal transformation story",
+      "data-driven research analysis",
+      "controversial opinion piece",
+      "seasonal trend prediction"
+    ],
+    "hooks": [
+      "I tried [topic] for 30 days and here's what happened",
+      "The [number] mistakes everyone makes with [topic]",
+      "Why [common belief] is completely wrong",
+      "How I [achieved result] in [timeframe] using [method]",
+      "The [industry] secret that [companies] don't want you to know",
+      "[Number] signs you're doing [topic] wrong",
+      "What [expert] taught me about [topic] that changed everything",
+      "The uncomfortable truth about [topic] that no one talks about",
+      "How to [achieve goal] even if [common obstacle]",
+      "Why [year] is the perfect time to start [topic]"
+    ],
+    "angles": [
+      "beginner-friendly with no prior experience needed",
+      "backed by scientific research and studies",
+      "contrarian viewpoint challenging conventional wisdom",
+      "personal experience with honest failures included",
+      "expert roundup with multiple professional opinions",
+      "data-driven analysis with charts and statistics",
+      "actionable tips you can implement today",
+      "comprehensive comparison of all available options",
+      "controversial stance on widely accepted practices",
+      "industry insider perspective with behind-the-scenes details"
+    ],
+    "templates": [
+      "Write a {formats} about {niches} with a {angles} approach. Hook: \"{hooks}\"",
+      "Create a {formats} targeting \"{niches}\" using {angles} perspective. Start with \"{hooks}\"",
+      "{formats} for {niches}: {angles} insights. Opening hook: \"{hooks}\"",
+      "Develop a {angles} {formats} about {niches}. Lead with: \"{hooks}\"",
+      "{hooks} - Turn this into a {formats} about {niches} from a {angles} standpoint"
+    ]
   },
-  {
-    "id": "sci-fi-002",
-    "text": "In 2157, human consciousness can be uploaded to the cloud, achieving digital immortality. Your protagonist works as a 'digital hospice nurse,' helping newly uploaded minds adjust to their bodiless existence. One day, they encounter a patient who claims the upload process is actually stealing souls, not preserving them.",
-    "category": "sci-fi",
-    "tags": ["AI", "consciousness", "immortality", "ethics"]
+  "fantasy": {
+    "magicSystems": [
+      "emotion-based magic that requires genuine feelings to cast",
+      "blood magic that ages the caster with each spell",
+      "word magic where spells are spoken in a dying language",
+      "tattoo magic where spells are permanently inked on skin",
+      "music magic that requires perfect pitch and rhythm",
+      "memory magic that trades personal memories for power",
+      "symbiotic magic requiring partnership with magical creatures",
+      "elemental magic tied to specific geographic locations",
+      "dream magic that only works while the caster sleeps",
+      "contract magic that requires binding agreements with spirits"
+    ],
+    "conflicts": [
+      "the gods are dying and their magic is failing",
+      "a plague turns magical creatures into stone",
+      "children are being born without souls",
+      "time is fracturing, causing past and future to collide",
+      "the boundary between dreams and reality is dissolving",
+      "an ancient treaty between races is being violated",
+      "magic is becoming sentient and rebelling against users",
+      "the world's magic is being stolen by an unknown force",
+      "a prophesy is coming true but was deliberately mistranslated",
+      "the afterlife is overflowing, sending spirits back to earth"
+    ],
+    "cultures": [
+      "sky nomads who live on floating islands connected by rope bridges",
+      "underground dwellers who communicate through bioluminescent fungi",
+      "desert people who store their memories in crystal formations",
+      "forest folk who age backward and are born with ancient wisdom",
+      "sea nomads who can breathe underwater but die if they stay on land too long",
+      "mountain clans who bind their souls to ancestral weapons",
+      "shadow people who exist partially in another dimension",
+      "star worshippers who can only use magic during specific celestial events",
+      "bone smiths who craft tools from the remains of mythical creatures",
+      "time keepers who experience all moments of their lives simultaneously"
+    ],
+    "locations": [
+      "a library where books write themselves based on readers' thoughts",
+      "floating ruins of an ancient city suspended in a perpetual storm",
+      "a marketplace that exists in multiple dimensions simultaneously",
+      "a forest where the trees are actually sleeping giants",
+      "crystal caves that amplify magical abilities but trap visitors' reflections",
+      "a city built inside the fossilized remains of a colossal dragon",
+      "floating islands connected by chains forged from starlight",
+      "an underwater realm where air-breathers are the minority",
+      "a desert where sand dunes shift to reveal buried civilizations",
+      "a mountain range that phases between seasons every few hours"
+    ],
+    "templates": [
+      "In a world where {cultures} practice {magicSystems}, {conflicts} threatens to destroy {locations}.",
+      "The {cultures} of {locations} must master {magicSystems} when {conflicts} begins to unravel reality itself.",
+      "Create a fantasy where {magicSystems} is failing because {conflicts}, forcing {cultures} to abandon their home in {locations}.",
+      "In {locations}, the {cultures} discover that {magicSystems} is connected to {conflicts} in ways they never imagined.",
+      "When {conflicts} strikes {locations}, the {cultures} must evolve their understanding of {magicSystems} to survive."
+    ]
   },
-  {
-    "id": "sci-fi-003",
-    "text": "First contact with aliens reveals that humans are the only species in the galaxy that experiences time linearly. Every other civilization exists in all moments simultaneously. Write about humanity's struggle to communicate, trade, and compete with beings who already know every possible outcome.",
-    "category": "sci-fi",
-    "tags": ["aliens", "time", "first-contact", "philosophy"]
+  "persuasive": {
+    "topics": [
+      "🎓 Should schools eliminate homework and replace it with hands-on projects?",
+      "🎓 Should students be graded on creativity and participation as much as test scores?",
+      "🎓 Is online learning as effective as classroom learning?",
+      "🎓 Should schools require financial literacy courses for graduation?",
+      "🎓 Should smartphones be banned in schools to improve focus?",
+      "🌍 Should governments ban single-use plastics completely?",
+      "🌍 Is climate change primarily a government issue or a personal responsibility?",
+      "🌍 Should fast fashion brands be held accountable for environmental damage?",
+      "🌍 Should public transportation be free to reduce pollution?",
+      "🌍 Should zoos be replaced with virtual or open sanctuaries?",
+      "💻 Should AI-generated content be labeled to protect creative industries?",
+      "💻 Does social media do more harm than good for young people?",
+      "💻 Should governments regulate the use of artificial intelligence?",
+      "💻 Are smartphones making people less social and more isolated?",
+      "💻 Should influencers be legally responsible for misleading product promotions?",
+      "⚖️ Should voting be mandatory in democratic countries?",
+      "⚖️ Should everyone become vegetarian to protect the planet?",
+      "⚖️ Is it ethical to use animals for medical or cosmetic testing?",
+      "⚖️ Should college education be free for all students?",
+      "⚖️ Should people who spread fake news online face legal consequences?"
+    ],
+    "titles": [
+      "🌎 Should governments impose a carbon tax to fight climate change?",
+      "🌎 Is space exploration worth the environmental cost?",
+      "🌎 Should countries ban bottled water to reduce plastic waste?",
+      "🌎 Is nuclear energy a safe alternative to fossil fuels?",
+      "🌎 Should wealthy nations be required to help poorer countries fight climate change?",
+      "🧠 Should mental health days be mandatory in schools and workplaces?",
+      "🧠 Is social media addiction as harmful as substance abuse?",
+      "🧠 Should fast food companies be held responsible for obesity?",
+      "🧠 Should junk food advertising to children be banned?",
+      "🧠 Should therapy be free and accessible for everyone?",
+      "⚙️ Should AI be allowed to create art, music, and literature?",
+      "⚙️ Are privacy rights more important than national security in the digital age?",
+      "⚙️ Should robots be granted legal rights if they become sentient?",
+      "⚙️ Should schools teach prompt engineering as a core skill?",
+      "⚙️ Should deepfake technology be banned completely?",
+      "💬 Should celebrities and influencers be role models for society?",
+      "💬 Should cancel culture be seen as accountability or censorship?",
+      "💬 Is traditional media still trustworthy in the digital era?",
+      "💬 Should cultural appropriation be punished by law?",
+      "💬 Should patriotism be taught in schools, or does it create division?"
+    ],
+    "templates": [
+      "{topics}",
+      "{titles}"
+    ]
   },
-  {
-    "id": "romance-001",
-    "text": "Two rival food truck owners are forced to share a prime location during a city-wide food festival. Between stolen recipes, sabotaged ingredients, and increasingly creative insults, they discover that their culinary chemistry extends beyond the kitchen.",
-    "category": "romance",
-    "tags": ["rivals-to-lovers", "food", "contemporary", "humor"]
-  },
-  {
-    "id": "romance-002",
-    "text": "A wedding photographer falls for a funeral director. Their relationship blooms as they navigate the intersection of life's most celebrated and most somber moments, learning that love exists in the space between joy and grief.",
-    "category": "romance",
-    "tags": ["opposites-attract", "emotional", "contemporary", "bittersweet"]
-  },
-  {
-    "id": "fantasy-003",
-    "text": "Your character discovers they're a 'null'—someone completely immune to magic. In a society where magical ability determines your social class, they're worthless. Until a magical plague begins spreading, and they're the only one who can touch the infected without falling ill.",
-    "category": "fantasy",
-    "tags": ["magic", "plague", "outcast", "hero"]
-  },
-  {
-    "id": "sci-fi-004",
-    "text": "A quantum physicist accidentally creates a device that lets them observe parallel universes. They become obsessed with watching alternate versions of their life, especially one where they made different choices and found happiness. When the device starts to break down, they must decide whether to fix it or destroy it and accept their reality.",
-    "category": "sci-fi",
-    "tags": ["parallel-universes", "choice", "obsession", "quantum"]
-  },
-  {
-    "id": "romance-003",
-    "text": "After a messy divorce, a romance novelist swears off love and moves to a remote lighthouse to finish their book. Their solitude is interrupted by a marine biologist studying migration patterns nearby. As they're forced to coexist in close quarters through a harsh winter, they must confront whether they're ready to write their own love story again.",
-    "category": "romance",
-    "tags": ["second-chance", "isolated-setting", "healing", "slow-burn"]
-  },
-  {
-    "id": "fantasy-004",
-    "text": "In a kingdom where names have power, there exists a secret society of nameless assassins who can't be magically tracked or cursed. Your protagonist is a royal heir who voluntarily gives up their name to join them, seeking to avenge their family's murder—only to discover their target is the one person who still remembers their true name.",
-    "category": "fantasy",
-    "tags": ["assassins", "revenge", "names", "magic-system"]
-  },
-  {
-    "id": "sci-fi-005",
-    "text": "Humanity has colonized Mars, but a mysterious signal from Earth suddenly stops. All communication goes dark. A crew is sent back to investigate, only to find that Earth has somehow jumped forward 500 years in just 3 months. Now they must unravel what happened and decide whether to return to Mars with the truth or keep the colony in blissful ignorance.",
-    "category": "sci-fi",
-    "tags": ["mars", "mystery", "time-anomaly", "colonization"]
-  },
-  {
-    "id": "romance-004",
-    "text": "Two people who've been catfishing each other on a dating app for months finally agree to meet—but they both show up in disguise, still too afraid to reveal their true selves. Write about the comedy of errors that unfolds as they try to maintain their false identities while genuinely falling for each other.",
-    "category": "romance",
-    "tags": ["mistaken-identity", "online-dating", "comedy", "modern"]
-  },
-  {
-    "id": "fantasy-005",
-    "text": "Every person is born with a familiar—a magical animal companion that reflects their soul. Your protagonist's familiar is a moth, considered the weakest and most shameful of all bonds. But when an ancient evil returns that can only be defeated in darkness, the moths and their bonded become the kingdom's last hope.",
-    "category": "fantasy",
-    "tags": ["familiars", "underdog", "prophecy", "animals"]
-  },
-  {
-    "id": "sci-fi-006",
-    "text": "In a future where emotions can be bought and sold, your protagonist runs an underground clinic that helps people experience 'authentic' feelings again. When a high-ranking government official seeks their help, they uncover a conspiracy: the emotion market is being manipulated to control the population's ability to feel rebellion.",
-    "category": "sci-fi",
-    "tags": ["dystopia", "emotions", "conspiracy", "rebellion"]
+  "names": {
+    "elvish": {
+      "first": [
+        "Aelindra",
+        "Thalorin",
+        "Silvanis",
+        "Elenion",
+        "Mirithel",
+        "Caelynn",
+        "Faelivrin",
+        "Galathil"
+      ],
+      "last": [
+        "Moonwhisper",
+        "Starweaver",
+        "Dawnbringer",
+        "Nightbreeze",
+        "Silverleaf",
+        "Goldensong",
+        "Stormwind",
+        "Brightblade"
+      ]
+    },
+    "dwarven": {
+      "first": [
+        "Thorek",
+        "Grimvar",
+        "Baelin",
+        "Dwalin",
+        "Nala",
+        "Vera",
+        "Kili",
+        "Dori"
+      ],
+      "last": [
+        "Ironforge",
+        "Stonebeard",
+        "Goldaxe",
+        "Mountainheart",
+        "Deepdelver",
+        "Forgehammer",
+        "Rockbreaker",
+        "Steelshield"
+      ]
+    },
+    "human": {
+      "first": [
+        "Alaric",
+        "Seraphina",
+        "Gareth",
+        "Evangeline",
+        "Roderick",
+        "Cordelia",
+        "Matthias",
+        "Isadora"
+      ],
+      "last": [
+        "Blackwood",
+        "Ravencrest",
+        "Goldmane",
+        "Stormborn",
+        "Brightwater",
+        "Shadowmere",
+        "Swiftarrow",
+        "Ironhand"
+      ]
+    },
+    "exotic": {
+      "first": [
+        "Zephyria",
+        "Vorthak",
+        "Nyxaria",
+        "Kaelthas",
+        "Ysara",
+        "Drakmor",
+        "Selvara",
+        "Xerion"
+      ],
+      "last": [
+        "Voidcaller",
+        "Soulrender",
+        "Dreamwalker",
+        "Mindshaper",
+        "Flameweaver",
+        "Iceheart",
+        "Stormcaller",
+        "Netherbane"
+      ]
+    },
+    "titles": [
+      "the Bold",
+      "the Wise",
+      "the Fierce",
+      "the Just",
+      "Dragonbane",
+      "Lightbringer",
+      "the Ancient",
+      "the Swift",
+      "the Pure",
+      "Shadowhunter"
+    ]
   }
-]
+}
