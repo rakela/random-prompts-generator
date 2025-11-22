@@ -6,16 +6,59 @@ const SITE_URL = 'https://randomprompts.org';
 const staticPageUrls = [
   // Homepage
   '',
-  // Main generators
-  'writing-prompts',
+  // Main generators (Hub pages)
+  'writing-prompts-generator',
+  'art-prompts',
+  'generators',
+  // Other main generators
   'ai-images-prompt',
   'ai-blog-post-generator',
   'short-story-prompts-generator',
   'random-name-generator',
-  // Category pages
-  'ai-art-generators',
   'writing-generators',
-  'creative-idea-generators',
+  // Writing Prompts Generator sub-pages
+  'writing-prompts-generator/story-starters',
+  'writing-prompts-generator/random-dialogue',
+  'writing-prompts-generator/theme',
+  'writing-prompts-generator/conflict',
+  'writing-prompts-generator/plot-twist',
+  'writing-prompts-generator/character',
+  'writing-prompts-generator/relationship',
+  'writing-prompts-generator/setting',
+  'writing-prompts-generator/villain',
+  'writing-prompts-generator/hero',
+  'writing-prompts-generator/worldbuilding',
+  'writing-prompts-generator/magic-system',
+  'writing-prompts-generator/emotion',
+  'writing-prompts-generator/dialogue',
+  'writing-prompts-generator/otp-ideas',
+  'writing-prompts-generator/horror-thriller',
+  'writing-prompts-generator/first-lines',
+  'writing-prompts-generator/journaling',
+  // Art Prompts sub-pages
+  'art-prompts/aesthetic',
+  'art-prompts/art-style',
+  'art-prompts/photography',
+  'art-prompts/sci-fi-art',
+  'art-prompts/fantasy-art',
+  'art-prompts/environment',
+  'art-prompts/anime',
+  'art-prompts/character-design',
+  'art-prompts/portrait',
+  'art-prompts/lighting',
+  'art-prompts/drawing-challenge',
+  // Generators sub-pages
+  'generators/paragraph',
+  'generators/sentence',
+  'generators/hobby',
+  'generators/object',
+  'generators/superpower',
+  'generators/idea',
+  'generators/fantasy-name',
+  'generators/character-creator',
+  'generators/fantasy-world',
+  // For Kids
+  'for-kids/story-starters',
   // Seasonal/themed
   'october-writing-prompts',
   'christmas-writing-prompts',
@@ -30,37 +73,6 @@ const staticPageUrls = [
   'persuasive-essays-topics',
   'persuasive-writing-titles',
   'persuasive-writing-topics',
-  // Random generators
-  'random-aesthetic-prompt-generator',
-  'random-anime-prompt-generator',
-  'random-art-style-generator',
-  'random-character-design-prompt-generator',
-  'random-character-generator',
-  'random-conflict-generator',
-  'random-dialogue-generator',
-  'random-emotion-prompt-generator',
-  'random-environment-design-generator',
-  'random-fantasy-art-prompt-generator',
-  'random-fantasy-name-generator',
-  'random-hero-generator',
-  'random-hobby-generator',
-  'random-idea-generator',
-  'random-lighting-style-generator',
-  'random-magic-system-generator',
-  'random-object-generator',
-  'random-paragraph-generator',
-  'random-photography-prompt-generator',
-  'random-plot-twist-generator',
-  'random-portrait-prompt-generator',
-  'random-relationship-prompt-generator',
-  'random-sci-fi-prompt-generator',
-  'random-sentence-generator',
-  'random-setting-generator',
-  'random-story-starter-generator',
-  'random-superpower-generator',
-  'random-theme-generator',
-  'random-villain-generator',
-  'random-worldbuilding-prompts-generator',
   // Educational
   'writing-prompts-for-students',
   // Legal
@@ -79,7 +91,13 @@ export async function GET(context) {
   const staticPages = staticPageUrls.map((url, index) => ({
     url,
     changefreq: url === '' ? 'daily' : 'weekly',
-    priority: url === '' ? '1.0' : index < 6 ? '0.9' : '0.8',
+    priority: url === '' ? '1.0' :
+              // Hub pages get high priority
+              ['writing-prompts-generator', 'art-prompts', 'generators'].includes(url) ? '0.95' :
+              // Sub-pages under hubs
+              url.includes('/') ? '0.8' :
+              // Other main pages
+              index < 10 ? '0.9' : '0.8',
     lastmod: today
   }));
 
