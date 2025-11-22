@@ -1,0 +1,144 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AstroHeader from '../../components/AstroHeader.astro';
+import AstroFooter from '../../components/AstroFooter.astro';
+import '../../styles/global.css';
+import { getSEOData } from '../../data/seo';
+
+const seo = getSEOData('aiArtGenerators');
+
+const generators = [
+  {
+    title: 'Aesthetic Prompt Generator',
+    description: 'Generate random aesthetic prompts for moodboards, AI art, and branding projects.',
+    url: '/art-prompts/aesthetic'
+  },
+  {
+    title: 'Art Style Generator',
+    description: 'Discover random art styles to explore in your drawings or AI images.',
+    url: '/art-prompts/art-style'
+  },
+  {
+    title: 'Photography Prompt Generator',
+    description: 'Generate random photography prompts with subjects, locations, and lighting ideas.',
+    url: '/art-prompts/photography'
+  },
+  {
+    title: 'Sci-Fi Prompt Generator',
+    description: 'Get random sci-fi prompts for stories and AI art with tech, space, and future worlds.',
+    url: '/art-prompts/sci-fi-art'
+  },
+  {
+    title: 'Fantasy Art Prompt Generator',
+    description: 'Generate random fantasy art prompts with creatures, castles, and magic.',
+    url: '/art-prompts/fantasy-art'
+  },
+  {
+    title: 'Environment Design Generator',
+    description: 'Generate random environment design prompts for landscapes, interiors, and worlds.',
+    url: '/art-prompts/environment'
+  },
+  {
+    title: 'Anime Prompt Generator',
+    description: 'Create random anime prompts for characters, scenes, and aesthetics.',
+    url: '/art-prompts/anime'
+  },
+  {
+    title: 'Character Design Prompt Generator',
+    description: 'Create random character design prompts for outfits, poses, and personalities.',
+    url: '/art-prompts/character-design'
+  },
+  {
+    title: 'Portrait Prompt Generator',
+    description: 'Generate random portrait prompts with styles, angles, and moods.',
+    url: '/art-prompts/portrait'
+  },
+  {
+    title: 'Lighting Style Generator',
+    description: 'Discover random lighting styles for scenes and photos, from soft sunset to harsh neon.',
+    url: '/art-prompts/lighting'
+  }
+];
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-r from-purple-600 to-pink-600 text-white py-16">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">
+        AI Art Generators
+      </h1>
+      <p class="text-lg opacity-90 mb-8 max-w-3xl mx-auto">
+        Professional AI art prompt generators for MidJourney, DALL-E, Stable Diffusion, and more. Create detailed prompts with advanced techniques, lighting styles, and aesthetic references for stunning AI-generated images.
+      </p>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="max-w-6xl mx-auto px-4 py-12">
+    <!-- Generators Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+      {generators.map((generator) => (
+        <a
+          href={generator.url}
+          class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-xl hover:border-purple-300 transition-all duration-200 group"
+        >
+          <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-purple-600 transition-colors">
+            {generator.title}
+          </h3>
+          <p class="text-gray-600 mb-4">
+            {generator.description}
+          </p>
+          <div class="flex items-center text-purple-600 font-semibold text-sm group-hover:gap-2 transition-all">
+            Try it now
+            <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <!-- SEO Content Section -->
+    <div class="mt-16 space-y-8">
+      <div class="prose prose-gray max-w-none">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Professional AI Art Prompt Generators</h2>
+        <p class="text-gray-700 mb-4 text-lg">
+          Generate professional-quality AI art prompts optimized for all major AI image generation platforms. Our generators create detailed prompts with specific technical terminology, professional lighting setups, composition techniques, and artist style references that produce gallery-quality results.
+        </p>
+        <p class="text-gray-700 mb-4">
+          Each generator combines detailed subject descriptions with professional art techniques including chiaroscuro lighting, rule of thirds composition, quality modifiers like "trending on ArtStation," and specific artist style references for consistent, high-quality AI-generated images.
+        </p>
+
+        <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Perfect for AI Art Platforms</h3>
+        <ul class="list-disc pl-6 text-gray-700 mb-6 space-y-2">
+          <li><strong>MidJourney:</strong> Optimized prompts for artistic, dreamlike outputs with parameter support</li>
+          <li><strong>DALL-E:</strong> Detailed descriptions that leverage DALL-E's natural language understanding</li>
+          <li><strong>Stable Diffusion:</strong> Technical prompts with quality tags and artist references</li>
+          <li><strong>Leonardo.AI:</strong> Advanced prompts for fine-tuned models and controlled generation</li>
+          <li><strong>Any AI Art Tool:</strong> Universal prompt structures that work across platforms</li>
+        </ul>
+
+        <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Features of Our AI Art Prompts</h3>
+        <div class="bg-purple-50 p-6 rounded-lg mb-6">
+          <ul class="text-purple-900 space-y-2">
+            <li>• Professional lighting terminology (volumetric rays, rim lighting, golden hour)</li>
+            <li>• Advanced composition techniques (dutch angle, bird's eye view, depth of field)</li>
+            <li>• Quality modifiers and resolution specifications (8K, ultra-realistic, photorealistic)</li>
+            <li>• Specific artist style references for consistent AI image generation</li>
+            <li>• Genre-specific vocabularies (sci-fi, fantasy, anime, photography)</li>
+          </ul>
+        </div>
+
+        <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Related Resources</h3>
+        <p class="text-gray-700 mb-4">
+          Also check out our <a href="/ai-images-prompt" class="text-purple-600 hover:underline font-semibold">AI Images Prompt Generator</a> for comprehensive AI art prompts, or explore <a href="https://midjourney.com" target="_blank" rel="noopener noreferrer" class="text-purple-600 hover:underline">MidJourney</a> and <a href="https://leonardo.ai" target="_blank" rel="noopener noreferrer" class="text-purple-600 hover:underline">Leonardo.AI</a> to start creating stunning AI art.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <AstroFooter />
+</BaseLayout>

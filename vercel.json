@@ -1,5 +1,172 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "installCommand": "npm install"
+  "installCommand": "npm install",
+  "redirects": [
+    {
+      "source": "/writing-prompts",
+      "destination": "/writing-prompts-generator",
+      "permanent": true
+    },
+    {
+      "source": "/ai-art-generators",
+      "destination": "/art-prompts",
+      "permanent": true
+    },
+    {
+      "source": "/creative-idea-generators",
+      "destination": "/generators",
+      "permanent": true
+    },
+    {
+      "source": "/random-story-starter-generator",
+      "destination": "/writing-prompts-generator/story-starters",
+      "permanent": true
+    },
+    {
+      "source": "/random-dialogue-generator",
+      "destination": "/writing-prompts-generator/random-dialogue",
+      "permanent": true
+    },
+    {
+      "source": "/random-theme-generator",
+      "destination": "/writing-prompts-generator/theme",
+      "permanent": true
+    },
+    {
+      "source": "/random-conflict-generator",
+      "destination": "/writing-prompts-generator/conflict",
+      "permanent": true
+    },
+    {
+      "source": "/random-plot-twist-generator",
+      "destination": "/writing-prompts-generator/plot-twist",
+      "permanent": true
+    },
+    {
+      "source": "/random-character-generator",
+      "destination": "/writing-prompts-generator/character",
+      "permanent": true
+    },
+    {
+      "source": "/random-relationship-prompt-generator",
+      "destination": "/writing-prompts-generator/relationship",
+      "permanent": true
+    },
+    {
+      "source": "/random-setting-generator",
+      "destination": "/writing-prompts-generator/setting",
+      "permanent": true
+    },
+    {
+      "source": "/random-villain-generator",
+      "destination": "/writing-prompts-generator/villain",
+      "permanent": true
+    },
+    {
+      "source": "/random-hero-generator",
+      "destination": "/writing-prompts-generator/hero",
+      "permanent": true
+    },
+    {
+      "source": "/random-worldbuilding-prompts-generator",
+      "destination": "/writing-prompts-generator/worldbuilding",
+      "permanent": true
+    },
+    {
+      "source": "/random-magic-system-generator",
+      "destination": "/writing-prompts-generator/magic-system",
+      "permanent": true
+    },
+    {
+      "source": "/random-emotion-prompt-generator",
+      "destination": "/writing-prompts-generator/emotion",
+      "permanent": true
+    },
+    {
+      "source": "/random-aesthetic-prompt-generator",
+      "destination": "/art-prompts/aesthetic",
+      "permanent": true
+    },
+    {
+      "source": "/random-art-style-generator",
+      "destination": "/art-prompts/art-style",
+      "permanent": true
+    },
+    {
+      "source": "/random-photography-prompt-generator",
+      "destination": "/art-prompts/photography",
+      "permanent": true
+    },
+    {
+      "source": "/random-sci-fi-prompt-generator",
+      "destination": "/art-prompts/sci-fi-art",
+      "permanent": true
+    },
+    {
+      "source": "/random-fantasy-art-prompt-generator",
+      "destination": "/art-prompts/fantasy-art",
+      "permanent": true
+    },
+    {
+      "source": "/random-environment-design-generator",
+      "destination": "/art-prompts/environment",
+      "permanent": true
+    },
+    {
+      "source": "/random-anime-prompt-generator",
+      "destination": "/art-prompts/anime",
+      "permanent": true
+    },
+    {
+      "source": "/random-character-design-prompt-generator",
+      "destination": "/art-prompts/character-design",
+      "permanent": true
+    },
+    {
+      "source": "/random-portrait-prompt-generator",
+      "destination": "/art-prompts/portrait",
+      "permanent": true
+    },
+    {
+      "source": "/random-lighting-style-generator",
+      "destination": "/art-prompts/lighting",
+      "permanent": true
+    },
+    {
+      "source": "/random-paragraph-generator",
+      "destination": "/generators/paragraph",
+      "permanent": true
+    },
+    {
+      "source": "/random-sentence-generator",
+      "destination": "/generators/sentence",
+      "permanent": true
+    },
+    {
+      "source": "/random-hobby-generator",
+      "destination": "/generators/hobby",
+      "permanent": true
+    },
+    {
+      "source": "/random-object-generator",
+      "destination": "/generators/object",
+      "permanent": true
+    },
+    {
+      "source": "/random-superpower-generator",
+      "destination": "/generators/superpower",
+      "permanent": true
+    },
+    {
+      "source": "/random-idea-generator",
+      "destination": "/generators/idea",
+      "permanent": true
+    },
+    {
+      "source": "/random-fantasy-name-generator",
+      "destination": "/generators/fantasy-name",
+      "permanent": true
+    }
+  ]
 }
