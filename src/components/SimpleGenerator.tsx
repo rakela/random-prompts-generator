@@ -30,7 +30,7 @@ const GENERATOR_DATA: Record<string, GeneratorData> = {
       { question: 'Can I use the content commercially?', answer: 'Yes, you can build on these paragraphs in your own projects. They\'re meant as creative starting points.' }
     ],
     internalLinks: [
-      { text: 'Writing Prompts', url: '/writing-prompts' },
+      { text: 'Writing Prompts', url: '/writing-prompts-generator' },
       { text: 'Short Story Prompts', url: '/short-story-prompts-generator' }
     ],
     externalLinks: [
@@ -77,7 +77,7 @@ const GENERATOR_DATA: Record<string, GeneratorData> = {
       { question: 'Are the prompts unique?', answer: 'Each generation creates a new combination, giving you virtually unlimited unique prompts.' }
     ],
     internalLinks: [
-      { text: 'Writing Prompts', url: '/writing-prompts' },
+      { text: 'Writing Prompts', url: '/writing-prompts-generator' },
       { text: 'AI Art Prompts', url: '/ai-images-prompt' }
     ],
     externalLinks: [

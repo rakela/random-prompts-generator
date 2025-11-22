@@ -46,9 +46,9 @@ export const generatorConfigs: Record<string, GeneratorConfig> = {
       }
     ],
     internalLinks: [
-      { text: 'Writing Prompts', url: '/writing-prompts' },
+      { text: 'Writing Prompts', url: '/writing-prompts-generator' },
       { text: 'Short Story Prompts', url: '/short-story-prompts-generator' },
-      { text: 'Random Sentence Generator', url: '/random-sentence-generator' }
+      { text: 'Random Sentence Generator', url: '/generators/sentence' }
     ],
     externalLinks: [
       { text: 'Writer\'s Digest – Writing Prompts', url: 'https://www.writersdigest.com/write-better-fiction/prompts' },
@@ -105,9 +105,9 @@ export const generatorConfigs: Record<string, GeneratorConfig> = {
       }
     ],
     internalLinks: [
-      { text: 'Random Paragraph Generator', url: '/random-paragraph-generator' },
-      { text: 'Story Starter Generator', url: '/random-story-starter-generator' },
-      { text: 'Writing Prompts', url: '/writing-prompts' }
+      { text: 'Random Paragraph Generator', url: '/generators/paragraph' },
+      { text: 'Story Starter Generator', url: '/writing-prompts-generator/story-starters' },
+      { text: 'Writing Prompts', url: '/writing-prompts-generator' }
     ],
     externalLinks: [
       { text: 'Grammarly – Sentence Structure', url: 'https://www.grammarly.com/blog/sentence-structure/' },
@@ -163,9 +163,9 @@ export const generatorConfigs: Record<string, GeneratorConfig> = {
       }
     ],
     internalLinks: [
-      { text: 'Character Generator', url: '/random-character-generator' },
-      { text: 'Relationship Prompts', url: '/random-relationship-prompt-generator' },
-      { text: 'Emotion Prompts', url: '/random-emotion-prompt-generator' }
+      { text: 'Character Generator', url: '/writing-prompts-generator/character' },
+      { text: 'Relationship Prompts', url: '/writing-prompts-generator/relationship' },
+      { text: 'Emotion Prompts', url: '/writing-prompts-generator/emotion' }
     ],
     externalLinks: [
       { text: 'Writer\'s Digest – Writing Dialogue', url: 'https://www.writersdigest.com/write-better-fiction/writing-dialogue' },
@@ -225,9 +225,9 @@ export const generatorConfigs: Record<string, GeneratorConfig> = {
       }
     ],
     internalLinks: [
-      { text: 'Dialogue Generator', url: '/random-dialogue-generator' },
-      { text: 'Relationship Prompts', url: '/random-relationship-prompt-generator' },
-      { text: 'Hero Generator', url: '/random-hero-generator' }
+      { text: 'Dialogue Generator', url: '/writing-prompts-generator/random-dialogue' },
+      { text: 'Relationship Prompts', url: '/writing-prompts-generator/relationship' },
+      { text: 'Hero Generator', url: '/writing-prompts-generator/hero' }
     ],
     externalLinks: [
       { text: 'Writer\'s Digest – Character Development', url: 'https://www.writersdigest.com/be-inspired/character-development-101' },
@@ -286,9 +286,9 @@ export const generatorConfigs: Record<string, GeneratorConfig> = {
       }
     ],
     internalLinks: [
-      { text: 'Conflict Generator', url: '/random-conflict-generator' },
-      { text: 'Plot Twist Generator', url: '/random-plot-twist-generator' },
-      { text: 'Writing Prompts', url: '/writing-prompts' }
+      { text: 'Conflict Generator', url: '/writing-prompts-generator/conflict' },
+      { text: 'Plot Twist Generator', url: '/writing-prompts-generator/plot-twist' },
+      { text: 'Writing Prompts', url: '/writing-prompts-generator' }
     ],
     externalLinks: [
       { text: 'NY Book Editors – Story Openers', url: 'https://nybookeditors.com/blog/how-to-start-a-story/' },
@@ -343,9 +343,9 @@ export const generatorConfigs: Record<string, GeneratorConfig> = {
       }
     ],
     internalLinks: [
-      { text: 'Plot Twist Generator', url: '/random-plot-twist-generator' },
-      { text: 'Character Generator', url: '/random-character-generator' },
-      { text: 'Story Starter Generator', url: '/random-story-starter-generator' }
+      { text: 'Plot Twist Generator', url: '/writing-prompts-generator/plot-twist' },
+      { text: 'Character Generator', url: '/writing-prompts-generator/character' },
+      { text: 'Story Starter Generator', url: '/writing-prompts-generator/story-starters' }
     ],
     externalLinks: [
       { text: 'Writer\'s Digest – Types of Conflict', url: 'https://www.writersdigest.com/write-better-fiction/types-of-conflict' },
@@ -401,9 +401,9 @@ export const generatorConfigs: Record<string, GeneratorConfig> = {
       }
     ],
     internalLinks: [
-      { text: 'Conflict Generator', url: '/random-conflict-generator' },
-      { text: 'Character Generator', url: '/random-character-generator' },
-      { text: 'Writing Prompts', url: '/writing-prompts' }
+      { text: 'Conflict Generator', url: '/writing-prompts-generator/conflict' },
+      { text: 'Character Generator', url: '/writing-prompts-generator/character' },
+      { text: 'Writing Prompts', url: '/writing-prompts-generator' }
     ],
     externalLinks: [
       { text: 'Writer\'s Digest – Plot Twists', url: 'https://www.writersdigest.com/write-better-fiction/how-to-write-plot-twists' },
@@ -458,9 +458,9 @@ export const generatorConfigs: Record<string, GeneratorConfig> = {
       }
     ],
     internalLinks: [
-      { text: 'Character Generator', url: '/random-character-generator' },
-      { text: 'Conflict Generator', url: '/random-conflict-generator' },
-      { text: 'Emotion Prompts', url: '/random-emotion-prompt-generator' }
+      { text: 'Character Generator', url: '/writing-prompts-generator/character' },
+      { text: 'Conflict Generator', url: '/writing-prompts-generator/conflict' },
+      { text: 'Emotion Prompts', url: '/writing-prompts-generator/emotion' }
     ],
     externalLinks: [
       { text: 'Writer\'s Digest – Writing Theme', url: 'https://www.writersdigest.com/write-better-fiction/theme-in-fiction' },
@@ -513,9 +513,9 @@ export const generatorConfigs: Record<string, GeneratorConfig> = {
       }
     ],
     internalLinks: [
-      { text: 'Worldbuilding Prompts', url: '/random-worldbuilding-prompts-generator' },
-      { text: 'Environment Design', url: '/random-environment-design-generator' },
-      { text: 'Fantasy Art Prompts', url: '/random-fantasy-art-prompt-generator' }
+      { text: 'Worldbuilding Prompts', url: '/writing-prompts-generator/worldbuilding' },
+      { text: 'Environment Design', url: '/art-prompts/environment' },
+      { text: 'Fantasy Art Prompts', url: '/art-prompts/fantasy-art' }
     ],
     externalLinks: [
       { text: 'Writer\'s Digest – Setting Guide', url: 'https://www.writersdigest.com/write-better-fiction/how-to-write-setting' },
@@ -571,9 +571,9 @@ export const generatorConfigs: Record<string, GeneratorConfig> = {
       }
     ],
     internalLinks: [
-      { text: 'Hero Generator', url: '/random-hero-generator' },
-      { text: 'Character Generator', url: '/random-character-generator' },
-      { text: 'Conflict Generator', url: '/random-conflict-generator' }
+      { text: 'Hero Generator', url: '/writing-prompts-generator/hero' },
+      { text: 'Character Generator', url: '/writing-prompts-generator/character' },
+      { text: 'Conflict Generator', url: '/writing-prompts-generator/conflict' }
     ],
     externalLinks: [
       { text: 'Writer\'s Digest – Writing Villains', url: 'https://www.writersdigest.com/write-better-fiction/how-to-write-a-villain' },
@@ -629,9 +629,9 @@ export const generatorConfigs: Record<string, GeneratorConfig> = {
       }
     ],
     internalLinks: [
-      { text: 'Villain Generator', url: '/random-villain-generator' },
-      { text: 'Character Generator', url: '/random-character-generator' },
-      { text: 'Conflict Generator', url: '/random-conflict-generator' }
+      { text: 'Villain Generator', url: '/writing-prompts-generator/villain' },
+      { text: 'Character Generator', url: '/writing-prompts-generator/character' },
+      { text: 'Conflict Generator', url: '/writing-prompts-generator/conflict' }
     ],
     externalLinks: [
       { text: 'Writer\'s Digest – Protagonist Guide', url: 'https://www.writersdigest.com/write-better-fiction/protagonist' },

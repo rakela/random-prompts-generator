@@ -41,76 +41,97 @@
       <nav class="hidden md:flex items-center space-x-6">
         <a href="/" class="text-gray-600 hover:text-blue-600 transition-colors">Home</a>
 
-        <!-- Generators Megamenu -->
+        <!-- Writing Prompts Dropdown -->
         <div class="relative group">
-          <button class="text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-1">
+          <a href="/writing-prompts-generator" class="text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-1">
+            Writing Prompts
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </a>
+          <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+            <a href="/writing-prompts-generator" class="block px-4 py-3 text-blue-600 font-semibold hover:bg-blue-50 border-b border-gray-100">
+              All Writing Prompts
+            </a>
+            <a href="/writing-prompts-generator/story-starters" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
+              Story Starters
+            </a>
+            <a href="/writing-prompts-generator/character" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
+              Character Generator
+            </a>
+            <a href="/writing-prompts-generator/conflict" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
+              Conflict Generator
+            </a>
+            <a href="/writing-prompts-generator/plot-twist" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
+              Plot Twist Generator
+            </a>
+            <a href="/writing-prompts-generator/villain" class="block px-4 py-3 text-gray-700 hover:bg-gray-50">
+              Villain Generator
+            </a>
+          </div>
+        </div>
+
+        <!-- Art Prompts Dropdown -->
+        <div class="relative group">
+          <a href="/art-prompts" class="text-gray-600 hover:text-purple-600 transition-colors flex items-center gap-1">
+            Art Prompts
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </a>
+          <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+            <a href="/art-prompts" class="block px-4 py-3 text-purple-600 font-semibold hover:bg-purple-50 border-b border-gray-100">
+              All Art Prompts
+            </a>
+            <a href="/art-prompts/aesthetic" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
+              Aesthetic Generator
+            </a>
+            <a href="/art-prompts/fantasy-art" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
+              Fantasy Art Generator
+            </a>
+            <a href="/art-prompts/anime" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
+              Anime Generator
+            </a>
+            <a href="/art-prompts/character-design" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
+              Character Design Generator
+            </a>
+            <a href="/art-prompts/portrait" class="block px-4 py-3 text-gray-700 hover:bg-gray-50">
+              Portrait Generator
+            </a>
+          </div>
+        </div>
+
+        <!-- Generators Dropdown -->
+        <div class="relative group">
+          <a href="/generators" class="text-gray-600 hover:text-green-600 transition-colors flex items-center gap-1">
             Generators
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
-          </button>
-          <div class="megamenu-container absolute top-full left-0 mt-2 w-[1000px] bg-white rounded-lg shadow-xl border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 p-8">
-            <div class="grid grid-cols-3 gap-8">
-              <!-- Writing Generators Column -->
-              <div>
-                <a href="/writing-generators" class="block mb-3 pb-2 border-b border-blue-100">
-                  <h3 class="text-sm font-bold text-blue-600 hover:text-blue-700 uppercase tracking-wider transition-colors">Writing Generators</h3>
-                </a>
-                <div class="space-y-1">
-                  <a href="/random-paragraph-generator" class="block px-3 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded transition-colors">Paragraph</a>
-                  <a href="/random-sentence-generator" class="block px-3 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded transition-colors">Sentence</a>
-                  <a href="/random-story-starter-generator" class="block px-3 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded transition-colors">Story Starter</a>
-                  <a href="/random-dialogue-generator" class="block px-3 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded transition-colors">Dialogue</a>
-                  <a href="/random-theme-generator" class="block px-3 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded transition-colors">Theme</a>
-                  <a href="/random-conflict-generator" class="block px-3 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded transition-colors">Conflict</a>
-                  <a href="/random-plot-twist-generator" class="block px-3 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded transition-colors">Plot Twist</a>
-                  <a href="/random-character-generator" class="block px-3 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded transition-colors">Character</a>
-                  <a href="/random-relationship-prompt-generator" class="block px-3 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded transition-colors">Relationships</a>
-                  <a href="/random-setting-generator" class="block px-3 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded transition-colors">Setting</a>
-                  <a href="/random-villain-generator" class="block px-3 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded transition-colors">Villain</a>
-                  <a href="/random-hero-generator" class="block px-3 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded transition-colors">Hero</a>
-                  <a href="/random-worldbuilding-prompts-generator" class="block px-3 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded transition-colors">Worldbuilding</a>
-                  <a href="/random-magic-system-generator" class="block px-3 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded transition-colors">Magic System</a>
-                  <a href="/random-emotion-prompt-generator" class="block px-3 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded transition-colors">Emotion</a>
-                </div>
-              </div>
-
-              <!-- AI Art Generators Column -->
-              <div>
-                <a href="/ai-art-generators" class="block mb-3 pb-2 border-b border-purple-100">
-                  <h3 class="text-sm font-bold text-purple-600 hover:text-purple-700 uppercase tracking-wider transition-colors">AI Art Generators</h3>
-                </a>
-                <div class="space-y-1">
-                  <a href="/random-aesthetic-prompt-generator" class="block px-3 py-2 text-sm text-gray-700 hover:bg-purple-50 hover:text-purple-700 rounded transition-colors">Aesthetic</a>
-                  <a href="/random-art-style-generator" class="block px-3 py-2 text-sm text-gray-700 hover:bg-purple-50 hover:text-purple-700 rounded transition-colors">Style</a>
-                  <a href="/random-photography-prompt-generator" class="block px-3 py-2 text-sm text-gray-700 hover:bg-purple-50 hover:text-purple-700 rounded transition-colors">Photography</a>
-                  <a href="/random-sci-fi-prompt-generator" class="block px-3 py-2 text-sm text-gray-700 hover:bg-purple-50 hover:text-purple-700 rounded transition-colors">Sci-Fi</a>
-                  <a href="/random-fantasy-art-prompt-generator" class="block px-3 py-2 text-sm text-gray-700 hover:bg-purple-50 hover:text-purple-700 rounded transition-colors">Fantasy</a>
-                  <a href="/random-environment-design-generator" class="block px-3 py-2 text-sm text-gray-700 hover:bg-purple-50 hover:text-purple-700 rounded transition-colors">Environment</a>
-                  <a href="/random-anime-prompt-generator" class="block px-3 py-2 text-sm text-gray-700 hover:bg-purple-50 hover:text-purple-700 rounded transition-colors">Anime</a>
-                  <a href="/random-character-design-prompt-generator" class="block px-3 py-2 text-sm text-gray-700 hover:bg-purple-50 hover:text-purple-700 rounded transition-colors">Character Design</a>
-                  <a href="/random-portrait-prompt-generator" class="block px-3 py-2 text-sm text-gray-700 hover:bg-purple-50 hover:text-purple-700 rounded transition-colors">Portrait</a>
-                  <a href="/random-lighting-style-generator" class="block px-3 py-2 text-sm text-gray-700 hover:bg-purple-50 hover:text-purple-700 rounded transition-colors">Lighting Style</a>
-                </div>
-              </div>
-
-              <!-- Creative Idea Generators Column -->
-              <div>
-                <a href="/creative-idea-generators" class="block mb-3 pb-2 border-b border-green-100">
-                  <h3 class="text-sm font-bold text-green-600 hover:text-green-700 uppercase tracking-wider transition-colors">Creative Ideas</h3>
-                </a>
-                <div class="space-y-1">
-                  <a href="/random-hobby-generator" class="block px-3 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-green-700 rounded transition-colors">Hobby</a>
-                  <a href="/random-object-generator" class="block px-3 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-green-700 rounded transition-colors">Object</a>
-                  <a href="/random-superpower-generator" class="block px-3 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-green-700 rounded transition-colors">Superpower</a>
-                  <a href="/random-idea-generator" class="block px-3 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-green-700 rounded transition-colors">Idea</a>
-                  <a href="/random-fantasy-name-generator" class="block px-3 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-green-700 rounded transition-colors">Fantasy Names</a>
-                </div>
-              </div>
-            </div>
+          </a>
+          <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+            <a href="/generators" class="block px-4 py-3 text-green-600 font-semibold hover:bg-green-50 border-b border-gray-100">
+              All Generators
+            </a>
+            <a href="/generators/paragraph" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
+              Paragraph Generator
+            </a>
+            <a href="/generators/sentence" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
+              Sentence Generator
+            </a>
+            <a href="/generators/fantasy-name" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
+              Fantasy Name Generator
+            </a>
+            <a href="/generators/superpower" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
+              Superpower Generator
+            </a>
+            <a href="/generators/idea" class="block px-4 py-3 text-gray-700 hover:bg-gray-50">
+              Idea Generator
+            </a>
           </div>
         </div>
 
+        <!-- Prompts Dropdown (for other pages) -->
         <div class="relative group">
           <button class="text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-1">
             Prompts
@@ -167,6 +188,7 @@
             </a>
           </div>
         </div>
+
         <a href="https://github.com/rakela/random-prompts-generator" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1 text-gray-600 hover:text-blue-600 transition-colors">
           <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
@@ -181,60 +203,45 @@
       <nav class="flex flex-col space-y-3">
         <a href="/" class="text-gray-600 hover:text-blue-600 transition-colors py-2">Home</a>
 
-        <!-- Generators Section -->
+        <!-- Writing Prompts Section -->
         <div class="border-t border-gray-100 pt-3">
-          <div class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Generators</div>
+          <a href="/writing-prompts-generator" class="text-sm font-semibold text-blue-600 uppercase tracking-wider mb-2 block">Writing Prompts</a>
           <div class="flex flex-col space-y-2 pl-3">
-            <!-- Writing Generators Submenu -->
-            <div class="pl-3 border-l-2 border-blue-200 space-y-2 mb-2">
-              <div class="text-xs font-semibold text-blue-500 uppercase tracking-wider">Writing Generators</div>
-              <a href="/random-paragraph-generator" class="block text-gray-600 hover:text-blue-600 transition-colors py-1">Paragraph</a>
-              <a href="/random-sentence-generator" class="block text-gray-600 hover:text-blue-600 transition-colors py-1">Sentence</a>
-              <a href="/random-story-starter-generator" class="block text-gray-600 hover:text-blue-600 transition-colors py-1">Story Starter</a>
-              <a href="/random-dialogue-generator" class="block text-gray-600 hover:text-blue-600 transition-colors py-1">Dialogue</a>
-              <a href="/random-theme-generator" class="block text-gray-600 hover:text-blue-600 transition-colors py-1">Theme</a>
-              <a href="/random-conflict-generator" class="block text-gray-600 hover:text-blue-600 transition-colors py-1">Conflict</a>
-              <a href="/random-plot-twist-generator" class="block text-gray-600 hover:text-blue-600 transition-colors py-1">Plot Twist</a>
-              <a href="/random-character-generator" class="block text-gray-600 hover:text-blue-600 transition-colors py-1">Character</a>
-              <a href="/random-relationship-prompt-generator" class="block text-gray-600 hover:text-blue-600 transition-colors py-1">Relationships</a>
-              <a href="/random-setting-generator" class="block text-gray-600 hover:text-blue-600 transition-colors py-1">Setting</a>
-              <a href="/random-villain-generator" class="block text-gray-600 hover:text-blue-600 transition-colors py-1">Villain</a>
-              <a href="/random-hero-generator" class="block text-gray-600 hover:text-blue-600 transition-colors py-1">Hero</a>
-              <a href="/random-worldbuilding-prompts-generator" class="block text-gray-600 hover:text-blue-600 transition-colors py-1">Worldbuilding Prompts</a>
-              <a href="/random-magic-system-generator" class="block text-gray-600 hover:text-blue-600 transition-colors py-1">Magic System</a>
-              <a href="/random-emotion-prompt-generator" class="block text-gray-600 hover:text-blue-600 transition-colors py-1">Emotion Prompt</a>
-            </div>
-
-            <!-- AI Art Generators Submenu -->
-            <div class="pl-3 border-l-2 border-purple-200 space-y-2 mb-2">
-              <div class="text-xs font-semibold text-purple-500 uppercase tracking-wider">AI Art Generators</div>
-              <a href="/random-aesthetic-prompt-generator" class="block text-gray-600 hover:text-blue-600 transition-colors py-1">Aesthetic</a>
-              <a href="/random-art-style-generator" class="block text-gray-600 hover:text-blue-600 transition-colors py-1">Style</a>
-              <a href="/random-photography-prompt-generator" class="block text-gray-600 hover:text-blue-600 transition-colors py-1">Photography</a>
-              <a href="/random-sci-fi-prompt-generator" class="block text-gray-600 hover:text-blue-600 transition-colors py-1">Sci-Fi</a>
-              <a href="/random-fantasy-art-prompt-generator" class="block text-gray-600 hover:text-blue-600 transition-colors py-1">Fantasy</a>
-              <a href="/random-environment-design-generator" class="block text-gray-600 hover:text-blue-600 transition-colors py-1">Environment</a>
-              <a href="/random-anime-prompt-generator" class="block text-gray-600 hover:text-blue-600 transition-colors py-1">Anime</a>
-              <a href="/random-character-design-prompt-generator" class="block text-gray-600 hover:text-blue-600 transition-colors py-1">Character Design</a>
-              <a href="/random-portrait-prompt-generator" class="block text-gray-600 hover:text-blue-600 transition-colors py-1">Portrait</a>
-              <a href="/random-lighting-style-generator" class="block text-gray-600 hover:text-blue-600 transition-colors py-1">Lighting Style</a>
-            </div>
-
-            <!-- Creative Idea Generators Submenu -->
-            <div class="pl-3 border-l-2 border-green-200 space-y-2">
-              <div class="text-xs font-semibold text-green-500 uppercase tracking-wider">Creative Idea Generators</div>
-              <a href="/random-hobby-generator" class="block text-gray-600 hover:text-blue-600 transition-colors py-1">Hobby</a>
-              <a href="/random-object-generator" class="block text-gray-600 hover:text-blue-600 transition-colors py-1">Object</a>
-              <a href="/random-superpower-generator" class="block text-gray-600 hover:text-blue-600 transition-colors py-1">Superpower</a>
-              <a href="/random-idea-generator" class="block text-gray-600 hover:text-blue-600 transition-colors py-1">Idea</a>
-              <a href="/random-fantasy-name-generator" class="block text-gray-600 hover:text-blue-600 transition-colors py-1">Fantasy Names</a>
-            </div>
+            <a href="/writing-prompts-generator/story-starters" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Story Starters</a>
+            <a href="/writing-prompts-generator/character" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Character Generator</a>
+            <a href="/writing-prompts-generator/conflict" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Conflict Generator</a>
+            <a href="/writing-prompts-generator/plot-twist" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Plot Twist Generator</a>
+            <a href="/writing-prompts-generator/villain" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Villain Generator</a>
           </div>
         </div>
 
-        <!-- Prompts Section -->
+        <!-- Art Prompts Section -->
         <div class="border-t border-gray-100 pt-3">
-          <div class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Prompts</div>
+          <a href="/art-prompts" class="text-sm font-semibold text-purple-600 uppercase tracking-wider mb-2 block">Art Prompts</a>
+          <div class="flex flex-col space-y-2 pl-3">
+            <a href="/art-prompts/aesthetic" class="text-gray-600 hover:text-purple-600 transition-colors py-1">Aesthetic Generator</a>
+            <a href="/art-prompts/fantasy-art" class="text-gray-600 hover:text-purple-600 transition-colors py-1">Fantasy Art Generator</a>
+            <a href="/art-prompts/anime" class="text-gray-600 hover:text-purple-600 transition-colors py-1">Anime Generator</a>
+            <a href="/art-prompts/character-design" class="text-gray-600 hover:text-purple-600 transition-colors py-1">Character Design Generator</a>
+            <a href="/art-prompts/portrait" class="text-gray-600 hover:text-purple-600 transition-colors py-1">Portrait Generator</a>
+          </div>
+        </div>
+
+        <!-- Generators Section -->
+        <div class="border-t border-gray-100 pt-3">
+          <a href="/generators" class="text-sm font-semibold text-green-600 uppercase tracking-wider mb-2 block">Generators</a>
+          <div class="flex flex-col space-y-2 pl-3">
+            <a href="/generators/paragraph" class="text-gray-600 hover:text-green-600 transition-colors py-1">Paragraph Generator</a>
+            <a href="/generators/sentence" class="text-gray-600 hover:text-green-600 transition-colors py-1">Sentence Generator</a>
+            <a href="/generators/fantasy-name" class="text-gray-600 hover:text-green-600 transition-colors py-1">Fantasy Name Generator</a>
+            <a href="/generators/superpower" class="text-gray-600 hover:text-green-600 transition-colors py-1">Superpower Generator</a>
+            <a href="/generators/idea" class="text-gray-600 hover:text-green-600 transition-colors py-1">Idea Generator</a>
+          </div>
+        </div>
+
+        <!-- Other Prompts Section -->
+        <div class="border-t border-gray-100 pt-3">
+          <div class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Other Prompts</div>
           <div class="flex flex-col space-y-2 pl-3">
             <a href="/ghostface-ai-trend-prompt-generator" class="text-gray-600 hover:text-blue-600 transition-colors py-1.5">
               Ghostface AI Trend
