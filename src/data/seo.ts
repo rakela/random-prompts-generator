@@ -162,79 +162,79 @@ export const seoData: Record<string, SEOData> = {
     keywords: 'random sentence generator, sentence generator, random sentences, writing warmup, creative sentences'
   },
   randomDialogueGenerator: {
-    path: 'random-dialogue-generator',
+    path: 'writing-prompts-generator/random-dialogue',
     title: 'Random Dialogue Generator | Random Prompts',
     description: 'Generate random dialogue lines and conversations to practice character voices and scenes. Free dialogue prompt generator for fiction writers.',
     keywords: 'random dialogue generator, dialogue prompts, conversation generator, character dialogue, fiction dialogue'
   },
   randomCharacterGenerator: {
-    path: 'random-character-generator',
+    path: 'writing-prompts-generator/character',
     title: 'Random Character Generator | Random Prompts',
     description: 'Create random characters with traits, goals, and flaws. Free character generator for stories, RPGs, and worldbuilding.',
     keywords: 'random character generator, character creator, character traits, rpg characters, story characters'
   },
   randomStoryStarterGenerator: {
-    path: 'random-story-starter-generator',
+    path: 'writing-prompts-generator/story-starters',
     title: 'Random Story Starter Generator | Random Prompts',
     description: 'Get random story starters and opening lines to kick off your next story. Free story starter generator for writers and students.',
     keywords: 'random story starter, story starters, story opening, writing prompts, story beginning'
   },
   randomConflictGenerator: {
-    path: 'random-conflict-generator',
+    path: 'writing-prompts-generator/conflict',
     title: 'Random Conflict Generator | Random Prompts',
     description: 'Generate random story conflicts and problems for your characters to face. Free conflict generator for fiction and screenwriting.',
     keywords: 'random conflict generator, story conflict, plot conflict, character problems, narrative tension'
   },
   randomPlotTwistGenerator: {
-    path: 'random-plot-twist-generator',
+    path: 'writing-prompts-generator/plot-twist',
     title: 'Random Plot Twist Generator | Random Prompts',
     description: 'Discover random plot twists that surprise readers and raise the stakes. Free plot twist generator for novels and short stories.',
     keywords: 'random plot twist, plot twist generator, story twists, surprise endings, narrative twists'
   },
   randomThemeGenerator: {
-    path: 'random-theme-generator',
+    path: 'writing-prompts-generator/theme',
     title: 'Random Theme Generator | Random Prompts',
     description: 'Generate random story themes and big ideas to explore in your writing. Free theme generator for stories, essays, and journaling.',
     keywords: 'random theme generator, story themes, writing themes, narrative themes, thematic ideas'
   },
   randomSettingGenerator: {
-    path: 'random-setting-generator',
+    path: 'writing-prompts-generator/setting',
     title: 'Random Setting Generator | Random Prompts',
     description: 'Create random settings with time, place, and atmosphere for your stories. Free setting generator for fiction and RPG campaigns.',
     keywords: 'random setting generator, story setting, scene setting, location generator, world setting'
   },
   randomVillainGenerator: {
-    path: 'random-villain-generator',
+    path: 'writing-prompts-generator/villain',
     title: 'Random Villain Generator | Random Prompts',
     description: 'Generate random villains with motives, flaws, and backstories. Free villain generator for fantasy, sci-fi, and thrillers.',
     keywords: 'random villain generator, villain creator, antagonist generator, bad guy generator, villain backstory'
   },
   randomHeroGenerator: {
-    path: 'random-hero-generator',
+    path: 'writing-prompts-generator/hero',
     title: 'Random Hero Generator | Random Prompts',
     description: 'Create random heroes and protagonists with goals and inner conflicts. Free hero generator for stories, comics, and games.',
     keywords: 'random hero generator, hero creator, protagonist generator, character hero, hero traits'
   },
   randomWorldbuildingPromptsGenerator: {
-    path: 'random-worldbuilding-prompts-generator',
+    path: 'writing-prompts-generator/worldbuilding',
     title: 'Random Worldbuilding Prompts Generator | Random Prompts',
     description: 'Generate worldbuilding prompts for cultures, magic, politics, and history. Free worldbuilding prompt generator for fantasy and sci-fi.',
     keywords: 'worldbuilding prompts, world building generator, fantasy worldbuilding, sci-fi worldbuilding, culture creation'
   },
   randomMagicSystemGenerator: {
-    path: 'random-magic-system-generator',
+    path: 'writing-prompts-generator/magic-system',
     title: 'Random Magic System Generator | Random Prompts',
     description: 'Create random magic system ideas with rules, limits, and costs. Free magic system generator for fantasy writers and RPG creators.',
     keywords: 'magic system generator, fantasy magic, magic rules, magic system ideas, rpg magic system'
   },
   randomEmotionPromptGenerator: {
-    path: 'random-emotion-prompt-generator',
+    path: 'writing-prompts-generator/emotion',
     title: 'Random Emotion Prompt Generator | Random Prompts',
     description: 'Generate emotion-based writing prompts focused on feelings, tension, and inner conflict. Free emotion prompt generator for deep scenes.',
     keywords: 'emotion prompts, feeling prompts, emotional writing, character emotions, inner conflict prompts'
   },
   randomRelationshipPromptGenerator: {
-    path: 'random-relationship-prompt-generator',
+    path: 'writing-prompts-generator/relationship',
     title: 'Random Relationship Prompt Generator | Random Prompts',
     description: 'Create random relationship prompts for friendships, families, and romance. Free relationship prompt generator for character-driven stories.',
     keywords: 'relationship prompts, character relationships, romance prompts, friendship prompts, family dynamics'
