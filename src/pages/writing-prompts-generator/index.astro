@@ -2,11 +2,103 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import AstroHeader from '../../components/AstroHeader.astro';
 import AstroFooter from '../../components/AstroFooter.astro';
-import PromptGenerator from '../../components/PromptGenerator';
 import '../../styles/global.css';
 import { getSEOData } from '../../data/seo';
 
-const seo = getSEOData('writingPrompts');
+const seo = getSEOData('writingPromptsGenerators');
+
+const generators = [
+  {
+    title: 'Random Character Generator',
+    description: 'Create random characters with traits, goals, and flaws. Free character generator for stories, RPGs, and worldbuilding.',
+    url: '/writing-prompts-generator/character'
+  },
+  {
+    title: 'Story Starters Generator',
+    description: 'Get random story starters and opening lines to kick off your next story. Free story starter generator for writers and students.',
+    url: '/writing-prompts-generator/story-starters'
+  },
+  {
+    title: 'Conflict Generator',
+    description: 'Generate random story conflicts and problems for your characters to face. Free conflict generator for fiction and screenwriting.',
+    url: '/writing-prompts-generator/conflict'
+  },
+  {
+    title: 'Plot Twist Generator',
+    description: 'Discover random plot twists that surprise readers and raise the stakes. Free plot twist generator for novels and short stories.',
+    url: '/writing-prompts-generator/plot-twist'
+  },
+  {
+    title: 'Theme Generator',
+    description: 'Generate random story themes and big ideas to explore in your writing. Free theme generator for stories, essays, and journaling.',
+    url: '/writing-prompts-generator/theme'
+  },
+  {
+    title: 'Setting Generator',
+    description: 'Create random settings with time, place, and atmosphere for your stories. Free setting generator for fiction and RPG campaigns.',
+    url: '/writing-prompts-generator/setting'
+  },
+  {
+    title: 'Villain Generator',
+    description: 'Generate random villains with motives, flaws, and backstories. Free villain generator for fantasy, sci-fi, and thrillers.',
+    url: '/writing-prompts-generator/villain'
+  },
+  {
+    title: 'Hero Generator',
+    description: 'Create random heroes and protagonists with goals and inner conflicts. Free hero generator for stories, comics, and games.',
+    url: '/writing-prompts-generator/hero'
+  },
+  {
+    title: 'Worldbuilding Prompts',
+    description: 'Generate worldbuilding prompts for cultures, magic, politics, and history. Free worldbuilding prompt generator for fantasy and sci-fi.',
+    url: '/writing-prompts-generator/worldbuilding'
+  },
+  {
+    title: 'Magic System Generator',
+    description: 'Create random magic system ideas with rules, limits, and costs. Free magic system generator for fantasy writers and RPG creators.',
+    url: '/writing-prompts-generator/magic-system'
+  },
+  {
+    title: 'Emotion Prompt Generator',
+    description: 'Generate emotion-based writing prompts focused on feelings, tension, and inner conflict. Free emotion prompt generator for deep scenes.',
+    url: '/writing-prompts-generator/emotion'
+  },
+  {
+    title: 'Relationship Prompt Generator',
+    description: 'Create random relationship prompts for friendships, families, and romance. Free relationship prompt generator for character-driven stories.',
+    url: '/writing-prompts-generator/relationship'
+  },
+  {
+    title: 'Dialogue Generator',
+    description: 'Generate random dialogue lines and conversations to practice character voices and scenes. Free dialogue prompt generator for fiction writers.',
+    url: '/writing-prompts-generator/random-dialogue'
+  },
+  {
+    title: 'Dialogue Writing Prompts',
+    description: 'Generate random dialogue prompts to improve your character conversations and dialogue writing skills.',
+    url: '/writing-prompts-generator/dialogue'
+  },
+  {
+    title: 'First Lines Generator',
+    description: 'Generate random first lines and opening sentences to kickstart your stories and overcome writer\'s block.',
+    url: '/writing-prompts-generator/first-lines'
+  },
+  {
+    title: 'Horror & Thriller Prompts',
+    description: 'Generate random horror and thriller writing prompts to create spine-chilling stories and suspenseful narratives.',
+    url: '/writing-prompts-generator/horror-thriller'
+  },
+  {
+    title: 'OTP Ideas Generator',
+    description: 'Generate random OTP (One True Pairing) ideas and prompts for fanfiction and original romance writing.',
+    url: '/writing-prompts-generator/otp-ideas'
+  },
+  {
+    title: 'Journaling Prompts',
+    description: 'Generate random journaling prompts for self-reflection, personal growth, and daily writing practice.',
+    url: '/writing-prompts-generator/journaling'
+  }
+];
 ---
 
 <BaseLayout seo={seo}>
@@ -14,48 +106,77 @@ const seo = getSEOData('writingPrompts');
 
   <!-- Hero Section -->
   <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16">
-    <div class="max-w-4xl mx-auto px-4 text-center">
+    <div class="max-w-6xl mx-auto px-4 text-center">
       <h1 class="text-4xl md:text-5xl font-bold mb-4">
-        Random Writing Prompt Generator
+        Writing Prompt Generators
       </h1>
-
-      <p class="text-lg opacity-80 mb-8 max-w-2xl mx-auto">
-        Free random writing prompt generator with unique conflicts, plot twists & emotional stakes. Break through writer's block with creative story prompts.
+      <p class="text-lg opacity-90 mb-8 max-w-3xl mx-auto">
+        Professional writing prompt generators for characters, conflicts, plot twists, themes, settings, and more. Free tools to break through writer's block and spark creative storytelling.
       </p>
     </div>
   </div>
 
   <!-- Main Content -->
-  <div class="max-w-6xl mx-auto px-4 py-8">
-    {/* Prompt Generator Component */}
-    <PromptGenerator client:load category="writing" />
+  <div class="max-w-6xl mx-auto px-4 py-12">
+    <!-- Generators Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+      {generators.map((generator) => (
+        <a
+          href={generator.url}
+          class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-xl hover:border-blue-300 transition-all duration-200 group"
+        >
+          <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+            {generator.title}
+          </h3>
+          <p class="text-gray-600 mb-4">
+            {generator.description}
+          </p>
+          <div class="flex items-center text-blue-600 font-semibold text-sm group-hover:gap-2 transition-all">
+            Try it now
+            <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </div>
+        </a>
+      ))}
+    </div>
 
-    {/* SEO Content Section */}
+    <!-- SEO Content Section -->
     <div class="mt-16 space-y-8">
       <div class="prose prose-gray max-w-none">
-        <h2 class="text-2xl font-bold text-gray-900 mb-4">Random Prompts Generator for Writing - Professional Story Ideas</h2>
-        <p class="text-gray-700 mb-4">
-          Our random prompts generator creates professional writing prompts designed to spark creativity and overcome writer's block. This free writing prompt generator delivers unlimited story ideas featuring unique conflicts, emotional stakes, and compelling plot twists. Each randomly generated prompt combines proven story elements with sophisticated narratives perfect for creative writers, novelists, and storytellers.
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Professional Writing Prompt Generators for Creative Fiction</h2>
+        <p class="text-gray-700 mb-4 text-lg">
+          Our collection of writing prompt generators provides specialized tools for every aspect of storytelling. From character development and plot structure to worldbuilding and emotional depth, these free generators help writers overcome creative blocks and explore new narrative directions.
         </p>
         <p class="text-gray-700 mb-4">
-          Generate random writing prompts with detailed character archetypes (memory thieves, dream architects, retired superheroes), specific story conflicts, and creative plot twists that go beyond generic writing prompts. This random story prompt generator tool is ideal for daily writing practice, NaNoWriMo preparation, creative writing exercises, and exploring new narrative ideas.
+          Each generator is designed to create detailed, thought-provoking prompts that go beyond simple one-word suggestions. Whether you're working on a novel, short story, screenplay, or RPG campaign, these tools provide the creative spark you need to keep writing.
         </p>
-        <div class="bg-blue-50 p-4 rounded-lg mt-4">
-          <h3 class="font-semibold text-blue-900 mb-2">Quality Features:</h3>
-          <ul class="text-blue-800 text-sm space-y-1">
-            <li>• Emotional stakes and internal conflicts</li>
-            <li>• Specific, evocative settings beyond generic locations</li>
-            <li>• Complex character archetypes with built-in motivations</li>
-            <li>• Plot twists that recontextualize the entire story</li>
+
+        <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Featured Writing Generators</h3>
+        <ul class="list-disc pl-6 text-gray-700 mb-6 space-y-2">
+          <li><strong>Character Generator:</strong> Create complex characters with unique traits, motivations, and backstories</li>
+          <li><strong>Conflict & Plot Twist:</strong> Generate compelling story conflicts and unexpected plot developments</li>
+          <li><strong>Setting & Worldbuilding:</strong> Build rich, atmospheric settings and detailed fantasy worlds</li>
+          <li><strong>Villain & Hero:</strong> Craft memorable protagonists and antagonists with depth and nuance</li>
+          <li><strong>Emotion & Relationship:</strong> Explore character dynamics and emotional storytelling</li>
+          <li><strong>Dialogue Prompts:</strong> Practice character voices and conversational writing</li>
+        </ul>
+
+        <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">How to Use Writing Prompt Generators</h3>
+        <div class="bg-blue-50 p-6 rounded-lg mb-6">
+          <ul class="text-blue-900 space-y-2">
+            <li>• <strong>Daily Writing Practice:</strong> Use different generators each day to develop various storytelling skills</li>
+            <li>• <strong>Break Writer's Block:</strong> Generate fresh ideas when you're stuck in your current project</li>
+            <li>• <strong>Explore New Genres:</strong> Try prompts outside your comfort zone to expand your range</li>
+            <li>• <strong>Character Development:</strong> Use multiple generators together to build well-rounded characters</li>
+            <li>• <strong>Story Structure:</strong> Combine conflict, setting, and plot twist generators for complete story frameworks</li>
+            <li>• <strong>Creative Challenges:</strong> Set constraints using prompt combinations for focused writing exercises</li>
           </ul>
         </div>
-      </div>
 
-      {/* More Writing Resources Section */}
-      <div class="prose prose-gray max-w-none mt-12">
-        <h2 class="text-2xl font-bold text-gray-900 mb-4">More Writing Resources</h2>
+        <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Related Resources</h3>
         <p class="text-gray-700 mb-4">
-          Explore more creative writing tools: check out <a href="https://blog.reedsy.com/creative-writing-prompts/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Reedsy Creative Writing Prompts</a>, and our own <a href="/october-writing-prompts" class="text-blue-600 hover:underline">October Writing Prompts</a> and <a href="/christmas-writing-prompts" class="text-blue-600 hover:underline">Christmas Writing Prompts</a> for seasonal inspiration.
+          Looking for more writing tools? Try our <a href="/writing-prompts" class="text-blue-600 hover:underline font-semibold">Random Writing Prompt Generator</a> for complete story prompts, explore <a href="/short-story-prompts-generator" class="text-blue-600 hover:underline">Short Story Prompts</a> for flash fiction ideas, or check out our <a href="/random-name-generator" class="text-blue-600 hover:underline">Character Name Generator</a> for naming inspiration.
         </p>
       </div>
     </div>

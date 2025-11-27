@@ -21,6 +21,12 @@ export const seoData: Record<string, SEOData> = {
     description: 'Free random writing prompt generator with unique conflicts, plot twists & emotional stakes. Break through writer\'s block with creative story prompts.',
     keywords: 'writing prompts, random writing prompts, writing prompt generator, story prompts, creative writing prompts, random story prompt generator'
   },
+  writingPromptsGenerators: {
+    path: 'writing-prompts-generator',
+    title: 'Writing Prompt Generators - Story, Character & Plot Generators',
+    description: 'Free writing prompt generators for characters, conflicts, plot twists, themes, settings & more. Professional story generators for creative writers.',
+    keywords: 'writing prompt generators, story generators, character generator, plot generator, creative writing tools, fiction writing generators'
+  },
   aiImagesPrompt: {
     path: 'ai-images-prompt',
     title: 'AI Images Prompt Generator - Free AI Art Prompts for MidJourney & DALL-E',
