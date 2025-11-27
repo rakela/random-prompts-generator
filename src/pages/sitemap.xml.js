@@ -7,6 +7,7 @@ const staticPageUrls = [
   // Homepage
   '',
   // Main generators (Hub pages)
+  'writing-prompts',
   'writing-prompts-generator',
   'art-prompts',
   'generators',
