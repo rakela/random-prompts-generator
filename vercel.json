@@ -4,11 +4,6 @@
   "installCommand": "npm install",
   "redirects": [
     {
-      "source": "/writing-prompts",
-      "destination": "/writing-prompts-generator",
-      "permanent": true
-    },
-    {
       "source": "/ai-art-generators",
       "destination": "/art-prompts",
       "permanent": true
