@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Github, Twitter, Heart, Sparkles, Download, FileText } from 'lucide-react';
+import { Github, Twitter, Heart, Sparkles, Download } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
@@ -11,9 +11,11 @@ const Footer: React.FC = () => {
           <div className="flex flex-col md:flex-row items-center gap-8">
             {/* Thumbnail */}
             <div className="flex-shrink-0">
-              <div className="w-32 h-32 md:w-40 md:h-40 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center border-2 border-white/20">
-                <FileText size={64} className="text-white/90" />
-              </div>
+              <img
+                src="https://public-files.gumroad.com/z1jbr0jtvuzxat15p7mj3hisi60n"
+                alt="Best ChatGPT Prompts Library PDF"
+                className="w-32 h-32 md:w-40 md:h-40 rounded-xl object-cover shadow-lg border-2 border-white/20"
+              />
             </div>
 
             {/* Content */}
