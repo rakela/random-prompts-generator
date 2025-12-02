@@ -1,11 +1,42 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Github, Twitter, Heart, Sparkles } from 'lucide-react';
+import { Github, Twitter, Heart, Sparkles, Download, FileText } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
     <footer className="bg-gray-900 text-white py-12">
       <div className="max-w-6xl mx-auto px-4">
+        {/* PDF Download CTA Section */}
+        <div className="mb-12 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl p-8 md:p-10 shadow-2xl">
+          <div className="flex flex-col md:flex-row items-center gap-8">
+            {/* Thumbnail */}
+            <div className="flex-shrink-0">
+              <div className="w-32 h-32 md:w-40 md:h-40 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center border-2 border-white/20">
+                <FileText size={64} className="text-white/90" />
+              </div>
+            </div>
+
+            {/* Content */}
+            <div className="flex-1 text-center md:text-left">
+              <h2 className="text-3xl md:text-4xl font-bold mb-3 text-white">
+                Best ChatGPT Prompts Library
+              </h2>
+              <p className="text-lg md:text-xl text-white/90 mb-6">
+                Get instant access to 500+ ready-to-use ChatGPT prompts. Download your free PDF guide and unlock the power of AI for writing, creativity, and productivity.
+              </p>
+              <a
+                href="https://rachelroshi.gumroad.com/l/best-chatgpt-prompts-library-pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-white text-purple-600 font-semibold px-8 py-4 rounded-lg hover:bg-gray-100 transition-all transform hover:scale-105 shadow-lg"
+              >
+                <Download size={24} />
+                Download Free PDF
+              </a>
+            </div>
+          </div>
+        </div>
+
         <div className="grid md:grid-cols-4 gap-8">
           <div>
             <div className="flex items-center space-x-2 mb-4">
