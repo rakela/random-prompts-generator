@@ -54,9 +54,14 @@ async function fetchTranscriptMethod1(videoId: string): Promise<string> {
     // Try without language option first (auto-detect)
     const transcript = await YoutubeTranscript.fetchTranscript(videoId);
 
+    console.log(`[YouTube] Method 1: Received ${transcript?.length || 0} segments`);
+
     if (!transcript || transcript.length === 0) {
       throw new Error('Transcript array is empty');
     }
+
+    // Log first segment for debugging
+    console.log(`[YouTube] Method 1: First segment:`, JSON.stringify(transcript[0]));
 
     const fullTranscript = transcript
       .map((segment: any) => segment.text || segment.snippet || '')
@@ -87,33 +92,65 @@ async function fetchTranscriptMethod2(videoId: string): Promise<string> {
     const youtube = await Innertube.create();
     const info = await youtube.getInfo(videoId);
 
+    console.log(`[YouTube] Method 2: Got video info`);
+
     if (!info.captions) {
       throw new Error('No captions available');
     }
 
-    // Get the first available caption track
-    const captionTrack = info.captions.caption_tracks?.[0];
+    const captionTracks = info.captions.caption_tracks;
+    console.log(`[YouTube] Method 2: Found ${captionTracks?.length || 0} caption tracks`);
 
-    if (!captionTrack) {
+    if (!captionTracks || captionTracks.length === 0) {
       throw new Error('No caption tracks found');
     }
 
+    // Try to find English captions first, otherwise use first available
+    let captionTrack = captionTracks.find((track: any) =>
+      track.language_code === 'en' ||
+      track.language_code === 'en-US' ||
+      track.language_code === 'en-GB'
+    ) || captionTracks[0];
+
+    console.log(`[YouTube] Method 2: Using caption track - language: ${captionTrack.language_code}`);
+
     // Fetch the caption content
-    const captions = await captionTrack.fetch();
+    const transcript = await youtube.getTranscript(videoId, captionTrack.language_code);
 
-    if (!captions) {
-      throw new Error('Failed to fetch caption content');
+    console.log(`[YouTube] Method 2: Got transcript object`);
+
+    if (!transcript) {
+      throw new Error('Failed to fetch transcript');
     }
 
-    // Extract text from captions
-    const transcript = captions.text || '';
+    // Extract text from transcript segments
+    const segments = transcript.transcript?.content?.body?.initial_segments;
 
-    if (!transcript || transcript.length === 0) {
-      throw new Error('Caption text is empty');
+    if (!segments || segments.length === 0) {
+      throw new Error('No transcript segments found');
     }
 
-    console.log(`[YouTube] Method 2 SUCCESS: ${transcript.length} characters`);
-    return transcript;
+    console.log(`[YouTube] Method 2: Processing ${segments.length} segments`);
+
+    // Combine all segment text
+    const fullTranscript = segments
+      .map((segment: any) => {
+        // Handle different segment formats
+        if (segment.snippet) {
+          return segment.snippet.text || '';
+        }
+        return '';
+      })
+      .filter((text: string) => text.trim().length > 0)
+      .join(' ')
+      .trim();
+
+    if (!fullTranscript || fullTranscript.length === 0) {
+      throw new Error('Caption text is empty after processing');
+    }
+
+    console.log(`[YouTube] Method 2 SUCCESS: ${fullTranscript.length} characters`);
+    return fullTranscript;
 
   } catch (error) {
     console.error('[YouTube] Method 2 failed:', error);
@@ -131,8 +168,10 @@ export async function getYouTubeTranscript(videoUrl: string): Promise<string> {
     throw new Error('Invalid YouTube URL. Could not extract video ID.');
   }
 
+  console.log(`[YouTube] ========================================`);
   console.log(`[YouTube] Fetching transcript for video ID: ${videoId}`);
   console.log(`[YouTube] Video URL: https://www.youtube.com/watch?v=${videoId}`);
+  console.log(`[YouTube] ========================================`);
 
   const methods = [
     { name: 'youtube-transcript', fn: () => fetchTranscriptMethod1(videoId) },
@@ -149,9 +188,10 @@ export async function getYouTubeTranscript(videoUrl: string): Promise<string> {
 
       if (transcript && transcript.length > 50) {
         console.log(`[YouTube] ✓ Success with ${method.name}: ${transcript.length} characters`);
+        console.log(`[YouTube] Preview: ${transcript.substring(0, 200)}...`);
         return transcript;
       } else {
-        console.log(`[YouTube] ✗ ${method.name} returned insufficient content`);
+        console.log(`[YouTube] ✗ ${method.name} returned insufficient content: ${transcript?.length || 0} chars`);
       }
     } catch (error) {
       lastError = error instanceof Error ? error : new Error(String(error));
@@ -161,7 +201,9 @@ export async function getYouTubeTranscript(videoUrl: string): Promise<string> {
   }
 
   // All methods failed
+  console.error('[YouTube] ========================================');
   console.error('[YouTube] All transcript fetch methods failed');
+  console.error('[YouTube] ========================================');
 
   // Provide helpful error message
   const errorMessage = lastError?.message || 'Unknown error';
