@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AstroHeader from '../../components/AstroHeader.astro';
+import AstroFooter from '../../components/AstroFooter.astro';
+import WorkflowPage from '../../components/WorkflowPage';
+import { getAllWorkflows, getWorkflowById } from '../../config/workflows';
+
+// Get the workflow_id from the URL params
+const { workflow_id } = Astro.params;
+
+// Get the workflow configuration
+const workflow = getWorkflowById(workflow_id as string);
+
+// If workflow not found, return 404
+if (!workflow) {
+  return Astro.redirect('/404');
+}
+
+// SEO data
+const seo = {
+  title: workflow.seo_title,
+  description: workflow.seo_description,
+  canonical: `https://randomprompts.org/workflows/${workflow_id}`
+};
+
+// Static paths for build time
+export async function getStaticPaths() {
+  const workflows = getAllWorkflows();
+  return workflows.map(workflow => ({
+    params: { workflow_id: workflow.workflow_id }
+  }));
+}
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+
+  <WorkflowPage client:load workflow={workflow} />
+
+  <AstroFooter />
+</BaseLayout>

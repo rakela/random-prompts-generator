@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AstroHeader from '../../components/AstroHeader.astro';
+import AstroFooter from '../../components/AstroFooter.astro';
+import ToolPage from '../../components/ToolPage';
+import { getAllTools, getToolById } from '../../config/tools';
+
+// Get the tool_id from the URL params
+const { tool_id } = Astro.params;
+
+// Get the tool configuration
+const tool = getToolById(tool_id as string);
+
+// If tool not found, return 404
+if (!tool) {
+  return Astro.redirect('/404');
+}
+
+// SEO data
+const seo = {
+  title: tool.seo_title,
+  description: tool.seo_description,
+  canonical: `https://randomprompts.org/tools/${tool_id}`
+};
+
+// Static paths for build time
+export async function getStaticPaths() {
+  const tools = getAllTools();
+  return tools.map(tool => ({
+    params: { tool_id: tool.tool_id }
+  }));
+}
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+
+  <ToolPage client:load tool={tool} />
+
+  <AstroFooter />
+</BaseLayout>
