@@ -1,11 +1,11 @@
 /**
- * YouTube Transcript Fetcher
+ * YouTube Transcript Fetcher - Using Official YouTube Data API v3
  *
- * This utility fetches transcripts from YouTube videos with multiple fallback methods.
+ * This utility fetches transcripts from YouTube videos using multiple methods
+ * with the YouTube Data API v3 as the primary reliable source.
  */
 
 import { YoutubeTranscript } from 'youtube-transcript';
-import { Innertube } from 'youtubei.js';
 
 export interface TranscriptSegment {
   text: string;
@@ -45,23 +45,92 @@ export function extractVideoId(url: string): string | null {
 }
 
 /**
- * Method 1: Using youtube-transcript package
+ * Method 1: Using YouTube Data API v3 with Caption Download
+ * This is the most reliable method
  */
 async function fetchTranscriptMethod1(videoId: string): Promise<string> {
-  console.log(`[YouTube] Method 1: Trying youtube-transcript package`);
+  console.log(`[YouTube] Method 1: Trying YouTube Data API v3`);
+
+  const apiKey = process.env.YOUTUBE_DATA_API_KEY;
+
+  if (!apiKey) {
+    console.log(`[YouTube] Method 1: No API key found, skipping`);
+    throw new Error('YouTube Data API key not configured');
+  }
 
   try {
-    // Try without language option first (auto-detect)
+    // First, get the list of available captions
+    const captionsListUrl = `https://www.googleapis.com/youtube/v3/captions?part=snippet&videoId=${videoId}&key=${apiKey}`;
+
+    const captionsResponse = await fetch(captionsListUrl);
+
+    if (!captionsResponse.ok) {
+      throw new Error(`API request failed: ${captionsResponse.status}`);
+    }
+
+    const captionsData = await captionsResponse.json();
+
+    console.log(`[YouTube] Method 1: Found ${captionsData.items?.length || 0} caption tracks`);
+
+    if (!captionsData.items || captionsData.items.length === 0) {
+      throw new Error('No captions available for this video');
+    }
+
+    // Find English caption track
+    let captionTrack = captionsData.items.find((track: any) =>
+      track.snippet.language === 'en' ||
+      track.snippet.language === 'en-US' ||
+      track.snippet.language === 'en-GB'
+    ) || captionsData.items[0];
+
+    console.log(`[YouTube] Method 1: Using caption track: ${captionTrack.snippet.language}`);
+
+    // Download the caption track
+    const captionId = captionTrack.id;
+    const captionDownloadUrl = `https://www.googleapis.com/youtube/v3/captions/${captionId}?tfmt=srt&key=${apiKey}`;
+
+    const captionResponse = await fetch(captionDownloadUrl, {
+      headers: {
+        'Authorization': `Bearer ${apiKey}`
+      }
+    });
+
+    if (!captionResponse.ok) {
+      throw new Error(`Caption download failed: ${captionResponse.status}`);
+    }
+
+    const captionText = await captionResponse.text();
+
+    // Parse SRT format and extract text
+    const transcript = parseSRT(captionText);
+
+    if (!transcript || transcript.length < 50) {
+      throw new Error('Transcript is too short or empty');
+    }
+
+    console.log(`[YouTube] Method 1 SUCCESS: ${transcript.length} characters`);
+    return transcript;
+
+  } catch (error) {
+    console.error('[YouTube] Method 1 failed:', error);
+    throw error;
+  }
+}
+
+/**
+ * Method 2: Using youtube-transcript package (fallback)
+ */
+async function fetchTranscriptMethod2(videoId: string): Promise<string> {
+  console.log(`[YouTube] Method 2: Trying youtube-transcript package`);
+
+  try {
     const transcript = await YoutubeTranscript.fetchTranscript(videoId);
 
-    console.log(`[YouTube] Method 1: Received ${transcript?.length || 0} segments`);
+    console.log(`[YouTube] Method 2: Received ${transcript?.length || 0} segments`);
 
     if (!transcript || transcript.length === 0) {
       throw new Error('Transcript array is empty');
     }
-
-    // Log first segment for debugging
-    console.log(`[YouTube] Method 1: First segment:`, JSON.stringify(transcript[0]));
 
     const fullTranscript = transcript
       .map((segment: any) => segment.text || segment.snippet || '')
@@ -73,82 +142,6 @@ async function fetchTranscriptMethod1(videoId: string): Promise<string> {
       throw new Error('Transcript text is empty after processing');
     }
 
-    console.log(`[YouTube] Method 1 SUCCESS: ${fullTranscript.length} characters`);
-    return fullTranscript;
-
-  } catch (error) {
-    console.error('[YouTube] Method 1 failed:', error);
-    throw error;
-  }
-}
-
-/**
- * Method 2: Using youtubei.js (more reliable)
- */
-async function fetchTranscriptMethod2(videoId: string): Promise<string> {
-  console.log(`[YouTube] Method 2: Trying youtubei.js`);
-
-  try {
-    const youtube = await Innertube.create();
-    const info = await youtube.getInfo(videoId);
-
-    console.log(`[YouTube] Method 2: Got video info`);
-
-    if (!info.captions) {
-      throw new Error('No captions available');
-    }
-
-    const captionTracks = info.captions.caption_tracks;
-    console.log(`[YouTube] Method 2: Found ${captionTracks?.length || 0} caption tracks`);
-
-    if (!captionTracks || captionTracks.length === 0) {
-      throw new Error('No caption tracks found');
-    }
-
-    // Try to find English captions first, otherwise use first available
-    let captionTrack = captionTracks.find((track: any) =>
-      track.language_code === 'en' ||
-      track.language_code === 'en-US' ||
-      track.language_code === 'en-GB'
-    ) || captionTracks[0];
-
-    console.log(`[YouTube] Method 2: Using caption track - language: ${captionTrack.language_code}`);
-
-    // Fetch the caption content
-    const transcript = await youtube.getTranscript(videoId, captionTrack.language_code);
-
-    console.log(`[YouTube] Method 2: Got transcript object`);
-
-    if (!transcript) {
-      throw new Error('Failed to fetch transcript');
-    }
-
-    // Extract text from transcript segments
-    const segments = transcript.transcript?.content?.body?.initial_segments;
-
-    if (!segments || segments.length === 0) {
-      throw new Error('No transcript segments found');
-    }
-
-    console.log(`[YouTube] Method 2: Processing ${segments.length} segments`);
-
-    // Combine all segment text
-    const fullTranscript = segments
-      .map((segment: any) => {
-        // Handle different segment formats
-        if (segment.snippet) {
-          return segment.snippet.text || '';
-        }
-        return '';
-      })
-      .filter((text: string) => text.trim().length > 0)
-      .join(' ')
-      .trim();
-
-    if (!fullTranscript || fullTranscript.length === 0) {
-      throw new Error('Caption text is empty after processing');
-    }
-
     console.log(`[YouTube] Method 2 SUCCESS: ${fullTranscript.length} characters`);
     return fullTranscript;
 
@@ -156,6 +149,28 @@ async function fetchTranscriptMethod2(videoId: string): Promise<string> {
     console.error('[YouTube] Method 2 failed:', error);
     throw error;
   }
+}
+
+/**
+ * Parse SRT format captions into plain text
+ */
+function parseSRT(srtText: string): string {
+  const lines = srtText.split('\n');
+  const textLines: string[] = [];
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i].trim();
+
+    // Skip empty lines, sequence numbers, and timestamps
+    if (line === '' || /^\d+$/.test(line) || /^\d{2}:\d{2}:\d{2}/.test(line)) {
+      continue;
+    }
+
+    // This is actual caption text
+    textLines.push(line);
+  }
+
+  return textLines.join(' ').trim();
 }
 
 /**
@@ -174,8 +189,8 @@ export async function getYouTubeTranscript(videoUrl: string): Promise<string> {
   console.log(`[YouTube] ========================================`);
 
   const methods = [
-    { name: 'youtube-transcript', fn: () => fetchTranscriptMethod1(videoId) },
-    { name: 'youtubei.js', fn: () => fetchTranscriptMethod2(videoId) }
+    { name: 'YouTube Data API v3', fn: () => fetchTranscriptMethod1(videoId) },
+    { name: 'youtube-transcript', fn: () => fetchTranscriptMethod2(videoId) }
   ];
 
   let lastError: Error | null = null;
@@ -228,16 +243,24 @@ export async function getYouTubeTranscript(videoUrl: string): Promise<string> {
     );
   }
 
+  if (errorMessage.includes('API key not configured')) {
+    throw new Error(
+      `YouTube Data API key is not configured. ` +
+      `Please add YOUTUBE_DATA_API_KEY to your environment variables. ` +
+      `Get an API key at: https://console.cloud.google.com/`
+    );
+  }
+
   throw new Error(
     `Failed to fetch transcript for video ${videoId}. ` +
     `This might be due to: (1) No captions available, (2) Video is private/restricted, ` +
-    `(3) Regional restrictions, or (4) Temporary API issues. ` +
+    `(3) Regional restrictions, (4) API key issues, or (5) Temporary API issues. ` +
     `Original error: ${errorMessage}`
   );
 }
 
 /**
- * Fetch transcript with explicit language code (using method 1 only)
+ * Fetch transcript with explicit language code
  */
 export async function getYouTubeTranscriptWithLang(
   videoUrl: string,
@@ -275,7 +298,7 @@ export async function getYouTubeTranscriptWithLang(
 }
 
 /**
- * Fetch video metadata (optional - not implemented)
+ * Fetch video metadata
  */
 export async function getVideoMetadata(videoUrl: string): Promise<VideoMetadata> {
   const videoId = extractVideoId(videoUrl);
@@ -284,8 +307,6 @@ export async function getVideoMetadata(videoUrl: string): Promise<VideoMetadata>
     throw new Error('Invalid YouTube URL');
   }
 
-  // This would require YouTube Data API v3
-  // For now, return empty metadata
   return {
     title: undefined,
     channelName: undefined,
@@ -295,7 +316,7 @@ export async function getVideoMetadata(videoUrl: string): Promise<VideoMetadata>
 }
 
 /**
- * Format transcript with timestamps (utility function)
+ * Format transcript with timestamps
  */
 export function formatTranscriptWithTimestamps(segments: TranscriptSegment[]): string {
   return segments
@@ -309,11 +330,11 @@ export function formatTranscriptWithTimestamps(segments: TranscriptSegment[]): s
 }
 
 /**
- * Clean transcript text (remove extra spaces, etc.)
+ * Clean transcript text
  */
 export function cleanTranscript(transcript: string): string {
   return transcript
-    .replace(/\s+/g, ' ')  // Replace multiple spaces with single space
-    .replace(/\n+/g, '\n') // Replace multiple newlines with single newline
+    .replace(/\s+/g, ' ')
+    .replace(/\n+/g, '\n')
     .trim();
 }
