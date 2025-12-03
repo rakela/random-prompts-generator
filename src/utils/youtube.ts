@@ -44,7 +44,7 @@ export function extractVideoId(url: string): string | null {
 }
 
 /**
- * Fetch transcript from YouTube video
+ * Fetch transcript from YouTube video with retry logic and multiple language attempts
  *
  * Uses the youtube-transcript package to fetch captions/subtitles
  */
@@ -55,43 +55,118 @@ export async function getYouTubeTranscript(videoUrl: string): Promise<string> {
     throw new Error('Invalid YouTube URL. Could not extract video ID.');
   }
 
+  console.log(`[YouTube] Fetching transcript for video ID: ${videoId}`);
+
+  // Try multiple language codes in case the video has non-English captions
+  const languagesToTry = ['en', 'en-US', 'en-GB', undefined]; // undefined = auto-detect
+  let lastError: Error | null = null;
+
+  for (const lang of languagesToTry) {
+    try {
+      const options = lang ? { lang } : {};
+      console.log(`[YouTube] Attempting to fetch transcript${lang ? ` in language: ${lang}` : ' (auto-detect)'}`);
+
+      // Fetch the transcript using youtube-transcript
+      const transcript = await YoutubeTranscript.fetchTranscript(videoId, options);
+
+      if (!transcript || transcript.length === 0) {
+        console.log(`[YouTube] Transcript array is empty for language: ${lang || 'auto'}`);
+        continue;
+      }
+
+      // Combine all transcript segments into a single string
+      const fullTranscript = transcript
+        .map((segment: any) => {
+          // Handle both .text and .snippet properties
+          return segment.text || segment.snippet || '';
+        })
+        .filter(text => text.trim().length > 0)
+        .join(' ')
+        .trim();
+
+      console.log(`[YouTube] Raw transcript segments: ${transcript.length}`);
+      console.log(`[YouTube] Transcript sample:`, transcript.slice(0, 2));
+
+      if (fullTranscript && fullTranscript.length > 0) {
+        console.log(`[YouTube] Transcript fetched successfully: ${fullTranscript.length} characters`);
+        return fullTranscript;
+      } else {
+        console.log(`[YouTube] Transcript text is empty after processing for language: ${lang || 'auto'}`);
+      }
+
+    } catch (error) {
+      lastError = error instanceof Error ? error : new Error(String(error));
+      console.error(`[YouTube] Error with language ${lang || 'auto'}:`, error);
+      // Continue to try next language
+    }
+  }
+
+  // If we got here, all language attempts failed
+  console.error('[YouTube] All transcript fetch attempts failed');
+
+  // Provide helpful error message
+  const errorMessage = lastError?.message || 'Unknown error';
+
+  if (errorMessage.includes('Could not find captions') ||
+      errorMessage.includes('Transcript is disabled') ||
+      errorMessage.includes('does not have captions')) {
+    throw new Error(
+      `This video does not have captions/subtitles available. ` +
+      `Please ensure the video (${videoId}) has captions enabled. ` +
+      `Video URL: https://www.youtube.com/watch?v=${videoId}`
+    );
+  }
+
+  if (errorMessage.includes('Video unavailable') || errorMessage.includes('private')) {
+    throw new Error(
+      `This video is unavailable, private, or restricted. ` +
+      `Video ID: ${videoId}`
+    );
+  }
+
+  throw new Error(
+    `Failed to fetch transcript for video ${videoId}. ` +
+    `This might be due to: (1) No captions available, (2) Video is private/restricted, ` +
+    `(3) Regional restrictions, or (4) YouTube API limitations. ` +
+    `Error: ${errorMessage}`
+  );
+}
+
+/**
+ * Fetch transcript with explicit language code
+ */
+export async function getYouTubeTranscriptWithLang(
+  videoUrl: string,
+  languageCode: string = 'en'
+): Promise<string> {
+  const videoId = extractVideoId(videoUrl);
+
+  if (!videoId) {
+    throw new Error('Invalid YouTube URL. Could not extract video ID.');
+  }
+
   try {
-    console.log(`[YouTube] Fetching transcript for video ID: ${videoId}`);
+    console.log(`[YouTube] Fetching transcript for video ${videoId} in language: ${languageCode}`);
 
-    // Fetch the transcript using youtube-transcript
-    const transcript = await YoutubeTranscript.fetchTranscript(videoId);
+    const transcript = await YoutubeTranscript.fetchTranscript(videoId, {
+      lang: languageCode
+    });
 
-    // Combine all transcript segments into a single string
     const fullTranscript = transcript
-      .map((segment: any) => segment.text)
+      .map((segment: any) => segment.text || segment.snippet || '')
+      .filter(text => text.trim().length > 0)
       .join(' ')
       .trim();
 
-    console.log(`[YouTube] Transcript fetched successfully: ${fullTranscript.length} characters`);
-
     if (!fullTranscript || fullTranscript.length === 0) {
-      throw new Error('Transcript is empty. The video may not have captions available.');
+      throw new Error(`Transcript is empty for language: ${languageCode}`);
     }
 
     return fullTranscript;
 
   } catch (error) {
-    console.error('[YouTube] Error fetching transcript:', error);
-
-    // Provide helpful error message
-    const errorMessage = error instanceof Error ? error.message : String(error);
-
-    if (errorMessage.includes('Could not find captions') || errorMessage.includes('Transcript is disabled')) {
-      throw new Error(
-        `This video does not have captions/subtitles available. ` +
-        `Please ensure the video (${videoId}) has captions enabled.`
-      );
-    }
-
-    throw new Error(
-      `Failed to fetch transcript for video ${videoId}. ` +
-      `Error: ${errorMessage}`
-    );
+    console.error(`[YouTube] Error fetching transcript in ${languageCode}:`, error);
+    throw error;
   }
 }
 
