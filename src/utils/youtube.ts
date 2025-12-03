@@ -1,11 +1,11 @@
 /**
- * YouTube Transcript Fetcher - Using Official YouTube Data API v3
+ * YouTube Transcript Fetcher - Reliable Multi-Method Approach
  *
- * This utility fetches transcripts from YouTube videos using multiple methods
- * with the YouTube Data API v3 as the primary reliable source.
+ * Uses multiple methods to fetch transcripts without requiring API keys
  */
 
 import { YoutubeTranscript } from 'youtube-transcript';
+import ytdl from '@distube/ytdl-core';
 
 export interface TranscriptSegment {
   text: string;
@@ -45,64 +45,47 @@ export function extractVideoId(url: string): string | null {
 }
 
 /**
- * Method 1: Using YouTube Data API v3 with Caption Download
- * This is the most reliable method
+ * Method 1: Using ytdl-core to get captions
  */
 async function fetchTranscriptMethod1(videoId: string): Promise<string> {
-  console.log(`[YouTube] Method 1: Trying YouTube Data API v3`);
-
-  const apiKey = process.env.YOUTUBE_DATA_API_KEY;
-
-  if (!apiKey) {
-    console.log(`[YouTube] Method 1: No API key found, skipping`);
-    throw new Error('YouTube Data API key not configured');
-  }
+  console.log(`[YouTube] Method 1: Trying ytdl-core`);
 
   try {
-    // First, get the list of available captions
-    const captionsListUrl = `https://www.googleapis.com/youtube/v3/captions?part=snippet&videoId=${videoId}&key=${apiKey}`;
+    const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
+    const info = await ytdl.getInfo(videoUrl);
 
-    const captionsResponse = await fetch(captionsListUrl);
+    console.log(`[YouTube] Method 1: Got video info for: ${info.videoDetails.title}`);
 
-    if (!captionsResponse.ok) {
-      throw new Error(`API request failed: ${captionsResponse.status}`);
+    // Get available caption tracks
+    const captionTracks = info.player_response?.captions?.playerCaptionsTracklistRenderer?.captionTracks;
+
+    if (!captionTracks || captionTracks.length === 0) {
+      throw new Error('No caption tracks available');
     }
 
-    const captionsData = await captionsResponse.json();
+    console.log(`[YouTube] Method 1: Found ${captionTracks.length} caption tracks`);
 
-    console.log(`[YouTube] Method 1: Found ${captionsData.items?.length || 0} caption tracks`);
+    // Find English captions or use first available
+    let captionTrack = captionTracks.find((track: any) =>
+      track.languageCode === 'en' ||
+      track.languageCode === 'en-US' ||
+      track.languageCode === 'en-GB'
+    ) || captionTracks[0];
 
-    if (!captionsData.items || captionsData.items.length === 0) {
-      throw new Error('No captions available for this video');
+    console.log(`[YouTube] Method 1: Using caption track: ${captionTrack.languageCode}`);
+
+    // Fetch the caption content
+    const captionUrl = captionTrack.baseUrl;
+    const response = await fetch(captionUrl);
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch caption: ${response.status}`);
     }
 
-    // Find English caption track
-    let captionTrack = captionsData.items.find((track: any) =>
-      track.snippet.language === 'en' ||
-      track.snippet.language === 'en-US' ||
-      track.snippet.language === 'en-GB'
-    ) || captionsData.items[0];
+    const captionXML = await response.text();
 
-    console.log(`[YouTube] Method 1: Using caption track: ${captionTrack.snippet.language}`);
-
-    // Download the caption track
-    const captionId = captionTrack.id;
-    const captionDownloadUrl = `https://www.googleapis.com/youtube/v3/captions/${captionId}?tfmt=srt&key=${apiKey}`;
-
-    const captionResponse = await fetch(captionDownloadUrl, {
-      headers: {
-        'Authorization': `Bearer ${apiKey}`
-      }
-    });
-
-    if (!captionResponse.ok) {
-      throw new Error(`Caption download failed: ${captionResponse.status}`);
-    }
-
-    const captionText = await captionResponse.text();
-
-    // Parse SRT format and extract text
-    const transcript = parseSRT(captionText);
+    // Parse XML and extract text
+    const transcript = parseYouTubeCaptionXML(captionXML);
 
     if (!transcript || transcript.length < 50) {
       throw new Error('Transcript is too short or empty');
@@ -133,7 +116,7 @@ async function fetchTranscriptMethod2(videoId: string): Promise<string> {
     }
 
     const fullTranscript = transcript
-      .map((segment: any) => segment.text || segment.snippet || '')
+      .map((segment: any) => segment.text || '')
       .filter((text: string) => text.trim().length > 0)
       .join(' ')
       .trim();
@@ -152,25 +135,39 @@ async function fetchTranscriptMethod2(videoId: string): Promise<string> {
 }
 
 /**
- * Parse SRT format captions into plain text
+ * Parse YouTube caption XML format
  */
-function parseSRT(srtText: string): string {
-  const lines = srtText.split('\n');
-  const textLines: string[] = [];
+function parseYouTubeCaptionXML(xml: string): string {
+  // YouTube captions are in XML format with <text> tags
+  // Example: <text start="0.0" dur="2.5">Hello world</text>
 
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i].trim();
+  const textMatches = xml.match(/<text[^>]*>([^<]*)<\/text>/g);
 
-    // Skip empty lines, sequence numbers, and timestamps
-    if (line === '' || /^\d+$/.test(line) || /^\d{2}:\d{2}:\d{2}/.test(line)) {
-      continue;
-    }
-
-    // This is actual caption text
-    textLines.push(line);
+  if (!textMatches) {
+    return '';
   }
 
-  return textLines.join(' ').trim();
+  const texts = textMatches.map(match => {
+    // Extract text content
+    const content = match.replace(/<text[^>]*>/, '').replace(/<\/text>/, '');
+    // Decode HTML entities
+    return decodeHTMLEntities(content);
+  });
+
+  return texts.join(' ').trim();
+}
+
+/**
+ * Decode HTML entities
+ */
+function decodeHTMLEntities(text: string): string {
+  return text
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&nbsp;/g, ' ');
 }
 
 /**
@@ -189,7 +186,7 @@ export async function getYouTubeTranscript(videoUrl: string): Promise<string> {
   console.log(`[YouTube] ========================================`);
 
   const methods = [
-    { name: 'YouTube Data API v3', fn: () => fetchTranscriptMethod1(videoId) },
+    { name: 'ytdl-core', fn: () => fetchTranscriptMethod1(videoId) },
     { name: 'youtube-transcript', fn: () => fetchTranscriptMethod2(videoId) }
   ];
 
@@ -225,12 +222,14 @@ export async function getYouTubeTranscript(videoUrl: string): Promise<string> {
 
   if (errorMessage.includes('Could not find captions') ||
       errorMessage.includes('Transcript is disabled') ||
-      errorMessage.includes('No captions available') ||
+      errorMessage.includes('No caption tracks available') ||
       errorMessage.includes('does not have captions')) {
     throw new Error(
       `This video does not have captions/subtitles available. ` +
       `Please ensure the video has captions enabled. ` +
-      `Video: https://www.youtube.com/watch?v=${videoId}`
+      `Video: https://www.youtube.com/watch?v=${videoId}\n\n` +
+      `Try using a video from a major channel (TED, Khan Academy, etc.) ` +
+      `which typically have captions enabled.`
     );
   }
 
@@ -243,18 +242,10 @@ export async function getYouTubeTranscript(videoUrl: string): Promise<string> {
     );
   }
 
-  if (errorMessage.includes('API key not configured')) {
-    throw new Error(
-      `YouTube Data API key is not configured. ` +
-      `Please add YOUTUBE_DATA_API_KEY to your environment variables. ` +
-      `Get an API key at: https://console.cloud.google.com/`
-    );
-  }
-
   throw new Error(
     `Failed to fetch transcript for video ${videoId}. ` +
     `This might be due to: (1) No captions available, (2) Video is private/restricted, ` +
-    `(3) Regional restrictions, (4) API key issues, or (5) Temporary API issues. ` +
+    `(3) Regional restrictions, or (4) Temporary YouTube issues. ` +
     `Original error: ${errorMessage}`
   );
 }
@@ -280,7 +271,7 @@ export async function getYouTubeTranscriptWithLang(
     });
 
     const fullTranscript = transcript
-      .map((segment: any) => segment.text || segment.snippet || '')
+      .map((segment: any) => segment.text || '')
       .filter((text: string) => text.trim().length > 0)
       .join(' ')
       .trim();
@@ -307,12 +298,24 @@ export async function getVideoMetadata(videoUrl: string): Promise<VideoMetadata>
     throw new Error('Invalid YouTube URL');
   }
 
-  return {
-    title: undefined,
-    channelName: undefined,
-    duration: undefined,
-    viewCount: undefined
-  };
+  try {
+    const info = await ytdl.getInfo(`https://www.youtube.com/watch?v=${videoId}`);
+
+    return {
+      title: info.videoDetails.title,
+      channelName: info.videoDetails.author.name,
+      duration: info.videoDetails.lengthSeconds,
+      viewCount: info.videoDetails.viewCount
+    };
+  } catch (error) {
+    console.error('Error fetching video metadata:', error);
+    return {
+      title: undefined,
+      channelName: undefined,
+      duration: undefined,
+      viewCount: undefined
+    };
+  }
 }
 
 /**
