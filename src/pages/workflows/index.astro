@@ -4,6 +4,8 @@ import AstroHeader from '../../components/AstroHeader.astro';
 import AstroFooter from '../../components/AstroFooter.astro';
 import { getAllWorkflows } from '../../config/workflows';
 
+export const prerender = true;
+
 const workflows = getAllWorkflows();
 
 const seo = {

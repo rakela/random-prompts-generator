@@ -5,6 +5,8 @@ import AstroFooter from '../../components/AstroFooter.astro';
 import ToolPage from '../../components/ToolPage';
 import { getAllTools, getToolById } from '../../config/tools';
 
+export const prerender = true;
+
 // Get the tool_id from the URL params
 const { tool_id } = Astro.params;
 

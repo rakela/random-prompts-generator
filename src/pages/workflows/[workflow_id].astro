@@ -5,6 +5,8 @@ import AstroFooter from '../../components/AstroFooter.astro';
 import WorkflowPage from '../../components/WorkflowPage';
 import { getAllWorkflows, getWorkflowById } from '../../config/workflows';
 
+export const prerender = true;
+
 // Get the workflow_id from the URL params
 const { workflow_id } = Astro.params;
 

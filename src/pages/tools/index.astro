@@ -4,6 +4,8 @@ import AstroHeader from '../../components/AstroHeader.astro';
 import AstroFooter from '../../components/AstroFooter.astro';
 import { getAllTools } from '../../config/tools';
 
+export const prerender = true;
+
 const tools = getAllTools();
 
 const seo = {
