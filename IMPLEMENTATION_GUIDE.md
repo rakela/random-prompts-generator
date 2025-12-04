@@ -31,11 +31,17 @@ Returns:
 - `requiresAuth: boolean` - Auth error flag
 - `requiresUpgrade: boolean` - Out of credits flag
 
-### 4. Stripe Webhook Handler (`src/pages/api/webhooks/stripe.ts`)
-Handles:
-- ✅ `checkout.session.completed` - Upgrade to Pro
-- ✅ `customer.subscription.updated` - Update subscription status
-- ✅ `customer.subscription.deleted` - Downgrade to free (0 credits)
+### 4. Admin API Endpoint (`src/pages/api/admin/upgrade-user.ts`)
+- ✅ Manual user upgrade endpoint
+- ✅ Secure with ADMIN_API_KEY
+- ✅ Set Pro status with expiration date
+- ✅ Track payment method
+
+### 5. Upgrade Page (`src/pages/upgrade.astro`)
+- ✅ Pricing and features display
+- ✅ Payment instructions (bank transfer, card, Apple Pay, etc.)
+- ✅ FAQ section
+- ✅ Contact information for payments
 
 ---
 
@@ -45,7 +51,7 @@ Handles:
 
 1. **Run SQL Schema**
    - Go to Supabase Dashboard → SQL Editor
-   - Run this schema (from initial response):
+   - Run this schema:
 
 ```sql
 -- Create profiles table
@@ -54,9 +60,8 @@ CREATE TABLE IF NOT EXISTS profiles (
   email TEXT,
   credits INTEGER NOT NULL DEFAULT 1,
   is_pro BOOLEAN NOT NULL DEFAULT false,
-  stripe_customer_id TEXT,
-  stripe_subscription_id TEXT,
-  subscription_status TEXT,
+  pro_until TIMESTAMPTZ,
+  payment_method TEXT,
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
@@ -75,9 +80,9 @@ CREATE TABLE IF NOT EXISTS generations (
 
 -- Create indexes
 CREATE INDEX idx_profiles_email ON profiles(email);
-CREATE INDEX idx_profiles_stripe_customer ON profiles(stripe_customer_id);
 CREATE INDEX idx_generations_user_id ON generations(user_id);
 CREATE INDEX idx_generations_created_at ON generations(created_at DESC);
+CREATE INDEX idx_profiles_pro_until ON profiles(pro_until);
 
 -- Create trigger for auto-profile creation
 CREATE OR REPLACE FUNCTION public.handle_new_user()
@@ -126,6 +131,7 @@ RETURNS TABLE (
   total_generations BIGINT,
   credits_remaining INTEGER,
   is_pro BOOLEAN,
+  pro_until TIMESTAMPTZ,
   recent_generations JSONB
 ) AS $$
 BEGIN
@@ -134,6 +140,7 @@ BEGIN
     COUNT(g.id) as total_generations,
     p.credits as credits_remaining,
     p.is_pro,
+    p.pro_until,
     (
       SELECT jsonb_agg(
         jsonb_build_object(
@@ -152,7 +159,19 @@ BEGIN
     ) as recent_generations
   FROM profiles p
   WHERE p.id = user_uuid
-  GROUP BY p.credits, p.is_pro;
+  GROUP BY p.credits, p.is_pro, p.pro_until;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+-- Function to check and expire Pro subscriptions
+CREATE OR REPLACE FUNCTION check_expired_pro()
+RETURNS void AS $$
+BEGIN
+  UPDATE profiles
+  SET is_pro = false
+  WHERE is_pro = true
+    AND pro_until IS NOT NULL
+    AND pro_until < NOW();
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 ```
@@ -166,10 +185,11 @@ PUBLIC_SUPABASE_URL=https://your-project.supabase.co
 PUBLIC_SUPABASE_ANON_KEY=your-anon-key
 SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
 
-# Stripe
-STRIPE_SECRET_KEY=sk_test_...
-STRIPE_WEBHOOK_SECRET=whsec_...
-PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_...
+# Admin API (generate a strong random key)
+ADMIN_API_KEY=your-secure-random-key-here
+
+# OpenAI (existing)
+OPENAI_API_KEY=sk-xxx
 ```
 
 3. **Enable Email Authentication**
@@ -177,26 +197,102 @@ PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_...
    - Enable Email provider
    - Configure email templates (optional)
 
-### Step 2: Set Up Stripe
+4. **Set Up Cron Job (Optional)**
+   - Supabase Dashboard → Database → Cron Jobs
+   - Create a job to run `SELECT check_expired_pro()` daily
+   - This automatically downgrades users when Pro expires
 
-1. **Create Product & Price**
-   - Stripe Dashboard → Products → Create Product
-   - Name: "Pro Subscription"
-   - Price: $9.99/month (or your pricing)
-   - Copy the Price ID (e.g., `price_xxx`)
+### Step 2: Configure Payment Methods
 
-2. **Configure Webhook**
-   - Stripe Dashboard → Developers → Webhooks
-   - Add endpoint: `https://yourdomain.com/api/webhooks/stripe`
-   - Select events:
-     - `checkout.session.completed`
-     - `customer.subscription.updated`
-     - `customer.subscription.deleted`
-   - Copy Webhook Secret → Add to `.env` as `STRIPE_WEBHOOK_SECRET`
+1. **Update `/src/pages/upgrade.astro`** with your payment details:
+   - Replace `payments@yourdomain.com` with your actual email
+   - Add your bank account details for bank transfers
+   - Add your Venmo/Cash App/PayPal usernames
+   - Update pricing if needed
 
-### Step 3: Create Frontend Components
+2. **Set Up Payment Notification System**
+   - Create a dedicated email for payments (e.g., `payments@yourdomain.com`)
+   - Set up email alerts for incoming payment notifications
+   - Use templates for quick responses
 
-#### 3.1 Auth Component (`src/components/AuthModal.tsx`)
+### Step 3: Manual User Upgrade Workflow
+
+When a user pays and contacts you:
+
+1. **Verify Payment**
+   - Check bank account / payment app for received payment
+   - Verify the amount matches ($9.99 or your pricing)
+
+2. **Upgrade User via API**
+   Use the admin endpoint to upgrade:
+
+   ```bash
+   curl -X POST https://yourdomain.com/api/admin/upgrade-user \
+     -H "Authorization: Bearer YOUR_ADMIN_API_KEY" \
+     -H "Content-Type: application/json" \
+     -d '{
+       "email": "user@example.com",
+       "duration_months": 1,
+       "payment_method": "bank_transfer"
+     }'
+   ```
+
+   Or use this Node.js script:
+
+   ```javascript
+   // upgrade-user.js
+   const ADMIN_API_KEY = 'your-admin-api-key';
+   const API_URL = 'https://yourdomain.com/api/admin/upgrade-user';
+
+   async function upgradeUser(email, months = 1, paymentMethod = 'manual') {
+     const response = await fetch(API_URL, {
+       method: 'POST',
+       headers: {
+         'Authorization': `Bearer ${ADMIN_API_KEY}`,
+         'Content-Type': 'application/json'
+       },
+       body: JSON.stringify({
+         email,
+         duration_months: months,
+         payment_method: paymentMethod
+       })
+     });
+
+     const data = await response.json();
+     console.log(data);
+   }
+
+   // Usage:
+   upgradeUser('user@example.com', 1, 'bank_transfer');
+   ```
+
+3. **Notify User**
+   Send a confirmation email:
+
+   ```
+   Subject: Your Pro Account is Active! 🎉
+
+   Hi [User],
+
+   Your Pro subscription has been activated! You now have:
+   ✅ Unlimited AI generations
+   ✅ Access to all YouTube tools
+   ✅ Full generation history
+   ✅ Priority support
+
+   Your Pro access is valid until: [DATE]
+
+   Start creating amazing content: https://yourdomain.com
+
+   Questions? Reply to this email!
+
+   Best,
+   [Your Name]
+   ```
+
+### Step 4: Create Frontend Components
+
+#### 4.1 Auth Component (`src/components/AuthModal.tsx`)
 
 Create a React component for login/signup:
 
@@ -311,7 +407,7 @@ export default function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps
 }
 ```
 
-#### 3.2 Update Header Component
+#### 4.2 Update Header Component
 
 Add auth status and credits display to `src/components/AstroHeader.astro`:
 
@@ -343,7 +439,7 @@ const user = Astro.locals.user; // We'll set this in middleware
 </div>
 ```
 
-#### 3.3 Update ToolPage Component
+#### 4.3 Update ToolPage Component
 
 Modify `src/components/ToolPage.tsx` to handle auth errors:
 
@@ -370,8 +466,8 @@ if (data.requiresAuth) {
 }
 
 if (data.requiresUpgrade) {
-  // Show upgrade prompt
-  setShowUpgradeModal(true);
+  // Redirect to upgrade page
+  window.location.href = '/upgrade';
   return;
 }
 
@@ -383,7 +479,7 @@ if (data.success) {
 }
 ```
 
-#### 3.4 Create Dashboard Page (`src/pages/dashboard.astro`)
+#### 4.4 Create Dashboard Page (`src/pages/dashboard.astro`)
 
 ```astro
 ---
@@ -429,6 +525,11 @@ const { data: generations } = await supabase
               <span class="text-gray-900">Free</span>
             )}
           </p>
+          {profile.is_pro && profile.pro_until && (
+            <p class="text-xs text-gray-500 mt-1">
+              Until {new Date(profile.pro_until).toLocaleDateString()}
+            </p>
+          )}
         </div>
 
         <div>
@@ -446,12 +547,12 @@ const { data: generations } = await supabase
 
       {!profile.is_pro && (
         <div class="mt-6 pt-6 border-t">
-          <button
-            id="upgrade-btn"
-            class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700"
+          <a
+            href="/upgrade"
+            class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 inline-block"
           >
             Upgrade to Pro - Unlimited Generations
-          </button>
+          </a>
         </div>
       )}
     </div>
@@ -482,79 +583,10 @@ const { data: generations } = await supabase
       </div>
     </div>
   </div>
-
-  <script>
-    // Add upgrade button handler
-    document.getElementById('upgrade-btn')?.addEventListener('click', async () => {
-      // Call Stripe checkout endpoint (create this next)
-      const response = await fetch('/api/create-checkout', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' }
-      });
-      const { url } = await response.json();
-      window.location.href = url;
-    });
-  </script>
 </Layout>
 ```
 
-#### 3.5 Create Stripe Checkout Endpoint (`src/pages/api/create-checkout.ts`)
-
-```typescript
-import type { APIRoute } from 'astro';
-import Stripe from 'stripe';
-import { getUserFromRequest } from '../../lib/supabase';
-
-const stripe = new Stripe(import.meta.env.STRIPE_SECRET_KEY, {
-  apiVersion: '2024-11-20.acacia'
-});
-
-export const POST: APIRoute = async ({ request }) => {
-  try {
-    const user = await getUserFromRequest(request);
-
-    if (!user) {
-      return new Response(
-        JSON.stringify({ error: 'Unauthorized' }),
-        { status: 401 }
-      );
-    }
-
-    // Create Stripe checkout session
-    const session = await stripe.checkout.sessions.create({
-      mode: 'subscription',
-      payment_method_types: ['card'],
-      line_items: [
-        {
-          price: 'price_YOUR_STRIPE_PRICE_ID', // Replace with your Price ID
-          quantity: 1,
-        },
-      ],
-      success_url: `${request.headers.get('origin')}/dashboard?success=true`,
-      cancel_url: `${request.headers.get('origin')}/dashboard?canceled=true`,
-      customer_email: user.email,
-      metadata: {
-        user_id: user.id,
-      },
-    });
-
-    return new Response(
-      JSON.stringify({ url: session.url }),
-      { status: 200, headers: { 'Content-Type': 'application/json' } }
-    );
-  } catch (error) {
-    console.error('Error creating checkout session:', error);
-    return new Response(
-      JSON.stringify({ error: 'Failed to create checkout session' }),
-      { status: 500 }
-    );
-  }
-};
-
-export const prerender = false;
-```
-
-### Step 4: Add Middleware for Auth State
+#### 4.5 Add Middleware for Auth State
 
 Create `src/middleware.ts`:
 
@@ -572,15 +604,22 @@ export const onRequest = defineMiddleware(async ({ locals, request }, next) => {
     // Fetch user profile
     const { data: profile } = await supabase
       .from('profiles')
-      .select('credits, is_pro')
+      .select('credits, is_pro, pro_until')
       .eq('id', session.user.id)
       .single();
+
+    // Check if Pro has expired
+    let isPro = profile?.is_pro || false;
+    if (isPro && profile?.pro_until && new Date(profile.pro_until) < new Date()) {
+      isPro = false;
+      // Optionally update database here
+    }
 
     locals.user = {
       id: session.user.id,
       email: session.user.email,
       credits: profile?.credits || 0,
-      isPro: profile?.is_pro || false
+      isPro: isPro
     };
   }
 
@@ -604,33 +643,30 @@ export const onRequest = defineMiddleware(async ({ locals, request }, next) => {
 2. Go to any YouTube tool
 3. Enter a YouTube URL and generate content
 4. Should succeed (1 credit → 0 credits)
-5. Try generating again → Should show "Upgrade required" message
+5. Try generating again → Should show upgrade prompt
 
-### 3. Test Stripe Upgrade (Test Mode)
-1. Use Stripe test card: `4242 4242 4242 4242`
-2. Click "Upgrade to Pro" on dashboard
-3. Complete checkout with test card
-4. Webhook should fire → Check Supabase profiles table
-5. User should have `is_pro = true`
-6. Try generating content → Should work without credit deduction
+### 3. Test Manual Upgrade
+1. User visits `/upgrade` page
+2. User sends payment via their preferred method
+3. User emails you with payment confirmation
+4. You verify payment in your bank/payment app
+5. Run the upgrade script:
+   ```bash
+   node upgrade-user.js user@example.com 1 bank_transfer
+   ```
+6. User refreshes their dashboard → Should see Pro status
+7. User generates content → Should work without credit deduction
 
-### 4. Test History
+### 4. Test Pro Expiration
+1. Manually set `pro_until` to a past date in database
+2. User logs in → Should see Free status (not Pro)
+3. Or run: `SELECT check_expired_pro();` in Supabase SQL editor
+
+### 5. Test History
 1. Generate some content while signed in
 2. Go to Dashboard
 3. Should see list of all generations
 4. Click "View" to see full content
-
-### 5. Test Webhook Locally (Using Stripe CLI)
-```bash
-# Install Stripe CLI
-stripe login
-
-# Forward webhooks to local server
-stripe listen --forward-to http://localhost:4321/api/webhooks/stripe
-
-# Trigger test webhook
-stripe trigger checkout.session.completed
-```
 
 ---
 
@@ -638,11 +674,12 @@ stripe trigger checkout.session.completed
 
 - ✅ RLS enabled on all tables
 - ✅ Service role key only in `.env` (never committed)
-- ✅ Webhook signature verification
+- ✅ Admin API key required for user upgrades
 - ✅ JWT token validation on all protected endpoints
 - ✅ User can only access their own data
+- ✅ Pro expiration checking prevents abuse
 - ⚠️ Add rate limiting to API routes (recommended)
-- ⚠️ Add CORS configuration if needed
+- ⚠️ Set up payment verification workflow
 
 ---
 
@@ -656,10 +693,8 @@ PUBLIC_SUPABASE_URL=https://xxx.supabase.co
 PUBLIC_SUPABASE_ANON_KEY=eyJxxx...
 SUPABASE_SERVICE_ROLE_KEY=eyJxxx...
 
-# Stripe
-STRIPE_SECRET_KEY=sk_test_xxx
-STRIPE_WEBHOOK_SECRET=whsec_xxx
-PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_xxx
+# Admin API (generate strong random key)
+ADMIN_API_KEY=your-secure-random-key
 
 # OpenAI (existing)
 OPENAI_API_KEY=sk-xxx
@@ -676,33 +711,37 @@ Before deploying to production:
    - ✅ RLS policies enabled
    - ✅ Email auth configured
    - ✅ Production keys added to `.env`
+   - ✅ Cron job for Pro expiration (optional)
 
-2. **Stripe**:
-   - ✅ Product and price created
-   - ✅ Webhook endpoint configured with production URL
-   - ✅ Production keys added to `.env`
+2. **Payment Processing**:
+   - ✅ Payment email set up
+   - ✅ Bank account / payment methods ready
+   - ✅ Upgrade page customized with your details
+   - ✅ Email templates prepared for confirmations
 
 3. **Environment Variables**:
    - ✅ All keys added to hosting platform (Vercel, Netlify, etc.)
    - ✅ `SUPABASE_SERVICE_ROLE_KEY` kept secret (server-only)
+   - ✅ `ADMIN_API_KEY` kept secret (server-only)
 
 4. **Testing**:
    - ✅ Test signup flow
    - ✅ Test free generation (1 credit)
-   - ✅ Test upgrade flow
+   - ✅ Test manual upgrade process
    - ✅ Test unlimited Pro generations
-   - ✅ Test webhook with Stripe CLI
+   - ✅ Test Pro expiration
 
 ---
 
 ## 💡 Tips
 
-- **Local Development**: Use ngrok or Stripe CLI to test webhooks locally
+- **Payment Verification**: Always verify payments before upgrading users
 - **Credits Display**: Show remaining credits in header for better UX
 - **Error Handling**: Show user-friendly messages for auth/credit errors
-- **Email Verification**: Consider enabling email confirmation in Supabase
+- **Email Templates**: Create templates for common responses (payment received, account upgraded, etc.)
 - **Analytics**: Track which tools are most popular in `generations` table
-- **Refunds**: Add `customer.subscription.deleted` handler to reset credits
+- **Refunds**: Keep payment records for at least 90 days for refund requests
+- **Annual Plans**: Offer discounts for annual payments to reduce manual work
 
 ---
 
@@ -712,10 +751,11 @@ Before deploying to production:
 - Check if trigger `on_auth_user_created` is firing
 - Verify default credits = 1 in profiles table
 
-**Webhook not updating Pro status:**
-- Check Stripe webhook logs for errors
-- Verify `STRIPE_WEBHOOK_SECRET` matches dashboard
-- Check Supabase logs for database errors
+**User paid but still shows Free:**
+- Verify you ran the upgrade API call correctly
+- Check Supabase logs for errors
+- Verify `pro_until` date is in the future
+- Check `is_pro` column is set to `true`
 
 **Can't generate content:**
 - Verify `Authorization` header is being sent with JWT token
@@ -726,32 +766,70 @@ Before deploying to production:
 - Ensure `src/middleware.ts` is at project root
 - Check Astro config for middleware support
 
+**Admin API returns 401:**
+- Verify `ADMIN_API_KEY` in `.env` matches your request
+- Check Authorization header format: `Bearer YOUR_KEY`
+
 ---
 
 ## 📚 Next Steps (Optional Enhancements)
 
-1. **Usage Analytics Dashboard**
+1. **Automated Payment Processing**
+   - Integrate with a local payment gateway (if available)
+   - Set up webhooks for instant upgrades
+
+2. **Usage Analytics Dashboard**
    - Chart showing generations over time
    - Most popular tool types
    - Token usage tracking
 
-2. **Team Plans**
+3. **Team Plans**
    - Share credits across team members
    - Admin role for team management
-
-3. **API Access**
-   - Generate API keys for external access
-   - Rate limiting per API key
 
 4. **Email Notifications**
    - Welcome email on signup
    - Low credit warnings
+   - Pro expiration reminders (7 days before)
    - Monthly usage summary
 
 5. **Export History**
    - Download all generations as CSV/JSON
    - Bulk export for backup
 
+6. **Mobile App**
+   - React Native app using same Supabase backend
+   - Push notifications for Pro expiration
+
 ---
 
-Backend is complete and committed! Follow the steps above to complete the frontend integration.
+## 💳 Accepting Card Payments & Apple Pay
+
+Since Stripe and PayPal aren't available, here are alternative ways to accept card and Apple Pay:
+
+### Option 1: Local Payment Gateway (Recommended)
+Research payment gateways available in your country:
+- **Razorpay** (India, SEA)
+- **Paystack** (Africa)
+- **Mollie** (Europe)
+- **2Checkout/Verifone** (Global)
+- **Paddle** (Global, merchant of record)
+- **LemonSqueezy** (Global, merchant of record)
+
+### Option 2: Manual Card Processing
+1. Use a Square/Clover terminal (if available)
+2. User contacts you for upgrade
+3. You process payment in person or via phone
+4. Upgrade user via admin API
+
+### Option 3: Cryptocurrency
+1. Accept Bitcoin/USDT/other crypto
+2. User sends payment to your wallet
+3. Verify on blockchain
+4. Upgrade user via admin API
+
+For **Apple Pay specifically**: Apple Pay requires integration with a payment processor. It cannot be used standalone. If you find a local payment gateway that supports Apple Pay (like the ones listed above), you can integrate it using their SDK.
+
+---
+
+Backend is complete! Follow the steps above to complete the frontend and set up your payment workflow.

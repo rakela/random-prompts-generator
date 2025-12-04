@@ -20,9 +20,8 @@ export interface Database {
           email: string | null
           credits: number
           is_pro: boolean
-          stripe_customer_id: string | null
-          stripe_subscription_id: string | null
-          subscription_status: string | null
+          pro_until: string | null
+          payment_method: string | null
           created_at: string
           updated_at: string
         }
@@ -31,9 +30,8 @@ export interface Database {
           email?: string | null
           credits?: number
           is_pro?: boolean
-          stripe_customer_id?: string | null
-          stripe_subscription_id?: string | null
-          subscription_status?: string | null
+          pro_until?: string | null
+          payment_method?: string | null
           created_at?: string
           updated_at?: string
         }
@@ -42,9 +40,8 @@ export interface Database {
           email?: string | null
           credits?: number
           is_pro?: boolean
-          stripe_customer_id?: string | null
-          stripe_subscription_id?: string | null
-          subscription_status?: string | null
+          pro_until?: string | null
+          payment_method?: string | null
           created_at?: string
           updated_at?: string
         }
