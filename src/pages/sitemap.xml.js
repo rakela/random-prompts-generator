@@ -76,6 +76,11 @@ const staticPageUrls = [
   'persuasive-writing-topics',
   // Educational
   'writing-prompts-for-students',
+  // YouTube Tools (new)
+  'workflows/youtube-to-blog-and-linkedin',
+  'tools/youtube-content-brief',
+  'tools/youtube-blog-post-generator',
+  'tools/youtube-linkedin-post-generator',
   // Legal
   'privacy',
   'terms'
@@ -91,8 +96,10 @@ export async function GET(context) {
   // Build static pages with priorities
   const staticPages = staticPageUrls.map((url, index) => ({
     url,
-    changefreq: url === '' ? 'daily' : 'weekly',
+    changefreq: url === '' ? 'daily' : url.startsWith('workflows/') || url.startsWith('tools/') ? 'daily' : 'weekly',
     priority: url === '' ? '1.0' :
+              // YouTube Tools get very high priority (new feature)
+              url.startsWith('workflows/youtube') || url.startsWith('tools/youtube') ? '0.95' :
               // Hub pages get high priority
               ['writing-prompts-generator', 'art-prompts', 'generators'].includes(url) ? '0.95' :
               // Sub-pages under hubs
