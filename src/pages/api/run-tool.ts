@@ -2,16 +2,42 @@
  * API Endpoint: /api/run-tool
  *
  * Executes a single tool with provided inputs
+ * NOW WITH: Auth, Credit Check, and History Tracking
  */
 
 import type { APIRoute } from 'astro';
 import type { RunToolRequest, RunToolResponse } from '../../types/workflow';
 import { getToolById } from '../../config/tools';
 import { callLLM, interpolatePrompt, validateInputs, sanitizeInput, truncateForLogging } from '../../utils/llm';
-import { getYouTubeTranscript } from '../../utils/youtube';
+import { getYouTubeTranscript, extractVideoId } from '../../utils/youtube';
+import {
+  getUserFromRequest,
+  checkUserCredits,
+  deductCredit,
+  saveGeneration
+} from '../../lib/supabase';
 
 export const POST: APIRoute = async ({ request }) => {
   try {
+    // ===== STEP 1: AUTHENTICATION =====
+    const user = await getUserFromRequest(request);
+
+    if (!user) {
+      return new Response(
+        JSON.stringify({
+          success: false,
+          error: 'Authentication required. Please sign in to use this tool.',
+          requiresAuth: true
+        } as RunToolResponse),
+        {
+          status: 401,
+          headers: { 'Content-Type': 'application/json' }
+        }
+      );
+    }
+
+    console.log(`[run-tool] User authenticated: ${user.id}`);
+
     // Parse request body
     const body: RunToolRequest = await request.json();
     const { tool_id, inputs, extra_context } = body;
@@ -33,6 +59,27 @@ export const POST: APIRoute = async ({ request }) => {
         }
       );
     }
+
+    // ===== STEP 2: CREDIT CHECK =====
+    const { canGenerate, credits, isPro } = await checkUserCredits(user.id);
+
+    if (!canGenerate) {
+      return new Response(
+        JSON.stringify({
+          success: false,
+          error: 'You have no credits remaining. Please upgrade to Pro for unlimited generations.',
+          requiresUpgrade: true,
+          credits: 0,
+          isPro: false
+        } as RunToolResponse),
+        {
+          status: 403,
+          headers: { 'Content-Type': 'application/json' }
+        }
+      );
+    }
+
+    console.log(`[run-tool] Credit check passed. Credits: ${credits}, Pro: ${isPro}`);
 
     // Sanitize all inputs
     const sanitizedInputs: Record<string, string> = {};
@@ -61,11 +108,17 @@ export const POST: APIRoute = async ({ request }) => {
 
     // Handle YouTube transcript fetching if needed
     let transcript = '';
+    let videoTitle = '';
+
     if (tool_id === 'youtube-content-brief' && sanitizedInputs.youtube_url) {
       try {
         console.log(`[run-tool] Fetching YouTube transcript for: ${sanitizedInputs.youtube_url}`);
         transcript = await getYouTubeTranscript(sanitizedInputs.youtube_url);
         console.log(`[run-tool] Transcript fetched: ${transcript.length} characters`);
+
+        // Extract video ID for reference
+        const videoId = extractVideoId(sanitizedInputs.youtube_url);
+        videoTitle = sanitizedInputs.video_title || `YouTube Video ${videoId}`;
       } catch (error) {
         console.error('[run-tool] Transcript fetch error:', error);
         return new Response(
@@ -112,7 +165,7 @@ export const POST: APIRoute = async ({ request }) => {
     console.log(`[run-tool] User content length: ${userContent.length} characters`);
     console.log(`[run-tool] User content preview: ${truncateForLogging(userContent)}`);
 
-    // Call LLM
+    // ===== STEP 3: CALL LLM =====
     console.log(`[run-tool] Calling LLM...`);
     const llmResponse = await callLLM({
       systemPrompt: filledSystemPrompt,
@@ -124,12 +177,39 @@ export const POST: APIRoute = async ({ request }) => {
     console.log(`[run-tool] LLM response received: ${llmResponse.content.length} characters`);
     console.log(`[run-tool] Tokens used: ${llmResponse.tokensUsed || 'unknown'}`);
 
+    // ===== STEP 4: DEDUCT CREDIT (if not Pro) =====
+    if (!isPro) {
+      await deductCredit(user.id);
+      console.log(`[run-tool] Credit deducted. Remaining: ${credits - 1}`);
+    }
+
+    // ===== STEP 5: SAVE TO HISTORY =====
+    await saveGeneration({
+      userId: user.id,
+      type: tool_id,
+      inputContext: {
+        inputs: sanitizedInputs,
+        youtube_url: sanitizedInputs.youtube_url,
+        tool_config: {
+          id: tool_id,
+          category: toolConfig.category
+        }
+      },
+      outputContent: llmResponse.content,
+      videoTitle: videoTitle || sanitizedInputs.video_title,
+      tokensUsed: llmResponse.tokensUsed
+    });
+
+    console.log(`[run-tool] Generation saved to history`);
+
     // Return success response
     return new Response(
       JSON.stringify({
         success: true,
         tool_id: tool_id,
-        output: llmResponse.content
+        output: llmResponse.content,
+        creditsRemaining: isPro ? -1 : credits - 1, // -1 means unlimited
+        isPro: isPro
       } as RunToolResponse),
       {
         status: 200,

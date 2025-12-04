@@ -1,0 +1,136 @@
+/**
+ * Supabase Client Utilities for Astro
+ */
+
+import { createClient } from '@supabase/supabase-js';
+import type { Database } from '../types/database';
+
+// Client-side Supabase client (for browser)
+export function createBrowserClient() {
+  return createClient<Database>(
+    import.meta.env.PUBLIC_SUPABASE_URL,
+    import.meta.env.PUBLIC_SUPABASE_ANON_KEY,
+    {
+      auth: {
+        persistSession: true,
+        autoRefreshToken: true,
+      }
+    }
+  );
+}
+
+// Server-side Supabase client (for API routes)
+export function createServerClient() {
+  return createClient<Database>(
+    import.meta.env.PUBLIC_SUPABASE_URL,
+    import.meta.env.PUBLIC_SUPABASE_ANON_KEY
+  );
+}
+
+// Admin client with service role (for privileged operations)
+export function createAdminClient() {
+  return createClient<Database>(
+    import.meta.env.PUBLIC_SUPABASE_URL,
+    import.meta.env.SUPABASE_SERVICE_ROLE_KEY,
+    {
+      auth: {
+        autoRefreshToken: false,
+        persistSession: false
+      }
+    }
+  );
+}
+
+// Helper to get user from request
+export async function getUserFromRequest(request: Request) {
+  const authHeader = request.headers.get('Authorization');
+
+  if (!authHeader) {
+    return null;
+  }
+
+  const token = authHeader.replace('Bearer ', '');
+  const supabase = createServerClient();
+
+  const { data: { user }, error } = await supabase.auth.getUser(token);
+
+  if (error || !user) {
+    return null;
+  }
+
+  return user;
+}
+
+// Helper to check user credits and permissions
+export async function checkUserCredits(userId: string) {
+  const supabase = createAdminClient();
+
+  const { data: profile, error } = await supabase
+    .from('profiles')
+    .select('credits, is_pro')
+    .eq('id', userId)
+    .single();
+
+  if (error || !profile) {
+    throw new Error('Failed to fetch user profile');
+  }
+
+  return {
+    canGenerate: profile.is_pro || profile.credits > 0,
+    credits: profile.credits,
+    isPro: profile.is_pro
+  };
+}
+
+// Helper to deduct credit
+export async function deductCredit(userId: string) {
+  const supabase = createAdminClient();
+
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('credits, is_pro')
+    .eq('id', userId)
+    .single();
+
+  if (!profile || profile.is_pro) {
+    // Pro users don't lose credits
+    return;
+  }
+
+  const { error } = await supabase
+    .from('profiles')
+    .update({ credits: profile.credits - 1 })
+    .eq('id', userId);
+
+  if (error) {
+    throw new Error('Failed to deduct credit');
+  }
+}
+
+// Helper to save generation
+export async function saveGeneration(data: {
+  userId: string;
+  type: string;
+  inputContext: any;
+  outputContent: string;
+  videoTitle?: string;
+  tokensUsed?: number;
+}) {
+  const supabase = createAdminClient();
+
+  const { error } = await supabase
+    .from('generations')
+    .insert({
+      user_id: data.userId,
+      type: data.type,
+      input_context: data.inputContext,
+      output_content: data.outputContent,
+      video_title: data.videoTitle,
+      tokens_used: data.tokensUsed
+    });
+
+  if (error) {
+    console.error('Failed to save generation:', error);
+    // Don't throw - generation succeeded, just logging failed
+  }
+}
