@@ -202,16 +202,31 @@ export const youtubeBlogPostTool: ToolConfig = {
 8. If {include_cta} is "Yes", add a soft call-to-action at the end
 
 **Output Format:**
-Write the blog post in Markdown format with:
-- Compelling H1 title
-- Introduction (hook the reader)
-- Well-structured body with H2/H3 headings
-- Conclusion
-- Optional CTA
+Write the blog post in HTML format with proper semantic tags:
+- Use <h1> for the main title
+- Use <h2> and <h3> for section headings
+- Use <p> for paragraphs
+- Use <ul> and <li> for bullet lists
+- Use <ol> and <li> for numbered lists
+- Use <strong> for emphasis
+- Use <blockquote> for quotes
+
+Example structure:
+<h1>Compelling Title</h1>
+<p>Introduction paragraph...</p>
+<h2>Section Heading</h2>
+<p>Content paragraph...</p>
+<ul>
+  <li>Bullet point 1</li>
+  <li>Bullet point 2</li>
+</ul>
 
 Write the entire blog post in {language}.
 
-**Important:** Focus on delivering value, maintaining readability, and creating content that stands alone even without watching the video.`
+**Important:**
+1. Focus on delivering value, maintaining readability, and creating content that stands alone even without watching the video
+2. At the end of the post, add an attribution paragraph:
+<p><em>This content was generated using <a href="https://randomprompts.org" target="_blank">Random Prompts Generator</a> - AI-powered content creation tools.</em></p>`
 };
 
 // Tool 3: YouTube LinkedIn Post Generator
@@ -322,19 +337,32 @@ export const youtubeLinkedInPostTool: ToolConfig = {
 - **Personal insight sharing:** Share personal perspective/experience
 
 **Output Format:**
-For each variant, use this structure:
+For each variant, use this structure with HTML formatting:
 
 ---
-### LinkedIn Post Variant [Number]
+<h3>LinkedIn Post Variant [Number]</h3>
 
-[Post content here]
+<p>[Hook paragraph with engaging opening]</p>
 
-{if include_hashtags: hashtags here}
+<p>[Main content with line breaks using <br> tags for spacing]</p>
+
+<p>[Key points using visual breaks]</p>
+
+<p>[Call-to-action or engagement prompt]</p>
+
+<p>{if include_hashtags: hashtags here}</p>
+
+<p><em>📱 Generated with <a href="https://randomprompts.org" target="_blank">Random Prompts Generator</a></em></p>
 ---
 
 Write all posts in {language}.
 
-**Important:** Make posts engaging, authentic, and valuable. Avoid corporate jargon. Optimize for LinkedIn's algorithm (engagement in first hour matters).`
+**Important:**
+1. Make posts engaging, authentic, and valuable
+2. Avoid corporate jargon
+3. Optimize for LinkedIn's algorithm (engagement in first hour matters)
+4. Use <br> tags for line breaks within paragraphs for better readability
+5. Always include the attribution line at the end of each variant`
 };
 
 // Tools Registry
