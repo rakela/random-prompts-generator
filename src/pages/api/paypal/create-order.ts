@@ -1,30 +1,42 @@
 /**
  * PayPal Create Order Endpoint
- * Creates a PayPal order for Pro subscription
+ * Creates a PayPal order for Pro subscription using REST API
  */
 
 import type { APIRoute } from 'astro';
 import { getUserFromRequest } from '../../../lib/supabase';
 
-// PayPal SDK
-import checkoutNodeJssdk from '@paypal/checkout-server-sdk';
-
-// PayPal environment
-function environment() {
-  const clientId = import.meta.env.PAYPAL_CLIENT_ID;
-  const clientSecret = import.meta.env.PAYPAL_CLIENT_SECRET;
+// PayPal API base URLs
+function getPayPalBaseURL() {
   const mode = import.meta.env.PAYPAL_MODE || 'sandbox';
-
-  if (mode === 'production') {
-    return new checkoutNodeJssdk.core.LiveEnvironment(clientId, clientSecret);
-  } else {
-    return new checkoutNodeJssdk.core.SandboxEnvironment(clientId, clientSecret);
-  }
+  return mode === 'production'
+    ? 'https://api-m.paypal.com'
+    : 'https://api-m.sandbox.paypal.com';
 }
 
-// PayPal client
-function client() {
-  return new checkoutNodeJssdk.core.PayPalHttpClient(environment());
+// Get PayPal access token
+async function getAccessToken() {
+  const clientId = import.meta.env.PAYPAL_CLIENT_ID;
+  const clientSecret = import.meta.env.PAYPAL_CLIENT_SECRET;
+  const baseURL = getPayPalBaseURL();
+
+  const auth = Buffer.from(`${clientId}:${clientSecret}`).toString('base64');
+
+  const response = await fetch(`${baseURL}/v1/oauth2/token`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Basic ${auth}`,
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: 'grant_type=client_credentials'
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to get PayPal access token');
+  }
+
+  const data = await response.json();
+  return data.access_token;
 }
 
 export const POST: APIRoute = async ({ request }) => {
@@ -52,56 +64,69 @@ export const POST: APIRoute = async ({ request }) => {
     const price = prices[plan as keyof typeof prices] || prices.monthly;
     const planName = plan === 'annual' ? 'Pro Annual' : 'Pro Monthly';
 
-    // Create PayPal order request
-    const orderRequest = new checkoutNodeJssdk.orders.OrdersCreateRequest();
-    orderRequest.prefer('return=representation');
-    orderRequest.requestBody({
-      intent: 'CAPTURE',
-      purchase_units: [
-        {
-          amount: {
-            currency_code: 'USD',
-            value: price,
-            breakdown: {
-              item_total: {
-                currency_code: 'USD',
-                value: price
+    // Get PayPal access token
+    const accessToken = await getAccessToken();
+    const baseURL = getPayPalBaseURL();
+
+    // Create order
+    const orderResponse = await fetch(`${baseURL}/v2/checkout/orders`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${accessToken}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        intent: 'CAPTURE',
+        purchase_units: [
+          {
+            amount: {
+              currency_code: 'USD',
+              value: price,
+              breakdown: {
+                item_total: {
+                  currency_code: 'USD',
+                  value: price
+                }
               }
-            }
-          },
-          items: [
-            {
-              name: planName,
-              description: 'Unlimited AI generations for YouTube content',
-              unit_amount: {
-                currency_code: 'USD',
-                value: price
-              },
-              quantity: '1'
-            }
-          ],
-          custom_id: user.id, // Store user ID for webhook processing
+            },
+            items: [
+              {
+                name: planName,
+                description: 'Unlimited AI generations for YouTube content',
+                unit_amount: {
+                  currency_code: 'USD',
+                  value: price
+                },
+                quantity: '1'
+              }
+            ],
+            custom_id: user.id // Store user ID for webhook processing
+          }
+        ],
+        application_context: {
+          brand_name: 'YouTube Content Generator',
+          landing_page: 'NO_PREFERENCE',
+          user_action: 'PAY_NOW',
+          return_url: `${new URL(request.url).origin}/dashboard?payment=success`,
+          cancel_url: `${new URL(request.url).origin}/upgrade?payment=cancelled`
         }
-      ],
-      application_context: {
-        brand_name: 'YouTube Content Generator',
-        landing_page: 'NO_PREFERENCE',
-        user_action: 'PAY_NOW',
-        return_url: `${new URL(request.url).origin}/dashboard?payment=success`,
-        cancel_url: `${new URL(request.url).origin}/upgrade?payment=cancelled`
-      }
+      })
     });
 
-    // Execute PayPal request
-    const paypalClient = client();
-    const order = await paypalClient.execute(orderRequest);
+    if (!orderResponse.ok) {
+      const errorData = await orderResponse.json();
+      console.error('[paypal] Error creating order:', errorData);
+      throw new Error('Failed to create PayPal order');
+    }
 
-    console.log(`[paypal] Order created: ${order.result.id} for user: ${user.id}`);
+    const order = await orderResponse.json();
+
+    console.log(`[paypal] Order created: ${order.id} for user: ${user.id}`);
 
     return new Response(
       JSON.stringify({
         success: true,
-        orderId: order.result.id
+        orderId: order.id
       }),
       { status: 200, headers: { 'Content-Type': 'application/json' } }
     );

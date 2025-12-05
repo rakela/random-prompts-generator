@@ -1,10 +1,10 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 
 const PAYPAL_CLIENT_ID = import.meta.env.PUBLIC_PAYPAL_CLIENT_ID;
 ---
 
-<Layout title="Upgrade to Pro">
+<BaseLayout title="Upgrade to Pro">
   <div class="max-w-4xl mx-auto px-4 py-12">
     <!-- Hero Section -->
     <div class="text-center mb-12">
@@ -108,7 +108,7 @@ const PAYPAL_CLIENT_ID = import.meta.env.PUBLIC_PAYPAL_CLIENT_ID;
       </div>
     </div>
   </div>
-</Layout>
+</BaseLayout>
 
 <!-- PayPal SDK -->
 <script is:inline define:vars={{ PAYPAL_CLIENT_ID }}>

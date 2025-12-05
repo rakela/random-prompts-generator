@@ -1,30 +1,42 @@
 /**
  * PayPal Capture Order Endpoint
- * Captures payment and upgrades user to Pro
+ * Captures payment and upgrades user to Pro using REST API
  */
 
 import type { APIRoute } from 'astro';
 import { getUserFromRequest, createAdminClient } from '../../../lib/supabase';
 
-// PayPal SDK
-import checkoutNodeJssdk from '@paypal/checkout-server-sdk';
-
-// PayPal environment
-function environment() {
-  const clientId = import.meta.env.PAYPAL_CLIENT_ID;
-  const clientSecret = import.meta.env.PAYPAL_CLIENT_SECRET;
+// PayPal API base URLs
+function getPayPalBaseURL() {
   const mode = import.meta.env.PAYPAL_MODE || 'sandbox';
-
-  if (mode === 'production') {
-    return new checkoutNodeJssdk.core.LiveEnvironment(clientId, clientSecret);
-  } else {
-    return new checkoutNodeJssdk.core.SandboxEnvironment(clientId, clientSecret);
-  }
+  return mode === 'production'
+    ? 'https://api-m.paypal.com'
+    : 'https://api-m.sandbox.paypal.com';
 }
 
-// PayPal client
-function client() {
-  return new checkoutNodeJssdk.core.PayPalHttpClient(environment());
+// Get PayPal access token
+async function getAccessToken() {
+  const clientId = import.meta.env.PAYPAL_CLIENT_ID;
+  const clientSecret = import.meta.env.PAYPAL_CLIENT_SECRET;
+  const baseURL = getPayPalBaseURL();
+
+  const auth = Buffer.from(`${clientId}:${clientSecret}`).toString('base64');
+
+  const response = await fetch(`${baseURL}/v1/oauth2/token`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Basic ${auth}`,
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: 'grant_type=client_credentials'
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to get PayPal access token');
+  }
+
+  const data = await response.json();
+  return data.access_token;
 }
 
 export const POST: APIRoute = async ({ request }) => {
@@ -49,16 +61,30 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    // Capture the order
-    const captureRequest = new checkoutNodeJssdk.orders.OrdersCaptureRequest(orderId);
-    captureRequest.requestBody({});
+    // Get PayPal access token
+    const accessToken = await getAccessToken();
+    const baseURL = getPayPalBaseURL();
 
-    const paypalClient = client();
-    const capture = await paypalClient.execute(captureRequest);
+    // Capture the order
+    const captureResponse = await fetch(`${baseURL}/v2/checkout/orders/${orderId}/capture`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${accessToken}`,
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if (!captureResponse.ok) {
+      const errorData = await captureResponse.json();
+      console.error('[paypal] Error capturing order:', errorData);
+      throw new Error('Failed to capture PayPal order');
+    }
+
+    const capture = await captureResponse.json();
 
     // Check if payment was successful
-    if (capture.result.status !== 'COMPLETED') {
-      console.error('[paypal] Payment not completed:', capture.result.status);
+    if (capture.status !== 'COMPLETED') {
+      console.error('[paypal] Payment not completed:', capture.status);
       return new Response(
         JSON.stringify({ error: 'Payment not completed' }),
         { status: 400, headers: { 'Content-Type': 'application/json' } }
