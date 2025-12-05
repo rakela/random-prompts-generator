@@ -5,11 +5,50 @@
 import { createClient } from '@supabase/supabase-js';
 import type { Database } from '../types/database';
 
+// Environment variable helpers with fallbacks for multiple naming conventions
+function getSupabaseUrl(): string {
+  // Try different variable names in order of preference
+  const url = import.meta.env.PUBLIC_SUPABASE_URL ||
+              import.meta.env.NEXT_PUBLIC_SUPABASE_URL ||
+              import.meta.env.SUPABASE_URL;
+
+  if (!url) {
+    throw new Error('Supabase URL not found. Please set PUBLIC_SUPABASE_URL in your .env file.');
+  }
+
+  return url;
+}
+
+function getSupabaseAnonKey(): string {
+  // Try different variable names in order of preference
+  const key = import.meta.env.PUBLIC_SUPABASE_ANON_KEY ||
+              import.meta.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
+              import.meta.env.SUPABASE_ANON_KEY ||
+              import.meta.env.SUPABASE_PUBLISHABLE_KEY;
+
+  if (!key) {
+    throw new Error('Supabase Anon Key not found. Please set PUBLIC_SUPABASE_ANON_KEY in your .env file.');
+  }
+
+  return key;
+}
+
+function getSupabaseServiceRoleKey(): string {
+  const key = import.meta.env.SUPABASE_SERVICE_ROLE_KEY ||
+              import.meta.env.SUPABASE_SECRET_KEY;
+
+  if (!key) {
+    throw new Error('Supabase Service Role Key not found. Please set SUPABASE_SERVICE_ROLE_KEY in your .env file.');
+  }
+
+  return key;
+}
+
 // Client-side Supabase client (for browser)
 export function createBrowserClient() {
   return createClient<Database>(
-    import.meta.env.PUBLIC_SUPABASE_URL,
-    import.meta.env.PUBLIC_SUPABASE_ANON_KEY,
+    getSupabaseUrl(),
+    getSupabaseAnonKey(),
     {
       auth: {
         persistSession: true,
@@ -22,16 +61,16 @@ export function createBrowserClient() {
 // Server-side Supabase client (for API routes)
 export function createServerClient() {
   return createClient<Database>(
-    import.meta.env.PUBLIC_SUPABASE_URL,
-    import.meta.env.PUBLIC_SUPABASE_ANON_KEY
+    getSupabaseUrl(),
+    getSupabaseAnonKey()
   );
 }
 
 // Admin client with service role (for privileged operations)
 export function createAdminClient() {
   return createClient<Database>(
-    import.meta.env.PUBLIC_SUPABASE_URL,
-    import.meta.env.SUPABASE_SERVICE_ROLE_KEY,
+    getSupabaseUrl(),
+    getSupabaseServiceRoleKey(),
     {
       auth: {
         autoRefreshToken: false,
