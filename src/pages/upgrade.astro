@@ -1,11 +1,15 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
+// Disable prerendering - this page needs SSR
+export const prerender = false;
+
 const PAYPAL_CLIENT_ID = import.meta.env.PUBLIC_PAYPAL_CLIENT_ID;
 
 // Check if PayPal is configured
 if (!PAYPAL_CLIENT_ID) {
   console.error('[upgrade] PUBLIC_PAYPAL_CLIENT_ID is not set in environment variables');
+  console.error('[upgrade] Available env vars:', Object.keys(import.meta.env).filter(k => k.includes('PAYPAL')));
 }
 ---
 
