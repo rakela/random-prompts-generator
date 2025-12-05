@@ -1,0 +1,35 @@
+---
+// Simple test page with minimal dependencies
+export const prerender = false;
+
+const testData = {
+  timestamp: new Date().toISOString(),
+  paypalPublic: import.meta.env.PUBLIC_PAYPAL_CLIENT_ID ? 'SET' : 'MISSING',
+  paypalPrivate: import.meta.env.PAYPAL_CLIENT_ID ? 'SET' : 'MISSING',
+  paypalMode: import.meta.env.PAYPAL_MODE || 'NOT SET',
+};
+---
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Test Page</title>
+</head>
+<body style="font-family: monospace; padding: 20px;">
+  <h1>Configuration Test</h1>
+  <pre>{JSON.stringify(testData, null, 2)}</pre>
+
+  <hr/>
+
+  <h2>Status</h2>
+  {testData.paypalPublic === 'SET' && testData.paypalPrivate === 'SET' ? (
+    <p style="color: green; font-weight: bold;">✅ PayPal is configured correctly</p>
+  ) : (
+    <p style="color: red; font-weight: bold;">❌ PayPal is NOT configured</p>
+  )}
+
+  <hr/>
+
+  <p><a href="/upgrade">Go to Upgrade Page</a></p>
+</body>
+</html>
