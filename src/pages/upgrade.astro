@@ -2,6 +2,11 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const PAYPAL_CLIENT_ID = import.meta.env.PUBLIC_PAYPAL_CLIENT_ID;
+
+// Check if PayPal is configured
+if (!PAYPAL_CLIENT_ID) {
+  console.error('[upgrade] PUBLIC_PAYPAL_CLIENT_ID is not set in environment variables');
+}
 ---
 
 <BaseLayout title="Upgrade to Pro">
@@ -112,10 +117,21 @@ const PAYPAL_CLIENT_ID = import.meta.env.PUBLIC_PAYPAL_CLIENT_ID;
 
 <!-- PayPal SDK -->
 <script is:inline define:vars={{ PAYPAL_CLIENT_ID }}>
+  // Check if PayPal Client ID is configured
+  if (!PAYPAL_CLIENT_ID || PAYPAL_CLIENT_ID === 'undefined') {
+    console.error('PayPal Client ID is not configured');
+    showError('Payment system is not configured. Please contact support.');
+    return;
+  }
+
   // Load PayPal SDK
   const script = document.createElement('script');
   script.src = `https://www.paypal.com/sdk/js?client-id=${PAYPAL_CLIENT_ID}&currency=USD&components=buttons`;
   script.addEventListener('load', initPayPalButtons);
+  script.addEventListener('error', function() {
+    console.error('Failed to load PayPal SDK');
+    showError('Failed to load payment system. Please refresh the page.');
+  });
   document.head.appendChild(script);
 
   async function getAuthToken() {
