@@ -11,9 +11,17 @@ if (!PAYPAL_CLIENT_ID) {
   console.error('[upgrade] PUBLIC_PAYPAL_CLIENT_ID is not set in environment variables');
   console.error('[upgrade] Available env vars:', Object.keys(import.meta.env).filter(k => k.includes('PAYPAL')));
 }
+
+// SEO data for BaseLayout
+const seo = {
+  title: 'Upgrade to Pro - Unlimited AI Generations',
+  description: 'Upgrade to Pro for unlimited AI-powered YouTube content generation. $9.99/month with PayPal, credit cards, and Apple Pay.',
+  keywords: 'upgrade, pro, subscription, paypal, unlimited generations',
+  path: '/upgrade'
+};
 ---
 
-<BaseLayout title="Upgrade to Pro">
+<BaseLayout seo={seo}>
   <div class="max-w-4xl mx-auto px-4 py-12">
     <!-- Hero Section -->
     <div class="text-center mb-12">
