@@ -1,0 +1,102 @@
+---
+// Minimal upgrade page to isolate the issue
+export const prerender = false;
+
+const PAYPAL_CLIENT_ID = import.meta.env.PUBLIC_PAYPAL_CLIENT_ID;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upgrade to Pro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+  <div class="max-w-4xl mx-auto px-4 py-12">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-bold mb-4">Upgrade to Pro</h1>
+      <p class="text-xl text-gray-600">Unlimited AI generations for your YouTube content</p>
+    </div>
+
+    <div class="max-w-md mx-auto bg-white rounded-lg shadow-lg p-8">
+      <div class="text-center mb-6">
+        <div class="text-5xl font-bold mb-2">$9.99</div>
+        <div class="text-gray-600">per month</div>
+      </div>
+
+      <div class="space-y-4 mb-8">
+        <div class="flex items-center">
+          <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+          </svg>
+          <span>Unlimited AI generations</span>
+        </div>
+        <div class="flex items-center">
+          <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+          </svg>
+          <span>Access to all YouTube tools</span>
+        </div>
+        <div class="flex items-center">
+          <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+          </svg>
+          <span>Full generation history</span>
+        </div>
+      </div>
+
+      <!-- PayPal Button Container -->
+      <div id="paypal-button-container" class="mb-4"></div>
+
+      <!-- Loading/Error States -->
+      <div id="loading-state" class="text-center text-gray-600 hidden">
+        <div class="animate-spin inline-block w-6 h-6 border-2 border-blue-600 border-t-transparent rounded-full mb-2"></div>
+        <p>Processing payment...</p>
+      </div>
+
+      <div id="success-message" class="bg-green-50 border border-green-200 rounded-lg p-4 hidden">
+        <p class="text-green-800 font-semibold">✅ Payment successful! Redirecting...</p>
+      </div>
+
+      <div id="error-message" class="bg-red-50 border border-red-200 rounded-lg p-4 hidden">
+        <p class="text-red-800 text-sm"></p>
+      </div>
+
+      <div class="mt-6 text-center text-sm text-gray-600">
+        <p class="mb-2">💳 Secure payment via PayPal</p>
+        <p>🍎 Apple Pay available on supported devices</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PayPal SDK -->
+  <script define:vars={{ PAYPAL_CLIENT_ID }}>
+    if (!PAYPAL_CLIENT_ID) {
+      document.getElementById('error-message').classList.remove('hidden');
+      document.getElementById('error-message').querySelector('p').textContent = 'Payment system not configured';
+    } else {
+      const script = document.createElement('script');
+      script.src = `https://www.paypal.com/sdk/js?client-id=${PAYPAL_CLIENT_ID}&currency=USD`;
+      script.onload = function() {
+        window.paypal.Buttons({
+          createOrder: async function() {
+            // Simplified for now - just test if button renders
+            alert('PayPal button works! (Payment flow not connected yet)');
+            return 'test';
+          },
+          onApprove: function() {
+            alert('Payment approved!');
+          }
+        }).render('#paypal-button-container');
+      };
+      script.onerror = function() {
+        document.getElementById('error-message').classList.remove('hidden');
+        document.getElementById('error-message').querySelector('p').textContent = 'Failed to load PayPal';
+      };
+      document.head.appendChild(script);
+    }
+  </script>
+</body>
+</html>
