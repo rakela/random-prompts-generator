@@ -104,10 +104,10 @@ export const POST: APIRoute = async ({ request }) => {
           }
         ],
         application_context: {
-          brand_name: 'YouTube Content Generator',
+          brand_name: 'Random Prompts Generator',
           landing_page: 'NO_PREFERENCE',
           user_action: 'PAY_NOW',
-          return_url: `${new URL(request.url).origin}/dashboard?payment=success`,
+          return_url: `${new URL(request.url).origin}/?upgraded=true`,
           cancel_url: `${new URL(request.url).origin}/upgrade?payment=cancelled`
         }
       })
