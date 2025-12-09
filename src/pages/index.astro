@@ -36,6 +36,37 @@ const categoryInfo = {
 <BaseLayout seo={seo}>
   <AstroHeader />
 
+  <!-- Success Message (shown after payment) -->
+  <div id="upgrade-success" class="hidden bg-green-600 text-white py-4 px-4">
+    <div class="max-w-4xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+        </svg>
+        <div>
+          <div class="font-bold">Welcome to Pro!</div>
+          <div class="text-sm opacity-90">You now have unlimited access to all features. Thank you for upgrading!</div>
+        </div>
+      </div>
+      <button onclick="this.parentElement.parentElement.style.display='none'" class="text-white hover:text-gray-200">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <script is:inline>
+    // Show success message if redirected from payment
+    if (window.location.search.includes('upgraded=true')) {
+      document.getElementById('upgrade-success').classList.remove('hidden');
+      // Remove query param from URL without reloading
+      const url = new URL(window.location);
+      url.searchParams.delete('upgraded');
+      window.history.replaceState({}, '', url);
+    }
+  </script>
+
   <!-- Hero Section -->
   <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16">
     <div class="max-w-4xl mx-auto px-4 text-center">
