@@ -7,6 +7,16 @@ export const prerender = false;
 
 const PAYPAL_CLIENT_ID = import.meta.env.PUBLIC_PAYPAL_CLIENT_ID;
 
+// Get Supabase config with fallbacks
+const SUPABASE_URL = import.meta.env.PUBLIC_SUPABASE_URL ||
+                     import.meta.env.NEXT_PUBLIC_SUPABASE_URL ||
+                     import.meta.env.SUPABASE_URL || '';
+
+const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY ||
+                          import.meta.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
+                          import.meta.env.SUPABASE_ANON_KEY ||
+                          import.meta.env.SUPABASE_PUBLISHABLE_KEY || '';
+
 // Check if PayPal is configured
 if (!PAYPAL_CLIENT_ID) {
   console.error('[upgrade] PUBLIC_PAYPAL_CLIENT_ID is not set in environment variables');
@@ -24,7 +34,14 @@ const seo = {
 
 <BaseLayout seo={seo}>
   <!-- Auth Modal -->
-  <AuthModal client:load isOpen={false} onClose={() => {}} onSuccess={() => {}} />
+  <AuthModal
+    client:load
+    isOpen={false}
+    onClose={() => {}}
+    onSuccess={() => {}}
+    supabaseUrl={SUPABASE_URL}
+    supabaseAnonKey={SUPABASE_ANON_KEY}
+  />
 
   <div class="max-w-4xl mx-auto px-4 py-12">
     <!-- Hero Section -->
@@ -149,7 +166,7 @@ const seo = {
 </BaseLayout>
 
 <!-- Auth Check Script -->
-<script is:inline define:vars={{ SUPABASE_URL: import.meta.env.PUBLIC_SUPABASE_URL || import.meta.env.SUPABASE_URL, SUPABASE_ANON_KEY: import.meta.env.PUBLIC_SUPABASE_ANON_KEY || import.meta.env.SUPABASE_ANON_KEY }}>
+<script is:inline define:vars={{ SUPABASE_URL, SUPABASE_ANON_KEY }}>
   // Check if user is logged in on page load
   window.addEventListener('DOMContentLoaded', function() {
     console.log('[AUTH] Checking authentication status...');
@@ -188,7 +205,7 @@ const seo = {
 </script>
 
 <!-- PayPal SDK -->
-<script is:inline define:vars={{ PAYPAL_CLIENT_ID, SUPABASE_URL: import.meta.env.PUBLIC_SUPABASE_URL || import.meta.env.SUPABASE_URL, SUPABASE_ANON_KEY: import.meta.env.PUBLIC_SUPABASE_ANON_KEY || import.meta.env.SUPABASE_ANON_KEY }}>
+<script is:inline define:vars={{ PAYPAL_CLIENT_ID, SUPABASE_URL, SUPABASE_ANON_KEY }}>
   console.log('[DEBUG] Script loaded - PayPal Client ID:', !!PAYPAL_CLIENT_ID);
   console.log('[DEBUG] Supabase URL:', !!SUPABASE_URL);
   console.log('[DEBUG] Supabase Key:', !!SUPABASE_ANON_KEY);
