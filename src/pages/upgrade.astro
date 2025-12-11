@@ -17,6 +17,11 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY ||
                           import.meta.env.SUPABASE_ANON_KEY ||
                           import.meta.env.SUPABASE_PUBLISHABLE_KEY || '';
 
+// Get plan from query parameter (default to monthly)
+const url = new URL(Astro.request.url);
+const plan = url.searchParams.get('plan') || 'monthly';
+const isAnnual = plan === 'annual';
+
 // Check if PayPal is configured
 if (!PAYPAL_CLIENT_ID) {
   console.error('[upgrade] PUBLIC_PAYPAL_CLIENT_ID is not set in environment variables');
@@ -72,10 +77,15 @@ const seo = {
     <div id="pricing-card" class="max-w-lg mx-auto bg-white rounded-xl shadow-xl p-8 mb-8">
       <div class="text-center mb-8">
         <div class="inline-block bg-blue-100 text-blue-800 text-sm font-semibold px-4 py-1 rounded-full mb-4">
-          PRO SUBSCRIPTION
+          PRO {isAnnual ? 'ANNUAL' : 'MONTHLY'}
         </div>
-        <div class="text-5xl font-bold mb-2">$9.99<span class="text-2xl text-gray-600">/month</span></div>
-        <p class="text-gray-600">Cancel anytime, no commitment</p>
+        <div class="text-5xl font-bold mb-2">
+          {isAnnual ? '$99' : '$9.99'}
+          <span class="text-2xl text-gray-600">{isAnnual ? '/year' : '/month'}</span>
+        </div>
+        <p class="text-gray-600">
+          {isAnnual ? 'Save $20/year • Cancel anytime' : 'Cancel anytime, no commitment'}
+        </p>
       </div>
 
       <div class="space-y-4 mb-8">
@@ -196,10 +206,11 @@ const seo = {
 </script>
 
 <!-- PayPal SDK -->
-<script is:inline define:vars={{ PAYPAL_CLIENT_ID, SUPABASE_URL, SUPABASE_ANON_KEY }}>
+<script is:inline define:vars={{ PAYPAL_CLIENT_ID, SUPABASE_URL, SUPABASE_ANON_KEY, plan, isAnnual }}>
   console.log('[DEBUG] Script loaded - PayPal Client ID:', !!PAYPAL_CLIENT_ID);
   console.log('[DEBUG] Supabase URL:', !!SUPABASE_URL);
   console.log('[DEBUG] Supabase Key:', !!SUPABASE_ANON_KEY);
+  console.log('[DEBUG] Plan:', plan, '(Annual:', isAnnual, ')');
 
   // Check if PayPal Client ID is configured
   if (!PAYPAL_CLIENT_ID || PAYPAL_CLIENT_ID === 'undefined') {
@@ -295,7 +306,7 @@ const seo = {
               'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify({
-              plan: 'monthly'
+              plan: plan
             })
           });
 
@@ -339,7 +350,7 @@ const seo = {
             },
             body: JSON.stringify({
               orderId: data.orderID,
-              plan: 'monthly'
+              plan: plan
             })
           });
 
