@@ -1,0 +1,370 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AstroHeader from '../components/AstroHeader.astro';
+import AstroFooter from '../components/AstroFooter.astro';
+import '../styles/global.css';
+
+const seo = {
+  title: 'Pricing - Random Prompts Generator | Free & Pro Plans',
+  description: 'Choose the perfect plan for your creative needs. Free daily credits, Pro unlimited access, or flexible credit packs. Transparent pricing with no hidden fees.',
+  keywords: 'pricing, plans, subscription, credits, pro, free, random prompts pricing',
+  path: 'pricing'
+};
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">
+        Simple, Transparent Pricing
+      </h1>
+      <p class="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
+        Choose the plan that fits your creative workflow. Upgrade, downgrade, or cancel anytime.
+      </p>
+    </div>
+  </div>
+
+  <!-- Pricing Cards -->
+  <div class="max-w-7xl mx-auto px-4 py-16">
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+
+      <!-- Free Plan -->
+      <div class="bg-white rounded-xl shadow-lg border border-gray-200 p-8 flex flex-col">
+        <div class="text-center mb-6">
+          <h3 class="text-2xl font-bold text-gray-900 mb-2">Free</h3>
+          <div class="text-4xl font-bold text-gray-900 mb-2">$0</div>
+          <div class="text-gray-600">Forever free</div>
+        </div>
+
+        <div class="flex-1">
+          <div class="space-y-4 mb-8">
+            <div class="flex items-start">
+              <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+              <span class="text-gray-700"><strong>1 credit per day</strong> (resets daily)</span>
+            </div>
+            <div class="flex items-start">
+              <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+              <span class="text-gray-700">Access to all YouTube tools</span>
+            </div>
+            <div class="flex items-start">
+              <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+              <span class="text-gray-700">Unlimited prompt generators</span>
+            </div>
+            <div class="flex items-start">
+              <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+              <span class="text-gray-700">Basic generation history</span>
+            </div>
+          </div>
+        </div>
+
+        <a href="/" class="block text-center bg-gray-100 text-gray-900 font-semibold py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">
+          Get Started Free
+        </a>
+      </div>
+
+      <!-- Pro Monthly Plan - Popular -->
+      <div class="bg-white rounded-xl shadow-2xl border-2 border-blue-500 p-8 flex flex-col relative">
+        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <span class="bg-blue-500 text-white text-xs font-bold px-4 py-1 rounded-full">POPULAR</span>
+        </div>
+
+        <div class="text-center mb-6">
+          <h3 class="text-2xl font-bold text-gray-900 mb-2">Pro Monthly</h3>
+          <div class="text-4xl font-bold text-blue-600 mb-2">$9.99</div>
+          <div class="text-gray-600">per month</div>
+        </div>
+
+        <div class="flex-1">
+          <div class="space-y-4 mb-8">
+            <div class="flex items-start">
+              <svg class="w-5 h-5 text-blue-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+              <span class="text-gray-700"><strong>Unlimited generations</strong></span>
+            </div>
+            <div class="flex items-start">
+              <svg class="w-5 h-5 text-blue-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+              <span class="text-gray-700">All YouTube content tools</span>
+            </div>
+            <div class="flex items-start">
+              <svg class="w-5 h-5 text-blue-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+              <span class="text-gray-700">Full generation history</span>
+            </div>
+            <div class="flex items-start">
+              <svg class="w-5 h-5 text-blue-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+              <span class="text-gray-700">Priority support</span>
+            </div>
+            <div class="flex items-start">
+              <svg class="w-5 h-5 text-blue-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+              <span class="text-gray-700">Cancel anytime</span>
+            </div>
+          </div>
+        </div>
+
+        <a href="/upgrade" class="block text-center bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors">
+          Upgrade to Pro
+        </a>
+      </div>
+
+      <!-- Pro Annual Plan - Best Value -->
+      <div class="bg-white rounded-xl shadow-lg border border-purple-200 p-8 flex flex-col relative">
+        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <span class="bg-purple-500 text-white text-xs font-bold px-4 py-1 rounded-full">BEST VALUE</span>
+        </div>
+
+        <div class="text-center mb-6">
+          <h3 class="text-2xl font-bold text-gray-900 mb-2">Pro Annual</h3>
+          <div class="text-4xl font-bold text-purple-600 mb-2">$99</div>
+          <div class="text-gray-600 mb-1">per year</div>
+          <div class="text-sm text-green-600 font-semibold">Save 17% ($20/year)</div>
+        </div>
+
+        <div class="flex-1">
+          <div class="space-y-4 mb-8">
+            <div class="flex items-start">
+              <svg class="w-5 h-5 text-purple-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+              <span class="text-gray-700"><strong>Unlimited generations</strong></span>
+            </div>
+            <div class="flex items-start">
+              <svg class="w-5 h-5 text-purple-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+              <span class="text-gray-700">All YouTube content tools</span>
+            </div>
+            <div class="flex items-start">
+              <svg class="w-5 h-5 text-purple-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+              <span class="text-gray-700">Full generation history</span>
+            </div>
+            <div class="flex items-start">
+              <svg class="w-5 h-5 text-purple-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+              <span class="text-gray-700">Priority support</span>
+            </div>
+            <div class="flex items-start">
+              <svg class="w-5 h-5 text-purple-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+              <span class="text-gray-700"><strong>Best price per month</strong></span>
+            </div>
+          </div>
+        </div>
+
+        <a href="/upgrade?plan=annual" class="block text-center bg-purple-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-purple-700 transition-colors">
+          Get Annual Plan
+        </a>
+      </div>
+
+      <!-- Credit Packs -->
+      <div class="bg-white rounded-xl shadow-lg border border-gray-200 p-8 flex flex-col">
+        <div class="text-center mb-6">
+          <h3 class="text-2xl font-bold text-gray-900 mb-2">Credit Pack</h3>
+          <div class="text-4xl font-bold text-gray-900 mb-2">$5</div>
+          <div class="text-gray-600">10 credits</div>
+        </div>
+
+        <div class="flex-1">
+          <div class="space-y-4 mb-8">
+            <div class="flex items-start">
+              <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+              <span class="text-gray-700"><strong>10 generation credits</strong></span>
+            </div>
+            <div class="flex items-start">
+              <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+              <span class="text-gray-700">Credits never expire</span>
+            </div>
+            <div class="flex items-start">
+              <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+              <span class="text-gray-700">No subscription needed</span>
+            </div>
+            <div class="flex items-start">
+              <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+              <span class="text-gray-700">Perfect for occasional use</span>
+            </div>
+            <div class="flex items-start">
+              <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+              <span class="text-gray-700">Buy multiple packs anytime</span>
+            </div>
+          </div>
+        </div>
+
+        <a href="/buy-credits" class="block text-center bg-green-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-green-700 transition-colors">
+          Buy Credits
+        </a>
+      </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <div class="bg-white rounded-xl shadow-lg p-8 mb-16">
+      <h2 class="text-3xl font-bold text-center mb-8">Compare Plans</h2>
+
+      <div class="overflow-x-auto">
+        <table class="w-full">
+          <thead>
+            <tr class="border-b-2 border-gray-200">
+              <th class="text-left py-4 px-4 font-semibold text-gray-900">Feature</th>
+              <th class="text-center py-4 px-4 font-semibold text-gray-900">Free</th>
+              <th class="text-center py-4 px-4 font-semibold text-blue-600">Pro Monthly</th>
+              <th class="text-center py-4 px-4 font-semibold text-purple-600">Pro Annual</th>
+              <th class="text-center py-4 px-4 font-semibold text-gray-900">Credit Packs</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            <tr>
+              <td class="py-4 px-4 text-gray-700">Daily Credits</td>
+              <td class="text-center py-4 px-4">1/day</td>
+              <td class="text-center py-4 px-4">
+                <svg class="w-6 h-6 text-blue-500 mx-auto" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3.586L7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 9.586V7z"/>
+                </svg>
+              </td>
+              <td class="text-center py-4 px-4">
+                <svg class="w-6 h-6 text-purple-500 mx-auto" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3.586L7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 9.586V7z"/>
+                </svg>
+              </td>
+              <td class="text-center py-4 px-4">10 credits</td>
+            </tr>
+            <tr>
+              <td class="py-4 px-4 text-gray-700">Unlimited Generations</td>
+              <td class="text-center py-4 px-4">-</td>
+              <td class="text-center py-4 px-4">
+                <svg class="w-6 h-6 text-blue-500 mx-auto" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+              </td>
+              <td class="text-center py-4 px-4">
+                <svg class="w-6 h-6 text-purple-500 mx-auto" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+              </td>
+              <td class="text-center py-4 px-4">-</td>
+            </tr>
+            <tr>
+              <td class="py-4 px-4 text-gray-700">Generation History</td>
+              <td class="text-center py-4 px-4">Basic</td>
+              <td class="text-center py-4 px-4">Full</td>
+              <td class="text-center py-4 px-4">Full</td>
+              <td class="text-center py-4 px-4">Basic</td>
+            </tr>
+            <tr>
+              <td class="py-4 px-4 text-gray-700">Priority Support</td>
+              <td class="text-center py-4 px-4">-</td>
+              <td class="text-center py-4 px-4">
+                <svg class="w-6 h-6 text-blue-500 mx-auto" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+              </td>
+              <td class="text-center py-4 px-4">
+                <svg class="w-6 h-6 text-purple-500 mx-auto" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+              </td>
+              <td class="text-center py-4 px-4">-</td>
+            </tr>
+            <tr>
+              <td class="py-4 px-4 text-gray-700">Credits Expire</td>
+              <td class="text-center py-4 px-4">Daily</td>
+              <td class="text-center py-4 px-4">-</td>
+              <td class="text-center py-4 px-4">-</td>
+              <td class="text-center py-4 px-4">Never</td>
+            </tr>
+            <tr>
+              <td class="py-4 px-4 text-gray-700 font-semibold">Price</td>
+              <td class="text-center py-4 px-4 font-semibold">$0</td>
+              <td class="text-center py-4 px-4 font-semibold text-blue-600">$9.99/mo</td>
+              <td class="text-center py-4 px-4 font-semibold text-purple-600">$99/year</td>
+              <td class="text-center py-4 px-4 font-semibold">$5</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-8">Frequently Asked Questions</h2>
+
+      <div class="space-y-6">
+        <div class="bg-white rounded-lg shadow p-6">
+          <h3 class="font-semibold text-lg mb-2">How do credits work?</h3>
+          <p class="text-gray-600">Each YouTube content generation (blog post, LinkedIn post, etc.) uses 1 credit. Free users get 1 credit per day that resets daily. Pro users have unlimited credits.</p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow p-6">
+          <h3 class="font-semibold text-lg mb-2">Can I cancel my Pro subscription anytime?</h3>
+          <p class="text-gray-600">Yes! You can cancel your subscription at any time. Your Pro access will continue until the end of your billing period.</p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow p-6">
+          <h3 class="font-semibold text-lg mb-2">Do unused credits roll over?</h3>
+          <p class="text-gray-600">Free daily credits reset each day and don't roll over. Purchased credit packs never expire and can be used anytime.</p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow p-6">
+          <h3 class="font-semibold text-lg mb-2">What's the difference between Monthly and Annual Pro?</h3>
+          <p class="text-gray-600">Both plans offer the same features with unlimited generations. Annual saves you 17% ($20/year) compared to paying monthly.</p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow p-6">
+          <h3 class="font-semibold text-lg mb-2">Can I buy credit packs if I have a Pro subscription?</h3>
+          <p class="text-gray-600">You don't need to! Pro subscriptions include unlimited generations. Credit packs are for users who prefer pay-as-you-go without a subscription.</p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow p-6">
+          <h3 class="font-semibold text-lg mb-2">What payment methods do you accept?</h3>
+          <p class="text-gray-600">We accept all major credit cards, debit cards, PayPal, and Apple Pay through our secure payment processor.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="text-center mt-16">
+      <h2 class="text-3xl font-bold mb-4">Ready to supercharge your content creation?</h2>
+      <p class="text-xl text-gray-600 mb-8">Start with our free plan, no credit card required.</p>
+      <div class="flex justify-center gap-4">
+        <a href="/" class="bg-gray-100 text-gray-900 font-semibold px-8 py-3 rounded-lg hover:bg-gray-200 transition-colors">
+          Start Free
+        </a>
+        <a href="/upgrade" class="bg-blue-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors">
+          Upgrade to Pro
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <AstroFooter />
+</BaseLayout>

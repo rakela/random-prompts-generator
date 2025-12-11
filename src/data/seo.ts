@@ -253,7 +253,7 @@ export const seoData: Record<string, SEOData> = {
     keywords: 'aesthetic prompts, aesthetic generator, moodboard ideas, visual aesthetic, ai art aesthetic'
   },
   randomArtStyleGenerator: {
-    path: 'random-art-style-generator',
+    path: 'art-prompts/art-style',
     title: 'Random Art Style Generator | Random Prompts',
     description: 'Discover random art styles to explore in your drawings or AI images. Free art style generator for illustrators and AI art tools.',
     keywords: 'art style generator, art styles, drawing styles, illustration styles, ai art styles'
@@ -283,7 +283,7 @@ export const seoData: Record<string, SEOData> = {
     keywords: 'sci-fi prompts, science fiction prompts, futuristic ideas, space prompts, tech prompts'
   },
   randomFantasyArtPromptGenerator: {
-    path: 'random-fantasy-art-prompt-generator',
+    path: 'art-prompts/fantasy-art',
     title: 'Random Fantasy Art Prompt Generator | Random Prompts',
     description: 'Generate random fantasy art prompts with creatures, castles, and magic. Free fantasy art prompt generator for MidJourney and digital art.',
     keywords: 'fantasy art prompts, fantasy prompts, magical art, fantasy creatures, medieval art prompts'
@@ -320,7 +320,7 @@ export const seoData: Record<string, SEOData> = {
     keywords: 'random object generator, object prompts, random items, creative objects, drawing objects'
   },
   randomHobbyGenerator: {
-    path: 'random-hobby-generator',
+    path: 'generators/hobby',
     title: 'Random Hobby Generator | Random Prompts',
     description: 'Discover random hobbies for characters or real life inspiration. Free hobby generator for writers, coaches, and self-discovery.',
     keywords: 'random hobby generator, hobby ideas, character hobbies, hobby inspiration, activity generator'
