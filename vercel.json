@@ -162,6 +162,11 @@
       "source": "/random-fantasy-name-generator",
       "destination": "/generators/fantasy-name",
       "permanent": true
+    },
+    {
+      "source": "/prompts/sci-fi",
+      "destination": "/prompts",
+      "permanent": true
     }
   ]
 }
