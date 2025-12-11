@@ -106,7 +106,7 @@ export async function checkUserCredits(userId: string) {
 
   const { data: profile, error } = await supabase
     .from('profiles')
-    .select('credits, is_pro')
+    .select('is_pro, purchased_credits, daily_credits_reset_at')
     .eq('id', userId)
     .single();
 
@@ -114,10 +114,28 @@ export async function checkUserCredits(userId: string) {
     throw new Error('Failed to fetch user profile');
   }
 
+  // Pro users have unlimited credits
+  if (profile.is_pro) {
+    return {
+      canGenerate: true,
+      credits: 999999,
+      isPro: true
+    };
+  }
+
+  // Calculate if user has daily credit available
+  const hoursSinceReset = profile.daily_credits_reset_at
+    ? (Date.now() - new Date(profile.daily_credits_reset_at).getTime()) / (1000 * 60 * 60)
+    : 999; // If null, give them a credit
+
+  const hasDailyCredit = hoursSinceReset >= 24;
+  const dailyCredits = hasDailyCredit ? 1 : 0;
+  const totalCredits = dailyCredits + profile.purchased_credits;
+
   return {
-    canGenerate: profile.is_pro || profile.credits > 0,
-    credits: profile.credits,
-    isPro: profile.is_pro
+    canGenerate: totalCredits > 0,
+    credits: totalCredits,
+    isPro: false
   };
 }
 
@@ -127,7 +145,7 @@ export async function deductCredit(userId: string) {
 
   const { data: profile } = await supabase
     .from('profiles')
-    .select('credits, is_pro')
+    .select('is_pro, purchased_credits, daily_credits_reset_at')
     .eq('id', userId)
     .single();
 
@@ -136,13 +154,62 @@ export async function deductCredit(userId: string) {
     return;
   }
 
+  // Calculate if user has daily credit available
+  const hoursSinceReset = profile.daily_credits_reset_at
+    ? (Date.now() - new Date(profile.daily_credits_reset_at).getTime()) / (1000 * 60 * 60)
+    : 999; // If null, they get a credit
+
+  // If more than 24 hours since last reset, use daily credit and reset timestamp
+  if (hoursSinceReset >= 24) {
+    const { error } = await supabase
+      .from('profiles')
+      .update({ daily_credits_reset_at: new Date().toISOString() })
+      .eq('id', userId);
+
+    if (error) {
+      throw new Error('Failed to reset daily credit');
+    }
+    return;
+  }
+
+  // Otherwise, deduct a purchased credit
+  if (profile.purchased_credits > 0) {
+    const { error } = await supabase
+      .from('profiles')
+      .update({ purchased_credits: profile.purchased_credits - 1 })
+      .eq('id', userId);
+
+    if (error) {
+      throw new Error('Failed to deduct purchased credit');
+    }
+    return;
+  }
+
+  // No credits available
+  throw new Error('No credits available');
+}
+
+// Helper to add purchased credits
+export async function addPurchasedCredits(userId: string, amount: number) {
+  const supabase = createAdminClient();
+
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('purchased_credits')
+    .eq('id', userId)
+    .single();
+
+  if (!profile) {
+    throw new Error('User not found');
+  }
+
   const { error } = await supabase
     .from('profiles')
-    .update({ credits: profile.credits - 1 })
+    .update({ purchased_credits: profile.purchased_credits + amount })
     .eq('id', userId);
 
   if (error) {
-    throw new Error('Failed to deduct credit');
+    throw new Error('Failed to add purchased credits');
   }
 }
 

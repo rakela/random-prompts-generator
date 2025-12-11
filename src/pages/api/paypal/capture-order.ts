@@ -4,7 +4,7 @@
  */
 
 import type { APIRoute } from 'astro';
-import { getUserFromRequest, createAdminClient } from '../../../lib/supabase';
+import { getUserFromRequest, createAdminClient, addPurchasedCredits } from '../../../lib/supabase';
 
 // PayPal API base URLs
 function getPayPalBaseURL() {
@@ -52,11 +52,19 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     const body = await request.json();
-    const { orderId, plan = 'monthly' } = body;
+    const { orderId, plan = 'monthly', purchaseType = 'subscription', credits = 0 } = body;
 
     if (!orderId) {
       return new Response(
         JSON.stringify({ error: 'Order ID is required' }),
+        { status: 400, headers: { 'Content-Type': 'application/json' } }
+      );
+    }
+
+    // Validate purchase type
+    if (purchaseType === 'credits' && credits <= 0) {
+      return new Response(
+        JSON.stringify({ error: 'Invalid credit amount' }),
         { status: 400, headers: { 'Content-Type': 'application/json' } }
       );
     }
@@ -93,6 +101,30 @@ export const POST: APIRoute = async ({ request }) => {
 
     console.log(`[paypal] Payment captured: ${orderId} for user: ${user.id}`);
 
+    // Handle credit purchase
+    if (purchaseType === 'credits') {
+      try {
+        await addPurchasedCredits(user.id, credits);
+        console.log(`[paypal] Added ${credits} credits to user ${user.id}`);
+
+        return new Response(
+          JSON.stringify({
+            success: true,
+            message: `Payment successful! ${credits} credits have been added to your account.`,
+            credits: credits
+          }),
+          { status: 200, headers: { 'Content-Type': 'application/json' } }
+        );
+      } catch (error) {
+        console.error('[paypal] Failed to add credits:', error);
+        return new Response(
+          JSON.stringify({ error: 'Failed to add credits to account' }),
+          { status: 500, headers: { 'Content-Type': 'application/json' } }
+        );
+      }
+    }
+
+    // Handle subscription purchase
     // Calculate pro_until date based on plan
     const durationMonths = plan === 'annual' ? 12 : 1;
     const proUntil = new Date();

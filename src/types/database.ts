@@ -19,6 +19,8 @@ export interface Database {
           id: string
           email: string | null
           credits: number
+          daily_credits_reset_at: string | null
+          purchased_credits: number
           is_pro: boolean
           pro_until: string | null
           payment_method: string | null
@@ -29,6 +31,8 @@ export interface Database {
           id: string
           email?: string | null
           credits?: number
+          daily_credits_reset_at?: string | null
+          purchased_credits?: number
           is_pro?: boolean
           pro_until?: string | null
           payment_method?: string | null
@@ -39,6 +43,8 @@ export interface Database {
           id?: string
           email?: string | null
           credits?: number
+          daily_credits_reset_at?: string | null
+          purchased_credits?: number
           is_pro?: boolean
           pro_until?: string | null
           payment_method?: string | null
