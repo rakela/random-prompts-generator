@@ -1,0 +1,239 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AstroHeader from '../components/AstroHeader.astro';
+import AstroFooter from '../components/AstroFooter.astro';
+import AuthModal from '../components/AuthModal';
+import '../styles/global.css';
+
+export const prerender = false;
+
+// Get Supabase config with fallbacks
+const SUPABASE_URL = import.meta.env.PUBLIC_SUPABASE_URL ||
+                     import.meta.env.NEXT_PUBLIC_SUPABASE_URL ||
+                     import.meta.env.SUPABASE_URL || '';
+
+const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY ||
+                          import.meta.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
+                          import.meta.env.SUPABASE_ANON_KEY ||
+                          import.meta.env.SUPABASE_PUBLISHABLE_KEY || '';
+
+const seo = {
+  title: 'Buy Credits - Random Prompts Generator',
+  description: 'Purchase credit packs for AI content generation. $5 for 10 credits that never expire. Perfect for occasional use without a subscription.',
+  keywords: 'buy credits, credit packs, pay as you go, no subscription',
+  path: 'buy-credits'
+};
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+
+  <!-- Auth Modal -->
+  <AuthModal
+    client:load
+    isOpen={false}
+    onClose={() => {}}
+    onSuccess={() => {}}
+    supabaseUrl={SUPABASE_URL}
+    supabaseAnonKey={SUPABASE_ANON_KEY}
+  />
+
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-r from-green-600 to-teal-600 text-white py-16">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">
+        Buy Credit Packs
+      </h1>
+      <p class="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
+        No subscription needed. Credits never expire. Pay only for what you use.
+      </p>
+    </div>
+  </div>
+
+  <div class="max-w-4xl mx-auto px-4 py-12">
+
+    <!-- Auth Required Message -->
+    <div id="auth-required" class="hidden max-w-md mx-auto bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
+      <div class="text-center">
+        <svg class="w-12 h-12 text-blue-600 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+        </svg>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Sign in to purchase credits</h3>
+        <p class="text-gray-600 mb-4">Create a free account or sign in to buy credit packs</p>
+        <button
+          id="show-auth-modal"
+          class="bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+        >
+          Sign In / Sign Up
+        </button>
+      </div>
+    </div>
+
+    <!-- Credit Packs -->
+    <div id="credit-packs" class="grid md:grid-cols-3 gap-6 mb-12">
+
+      <!-- 10 Credits -->
+      <div class="bg-white rounded-xl shadow-lg border border-gray-200 p-8">
+        <div class="text-center mb-6">
+          <div class="text-5xl font-bold mb-2">$5</div>
+          <div class="text-gray-600">10 credits</div>
+          <div class="text-sm text-gray-500 mt-1">$0.50 per credit</div>
+        </div>
+
+        <div class="space-y-3 mb-6">
+          <div class="flex items-center text-sm text-gray-600">
+            <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+            </svg>
+            Never expires
+          </div>
+          <div class="flex items-center text-sm text-gray-600">
+            <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+            </svg>
+            No subscription
+          </div>
+        </div>
+
+        <button class="buy-credits-btn w-full bg-green-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-green-700 transition-colors" data-pack="10" data-price="5">
+          Buy 10 Credits
+        </button>
+      </div>
+
+      <!-- 25 Credits (Most Popular) -->
+      <div class="bg-white rounded-xl shadow-2xl border-2 border-green-500 p-8 relative">
+        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <span class="bg-green-500 text-white text-xs font-bold px-4 py-1 rounded-full">POPULAR</span>
+        </div>
+
+        <div class="text-center mb-6">
+          <div class="text-5xl font-bold mb-2">$10</div>
+          <div class="text-gray-600">25 credits</div>
+          <div class="text-sm text-green-600 font-semibold mt-1">$0.40 per credit · Save 20%</div>
+        </div>
+
+        <div class="space-y-3 mb-6">
+          <div class="flex items-center text-sm text-gray-600">
+            <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+            </svg>
+            Never expires
+          </div>
+          <div class="flex items-center text-sm text-gray-600">
+            <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+            </svg>
+            Best value
+          </div>
+        </div>
+
+        <button class="buy-credits-btn w-full bg-green-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-green-700 transition-colors" data-pack="25" data-price="10">
+          Buy 25 Credits
+        </button>
+      </div>
+
+      <!-- 50 Credits (Best Deal) -->
+      <div class="bg-white rounded-xl shadow-lg border border-gray-200 p-8">
+        <div class="text-center mb-6">
+          <div class="text-5xl font-bold mb-2">$15</div>
+          <div class="text-gray-600">50 credits</div>
+          <div class="text-sm text-purple-600 font-semibold mt-1">$0.30 per credit · Save 40%</div>
+        </div>
+
+        <div class="space-y-3 mb-6">
+          <div class="flex items-center text-sm text-gray-600">
+            <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+            </svg>
+            Never expires
+          </div>
+          <div class="flex items-center text-sm text-gray-600">
+            <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+            </svg>
+            Maximum savings
+          </div>
+        </div>
+
+        <button class="buy-credits-btn w-full bg-green-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-green-700 transition-colors" data-pack="50" data-price="15">
+          Buy 50 Credits
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Info Section -->
+    <div class="max-w-2xl mx-auto bg-blue-50 border border-blue-200 rounded-lg p-6 mb-12">
+      <h3 class="font-semibold text-lg mb-3 text-gray-900">How Credits Work</h3>
+      <ul class="space-y-2 text-gray-700">
+        <li class="flex items-start">
+          <span class="text-blue-600 mr-2">•</span>
+          Each YouTube content generation (blog post, LinkedIn post, etc.) uses 1 credit
+        </li>
+        <li class="flex items-start">
+          <span class="text-blue-600 mr-2">•</span>
+          Credits never expire - use them whenever you need them
+        </li>
+        <li class="flex items-start">
+          <span class="text-blue-600 mr-2">•</span>
+          Buy multiple packs anytime to stack your credits
+        </li>
+        <li class="flex items-start">
+          <span class="text-blue-600 mr-2">•</span>
+          Perfect for occasional use without monthly subscription
+        </li>
+      </ul>
+    </div>
+
+    <!-- Alternative: Go Pro -->
+    <div class="text-center bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-8">
+      <h3 class="text-2xl font-bold mb-3">Need unlimited generations?</h3>
+      <p class="text-gray-600 mb-6">Pro subscription gives you unlimited generations for $9.99/month</p>
+      <a href="/pricing" class="inline-block bg-blue-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors">
+        View Pro Plans
+      </a>
+    </div>
+
+  </div>
+
+  <AstroFooter />
+</BaseLayout>
+
+<!-- Auth Check Script -->
+<script is:inline define:vars={{ SUPABASE_URL, SUPABASE_ANON_KEY }}>
+  window.addEventListener('DOMContentLoaded', function() {
+    const storageKey = 'sb-' + SUPABASE_URL.split('//')[1].split('.')[0] + '-auth-token';
+    const sessionData = localStorage.getItem(storageKey);
+
+    const authRequired = document.getElementById('auth-required');
+    const creditPacks = document.getElementById('credit-packs');
+
+    if (!sessionData) {
+      authRequired.classList.remove('hidden');
+      creditPacks.classList.add('hidden');
+    } else {
+      authRequired.classList.add('hidden');
+      creditPacks.classList.remove('hidden');
+    }
+  });
+
+  // Handle auth modal
+  document.addEventListener('click', function(e) {
+    if (e.target && e.target.id === 'show-auth-modal') {
+      window.dispatchEvent(new CustomEvent('openAuthModal'));
+    }
+
+    // Handle buy credits buttons
+    if (e.target && e.target.classList.contains('buy-credits-btn')) {
+      const pack = e.target.getAttribute('data-pack');
+      const price = e.target.getAttribute('data-price');
+      alert(`Credit pack purchase coming soon!\\n${pack} credits for $${price}`);
+      // TODO: Implement PayPal checkout for credits
+    }
+  });
+
+  // Listen for successful auth
+  window.addEventListener('authSuccess', function() {
+    setTimeout(() => window.location.reload(), 500);
+  });
+</script>

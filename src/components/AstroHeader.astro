@@ -1,5 +1,16 @@
 ---
 // Astro Header Component - Server-side rendered with client-side interactivity for mobile menu
+import UserMenu from './UserMenu';
+
+// Get Supabase config with fallbacks
+const SUPABASE_URL = import.meta.env.PUBLIC_SUPABASE_URL ||
+                     import.meta.env.NEXT_PUBLIC_SUPABASE_URL ||
+                     import.meta.env.SUPABASE_URL || '';
+
+const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY ||
+                          import.meta.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
+                          import.meta.env.SUPABASE_ANON_KEY ||
+                          import.meta.env.SUPABASE_PUBLISHABLE_KEY || '';
 ---
 
 <header class="bg-white shadow-sm border-b border-gray-200">
@@ -41,63 +52,65 @@
       <nav class="hidden md:flex items-center space-x-6">
         <a href="/" class="text-gray-600 hover:text-blue-600 transition-colors">Home</a>
 
-        <!-- Writing Prompts Dropdown -->
+        <!-- Creative Prompts Mega Menu -->
         <div class="relative group">
-          <a href="/writing-prompts-generator" class="text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-1">
-            Writing Prompts
+          <button class="text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-1">
+            Creative Prompts
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
-          </a>
-          <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-            <a href="/writing-prompts-generator" class="block px-4 py-3 text-blue-600 font-semibold hover:bg-blue-50 border-b border-gray-100">
-              All Writing Prompts
-            </a>
-            <a href="/writing-prompts-generator/story-starters" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
-              Story Starters
-            </a>
-            <a href="/writing-prompts-generator/character" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
-              Character Generator
-            </a>
-            <a href="/writing-prompts-generator/conflict" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
-              Conflict Generator
-            </a>
-            <a href="/writing-prompts-generator/plot-twist" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
-              Plot Twist Generator
-            </a>
-            <a href="/writing-prompts-generator/villain" class="block px-4 py-3 text-gray-700 hover:bg-gray-50">
-              Villain Generator
-            </a>
-          </div>
-        </div>
+          </button>
+          <!-- Mega Menu Dropdown -->
+          <div class="absolute top-full left-0 mt-2 w-[600px] bg-white rounded-lg shadow-xl border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+            <div class="grid grid-cols-2 gap-4 p-6">
+              <!-- Writing Prompts Column -->
+              <div>
+                <a href="/writing-prompts-generator" class="block text-blue-600 font-bold mb-3 hover:text-blue-700">
+                  ✍️ Writing Prompts
+                </a>
+                <div class="space-y-2">
+                  <a href="/writing-prompts-generator/story-starters" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">
+                    Story Starters
+                  </a>
+                  <a href="/writing-prompts-generator/character" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">
+                    Character Generator
+                  </a>
+                  <a href="/writing-prompts-generator/conflict" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">
+                    Conflict Generator
+                  </a>
+                  <a href="/writing-prompts-generator/plot-twist" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">
+                    Plot Twist Generator
+                  </a>
+                  <a href="/writing-prompts-generator/villain" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">
+                    Villain Generator
+                  </a>
+                </div>
+              </div>
 
-        <!-- Art Prompts Dropdown -->
-        <div class="relative group">
-          <a href="/art-prompts" class="text-gray-600 hover:text-purple-600 transition-colors flex items-center gap-1">
-            Art Prompts
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </a>
-          <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-            <a href="/art-prompts" class="block px-4 py-3 text-purple-600 font-semibold hover:bg-purple-50 border-b border-gray-100">
-              All Art Prompts
-            </a>
-            <a href="/art-prompts/aesthetic" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
-              Aesthetic Generator
-            </a>
-            <a href="/art-prompts/fantasy-art" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
-              Fantasy Art Generator
-            </a>
-            <a href="/art-prompts/anime" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
-              Anime Generator
-            </a>
-            <a href="/art-prompts/character-design" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
-              Character Design Generator
-            </a>
-            <a href="/art-prompts/portrait" class="block px-4 py-3 text-gray-700 hover:bg-gray-50">
-              Portrait Generator
-            </a>
+              <!-- Art Prompts Column -->
+              <div>
+                <a href="/art-prompts" class="block text-purple-600 font-bold mb-3 hover:text-purple-700">
+                  🎨 Art Prompts
+                </a>
+                <div class="space-y-2">
+                  <a href="/art-prompts/aesthetic" class="block text-sm text-gray-700 hover:text-purple-600 hover:bg-purple-50 px-3 py-2 rounded">
+                    Aesthetic Generator
+                  </a>
+                  <a href="/art-prompts/fantasy-art" class="block text-sm text-gray-700 hover:text-purple-600 hover:bg-purple-50 px-3 py-2 rounded">
+                    Fantasy Art Generator
+                  </a>
+                  <a href="/art-prompts/anime" class="block text-sm text-gray-700 hover:text-purple-600 hover:bg-purple-50 px-3 py-2 rounded">
+                    Anime Generator
+                  </a>
+                  <a href="/art-prompts/character-design" class="block text-sm text-gray-700 hover:text-purple-600 hover:bg-purple-50 px-3 py-2 rounded">
+                    Character Design Generator
+                  </a>
+                  <a href="/art-prompts/portrait" class="block text-sm text-gray-700 hover:text-purple-600 hover:bg-purple-50 px-3 py-2 rounded">
+                    Portrait Generator
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -155,63 +168,7 @@
           </div>
         </div>
 
-        <!-- Prompts Dropdown (for other pages) -->
-        <div class="relative group">
-          <button class="text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-1">
-            Prompts
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </button>
-          <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-            <a href="/ghostface-ai-trend-prompt-generator" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
-              Ghostface AI Trend
-            </a>
-            <a href="/gemini-ai-snow-prompt-tutorial" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
-              Gemini AI Snow Tutorial
-            </a>
-            <a href="/chatgpt-photo-editing-prompts" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
-              ChatGPT Photo Editing
-            </a>
-            <a href="/gemini-photo-editing-prompts" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
-              Gemini Photo Editing
-            </a>
-            <a href="/october-writing-prompts" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
-              October Writing Prompts
-            </a>
-            <a href="/christmas-writing-prompts" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
-              Christmas Writing Prompts
-            </a>
-            <a href="/writing-prompts-for-students" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
-              Writing Prompts for Students
-            </a>
-            <div class="relative group/submenu">
-              <button class="w-full text-left px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100 flex items-center justify-between">
-                Persuasive Writing
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
-              <div class="absolute left-full top-0 ml-1 w-64 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover/submenu:opacity-100 group-hover/submenu:visible transition-all duration-200 z-50">
-                <a href="/persuasive-writing-topics" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
-                  Persuasive Writing Topics
-                </a>
-                <a href="/persuasive-essays-topics" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
-                  Persuasive Essays Topics
-                </a>
-                <a href="/persuasive-writing-titles" class="block px-4 py-3 text-gray-700 hover:bg-gray-50">
-                  Persuasive Writing Titles
-                </a>
-              </div>
-            </div>
-            <a href="/midjourney-ai-picture-generator" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
-              Midjourney AI Prompts
-            </a>
-            <a href="/nano-banana-prompts" class="block px-4 py-3 text-gray-700 hover:bg-gray-50">
-              Nano Banana Prompts
-            </a>
-          </div>
-        </div>
+        <a href="/pricing" class="text-gray-600 hover:text-blue-600 transition-colors">Pricing</a>
 
         <a href="https://github.com/rakela/random-prompts-generator" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1 text-gray-600 hover:text-blue-600 transition-colors">
           <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
@@ -219,6 +176,9 @@
           </svg>
           GitHub
         </a>
+
+        <!-- User Menu -->
+        <UserMenu client:load supabaseUrl={SUPABASE_URL} supabaseAnonKey={SUPABASE_ANON_KEY} />
       </nav>
     </div>
 
@@ -226,6 +186,11 @@
     <div id="mobile-menu" class="hidden md:hidden mt-4 py-4 border-t border-gray-200">
       <nav class="flex flex-col space-y-3">
         <a href="/" class="text-gray-600 hover:text-blue-600 transition-colors py-2">Home</a>
+
+        <!-- Creative Prompts Section (Combined Writing + Art) -->
+        <div class="border-t border-gray-100 pt-3">
+          <div class="text-sm font-semibold text-gray-700 uppercase tracking-wider mb-2">Creative Prompts</div>
+        </div>
 
         <!-- Writing Prompts Section -->
         <div class="border-t border-gray-100 pt-3">
@@ -323,12 +288,19 @@
           </div>
         </div>
 
+        <a href="/pricing" class="text-gray-600 hover:text-blue-600 transition-colors py-2 border-t border-gray-100 pt-3">Pricing</a>
+
         <a href="https://github.com/rakela/random-prompts-generator" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors py-2 border-t border-gray-100 pt-3">
           <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
           </svg>
           GitHub
         </a>
+
+        <!-- User Menu for Mobile -->
+        <div class="border-t border-gray-100 pt-3">
+          <UserMenu client:load supabaseUrl={SUPABASE_URL} supabaseAnonKey={SUPABASE_ANON_KEY} />
+        </div>
       </nav>
     </div>
   </div>

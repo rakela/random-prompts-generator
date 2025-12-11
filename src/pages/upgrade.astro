@@ -47,7 +47,8 @@ const seo = {
     <!-- Hero Section -->
     <div class="text-center mb-12">
       <h1 class="text-4xl font-bold mb-4">Upgrade to Pro</h1>
-      <p class="text-xl text-gray-600">Unlimited AI generations for your content</p>
+      <p class="text-xl text-gray-600 mb-2">Get unlimited AI generations for your content</p>
+      <a href="/pricing" class="text-blue-600 hover:text-blue-700 font-medium">View all pricing options →</a>
     </div>
 
     <!-- Auth Required Message (shown if not logged in) -->
@@ -67,37 +68,40 @@ const seo = {
       </div>
     </div>
 
-    <!-- Pricing Card -->
-    <div id="pricing-card" class="max-w-md mx-auto bg-white rounded-lg shadow-lg p-8 mb-12">
-      <div class="text-center mb-6">
-        <div class="text-5xl font-bold mb-2">$9.99</div>
-        <div class="text-gray-600">per month</div>
+    <!-- Payment Card -->
+    <div id="pricing-card" class="max-w-lg mx-auto bg-white rounded-xl shadow-xl p-8 mb-8">
+      <div class="text-center mb-8">
+        <div class="inline-block bg-blue-100 text-blue-800 text-sm font-semibold px-4 py-1 rounded-full mb-4">
+          PRO SUBSCRIPTION
+        </div>
+        <div class="text-5xl font-bold mb-2">$9.99<span class="text-2xl text-gray-600">/month</span></div>
+        <p class="text-gray-600">Cancel anytime, no commitment</p>
       </div>
 
       <div class="space-y-4 mb-8">
         <div class="flex items-center">
-          <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+          <svg class="w-6 h-6 text-blue-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
           </svg>
-          <span>Unlimited AI generations</span>
+          <span class="text-gray-900 text-lg"><strong>Unlimited</strong> AI generations</span>
         </div>
         <div class="flex items-center">
-          <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+          <svg class="w-6 h-6 text-blue-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
           </svg>
-          <span>Access to all YouTube tools</span>
+          <span class="text-gray-900 text-lg">All YouTube content tools</span>
         </div>
         <div class="flex items-center">
-          <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+          <svg class="w-6 h-6 text-blue-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
           </svg>
-          <span>Full generation history</span>
+          <span class="text-gray-900 text-lg">Full generation history</span>
         </div>
         <div class="flex items-center">
-          <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+          <svg class="w-6 h-6 text-blue-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
           </svg>
-          <span>Priority support</span>
+          <span class="text-gray-900 text-lg">Priority support</span>
         </div>
       </div>
 
@@ -127,40 +131,27 @@ const seo = {
 
       <div class="mt-6 text-center text-sm text-gray-600">
         <p class="mb-2">💳 Secure payment via PayPal</p>
-        <p>🍎 Apple Pay available on supported devices</p>
+        <p class="mb-3">🍎 Apple Pay available on supported devices</p>
+      </div>
+
+      <!-- Security & Guarantee -->
+      <div class="mt-6 pt-6 border-t border-gray-200">
+        <div class="flex items-center justify-center text-sm text-gray-600 mb-2">
+          <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+          </svg>
+          <span>7-day money-back guarantee</span>
+        </div>
+        <p class="text-center text-xs text-gray-500">Cancel anytime • No hidden fees • Questions? Check our <a href="/pricing#faq" class="text-blue-600 hover:text-blue-700">FAQ</a></p>
       </div>
     </div>
 
-    <!-- FAQ Section -->
-    <div class="max-w-3xl mx-auto">
-      <h2 class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
-
-      <div class="space-y-6">
-        <div class="bg-white rounded-lg shadow p-6">
-          <h3 class="font-semibold mb-2">How does billing work?</h3>
-          <p class="text-gray-600">You'll be charged $9.99 per month. Your Pro access is valid for 30 days from the payment date. Cancel anytime before renewal.</p>
-        </div>
-
-        <div class="bg-white rounded-lg shadow p-6">
-          <h3 class="font-semibold mb-2">What payment methods do you accept?</h3>
-          <p class="text-gray-600">We accept all major credit cards, debit cards, PayPal balance, and Apple Pay (on supported devices) through PayPal's secure checkout.</p>
-        </div>
-
-        <div class="bg-white rounded-lg shadow p-6">
-          <h3 class="font-semibold mb-2">Can I cancel anytime?</h3>
-          <p class="text-gray-600">Yes! There's no recurring subscription - you'll need to manually renew each month. Your Pro access continues until the expiration date.</p>
-        </div>
-
-        <div class="bg-white rounded-lg shadow p-6">
-          <h3 class="font-semibold mb-2">What if I'm not satisfied?</h3>
-          <p class="text-gray-600">We offer a 7-day money-back guarantee. If you're not satisfied with Pro, contact us within 7 days for a full refund.</p>
-        </div>
-
-        <div class="bg-white rounded-lg shadow p-6">
-          <h3 class="font-semibold mb-2">Is my payment information secure?</h3>
-          <p class="text-gray-600">Absolutely! We use PayPal's secure payment processing. We never see or store your card information.</p>
-        </div>
-      </div>
+    <!-- Alternative Options -->
+    <div class="max-w-lg mx-auto mt-8 text-center">
+      <p class="text-gray-600 mb-4">Need a different plan?</p>
+      <a href="/pricing" class="text-blue-600 hover:text-blue-700 font-medium">
+        View all pricing options including annual plans and credit packs →
+      </a>
     </div>
   </div>
 </BaseLayout>
