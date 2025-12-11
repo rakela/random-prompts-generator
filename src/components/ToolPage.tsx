@@ -1,12 +1,33 @@
 import React, { useState, FormEvent, useEffect, useRef } from 'react';
 import type { ToolConfig, RunToolResponse } from '../types/workflow';
-import { Copy, Loader2, CheckCircle, AlertCircle, ChevronDown, ChevronUp } from 'lucide-react';
+import { Copy, Loader2, CheckCircle, AlertCircle, ChevronDown, ChevronUp, CreditCard, Zap, Lock } from 'lucide-react';
+import { createClient } from '@supabase/supabase-js';
+
+// Supabase config helper
+const getSupabaseConfig = () => {
+  const url = (import.meta as any).env.PUBLIC_SUPABASE_URL ||
+               (import.meta as any).env.NEXT_PUBLIC_SUPABASE_URL ||
+               (import.meta as any).env.SUPABASE_URL || '';
+
+  const key = (import.meta as any).env.PUBLIC_SUPABASE_ANON_KEY ||
+               (import.meta as any).env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
+               (import.meta as any).env.SUPABASE_ANON_KEY ||
+               (import.meta as any).env.SUPABASE_PUBLISHABLE_KEY || '';
+
+  return { url, key };
+};
 
 interface ToolPageProps {
   tool: ToolConfig;
 }
 
 export default function ToolPage({ tool }: ToolPageProps) {
+  // Auth and credits state
+  const [user, setUser] = useState<any>(null);
+  const [credits, setCredits] = useState<number>(0);
+  const [isPro, setIsPro] = useState(false);
+  const [loadingAuth, setLoadingAuth] = useState(true);
+
   const [inputs, setInputs] = useState<Record<string, string>>(() => {
     // Initialize with default values
     const defaults: Record<string, string> = {};
@@ -34,6 +55,59 @@ export default function ToolPage({ tool }: ToolPageProps) {
     }
   }, []);
 
+  // Check auth and credits on mount
+  useEffect(() => {
+    const checkAuthAndCredits = async () => {
+      const { url, key } = getSupabaseConfig();
+      if (!url || !key) {
+        setLoadingAuth(false);
+        return;
+      }
+
+      const supabase = createClient(url, key, {
+        auth: { persistSession: true, autoRefreshToken: true }
+      });
+
+      const { data: { session } } = await supabase.auth.getSession();
+
+      if (session?.user) {
+        setUser(session.user);
+
+        // Fetch credits
+        try {
+          const response = await fetch('/api/check-credits', {
+            headers: {
+              'Authorization': `Bearer ${session.access_token}`
+            }
+          });
+
+          if (response.ok) {
+            const data = await response.json();
+            setCredits(data.credits || 0);
+            setIsPro(data.isPro || false);
+          }
+        } catch (err) {
+          console.error('Failed to fetch credits:', err);
+        }
+      }
+
+      setLoadingAuth(false);
+
+      // Listen for auth changes
+      const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+        setUser(session?.user ?? null);
+        if (!session?.user) {
+          setCredits(0);
+          setIsPro(false);
+        }
+      });
+
+      return () => subscription.unsubscribe();
+    };
+
+    checkAuthAndCredits();
+  }, []);
+
   const handleInputChange = (inputId: string, value: string) => {
     setInputs(prev => ({
       ...prev,
@@ -43,6 +117,20 @@ export default function ToolPage({ tool }: ToolPageProps) {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+
+    // Check if user is logged in
+    if (!user) {
+      // Dispatch event to open auth modal
+      window.dispatchEvent(new CustomEvent('openAuthModal'));
+      return;
+    }
+
+    // Check if user has credits (unless Pro)
+    if (!isPro && credits <= 0) {
+      setError('You have run out of credits. Please upgrade to Pro or purchase more credits.');
+      return;
+    }
+
     setLoading(true);
     setError(null);
     setResult(null);
@@ -63,6 +151,11 @@ export default function ToolPage({ tool }: ToolPageProps) {
 
       if (data.success && data.output) {
         setResult(data.output);
+
+        // Refresh credits after successful generation
+        if (!isPro) {
+          setCredits(prev => Math.max(0, prev - 1));
+        }
       } else {
         setError(data.error || 'Failed to generate content');
       }
@@ -239,6 +332,73 @@ export default function ToolPage({ tool }: ToolPageProps) {
             <h2 className="text-2xl font-semibold text-gray-900 mb-6 text-center">
               Input Parameters
             </h2>
+
+            {/* Credit Display Banner */}
+            {!loadingAuth && (
+              <div className="max-w-2xl mx-auto mb-6">
+                {!user ? (
+                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 flex items-center gap-3">
+                    <Lock className="w-5 h-5 text-blue-600 flex-shrink-0" />
+                    <div className="flex-1">
+                      <p className="text-blue-900 font-medium">Sign in required</p>
+                      <p className="text-blue-700 text-sm">Sign in to generate content. Free users get 1 generation per day!</p>
+                    </div>
+                    <button
+                      onClick={() => window.dispatchEvent(new CustomEvent('openAuthModal'))}
+                      className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-semibold whitespace-nowrap"
+                    >
+                      Sign In
+                    </button>
+                  </div>
+                ) : isPro ? (
+                  <div className="bg-gradient-to-r from-purple-50 to-blue-50 border border-purple-200 rounded-lg p-4 flex items-center gap-3">
+                    <Zap className="w-5 h-5 text-purple-600 flex-shrink-0" />
+                    <div className="flex-1">
+                      <p className="text-purple-900 font-semibold">Pro Plan - Unlimited Generations</p>
+                      <p className="text-purple-700 text-sm">Generate as much content as you need!</p>
+                    </div>
+                  </div>
+                ) : credits > 0 ? (
+                  <div className="bg-green-50 border border-green-200 rounded-lg p-4 flex items-center gap-3">
+                    <CreditCard className="w-5 h-5 text-green-600 flex-shrink-0" />
+                    <div className="flex-1">
+                      <p className="text-green-900 font-semibold">{credits} {credits === 1 ? 'Credit' : 'Credits'} Remaining</p>
+                      <p className="text-green-700 text-sm">Free users get 1 credit per day. Need more? Upgrade or buy credits!</p>
+                    </div>
+                    <a
+                      href="/pricing"
+                      className="text-green-700 hover:text-green-800 text-sm font-semibold whitespace-nowrap"
+                    >
+                      View Plans →
+                    </a>
+                  </div>
+                ) : (
+                  <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
+                    <div className="flex items-start gap-3 mb-3">
+                      <AlertCircle className="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5" />
+                      <div className="flex-1">
+                        <p className="text-orange-900 font-semibold">Out of Credits</p>
+                        <p className="text-orange-700 text-sm">You've used your free daily credit. Upgrade for unlimited generations or buy more credits!</p>
+                      </div>
+                    </div>
+                    <div className="flex gap-3">
+                      <a
+                        href="/upgrade"
+                        className="flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-center font-semibold"
+                      >
+                        Upgrade to Pro - $9.99/mo
+                      </a>
+                      <a
+                        href="/buy-credits"
+                        className="flex-1 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-center font-semibold"
+                      >
+                        Buy Credits - From $5
+                      </a>
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
 
             <form onSubmit={handleSubmit} className="space-y-6 max-w-2xl mx-auto">
               {tool.inputs.map((input, index) => (
