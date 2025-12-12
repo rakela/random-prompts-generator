@@ -69,32 +69,70 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY ||
           }
         });
 
-        // Exchange the code for a session
-        const { data, error } = await supabase.auth.exchangeCodeForSession(window.location.href);
+        // Get the current URL params
+        const hashParams = new URLSearchParams(window.location.hash.substring(1));
+        const searchParams = new URLSearchParams(window.location.search);
 
-        if (error) {
-          console.error('OAuth callback error:', error);
-          alert('Authentication failed. Please try again.');
-          window.location.href = '/';
-          return;
-        }
+        // Check if we have an access_token or code in the URL
+        const hasAccessToken = hashParams.has('access_token');
+        const hasCode = searchParams.has('code');
 
-        if (data.session) {
-          // Session established successfully
-          console.log('OAuth sign in successful');
+        if (hasAccessToken) {
+          // Handle hash-based OAuth response (implicit flow)
+          console.log('Processing OAuth callback with access token');
 
-          // Redirect to home or the page they were on
-          const redirectTo = sessionStorage.getItem('authRedirect') || '/';
-          sessionStorage.removeItem('authRedirect');
+          // The session is already being set by Supabase automatically
+          // Just wait a moment for it to process
+          await new Promise(resolve => setTimeout(resolve, 500));
 
-          window.location.href = redirectTo;
+          // Check if session was established
+          const { data: { session } } = await supabase.auth.getSession();
+
+          if (session) {
+            console.log('OAuth sign in successful');
+            const redirectTo = sessionStorage.getItem('authRedirect') || '/';
+            sessionStorage.removeItem('authRedirect');
+            window.location.href = redirectTo;
+          } else {
+            console.error('No session after OAuth callback');
+            window.location.href = '/';
+          }
+        } else if (hasCode) {
+          // Handle PKCE flow with code exchange
+          console.log('Processing OAuth callback with code exchange');
+
+          // Supabase will automatically handle the code exchange
+          // Just check if the session is available
+          const { data: { session }, error } = await supabase.auth.getSession();
+
+          if (error) {
+            console.error('Error getting session:', error);
+            alert('Authentication failed. Please try again.');
+            window.location.href = '/';
+            return;
+          }
+
+          if (session) {
+            console.log('OAuth sign in successful');
+            const redirectTo = sessionStorage.getItem('authRedirect') || '/';
+            sessionStorage.removeItem('authRedirect');
+            window.location.href = redirectTo;
+          } else {
+            // No session yet, redirect to home (user might need to verify email)
+            console.log('No session available, redirecting to home');
+            window.location.href = '/';
+          }
         } else {
-          // No session, redirect to home
+          // No OAuth params found, just redirect to home
+          console.log('No OAuth params found, redirecting to home');
           window.location.href = '/';
         }
       } catch (err) {
         console.error('OAuth callback error:', err);
-        alert('Authentication failed. Please try again.');
+        // Only show alert for actual errors, not for missing params
+        if (err.message && !err.message.includes('No code or session')) {
+          alert('Authentication failed. Please try again.');
+        }
         window.location.href = '/';
       }
     })();
