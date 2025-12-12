@@ -4,6 +4,8 @@ import AstroHeader from '../../components/AstroHeader.astro';
 import AstroFooter from '../../components/AstroFooter.astro';
 import categoryPrompts from '../../data/categoryPrompts.json';
 
+export const prerender = true;
+
 // Extract unique categories from category prompts
 const categories = [...new Set(categoryPrompts.map(prompt => prompt.category))];
 const categoryInfo = {
