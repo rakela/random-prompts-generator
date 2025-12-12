@@ -5,6 +5,8 @@ import AstroFooter from '../../components/AstroFooter.astro';
 import CategoryPromptGenerator from '../../components/CategoryPromptGenerator.jsx';
 import prompts from '../../data/categoryPrompts.json';
 
+export const prerender = true;
+
 // Generate static paths for each unique category
 export function getStaticPaths() {
   // Extract unique categories from the prompts

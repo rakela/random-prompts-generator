@@ -22,10 +22,8 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY ||
 
 <!-- Global Auth Modal -->
 <AuthModal
-  client:load
+  client:only="react"
   isOpen={false}
-  onClose={() => {}}
-  onSuccess={() => {}}
   supabaseUrl={SUPABASE_URL}
   supabaseAnonKey={SUPABASE_ANON_KEY}
 />

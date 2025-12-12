@@ -3,8 +3,8 @@ import { getSupabaseBrowserClient } from '../lib/supabaseBrowser';
 
 interface AuthModalProps {
   isOpen: boolean;
-  onClose: () => void;
-  onSuccess: () => void;
+  onClose?: () => void;
+  onSuccess?: () => void;
   supabaseUrl?: string;  // Optional now (kept for backwards compatibility)
   supabaseAnonKey?: string;  // Optional now (kept for backwards compatibility)
 }
@@ -34,13 +34,19 @@ export default function AuthModal({ isOpen: initialIsOpen, onClose: initialOnClo
 
   const onClose = () => {
     setIsOpen(false);
-    initialOnClose();
+    if (initialOnClose) {
+      initialOnClose();
+    }
   };
 
   const onSuccess = () => {
     // Dispatch custom event for auth success
     window.dispatchEvent(new CustomEvent('authSuccess'));
-    initialOnSuccess();
+    if (initialOnSuccess) {
+      initialOnSuccess();
+    }
+    // Reload the page to update auth state
+    window.location.reload();
   };
 
   const handleGoogleSignIn = async () => {
