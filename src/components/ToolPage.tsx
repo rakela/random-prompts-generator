@@ -1,21 +1,7 @@
 import React, { useState, FormEvent, useEffect, useRef } from 'react';
 import type { ToolConfig, RunToolResponse } from '../types/workflow';
 import { Copy, Loader2, CheckCircle, AlertCircle, ChevronDown, ChevronUp, CreditCard, Zap, Lock } from 'lucide-react';
-import { createClient } from '@supabase/supabase-js';
-
-// Supabase config helper
-const getSupabaseConfig = () => {
-  const url = (import.meta as any).env.PUBLIC_SUPABASE_URL ||
-               (import.meta as any).env.NEXT_PUBLIC_SUPABASE_URL ||
-               (import.meta as any).env.SUPABASE_URL || '';
-
-  const key = (import.meta as any).env.PUBLIC_SUPABASE_ANON_KEY ||
-               (import.meta as any).env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
-               (import.meta as any).env.SUPABASE_ANON_KEY ||
-               (import.meta as any).env.SUPABASE_PUBLISHABLE_KEY || '';
-
-  return { url, key };
-};
+import { getSupabaseBrowserClient } from '../lib/supabaseBrowser';
 
 interface ToolPageProps {
   tool: ToolConfig;
@@ -58,15 +44,8 @@ export default function ToolPage({ tool }: ToolPageProps) {
   // Check auth and credits on mount
   useEffect(() => {
     const checkAuthAndCredits = async () => {
-      const { url, key } = getSupabaseConfig();
-      if (!url || !key) {
-        setLoadingAuth(false);
-        return;
-      }
-
-      const supabase = createClient(url, key, {
-        auth: { persistSession: true, autoRefreshToken: true }
-      });
+      // Use shared Supabase client to avoid multiple instances
+      const supabase = getSupabaseBrowserClient();
 
       const { data: { session } } = await supabase.auth.getSession();
 

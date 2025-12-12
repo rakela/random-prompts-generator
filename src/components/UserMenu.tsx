@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import { createClient } from '@supabase/supabase-js';
+import { getSupabaseBrowserClient } from '../lib/supabaseBrowser';
 
 interface UserMenuProps {
-  supabaseUrl: string;
-  supabaseAnonKey: string;
+  supabaseUrl?: string;
+  supabaseAnonKey?: string;
 }
 
 export default function UserMenu({ supabaseUrl, supabaseAnonKey }: UserMenuProps) {
@@ -11,12 +11,8 @@ export default function UserMenu({ supabaseUrl, supabaseAnonKey }: UserMenuProps
   const [loading, setLoading] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
 
-  const supabase = createClient(supabaseUrl, supabaseAnonKey, {
-    auth: {
-      persistSession: true,
-      autoRefreshToken: true,
-    }
-  });
+  // Use shared Supabase client to avoid multiple instances
+  const supabase = getSupabaseBrowserClient();
 
   useEffect(() => {
     // Check for existing session
@@ -94,10 +90,12 @@ export default function UserMenu({ supabaseUrl, supabaseAnonKey }: UserMenuProps
   }
 
   return (
-    <div id="user-menu" className="relative">
+    <div id="user-menu" className="relative z-50">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center gap-2 p-2 rounded-lg hover:bg-gray-100 transition-colors"
+        aria-label="User menu"
+        aria-expanded={isOpen}
       >
         <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white font-semibold">
           {user.email?.[0].toUpperCase()}
