@@ -67,6 +67,64 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY ||
       <nav class="hidden md:flex items-center space-x-6">
         <a href="/" class="text-gray-600 hover:text-blue-600 transition-colors">Home</a>
 
+        <!-- Prompts Dropdown (Trend & Special Prompts) -->
+        <div class="relative group">
+          <button class="text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-1">
+            Prompts
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+            <a href="/ghostface-ai-trend-prompt-generator" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
+              Ghostface AI Trend
+            </a>
+            <a href="/gemini-ai-snow-prompt-tutorial" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
+              Gemini AI Snow Tutorial
+            </a>
+            <a href="/chatgpt-photo-editing-prompts" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
+              ChatGPT Photo Editing
+            </a>
+            <a href="/gemini-photo-editing-prompts" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
+              Gemini Photo Editing
+            </a>
+            <a href="/october-writing-prompts" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
+              October Writing Prompts
+            </a>
+            <a href="/christmas-writing-prompts" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
+              Christmas Writing Prompts
+            </a>
+            <a href="/writing-prompts-for-students" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
+              Writing Prompts for Students
+            </a>
+            <div class="relative group/submenu">
+              <button class="w-full text-left px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100 flex items-center justify-between">
+                Persuasive Writing
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+              <div class="absolute left-full top-0 ml-1 w-64 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover/submenu:opacity-100 group-hover/submenu:visible transition-all duration-200 z-50">
+                <a href="/persuasive-writing-topics" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
+                  Persuasive Writing Topics
+                </a>
+                <a href="/persuasive-essays-topics" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
+                  Persuasive Essays Topics
+                </a>
+                <a href="/persuasive-writing-titles" class="block px-4 py-3 text-gray-700 hover:bg-gray-50">
+                  Persuasive Writing Titles
+                </a>
+              </div>
+            </div>
+            <a href="/midjourney-ai-picture-generator" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
+              Midjourney AI Prompts
+            </a>
+            <a href="/nano-banana-prompts" class="block px-4 py-3 text-gray-700 hover:bg-gray-50">
+              Nano Banana Prompts
+            </a>
+          </div>
+        </div>
+
         <!-- Creative Prompts Mega Menu -->
         <div class="relative group">
           <button class="text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-1">
