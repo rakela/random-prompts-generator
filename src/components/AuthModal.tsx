@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
-import { createClient } from '@supabase/supabase-js';
+import { getSupabaseBrowserClient } from '../lib/supabaseBrowser';
 
 interface AuthModalProps {
   isOpen: boolean;
   onClose: () => void;
   onSuccess: () => void;
-  supabaseUrl: string;
-  supabaseAnonKey: string;
+  supabaseUrl?: string;  // Optional now (kept for backwards compatibility)
+  supabaseAnonKey?: string;  // Optional now (kept for backwards compatibility)
 }
 
 export default function AuthModal({ isOpen: initialIsOpen, onClose: initialOnClose, onSuccess: initialOnSuccess, supabaseUrl, supabaseAnonKey }: AuthModalProps) {
@@ -18,13 +18,8 @@ export default function AuthModal({ isOpen: initialIsOpen, onClose: initialOnClo
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
 
-  // Create Supabase client with props
-  const supabase = createClient(supabaseUrl, supabaseAnonKey, {
-    auth: {
-      persistSession: true,
-      autoRefreshToken: true,
-    }
-  });
+  // Use shared Supabase client to avoid multiple instances
+  const supabase = getSupabaseBrowserClient();
 
   // Listen for custom event to open modal
   useEffect(() => {

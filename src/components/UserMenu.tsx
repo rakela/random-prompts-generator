@@ -1,22 +1,20 @@
 import { useState, useEffect } from 'react';
-import { createClient } from '@supabase/supabase-js';
+import { getSupabaseBrowserClient } from '../lib/supabaseBrowser';
 
 interface UserMenuProps {
-  supabaseUrl: string;
-  supabaseAnonKey: string;
+  supabaseUrl?: string;
+  supabaseAnonKey?: string;
 }
 
 export default function UserMenu({ supabaseUrl, supabaseAnonKey }: UserMenuProps) {
   const [user, setUser] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
+  const [isPro, setIsPro] = useState(false);
+  const [credits, setCredits] = useState(0);
 
-  const supabase = createClient(supabaseUrl, supabaseAnonKey, {
-    auth: {
-      persistSession: true,
-      autoRefreshToken: true,
-    }
-  });
+  // Use shared Supabase client to avoid multiple instances
+  const supabase = getSupabaseBrowserClient();
 
   useEffect(() => {
     // Check for existing session
@@ -25,6 +23,12 @@ export default function UserMenu({ supabaseUrl, supabaseAnonKey }: UserMenuProps
     // Listen for auth changes
     const { data: authListener } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user ?? null);
+      if (session?.user) {
+        fetchUserPlan(session.access_token);
+      } else {
+        setIsPro(false);
+        setCredits(0);
+      }
     });
 
     return () => {
@@ -32,10 +36,31 @@ export default function UserMenu({ supabaseUrl, supabaseAnonKey }: UserMenuProps
     };
   }, []);
 
+  const fetchUserPlan = async (accessToken: string) => {
+    try {
+      const response = await fetch('/api/check-credits', {
+        headers: {
+          'Authorization': `Bearer ${accessToken}`
+        }
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setIsPro(data.isPro || false);
+        setCredits(data.credits || 0);
+      }
+    } catch (error) {
+      console.error('Error fetching user plan:', error);
+    }
+  };
+
   const checkUser = async () => {
     try {
       const { data: { session } } = await supabase.auth.getSession();
       setUser(session?.user ?? null);
+      if (session?.user) {
+        await fetchUserPlan(session.access_token);
+      }
     } catch (error) {
       console.error('Error checking user:', error);
     } finally {
@@ -94,10 +119,12 @@ export default function UserMenu({ supabaseUrl, supabaseAnonKey }: UserMenuProps
   }
 
   return (
-    <div id="user-menu" className="relative">
+    <div id="user-menu" className="relative z-50">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center gap-2 p-2 rounded-lg hover:bg-gray-100 transition-colors"
+        aria-label="User menu"
+        aria-expanded={isOpen}
       >
         <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white font-semibold">
           {user.email?.[0].toUpperCase()}
@@ -108,34 +135,44 @@ export default function UserMenu({ supabaseUrl, supabaseAnonKey }: UserMenuProps
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-64 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-50">
+        <div className="absolute right-0 mt-2 w-64 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-[100]">
           {/* User Info */}
           <div className="px-4 py-3 border-b border-gray-100">
             <div className="font-semibold text-gray-900 truncate">{user.email}</div>
-            <div className="text-sm text-gray-600">Free Plan</div>
+            <div className="text-sm text-gray-600">
+              {isPro ? (
+                <span className="text-purple-600 font-semibold">Pro Plan</span>
+              ) : (
+                <span>Free Plan • {credits} {credits === 1 ? 'credit' : 'credits'}</span>
+              )}
+            </div>
           </div>
 
           {/* Menu Items */}
           <div className="py-2">
-            <a
-              href="/pricing"
-              className="flex items-center gap-3 px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-              <span>Upgrade to Pro</span>
-            </a>
+            {!isPro && (
+              <>
+                <a
+                  href="/pricing"
+                  className="flex items-center gap-3 px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                  <span>Upgrade to Pro</span>
+                </a>
 
-            <a
-              href="/buy-credits"
-              className="flex items-center gap-3 px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <span>Buy Credits</span>
-            </a>
+                <a
+                  href="/buy-credits"
+                  className="flex items-center gap-3 px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>Buy Credits</span>
+                </a>
+              </>
+            )}
 
             <button
               onClick={handleSignOut}
