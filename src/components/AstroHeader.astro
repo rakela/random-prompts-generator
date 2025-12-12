@@ -13,6 +13,12 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY ||
                           import.meta.env.SUPABASE_PUBLISHABLE_KEY || '';
 ---
 
+<!-- Make Supabase config available globally for client-side components -->
+<script is:inline define:vars={{ SUPABASE_URL, SUPABASE_ANON_KEY }}>
+  window.__SUPABASE_URL__ = SUPABASE_URL;
+  window.__SUPABASE_ANON_KEY__ = SUPABASE_ANON_KEY;
+</script>
+
 <header class="bg-white shadow-sm border-b border-gray-200">
   <div class="max-w-6xl mx-auto px-4 py-4">
     <div class="flex items-center justify-between">
