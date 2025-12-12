@@ -6,8 +6,27 @@ import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
 let supabaseInstance: SupabaseClient | null = null;
 
-// Get Supabase config from environment
+// Extend window interface to include Supabase config
+declare global {
+  interface Window {
+    __SUPABASE_URL__?: string;
+    __SUPABASE_ANON_KEY__?: string;
+  }
+}
+
+// Get Supabase config from global window object or environment
 function getSupabaseConfig() {
+  // First, try to get from global window object (set by inline script in header)
+  if (typeof window !== 'undefined') {
+    const url = window.__SUPABASE_URL__;
+    const key = window.__SUPABASE_ANON_KEY__;
+
+    if (url && key) {
+      return { url, key };
+    }
+  }
+
+  // Fallback to environment variables (for dev/build time)
   const url = (import.meta as any).env.PUBLIC_SUPABASE_URL ||
                (import.meta as any).env.NEXT_PUBLIC_SUPABASE_URL ||
                (import.meta as any).env.SUPABASE_URL || '';
