@@ -1,0 +1,168 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AstroHeader from '../../components/AstroHeader.astro';
+import AstroFooter from '../../components/AstroFooter.astro';
+import categoryPrompts from '../../data/categoryPrompts.json';
+
+// Extract unique categories from category prompts
+const categories = [...new Set(categoryPrompts.map(prompt => prompt.category))];
+const categoryInfo = {
+  'fantasy': {
+    title: 'Fantasy Writing Prompts',
+    description: 'Magical worlds, mythical creatures, epic adventures, and enchanting stories',
+    icon: '✨',
+    color: 'purple'
+  },
+  'sci-fi': {
+    title: 'Sci-Fi Writing Prompts',
+    description: 'Space exploration, futuristic technology, alien encounters, and scientific wonders',
+    icon: '🚀',
+    color: 'blue'
+  },
+  'romance': {
+    title: 'Romance Writing Prompts',
+    description: 'Love stories, emotional journeys, heartfelt connections, and romantic adventures',
+    icon: '💕',
+    color: 'pink'
+  }
+};
+
+// SEO data
+const seo = {
+  title: 'Writing Prompts Generator by Genre | Fantasy, Sci-Fi, Romance',
+  description: 'Generate creative writing prompts for fantasy, sci-fi, and romance stories. Over 100+ unique prompts to inspire your next story. Free writing prompt generator.',
+  keywords: 'writing prompts, creative writing, fantasy prompts, sci-fi prompts, romance prompts, story ideas, writing inspiration',
+  path: 'prompts'
+};
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">
+        Genre-Specific Writing Prompts
+      </h1>
+      <p class="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
+        Explore curated writing prompts for your favorite genres. Each category features unique,
+        interactive prompts designed to inspire your creativity.
+      </p>
+    </div>
+  </div>
+
+  <!-- Category Cards -->
+  <section class="py-16 bg-gradient-to-br from-purple-50 to-blue-50">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid md:grid-cols-3 gap-8">
+        {categories.map(category => {
+          const info = categoryInfo[category] || {
+            title: `${category.charAt(0).toUpperCase() + category.slice(1)} Prompts`,
+            description: `Explore ${category} writing prompts`,
+            icon: '📝',
+            color: 'gray'
+          };
+          const promptCount = categoryPrompts.filter(p => p.category === category).length;
+
+          const colorClasses = {
+            purple: 'from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700',
+            blue: 'from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700',
+            pink: 'from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700',
+            gray: 'from-gray-500 to-gray-600 hover:from-gray-600 hover:to-gray-700'
+          };
+
+          return (
+            <a
+              href={`/prompts/${category}`}
+              class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden"
+            >
+              <div class={`bg-gradient-to-r ${colorClasses[info.color]} p-6 text-white`}>
+                <div class="text-5xl mb-3">{info.icon}</div>
+                <h3 class="text-2xl font-bold mb-2">{info.title}</h3>
+                <p class="text-sm opacity-90">{promptCount}+ unique prompts</p>
+              </div>
+              <div class="p-6">
+                <p class="text-gray-600 mb-4">{info.description}</p>
+                <div class="flex items-center text-purple-600 font-semibold group-hover:translate-x-2 transition-transform">
+                  <span>Explore {category} prompts</span>
+                  <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8">Interactive Prompt Generator Features</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="p-6">
+          <div class="text-4xl mb-4">🔒</div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">Lock Favorites</h3>
+          <p class="text-gray-600">Save prompts you love while exploring other options</p>
+        </div>
+        <div class="p-6">
+          <div class="text-4xl mb-4">📜</div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">Browse History</h3>
+          <p class="text-gray-600">Review previously generated prompts anytime</p>
+        </div>
+        <div class="p-6">
+          <div class="text-4xl mb-4">📋</div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">One-Click Copy</h3>
+          <p class="text-gray-600">Easily copy prompts to your writing workspace</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="bg-gray-50 py-16">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">
+        Frequently Asked Questions
+      </h2>
+
+      <div class="space-y-6">
+        <div class="bg-white rounded-lg p-6 border border-gray-200">
+          <h3 class="text-xl font-semibold text-gray-900 mb-3">
+            How do genre-specific prompts differ?
+          </h3>
+          <p class="text-gray-700">
+            Each genre has unique storytelling elements. Fantasy prompts include magic systems and mythical worlds,
+            sci-fi prompts feature technology and scientific concepts, while romance prompts focus on emotional
+            connections and relationship dynamics.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 border border-gray-200">
+          <h3 class="text-xl font-semibold text-gray-900 mb-3">
+            Can I use these prompts for published work?
+          </h3>
+          <p class="text-gray-700">
+            Yes! All prompts are free to use for any purpose, including commercial publication. The prompts are
+            creative springboards—the unique story you develop is entirely your own original work.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 border border-gray-200">
+          <h3 class="text-xl font-semibold text-gray-900 mb-3">
+            How many prompts are available?
+          </h3>
+          <p class="text-gray-700">
+            We currently have {categoryPrompts.length}+ unique prompts across all genres, with new prompts
+            added regularly. Each category features dozens of carefully crafted story ideas.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <AstroFooter />
+</BaseLayout>
