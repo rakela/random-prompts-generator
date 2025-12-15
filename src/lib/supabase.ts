@@ -124,13 +124,19 @@ export async function checkUserCredits(userId: string) {
   }
 
   // Calculate if user has daily credit available
-  const hoursSinceReset = profile.daily_credits_reset_at
-    ? (Date.now() - new Date(profile.daily_credits_reset_at).getTime()) / (1000 * 60 * 60)
-    : 999; // If null, give them a credit
+  let hasDailyCredit = false;
 
-  const hasDailyCredit = hoursSinceReset >= 24;
+  if (!profile.daily_credits_reset_at) {
+    // Never used daily credit = has credit available
+    hasDailyCredit = true;
+  } else {
+    // Check if 24 hours have passed since last use
+    const hoursSinceReset = (Date.now() - new Date(profile.daily_credits_reset_at).getTime()) / (1000 * 60 * 60);
+    hasDailyCredit = hoursSinceReset >= 24;
+  }
+
   const dailyCredits = hasDailyCredit ? 1 : 0;
-  const totalCredits = dailyCredits + profile.purchased_credits;
+  const totalCredits = dailyCredits + (profile.purchased_credits || 0);
 
   return {
     canGenerate: totalCredits > 0,
@@ -155,25 +161,32 @@ export async function deductCredit(userId: string) {
   }
 
   // Calculate if user has daily credit available
-  const hoursSinceReset = profile.daily_credits_reset_at
-    ? (Date.now() - new Date(profile.daily_credits_reset_at).getTime()) / (1000 * 60 * 60)
-    : 999; // If null, they get a credit
+  let hasDailyCredit = false;
 
-  // If more than 24 hours since last reset, use daily credit and reset timestamp
-  if (hoursSinceReset >= 24) {
+  if (!profile.daily_credits_reset_at) {
+    // Never used daily credit = has credit available
+    hasDailyCredit = true;
+  } else {
+    // Check if 24 hours have passed since last use
+    const hoursSinceReset = (Date.now() - new Date(profile.daily_credits_reset_at).getTime()) / (1000 * 60 * 60);
+    hasDailyCredit = hoursSinceReset >= 24;
+  }
+
+  // If daily credit available, use it and set timestamp
+  if (hasDailyCredit) {
     const { error } = await supabase
       .from('profiles')
       .update({ daily_credits_reset_at: new Date().toISOString() })
       .eq('id', userId);
 
     if (error) {
-      throw new Error('Failed to reset daily credit');
+      throw new Error('Failed to use daily credit');
     }
     return;
   }
 
-  // Otherwise, deduct a purchased credit
-  if (profile.purchased_credits > 0) {
+  // Otherwise, try to deduct a purchased credit
+  if (profile.purchased_credits && profile.purchased_credits > 0) {
     const { error } = await supabase
       .from('profiles')
       .update({ purchased_credits: profile.purchased_credits - 1 })
