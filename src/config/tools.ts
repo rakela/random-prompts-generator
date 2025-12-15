@@ -116,24 +116,32 @@ Please provide the brief in {language}.`
 export const youtubeBlogPostTool: ToolConfig = {
   tool_id: "youtube-blog-post-generator",
   seo_title: "YouTube to Blog Post Generator - Convert Videos to Articles",
-  seo_description: "Transform YouTube video content briefs into engaging, SEO-optimized blog posts with proper structure and formatting.",
+  seo_description: "Transform YouTube videos into engaging, SEO-optimized blog posts with proper structure and formatting.",
   category: "YouTube Tools",
   inputs: [
     {
-      id: "video_title",
-      label: "Video Title",
-      type: "text",
-      placeholder: "Enter the video title",
+      id: "youtube_url",
+      label: "YouTube Video URL",
+      type: "url",
+      placeholder: "https://www.youtube.com/watch?v=...",
       required: true,
-      help_text: "The title of the YouTube video"
+      help_text: "Enter the full YouTube video URL"
+    },
+    {
+      id: "video_title",
+      label: "Video Title (Optional)",
+      type: "text",
+      placeholder: "Enter video title if known",
+      required: false,
+      help_text: "Optional - helps provide better context"
     },
     {
       id: "content_brief",
-      label: "Content Brief",
+      label: "Content Brief (Optional)",
       type: "textarea",
-      placeholder: "Paste the content brief here...",
-      required: true,
-      help_text: "The structured content brief from the video analysis"
+      placeholder: "Paste content brief if you already have one...",
+      required: false,
+      help_text: "Optional - if you generated a brief separately, paste it here"
     },
     {
       id: "desired_length",
@@ -182,24 +190,25 @@ export const youtubeBlogPostTool: ToolConfig = {
   system_prompt: `You are an expert content writer specializing in transforming video content into engaging blog posts.
 
 **Input Parameters:**
+- YouTube URL: {youtube_url}
 - Video Title: {video_title}
+- Content Brief: {content_brief}
 - Desired Length: {desired_length}
 - Tone: {tone}
 - Include CTA: {include_cta}
 - Language: {language}
 
-**Content Brief:**
-{content_brief}
-
 **Instructions:**
-1. Write a complete blog post based on the content brief
-2. Use the specified tone: {tone}
-3. Target length: {desired_length}
-4. Structure with clear headings (H2, H3)
-5. Include an engaging introduction and conclusion
-6. Add relevant examples and insights from the video
-7. Make it SEO-friendly with natural keyword usage
-8. If {include_cta} is "Yes", add a soft call-to-action at the end
+1. Analyze the YouTube video transcript from {youtube_url}
+2. If a content brief is provided, use it as additional context
+3. Write a complete blog post based on the video content
+4. Use the specified tone: {tone}
+5. Target length: {desired_length}
+6. Structure with clear headings (H2, H3)
+7. Include an engaging introduction and conclusion
+8. Add relevant examples and insights from the video
+9. Make it SEO-friendly with natural keyword usage
+10. If {include_cta} is "Yes", add a soft call-to-action at the end
 
 **Output Format:**
 Write the blog post in HTML format with proper semantic tags:
@@ -233,23 +242,32 @@ Write the entire blog post in {language}.
 export const youtubeLinkedInPostTool: ToolConfig = {
   tool_id: "youtube-linkedin-post-generator",
   seo_title: "YouTube to LinkedIn Post Generator - Create Engaging Social Content",
-  seo_description: "Generate professional LinkedIn posts from YouTube video content with multiple style options and variants.",
+  seo_description: "Generate professional LinkedIn posts from YouTube videos with multiple style options and variants.",
   category: "YouTube Tools",
   inputs: [
     {
+      id: "youtube_url",
+      label: "YouTube Video URL",
+      type: "url",
+      placeholder: "https://www.youtube.com/watch?v=...",
+      required: true,
+      help_text: "Enter the full YouTube video URL"
+    },
+    {
       id: "video_title",
-      label: "Video Title",
+      label: "Video Title (Optional)",
       type: "text",
-      placeholder: "Enter the video title",
-      required: true
+      placeholder: "Enter video title if known",
+      required: false,
+      help_text: "Optional - helps provide better context"
     },
     {
       id: "content_brief",
-      label: "Content Brief",
+      label: "Content Brief (Optional)",
       type: "textarea",
-      placeholder: "Paste the content brief here...",
-      required: true,
-      help_text: "The structured content brief from the video analysis"
+      placeholder: "Paste content brief if you already have one...",
+      required: false,
+      help_text: "Optional - if you generated a brief separately, paste it here"
     },
     {
       id: "target_audience",
@@ -309,25 +327,26 @@ export const youtubeLinkedInPostTool: ToolConfig = {
   system_prompt: `You are an expert LinkedIn content strategist specializing in creating engaging professional posts.
 
 **Input Parameters:**
+- YouTube URL: {youtube_url}
 - Video Title: {video_title}
+- Content Brief: {content_brief}
 - Target Audience: {target_audience}
 - Post Style: {post_style}
 - Number of Variants: {num_variants}
 - Include Hashtags: {include_hashtags}
 - Language: {language}
 
-**Content Brief:**
-{content_brief}
-
 **Instructions:**
-1. Create {num_variants} LinkedIn post variant(s) based on the content brief
-2. Use the "{post_style}" style
-3. Target audience: {target_audience}
-4. Each post should be 150-300 words (LinkedIn optimal length)
-5. Start with a hook that grabs attention
-6. Include relevant emojis sparingly for visual breaks
-7. Add a clear call-to-action or engagement prompt
-8. If {include_hashtags} is "Yes", include 3-5 relevant hashtags
+1. Analyze the YouTube video transcript from {youtube_url}
+2. If a content brief is provided, use it as additional context
+3. Create {num_variants} LinkedIn post variant(s) based on the video content
+4. Use the "{post_style}" style
+5. Target audience: {target_audience}
+6. Each post should be 150-300 words (LinkedIn optimal length)
+7. Start with a hook that grabs attention
+8. Include relevant emojis sparingly for visual breaks
+9. Add a clear call-to-action or engagement prompt
+10. If {include_hashtags} is "Yes", include 3-5 relevant hashtags
 
 **Post Style Guidelines:**
 - **Story-driven narrative:** Tell a compelling story with a lesson
