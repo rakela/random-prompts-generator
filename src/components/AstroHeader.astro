@@ -77,10 +77,10 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY ||
           </button>
 
           <!-- Megamenu Dropdown -->
-          <div id="product-megamenu" class="absolute top-full left-0 mt-2 w-[900px] bg-white rounded-lg shadow-xl border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-            <div class="flex">
+          <div id="product-megamenu" class="absolute top-full left-0 mt-2 min-w-[760px] bg-white rounded-lg shadow-xl border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+            <div class="flex min-w-[760px]">
               <!-- Left Column: Tabs/Categories -->
-              <div class="w-48 bg-gray-50 border-r border-gray-200 rounded-l-lg p-4">
+              <div class="w-48 flex-shrink-0 bg-gray-50 border-r border-gray-200 rounded-l-lg p-4">
                 <button
                   class="product-tab active w-full text-left px-4 py-3 rounded-lg text-gray-700 hover:bg-white hover:text-blue-600 transition-colors font-medium mb-2 bg-white text-blue-600"
                   data-tab="free-tools"
@@ -96,10 +96,10 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY ||
               </div>
 
               <!-- Right Column: Tab Content -->
-              <div class="flex-1 p-6">
+              <div class="flex-1 p-6 min-w-0">
                 <!-- Free Tools Content -->
                 <div class="product-tab-content" data-content="free-tools">
-                  <div class="grid grid-cols-3 gap-6">
+                  <div class="grid grid-cols-3 gap-8 min-w-[500px]">
                     <!-- Writing Prompts & Generators Column -->
                     <div>
                       <h3 class="font-bold text-gray-900 mb-3">Writing Prompts</h3>
@@ -154,7 +154,7 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY ||
 
                 <!-- Features Content -->
                 <div class="product-tab-content hidden" data-content="features">
-                  <div class="grid grid-cols-2 gap-6">
+                  <div class="grid grid-cols-2 gap-8 min-w-[500px]">
                     <a href="/workflows/youtube-to-blog-and-linkedin" class="p-4 border border-gray-200 rounded-lg hover:border-blue-500 hover:shadow-md transition-all">
                       <h3 class="font-semibold text-gray-900 mb-2">YouTube to LinkedIn and Blog Post</h3>
                       <p class="text-sm text-gray-600">Transform any YouTube video into a content brief, blog post, and LinkedIn posts</p>
