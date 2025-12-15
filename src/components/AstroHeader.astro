@@ -67,188 +67,120 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY ||
       <nav class="hidden md:flex items-center space-x-6">
         <a href="/" class="text-gray-600 hover:text-blue-600 transition-colors">Home</a>
 
-        <!-- Prompts Dropdown (Trend & Special Prompts) -->
+        <!-- Product Megamenu with Tabs -->
         <div class="relative group">
           <button class="text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-1">
-            Prompts
+            Product
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
-          <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-            <a href="/ghostface-ai-trend-prompt-generator" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
-              Ghostface AI Trend
-            </a>
-            <a href="/gemini-ai-snow-prompt-tutorial" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
-              Gemini AI Snow Tutorial
-            </a>
-            <a href="/chatgpt-photo-editing-prompts" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
-              ChatGPT Photo Editing
-            </a>
-            <a href="/gemini-photo-editing-prompts" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
-              Gemini Photo Editing
-            </a>
-            <a href="/october-writing-prompts" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
-              October Writing Prompts
-            </a>
-            <a href="/christmas-writing-prompts" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
-              Christmas Writing Prompts
-            </a>
-            <a href="/writing-prompts-for-students" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
-              Writing Prompts for Students
-            </a>
-            <div class="relative group/submenu">
-              <button class="w-full text-left px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100 flex items-center justify-between">
-                Persuasive Writing
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
-              <div class="absolute left-full top-0 ml-1 w-64 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover/submenu:opacity-100 group-hover/submenu:visible transition-all duration-200 z-50">
-                <a href="/persuasive-writing-topics" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
-                  Persuasive Writing Topics
-                </a>
-                <a href="/persuasive-essays-topics" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
-                  Persuasive Essays Topics
-                </a>
-                <a href="/persuasive-writing-titles" class="block px-4 py-3 text-gray-700 hover:bg-gray-50">
-                  Persuasive Writing Titles
-                </a>
-              </div>
-            </div>
-            <a href="/midjourney-ai-picture-generator" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
-              Midjourney AI Prompts
-            </a>
-            <a href="/nano-banana-prompts" class="block px-4 py-3 text-gray-700 hover:bg-gray-50">
-              Nano Banana Prompts
-            </a>
-          </div>
-        </div>
 
-        <!-- Creative Prompts Mega Menu -->
-        <div class="relative group">
-          <button class="text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-1">
-            Creative Prompts
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </button>
-          <!-- Mega Menu Dropdown -->
-          <div class="absolute top-full left-0 mt-2 w-[750px] bg-white rounded-lg shadow-xl border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-            <div class="grid grid-cols-2 gap-8 p-8">
-              <!-- Writing Prompts Column -->
-              <div>
-                <a href="/writing-prompts-generator" class="block text-blue-600 font-bold mb-3 hover:text-blue-700">
-                  ✍️ Writing Prompts
-                </a>
-                <div class="space-y-2">
-                  <a href="/writing-prompts-generator/story-starters" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">
-                    Story Starters
-                  </a>
-                  <a href="/writing-prompts-generator/character" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">
-                    Character Generator
-                  </a>
-                  <a href="/writing-prompts-generator/conflict" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">
-                    Conflict Generator
-                  </a>
-                  <a href="/writing-prompts-generator/plot-twist" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">
-                    Plot Twist Generator
-                  </a>
-                  <a href="/writing-prompts-generator/villain" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">
-                    Villain Generator
-                  </a>
+          <!-- Megamenu Dropdown -->
+          <div id="product-megamenu" class="absolute top-full left-0 mt-2 w-[900px] bg-white rounded-lg shadow-xl border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+            <div class="flex">
+              <!-- Left Column: Tabs/Categories -->
+              <div class="w-48 bg-gray-50 border-r border-gray-200 rounded-l-lg p-4">
+                <button
+                  class="product-tab active w-full text-left px-4 py-3 rounded-lg text-gray-700 hover:bg-white hover:text-blue-600 transition-colors font-medium mb-2 bg-white text-blue-600"
+                  data-tab="free-tools"
+                >
+                  Free Tools
+                </button>
+                <button
+                  class="product-tab w-full text-left px-4 py-3 rounded-lg text-gray-700 hover:bg-white hover:text-blue-600 transition-colors font-medium"
+                  data-tab="features"
+                >
+                  Features
+                </button>
+              </div>
+
+              <!-- Right Column: Tab Content -->
+              <div class="flex-1 p-6">
+                <!-- Free Tools Content -->
+                <div class="product-tab-content" data-content="free-tools">
+                  <div class="grid grid-cols-3 gap-6">
+                    <!-- Writing Prompts & Generators Column -->
+                    <div>
+                      <h3 class="font-bold text-gray-900 mb-3">Writing Prompts</h3>
+                      <div class="space-y-2">
+                        <a href="/writing-prompts-generator/story-starters" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Story Starters</a>
+                        <a href="/writing-prompts-generator/character" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Character Generator</a>
+                        <a href="/writing-prompts-generator/conflict" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Conflict Generator</a>
+                        <a href="/writing-prompts-generator/plot-twist" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Plot Twist Generator</a>
+                        <a href="/writing-prompts-generator/villain" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Villain Generator</a>
+                      </div>
+
+                      <h3 class="font-bold text-gray-900 mb-3 mt-6">Generators</h3>
+                      <div class="space-y-2">
+                        <a href="/generators/paragraph" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Paragraph Generator</a>
+                        <a href="/generators/sentence" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Sentence Generator</a>
+                        <a href="/generators/fantasy-name" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Fantasy Name Generator</a>
+                        <a href="/generators/superpower" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Superpower Generator</a>
+                        <a href="/generators/idea" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Idea Generator</a>
+                      </div>
+                    </div>
+
+                    <!-- Art Prompts Column -->
+                    <div>
+                      <h3 class="font-bold text-gray-900 mb-3">Art Prompts</h3>
+                      <div class="space-y-2">
+                        <a href="/art-prompts/aesthetic" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Aesthetic Generator</a>
+                        <a href="/art-prompts/fantasy-art" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Fantasy Art Generator</a>
+                        <a href="/art-prompts/anime" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Anime Generator</a>
+                        <a href="/art-prompts/character-design" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Character Design Generator</a>
+                        <a href="/art-prompts/portrait" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Portrait Generator</a>
+                      </div>
+                    </div>
+
+                    <!-- Other Prompts Column -->
+                    <div>
+                      <h3 class="font-bold text-gray-900 mb-3">Other Prompts</h3>
+                      <div class="space-y-2">
+                        <a href="/ghostface-ai-trend-prompt-generator" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Ghostface AI Trend</a>
+                        <a href="/gemini-ai-snow-prompt-tutorial" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Gemini AI Snow Tutorial</a>
+                        <a href="/chatgpt-photo-editing-prompts" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">ChatGPT Photo Editing</a>
+                        <a href="/gemini-photo-editing-prompts" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Gemini Photo Editing</a>
+                        <a href="/october-writing-prompts" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">October Writing Prompts</a>
+                        <a href="/christmas-writing-prompts" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Christmas Writing Prompts</a>
+                        <a href="/writing-prompts-for-students" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Writing Prompts for Students</a>
+                        <a href="/persuasive-writing-topics" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Persuasive Writing</a>
+                        <a href="/midjourney-ai-picture-generator" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Midjourney AI Prompts</a>
+                        <a href="/nano-banana-prompts" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Nano Banana Prompts</a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
 
-              <!-- Art Prompts Column -->
-              <div>
-                <a href="/art-prompts" class="block text-purple-600 font-bold mb-3 hover:text-purple-700">
-                  🎨 Art Prompts
-                </a>
-                <div class="space-y-2">
-                  <a href="/art-prompts/aesthetic" class="block text-sm text-gray-700 hover:text-purple-600 hover:bg-purple-50 px-3 py-2 rounded">
-                    Aesthetic Generator
-                  </a>
-                  <a href="/art-prompts/fantasy-art" class="block text-sm text-gray-700 hover:text-purple-600 hover:bg-purple-50 px-3 py-2 rounded">
-                    Fantasy Art Generator
-                  </a>
-                  <a href="/art-prompts/anime" class="block text-sm text-gray-700 hover:text-purple-600 hover:bg-purple-50 px-3 py-2 rounded">
-                    Anime Generator
-                  </a>
-                  <a href="/art-prompts/character-design" class="block text-sm text-gray-700 hover:text-purple-600 hover:bg-purple-50 px-3 py-2 rounded">
-                    Character Design Generator
-                  </a>
-                  <a href="/art-prompts/portrait" class="block text-sm text-gray-700 hover:text-purple-600 hover:bg-purple-50 px-3 py-2 rounded">
-                    Portrait Generator
-                  </a>
+                <!-- Features Content -->
+                <div class="product-tab-content hidden" data-content="features">
+                  <div class="grid grid-cols-2 gap-6">
+                    <a href="/workflows/youtube-to-blog-and-linkedin" class="p-4 border border-gray-200 rounded-lg hover:border-blue-500 hover:shadow-md transition-all">
+                      <h3 class="font-semibold text-gray-900 mb-2">YouTube to LinkedIn and Blog Post</h3>
+                      <p class="text-sm text-gray-600">Transform any YouTube video into a content brief, blog post, and LinkedIn posts</p>
+                    </a>
+                    <a href="/tools/youtube-content-brief" class="p-4 border border-gray-200 rounded-lg hover:border-blue-500 hover:shadow-md transition-all">
+                      <h3 class="font-semibold text-gray-900 mb-2">YouTube to Content Brief Generator</h3>
+                      <p class="text-sm text-gray-600">Transform YouTube videos into structured content briefs with key takeaways</p>
+                    </a>
+                    <a href="/tools/youtube-blog-post-generator" class="p-4 border border-gray-200 rounded-lg hover:border-blue-500 hover:shadow-md transition-all">
+                      <h3 class="font-semibold text-gray-900 mb-2">YouTube to Blog Post Generator</h3>
+                      <p class="text-sm text-gray-600">Transform YouTube video content briefs into engaging, SEO-optimized blog posts</p>
+                    </a>
+                    <a href="/tools/youtube-linkedin-post-generator" class="p-4 border border-gray-200 rounded-lg hover:border-blue-500 hover:shadow-md transition-all">
+                      <h3 class="font-semibold text-gray-900 mb-2">YouTube to LinkedIn Post Generator</h3>
+                      <p class="text-sm text-gray-600">Generate professional LinkedIn posts from YouTube video content</p>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-
-        <!-- Generators Dropdown -->
-        <div class="relative group">
-          <a href="/generators" class="text-gray-600 hover:text-green-600 transition-colors flex items-center gap-1">
-            Generators
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </a>
-          <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-            <a href="/generators" class="block px-4 py-3 text-green-600 font-semibold hover:bg-green-50 border-b border-gray-100">
-              All Generators
-            </a>
-            <a href="/generators/paragraph" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
-              Paragraph Generator
-            </a>
-            <a href="/generators/sentence" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
-              Sentence Generator
-            </a>
-            <a href="/generators/fantasy-name" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
-              Fantasy Name Generator
-            </a>
-            <a href="/generators/superpower" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
-              Superpower Generator
-            </a>
-            <a href="/generators/idea" class="block px-4 py-3 text-gray-700 hover:bg-gray-50">
-              Idea Generator
-            </a>
-          </div>
-        </div>
-
-        <!-- YouTube Tools Dropdown -->
-        <div class="relative group">
-          <a href="/workflows/youtube-to-blog-and-linkedin" class="text-gray-600 hover:text-red-600 transition-colors flex items-center gap-1">
-            YouTube Tools
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </a>
-          <div class="absolute top-full left-0 mt-2 w-80 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-            <a href="/workflows/youtube-to-blog-and-linkedin" class="block px-4 py-3 text-red-600 font-semibold hover:bg-red-50 border-b border-gray-100">
-              🎬 YouTube → Blog & LinkedIn
-            </a>
-            <a href="/tools/youtube-content-brief" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
-              📊 Content Brief Generator
-            </a>
-            <a href="/tools/youtube-blog-post-generator" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b border-gray-100">
-              📝 Blog Post Generator
-            </a>
-            <a href="/tools/youtube-linkedin-post-generator" class="block px-4 py-3 text-gray-700 hover:bg-gray-50">
-              💼 LinkedIn Post Generator
-            </a>
           </div>
         </div>
 
         <a href="/pricing" class="text-gray-600 hover:text-blue-600 transition-colors">Pricing</a>
 
-        <a href="https://github.com/rakela/random-prompts-generator" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1 text-gray-600 hover:text-blue-600 transition-colors">
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-          </svg>
-          GitHub
-        </a>
+        <a href="/contact" class="text-gray-600 hover:text-blue-600 transition-colors">Contact Us</a>
 
         <!-- User Menu -->
         <UserMenu client:load supabaseUrl={SUPABASE_URL} supabaseAnonKey={SUPABASE_ANON_KEY} />
@@ -258,117 +190,66 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY ||
     <!-- Mobile Navigation Menu -->
     <div id="mobile-menu" class="hidden md:hidden mt-4 py-4 border-t border-gray-200">
       <nav class="flex flex-col space-y-3">
-        <a href="/" class="text-gray-600 hover:text-blue-600 transition-colors py-2">Home</a>
+        <a href="/" class="text-gray-600 hover:text-blue-600 transition-colors py-2" onClick={() => setMobileMenuOpen(false)}>Home</a>
 
-        <!-- Creative Prompts Section (Combined Writing + Art) -->
+        <!-- Product Section (Mobile) -->
         <div class="border-t border-gray-100 pt-3">
-          <div class="text-sm font-semibold text-gray-700 uppercase tracking-wider mb-2">Creative Prompts</div>
-        </div>
+          <div class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Product</div>
 
-        <!-- Writing Prompts Section -->
-        <div class="border-t border-gray-100 pt-3">
-          <a href="/writing-prompts-generator" class="text-sm font-semibold text-blue-600 uppercase tracking-wider mb-2 block">Writing Prompts</a>
-          <div class="flex flex-col space-y-2 pl-3">
-            <a href="/writing-prompts-generator/story-starters" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Story Starters</a>
-            <a href="/writing-prompts-generator/character" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Character Generator</a>
-            <a href="/writing-prompts-generator/conflict" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Conflict Generator</a>
-            <a href="/writing-prompts-generator/plot-twist" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Plot Twist Generator</a>
-            <a href="/writing-prompts-generator/villain" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Villain Generator</a>
-          </div>
-        </div>
+          <!-- Free Tools -->
+          <div class="mb-4">
+            <div class="text-sm font-semibold text-blue-600 mb-2">Free Tools</div>
+            <div class="flex flex-col space-y-2 pl-3">
+              <div class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Writing Prompts</div>
+              <a href="/writing-prompts-generator/story-starters" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Story Starters</a>
+              <a href="/writing-prompts-generator/character" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Character Generator</a>
+              <a href="/writing-prompts-generator/conflict" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Conflict Generator</a>
+              <a href="/writing-prompts-generator/plot-twist" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Plot Twist Generator</a>
+              <a href="/writing-prompts-generator/villain" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Villain Generator</a>
 
-        <!-- Art Prompts Section -->
-        <div class="border-t border-gray-100 pt-3">
-          <a href="/art-prompts" class="text-sm font-semibold text-purple-600 uppercase tracking-wider mb-2 block">Art Prompts</a>
-          <div class="flex flex-col space-y-2 pl-3">
-            <a href="/art-prompts/aesthetic" class="text-gray-600 hover:text-purple-600 transition-colors py-1">Aesthetic Generator</a>
-            <a href="/art-prompts/fantasy-art" class="text-gray-600 hover:text-purple-600 transition-colors py-1">Fantasy Art Generator</a>
-            <a href="/art-prompts/anime" class="text-gray-600 hover:text-purple-600 transition-colors py-1">Anime Generator</a>
-            <a href="/art-prompts/character-design" class="text-gray-600 hover:text-purple-600 transition-colors py-1">Character Design Generator</a>
-            <a href="/art-prompts/portrait" class="text-gray-600 hover:text-purple-600 transition-colors py-1">Portrait Generator</a>
-          </div>
-        </div>
+              <div class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1 mt-3">Art Prompts</div>
+              <a href="/art-prompts/aesthetic" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Aesthetic Generator</a>
+              <a href="/art-prompts/fantasy-art" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Fantasy Art Generator</a>
+              <a href="/art-prompts/anime" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Anime Generator</a>
+              <a href="/art-prompts/character-design" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Character Design Generator</a>
+              <a href="/art-prompts/portrait" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Portrait Generator</a>
 
-        <!-- Generators Section -->
-        <div class="border-t border-gray-100 pt-3">
-          <a href="/generators" class="text-sm font-semibold text-green-600 uppercase tracking-wider mb-2 block">Generators</a>
-          <div class="flex flex-col space-y-2 pl-3">
-            <a href="/generators/paragraph" class="text-gray-600 hover:text-green-600 transition-colors py-1">Paragraph Generator</a>
-            <a href="/generators/sentence" class="text-gray-600 hover:text-green-600 transition-colors py-1">Sentence Generator</a>
-            <a href="/generators/fantasy-name" class="text-gray-600 hover:text-green-600 transition-colors py-1">Fantasy Name Generator</a>
-            <a href="/generators/superpower" class="text-gray-600 hover:text-green-600 transition-colors py-1">Superpower Generator</a>
-            <a href="/generators/idea" class="text-gray-600 hover:text-green-600 transition-colors py-1">Idea Generator</a>
-          </div>
-        </div>
+              <div class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1 mt-3">Generators</div>
+              <a href="/generators/paragraph" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Paragraph Generator</a>
+              <a href="/generators/sentence" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Sentence Generator</a>
+              <a href="/generators/fantasy-name" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Fantasy Name Generator</a>
+              <a href="/generators/superpower" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Superpower Generator</a>
+              <a href="/generators/idea" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Idea Generator</a>
 
-        <!-- YouTube Tools Section -->
-        <div class="border-t border-gray-100 pt-3">
-          <a href="/workflows/youtube-to-blog-and-linkedin" class="text-sm font-semibold text-red-600 uppercase tracking-wider mb-2 block">YouTube Tools</a>
-          <div class="flex flex-col space-y-2 pl-3">
-            <a href="/workflows/youtube-to-blog-and-linkedin" class="text-gray-600 hover:text-red-600 transition-colors py-1">🎬 YouTube → Blog & LinkedIn</a>
-            <a href="/tools/youtube-content-brief" class="text-gray-600 hover:text-red-600 transition-colors py-1">📊 Content Brief Generator</a>
-            <a href="/tools/youtube-blog-post-generator" class="text-gray-600 hover:text-red-600 transition-colors py-1">📝 Blog Post Generator</a>
-            <a href="/tools/youtube-linkedin-post-generator" class="text-gray-600 hover:text-red-600 transition-colors py-1">💼 LinkedIn Post Generator</a>
-          </div>
-        </div>
-
-        <!-- Other Prompts Section -->
-        <div class="border-t border-gray-100 pt-3">
-          <div class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Other Prompts</div>
-          <div class="flex flex-col space-y-2 pl-3">
-            <a href="/ghostface-ai-trend-prompt-generator" class="text-gray-600 hover:text-blue-600 transition-colors py-1.5">
-              Ghostface AI Trend
-            </a>
-            <a href="/gemini-ai-snow-prompt-tutorial" class="text-gray-600 hover:text-blue-600 transition-colors py-1.5">
-              Gemini AI Snow Tutorial
-            </a>
-            <a href="/chatgpt-photo-editing-prompts" class="text-gray-600 hover:text-blue-600 transition-colors py-1.5">
-              ChatGPT Photo Editing
-            </a>
-            <a href="/gemini-photo-editing-prompts" class="text-gray-600 hover:text-blue-600 transition-colors py-1.5">
-              Gemini Photo Editing
-            </a>
-            <a href="/october-writing-prompts" class="text-gray-600 hover:text-blue-600 transition-colors py-1.5">
-              October Writing Prompts
-            </a>
-            <a href="/christmas-writing-prompts" class="text-gray-600 hover:text-blue-600 transition-colors py-1.5">
-              Christmas Writing Prompts
-            </a>
-            <a href="/writing-prompts-for-students" class="text-gray-600 hover:text-blue-600 transition-colors py-1.5">
-              Writing Prompts for Students
-            </a>
-
-            <!-- Persuasive Writing Submenu -->
-            <div class="pl-3 border-l-2 border-gray-200 space-y-2">
-              <div class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Persuasive Writing</div>
-              <a href="/persuasive-writing-topics" class="block text-gray-600 hover:text-blue-600 transition-colors py-1">
-                Persuasive Writing Topics
-              </a>
-              <a href="/persuasive-essays-topics" class="block text-gray-600 hover:text-blue-600 transition-colors py-1">
-                Persuasive Essays Topics
-              </a>
-              <a href="/persuasive-writing-titles" class="block text-gray-600 hover:text-blue-600 transition-colors py-1">
-                Persuasive Writing Titles
-              </a>
+              <div class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1 mt-3">Other Prompts</div>
+              <a href="/ghostface-ai-trend-prompt-generator" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Ghostface AI Trend</a>
+              <a href="/gemini-ai-snow-prompt-tutorial" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Gemini AI Snow Tutorial</a>
+              <a href="/chatgpt-photo-editing-prompts" class="text-gray-600 hover:text-blue-600 transition-colors py-1">ChatGPT Photo Editing</a>
+              <a href="/gemini-photo-editing-prompts" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Gemini Photo Editing</a>
+              <a href="/october-writing-prompts" class="text-gray-600 hover:text-blue-600 transition-colors py-1">October Writing Prompts</a>
+              <a href="/christmas-writing-prompts" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Christmas Writing Prompts</a>
+              <a href="/writing-prompts-for-students" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Writing Prompts for Students</a>
+              <a href="/persuasive-writing-topics" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Persuasive Writing</a>
+              <a href="/midjourney-ai-picture-generator" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Midjourney AI Prompts</a>
+              <a href="/nano-banana-prompts" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Nano Banana Prompts</a>
             </div>
+          </div>
 
-            <a href="/midjourney-ai-picture-generator" class="text-gray-600 hover:text-blue-600 transition-colors py-1.5">
-              Midjourney AI Prompts
-            </a>
-            <a href="/nano-banana-prompts" class="text-gray-600 hover:text-blue-600 transition-colors py-1.5">
-              Nano Banana Prompts
-            </a>
+          <!-- Features -->
+          <div>
+            <div class="text-sm font-semibold text-blue-600 mb-2">Features</div>
+            <div class="flex flex-col space-y-2 pl-3">
+              <a href="/workflows/youtube-to-blog-and-linkedin" class="text-gray-600 hover:text-blue-600 transition-colors py-1">YouTube → Blog & LinkedIn</a>
+              <a href="/tools/youtube-content-brief" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Content Brief Generator</a>
+              <a href="/tools/youtube-blog-post-generator" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Blog Post Generator</a>
+              <a href="/tools/youtube-linkedin-post-generator" class="text-gray-600 hover:text-blue-600 transition-colors py-1">LinkedIn Post Generator</a>
+            </div>
           </div>
         </div>
 
         <a href="/pricing" class="text-gray-600 hover:text-blue-600 transition-colors py-2 border-t border-gray-100 pt-3">Pricing</a>
 
-        <a href="https://github.com/rakela/random-prompts-generator" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors py-2 border-t border-gray-100 pt-3">
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-          </svg>
-          GitHub
-        </a>
+        <a href="/contact" class="text-gray-600 hover:text-blue-600 transition-colors py-2">Contact Us</a>
 
         <!-- User Menu for Mobile -->
         <div class="border-t border-gray-100 pt-3">
@@ -394,5 +275,28 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY ||
         closeIcon.classList.toggle('hidden');
       });
     }
+
+    // Product megamenu tabs
+    const tabs = document.querySelectorAll('.product-tab');
+    const tabContents = document.querySelectorAll('.product-tab-content');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const tabName = tab.dataset.tab;
+
+        // Remove active class from all tabs
+        tabs.forEach(t => t.classList.remove('active', 'bg-white', 'text-blue-600'));
+        // Add active class to clicked tab
+        tab.classList.add('active', 'bg-white', 'text-blue-600');
+
+        // Hide all tab contents
+        tabContents.forEach(content => content.classList.add('hidden'));
+        // Show the selected tab content
+        const targetContent = document.querySelector(`[data-content="${tabName}"]`);
+        if (targetContent) {
+          targetContent.classList.remove('hidden');
+        }
+      });
+    });
   });
 </script>
