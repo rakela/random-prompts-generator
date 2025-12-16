@@ -224,9 +224,20 @@ const seo = {
         `;
 
         try {
-          // TODO: Replace with your actual contact form endpoint
-          // For now, we'll just show a success message
-          await new Promise(resolve => setTimeout(resolve, 1500));
+          // Send to API endpoint
+          const response = await fetch('/api/contact', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+          });
+
+          const result = await response.json();
+
+          if (!response.ok) {
+            throw new Error(result.error || 'Failed to send message');
+          }
 
           // Show success message
           formMessage.className = 'p-4 bg-green-50 border border-green-200 rounded-lg text-green-800';
