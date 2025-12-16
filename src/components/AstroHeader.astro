@@ -30,7 +30,7 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY ||
 
 <header class="bg-white shadow-sm border-b border-gray-200">
   <div class="max-w-7xl mx-auto px-4 py-4">
-    <div class="flex items-center justify-between">
+    <div class="flex items-center">
       <!-- Logo -->
       <a href="/" class="flex items-center space-x-2 flex-shrink-0">
         <svg width="24" height="24" viewBox="0 -18 1060 1060" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -53,7 +53,7 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY ||
       <!-- Mobile menu toggle button -->
       <button
         id="mobile-menu-toggle"
-        class="md:hidden p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
+        class="md:hidden ml-auto p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
         aria-label="Toggle menu"
       >
         <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -65,7 +65,7 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY ||
       </button>
 
       <!-- Desktop Navigation - Centered -->
-      <nav class="hidden md:flex items-center space-x-6 absolute left-1/2 transform -translate-x-1/2">
+      <nav class="hidden md:flex items-center space-x-6 flex-1 justify-center">
         <a href="/" class="text-gray-600 hover:text-blue-600 transition-colors">Home</a>
 
         <!-- Product Megamenu with Tabs -->
