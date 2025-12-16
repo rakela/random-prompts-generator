@@ -29,9 +29,10 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY ||
 />
 
 <header class="bg-white shadow-sm border-b border-gray-200">
-  <div class="max-w-6xl mx-auto px-4 py-4">
+  <div class="max-w-7xl mx-auto px-4 py-4">
     <div class="flex items-center justify-between">
-      <a href="/" class="flex items-center space-x-2">
+      <!-- Logo -->
+      <a href="/" class="flex items-center space-x-2 flex-shrink-0">
         <svg width="24" height="24" viewBox="0 -18 1060 1060" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g strokeWidth="0"></g>
           <g strokeLinecap="round" strokeLinejoin="round"></g>
@@ -63,8 +64,8 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY ||
         </svg>
       </button>
 
-      <!-- Desktop Navigation -->
-      <nav class="hidden md:flex items-center space-x-6">
+      <!-- Desktop Navigation - Centered -->
+      <nav class="hidden md:flex items-center space-x-6 absolute left-1/2 transform -translate-x-1/2">
         <a href="/" class="text-gray-600 hover:text-blue-600 transition-colors">Home</a>
 
         <!-- Product Megamenu with Tabs -->
@@ -77,8 +78,8 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY ||
           </button>
 
           <!-- Megamenu Dropdown -->
-          <div id="product-megamenu" class="absolute top-full left-0 mt-2 min-w-[760px] bg-white rounded-lg shadow-xl border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-            <div class="flex min-w-[760px]">
+          <div id="product-megamenu" class="absolute top-full left-0 mt-2 w-[900px] bg-white rounded-lg shadow-xl border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+            <div class="flex w-[900px]">
               <!-- Left Column: Tabs/Categories -->
               <div class="w-48 flex-shrink-0 bg-gray-50 border-r border-gray-200 rounded-l-lg p-4">
                 <button
@@ -96,13 +97,14 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY ||
               </div>
 
               <!-- Right Column: Tab Content -->
-              <div class="flex-1 p-6 min-w-0">
+              <div class="flex-1 p-6">
                 <!-- Free Tools Content -->
                 <div class="product-tab-content" data-content="free-tools">
-                  <div class="grid grid-cols-3 gap-8 min-w-[500px]">
-                    <!-- Writing Prompts & Generators Column -->
+                  <!-- First Row: Writing Prompts, Generators, Art Prompts -->
+                  <div class="grid grid-cols-3 gap-6 mb-6">
+                    <!-- Writing Prompts Column -->
                     <div>
-                      <h3 class="font-bold text-gray-900 mb-3">Writing Prompts</h3>
+                      <a href="/writing-prompts-generator" class="font-bold text-gray-900 hover:text-blue-600 mb-3 block">Writing Prompts</a>
                       <div class="space-y-2">
                         <a href="/writing-prompts-generator/story-starters" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Story Starters</a>
                         <a href="/writing-prompts-generator/character" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Character Generator</a>
@@ -110,8 +112,11 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY ||
                         <a href="/writing-prompts-generator/plot-twist" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Plot Twist Generator</a>
                         <a href="/writing-prompts-generator/villain" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Villain Generator</a>
                       </div>
+                    </div>
 
-                      <h3 class="font-bold text-gray-900 mb-3 mt-6">Generators</h3>
+                    <!-- Generators Column -->
+                    <div>
+                      <a href="/generators" class="font-bold text-gray-900 hover:text-blue-600 mb-3 block">Generators</a>
                       <div class="space-y-2">
                         <a href="/generators/paragraph" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Paragraph Generator</a>
                         <a href="/generators/sentence" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Sentence Generator</a>
@@ -123,7 +128,7 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY ||
 
                     <!-- Art Prompts Column -->
                     <div>
-                      <h3 class="font-bold text-gray-900 mb-3">Art Prompts</h3>
+                      <a href="/art-prompts" class="font-bold text-gray-900 hover:text-blue-600 mb-3 block">Art Prompts</a>
                       <div class="space-y-2">
                         <a href="/art-prompts/aesthetic" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Aesthetic Generator</a>
                         <a href="/art-prompts/fantasy-art" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Fantasy Art Generator</a>
@@ -132,16 +137,22 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY ||
                         <a href="/art-prompts/portrait" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Portrait Generator</a>
                       </div>
                     </div>
+                  </div>
 
-                    <!-- Other Prompts Column -->
-                    <div>
-                      <h3 class="font-bold text-gray-900 mb-3">Other Prompts</h3>
+                  <!-- Second Row: Other Prompts in 2 Columns -->
+                  <div class="border-t border-gray-200 pt-4">
+                    <h3 class="font-bold text-gray-900 mb-3">Other Prompts</h3>
+                    <div class="grid grid-cols-2 gap-6">
+                      <!-- Column 1 -->
                       <div class="space-y-2">
                         <a href="/ghostface-ai-trend-prompt-generator" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Ghostface AI Trend</a>
                         <a href="/gemini-ai-snow-prompt-tutorial" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Gemini AI Snow Tutorial</a>
                         <a href="/chatgpt-photo-editing-prompts" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">ChatGPT Photo Editing</a>
                         <a href="/gemini-photo-editing-prompts" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Gemini Photo Editing</a>
                         <a href="/october-writing-prompts" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">October Writing Prompts</a>
+                      </div>
+                      <!-- Column 2 -->
+                      <div class="space-y-2">
                         <a href="/christmas-writing-prompts" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Christmas Writing Prompts</a>
                         <a href="/writing-prompts-for-students" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Writing Prompts for Students</a>
                         <a href="/persuasive-writing-topics" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Persuasive Writing</a>
@@ -154,7 +165,7 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY ||
 
                 <!-- Features Content -->
                 <div class="product-tab-content hidden" data-content="features">
-                  <div class="grid grid-cols-2 gap-8 min-w-[500px]">
+                  <div class="grid grid-cols-2 gap-6">
                     <a href="/workflows/youtube-to-blog-and-linkedin" class="p-4 border border-gray-200 rounded-lg hover:border-blue-500 hover:shadow-md transition-all">
                       <h3 class="font-semibold text-gray-900 mb-2">YouTube to LinkedIn and Blog Post</h3>
                       <p class="text-sm text-gray-600">Transform any YouTube video into a content brief, blog post, and LinkedIn posts</p>
@@ -181,10 +192,12 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY ||
         <a href="/pricing" class="text-gray-600 hover:text-blue-600 transition-colors">Pricing</a>
 
         <a href="/contact" class="text-gray-600 hover:text-blue-600 transition-colors">Contact Us</a>
-
-        <!-- User Menu -->
-        <UserMenu client:load supabaseUrl={SUPABASE_URL} supabaseAnonKey={SUPABASE_ANON_KEY} />
       </nav>
+
+      <!-- User Menu - Right Side -->
+      <div class="hidden md:block relative z-10">
+        <UserMenu client:load supabaseUrl={SUPABASE_URL} supabaseAnonKey={SUPABASE_ANON_KEY} />
+      </div>
     </div>
 
     <!-- Mobile Navigation Menu -->
