@@ -51,11 +51,11 @@ body {
 }
 #product-megamenu .flex{
     width: 900px;
-    left: -200px;
+    margin-left: -200px !important;
 }
 .grid-cols-3{
     grid-template-columns: 200px 200px 200px;
 }
 .grid-cols-2{
-    grid-template-columns: 200px 200px;
+    grid-template-columns: 280px 280px;
 }
