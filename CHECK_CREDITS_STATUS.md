@@ -1,13 +1,45 @@
-# Check Your Credits Status
+# Fix Your Credits System
 
-The credits system requires a database migration to work properly. Here's how to check and fix it:
+The credits system requires a database migration. Follow these steps:
 
-## Step 1: Check Your Current Credit Status
+---
 
-Run this query in your Supabase SQL Editor:
+## Step 1: Apply the Migration
+
+**Go to Supabase Dashboard → SQL Editor → Copy and Run:**
+
+The migration SQL is in the file: **`APPLY_THIS_MIGRATION.sql`**
+
+Or copy this:
 
 ```sql
--- Check your credit status
+-- Combined Credits System Migration
+ALTER TABLE profiles
+ADD COLUMN IF NOT EXISTS daily_credits_reset_at TIMESTAMP WITH TIME ZONE DEFAULT NULL,
+ADD COLUMN IF NOT EXISTS purchased_credits INTEGER DEFAULT 0;
+
+UPDATE profiles
+SET daily_credits_reset_at = NOW() - INTERVAL '25 hours'
+WHERE daily_credits_reset_at IS NOT NULL
+  AND daily_credits_reset_at > NOW() - INTERVAL '24 hours'
+  AND is_pro = FALSE;
+
+ALTER TABLE profiles
+ALTER COLUMN daily_credits_reset_at SET DEFAULT NULL;
+
+CREATE INDEX IF NOT EXISTS idx_profiles_daily_credits_reset ON profiles(daily_credits_reset_at);
+CREATE INDEX IF NOT EXISTS idx_profiles_purchased_credits ON profiles(purchased_credits);
+```
+
+✅ **You should see:** "Success. No rows returned"
+
+---
+
+## Step 2: Check Your Credits
+
+Run this query to verify:
+
+```sql
 SELECT
   email,
   is_pro,
@@ -22,27 +54,6 @@ SELECT
 FROM auth.users
 JOIN profiles ON profiles.id = auth.users.id
 WHERE email = 'your-email@example.com';  -- Replace with your email
-```
-
-## Step 2: Apply the Credits Fix Migration
-
-If the query shows you have 0 credits but it's been more than 24 hours, apply this migration:
-
-### Go to Supabase Dashboard → SQL Editor → Run this:
-
-```sql
--- Fix daily credits default value and reset existing users
-
--- First, fix existing users who have a recent reset timestamp
-UPDATE profiles
-SET daily_credits_reset_at = NOW() - INTERVAL '25 hours'
-WHERE daily_credits_reset_at IS NOT NULL
-  AND daily_credits_reset_at > NOW() - INTERVAL '24 hours'
-  AND is_pro = FALSE;
-
--- Change the default for new users
-ALTER TABLE profiles
-ALTER COLUMN daily_credits_reset_at SET DEFAULT NULL;
 ```
 
 ## Step 3: Verify It Worked
