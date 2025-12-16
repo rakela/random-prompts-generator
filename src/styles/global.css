@@ -49,3 +49,13 @@ body {
 .megamenu-container .grid .px-3{
   padding-left: 0 !important;
 }
+#product-megamenu .flex{
+    width: 900px;
+    left: -200px;
+}
+.grid-cols-3{
+    grid-template-columns: 200px 200px 200px;
+}
+.grid-cols-2{
+    grid-template-columns: 200px 200px;
+}
