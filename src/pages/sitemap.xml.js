@@ -81,6 +81,9 @@ const staticPageUrls = [
   'tools/youtube-content-brief',
   'tools/youtube-blog-post-generator',
   'tools/youtube-linkedin-post-generator',
+  // Other pages
+  'pricing',
+  'contact',
   // Legal
   'privacy',
   'terms'
