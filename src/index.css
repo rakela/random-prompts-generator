@@ -20,3 +20,13 @@ body {
   overflow-x: hidden;
   width: 100%;
 }
+#product-megamenu {
+    width: 900px;
+    left: -200px;
+}
+.grid-cols-3{
+    grid-template-columns: 200px 200px 200px;
+}
+.grid-cols-2{
+    grid-template-columns: 200px 200px;
+}
