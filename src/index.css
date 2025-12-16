@@ -20,7 +20,7 @@ body {
   overflow-x: hidden;
   width: 100%;
 }
-#product-megamenu {
+#product-megamenu .flex{
     width: 900px;
     left: -200px;
 }
