@@ -195,7 +195,7 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY ||
       </nav>
 
       <!-- User Menu - Right Side -->
-      <div class="hidden md:block relative z-10">
+      <div class="hidden md:flex items-center flex-shrink-0 ml-6">
         <UserMenu client:load supabaseUrl={SUPABASE_URL} supabaseAnonKey={SUPABASE_ANON_KEY} />
       </div>
     </div>
