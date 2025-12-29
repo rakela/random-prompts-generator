@@ -10,6 +10,7 @@ interface ToolFormProps {
 export default function ToolForm({ tool }: ToolFormProps) {
   // Auth and credits state
   const [user, setUser] = useState<any>(null);
+  const [accessToken, setAccessToken] = useState<string>('');
   const [credits, setCredits] = useState<number>(0);
   const [isPro, setIsPro] = useState(false);
   const [loadingAuth, setLoadingAuth] = useState(true);
@@ -48,6 +49,7 @@ export default function ToolForm({ tool }: ToolFormProps) {
 
       if (session?.user) {
         setUser(session.user);
+        setAccessToken(session.access_token);
 
         try {
           const response = await fetch('/api/check-credits', {
@@ -70,6 +72,7 @@ export default function ToolForm({ tool }: ToolFormProps) {
 
       const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
         setUser(session?.user ?? null);
+        setAccessToken(session?.access_token ?? '');
         if (!session?.user) {
           setCredits(0);
           setIsPro(false);
@@ -110,7 +113,8 @@ export default function ToolForm({ tool }: ToolFormProps) {
       const response = await fetch('/api/run-tool', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${accessToken}`
         },
         body: JSON.stringify({
           tool_id: tool.tool_id,
