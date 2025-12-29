@@ -72,86 +72,116 @@ export async function getYouTubeTranscript(
   console.log(`[YouTube] Using: youtube-caption-extractor (serverless-optimized)`);
   console.log(`[YouTube] ========================================`);
 
-  try {
-    // Fetch subtitles using serverless-optimized method
-    // This automatically uses Innertube API in serverless environments
-    const subtitles = await getSubtitles({
-      videoID: videoId,
-      lang: languageCode
-    });
+  // Try multiple language code variants for better compatibility
+  const languageVariants = [
+    languageCode,           // Try the provided language code first
+    'en',                   // Standard English
+    'en-US',                // US English
+    'en-GB',                // UK English
+    'a.en',                 // Auto-generated English (common format)
+    'en-us',                // lowercase variant
+    'en-gb',                // lowercase variant
+  ];
 
-    if (!subtitles || subtitles.length === 0) {
-      throw new Error('No captions available for this video');
+  // Remove duplicates
+  const uniqueLanguages = [...new Set(languageVariants)];
+
+  let lastError: Error | null = null;
+
+  // Try each language variant
+  for (const lang of uniqueLanguages) {
+    try {
+      console.log(`[YouTube] Trying language code: ${lang}`);
+
+      const subtitles = await getSubtitles({
+        videoID: videoId,
+        lang: lang
+      });
+
+      if (!subtitles || subtitles.length === 0) {
+        console.log(`[YouTube] No captions found for language: ${lang}`);
+        continue;
+      }
+
+      console.log(`[YouTube] ✓ Received ${subtitles.length} caption segments for language: ${lang}`);
+
+      // Combine all subtitle segments into full transcript
+      const fullTranscript = subtitles
+        .map((segment: any) => segment.text || '')
+        .filter((text: string) => text.trim().length > 0)
+        .join(' ')
+        .trim();
+
+      if (!fullTranscript || fullTranscript.length < 50) {
+        console.log(`[YouTube] Transcript too short for language: ${lang}`);
+        continue;
+      }
+
+      console.log(`[YouTube] ✓ SUCCESS: ${fullTranscript.length} characters (language: ${lang})`);
+      console.log(`[YouTube] ========================================`);
+
+      return fullTranscript;
+
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : String(error);
+      console.log(`[YouTube] Failed with language ${lang}: ${errorMessage}`);
+      lastError = error instanceof Error ? error : new Error(String(error));
+      continue;
     }
+  }
 
-    console.log(`[YouTube] ✓ Received ${subtitles.length} caption segments`);
+  // If we get here, all language variants failed
+  const errorMessage = lastError ? (lastError instanceof Error ? lastError.message : String(lastError)) : 'Unknown error';
+  console.error('[YouTube] ✗ ERROR: All language variants failed');
+  console.error('[YouTube] Last error:', errorMessage);
+  console.error('[YouTube] ========================================');
 
-    // Combine all subtitle segments into full transcript
-    const fullTranscript = subtitles
-      .map((segment: any) => segment.text || '')
-      .filter((text: string) => text.trim().length > 0)
-      .join(' ')
-      .trim();
-
-    if (!fullTranscript || fullTranscript.length < 50) {
-      throw new Error('Transcript is too short or empty');
-    }
-
-    console.log(`[YouTube] ✓ SUCCESS: ${fullTranscript.length} characters`);
-    console.log(`[YouTube] ========================================`);
-
-    return fullTranscript;
-
-  } catch (error) {
-    const errorMessage = error instanceof Error ? error.message : String(error);
-    console.error('[YouTube] ✗ ERROR:', errorMessage);
-    console.error('[YouTube] ========================================');
-
-    // Provide helpful error messages based on error type
-    if (errorMessage.includes('Could not find captions') ||
-        errorMessage.includes('No captions available') ||
-        errorMessage.includes('Transcript is disabled')) {
-      throw new Error(
-        `This video does not have ${languageCode} captions/subtitles available. ` +
-        `Video: https://www.youtube.com/watch?v=${videoId}\n\n` +
-        `Suggestions:\n` +
-        `1. Check if the video has captions enabled on YouTube\n` +
-        `2. Try a video from a major channel (TED, Khan Academy, BBC, etc.)\n` +
-        `3. Try with language code 'en-US' or 'en-GB' if 'en' doesn't work\n\n` +
-        `Note: Auto-generated captions should work, but must be enabled by the creator.`
-      );
-    }
-
-    if (errorMessage.includes('Video unavailable') ||
-        errorMessage.includes('private') ||
-        errorMessage.includes('not available')) {
-      throw new Error(
-        `This video is unavailable, private, or restricted. ` +
-        `Video: https://www.youtube.com/watch?v=${videoId}\n\n` +
-        `The video must be public and accessible.`
-      );
-    }
-
-    if (errorMessage.includes('Sign in to confirm') ||
-        errorMessage.includes('bot')) {
-      throw new Error(
-        `YouTube is temporarily blocking automated access. ` +
-        `This is usually temporary. Video: https://www.youtube.com/watch?v=${videoId}\n\n` +
-        `Suggestions:\n` +
-        `1. Wait 2-3 minutes and try again\n` +
-        `2. Try a different video from a major channel\n` +
-        `3. Contact support if this persists\n\n` +
-        `Note: This is a YouTube rate-limiting measure, not an issue with the tool.`
-      );
-    }
-
-    // Generic error with original message
+  // Provide helpful error messages based on error type
+  if (errorMessage.includes('Could not find captions') ||
+      errorMessage.includes('No captions available') ||
+      errorMessage.includes('Transcript is disabled')) {
     throw new Error(
-      `Failed to fetch transcript: ${errorMessage}\n` +
+      `Could not find captions for this video in any supported language. ` +
       `Video: https://www.youtube.com/watch?v=${videoId}\n\n` +
-      `If this error persists, the video may not have accessible captions.`
+      `Tried language codes: ${uniqueLanguages.join(', ')}\n\n` +
+      `Suggestions:\n` +
+      `1. Check if the video has captions/subtitles enabled on YouTube\n` +
+      `2. Captions must be either manually added or auto-generated by YouTube\n` +
+      `3. Try a different video with confirmed captions\n\n` +
+      `Note: The video creator must enable captions for this to work.`
     );
   }
+
+  if (errorMessage.includes('Video unavailable') ||
+      errorMessage.includes('private') ||
+      errorMessage.includes('not available')) {
+    throw new Error(
+      `This video is unavailable, private, or restricted. ` +
+      `Video: https://www.youtube.com/watch?v=${videoId}\n\n` +
+      `The video must be public and accessible.`
+    );
+  }
+
+  if (errorMessage.includes('Sign in to confirm') ||
+      errorMessage.includes('bot')) {
+    throw new Error(
+      `YouTube is temporarily blocking automated access. ` +
+      `This is usually temporary. Video: https://www.youtube.com/watch?v=${videoId}\n\n` +
+      `Suggestions:\n` +
+      `1. Wait 2-3 minutes and try again\n` +
+      `2. Try a different video from a major channel\n` +
+      `3. Contact support if this persists\n\n` +
+      `Note: This is a YouTube rate-limiting measure, not an issue with the tool.`
+    );
+  }
+
+  // Generic error with original message
+  throw new Error(
+    `Failed to fetch transcript: ${errorMessage}\n` +
+    `Video: https://www.youtube.com/watch?v=${videoId}\n\n` +
+    `Tried ${uniqueLanguages.length} language variants without success.\n` +
+    `If this error persists, the video may not have accessible captions.`
+  );
 }
 
 /**
