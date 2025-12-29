@@ -110,7 +110,15 @@ export const POST: APIRoute = async ({ request }) => {
     let transcript = '';
     let videoTitle = '';
 
-    if (tool_id === 'youtube-content-brief' && sanitizedInputs.youtube_url) {
+    // All YouTube tools need transcript fetching
+    const youtubeTools = [
+      'youtube-content-brief',
+      'youtube-blog-post-generator',
+      'youtube-linkedin-post-generator',
+      'youtube-to-blog-and-linkedin'
+    ];
+
+    if (youtubeTools.includes(tool_id) && sanitizedInputs.youtube_url) {
       try {
         console.log(`[run-tool] Fetching YouTube transcript for: ${sanitizedInputs.youtube_url}`);
         transcript = await getYouTubeTranscript(sanitizedInputs.youtube_url);
@@ -121,10 +129,12 @@ export const POST: APIRoute = async ({ request }) => {
         videoTitle = sanitizedInputs.video_title || `YouTube Video ${videoId}`;
       } catch (error) {
         console.error('[run-tool] Transcript fetch error:', error);
+        const errorMsg = error instanceof Error ? error.message : String(error);
+        console.error('[run-tool] Full error details:', error);
         return new Response(
           JSON.stringify({
             success: false,
-            error: `Failed to fetch YouTube transcript: ${error instanceof Error ? error.message : String(error)}`
+            error: `Failed to fetch YouTube transcript: ${errorMsg}`
           } as RunToolResponse),
           {
             status: 500,
@@ -145,20 +155,16 @@ export const POST: APIRoute = async ({ request }) => {
     // Build user content based on tool type
     let userContent = '';
 
-    if (tool_id === 'youtube-content-brief') {
-      // For content brief, pass the transcript
-      userContent = `Here is the video transcript:\n\n${transcript}`;
-    } else if (tool_id === 'youtube-blog-post-generator' || tool_id === 'youtube-linkedin-post-generator') {
-      // For blog/linkedin, the content_brief is already in the inputs
-      // The system prompt will have it interpolated
-      // Pass any extra context if provided
-      if (extra_context?.content_brief) {
-        userContent = `Content Brief:\n\n${extra_context.content_brief}`;
+    if (youtubeTools.includes(tool_id)) {
+      // For all YouTube tools, pass the transcript
+      if (transcript) {
+        userContent = `Here is the video transcript:\n\n${transcript}`;
       } else {
-        userContent = 'Please generate content based on the provided content brief.';
+        // Fallback to extra context if transcript wasn't fetched
+        userContent = extra_context?.transcript || extra_context?.content_brief || 'Please generate the requested content.';
       }
     } else {
-      // Generic handling
+      // Generic handling for non-YouTube tools
       userContent = extra_context?.transcript || extra_context?.content_brief || 'Please generate the requested content.';
     }
 

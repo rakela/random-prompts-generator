@@ -124,7 +124,12 @@ export async function getYouTubeTranscript(
 
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : String(error);
-      console.log(`[YouTube] Failed with language ${lang}: ${errorMessage}`);
+      console.error(`[YouTube] Failed with language ${lang}:`, error);
+      console.error(`[YouTube] Error type: ${typeof error}`);
+      console.error(`[YouTube] Error message: ${errorMessage}`);
+      if (error instanceof Error && error.stack) {
+        console.error(`[YouTube] Error stack:`, error.stack);
+      }
       lastError = error instanceof Error ? error : new Error(String(error));
       continue;
     }
