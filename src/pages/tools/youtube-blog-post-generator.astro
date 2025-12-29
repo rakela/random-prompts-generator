@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AstroHeader from '../../components/AstroHeader.astro';
+import AstroFooter from '../../components/AstroFooter.astro';
+import ToolForm from '../../components/ToolForm';
+import { getToolById } from '../../config/tools';
+
+export const prerender = true;
+
+// Get the tool configuration
+const tool = getToolById('youtube-blog-post-generator');
+
+if (!tool) {
+  return Astro.redirect('/404');
+}
+
+// SEO data
+const seo = {
+  title: 'YouTube to Blog Post Converter | AI Article Writer - RandomPrompts',
+  description: 'Convert YouTube videos into SEO-optimized blog posts in seconds. Our AI extracts transcripts and formats them into high-quality articles.',
+  canonical: 'https://randomprompts.org/tools/youtube-blog-post-generator'
+};
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+
+  <main class="max-w-4xl mx-auto px-4 py-12">
+    <!-- HERO SECTION -->
+    <div class="text-center mb-10">
+      <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 mb-4">
+        AI YouTube to Blog Post Converter
+      </h1>
+      <p class="text-xl text-slate-600 max-w-2xl mx-auto">
+        Don't let your video content die on YouTube. Turn your scripts into perfectly formatted, SEO-ready articles in one click.
+      </p>
+    </div>
+
+    <!-- TOOL CONTAINER -->
+    <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200 mb-16">
+      <ToolForm client:load tool={tool} />
+      <p class="text-xs text-slate-400 text-center mt-4">
+        Supported formats: Long-form videos, Shorts, and Podcasts.
+      </p>
+    </div>
+
+    <!-- SEO CONTENT BLOCK -->
+    <article class="prose prose-slate max-w-none">
+      <div class="grid md:grid-cols-3 gap-8 mb-12">
+        <div>
+          <h3 class="text-lg font-semibold mb-2">SEO Optimized</h3>
+          <p class="text-slate-600">The AI automatically generates H1, H2, and H3 headers based on your video's topics, making your post ready for Google ranking immediately.</p>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-2">Clean Formatting</h3>
+          <p class="text-slate-600">We strip out filler words, "ums," "ahs," and conversational fluff to ensure your blog post reads professionally, not like a raw transcript.</p>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-2">Key Takeaways</h3>
+          <p class="text-slate-600">Automatically extracts the most valuable insights and bullet points from your video, perfect for summaries or newsletters.</p>
+        </div>
+      </div>
+
+      <!-- FAQ / LONG TAIL KEYWORDS -->
+      <section class="bg-slate-50 p-8 rounded-xl border border-slate-100">
+        <h2 class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
+
+        <div class="space-y-6">
+          <div>
+            <h3 class="font-semibold text-slate-900">How do I convert a YouTube video to a blog post?</h3>
+            <p class="text-slate-600 mt-1">Simply paste your YouTube URL into the input field above. Our tool fetches the transcript, analyzes the context, and rewrites it into a structured article.</p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-slate-900">Is this better than a raw transcript?</h3>
+            <p class="text-slate-600 mt-1">Yes. A raw transcript is a wall of text that is hard to read. This tool organizes the content into logical sections with headers, making it engaging for blog readers.</p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-slate-900">Does it work for YouTube Shorts?</h3>
+            <p class="text-slate-600 mt-1">Yes, you can repurpose Shorts into micro-blogs or quick tips articles perfectly suited for social sharing.</p>
+          </div>
+        </div>
+      </section>
+    </article>
+  </main>
+
+  <AstroFooter />
+</BaseLayout>

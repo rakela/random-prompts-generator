@@ -3,8 +3,8 @@ import type { ToolConfig } from '../types/workflow';
 // Tool 1: YouTube Content Brief Generator
 export const youtubeContentBriefTool: ToolConfig = {
   tool_id: "youtube-content-brief",
-  seo_title: "YouTube Content Brief Generator - Extract Key Insights from Videos",
-  seo_description: "Transform YouTube videos into structured content briefs with key takeaways, target audience insights, and actionable content strategies.",
+  seo_title: "YouTube Video Script & Outline Generator | Free Content Brief",
+  seo_description: "Stop staring at a blank page. Generate data-backed YouTube video outlines, hooks, and call-to-action scripts in seconds.",
   category: "YouTube Tools",
   inputs: [
     {
@@ -115,8 +115,8 @@ Please provide the brief in {language}.`
 // Tool 2: YouTube Blog Post Generator
 export const youtubeBlogPostTool: ToolConfig = {
   tool_id: "youtube-blog-post-generator",
-  seo_title: "YouTube to Blog Post Generator - Convert Videos to Articles",
-  seo_description: "Transform YouTube videos into engaging, SEO-optimized blog posts with proper structure and formatting.",
+  seo_title: "YouTube to Blog Post Converter | AI Article Writer - RandomPrompts",
+  seo_description: "Convert YouTube videos into SEO-optimized blog posts in seconds. Our AI extracts transcripts and formats them into high-quality articles.",
   category: "YouTube Tools",
   inputs: [
     {
@@ -241,8 +241,8 @@ Write the entire blog post in {language}.
 // Tool 3: YouTube LinkedIn Post Generator
 export const youtubeLinkedInPostTool: ToolConfig = {
   tool_id: "youtube-linkedin-post-generator",
-  seo_title: "YouTube to LinkedIn Post Generator - Create Engaging Social Content",
-  seo_description: "Generate professional LinkedIn posts from YouTube videos with multiple style options and variants.",
+  seo_title: "YouTube to LinkedIn Post Generator | Viral Hook Writer",
+  seo_description: "Generate high-engagement LinkedIn posts from your YouTube videos. Create threads, carousels, and thought leadership posts instantly.",
   category: "YouTube Tools",
   inputs: [
     {
@@ -384,11 +384,149 @@ Write all posts in {language}.
 5. Always include the attribution line at the end of each variant`
 };
 
+// Tool 4: YouTube Content Repurposing Workflow (All-in-One)
+export const youtubeRepurposingWorkflowTool: ToolConfig = {
+  tool_id: "youtube-to-blog-and-linkedin",
+  seo_title: "AI Content Repurposing Workflow | Video to Blog & LinkedIn",
+  seo_description: "The ultimate creator workflow. Turn one YouTube video into a blog post, LinkedIn update, and newsletter draft simultaneously.",
+  category: "YouTube Workflows",
+  inputs: [
+    {
+      id: "youtube_url",
+      label: "YouTube Video URL",
+      type: "url",
+      placeholder: "https://www.youtube.com/watch?v=...",
+      required: true,
+      help_text: "Enter the full YouTube video URL"
+    },
+    {
+      id: "video_title",
+      label: "Video Title (Optional)",
+      type: "text",
+      placeholder: "Enter video title if known",
+      required: false,
+      help_text: "Optional - helps provide better context"
+    },
+    {
+      id: "tone",
+      label: "Overall Tone",
+      type: "select",
+      required: true,
+      options: [
+        "Professional",
+        "Conversational",
+        "Educational",
+        "Inspirational"
+      ],
+      default: "Conversational"
+    },
+    {
+      id: "target_audience",
+      label: "Target Audience",
+      type: "select",
+      required: true,
+      options: [
+        "General Public",
+        "Business Professionals",
+        "Developers & Engineers",
+        "Content Creators",
+        "Marketers",
+        "Entrepreneurs"
+      ],
+      default: "General Public"
+    },
+    {
+      id: "language",
+      label: "Output Language",
+      type: "select",
+      required: true,
+      options: ["English", "Spanish", "French", "German", "Portuguese"],
+      default: "English"
+    }
+  ],
+  system_prompt: `You are an expert content repurposing specialist. Your task is to transform a YouTube video into THREE different content formats simultaneously.
+
+**Input Parameters:**
+- YouTube URL: {youtube_url}
+- Video Title: {video_title}
+- Tone: {tone}
+- Target Audience: {target_audience}
+- Language: {language}
+
+**Instructions:**
+Analyze the YouTube video transcript and create all three outputs in a single response.
+
+**Output Format:**
+
+# Content Repurposing Package
+
+---
+
+## 📝 BLOG POST
+
+<h1>[Engaging Blog Title]</h1>
+
+<p>[Introduction paragraph...]</p>
+
+<h2>[Section 1 Heading]</h2>
+<p>[Content...]</p>
+
+<h2>[Section 2 Heading]</h2>
+<p>[Content...]</p>
+
+<h2>Conclusion</h2>
+<p>[Wrap up with key takeaways...]</p>
+
+<p><em>Word count: approximately 1,000-1,500 words</em></p>
+
+---
+
+## 💼 LINKEDIN POST
+
+**Hook:** [Attention-grabbing opening line]
+
+[Main content with strategic line breaks]
+
+[Key insight or lesson]
+
+[Call-to-action or engagement prompt]
+
+[3-5 relevant hashtags if appropriate]
+
+---
+
+## 📧 NEWSLETTER DRAFT
+
+**Subject Line:** [Catchy email subject]
+
+Hey [Subscriber],
+
+[Conversational opening that references the video]
+
+[Brief summary of key points - 3-4 short paragraphs]
+
+[Clear CTA directing to watch the video]
+
+[Signature line]
+
+---
+
+**All content should:**
+1. Be written in {language}
+2. Use a {tone} tone
+3. Target {target_audience}
+4. Be SEO-friendly and engaging
+5. Reference the video naturally without being overly promotional
+
+<p><em>Generated with <a href="https://randomprompts.org" target="_blank">Random Prompts Generator</a></em></p>`
+};
+
 // Tools Registry
 export const tools: Record<string, ToolConfig> = {
   "youtube-content-brief": youtubeContentBriefTool,
   "youtube-blog-post-generator": youtubeBlogPostTool,
-  "youtube-linkedin-post-generator": youtubeLinkedInPostTool
+  "youtube-linkedin-post-generator": youtubeLinkedInPostTool,
+  "youtube-to-blog-and-linkedin": youtubeRepurposingWorkflowTool
 };
 
 // Helper function to get a tool by ID
