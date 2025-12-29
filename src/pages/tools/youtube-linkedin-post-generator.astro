@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AstroHeader from '../../components/AstroHeader.astro';
+import AstroFooter from '../../components/AstroFooter.astro';
+import ToolForm from '../../components/ToolForm';
+import { getToolById } from '../../config/tools';
+
+export const prerender = true;
+
+// Get the tool configuration
+const tool = getToolById('youtube-linkedin-post-generator');
+
+if (!tool) {
+  return Astro.redirect('/404');
+}
+
+// SEO data
+const seo = {
+  title: 'YouTube to LinkedIn Post Generator | Viral Hook Writer',
+  description: 'Generate high-engagement LinkedIn posts from your YouTube videos. Create threads, carousels, and thought leadership posts instantly.',
+  canonical: 'https://randomprompts.org/tools/youtube-linkedin-post-generator'
+};
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+
+  <main class="max-w-4xl mx-auto px-4 py-12">
+    <!-- HERO SECTION -->
+    <div class="text-center mb-10">
+      <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 mb-4">
+        Viral YouTube to LinkedIn Post Generator
+      </h1>
+      <p class="text-xl text-slate-600 max-w-2xl mx-auto">
+        Extract the "Golden Nuggets" from your video. Generate thumb-stopping text posts optimized for the LinkedIn algorithm.
+      </p>
+    </div>
+
+    <!-- TOOL CONTAINER -->
+    <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200 mb-16">
+      <ToolForm client:load tool={tool} />
+      <p class="text-xs text-slate-400 text-center mt-4">
+        Optimized for: Personal Brands, Founders, and Creators.
+      </p>
+    </div>
+
+    <!-- SEO CONTENT BLOCK -->
+    <article class="prose prose-slate max-w-none">
+      <div class="grid md:grid-cols-2 gap-12 mb-12">
+        <div>
+          <h2 class="text-2xl font-bold mb-4">Why Repurpose to LinkedIn?</h2>
+          <p class="text-slate-600">Your YouTube video contains thousands of words of value. Posting a link gets zero reach. Writing a native text post with our tool captures attention and drives traffic.</p>
+        </div>
+        <div>
+          <h2 class="text-2xl font-bold mb-4">The "Bro-etry" & Professional Styles</h2>
+          <p class="text-slate-600">Whether you want a punchy, one-line-at-a-time viral style or a professional structured summary, our AI understands the context of your video.</p>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <section class="border-t border-slate-200 pt-10">
+        <h2 class="text-2xl font-bold mb-6">Common Questions</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="font-semibold text-slate-900">How does it create the "Hook"?</h3>
+            <p class="text-slate-600 mt-2">The AI identifies the most controversial or surprising statement in your video transcript and moves it to the very first line to ensure people click "See more."</p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-slate-900">Can I use this for Twitter/X threads?</h3>
+            <p class="text-slate-600 mt-2">Yes, the output format is concise and punchy, making it easily adaptable for Twitter threads or Instagram captions.</p>
+          </div>
+        </div>
+      </section>
+    </article>
+  </main>
+
+  <AstroFooter />
+</BaseLayout>

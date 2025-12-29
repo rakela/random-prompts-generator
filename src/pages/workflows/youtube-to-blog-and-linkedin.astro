@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AstroHeader from '../../components/AstroHeader.astro';
+import AstroFooter from '../../components/AstroFooter.astro';
+import ToolForm from '../../components/ToolForm';
+import { getToolById } from '../../config/tools';
+
+export const prerender = true;
+
+// Get the tool configuration
+const tool = getToolById('youtube-to-blog-and-linkedin');
+
+if (!tool) {
+  return Astro.redirect('/404');
+}
+
+// SEO data
+const seo = {
+  title: 'AI Content Repurposing Workflow | Video to Blog & LinkedIn',
+  description: 'The ultimate creator workflow. Turn one YouTube video into a blog post, LinkedIn update, and newsletter draft simultaneously.',
+  canonical: 'https://randomprompts.org/workflows/youtube-to-blog-and-linkedin'
+};
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+
+  <main class="max-w-4xl mx-auto px-4 py-12">
+    <!-- HERO SECTION -->
+    <div class="text-center mb-10">
+      <span class="bg-green-100 text-green-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide mb-4 inline-block">
+        Most Popular Workflow
+      </span>
+      <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 mb-4">
+        The All-in-One Repurposing Engine
+      </h1>
+      <p class="text-xl text-slate-600 max-w-2xl mx-auto">
+        Why use three tools when you can use one? Generate your Blog Post, LinkedIn Update, and Newsletter draft in a single click.
+      </p>
+    </div>
+
+    <!-- TOOL CONTAINER -->
+    <div class="bg-gradient-to-br from-white to-slate-50 p-6 md:p-8 rounded-2xl shadow-lg border border-slate-200 mb-16 relative overflow-hidden">
+      <div class="relative z-10">
+        <ToolForm client:load tool={tool} />
+      </div>
+    </div>
+
+    <!-- SEO CONTENT BLOCK -->
+    <article class="prose prose-slate max-w-none text-center">
+      <h2 class="text-3xl font-bold mb-8">Write Once. Distribute Everywhere.</h2>
+      <div class="grid md:grid-cols-3 gap-8 text-left">
+        <div class="p-6 bg-white border border-slate-200 rounded-xl">
+          <h3 class="text-xl font-bold mb-2">1. For your Website</h3>
+          <p class="text-slate-600 text-sm">A full-length, SEO-optimized article ready for WordPress or Ghost. Captures traffic from Google.</p>
+        </div>
+        <div class="p-6 bg-white border border-slate-200 rounded-xl">
+          <h3 class="text-xl font-bold mb-2">2. For your LinkedIn</h3>
+          <p class="text-slate-600 text-sm">A professional summary or "lessons learned" post designed to build authority in your niche.</p>
+        </div>
+        <div class="p-6 bg-white border border-slate-200 rounded-xl">
+          <h3 class="text-xl font-bold mb-2">3. For your Newsletter</h3>
+          <p class="text-slate-600 text-sm">A conversational email draft that directs your subscribers to watch the new video.</p>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <AstroFooter />
+</BaseLayout>

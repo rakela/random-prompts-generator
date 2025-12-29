@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AstroHeader from '../../components/AstroHeader.astro';
+import AstroFooter from '../../components/AstroFooter.astro';
+import ToolForm from '../../components/ToolForm';
+import { getToolById } from '../../config/tools';
+
+export const prerender = true;
+
+// Get the tool configuration
+const tool = getToolById('youtube-content-brief');
+
+if (!tool) {
+  return Astro.redirect('/404');
+}
+
+// SEO data
+const seo = {
+  title: 'YouTube Video Script & Outline Generator | Free Content Brief',
+  description: 'Stop staring at a blank page. Generate data-backed YouTube video outlines, hooks, and call-to-action scripts in seconds.',
+  canonical: 'https://randomprompts.org/tools/youtube-content-brief'
+};
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+
+  <main class="max-w-4xl mx-auto px-4 py-12">
+    <!-- HERO SECTION -->
+    <div class="text-center mb-10">
+      <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 mb-4">
+        YouTube Video Script & Outline Generator
+      </h1>
+      <p class="text-xl text-slate-600 max-w-2xl mx-auto">
+        Plan your next viral hit. Get a structured content brief, irresistible hooks, and clear talking points before you hit record.
+      </p>
+    </div>
+
+    <!-- TOOL CONTAINER -->
+    <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200 mb-16">
+      <ToolForm client:load tool={tool} />
+    </div>
+
+    <!-- SEO CONTENT BLOCK -->
+    <article class="prose prose-slate max-w-none">
+      <div class="bg-blue-50 p-8 rounded-xl mb-12">
+        <h2 class="text-2xl font-bold text-blue-900 mb-4">What's inside the Content Brief?</h2>
+        <ul class="grid md:grid-cols-2 gap-4 list-none pl-0">
+          <li class="flex items-start">
+            <span class="bg-blue-200 text-blue-800 rounded-full px-2 py-0.5 text-sm font-bold mr-3">1</span>
+            <span class="text-blue-900"><strong>The Hook (0:00-0:30):</strong> Exact lines to say to prevent drop-off.</span>
+          </li>
+          <li class="flex items-start">
+            <span class="bg-blue-200 text-blue-800 rounded-full px-2 py-0.5 text-sm font-bold mr-3">2</span>
+            <span class="text-blue-900"><strong>Value Payload:</strong> The core 3-5 teaching points or story beats.</span>
+          </li>
+          <li class="flex items-start">
+            <span class="bg-blue-200 text-blue-800 rounded-full px-2 py-0.5 text-sm font-bold mr-3">3</span>
+            <span class="text-blue-900"><strong>The CTA:</strong> Where and how to ask for subscribers naturally.</span>
+          </li>
+          <li class="flex items-start">
+            <span class="bg-blue-200 text-blue-800 rounded-full px-2 py-0.5 text-sm font-bold mr-3">4</span>
+            <span class="text-blue-900"><strong>Thumbnail Concepts:</strong> Visual ideas that match your title.</span>
+          </li>
+        </ul>
+      </div>
+    </article>
+  </main>
+
+  <AstroFooter />
+</BaseLayout>
