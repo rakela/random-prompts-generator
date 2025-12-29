@@ -26,15 +26,25 @@ const seo = {
   <AstroHeader />
 
   <main class="max-w-4xl mx-auto px-4 py-12">
+    <!-- BREADCRUMBS -->
+    <nav class="mb-8" aria-label="Breadcrumb">
+      <ol class="flex items-center space-x-2 text-sm text-slate-600">
+        <li><a href="/" class="hover:text-blue-600 transition-colors">Home</a></li>
+        <li><span class="text-slate-400">/</span></li>
+        <li><a href="/tools" class="hover:text-blue-600 transition-colors">Tools</a></li>
+        <li><span class="text-slate-400">/</span></li>
+        <li class="text-slate-900 font-medium">Repurposing Workflow</li>
+      </ol>
+    </nav>
     <!-- HERO SECTION -->
-    <div class="text-center mb-10">
-      <span class="bg-green-100 text-green-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide mb-4 inline-block">
+    <div class="text-center mb-16">
+      <span class="bg-green-100 text-green-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide mb-6 inline-block">
         Most Popular Workflow
       </span>
-      <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 mb-4">
+      <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 mb-6">
         The All-in-One Repurposing Engine
       </h1>
-      <p class="text-xl text-slate-600 max-w-2xl mx-auto">
+      <p class="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
         Why use three tools when you can use one? Generate your Blog Post, LinkedIn Update, and Newsletter draft in a single click.
       </p>
     </div>
@@ -47,8 +57,8 @@ const seo = {
     </div>
 
     <!-- SEO CONTENT BLOCK -->
-    <article class="prose prose-slate max-w-none text-center">
-      <h2 class="text-3xl font-bold mb-8">Write Once. Distribute Everywhere.</h2>
+    <article class="prose prose-slate max-w-none text-center mt-20">
+      <h2 class="text-3xl font-bold mb-12">Write Once. Distribute Everywhere.</h2>
       <div class="grid md:grid-cols-3 gap-8 text-left">
         <div class="p-6 bg-white border border-slate-200 rounded-xl">
           <h3 class="text-xl font-bold mb-2">1. For your Website</h3>
@@ -64,6 +74,20 @@ const seo = {
         </div>
       </div>
     </article>
+
+    <!-- BACK TO HUB BUTTON -->
+    <div class="mt-20 pt-12 border-t border-slate-200 text-center">
+      <a
+        href="/tools"
+        class="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 text-white font-semibold rounded-lg hover:bg-slate-800 transition-colors"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+        </svg>
+        Back to Tools Hub
+      </a>
+      <p class="text-sm text-slate-500 mt-4">Explore more content creation tools</p>
+    </div>
   </main>
 
   <AstroFooter />

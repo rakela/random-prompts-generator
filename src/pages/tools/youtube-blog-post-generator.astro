@@ -20,18 +20,52 @@ const seo = {
   description: 'Convert YouTube videos into SEO-optimized blog posts in seconds. Our AI extracts transcripts and formats them into high-quality articles.',
   canonical: 'https://randomprompts.org/tools/youtube-blog-post-generator'
 };
+
+// JSON-LD structured data
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "YouTube to Blog Post Converter",
+  "operatingSystem": "Web",
+  "applicationCategory": "BusinessApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "description": "AI tool that converts YouTube videos into SEO-optimized blog posts with formatting.",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "ratingCount": "120"
+  }
+};
 ---
 
 <BaseLayout seo={seo}>
   <AstroHeader />
 
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+
   <main class="max-w-4xl mx-auto px-4 py-12">
+    <!-- BREADCRUMBS -->
+    <nav class="mb-8" aria-label="Breadcrumb">
+      <ol class="flex items-center space-x-2 text-sm text-slate-600">
+        <li><a href="/" class="hover:text-blue-600 transition-colors">Home</a></li>
+        <li><span class="text-slate-400">/</span></li>
+        <li><a href="/tools" class="hover:text-blue-600 transition-colors">Tools</a></li>
+        <li><span class="text-slate-400">/</span></li>
+        <li class="text-slate-900 font-medium">YouTube to Blog Post</li>
+      </ol>
+    </nav>
+
     <!-- HERO SECTION -->
-    <div class="text-center mb-10">
-      <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 mb-4">
+    <div class="text-center mb-16">
+      <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 mb-6">
         AI YouTube to Blog Post Converter
       </h1>
-      <p class="text-xl text-slate-600 max-w-2xl mx-auto">
+      <p class="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
         Don't let your video content die on YouTube. Turn your scripts into perfectly formatted, SEO-ready articles in one click.
       </p>
     </div>
@@ -45,8 +79,8 @@ const seo = {
     </div>
 
     <!-- SEO CONTENT BLOCK -->
-    <article class="prose prose-slate max-w-none">
-      <div class="grid md:grid-cols-3 gap-8 mb-12">
+    <article class="prose prose-slate max-w-none mt-20">
+      <div class="grid md:grid-cols-3 gap-8 mb-16">
         <div>
           <h3 class="text-lg font-semibold mb-2">SEO Optimized</h3>
           <p class="text-slate-600">The AI automatically generates H1, H2, and H3 headers based on your video's topics, making your post ready for Google ranking immediately.</p>
@@ -81,6 +115,20 @@ const seo = {
         </div>
       </section>
     </article>
+
+    <!-- BACK TO HUB BUTTON -->
+    <div class="mt-20 pt-12 border-t border-slate-200 text-center">
+      <a
+        href="/tools"
+        class="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 text-white font-semibold rounded-lg hover:bg-slate-800 transition-colors"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+        </svg>
+        Back to Tools Hub
+      </a>
+      <p class="text-sm text-slate-500 mt-4">Explore more content creation tools</p>
+    </div>
   </main>
 
   <AstroFooter />

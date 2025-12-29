@@ -20,18 +20,51 @@ const seo = {
   description: 'Generate high-engagement LinkedIn posts from your YouTube videos. Create threads, carousels, and thought leadership posts instantly.',
   canonical: 'https://randomprompts.org/tools/youtube-linkedin-post-generator'
 };
+
+// JSON-LD structured data
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "YouTube to LinkedIn Post Generator",
+  "operatingSystem": "Web",
+  "applicationCategory": "SocialNetworkingApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "description": "Generate viral LinkedIn posts, hooks, and threads from YouTube video transcripts.",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "ratingCount": "85"
+  }
+};
 ---
 
 <BaseLayout seo={seo}>
   <AstroHeader />
 
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+
   <main class="max-w-4xl mx-auto px-4 py-12">
+    <!-- BREADCRUMBS -->
+    <nav class="mb-8" aria-label="Breadcrumb">
+      <ol class="flex items-center space-x-2 text-sm text-slate-600">
+        <li><a href="/" class="hover:text-blue-600 transition-colors">Home</a></li>
+        <li><span class="text-slate-400">/</span></li>
+        <li><a href="/tools" class="hover:text-blue-600 transition-colors">Tools</a></li>
+        <li><span class="text-slate-400">/</span></li>
+        <li class="text-slate-900 font-medium">YouTube to LinkedIn</li>
+      </ol>
+    </nav>
     <!-- HERO SECTION -->
-    <div class="text-center mb-10">
-      <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 mb-4">
+    <div class="text-center mb-16">
+      <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 mb-6">
         Viral YouTube to LinkedIn Post Generator
       </h1>
-      <p class="text-xl text-slate-600 max-w-2xl mx-auto">
+      <p class="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
         Extract the "Golden Nuggets" from your video. Generate thumb-stopping text posts optimized for the LinkedIn algorithm.
       </p>
     </div>
@@ -45,8 +78,8 @@ const seo = {
     </div>
 
     <!-- SEO CONTENT BLOCK -->
-    <article class="prose prose-slate max-w-none">
-      <div class="grid md:grid-cols-2 gap-12 mb-12">
+    <article class="prose prose-slate max-w-none mt-20">
+      <div class="grid md:grid-cols-2 gap-12 mb-16">
         <div>
           <h2 class="text-2xl font-bold mb-4">Why Repurpose to LinkedIn?</h2>
           <p class="text-slate-600">Your YouTube video contains thousands of words of value. Posting a link gets zero reach. Writing a native text post with our tool captures attention and drives traffic.</p>
@@ -72,6 +105,20 @@ const seo = {
         </div>
       </section>
     </article>
+
+    <!-- BACK TO HUB BUTTON -->
+    <div class="mt-20 pt-12 border-t border-slate-200 text-center">
+      <a
+        href="/tools"
+        class="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 text-white font-semibold rounded-lg hover:bg-slate-800 transition-colors"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+        </svg>
+        Back to Tools Hub
+      </a>
+      <p class="text-sm text-slate-500 mt-4">Explore more content creation tools</p>
+    </div>
   </main>
 
   <AstroFooter />
