@@ -1,11 +1,12 @@
 /**
  * YouTube Transcript Fetcher - Production-Grade Serverless Approach
  *
- * Uses youtube-transcript library which is more reliable and actively maintained.
- * Works in serverless environments (Vercel, AWS Lambda, Netlify).
+ * Uses youtube-caption-extractor optimized for Vercel/serverless environments.
+ * This package automatically adapts for serverless platforms and uses YouTube's
+ * modern Innertube API for better bot detection resistance.
  */
 
-import { YoutubeTranscript } from 'youtube-transcript';
+import { getSubtitles } from 'youtube-caption-extractor';
 
 export interface TranscriptSegment {
   text: string;
@@ -68,171 +69,84 @@ export async function getYouTubeTranscript(
   console.log(`[YouTube] Fetching transcript for video ID: ${videoId}`);
   console.log(`[YouTube] Video URL: https://www.youtube.com/watch?v=${videoId}`);
   console.log(`[YouTube] Language: ${languageCode}`);
-  console.log(`[YouTube] Using: youtube-transcript library`);
+  console.log(`[YouTube] Using: youtube-caption-extractor (serverless-optimized)`);
   console.log(`[YouTube] ========================================`);
 
-  // Try multiple language code variants for better compatibility
-  const languageVariants = [
-    languageCode,           // Try the provided language code first
-    'en',                   // Standard English
-    'en-US',                // US English
-    'en-GB',                // UK English
-    'en-us',                // lowercase variant
-    'en-gb',                // lowercase variant
-  ];
-
-  // Remove duplicates
-  const uniqueLanguages = [...new Set(languageVariants)];
-
-  let lastError: Error | null = null;
-
-  // Try each language variant
-  for (const lang of uniqueLanguages) {
-    try {
-      console.log(`[YouTube] Trying language code: ${lang}`);
-
-      const transcriptData = await YoutubeTranscript.fetchTranscript(videoId, {
-        lang: lang
-      });
-
-      if (!transcriptData || transcriptData.length === 0) {
-        console.log(`[YouTube] No captions found for language: ${lang}`);
-        lastError = new Error(`No captions available for language: ${lang}`);
-        continue;
-      }
-
-      console.log(`[YouTube] ✓ Received ${transcriptData.length} caption segments for language: ${lang}`);
-
-      // Combine all subtitle segments into full transcript
-      const fullTranscript = transcriptData
-        .map((segment: any) => segment.text || '')
-        .filter((text: string) => text.trim().length > 0)
-        .join(' ')
-        .trim();
-
-      if (!fullTranscript || fullTranscript.length < 50) {
-        console.log(`[YouTube] Transcript too short for language: ${lang} (${fullTranscript.length} chars)`);
-        lastError = new Error(`Transcript too short for language: ${lang}`);
-        continue;
-      }
-
-      console.log(`[YouTube] ✓ SUCCESS: ${fullTranscript.length} characters (language: ${lang})`);
-      console.log(`[YouTube] ========================================`);
-
-      return fullTranscript;
-
-    } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : String(error);
-      console.error(`[YouTube] Failed with language ${lang}:`, error);
-      console.error(`[YouTube] Error type: ${typeof error}`);
-      console.error(`[YouTube] Error message: ${errorMessage}`);
-      if (error instanceof Error && error.stack) {
-        console.error(`[YouTube] Error stack:`, error.stack);
-      }
-      lastError = error instanceof Error ? error : new Error(String(error));
-      continue;
-    }
-  }
-
-  // Try one more time without specifying language (auto-detect)
-  console.log(`[YouTube] All language codes failed. Trying auto-detect (no lang param)...`);
   try {
-    const transcriptData = await YoutubeTranscript.fetchTranscript(videoId);
+    const subtitles = await getSubtitles({
+      videoID: videoId,
+      lang: languageCode
+    });
 
-    if (transcriptData && transcriptData.length > 0) {
-      console.log(`[YouTube] ✓ Auto-detect found ${transcriptData.length} caption segments`);
-
-      const fullTranscript = transcriptData
-        .map((segment: any) => segment.text || '')
-        .filter((text: string) => text.trim().length > 0)
-        .join(' ')
-        .trim();
-
-      if (fullTranscript && fullTranscript.length >= 50) {
-        console.log(`[YouTube] ✓ SUCCESS with auto-detect: ${fullTranscript.length} characters`);
-        console.log(`[YouTube] ========================================`);
-        return fullTranscript;
-      }
+    if (!subtitles || subtitles.length === 0) {
+      throw new Error('No captions available for this video');
     }
-  } catch (autoError) {
-    console.error(`[YouTube] Auto-detect also failed:`, autoError);
-    lastError = autoError instanceof Error ? autoError : new Error(String(autoError));
-  }
 
-  // If we get here, all language variants failed
-  const errorMessage = lastError ? (lastError instanceof Error ? lastError.message : String(lastError)) : 'Unknown error';
-  console.error('[YouTube] ✗ ERROR: All language variants failed');
-  console.error('[YouTube] Last error:', errorMessage);
-  console.error('[YouTube] ========================================');
+    console.log(`[YouTube] ✓ Received ${subtitles.length} caption segments`);
 
-  // Provide helpful error messages based on error type
+    const fullTranscript = subtitles
+      .map((segment: any) => segment.text || '')
+      .filter((text: string) => text.trim().length > 0)
+      .join(' ')
+      .trim();
 
-  // Check for network/DNS errors first
-  if (errorMessage.includes('fetch failed') ||
-      errorMessage.includes('EAI_AGAIN') ||
-      errorMessage.includes('ENOTFOUND') ||
-      errorMessage.includes('ECONNREFUSED') ||
-      errorMessage.includes('Network request failed') ||
-      errorMessage.includes('getaddrinfo')) {
+    if (!fullTranscript || fullTranscript.length < 50) {
+      throw new Error('Transcript is too short or empty');
+    }
+
+    console.log(`[YouTube] ✓ SUCCESS: ${fullTranscript.length} characters`);
+    console.log(`[YouTube] ========================================`);
+
+    return fullTranscript;
+
+  } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    console.error('[YouTube] ✗ ERROR:', errorMessage);
+    console.error('[YouTube] ========================================');
+
+    if (errorMessage.includes('Could not find captions') ||
+        errorMessage.includes('No captions available') ||
+        errorMessage.includes('Transcript is disabled')) {
+      throw new Error(
+        `This video does not have ${languageCode} captions/subtitles available. ` +
+        `Video: https://www.youtube.com/watch?v=${videoId}\n\n` +
+        `Suggestions:\n` +
+        `1. Check if the video has captions enabled on YouTube\n` +
+        `2. Try a video from a major channel (TED, Khan Academy, BBC, etc.)\n` +
+        `3. Try with language code 'en-US' or 'en-GB' if 'en' doesn't work\n\n` +
+        `Note: Auto-generated captions should work, but must be enabled by the creator.`
+      );
+    }
+
+    if (errorMessage.includes('Video unavailable') ||
+        errorMessage.includes('private') ||
+        errorMessage.includes('not available')) {
+      throw new Error(
+        `This video is unavailable, private, or restricted. ` +
+        `Video: https://www.youtube.com/watch?v=${videoId}\n\n` +
+        `The video must be public and accessible.`
+      );
+    }
+
+    if (errorMessage.includes('Sign in to confirm') ||
+        errorMessage.includes('bot')) {
+      throw new Error(
+        `YouTube is temporarily blocking automated access. ` +
+        `This is usually temporary. Video: https://www.youtube.com/watch?v=${videoId}\n\n` +
+        `Suggestions:\n` +
+        `1. Wait 2-3 minutes and try again\n` +
+        `2. Try a different video from a major channel\n` +
+        `3. Contact support if this persists\n\n` +
+        `Note: This is a YouTube rate-limiting measure, not an issue with the tool.`
+      );
+    }
+
     throw new Error(
-      `Network error: Cannot connect to YouTube servers. ` +
-      `This usually means:\n\n` +
-      `1. Your server/environment blocks access to YouTube\n` +
-      `2. There's a network connectivity issue\n` +
-      `3. DNS resolution is failing\n\n` +
-      `This code will work in production (Vercel, Netlify, etc.) where YouTube is accessible.\n` +
-      `Development environment may have restrictions.\n\n` +
-      `Technical details: ${errorMessage}`
-    );
-  }
-
-  if (errorMessage.includes('Could not find captions') ||
-      errorMessage.includes('No captions available') ||
-      errorMessage.includes('Transcript is disabled') ||
-      errorMessage.includes('Transcript not available') ||
-      errorMessage.includes('No transcript available')) {
-    throw new Error(
-      `Could not find captions for this video in any supported language. ` +
+      `Failed to fetch transcript: ${errorMessage}\n` +
       `Video: https://www.youtube.com/watch?v=${videoId}\n\n` +
-      `Tried language codes: ${uniqueLanguages.join(', ')}\n\n` +
-      `Suggestions:\n` +
-      `1. Check if the video has captions/subtitles enabled on YouTube\n` +
-      `2. Captions must be either manually added or auto-generated by YouTube\n` +
-      `3. Try a different video with confirmed captions\n\n` +
-      `Note: The video creator must enable captions for this to work.`
+      `If this error persists, the video may not have accessible captions.`
     );
   }
-
-  if (errorMessage.includes('Video unavailable') ||
-      errorMessage.includes('private') ||
-      errorMessage.includes('not available')) {
-    throw new Error(
-      `This video is unavailable, private, or restricted. ` +
-      `Video: https://www.youtube.com/watch?v=${videoId}\n\n` +
-      `The video must be public and accessible.`
-    );
-  }
-
-  if (errorMessage.includes('Sign in to confirm') ||
-      errorMessage.includes('bot')) {
-    throw new Error(
-      `YouTube is temporarily blocking automated access. ` +
-      `This is usually temporary. Video: https://www.youtube.com/watch?v=${videoId}\n\n` +
-      `Suggestions:\n` +
-      `1. Wait 2-3 minutes and try again\n` +
-      `2. Try a different video from a major channel\n` +
-      `3. Contact support if this persists\n\n` +
-      `Note: This is a YouTube rate-limiting measure, not an issue with the tool.`
-    );
-  }
-
-  // Generic error with original message
-  throw new Error(
-    `Failed to fetch transcript: ${errorMessage}\n` +
-    `Video: https://www.youtube.com/watch?v=${videoId}\n\n` +
-    `Tried ${uniqueLanguages.length} language variants without success.\n` +
-    `If this error persists, the video may not have accessible captions.`
-  );
 }
 
 /**
@@ -258,18 +172,19 @@ export async function getYouTubeTranscriptSegments(
   console.log(`[YouTube] Fetching transcript segments for: ${videoId}`);
 
   try {
-    const transcriptData = await YoutubeTranscript.fetchTranscript(videoId, {
+    const subtitles = await getSubtitles({
+      videoID: videoId,
       lang: languageCode
     });
 
-    if (!transcriptData || transcriptData.length === 0) {
+    if (!subtitles || subtitles.length === 0) {
       throw new Error('No captions available');
     }
 
-    const segments = transcriptData.map((segment: any) => ({
+    const segments = subtitles.map((segment: any) => ({
       text: segment.text || '',
-      start: parseFloat(segment.offset) / 1000 || 0, // Convert ms to seconds
-      duration: parseFloat(segment.duration) / 1000 || 0 // Convert ms to seconds
+      start: segment.start || 0,
+      duration: segment.dur || 0
     }));
 
     console.log(`[YouTube] ✓ Retrieved ${segments.length} segments`);
