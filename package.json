@@ -28,7 +28,7 @@
     "react-dom": "^18.2.0",
     "react-helmet-async": "^2.0.5",
     "react-router-dom": "^7.9.4",
-    "youtube-caption-extractor": "^1.9.1"
+    "youtube-transcript": "^1.2.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
