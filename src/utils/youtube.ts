@@ -1,12 +1,11 @@
 /**
  * YouTube Transcript Fetcher - Production-Grade Serverless Approach
  *
- * Uses youtube-caption-extractor optimized for Vercel/serverless environments.
- * This package automatically adapts for serverless platforms and uses YouTube's
- * modern Innertube API for better bot detection resistance.
+ * Uses youtube-transcript library which is more reliable and actively maintained.
+ * Works in serverless environments (Vercel, AWS Lambda, Netlify).
  */
 
-import { getSubtitles } from 'youtube-caption-extractor';
+import { YoutubeTranscript } from 'youtube-transcript';
 
 export interface TranscriptSegment {
   text: string;
@@ -69,7 +68,7 @@ export async function getYouTubeTranscript(
   console.log(`[YouTube] Fetching transcript for video ID: ${videoId}`);
   console.log(`[YouTube] Video URL: https://www.youtube.com/watch?v=${videoId}`);
   console.log(`[YouTube] Language: ${languageCode}`);
-  console.log(`[YouTube] Using: youtube-caption-extractor (serverless-optimized)`);
+  console.log(`[YouTube] Using: youtube-transcript library`);
   console.log(`[YouTube] ========================================`);
 
   // Try multiple language code variants for better compatibility
@@ -78,7 +77,6 @@ export async function getYouTubeTranscript(
     'en',                   // Standard English
     'en-US',                // US English
     'en-GB',                // UK English
-    'a.en',                 // Auto-generated English (common format)
     'en-us',                // lowercase variant
     'en-gb',                // lowercase variant
   ];
@@ -93,28 +91,27 @@ export async function getYouTubeTranscript(
     try {
       console.log(`[YouTube] Trying language code: ${lang}`);
 
-      const subtitles = await getSubtitles({
-        videoID: videoId,
+      const transcriptData = await YoutubeTranscript.fetchTranscript(videoId, {
         lang: lang
       });
 
-      if (!subtitles || subtitles.length === 0) {
+      if (!transcriptData || transcriptData.length === 0) {
         console.log(`[YouTube] No captions found for language: ${lang}`);
         lastError = new Error(`No captions available for language: ${lang}`);
         continue;
       }
 
-      console.log(`[YouTube] ✓ Received ${subtitles.length} caption segments for language: ${lang}`);
+      console.log(`[YouTube] ✓ Received ${transcriptData.length} caption segments for language: ${lang}`);
 
       // Combine all subtitle segments into full transcript
-      const fullTranscript = subtitles
+      const fullTranscript = transcriptData
         .map((segment: any) => segment.text || '')
         .filter((text: string) => text.trim().length > 0)
         .join(' ')
         .trim();
 
       if (!fullTranscript || fullTranscript.length < 50) {
-        console.log(`[YouTube] Transcript too short for language: ${lang}`);
+        console.log(`[YouTube] Transcript too short for language: ${lang} (${fullTranscript.length} chars)`);
         lastError = new Error(`Transcript too short for language: ${lang}`);
         continue;
       }
@@ -140,15 +137,12 @@ export async function getYouTubeTranscript(
   // Try one more time without specifying language (auto-detect)
   console.log(`[YouTube] All language codes failed. Trying auto-detect (no lang param)...`);
   try {
-    const subtitles = await getSubtitles({
-      videoID: videoId
-      // No lang parameter - let YouTube auto-select
-    });
+    const transcriptData = await YoutubeTranscript.fetchTranscript(videoId);
 
-    if (subtitles && subtitles.length > 0) {
-      console.log(`[YouTube] ✓ Auto-detect found ${subtitles.length} caption segments`);
+    if (transcriptData && transcriptData.length > 0) {
+      console.log(`[YouTube] ✓ Auto-detect found ${transcriptData.length} caption segments`);
 
-      const fullTranscript = subtitles
+      const fullTranscript = transcriptData
         .map((segment: any) => segment.text || '')
         .filter((text: string) => text.trim().length > 0)
         .join(' ')
@@ -194,7 +188,9 @@ export async function getYouTubeTranscript(
 
   if (errorMessage.includes('Could not find captions') ||
       errorMessage.includes('No captions available') ||
-      errorMessage.includes('Transcript is disabled')) {
+      errorMessage.includes('Transcript is disabled') ||
+      errorMessage.includes('Transcript not available') ||
+      errorMessage.includes('No transcript available')) {
     throw new Error(
       `Could not find captions for this video in any supported language. ` +
       `Video: https://www.youtube.com/watch?v=${videoId}\n\n` +
@@ -262,19 +258,18 @@ export async function getYouTubeTranscriptSegments(
   console.log(`[YouTube] Fetching transcript segments for: ${videoId}`);
 
   try {
-    const subtitles = await getSubtitles({
-      videoID: videoId,
+    const transcriptData = await YoutubeTranscript.fetchTranscript(videoId, {
       lang: languageCode
     });
 
-    if (!subtitles || subtitles.length === 0) {
+    if (!transcriptData || transcriptData.length === 0) {
       throw new Error('No captions available');
     }
 
-    const segments = subtitles.map((segment: any) => ({
+    const segments = transcriptData.map((segment: any) => ({
       text: segment.text || '',
-      start: parseFloat(segment.start) || 0,
-      duration: parseFloat(segment.dur) || 0
+      start: parseFloat(segment.offset) / 1000 || 0, // Convert ms to seconds
+      duration: parseFloat(segment.duration) / 1000 || 0 // Convert ms to seconds
     }));
 
     console.log(`[YouTube] ✓ Retrieved ${segments.length} segments`);
