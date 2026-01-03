@@ -181,48 +181,47 @@ export async function getYouTubeTranscript(
   console.error('[YouTube] ========================================');
 
   if (errorMessage.includes('Could not find captions') ||
-        errorMessage.includes('No captions available') ||
-        errorMessage.includes('Transcript is disabled')) {
-      throw new Error(
-        `This video does not have ${languageCode} captions/subtitles available. ` +
-        `Video: https://www.youtube.com/watch?v=${videoId}\n\n` +
-        `Suggestions:\n` +
-        `1. Check if the video has captions enabled on YouTube\n` +
-        `2. Try a video from a major channel (TED, Khan Academy, BBC, etc.)\n` +
-        `3. Try with language code 'en-US' or 'en-GB' if 'en' doesn't work\n\n` +
-        `Note: Auto-generated captions should work, but must be enabled by the creator.`
-      );
-    }
-
-    if (errorMessage.includes('Video unavailable') ||
-        errorMessage.includes('private') ||
-        errorMessage.includes('not available')) {
-      throw new Error(
-        `This video is unavailable, private, or restricted. ` +
-        `Video: https://www.youtube.com/watch?v=${videoId}\n\n` +
-        `The video must be public and accessible.`
-      );
-    }
-
-    if (errorMessage.includes('Sign in to confirm') ||
-        errorMessage.includes('bot')) {
-      throw new Error(
-        `YouTube is temporarily blocking automated access. ` +
-        `This is usually temporary. Video: https://www.youtube.com/watch?v=${videoId}\n\n` +
-        `Suggestions:\n` +
-        `1. Wait 2-3 minutes and try again\n` +
-        `2. Try a different video from a major channel\n` +
-        `3. Contact support if this persists\n\n` +
-        `Note: This is a YouTube rate-limiting measure, not an issue with the tool.`
-      );
-    }
-
+      errorMessage.includes('No captions available') ||
+      errorMessage.includes('Transcript is disabled')) {
     throw new Error(
-      `Failed to fetch transcript: ${errorMessage}\n` +
+      `This video does not have ${languageCode} captions/subtitles available. ` +
       `Video: https://www.youtube.com/watch?v=${videoId}\n\n` +
-      `If this error persists, the video may not have accessible captions.`
+      `Suggestions:\n` +
+      `1. Check if the video has captions enabled on YouTube\n` +
+      `2. Try a video from a major channel (TED, Khan Academy, BBC, etc.)\n` +
+      `3. Try with language code 'en-US' or 'en-GB' if 'en' doesn't work\n\n` +
+      `Note: Auto-generated captions should work, but must be enabled by the creator.`
     );
   }
+
+  if (errorMessage.includes('Video unavailable') ||
+      errorMessage.includes('private') ||
+      errorMessage.includes('not available')) {
+    throw new Error(
+      `This video is unavailable, private, or restricted. ` +
+      `Video: https://www.youtube.com/watch?v=${videoId}\n\n` +
+      `The video must be public and accessible.`
+    );
+  }
+
+  if (errorMessage.includes('Sign in to confirm') ||
+      errorMessage.includes('bot')) {
+    throw new Error(
+      `YouTube is temporarily blocking automated access. ` +
+      `This is usually temporary. Video: https://www.youtube.com/watch?v=${videoId}\n\n` +
+      `Suggestions:\n` +
+      `1. Wait 2-3 minutes and try again\n` +
+      `2. Try a different video from a major channel\n` +
+      `3. Contact support if this persists\n\n` +
+      `Note: This is a YouTube rate-limiting measure, not an issue with the tool.`
+    );
+  }
+
+  throw new Error(
+    `Failed to fetch transcript: ${errorMessage}\n` +
+    `Video: https://www.youtube.com/watch?v=${videoId}\n\n` +
+    `If this error persists, the video may not have accessible captions.`
+  );
 }
 
 /**
