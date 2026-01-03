@@ -100,6 +100,7 @@ export async function getYouTubeTranscript(
 
       if (!subtitles || subtitles.length === 0) {
         console.log(`[YouTube] No captions found for language: ${lang}`);
+        lastError = new Error(`No captions available for language: ${lang}`);
         continue;
       }
 
@@ -114,6 +115,7 @@ export async function getYouTubeTranscript(
 
       if (!fullTranscript || fullTranscript.length < 50) {
         console.log(`[YouTube] Transcript too short for language: ${lang}`);
+        lastError = new Error(`Transcript too short for language: ${lang}`);
         continue;
       }
 
@@ -133,6 +135,34 @@ export async function getYouTubeTranscript(
       lastError = error instanceof Error ? error : new Error(String(error));
       continue;
     }
+  }
+
+  // Try one more time without specifying language (auto-detect)
+  console.log(`[YouTube] All language codes failed. Trying auto-detect (no lang param)...`);
+  try {
+    const subtitles = await getSubtitles({
+      videoID: videoId
+      // No lang parameter - let YouTube auto-select
+    });
+
+    if (subtitles && subtitles.length > 0) {
+      console.log(`[YouTube] ✓ Auto-detect found ${subtitles.length} caption segments`);
+
+      const fullTranscript = subtitles
+        .map((segment: any) => segment.text || '')
+        .filter((text: string) => text.trim().length > 0)
+        .join(' ')
+        .trim();
+
+      if (fullTranscript && fullTranscript.length >= 50) {
+        console.log(`[YouTube] ✓ SUCCESS with auto-detect: ${fullTranscript.length} characters`);
+        console.log(`[YouTube] ========================================`);
+        return fullTranscript;
+      }
+    }
+  } catch (autoError) {
+    console.error(`[YouTube] Auto-detect also failed:`, autoError);
+    lastError = autoError instanceof Error ? autoError : new Error(String(autoError));
   }
 
   // If we get here, all language variants failed
