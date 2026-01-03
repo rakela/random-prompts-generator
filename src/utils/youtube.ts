@@ -142,6 +142,26 @@ export async function getYouTubeTranscript(
   console.error('[YouTube] ========================================');
 
   // Provide helpful error messages based on error type
+
+  // Check for network/DNS errors first
+  if (errorMessage.includes('fetch failed') ||
+      errorMessage.includes('EAI_AGAIN') ||
+      errorMessage.includes('ENOTFOUND') ||
+      errorMessage.includes('ECONNREFUSED') ||
+      errorMessage.includes('Network request failed') ||
+      errorMessage.includes('getaddrinfo')) {
+    throw new Error(
+      `Network error: Cannot connect to YouTube servers. ` +
+      `This usually means:\n\n` +
+      `1. Your server/environment blocks access to YouTube\n` +
+      `2. There's a network connectivity issue\n` +
+      `3. DNS resolution is failing\n\n` +
+      `This code will work in production (Vercel, Netlify, etc.) where YouTube is accessible.\n` +
+      `Development environment may have restrictions.\n\n` +
+      `Technical details: ${errorMessage}`
+    );
+  }
+
   if (errorMessage.includes('Could not find captions') ||
       errorMessage.includes('No captions available') ||
       errorMessage.includes('Transcript is disabled')) {
