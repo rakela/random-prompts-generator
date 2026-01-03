@@ -72,10 +72,24 @@ export async function getYouTubeTranscript(
   console.log(`[YouTube] ========================================`);
 
   try {
-    // Try fetching with the specified language
+    // First, let's verify the video by checking YouTube directly
+    console.log(`[YouTube] Verification URL: https://www.youtube.com/watch?v=${videoId}`);
+    console.log(`[YouTube] Please verify this URL is correct and has captions`);
     console.log(`[YouTube] Attempting to fetch transcript...`);
 
-    const transcriptData = await YoutubeTranscript.fetchTranscript(videoId);
+    // Try with language config first
+    let transcriptData;
+    try {
+      console.log(`[YouTube] Trying with config: { lang: '${languageCode}' }`);
+      transcriptData = await YoutubeTranscript.fetchTranscript(videoId, {
+        lang: languageCode
+      });
+    } catch (langError) {
+      console.log(`[YouTube] Language-specific fetch failed, trying auto-detect...`);
+      console.log(`[YouTube] Error was:`, langError);
+      // Fallback to auto-detect
+      transcriptData = await YoutubeTranscript.fetchTranscript(videoId);
+    }
 
     console.log(`[YouTube] DEBUG - Transcript response:`, {
       type: typeof transcriptData,
