@@ -27,6 +27,7 @@ export default function ToolForm({ tool }: ToolFormProps) {
   });
 
   const [loading, setLoading] = useState(false);
+  const [fetchingTranscript, setFetchingTranscript] = useState(false);
   const [result, setResult] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
@@ -92,6 +93,59 @@ export default function ToolForm({ tool }: ToolFormProps) {
     }));
   };
 
+  // Check if this is a YouTube tool
+  const isYouTubeTool = tool.inputs.some(input => input.id === 'youtube_url');
+
+  // Extract video ID from YouTube URL
+  const extractVideoId = (url: string): string | null => {
+    try {
+      const urlObj = new URL(url);
+      if (urlObj.hostname.includes('youtube.com')) {
+        return urlObj.searchParams.get('v');
+      }
+      if (urlObj.hostname.includes('youtu.be')) {
+        return urlObj.pathname.slice(1);
+      }
+      return null;
+    } catch {
+      return null;
+    }
+  };
+
+  // Fetch YouTube transcript client-side (runs in browser, not blocked by YouTube)
+  const fetchYouTubeTranscript = async (videoUrl: string): Promise<string> => {
+    const videoId = extractVideoId(videoUrl);
+
+    if (!videoId) {
+      throw new Error('Invalid YouTube URL. Please enter a valid YouTube video URL.');
+    }
+
+    console.log('[ToolForm] Fetching transcript client-side for:', videoId);
+
+    // Call TubeText API from the browser (user's IP, not blocked)
+    const apiUrl = `https://tubetext.vercel.app/youtube/transcript-with-timestamps?video_id=${videoId}`;
+
+    const response = await fetch(apiUrl);
+
+    if (!response.ok) {
+      if (response.status === 404) {
+        throw new Error('This video does not have captions/subtitles available. Please use a video with captions enabled.');
+      }
+      throw new Error(`Failed to fetch transcript (Error ${response.status}). Please try a different video.`);
+    }
+
+    const result = await response.json();
+
+    if (!result.success || !result.data || !result.data.full_text) {
+      throw new Error('Could not extract transcript from this video. Please ensure the video has captions enabled.');
+    }
+
+    const transcript = result.data.full_text;
+    console.log('[ToolForm] Transcript fetched successfully:', transcript.length, 'characters');
+
+    return transcript;
+  };
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
@@ -105,11 +159,36 @@ export default function ToolForm({ tool }: ToolFormProps) {
       return;
     }
 
-    setLoading(true);
     setError(null);
     setResult(null);
 
     try {
+      let finalInputs = { ...inputs };
+
+      // For YouTube tools, fetch transcript client-side first
+      if (isYouTubeTool && inputs.youtube_url) {
+        setFetchingTranscript(true);
+        console.log('[ToolForm] Fetching YouTube transcript client-side...');
+
+        try {
+          const transcript = await fetchYouTubeTranscript(inputs.youtube_url);
+          // Add transcript to inputs so API receives it
+          finalInputs = {
+            ...finalInputs,
+            youtube_transcript: transcript
+          };
+          console.log('[ToolForm] Transcript fetched, proceeding to API call');
+        } catch (transcriptError) {
+          setFetchingTranscript(false);
+          throw transcriptError; // Re-throw to be caught by outer catch
+        }
+
+        setFetchingTranscript(false);
+      }
+
+      // Now call the API with transcript already included
+      setLoading(true);
+
       const response = await fetch('/api/run-tool', {
         method: 'POST',
         headers: {
@@ -118,7 +197,7 @@ export default function ToolForm({ tool }: ToolFormProps) {
         },
         body: JSON.stringify({
           tool_id: tool.tool_id,
-          inputs: inputs
+          inputs: finalInputs
         })
       });
 
@@ -137,6 +216,7 @@ export default function ToolForm({ tool }: ToolFormProps) {
       setError(err instanceof Error ? err.message : 'An error occurred');
     } finally {
       setLoading(false);
+      setFetchingTranscript(false);
     }
   };
 
@@ -323,13 +403,18 @@ export default function ToolForm({ tool }: ToolFormProps) {
 
         <button
           type="submit"
-          disabled={loading}
+          disabled={loading || fetchingTranscript}
           className="w-full bg-blue-600 text-white py-4 px-6 rounded-lg font-semibold hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-2 text-lg"
         >
-          {loading ? (
+          {fetchingTranscript ? (
             <>
               <Loader2 className="w-6 h-6 animate-spin" />
-              Generating...
+              Fetching Video Transcript...
+            </>
+          ) : loading ? (
+            <>
+              <Loader2 className="w-6 h-6 animate-spin" />
+              Generating Content...
             </>
           ) : (
             'Generate Content'

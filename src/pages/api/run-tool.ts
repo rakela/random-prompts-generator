@@ -106,11 +106,11 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    // Handle YouTube transcript fetching if needed
+    // Handle YouTube transcript
     let transcript = '';
     let videoTitle = '';
 
-    // All YouTube tools need transcript fetching
+    // All YouTube tools need transcript
     const youtubeTools = [
       'youtube-content-brief',
       'youtube-blog-post-generator',
@@ -119,28 +119,40 @@ export const POST: APIRoute = async ({ request }) => {
     ];
 
     if (youtubeTools.includes(tool_id) && sanitizedInputs.youtube_url) {
-      try {
-        console.log(`[run-tool] Fetching YouTube transcript for: ${sanitizedInputs.youtube_url}`);
-        transcript = await getYouTubeTranscript(sanitizedInputs.youtube_url);
-        console.log(`[run-tool] Transcript fetched: ${transcript.length} characters`);
+      // Check if transcript was already fetched client-side
+      if (sanitizedInputs.youtube_transcript) {
+        console.log(`[run-tool] Using client-side fetched transcript: ${sanitizedInputs.youtube_transcript.length} characters`);
+        transcript = sanitizedInputs.youtube_transcript;
 
         // Extract video ID for reference
         const videoId = extractVideoId(sanitizedInputs.youtube_url);
         videoTitle = sanitizedInputs.video_title || `YouTube Video ${videoId}`;
-      } catch (error) {
-        console.error('[run-tool] Transcript fetch error:', error);
-        const errorMsg = error instanceof Error ? error.message : String(error);
-        console.error('[run-tool] Full error details:', error);
-        return new Response(
-          JSON.stringify({
-            success: false,
-            error: `Failed to fetch YouTube transcript: ${errorMsg}`
-          } as RunToolResponse),
-          {
-            status: 500,
-            headers: { 'Content-Type': 'application/json' }
-          }
-        );
+      } else {
+        // Fallback: Fetch server-side (will likely fail due to YouTube blocking)
+        try {
+          console.log(`[run-tool] No client-side transcript provided, attempting server-side fetch for: ${sanitizedInputs.youtube_url}`);
+          console.log(`[run-tool] WARNING: Server-side fetching often fails due to YouTube blocking cloud IPs`);
+          transcript = await getYouTubeTranscript(sanitizedInputs.youtube_url);
+          console.log(`[run-tool] Transcript fetched: ${transcript.length} characters`);
+
+          // Extract video ID for reference
+          const videoId = extractVideoId(sanitizedInputs.youtube_url);
+          videoTitle = sanitizedInputs.video_title || `YouTube Video ${videoId}`;
+        } catch (error) {
+          console.error('[run-tool] Transcript fetch error:', error);
+          const errorMsg = error instanceof Error ? error.message : String(error);
+          console.error('[run-tool] Full error details:', error);
+          return new Response(
+            JSON.stringify({
+              success: false,
+              error: `Failed to fetch YouTube transcript: ${errorMsg}`
+            } as RunToolResponse),
+            {
+              status: 500,
+              headers: { 'Content-Type': 'application/json' }
+            }
+          );
+        }
       }
     }
 
