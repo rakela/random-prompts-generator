@@ -160,36 +160,12 @@ export default function ToolForm({ tool }: ToolFormProps) {
       return;
     }
 
+    setLoading(true);
     setError(null);
     setResult(null);
 
     try {
-      let finalInputs = { ...inputs };
-
-      // For YouTube tools, fetch transcript client-side first
-      if (isYouTubeTool && inputs.youtube_url) {
-        setFetchingTranscript(true);
-        console.log('[ToolForm] Fetching YouTube transcript client-side...');
-
-        try {
-          const transcript = await fetchYouTubeTranscript(inputs.youtube_url);
-          // Add transcript to inputs so API receives it
-          finalInputs = {
-            ...finalInputs,
-            youtube_transcript: transcript
-          };
-          console.log('[ToolForm] Transcript fetched, proceeding to API call');
-        } catch (transcriptError) {
-          setFetchingTranscript(false);
-          throw transcriptError; // Re-throw to be caught by outer catch
-        }
-
-        setFetchingTranscript(false);
-      }
-
-      // Now call the API with transcript already included
-      setLoading(true);
-
+      // Call the API directly - let server handle transcript fetching
       const response = await fetch('/api/run-tool', {
         method: 'POST',
         headers: {
@@ -198,7 +174,7 @@ export default function ToolForm({ tool }: ToolFormProps) {
         },
         body: JSON.stringify({
           tool_id: tool.tool_id,
-          inputs: finalInputs
+          inputs: inputs
         })
       });
 
