@@ -112,7 +112,7 @@ export default function ToolForm({ tool }: ToolFormProps) {
     }
   };
 
-  // Fetch YouTube transcript client-side (runs in browser, not blocked by YouTube)
+  // Fetch YouTube transcript client-side using YouTube's Innertube API
   const fetchYouTubeTranscript = async (videoUrl: string): Promise<string> => {
     const videoId = extractVideoId(videoUrl);
 
@@ -120,30 +120,85 @@ export default function ToolForm({ tool }: ToolFormProps) {
       throw new Error('Invalid YouTube URL. Please enter a valid YouTube video URL.');
     }
 
-    console.log('[ToolForm] Fetching transcript client-side for:', videoId);
+    console.log('[ToolForm] Fetching transcript using Innertube API for:', videoId);
 
-    // Call TubeText API from the browser (user's IP, not blocked)
-    const apiUrl = `https://tubetext.vercel.app/youtube/transcript-with-timestamps?video_id=${videoId}`;
+    try {
+      // Step 1: Fetch video page to extract API key
+      const videoPageUrl = `https://www.youtube.com/watch?v=${videoId}`;
+      const htmlResponse = await fetch(videoPageUrl);
+      const html = await htmlResponse.text();
 
-    const response = await fetch(apiUrl);
+      // Extract INNERTUBE_API_KEY from page
+      const apiKeyMatch = html.match(/"INNERTUBE_API_KEY":"([^"]+)"/);
+      if (!apiKeyMatch) {
+        throw new Error('Could not extract API key from YouTube. Please try again.');
+      }
+      const apiKey = apiKeyMatch[1];
+      console.log('[ToolForm] Extracted YouTube API key');
 
-    if (!response.ok) {
-      if (response.status === 404) {
+      // Step 2: Call Innertube player API to get caption tracks
+      const playerResponse = await fetch(`https://www.youtube.com/youtubei/v1/player?key=${apiKey}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          context: {
+            client: {
+              clientName: 'WEB',
+              clientVersion: '2.20250106.01.00'
+            }
+          },
+          videoId: videoId
+        })
+      });
+
+      const playerData = await playerResponse.json();
+
+      // Step 3: Extract caption tracks
+      const tracks = playerData?.captions?.playerCaptionsTracklistRenderer?.captionTracks;
+      if (!tracks || tracks.length === 0) {
         throw new Error('This video does not have captions/subtitles available. Please use a video with captions enabled.');
       }
-      throw new Error(`Failed to fetch transcript (Error ${response.status}). Please try a different video.`);
+
+      console.log('[ToolForm] Found', tracks.length, 'caption tracks');
+
+      // Find English track (or first available)
+      const englishTrack = tracks.find((t: any) =>
+        t.languageCode === 'en' || t.languageCode.startsWith('en')
+      ) || tracks[0];
+
+      console.log('[ToolForm] Using track:', englishTrack.name?.simpleText || englishTrack.languageCode);
+
+      // Step 4: Fetch transcript from caption track URL
+      const transcriptResponse = await fetch(englishTrack.baseUrl);
+      const transcriptXml = await transcriptResponse.text();
+
+      // Step 5: Parse XML and extract text
+      const parser = new DOMParser();
+      const xmlDoc = parser.parseFromString(transcriptXml, 'text/xml');
+      const textElements = xmlDoc.getElementsByTagName('text');
+
+      if (textElements.length === 0) {
+        throw new Error('Could not parse transcript data. Please try a different video.');
+      }
+
+      // Combine all text segments
+      const transcript = Array.from(textElements)
+        .map((el) => el.textContent || '')
+        .filter((text) => text.trim().length > 0)
+        .join(' ')
+        .trim();
+
+      if (transcript.length < 50) {
+        throw new Error('Transcript is too short. Please ensure the video has proper captions.');
+      }
+
+      console.log('[ToolForm] Transcript fetched successfully:', transcript.length, 'characters');
+      return transcript;
+
+    } catch (error) {
+      console.error('[ToolForm] Transcript fetch error:', error);
+      throw error;
     }
-
-    const result = await response.json();
-
-    if (!result.success || !result.data || !result.data.full_text) {
-      throw new Error('Could not extract transcript from this video. Please ensure the video has captions enabled.');
-    }
-
-    const transcript = result.data.full_text;
-    console.log('[ToolForm] Transcript fetched successfully:', transcript.length, 'characters');
-
-    return transcript;
   };
 
   const handleSubmit = async (e: FormEvent) => {
