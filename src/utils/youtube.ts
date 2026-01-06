@@ -1,11 +1,8 @@
 /**
  * YouTube Transcript Fetcher - Production-Grade Serverless Approach
  *
- * Uses TubeText API - a free, unlimited YouTube transcript API.
- * Hosted on Vercel, works reliably in serverless environments.
- * No quotas, no API keys required.
- *
- * API: https://tubetext.vercel.app
+ * Uses YouTube's Innertube API for server-side transcript fetching.
+ * Works in serverless environments (Vercel, AWS Lambda, Netlify).
  */
 
 export interface TranscriptSegment {
@@ -68,43 +65,108 @@ export async function getYouTubeTranscript(
   console.log(`[YouTube] ========================================`);
   console.log(`[YouTube] Fetching transcript for video ID: ${videoId}`);
   console.log(`[YouTube] Video URL: https://www.youtube.com/watch?v=${videoId}`);
-  console.log(`[YouTube] Using: TubeText API (Free, Unlimited)`);
+  console.log(`[YouTube] Using: YouTube Innertube API (server-side)`);
   console.log(`[YouTube] ========================================`);
 
   try {
-    // Call TubeText API - free, unlimited, no API key required
-    const apiUrl = `https://tubetext.vercel.app/youtube/transcript-with-timestamps?video_id=${videoId}`;
-    console.log(`[YouTube] API Request: ${apiUrl}`);
-
-    const response = await fetch(apiUrl);
-
-    if (!response.ok) {
-      throw new Error(`TubeText API error: ${response.status} ${response.statusText}`);
-    }
-
-    const result = await response.json();
-
-    console.log(`[YouTube] DEBUG - API Response:`, {
-      success: result.success,
-      hasData: !!result.data,
-      hasFullText: !!result.data?.full_text,
-      fullTextLength: result.data?.full_text?.length
+    // Step 1: Fetch YouTube video page
+    const videoPageUrl = `https://www.youtube.com/watch?v=${videoId}`;
+    const htmlResponse = await fetch(videoPageUrl, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Accept-Language': 'en-US,en;q=0.9',
+      }
     });
 
-    if (!result.success || !result.data) {
-      throw new Error('TubeText API returned unsuccessful response');
+    if (!htmlResponse.ok) {
+      throw new Error(`Failed to fetch video page: ${htmlResponse.status}`);
     }
 
-    const fullTranscript = result.data.full_text;
+    const html = await htmlResponse.text();
+    console.log(`[YouTube] Fetched video page`);
 
-    if (!fullTranscript || fullTranscript.length < 50) {
-      throw new Error('Transcript is too short or empty');
+    // Step 2: Extract INNERTUBE_API_KEY
+    const apiKeyMatch = html.match(/"INNERTUBE_API_KEY":"([^"]+)"/);
+    if (!apiKeyMatch) {
+      throw new Error('Could not extract YouTube API key from page');
+    }
+
+    const apiKey = apiKeyMatch[1];
+    console.log(`[YouTube] Extracted API key`);
+
+    // Step 3: Call Innertube player API
+    const playerResponse = await fetch(`https://www.youtube.com/youtubei/v1/player?key=${apiKey}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+      },
+      body: JSON.stringify({
+        context: {
+          client: {
+            clientName: 'WEB',
+            clientVersion: '2.20250106.01.00'
+          }
+        },
+        videoId: videoId
+      })
+    });
+
+    if (!playerResponse.ok) {
+      throw new Error(`Innertube API error: ${playerResponse.status}`);
+    }
+
+    const playerData = await playerResponse.json();
+
+    // Step 4: Extract caption tracks
+    const tracks = playerData?.captions?.playerCaptionsTracklistRenderer?.captionTracks;
+    if (!tracks || tracks.length === 0) {
+      throw new Error('No caption tracks found for this video');
+    }
+
+    console.log(`[YouTube] Found ${tracks.length} caption tracks`);
+
+    // Find English track or first available
+    const englishTrack = tracks.find((t: any) =>
+      t.languageCode === 'en' || t.languageCode.startsWith('en')
+    ) || tracks[0];
+
+    console.log(`[YouTube] Using track:`, englishTrack.name?.simpleText || englishTrack.languageCode);
+
+    // Step 5: Fetch transcript XML
+    const transcriptResponse = await fetch(englishTrack.baseUrl);
+    if (!transcriptResponse.ok) {
+      throw new Error(`Failed to fetch transcript: ${transcriptResponse.status}`);
+    }
+
+    const transcriptXml = await transcriptResponse.text();
+    console.log(`[YouTube] Fetched transcript XML`);
+
+    // Step 6: Parse XML (simple regex parsing)
+    const textMatches = transcriptXml.matchAll(/<text[^>]*>([^<]+)<\/text>/g);
+    const textSegments = Array.from(textMatches).map(match => {
+      // Decode HTML entities
+      return match[1]
+        .replace(/&amp;/g, '&')
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>')
+        .replace(/&quot;/g, '"')
+        .replace(/&#39;/g, "'")
+        .trim();
+    }).filter(text => text.length > 0);
+
+    if (textSegments.length === 0) {
+      throw new Error('No text segments found in transcript');
+    }
+
+    const fullTranscript = textSegments.join(' ').trim();
+
+    if (fullTranscript.length < 50) {
+      throw new Error('Transcript is too short');
     }
 
     console.log(`[YouTube] ✓ SUCCESS: ${fullTranscript.length} characters`);
-    console.log(`[YouTube] Video: ${result.data.details?.title || 'Unknown'}`);
-    console.log(`[YouTube] Channel: ${result.data.details?.channel || 'Unknown'}`);
-    console.log(`[YouTube] First 200 chars:`, fullTranscript.substring(0, 200));
+    console.log(`[YouTube] Track language: ${englishTrack.languageCode}`);
     console.log(`[YouTube] ========================================`);
 
     return fullTranscript;
@@ -112,41 +174,17 @@ export async function getYouTubeTranscript(
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : String(error);
     console.error('[YouTube] ✗ ERROR:', errorMessage);
-    console.error('[YouTube] Full error:', error);
     console.error('[YouTube] ========================================');
 
-    // Check for specific error types
-    if (errorMessage.includes('TubeText API error: 404')) {
-      throw new Error(
-        `This video does not have captions/subtitles available. ` +
-        `Video: https://www.youtube.com/watch?v=${videoId}\n\n` +
-        `The video must have captions enabled (auto-generated or manual).`
-      );
-    }
-
-    if (errorMessage.includes('TubeText API error: 429')) {
-      throw new Error(
-        `Too many requests. Please wait a moment and try again.\n` +
-        `Video: https://www.youtube.com/watch?v=${videoId}`
-      );
-    }
-
-    if (errorMessage.includes('fetch failed') || errorMessage.includes('ECONNREFUSED')) {
-      throw new Error(
-        `Network error: Could not connect to transcript service.\n` +
-        `Please check your internet connection and try again.`
-      );
-    }
-
-    // Generic error
+    // Generic error with helpful message
     throw new Error(
-      `Failed to fetch transcript: ${errorMessage}\n` +
+      `Failed to fetch YouTube transcript: ${errorMessage}\n\n` +
       `Video: https://www.youtube.com/watch?v=${videoId}\n\n` +
       `This could mean:\n` +
       `1. The video doesn't have captions enabled\n` +
-      `2. The video is private or restricted\n` +
-      `3. There's a temporary service issue\n\n` +
-      `Please try again or use a different video.`
+      `2. The video is private or age-restricted\n` +
+      `3. YouTube is blocking automated access\n\n` +
+      `Please try a different video or try again later.`
     );
   }
 }
