@@ -123,10 +123,16 @@ export default function ToolForm({ tool }: ToolFormProps) {
     console.log('[ToolForm] Fetching transcript using Innertube API for:', videoId);
 
     try {
-      // Step 1: Fetch video page to extract API key
-      const videoPageUrl = `https://www.youtube.com/watch?v=${videoId}`;
-      const htmlResponse = await fetch(videoPageUrl);
+      // Step 1: Fetch video page via our proxy (bypasses CORS)
+      const proxyUrl = `/api/youtube-proxy?videoId=${videoId}`;
+      const htmlResponse = await fetch(proxyUrl);
+
+      if (!htmlResponse.ok) {
+        throw new Error('Could not fetch video page. Please check the URL and try again.');
+      }
+
       const html = await htmlResponse.text();
+      console.log('[ToolForm] Fetched video page via proxy');
 
       // Extract INNERTUBE_API_KEY from page
       const apiKeyMatch = html.match(/"INNERTUBE_API_KEY":"([^"]+)"/);
