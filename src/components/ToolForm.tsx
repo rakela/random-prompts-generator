@@ -112,7 +112,7 @@ export default function ToolForm({ tool }: ToolFormProps) {
     }
   };
 
-  // Fetch YouTube transcript client-side using YouTube's Innertube API
+  // Fetch YouTube transcript via server-side endpoint (bypasses CORS completely)
   const fetchYouTubeTranscript = async (videoUrl: string): Promise<string> => {
     const videoId = extractVideoId(videoUrl);
 
@@ -120,86 +120,26 @@ export default function ToolForm({ tool }: ToolFormProps) {
       throw new Error('Invalid YouTube URL. Please enter a valid YouTube video URL.');
     }
 
-    console.log('[ToolForm] Fetching transcript using Innertube API for:', videoId);
+    console.log('[ToolForm] Fetching transcript server-side for:', videoId);
 
     try {
-      // Step 1: Fetch video page via our proxy (bypasses CORS)
-      const proxyUrl = `/api/youtube-proxy?videoId=${videoId}`;
-      const htmlResponse = await fetch(proxyUrl);
-
-      if (!htmlResponse.ok) {
-        throw new Error('Could not fetch video page. Please check the URL and try again.');
-      }
-
-      const html = await htmlResponse.text();
-      console.log('[ToolForm] Fetched video page via proxy');
-
-      // Extract INNERTUBE_API_KEY from page
-      const apiKeyMatch = html.match(/"INNERTUBE_API_KEY":"([^"]+)"/);
-      if (!apiKeyMatch) {
-        throw new Error('Could not extract API key from YouTube. Please try again.');
-      }
-      const apiKey = apiKeyMatch[1];
-      console.log('[ToolForm] Extracted YouTube API key');
-
-      // Step 2: Call Innertube player API to get caption tracks
-      const playerResponse = await fetch(`https://www.youtube.com/youtubei/v1/player?key=${apiKey}`, {
+      // Call our server-side transcript fetching endpoint
+      const response = await fetch('/api/fetch-youtube-transcript', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          context: {
-            client: {
-              clientName: 'WEB',
-              clientVersion: '2.20250106.01.00'
-            }
-          },
-          videoId: videoId
-        })
+        body: JSON.stringify({ videoId })
       });
 
-      const playerData = await playerResponse.json();
+      const data = await response.json();
 
-      // Step 3: Extract caption tracks
-      const tracks = playerData?.captions?.playerCaptionsTracklistRenderer?.captionTracks;
-      if (!tracks || tracks.length === 0) {
-        throw new Error('This video does not have captions/subtitles available. Please use a video with captions enabled.');
+      if (!response.ok || !data.success) {
+        throw new Error(data.error || 'Failed to fetch transcript');
       }
 
-      console.log('[ToolForm] Found', tracks.length, 'caption tracks');
+      console.log('[ToolForm] ✓ Transcript fetched:', data.length, 'characters');
+      console.log('[ToolForm] Language:', data.trackLanguage);
 
-      // Find English track (or first available)
-      const englishTrack = tracks.find((t: any) =>
-        t.languageCode === 'en' || t.languageCode.startsWith('en')
-      ) || tracks[0];
-
-      console.log('[ToolForm] Using track:', englishTrack.name?.simpleText || englishTrack.languageCode);
-
-      // Step 4: Fetch transcript from caption track URL
-      const transcriptResponse = await fetch(englishTrack.baseUrl);
-      const transcriptXml = await transcriptResponse.text();
-
-      // Step 5: Parse XML and extract text
-      const parser = new DOMParser();
-      const xmlDoc = parser.parseFromString(transcriptXml, 'text/xml');
-      const textElements = xmlDoc.getElementsByTagName('text');
-
-      if (textElements.length === 0) {
-        throw new Error('Could not parse transcript data. Please try a different video.');
-      }
-
-      // Combine all text segments
-      const transcript = Array.from(textElements)
-        .map((el) => el.textContent || '')
-        .filter((text) => text.trim().length > 0)
-        .join(' ')
-        .trim();
-
-      if (transcript.length < 50) {
-        throw new Error('Transcript is too short. Please ensure the video has proper captions.');
-      }
-
-      console.log('[ToolForm] Transcript fetched successfully:', transcript.length, 'characters');
-      return transcript;
+      return data.transcript;
 
     } catch (error) {
       console.error('[ToolForm] Transcript fetch error:', error);
