@@ -3,6 +3,10 @@
  *
  * Complete server-side YouTube transcript fetching using Innertube API
  * This bypasses ALL CORS restrictions by running entirely on the server
+ *
+ * @route POST /api/fetch-youtube-transcript
+ * @param {string} videoId - YouTube video ID
+ * @returns {Object} Transcript data
  */
 
 import type { APIRoute } from 'astro';
