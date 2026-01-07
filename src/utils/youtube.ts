@@ -94,21 +94,29 @@ export async function getYouTubeTranscript(
     const apiKey = apiKeyMatch[1];
     console.log(`[YouTube] Extracted API key`);
 
-    // Step 3: Call Innertube player API
+    // Step 3: Call Innertube player API with ANDROID client (bypasses cloud IP blocking)
     const playerResponse = await fetch(`https://www.youtube.com/youtubei/v1/player?key=${apiKey}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'User-Agent': 'com.google.android.youtube/17.36.4 (Linux; U; Android 12; US) gzip',
+        'X-Goog-Api-Format-Version': '2',
       },
       body: JSON.stringify({
         context: {
           client: {
-            clientName: 'WEB',
-            clientVersion: '2.20250106.01.00'
+            clientName: 'ANDROID',
+            clientVersion: '17.36.4',
+            androidSdkVersion: 31,
+            hl: 'en',
+            gl: 'US',
+            utcOffsetMinutes: 0
           }
         },
-        videoId: videoId
+        videoId: videoId,
+        params: 'CgIQBg', // Bypass parameter for 403 errors
+        contentCheckOk: true,
+        racyCheckOk: true
       })
     });
 
