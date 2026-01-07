@@ -157,6 +157,96 @@ export default function ToolPage({ tool }: ToolPageProps) {
     }
   };
 
+  const renderFormattedResult = (content: string) => {
+    // Check if this is a multi-section output (Content Repurposing Package)
+    if (content.includes('## 📝 BLOG POST') || content.includes('## 💼 LINKEDIN POST')) {
+      // Split into sections
+      const sections = {
+        blogPost: '',
+        linkedIn: '',
+        newsletter: ''
+      };
+
+      // Extract blog post section
+      const blogMatch = content.match(/## 📝 BLOG POST([\s\S]*?)(?=## 💼 LINKEDIN POST|---\s*## 💼|$)/);
+      if (blogMatch) {
+        sections.blogPost = blogMatch[1].trim();
+      }
+
+      // Extract LinkedIn section
+      const linkedInMatch = content.match(/## 💼 LINKEDIN POST([\s\S]*?)(?=## 📧 NEWSLETTER|---\s*## 📧|$)/);
+      if (linkedInMatch) {
+        sections.linkedIn = linkedInMatch[1].trim();
+      }
+
+      // Extract newsletter section
+      const newsletterMatch = content.match(/## 📧 NEWSLETTER DRAFT([\s\S]*?)$/);
+      if (newsletterMatch) {
+        sections.newsletter = newsletterMatch[1].trim();
+      }
+
+      return (
+        <div className="space-y-8">
+          {/* Blog Post Section */}
+          {sections.blogPost && (
+            <div className="bg-white border-2 border-blue-200 rounded-xl p-8 shadow-sm">
+              <div className="flex items-center gap-3 mb-6 pb-4 border-b border-blue-100">
+                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-2xl">
+                  📝
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900">Blog Post</h3>
+              </div>
+              <div
+                className="prose prose-lg max-w-none"
+                dangerouslySetInnerHTML={{ __html: sections.blogPost }}
+              />
+            </div>
+          )}
+
+          {/* LinkedIn Section */}
+          {sections.linkedIn && (
+            <div className="bg-white border-2 border-blue-600 rounded-xl p-8 shadow-sm">
+              <div className="flex items-center gap-3 mb-6 pb-4 border-b border-blue-100">
+                <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center text-2xl">
+                  💼
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900">LinkedIn Post</h3>
+              </div>
+              <div
+                className="prose prose-lg max-w-none whitespace-pre-wrap font-sans text-gray-800"
+                dangerouslySetInnerHTML={{ __html: sections.linkedIn }}
+              />
+            </div>
+          )}
+
+          {/* Newsletter Section */}
+          {sections.newsletter && (
+            <div className="bg-white border-2 border-purple-200 rounded-xl p-8 shadow-sm">
+              <div className="flex items-center gap-3 mb-6 pb-4 border-b border-purple-100">
+                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center text-2xl">
+                  📧
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900">Newsletter Draft</h3>
+              </div>
+              <div
+                className="prose prose-lg max-w-none"
+                dangerouslySetInnerHTML={{ __html: sections.newsletter }}
+              />
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    // Default rendering for single-section content
+    return (
+      <div
+        className="prose prose-lg max-w-none bg-gray-50 p-6 rounded-lg"
+        dangerouslySetInnerHTML={{ __html: content }}
+      />
+    );
+  };
+
   const renderInput = (input: typeof tool.inputs[0], index: number) => {
     const value = inputs[input.id] || '';
     const baseClasses = "w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent";
@@ -462,10 +552,9 @@ export default function ToolPage({ tool }: ToolPageProps) {
                 )}
 
                 {result && !loading && (
-                  <div
-                    className="prose prose-lg max-w-none bg-gray-50 p-6 rounded-lg"
-                    dangerouslySetInnerHTML={{ __html: result }}
-                  />
+                  <div>
+                    {renderFormattedResult(result)}
+                  </div>
                 )}
               </div>
             </div>
