@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import AstroHeader from '../components/AstroHeader.astro';
+import AstroFooter from '../components/AstroFooter.astro';
 import AuthModal from '../components/AuthModal';
 
 // Disable prerendering - this page needs SSR
@@ -41,7 +41,7 @@ const seo = {
 
 <BaseLayout seo={seo}>
   <!-- Header -->
-  <Header client:load supabaseUrl={SUPABASE_URL} supabaseAnonKey={SUPABASE_ANON_KEY} />
+  <AstroHeader />
 
   <!-- Auth Modal -->
   <AuthModal
@@ -171,7 +171,7 @@ const seo = {
   </div>
 
   <!-- Footer -->
-  <Footer />
+  <AstroFooter />
 </BaseLayout>
 
 <!-- Make Supabase config available globally for client-side components -->
