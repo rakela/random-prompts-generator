@@ -96,11 +96,6 @@ export async function getYouTubeTranscript(
       mode: 'auto', // Try native transcript, fallback to AI generation if needed
     });
 
-    // DEBUG: Log the full response to understand the format
-    console.log(`[YouTube] DEBUG - Supadata response type:`, typeof result);
-    console.log(`[YouTube] DEBUG - Supadata response keys:`, Object.keys(result || {}));
-    console.log(`[YouTube] DEBUG - Full response:`, JSON.stringify(result, null, 2));
-
     // Extract transcript text - try multiple possible fields
     let transcript = '';
 
@@ -116,9 +111,6 @@ export async function getYouTubeTranscript(
         transcript = result.data.transcript || result.data.text || '';
       }
     }
-
-    console.log(`[YouTube] DEBUG - Extracted transcript length:`, transcript.length);
-    console.log(`[YouTube] DEBUG - First 200 chars:`, transcript.substring(0, 200));
 
     if (!transcript || transcript.length < 50) {
       throw new Error(`Transcript is empty or too short (length: ${transcript.length})`);
