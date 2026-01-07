@@ -1,9 +1,14 @@
 /**
- * YouTube Transcript Fetcher - Production-Grade Serverless Approach
+ * YouTube Transcript Fetcher - Supadata API Integration
  *
- * Uses YouTube's Innertube API for server-side transcript fetching.
- * Works in serverless environments (Vercel, AWS Lambda, Netlify).
+ * Uses Supadata API for reliable YouTube transcript fetching.
+ * Supadata handles YouTube's cloud IP blocking automatically.
+ *
+ * FREE Tier: 100 transcripts/month, no credit card required
+ * Sign up: https://supadata.ai
  */
+
+import { Supadata } from '@supadata/js';
 
 export interface TranscriptSegment {
   text: string;
@@ -46,7 +51,10 @@ export function extractVideoId(url: string): string | null {
  * Main function: Fetch YouTube transcript
  *
  * This is the primary function used throughout the application.
- * Automatically adapts for serverless environments (Vercel, AWS Lambda, Netlify).
+ * Uses Supadata API to reliably fetch transcripts without cloud IP blocking.
+ *
+ * Environment Variable Required:
+ * - SUPADATA_API_KEY: Your Supadata API key (get from https://supadata.ai)
  *
  * @param videoUrl - Full YouTube URL (youtube.com/watch?v=... or youtu.be/...)
  * @param languageCode - Language code for captions (default: 'en')
@@ -62,150 +70,58 @@ export async function getYouTubeTranscript(
     throw new Error('Invalid YouTube URL. Could not extract video ID.');
   }
 
+  // Check for API key
+  const apiKey = process.env.SUPADATA_API_KEY;
+  if (!apiKey) {
+    throw new Error(
+      'SUPADATA_API_KEY environment variable is not set. Get your free API key at https://supadata.ai'
+    );
+  }
+
   console.log(`[YouTube] ========================================`);
   console.log(`[YouTube] Fetching transcript for video ID: ${videoId}`);
   console.log(`[YouTube] Video URL: https://www.youtube.com/watch?v=${videoId}`);
-  console.log(`[YouTube] Using: YouTube Innertube API (server-side)`);
+  console.log(`[YouTube] Using: Supadata API`);
   console.log(`[YouTube] ========================================`);
 
   try {
-    // Step 1: Fetch YouTube video page
-    const videoPageUrl = `https://www.youtube.com/watch?v=${videoId}`;
-    const htmlResponse = await fetch(videoPageUrl, {
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-        'Accept-Language': 'en-US,en;q=0.9',
-      }
+    // Initialize Supadata client
+    const supadata = new Supadata({ apiKey });
+
+    // Fetch transcript
+    const result = await supadata.transcript({
+      url: videoUrl,
+      lang: languageCode,
+      text: true, // Return plain text instead of timestamped chunks
+      mode: 'auto', // Try native transcript, fallback to AI generation if needed
     });
 
-    if (!htmlResponse.ok) {
-      throw new Error(`Failed to fetch video page: ${htmlResponse.status}`);
+    // Extract transcript text
+    const transcript = result.transcript || result.text || '';
+
+    if (!transcript || transcript.length < 50) {
+      throw new Error('Transcript is empty or too short');
     }
 
-    const html = await htmlResponse.text();
-    console.log(`[YouTube] Fetched video page`);
-
-    // Step 2: Extract INNERTUBE_API_KEY
-    const apiKeyMatch = html.match(/"INNERTUBE_API_KEY":"([^"]+)"/);
-    if (!apiKeyMatch) {
-      throw new Error('Could not extract YouTube API key from page');
-    }
-
-    const apiKey = apiKeyMatch[1];
-    console.log(`[YouTube] Extracted API key`);
-
-    // Step 3: Call Innertube player API with ANDROID client (bypasses cloud IP blocking)
-    const playerResponse = await fetch(`https://www.youtube.com/youtubei/v1/player?key=${apiKey}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'User-Agent': 'com.google.android.youtube/17.36.4 (Linux; U; Android 12; US) gzip',
-        'X-Goog-Api-Format-Version': '2',
-      },
-      body: JSON.stringify({
-        context: {
-          client: {
-            clientName: 'ANDROID',
-            clientVersion: '17.36.4',
-            androidSdkVersion: 31,
-            hl: 'en',
-            gl: 'US',
-            utcOffsetMinutes: 0
-          }
-        },
-        videoId: videoId,
-        params: 'CgIQBg', // Bypass parameter for 403 errors
-        contentCheckOk: true,
-        racyCheckOk: true
-      })
-    });
-
-    if (!playerResponse.ok) {
-      throw new Error(`Innertube API error: ${playerResponse.status}`);
-    }
-
-    const playerData = await playerResponse.json();
-
-    console.log(`[YouTube] DEBUG - Player API Response Keys:`, Object.keys(playerData));
-    console.log(`[YouTube] DEBUG - Has captions object:`, !!playerData.captions);
-    if (playerData.captions) {
-      console.log(`[YouTube] DEBUG - Captions keys:`, Object.keys(playerData.captions));
-    }
-    console.log(`[YouTube] DEBUG - Has playabilityStatus:`, !!playerData.playabilityStatus);
-    if (playerData.playabilityStatus) {
-      console.log(`[YouTube] DEBUG - Playability status:`, playerData.playabilityStatus.status);
-      console.log(`[YouTube] DEBUG - Playability reason:`, playerData.playabilityStatus.reason);
-    }
-
-    // Step 4: Extract caption tracks
-    const tracks = playerData?.captions?.playerCaptionsTracklistRenderer?.captionTracks;
-    if (!tracks || tracks.length === 0) {
-      console.error(`[YouTube] No caption tracks found`);
-      console.error(`[YouTube] Full playerData:`, JSON.stringify(playerData, null, 2));
-      throw new Error('No caption tracks found for this video');
-    }
-
-    console.log(`[YouTube] Found ${tracks.length} caption tracks`);
-
-    // Find English track or first available
-    const englishTrack = tracks.find((t: any) =>
-      t.languageCode === 'en' || t.languageCode.startsWith('en')
-    ) || tracks[0];
-
-    console.log(`[YouTube] Using track:`, englishTrack.name?.simpleText || englishTrack.languageCode);
-
-    // Step 5: Fetch transcript XML
-    const transcriptResponse = await fetch(englishTrack.baseUrl);
-    if (!transcriptResponse.ok) {
-      throw new Error(`Failed to fetch transcript: ${transcriptResponse.status}`);
-    }
-
-    const transcriptXml = await transcriptResponse.text();
-    console.log(`[YouTube] Fetched transcript XML`);
-
-    // Step 6: Parse XML (simple regex parsing)
-    const textMatches = transcriptXml.matchAll(/<text[^>]*>([^<]+)<\/text>/g);
-    const textSegments = Array.from(textMatches).map(match => {
-      // Decode HTML entities
-      return match[1]
-        .replace(/&amp;/g, '&')
-        .replace(/&lt;/g, '<')
-        .replace(/&gt;/g, '>')
-        .replace(/&quot;/g, '"')
-        .replace(/&#39;/g, "'")
-        .trim();
-    }).filter(text => text.length > 0);
-
-    if (textSegments.length === 0) {
-      throw new Error('No text segments found in transcript');
-    }
-
-    const fullTranscript = textSegments.join(' ').trim();
-
-    if (fullTranscript.length < 50) {
-      throw new Error('Transcript is too short');
-    }
-
-    console.log(`[YouTube] ✓ SUCCESS: ${fullTranscript.length} characters`);
-    console.log(`[YouTube] Track language: ${englishTrack.languageCode}`);
+    console.log(`[YouTube] ✓ SUCCESS: ${transcript.length} characters`);
     console.log(`[YouTube] ========================================`);
 
-    return fullTranscript;
+    return transcript;
 
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : String(error);
     console.error('[YouTube] ✗ ERROR:', errorMessage);
     console.error('[YouTube] ========================================');
 
-    // Generic error with helpful message
+    // Provide helpful error message
     throw new Error(
       `Failed to fetch YouTube transcript: ${errorMessage}\n\n` +
       `Video: https://www.youtube.com/watch?v=${videoId}\n\n` +
       `This could mean:\n` +
       `1. The video doesn't have captions enabled\n` +
       `2. The video is private or age-restricted\n` +
-      `3. YouTube is blocking automated access\n\n` +
-      `Please try a different video or try again later.`
+      `3. Your Supadata API key is invalid or you've exceeded the free tier (100/month)\n\n` +
+      `Check your Supadata dashboard at https://supadata.ai/dashboard`
     );
   }
 }
@@ -213,8 +129,7 @@ export async function getYouTubeTranscript(
 /**
  * Fetch transcript with timing segments
  *
- * Returns an array of segments with timing information, useful for
- * displaying transcripts with timestamps or creating synchronized content.
+ * Returns an array of segments with timing information.
  *
  * @param videoUrl - Full YouTube URL
  * @param languageCode - Language code for captions (default: 'en')
@@ -230,27 +145,28 @@ export async function getYouTubeTranscriptSegments(
     throw new Error('Invalid YouTube URL. Could not extract video ID.');
   }
 
+  const apiKey = process.env.SUPADATA_API_KEY;
+  if (!apiKey) {
+    throw new Error('SUPADATA_API_KEY environment variable is not set');
+  }
+
   console.log(`[YouTube] Fetching transcript segments for: ${videoId}`);
 
   try {
-    const apiUrl = `https://tubetext.vercel.app/youtube/transcript-with-timestamps?video_id=${videoId}`;
-    const response = await fetch(apiUrl);
+    const supadata = new Supadata({ apiKey });
 
-    if (!response.ok) {
-      throw new Error(`TubeText API error: ${response.status}`);
-    }
+    // Fetch transcript with timestamps (text: false)
+    const result = await supadata.transcript({
+      url: videoUrl,
+      lang: languageCode,
+      text: false, // Return timestamped chunks
+      mode: 'auto',
+    });
 
-    const result = await response.json();
-
-    if (!result.success || !result.data || !result.data.transcript) {
-      throw new Error('No captions available');
-    }
-
-    // TubeText returns transcript array with timestamps
-    // Convert to our TranscriptSegment format
-    const segments: TranscriptSegment[] = result.data.transcript.map((item: any, index: number) => ({
-      text: typeof item === 'string' ? item : (item.text || ''),
-      start: item.start || index * 2, // Fallback: estimate 2 seconds per segment
+    // Convert Supadata format to our TranscriptSegment format
+    const segments: TranscriptSegment[] = (result.segments || result.chunks || []).map((item: any) => ({
+      text: item.text || '',
+      start: item.start || item.timestamp || 0,
       duration: item.duration || 2
     }));
 
