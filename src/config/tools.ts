@@ -456,67 +456,82 @@ export const youtubeRepurposingWorkflowTool: ToolConfig = {
 **Instructions:**
 Analyze the YouTube video transcript and create all three outputs in a single response.
 
+**IMPORTANT: Use proper HTML formatting. Use <h1> for main title, <h2> for section headings, <p> for paragraphs, <strong> for bold, <em> for emphasis.**
+
 **Output Format:**
-
-# Content Repurposing Package
-
----
 
 ## 📝 BLOG POST
 
-<h1>[Engaging Blog Title]</h1>
+<h1>[Engaging, SEO-friendly Blog Title]</h1>
 
-<p>[Introduction paragraph...]</p>
+<p>[Compelling introduction that hooks the reader with a question, statistic, or bold statement. Establish the main topic and why it matters. 2-3 sentences.]</p>
 
-<h2>[Section 1 Heading]</h2>
-<p>[Content...]</p>
+<h2>[First Key Point or Section]</h2>
+<p>[Detailed explanation with examples, insights from the video. 3-4 paragraphs covering this main point.]</p>
 
-<h2>[Section 2 Heading]</h2>
-<p>[Content...]</p>
+<h2>[Second Key Point or Section]</h2>
+<p>[Continue with the next major insight. Include specific examples, quotes from the video if relevant. 3-4 paragraphs.]</p>
+
+<h2>[Third Key Point or Section]</h2>
+<p>[Additional insights, supporting details, practical applications. 3-4 paragraphs.]</p>
+
+<h2>Key Takeaways</h2>
+<p>[Summarize the main points in a clear, actionable way. Include 3-5 bullet points or key lessons.]</p>
 
 <h2>Conclusion</h2>
-<p>[Wrap up with key takeaways...]</p>
+<p>[Wrap up with final thoughts, call-to-action, or thought-provoking question. 2-3 sentences.]</p>
 
-<p><em>Word count: approximately 1,000-1,500 words</em></p>
+<p><em>Word count: 1,000-1,500 words</em></p>
 
 ---
 
 ## 💼 LINKEDIN POST
 
-**Hook:** [Attention-grabbing opening line]
+<p><strong>[Attention-grabbing hook that makes people want to read more]</strong></p>
 
-[Main content with strategic line breaks]
+<p>[Main content paragraph introducing the topic and why it matters]</p>
 
-[Key insight or lesson]
+<p>[Key insight #1 from the video with context]</p>
 
-[Call-to-action or engagement prompt]
+<p>[Key insight #2 with practical application]</p>
 
-[3-5 relevant hashtags if appropriate]
+<p>[Key insight #3 or lesson learned]</p>
+
+<p>[Call-to-action or engagement question]</p>
+
+<p>[3-5 relevant hashtags if appropriate for the topic]</p>
 
 ---
 
 ## 📧 NEWSLETTER DRAFT
 
-**Subject Line:** [Catchy email subject]
+<p><strong>Subject Line:</strong> [Compelling email subject that creates curiosity]</p>
 
-Hey [Subscriber],
+<p>Hey [Subscriber],</p>
 
-[Conversational opening that references the video]
+<p>[Friendly, conversational opening that references the video topic and why you're sharing it]</p>
 
-[Brief summary of key points - 3-4 short paragraphs]
+<p>[Brief summary of the first key point - keep it concise and valuable]</p>
 
-[Clear CTA directing to watch the video]
+<p>[Second key insight or takeaway - make it actionable]</p>
 
-[Signature line]
+<p>[Third point or practical tip they can use right away]</p>
+
+<p>[Clear CTA: "Watch the full video here: {youtube_url}" or similar]</p>
+
+<p>[Sign-off]<br>
+[Your Name]</p>
 
 ---
 
-**All content should:**
-1. Be written in {language}
-2. Use a {tone} tone
-3. Target {target_audience}
-4. Be SEO-friendly and engaging
-5. Reference the video naturally without being overly promotional
+**All content must:**
+1. Be written entirely in {language}
+2. Use a {tone} tone consistently
+3. Be tailored specifically for {target_audience}
+4. Be SEO-friendly with natural keyword usage
+5. Feel authentic and valuable, not promotional
+6. Use proper HTML tags (<h1>, <h2>, <p>, <strong>, <em>)
+7. Maintain proper spacing between sections
 
 <p><em>Generated with <a href="https://randomprompts.org" target="_blank">Random Prompts Generator</a></em></p>`
 };
