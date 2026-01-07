@@ -118,9 +118,22 @@ export async function getYouTubeTranscript(
 
     const playerData = await playerResponse.json();
 
+    console.log(`[YouTube] DEBUG - Player API Response Keys:`, Object.keys(playerData));
+    console.log(`[YouTube] DEBUG - Has captions object:`, !!playerData.captions);
+    if (playerData.captions) {
+      console.log(`[YouTube] DEBUG - Captions keys:`, Object.keys(playerData.captions));
+    }
+    console.log(`[YouTube] DEBUG - Has playabilityStatus:`, !!playerData.playabilityStatus);
+    if (playerData.playabilityStatus) {
+      console.log(`[YouTube] DEBUG - Playability status:`, playerData.playabilityStatus.status);
+      console.log(`[YouTube] DEBUG - Playability reason:`, playerData.playabilityStatus.reason);
+    }
+
     // Step 4: Extract caption tracks
     const tracks = playerData?.captions?.playerCaptionsTracklistRenderer?.captionTracks;
     if (!tracks || tracks.length === 0) {
+      console.error(`[YouTube] No caption tracks found`);
+      console.error(`[YouTube] Full playerData:`, JSON.stringify(playerData, null, 2));
       throw new Error('No caption tracks found for this video');
     }
 
