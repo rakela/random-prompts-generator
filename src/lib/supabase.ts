@@ -104,6 +104,20 @@ export async function getUserFromRequest(request: Request) {
 export async function checkUserCredits(userId: string) {
   const supabase = createAdminClient();
 
+  // First, get user's email to check for admin/unlimited access
+  const { data: userData, error: userError } = await supabase.auth.admin.getUserById(userId);
+
+  // Admin email with unlimited credits
+  const ADMIN_EMAIL = 'rakelaroshi@gmail.com';
+  if (userData?.user?.email === ADMIN_EMAIL) {
+    console.log(`[checkUserCredits] Admin user detected: ${ADMIN_EMAIL} - granting unlimited credits`);
+    return {
+      canGenerate: true,
+      credits: 999999,
+      isPro: true
+    };
+  }
+
   const { data: profile, error } = await supabase
     .from('profiles')
     .select('is_pro, purchased_credits, daily_credits_reset_at')
@@ -148,6 +162,16 @@ export async function checkUserCredits(userId: string) {
 // Helper to deduct credit
 export async function deductCredit(userId: string) {
   const supabase = createAdminClient();
+
+  // First, get user's email to check for admin/unlimited access
+  const { data: userData } = await supabase.auth.admin.getUserById(userId);
+
+  // Admin email with unlimited credits - never deduct
+  const ADMIN_EMAIL = 'rakelaroshi@gmail.com';
+  if (userData?.user?.email === ADMIN_EMAIL) {
+    console.log(`[deductCredit] Admin user detected: ${ADMIN_EMAIL} - skipping credit deduction`);
+    return;
+  }
 
   const { data: profile } = await supabase
     .from('profiles')
