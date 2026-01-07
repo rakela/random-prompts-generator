@@ -94,21 +94,29 @@ export async function getYouTubeTranscript(
     const apiKey = apiKeyMatch[1];
     console.log(`[YouTube] Extracted API key`);
 
-    // Step 3: Call Innertube player API
+    // Step 3: Call Innertube player API with ANDROID client (bypasses cloud IP blocking)
     const playerResponse = await fetch(`https://www.youtube.com/youtubei/v1/player?key=${apiKey}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'User-Agent': 'com.google.android.youtube/17.36.4 (Linux; U; Android 12; US) gzip',
+        'X-Goog-Api-Format-Version': '2',
       },
       body: JSON.stringify({
         context: {
           client: {
-            clientName: 'WEB',
-            clientVersion: '2.20250106.01.00'
+            clientName: 'ANDROID',
+            clientVersion: '17.36.4',
+            androidSdkVersion: 31,
+            hl: 'en',
+            gl: 'US',
+            utcOffsetMinutes: 0
           }
         },
-        videoId: videoId
+        videoId: videoId,
+        params: 'CgIQBg', // Bypass parameter for 403 errors
+        contentCheckOk: true,
+        racyCheckOk: true
       })
     });
 
@@ -118,9 +126,22 @@ export async function getYouTubeTranscript(
 
     const playerData = await playerResponse.json();
 
+    console.log(`[YouTube] DEBUG - Player API Response Keys:`, Object.keys(playerData));
+    console.log(`[YouTube] DEBUG - Has captions object:`, !!playerData.captions);
+    if (playerData.captions) {
+      console.log(`[YouTube] DEBUG - Captions keys:`, Object.keys(playerData.captions));
+    }
+    console.log(`[YouTube] DEBUG - Has playabilityStatus:`, !!playerData.playabilityStatus);
+    if (playerData.playabilityStatus) {
+      console.log(`[YouTube] DEBUG - Playability status:`, playerData.playabilityStatus.status);
+      console.log(`[YouTube] DEBUG - Playability reason:`, playerData.playabilityStatus.reason);
+    }
+
     // Step 4: Extract caption tracks
     const tracks = playerData?.captions?.playerCaptionsTracklistRenderer?.captionTracks;
     if (!tracks || tracks.length === 0) {
+      console.error(`[YouTube] No caption tracks found`);
+      console.error(`[YouTube] Full playerData:`, JSON.stringify(playerData, null, 2));
       throw new Error('No caption tracks found for this video');
     }
 
