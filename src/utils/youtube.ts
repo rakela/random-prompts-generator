@@ -96,11 +96,32 @@ export async function getYouTubeTranscript(
       mode: 'auto', // Try native transcript, fallback to AI generation if needed
     });
 
-    // Extract transcript text
-    const transcript = result.transcript || result.text || '';
+    // DEBUG: Log the full response to understand the format
+    console.log(`[YouTube] DEBUG - Supadata response type:`, typeof result);
+    console.log(`[YouTube] DEBUG - Supadata response keys:`, Object.keys(result || {}));
+    console.log(`[YouTube] DEBUG - Full response:`, JSON.stringify(result, null, 2));
+
+    // Extract transcript text - try multiple possible fields
+    let transcript = '';
+
+    if (typeof result === 'string') {
+      // Response is already a string
+      transcript = result;
+    } else if (result && typeof result === 'object') {
+      // Try different possible field names
+      transcript = result.transcript || result.text || result.content || result.data || '';
+
+      // If still empty, try nested structures
+      if (!transcript && result.data) {
+        transcript = result.data.transcript || result.data.text || '';
+      }
+    }
+
+    console.log(`[YouTube] DEBUG - Extracted transcript length:`, transcript.length);
+    console.log(`[YouTube] DEBUG - First 200 chars:`, transcript.substring(0, 200));
 
     if (!transcript || transcript.length < 50) {
-      throw new Error('Transcript is empty or too short');
+      throw new Error(`Transcript is empty or too short (length: ${transcript.length})`);
     }
 
     console.log(`[YouTube] ✓ SUCCESS: ${transcript.length} characters`);
