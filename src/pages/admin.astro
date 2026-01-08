@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AstroHeader from '../components/AstroHeader.astro';
+import AstroFooter from '../components/AstroFooter.astro';
+import AdminDashboard from '../components/admin/AdminDashboard';
+
+export const prerender = false;
+
+const seo = {
+  title: 'Admin Dashboard - Random Prompts Generator',
+  description: 'Admin dashboard for managing users and viewing analytics.',
+  keywords: 'admin, dashboard, management',
+  path: '/admin'
+};
+
+// Get Supabase config
+const SUPABASE_URL = import.meta.env.PUBLIC_SUPABASE_URL || '';
+const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY || '';
+---
+
+<BaseLayout seo={seo}>
+  <!-- Make Supabase config available globally BEFORE components load -->
+  <script is:inline define:vars={{ SUPABASE_URL, SUPABASE_ANON_KEY }}>
+    window.__SUPABASE_URL__ = SUPABASE_URL;
+    window.__SUPABASE_ANON_KEY__ = SUPABASE_ANON_KEY;
+  </script>
+
+  <AstroHeader />
+
+  <AdminDashboard
+    client:only="react"
+    supabaseUrl={SUPABASE_URL}
+    supabaseAnonKey={SUPABASE_ANON_KEY}
+  />
+
+  <AstroFooter />
+</BaseLayout>
