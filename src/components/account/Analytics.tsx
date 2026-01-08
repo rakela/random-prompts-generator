@@ -13,6 +13,9 @@ export default function Analytics({ supabaseUrl, supabaseAnonKey }: AnalyticsPro
   const [user, setUser] = useState<any>(null);
   const [credits, setCredits] = useState(0);
   const [isPro, setIsPro] = useState(false);
+  const [isYearly, setIsYearly] = useState(false);
+  const [monthlyCredits, setMonthlyCredits] = useState(0);
+  const [purchasedCredits, setPurchasedCredits] = useState(0);
   const [loading, setLoading] = useState(true);
   const [analytics, setAnalytics] = useState<any>(null);
 
@@ -41,6 +44,9 @@ export default function Analytics({ supabaseUrl, supabaseAnonKey }: AnalyticsPro
         const data = await creditsResponse.json();
         setCredits(data.credits || 0);
         setIsPro(data.isPro || false);
+        setIsYearly(data.isYearly || false);
+        setMonthlyCredits(data.monthlyCredits || 0);
+        setPurchasedCredits(data.purchasedCredits || 0);
       }
 
       // Fetch analytics
@@ -106,12 +112,36 @@ export default function Analytics({ supabaseUrl, supabaseAnonKey }: AnalyticsPro
         <div className="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-2xl p-8 mb-8 text-white shadow-xl">
           <div className="flex items-center justify-between mb-6">
             <div>
-              <p className="text-blue-100 text-sm font-medium mb-2">Available Credits</p>
-              <h2 className="text-5xl font-bold">{isPro ? '∞' : credits.toLocaleString()}</h2>
-              {!isPro && (
-                <p className="text-blue-100 text-sm mt-2">
-                  {credits > 0 ? 'Generate more content with your remaining credits' : 'Upgrade to Pro for unlimited credits'}
-                </p>
+              {isPro ? (
+                isYearly ? (
+                  <>
+                    <div className="flex items-center gap-2 mb-2">
+                      <p className="text-blue-100 text-sm font-medium">Available Credits</p>
+                      <span className="text-xs bg-white/20 px-2 py-1 rounded-full font-bold">YEARLY PRO</span>
+                    </div>
+                    <h2 className="text-5xl font-bold">∞</h2>
+                    <p className="text-blue-100 text-sm mt-2">Unlimited generations</p>
+                  </>
+                ) : (
+                  <>
+                    <div className="flex items-center gap-2 mb-2">
+                      <p className="text-blue-100 text-sm font-medium">Monthly Credits</p>
+                      <span className="text-xs bg-white/20 px-2 py-1 rounded-full font-bold">MONTHLY PRO</span>
+                    </div>
+                    <h2 className="text-5xl font-bold">{monthlyCredits}/200</h2>
+                    {purchasedCredits > 0 && (
+                      <p className="text-blue-100 text-sm mt-2">+ {purchasedCredits} bonus credits available</p>
+                    )}
+                  </>
+                )
+              ) : (
+                <>
+                  <p className="text-blue-100 text-sm font-medium mb-2">Available Credits</p>
+                  <h2 className="text-5xl font-bold">{credits.toLocaleString()}</h2>
+                  <p className="text-blue-100 text-sm mt-2">
+                    {credits > 0 ? 'Generate more content with your remaining credits' : 'Upgrade to Pro for more credits'}
+                  </p>
+                </>
               )}
             </div>
             <div className="bg-white/20 backdrop-blur-sm rounded-full p-6">
@@ -133,16 +163,36 @@ export default function Analytics({ supabaseUrl, supabaseAnonKey }: AnalyticsPro
               </div>
               {credits < 3 && (
                 <p className="text-sm text-yellow-200 mt-3">
-                  ⚠️ Running low on credits. <a href="/upgrade" className="underline font-semibold hover:text-white">Upgrade to Pro</a> for unlimited access.
+                  ⚠️ Running low on credits. <a href="/upgrade" className="underline font-semibold hover:text-white">Upgrade to Pro</a> for more credits.
                 </p>
               )}
             </div>
           )}
 
-          {isPro && (
+          {isPro && isYearly && (
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center">
               <p className="text-lg font-semibold">🎉 You have unlimited credits!</p>
               <p className="text-sm text-blue-100 mt-1">Generate as much content as you need</p>
+            </div>
+          )}
+
+          {isPro && !isYearly && (
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-sm">Monthly Credit Usage</span>
+                <span className="text-sm font-semibold">{monthlyCredits}/200</span>
+              </div>
+              <div className="w-full bg-white/20 rounded-full h-3">
+                <div
+                  className="bg-white rounded-full h-3 transition-all duration-500"
+                  style={{ width: `${(monthlyCredits / 200) * 100}%` }}
+                ></div>
+              </div>
+              {monthlyCredits < 20 && monthlyCredits > 0 && (
+                <p className="text-sm text-yellow-200 mt-3">
+                  ⚠️ Running low on monthly credits. Consider <a href="/account/subscription" className="underline font-semibold hover:text-white">upgrading to Yearly Pro</a> for unlimited access.
+                </p>
+              )}
             </div>
           )}
         </div>
@@ -334,16 +384,24 @@ export default function Analytics({ supabaseUrl, supabaseAnonKey }: AnalyticsPro
         {/* Upgrade CTA for Free Users */}
         {!isPro && (
           <div className="bg-gradient-to-br from-indigo-600 to-purple-700 rounded-2xl p-8 text-white text-center shadow-xl">
-            <h3 className="text-2xl font-bold mb-3">Unlock Unlimited Analytics</h3>
+            <h3 className="text-2xl font-bold mb-3">Unlock Pro Analytics</h3>
             <p className="text-indigo-100 mb-6 max-w-2xl mx-auto">
-              Upgrade to Pro to get unlimited credits, advanced insights, and priority support.
+              Choose the plan that fits your needs: 200 credits monthly at $19/month or unlimited with our yearly plan at $199/year.
             </p>
-            <a
-              href="/upgrade"
-              className="inline-flex items-center gap-2 bg-white text-indigo-600 font-semibold px-8 py-3 rounded-lg hover:bg-indigo-50 transition-colors"
-            >
-              Upgrade to Pro
-            </a>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="/upgrade?plan=monthly"
+                className="inline-flex items-center justify-center gap-2 bg-white text-indigo-600 font-semibold px-8 py-3 rounded-lg hover:bg-indigo-50 transition-colors"
+              >
+                Monthly Pro - $19/month
+              </a>
+              <a
+                href="/upgrade?plan=annual"
+                className="inline-flex items-center justify-center gap-2 bg-indigo-800 text-white font-semibold px-8 py-3 rounded-lg hover:bg-indigo-900 transition-colors border-2 border-yellow-400"
+              >
+                Yearly Pro - $199/year
+              </a>
+            </div>
           </div>
         )}
       </div>
