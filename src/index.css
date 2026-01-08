@@ -30,3 +30,9 @@ body {
 .grid-cols-2{
     grid-template-columns: 200px 200px;
 }
+aside.lg\:w-\[30\%\].flex-shrink-0 {
+    width: 30%;
+}
+.flex-1.lg\:w-\[70\%\] {
+    width: 70%;
+}
