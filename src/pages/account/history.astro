@@ -18,18 +18,19 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY || '';
 ---
 
 <BaseLayout seo={seo}>
+  <!-- Make Supabase config available globally BEFORE components load -->
+  <script is:inline define:vars={{ SUPABASE_URL, SUPABASE_ANON_KEY }}>
+    window.__SUPABASE_URL__ = SUPABASE_URL;
+    window.__SUPABASE_ANON_KEY__ = SUPABASE_ANON_KEY;
+  </script>
+
   <AstroHeader />
 
   <GenerationHistory
-    client:load
+    client:only="react"
     supabaseUrl={SUPABASE_URL}
     supabaseAnonKey={SUPABASE_ANON_KEY}
   />
 
   <AstroFooter />
 </BaseLayout>
-
-<script is:inline define:vars={{ SUPABASE_URL, SUPABASE_ANON_KEY }}>
-  window.__SUPABASE_URL__ = SUPABASE_URL;
-  window.__SUPABASE_ANON_KEY__ = SUPABASE_ANON_KEY;
-</script>
