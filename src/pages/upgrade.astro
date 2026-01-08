@@ -32,9 +32,9 @@ if (!PAYPAL_CLIENT_ID) {
 
 // SEO data for BaseLayout
 const seo = {
-  title: 'Upgrade to Pro - Unlimited AI Generations',
-  description: 'Upgrade to Pro for unlimited AI-powered YouTube content generation. $9.99/month with PayPal, credit cards, and Apple Pay.',
-  keywords: 'upgrade, pro, subscription, paypal, unlimited generations',
+  title: 'Upgrade to Pro - AI Content Generation',
+  description: 'Upgrade to Pro for AI-powered YouTube content generation. Monthly: $19 (200 credits), Yearly: $199 (unlimited). PayPal, credit cards, Apple Pay.',
+  keywords: 'upgrade, pro, subscription, paypal, credits, unlimited generations',
   path: '/upgrade'
 };
 ---
@@ -57,7 +57,7 @@ const seo = {
     <!-- Hero Section -->
     <div class="text-center mb-12">
       <h1 class="text-4xl font-bold mb-4">Upgrade to Pro</h1>
-      <p class="text-xl text-gray-600 mb-2">Get unlimited AI generations for your content</p>
+      <p class="text-xl text-gray-600 mb-2">{isAnnual ? 'Get unlimited AI generations for your content' : 'Get 200 monthly credits for your content'}</p>
       <a href="/pricing" class="text-blue-600 hover:text-blue-700 font-medium">View all pricing options →</a>
     </div>
 
@@ -82,14 +82,14 @@ const seo = {
     <div id="pricing-card" class="max-w-lg mx-auto bg-white rounded-xl shadow-xl p-8 mb-8">
       <div class="text-center mb-8">
         <div class="inline-block bg-blue-100 text-blue-800 text-sm font-semibold px-4 py-1 rounded-full mb-4">
-          PRO {isAnnual ? 'ANNUAL' : 'MONTHLY'}
+          PRO {isAnnual ? 'YEARLY' : 'MONTHLY'}
         </div>
         <div class="text-5xl font-bold mb-2">
-          {isAnnual ? '$99' : '$9.99'}
+          {isAnnual ? '$199' : '$19'}
           <span class="text-2xl text-gray-600">{isAnnual ? '/year' : '/month'}</span>
         </div>
         <p class="text-gray-600">
-          {isAnnual ? 'Save $20/year • Cancel anytime' : 'Cancel anytime, no commitment'}
+          {isAnnual ? 'Unlimited credits • Save $29 vs monthly • Cancel anytime' : '200 credits/month • Cancel anytime'}
         </p>
       </div>
 
@@ -98,7 +98,7 @@ const seo = {
           <svg class="w-6 h-6 text-blue-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
           </svg>
-          <span class="text-gray-900 text-lg"><strong>Unlimited</strong> AI generations</span>
+          <span class="text-gray-900 text-lg"><strong>{isAnnual ? 'Unlimited' : '200'}</strong> {isAnnual ? 'AI generations' : 'credits per month'}</span>
         </div>
         <div class="flex items-center">
           <svg class="w-6 h-6 text-blue-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -118,6 +118,14 @@ const seo = {
           </svg>
           <span class="text-gray-900 text-lg">Priority support</span>
         </div>
+        {!isAnnual && (
+          <div class="flex items-center">
+            <svg class="w-6 h-6 text-blue-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+            </svg>
+            <span class="text-gray-900 text-lg">Purchase add-on credits</span>
+          </div>
+        )}
       </div>
 
       <!-- PayPal Button Container -->
@@ -164,9 +172,15 @@ const seo = {
     <!-- Alternative Options -->
     <div class="max-w-lg mx-auto mt-8 text-center">
       <p class="text-gray-600 mb-4">Need a different plan?</p>
-      <a href="/pricing" class="text-blue-600 hover:text-blue-700 font-medium">
-        View all pricing options including annual plans and credit packs →
-      </a>
+      {isAnnual ? (
+        <a href="/upgrade?plan=monthly" class="text-blue-600 hover:text-blue-700 font-medium">
+          View Monthly Pro ($19/month with 200 credits) →
+        </a>
+      ) : (
+        <a href="/upgrade?plan=annual" class="text-blue-600 hover:text-blue-700 font-medium">
+          View Yearly Pro ($199/year with unlimited credits) →
+        </a>
+      )}
     </div>
   </div>
 
