@@ -12,6 +12,9 @@ export default function Subscription({ supabaseUrl, supabaseAnonKey }: Subscript
   const [user, setUser] = useState<any>(null);
   const [credits, setCredits] = useState(0);
   const [isPro, setIsPro] = useState(false);
+  const [isYearly, setIsYearly] = useState(false);
+  const [monthlyCredits, setMonthlyCredits] = useState(0);
+  const [purchasedCredits, setPurchasedCredits] = useState(0);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -38,6 +41,9 @@ export default function Subscription({ supabaseUrl, supabaseAnonKey }: Subscript
         const data = await response.json();
         setCredits(data.credits || 0);
         setIsPro(data.isPro || false);
+        setIsYearly(data.isYearly || false);
+        setMonthlyCredits(data.monthlyCredits || 0);
+        setPurchasedCredits(data.purchasedCredits || 0);
       }
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -67,7 +73,20 @@ export default function Subscription({ supabaseUrl, supabaseAnonKey }: Subscript
     { text: 'Early access to new tools', included: false },
   ];
 
-  const proPlanFeatures = [
+  const monthlyProFeatures = [
+    { text: '200 credits per month', included: true },
+    { text: 'Access to all content tools', included: true },
+    { text: 'Blog post generation', included: true },
+    { text: 'LinkedIn post creation', included: true },
+    { text: 'Newsletter drafts', included: true },
+    { text: 'Content briefs', included: true },
+    { text: 'Generation history', included: true },
+    { text: 'Purchase additional credits', included: true },
+    { text: 'Priority support', included: true },
+    { text: 'Early access to new tools', included: true },
+  ];
+
+  const yearlyProFeatures = [
     { text: 'Unlimited credits', included: true },
     { text: 'Access to all content tools', included: true },
     { text: 'Blog post generation', included: true },
@@ -115,19 +134,61 @@ export default function Subscription({ supabaseUrl, supabaseAnonKey }: Subscript
 
               {isPro ? (
                 <div>
-                  <p className="text-indigo-100 mb-4">
-                    You have unlimited access to all features and tools.
-                  </p>
-                  <div className="flex items-center gap-6 text-sm">
-                    <div>
-                      <p className="text-indigo-200">Status</p>
-                      <p className="font-semibold">Active</p>
-                    </div>
-                    <div>
-                      <p className="text-indigo-200">Plan Type</p>
-                      <p className="font-semibold">Pro - Unlimited</p>
-                    </div>
-                  </div>
+                  {isYearly ? (
+                    <>
+                      <p className="text-indigo-100 mb-4">
+                        You have unlimited access to all features and tools.
+                      </p>
+                      <div className="flex items-center gap-6 text-sm">
+                        <div>
+                          <p className="text-indigo-200">Status</p>
+                          <p className="font-semibold">Active</p>
+                        </div>
+                        <div>
+                          <p className="text-indigo-200">Plan Type</p>
+                          <p className="font-semibold">Yearly Pro - Unlimited</p>
+                        </div>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <p className="text-indigo-100 mb-4">
+                        You have 200 credits per month plus any purchased credits.
+                      </p>
+                      <div className="flex items-center gap-6 text-sm mb-6">
+                        <div>
+                          <p className="text-indigo-200">Status</p>
+                          <p className="font-semibold">Active</p>
+                        </div>
+                        <div>
+                          <p className="text-indigo-200">Plan Type</p>
+                          <p className="font-semibold">Monthly Pro</p>
+                        </div>
+                        <div>
+                          <p className="text-indigo-200">Monthly Credits</p>
+                          <p className="font-semibold">{monthlyCredits}/200</p>
+                        </div>
+                      </div>
+                      {/* Monthly Credits Progress Bar */}
+                      <div className="bg-white/10 rounded-lg p-4">
+                        <div className="flex items-center justify-between text-sm mb-2">
+                          <span className="text-indigo-100">Monthly Credits</span>
+                          <span className="font-semibold">{monthlyCredits}/200</span>
+                        </div>
+                        <div className="w-full bg-indigo-900/50 rounded-full h-3">
+                          <div
+                            className="bg-white rounded-full h-3 transition-all duration-300"
+                            style={{ width: `${(monthlyCredits / 200) * 100}%` }}
+                          ></div>
+                        </div>
+                        {purchasedCredits > 0 && (
+                          <p className="text-xs text-indigo-200 mt-2">
+                            + {purchasedCredits} purchased credits available
+                          </p>
+                        )}
+                      </div>
+                    </>
+                  )}
                 </div>
               ) : (
                 <div>
@@ -168,7 +229,7 @@ export default function Subscription({ supabaseUrl, supabaseAnonKey }: Subscript
         {/* Plan Comparison */}
         <h2 className="text-2xl font-bold text-gray-900 mb-6">Available Plans</h2>
 
-        <div className="grid md:grid-cols-2 gap-8 mb-8">
+        <div className="grid md:grid-cols-3 gap-6 mb-8">
           {/* Free Plan Card */}
           <div className={`bg-white rounded-2xl p-8 border-2 ${
             !isPro ? 'border-blue-600 shadow-lg' : 'border-gray-200'
@@ -216,37 +277,37 @@ export default function Subscription({ supabaseUrl, supabaseAnonKey }: Subscript
             </button>
           </div>
 
-          {/* Pro Plan Card */}
-          <div className={`bg-gradient-to-br from-indigo-600 to-purple-700 rounded-2xl p-8 text-white relative overflow-hidden ${
-            isPro ? 'ring-4 ring-indigo-400' : ''
+          {/* Monthly Pro Plan Card */}
+          <div className={`bg-gradient-to-br from-blue-600 to-indigo-700 rounded-2xl p-6 text-white relative overflow-hidden ${
+            isPro && !isYearly ? 'ring-4 ring-blue-400' : ''
           }`}>
-            <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32"></div>
+            <div className="absolute top-0 right-0 w-48 h-48 bg-white/10 rounded-full -mr-24 -mt-24"></div>
             <div className="relative z-10">
-              {isPro && (
-                <div className="bg-white/20 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full inline-block mb-4">
+              {isPro && !isYearly && (
+                <div className="bg-white/20 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full inline-block mb-3">
                   CURRENT PLAN
                 </div>
               )}
 
               <div className="flex items-center gap-2 mb-2">
-                <h3 className="text-2xl font-bold">Pro</h3>
-                <Star className="w-6 h-6 fill-current" />
+                <h3 className="text-xl font-bold">Monthly Pro</h3>
+                <Zap className="w-5 h-5" />
               </div>
 
-              <div className="mb-6">
-                <span className="text-4xl font-bold">$29</span>
-                <span className="text-indigo-100">/month</span>
+              <div className="mb-4">
+                <span className="text-3xl font-bold">$19</span>
+                <span className="text-blue-100">/month</span>
               </div>
 
-              <p className="text-indigo-100 mb-6">
-                Unlimited content generation for serious creators.
+              <p className="text-blue-100 mb-4 text-sm">
+                200 credits monthly for regular creators.
               </p>
 
-              <ul className="space-y-3 mb-8">
-                {proPlanFeatures.map((feature, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                    <span className="text-white">{feature.text}</span>
+              <ul className="space-y-2 mb-6">
+                {monthlyProFeatures.slice(0, 5).map((feature, index) => (
+                  <li key={index} className="flex items-start gap-2">
+                    <Check className="w-4 h-4 text-white flex-shrink-0 mt-0.5" />
+                    <span className="text-white text-sm">{feature.text}</span>
                   </li>
                 ))}
               </ul>
@@ -254,17 +315,89 @@ export default function Subscription({ supabaseUrl, supabaseAnonKey }: Subscript
               {!isPro ? (
                 <a
                   href="/upgrade"
-                  className="block w-full py-3 px-6 bg-white text-indigo-600 rounded-lg font-semibold text-center hover:bg-indigo-50 transition-colors"
+                  className="block w-full py-2.5 px-4 bg-white text-blue-600 rounded-lg font-semibold text-center hover:bg-blue-50 transition-colors text-sm"
                 >
-                  Upgrade to Pro
+                  Choose Monthly
                 </a>
-              ) : (
+              ) : !isYearly ? (
                 <button
                   disabled
-                  className="w-full py-3 px-6 bg-white/20 backdrop-blur-sm text-white rounded-lg font-semibold cursor-not-allowed"
+                  className="w-full py-2.5 px-4 bg-white/20 backdrop-blur-sm text-white rounded-lg font-semibold cursor-not-allowed text-sm"
                 >
                   Current Plan
                 </button>
+              ) : (
+                <a
+                  href="/upgrade"
+                  className="block w-full py-2.5 px-4 bg-white/20 backdrop-blur-sm text-white rounded-lg font-semibold text-center hover:bg-white/30 transition-colors text-sm"
+                >
+                  Switch to Monthly
+                </a>
+              )}
+            </div>
+          </div>
+
+          {/* Yearly Pro Plan Card */}
+          <div className={`bg-gradient-to-br from-indigo-600 to-purple-700 rounded-2xl p-6 text-white relative overflow-hidden ${
+            isPro && isYearly ? 'ring-4 ring-indigo-400' : ''
+          }`}>
+            <div className="absolute top-0 right-0 w-48 h-48 bg-white/10 rounded-full -mr-24 -mt-24"></div>
+            {/* Best Value Badge */}
+            <div className="absolute top-4 right-4 bg-yellow-400 text-yellow-900 text-xs font-bold px-3 py-1 rounded-full">
+              BEST VALUE
+            </div>
+            <div className="relative z-10">
+              {isPro && isYearly && (
+                <div className="bg-white/20 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full inline-block mb-3">
+                  CURRENT PLAN
+                </div>
+              )}
+
+              <div className="flex items-center gap-2 mb-2">
+                <h3 className="text-xl font-bold">Yearly Pro</h3>
+                <Star className="w-5 h-5 fill-current" />
+              </div>
+
+              <div className="mb-4">
+                <span className="text-3xl font-bold">$199</span>
+                <span className="text-indigo-100">/year</span>
+                <p className="text-xs text-indigo-200 mt-1">Save $29 vs monthly</p>
+              </div>
+
+              <p className="text-indigo-100 mb-4 text-sm">
+                Unlimited credits for power creators.
+              </p>
+
+              <ul className="space-y-2 mb-6">
+                {yearlyProFeatures.slice(0, 5).map((feature, index) => (
+                  <li key={index} className="flex items-start gap-2">
+                    <Check className="w-4 h-4 text-white flex-shrink-0 mt-0.5" />
+                    <span className="text-white text-sm">{feature.text}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {!isPro ? (
+                <a
+                  href="/upgrade"
+                  className="block w-full py-2.5 px-4 bg-white text-indigo-600 rounded-lg font-semibold text-center hover:bg-indigo-50 transition-colors text-sm"
+                >
+                  Choose Yearly
+                </a>
+              ) : isYearly ? (
+                <button
+                  disabled
+                  className="w-full py-2.5 px-4 bg-white/20 backdrop-blur-sm text-white rounded-lg font-semibold cursor-not-allowed text-sm"
+                >
+                  Current Plan
+                </button>
+              ) : (
+                <a
+                  href="/upgrade"
+                  className="block w-full py-2.5 px-4 bg-white text-indigo-600 rounded-lg font-semibold text-center hover:bg-indigo-50 transition-colors text-sm"
+                >
+                  Upgrade to Yearly
+                </a>
               )}
             </div>
           </div>
@@ -275,17 +408,26 @@ export default function Subscription({ supabaseUrl, supabaseAnonKey }: Subscript
         {!isPro && (
           <div className="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-2xl p-8 text-white text-center shadow-xl">
             <Shield className="w-16 h-16 mx-auto mb-4" />
-            <h3 className="text-2xl font-bold mb-3">Unlock Unlimited Content Creation</h3>
+            <h3 className="text-2xl font-bold mb-3">Unlock Pro Content Creation</h3>
             <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
-              Upgrade to Pro and never worry about credits again. Generate unlimited blog posts, LinkedIn updates, newsletters, and more.
+              Choose the plan that fits your needs. Get 200 credits monthly or go unlimited with our yearly plan.
             </p>
-            <a
-              href="/upgrade"
-              className="inline-flex items-center gap-2 bg-white text-indigo-600 font-semibold px-8 py-3 rounded-lg hover:bg-indigo-50 transition-colors"
-            >
-              <Star className="w-5 h-5" />
-              Upgrade to Pro for $29/month
-            </a>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <a
+                href="/upgrade"
+                className="inline-flex items-center gap-2 bg-white text-blue-600 font-semibold px-8 py-3 rounded-lg hover:bg-blue-50 transition-colors"
+              >
+                <Zap className="w-5 h-5" />
+                Monthly Pro - $19/month
+              </a>
+              <a
+                href="/upgrade"
+                className="inline-flex items-center gap-2 bg-indigo-800 text-white font-semibold px-8 py-3 rounded-lg hover:bg-indigo-900 transition-colors border-2 border-yellow-400"
+              >
+                <Star className="w-5 h-5" />
+                Yearly Pro - $199/year
+              </a>
+            </div>
             <p className="text-sm text-blue-100 mt-4">Cancel anytime. No questions asked.</p>
           </div>
         )}
