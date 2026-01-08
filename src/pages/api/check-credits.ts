@@ -19,13 +19,16 @@ export const GET: APIRoute = async ({ request }) => {
     }
 
     // Check user credits
-    const { credits, isPro, canGenerate } = await checkUserCredits(user.id);
+    const { credits, isPro, canGenerate, isYearly, monthlyCredits, purchasedCredits } = await checkUserCredits(user.id);
 
     return new Response(
       JSON.stringify({
         credits: credits,
         isPro: isPro,
-        canGenerate: canGenerate
+        canGenerate: canGenerate,
+        isYearly: isYearly,
+        monthlyCredits: monthlyCredits,
+        purchasedCredits: purchasedCredits
       }),
       { status: 200, headers: { 'Content-Type': 'application/json' } }
     );

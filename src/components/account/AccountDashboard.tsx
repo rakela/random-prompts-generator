@@ -12,6 +12,9 @@ export default function AccountDashboard({ supabaseUrl, supabaseAnonKey }: Accou
   const [user, setUser] = useState<any>(null);
   const [credits, setCredits] = useState(0);
   const [isPro, setIsPro] = useState(false);
+  const [isYearly, setIsYearly] = useState(false);
+  const [monthlyCredits, setMonthlyCredits] = useState(0);
+  const [purchasedCredits, setPurchasedCredits] = useState(0);
   const [loading, setLoading] = useState(true);
   const [stats, setStats] = useState({
     totalGenerations: 0,
@@ -48,6 +51,9 @@ export default function AccountDashboard({ supabaseUrl, supabaseAnonKey }: Accou
         const data = await response.json();
         setCredits(data.credits || 0);
         setIsPro(data.isPro || false);
+        setIsYearly(data.isYearly || false);
+        setMonthlyCredits(data.monthlyCredits || 0);
+        setPurchasedCredits(data.purchasedCredits || 0);
       }
 
       // Fetch generation stats
@@ -145,16 +151,44 @@ export default function AccountDashboard({ supabaseUrl, supabaseAnonKey }: Accou
           <div className="bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl p-6 text-white shadow-lg">
             <div className="flex items-center justify-between mb-4">
               <Zap className="w-8 h-8" />
-              {isPro && <span className="text-xs font-bold bg-white/20 px-2 py-1 rounded-full">PRO</span>}
+              {isPro && (
+                <span className="text-xs font-bold bg-white/20 px-2 py-1 rounded-full">
+                  {isYearly ? 'YEARLY PRO' : 'MONTHLY PRO'}
+                </span>
+              )}
             </div>
-            <p className="text-sm opacity-90 mb-1">Credits Available</p>
-            <p className="text-3xl font-bold">
-              {isPro ? '∞' : credits}
-            </p>
-            {!isPro && credits === 0 && (
-              <a href="/upgrade" className="mt-4 block text-center text-xs font-semibold bg-white/20 hover:bg-white/30 px-3 py-2 rounded-lg transition-colors">
-                Get More Credits →
-              </a>
+            {isPro ? (
+              isYearly ? (
+                <>
+                  <p className="text-sm opacity-90 mb-1">Credits Available</p>
+                  <p className="text-3xl font-bold">∞</p>
+                  <p className="text-xs opacity-75 mt-2">Unlimited</p>
+                </>
+              ) : (
+                <>
+                  <p className="text-sm opacity-90 mb-1">Monthly Credits</p>
+                  <p className="text-3xl font-bold">{monthlyCredits}/200</p>
+                  {purchasedCredits > 0 && (
+                    <p className="text-xs opacity-75 mt-2">+ {purchasedCredits} bonus credits</p>
+                  )}
+                  <div className="mt-4 bg-white/20 rounded-full h-2">
+                    <div
+                      className="bg-white rounded-full h-2 transition-all"
+                      style={{ width: `${(monthlyCredits / 200) * 100}%` }}
+                    ></div>
+                  </div>
+                </>
+              )
+            ) : (
+              <>
+                <p className="text-sm opacity-90 mb-1">Credits Available</p>
+                <p className="text-3xl font-bold">{credits}</p>
+                {credits === 0 && (
+                  <a href="/upgrade" className="mt-4 block text-center text-xs font-semibold bg-white/20 hover:bg-white/30 px-3 py-2 rounded-lg transition-colors">
+                    Get More Credits →
+                  </a>
+                )}
+              </>
             )}
           </div>
 
@@ -196,21 +230,30 @@ export default function AccountDashboard({ supabaseUrl, supabaseAnonKey }: Accou
         {!isPro && (
           <div className="bg-gradient-to-r from-yellow-400 to-orange-500 rounded-xl p-8 mb-8 text-white shadow-lg">
             <div className="flex items-start justify-between">
-              <div>
+              <div className="flex-1">
                 <div className="flex items-center gap-2 mb-2">
                   <Sparkles className="w-6 h-6" />
                   <h2 className="text-2xl font-bold">Upgrade to Pro</h2>
                 </div>
                 <p className="text-white/90 mb-4 max-w-xl">
-                  Get unlimited generations, priority support, and access to all premium features for just $9.99/month.
+                  Choose the plan that fits your needs: 200 credits monthly at $19/month or unlimited with our yearly plan at $199/year.
                 </p>
-                <a
-                  href="/upgrade"
-                  className="inline-flex items-center gap-2 bg-white text-orange-600 font-semibold px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors"
-                >
-                  Upgrade Now
-                  <ArrowRight className="w-4 h-4" />
-                </a>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <a
+                    href="/upgrade?plan=monthly"
+                    className="inline-flex items-center justify-center gap-2 bg-white text-orange-600 font-semibold px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors"
+                  >
+                    Monthly Pro - $19/month
+                    <ArrowRight className="w-4 h-4" />
+                  </a>
+                  <a
+                    href="/upgrade?plan=annual"
+                    className="inline-flex items-center justify-center gap-2 bg-orange-700 text-white font-semibold px-6 py-3 rounded-lg hover:bg-orange-800 transition-colors border-2 border-yellow-300"
+                  >
+                    Yearly Pro - $199/year
+                    <ArrowRight className="w-4 h-4" />
+                  </a>
+                </div>
               </div>
             </div>
           </div>

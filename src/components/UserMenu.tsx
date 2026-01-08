@@ -12,6 +12,9 @@ export default function UserMenu({ supabaseUrl, supabaseAnonKey }: UserMenuProps
   const [isOpen, setIsOpen] = useState(false);
   const [isPro, setIsPro] = useState(false);
   const [credits, setCredits] = useState(0);
+  const [isYearly, setIsYearly] = useState(false);
+  const [monthlyCredits, setMonthlyCredits] = useState(0);
+  const [purchasedCredits, setPurchasedCredits] = useState(0);
 
   // Use shared Supabase client to avoid multiple instances
   const supabase = getSupabaseBrowserClient();
@@ -28,6 +31,9 @@ export default function UserMenu({ supabaseUrl, supabaseAnonKey }: UserMenuProps
       } else {
         setIsPro(false);
         setCredits(0);
+        setIsYearly(false);
+        setMonthlyCredits(0);
+        setPurchasedCredits(0);
       }
     });
 
@@ -48,6 +54,9 @@ export default function UserMenu({ supabaseUrl, supabaseAnonKey }: UserMenuProps
         const data = await response.json();
         setIsPro(data.isPro || false);
         setCredits(data.credits || 0);
+        setIsYearly(data.isYearly || false);
+        setMonthlyCredits(data.monthlyCredits || 0);
+        setPurchasedCredits(data.purchasedCredits || 0);
       }
     } catch (error) {
       console.error('Error fetching user plan:', error);
@@ -139,11 +148,20 @@ export default function UserMenu({ supabaseUrl, supabaseAnonKey }: UserMenuProps
           {/* User Info */}
           <div className="px-4 py-3 border-b border-gray-100">
             <div className="font-semibold text-gray-900 truncate">{user.email}</div>
-            <div className="text-sm text-gray-600">
+            <div className="text-sm">
               {isPro ? (
-                <span className="text-purple-600 font-semibold">Pro Plan</span>
+                isYearly ? (
+                  <span className="text-purple-600 font-semibold">Yearly Pro • Unlimited</span>
+                ) : (
+                  <div className="text-gray-700">
+                    <span className="text-blue-600 font-semibold">Monthly Pro</span>
+                    <div className="text-xs text-gray-600 mt-1">
+                      {monthlyCredits}/200 monthly • {purchasedCredits > 0 ? `${purchasedCredits} bonus` : 'No bonus credits'}
+                    </div>
+                  </div>
+                )
               ) : (
-                <span>Free Plan • {credits} {credits === 1 ? 'credit' : 'credits'}</span>
+                <span className="text-gray-600">Free Plan • {credits} {credits === 1 ? 'credit' : 'credits'}</span>
               )}
             </div>
           </div>

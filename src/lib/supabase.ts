@@ -114,13 +114,14 @@ export async function checkUserCredits(userId: string) {
     return {
       canGenerate: true,
       credits: 999999,
-      isPro: true
+      isPro: true,
+      isYearly: true
     };
   }
 
   const { data: profile, error } = await supabase
     .from('profiles')
-    .select('is_pro, purchased_credits, daily_credits_reset_at')
+    .select('is_pro, pro_plan_type, purchased_credits, monthly_credits, monthly_credits_reset_at')
     .eq('id', userId)
     .single();
 
@@ -128,34 +129,76 @@ export async function checkUserCredits(userId: string) {
     throw new Error('Failed to fetch user profile');
   }
 
-  // Pro users have unlimited credits
-  if (profile.is_pro) {
+  // Yearly Pro users have unlimited credits
+  if (profile.is_pro && profile.pro_plan_type === 'yearly') {
     return {
       canGenerate: true,
       credits: 999999,
-      isPro: true
+      isPro: true,
+      isYearly: true,
+      monthlyCredits: 0,
+      purchasedCredits: profile.purchased_credits || 0
     };
   }
 
-  // Calculate if user has daily credit available
-  let hasDailyCredit = false;
+  // Monthly Pro users have 200 credits/month
+  if (profile.is_pro && profile.pro_plan_type === 'monthly') {
+    let monthlyCredits = profile.monthly_credits || 0;
 
-  if (!profile.daily_credits_reset_at) {
-    // Never used daily credit = has credit available
-    hasDailyCredit = true;
-  } else {
-    // Check if 24 hours have passed since last use
-    const hoursSinceReset = (Date.now() - new Date(profile.daily_credits_reset_at).getTime()) / (1000 * 60 * 60);
-    hasDailyCredit = hoursSinceReset >= 24;
+    // Check if monthly credits need to be reset (30 days)
+    if (profile.monthly_credits_reset_at) {
+      const daysSinceReset = (Date.now() - new Date(profile.monthly_credits_reset_at).getTime()) / (1000 * 60 * 60 * 24);
+
+      if (daysSinceReset >= 30) {
+        // Reset monthly credits to 200
+        monthlyCredits = 200;
+
+        // Update database with new reset timestamp and credits
+        await supabase
+          .from('profiles')
+          .update({
+            monthly_credits: 200,
+            monthly_credits_reset_at: new Date().toISOString()
+          })
+          .eq('id', userId);
+
+        console.log(`[checkUserCredits] Monthly credits reset for user ${userId}: 200 credits`);
+      }
+    } else {
+      // First time - initialize with 200 credits
+      monthlyCredits = 200;
+      await supabase
+        .from('profiles')
+        .update({
+          monthly_credits: 200,
+          monthly_credits_reset_at: new Date().toISOString()
+        })
+        .eq('id', userId);
+    }
+
+    // Total credits = monthly + purchased
+    const totalCredits = monthlyCredits + (profile.purchased_credits || 0);
+
+    return {
+      canGenerate: totalCredits > 0,
+      credits: totalCredits,
+      isPro: true,
+      isYearly: false,
+      monthlyCredits: monthlyCredits,
+      purchasedCredits: profile.purchased_credits || 0
+    };
   }
 
-  const dailyCredits = hasDailyCredit ? 1 : 0;
-  const totalCredits = dailyCredits + (profile.purchased_credits || 0);
+  // Free users: only purchased credits (initial 10 credits given on signup)
+  const totalCredits = profile.purchased_credits || 0;
 
   return {
     canGenerate: totalCredits > 0,
     credits: totalCredits,
-    isPro: false
+    isPro: false,
+    isYearly: false,
+    monthlyCredits: 0,
+    purchasedCredits: profile.purchased_credits || 0
   };
 }
 
@@ -175,41 +218,52 @@ export async function deductCredit(userId: string) {
 
   const { data: profile } = await supabase
     .from('profiles')
-    .select('is_pro, purchased_credits, daily_credits_reset_at')
+    .select('is_pro, pro_plan_type, purchased_credits, monthly_credits, monthly_credits_reset_at')
     .eq('id', userId)
     .single();
 
-  if (!profile || profile.is_pro) {
-    // Pro users don't lose credits
+  if (!profile) {
+    throw new Error('User profile not found');
+  }
+
+  // Yearly Pro: Never deduct (unlimited)
+  if (profile.is_pro && profile.pro_plan_type === 'yearly') {
+    console.log(`[deductCredit] Yearly Pro user - skipping credit deduction`);
     return;
   }
 
-  // Calculate if user has daily credit available
-  let hasDailyCredit = false;
+  // Monthly Pro: Deduct from monthly credits first, then purchased
+  if (profile.is_pro && profile.pro_plan_type === 'monthly') {
+    const monthlyCredits = profile.monthly_credits || 0;
 
-  if (!profile.daily_credits_reset_at) {
-    // Never used daily credit = has credit available
-    hasDailyCredit = true;
-  } else {
-    // Check if 24 hours have passed since last use
-    const hoursSinceReset = (Date.now() - new Date(profile.daily_credits_reset_at).getTime()) / (1000 * 60 * 60);
-    hasDailyCredit = hoursSinceReset >= 24;
-  }
+    if (monthlyCredits > 0) {
+      // Deduct from monthly credits
+      const { error } = await supabase
+        .from('profiles')
+        .update({ monthly_credits: monthlyCredits - 1 })
+        .eq('id', userId);
 
-  // If daily credit available, use it and set timestamp
-  if (hasDailyCredit) {
-    const { error } = await supabase
-      .from('profiles')
-      .update({ daily_credits_reset_at: new Date().toISOString() })
-      .eq('id', userId);
+      if (error) {
+        throw new Error('Failed to deduct monthly credit');
+      }
+      console.log(`[deductCredit] Deducted monthly credit. Remaining: ${monthlyCredits - 1}`);
+      return;
+    } else if (profile.purchased_credits && profile.purchased_credits > 0) {
+      // Fall back to purchased credits
+      const { error } = await supabase
+        .from('profiles')
+        .update({ purchased_credits: profile.purchased_credits - 1 })
+        .eq('id', userId);
 
-    if (error) {
-      throw new Error('Failed to use daily credit');
+      if (error) {
+        throw new Error('Failed to deduct purchased credit');
+      }
+      console.log(`[deductCredit] Deducted purchased credit. Remaining: ${profile.purchased_credits - 1}`);
+      return;
     }
-    return;
   }
 
-  // Otherwise, try to deduct a purchased credit
+  // Free users: Deduct from purchased credits only
   if (profile.purchased_credits && profile.purchased_credits > 0) {
     const { error } = await supabase
       .from('profiles')
@@ -219,6 +273,7 @@ export async function deductCredit(userId: string) {
     if (error) {
       throw new Error('Failed to deduct purchased credit');
     }
+    console.log(`[deductCredit] Deducted purchased credit. Remaining: ${profile.purchased_credits - 1}`);
     return;
   }
 
