@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import AstroHeader from '../components/AstroHeader.astro';
 import AstroFooter from '../components/AstroFooter.astro';
 import PromptGenerator from '../components/PromptGenerator';
+import FeatureSpotlight from '../components/home/FeatureSpotlight';
 import '../styles/global.css';
 import { getSEOData } from '../data/seo';
 import categoryPrompts from '../data/categoryPrompts.json';
@@ -80,66 +81,8 @@ const categoryInfo = {
     </div>
   </div>
 
-  <!-- Featured: YouTube Tools Section - Full Width, Compact -->
-  <section class="bg-gray-950 py-6 border-y border-gray-800 shadow-lg" id="youtube_generator_sec">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="flex flex-col md:flex-row items-center gap-4 md:gap-6">
-        <!-- Left: Icon & Title -->
-        <div class="flex items-center gap-3 md:w-auto w-full">
-          <div class="bg-white/10 backdrop-blur-sm p-2.5 rounded-xl flex-shrink-0">
-            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-            </svg>
-          </div>
-          <div style="display: inline-flex;">
-            <div class="inline-block bg-blue-500 text-white text-xs font-bold px-2 py-0.5 rounded mb-1">NEW</div>
-            <h2 class="text-xl md:text-2xl font-bold text-white leading-tight">YouTube Content Generator</h2>
-          </div>
-        </div>
-
-        <!-- Center: Features -->
-        <div class="flex-1 flex items-center gap-3 md:gap-4 text-white/90 text-xs md:text-sm flex-wrap md:flex-nowrap justify-center md:justify-start">
-          <div class="flex items-center gap-1.5">
-            <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            <span>Video → Blog</span>
-          </div>
-          <div class="flex items-center gap-1.5">
-            <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            <span>Video → LinkedIn</span>
-          </div>
-          <div class="flex items-center gap-1.5">
-            <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-            </svg>
-            <span>AI-Powered</span>
-          </div>
-        </div>
-
-        <!-- Right: CTAs -->
-        <div class="flex gap-2 md:gap-3 flex-shrink-0">
-          <a
-            href="/workflows/youtube-to-blog-and-linkedin"
-            class="inline-flex items-center gap-2 bg-white text-gray-800 font-semibold px-5 md:px-6 py-2.5 md:py-3 rounded-lg hover:bg-gray-100 transition-all transform hover:scale-105 shadow-lg text-sm md:text-base"
-          >
-            Try Now
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </a>
-          <a
-            href="/tools/youtube-content-brief"
-            class="hidden md:inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white font-semibold px-6 py-3 rounded-lg hover:bg-white/20 transition-all border border-white/30 text-sm md:text-base"
-          >
-            Learn More
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- Feature Spotlight: YouTube Tools -->
+  <FeatureSpotlight client:load />
 
   <!-- Main Content -->
   <div class="max-w-6xl mx-auto px-4 py-8">
