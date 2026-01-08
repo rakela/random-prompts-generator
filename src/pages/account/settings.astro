@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AstroHeader from '../../components/AstroHeader.astro';
+import AstroFooter from '../../components/AstroFooter.astro';
+import Settings from '../../components/account/Settings';
+
+export const prerender = false;
+
+const SUPABASE_URL = import.meta.env.PUBLIC_SUPABASE_URL || '';
+const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY || '';
+
+const seo = {
+  title: 'Account Settings | Random Prompts',
+  description: 'Manage your account preferences and security settings.',
+  canonical: 'https://randomprompts.org/account/settings'
+};
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+  <Settings client:load supabaseUrl={SUPABASE_URL} supabaseAnonKey={SUPABASE_ANON_KEY} />
+  <AstroFooter />
+</BaseLayout>

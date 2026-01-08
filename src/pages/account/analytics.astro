@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AstroHeader from '../../components/AstroHeader.astro';
+import AstroFooter from '../../components/AstroFooter.astro';
+import Analytics from '../../components/account/Analytics';
+
+export const prerender = false;
+
+const SUPABASE_URL = import.meta.env.PUBLIC_SUPABASE_URL || '';
+const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY || '';
+
+const seo = {
+  title: 'Usage Analytics | Random Prompts',
+  description: 'Track your content generation patterns and usage insights.',
+  canonical: 'https://randomprompts.org/account/analytics'
+};
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+  <Analytics client:load supabaseUrl={SUPABASE_URL} supabaseAnonKey={SUPABASE_ANON_KEY} />
+  <AstroFooter />
+</BaseLayout>
