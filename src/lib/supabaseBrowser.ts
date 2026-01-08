@@ -51,6 +51,11 @@ export function getSupabaseBrowserClient(): SupabaseClient {
   const { url, key } = getSupabaseConfig();
 
   if (!url || !key) {
+    console.error('Supabase Config Error:', { url: !!url, key: !!key });
+    console.error('Window vars:', {
+      hasUrl: !!(typeof window !== 'undefined' && window.__SUPABASE_URL__),
+      hasKey: !!(typeof window !== 'undefined' && window.__SUPABASE_ANON_KEY__)
+    });
     throw new Error('Supabase URL or Anon Key not found in environment');
   }
 
