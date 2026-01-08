@@ -265,15 +265,19 @@ export async function saveGeneration(data: {
     .from('generations')
     .insert({
       user_id: data.userId,
-      type: data.type,
-      input_context: data.inputContext,
-      output_content: data.outputContent,
-      video_title: data.videoTitle,
-      tokens_used: data.tokensUsed
+      tool_id: data.type,  // Fixed: use tool_id instead of type
+      output: data.outputContent,  // Fixed: use output instead of output_content
+      created_at: new Date().toISOString(),
+      // Optional fields
+      ...(data.videoTitle && { video_title: data.videoTitle }),
+      ...(data.tokensUsed && { tokens_used: data.tokensUsed })
     });
 
   if (error) {
     console.error('Failed to save generation:', error);
+    console.error('Error details:', error.message, error.details, error.hint);
     // Don't throw - generation succeeded, just logging failed
+  } else {
+    console.log('[saveGeneration] Successfully saved generation for user:', data.userId);
   }
 }
