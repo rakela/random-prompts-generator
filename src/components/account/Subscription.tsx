@@ -124,12 +124,8 @@ export default function Subscription({ supabaseUrl, supabaseAnonKey }: Subscript
                       <p className="font-semibold">Active</p>
                     </div>
                     <div>
-                      <p className="text-indigo-200">Billing</p>
-                      <p className="font-semibold">$29/month</p>
-                    </div>
-                    <div>
-                      <p className="text-indigo-200">Next billing date</p>
-                      <p className="font-semibold">January 15, 2026</p>
+                      <p className="text-indigo-200">Plan Type</p>
+                      <p className="font-semibold">Pro - Unlimited</p>
                     </div>
                   </div>
                 </div>
@@ -167,21 +163,6 @@ export default function Subscription({ supabaseUrl, supabaseAnonKey }: Subscript
             </div>
           </div>
 
-          {isPro && (
-            <div className="mt-6 pt-6 border-t border-white/20">
-              <button className="text-sm text-white/80 hover:text-white underline">
-                Manage billing details
-              </button>
-              <span className="text-white/40 mx-3">•</span>
-              <button className="text-sm text-white/80 hover:text-white underline">
-                View invoices
-              </button>
-              <span className="text-white/40 mx-3">•</span>
-              <button className="text-sm text-red-200 hover:text-white underline">
-                Cancel subscription
-              </button>
-            </div>
-          )}
         </div>
 
         {/* Plan Comparison */}
@@ -289,66 +270,6 @@ export default function Subscription({ supabaseUrl, supabaseAnonKey }: Subscript
           </div>
         </div>
 
-        {/* Payment Method (Pro users only) */}
-        {isPro && (
-          <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm mb-8">
-            <div className="flex items-center gap-3 mb-6">
-              <CreditCard className="w-6 h-6 text-gray-600" />
-              <h2 className="text-xl font-bold text-gray-900">Payment Method</h2>
-            </div>
-
-            <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-8 bg-gradient-to-br from-blue-600 to-purple-600 rounded flex items-center justify-center">
-                  <span className="text-white text-xs font-bold">VISA</span>
-                </div>
-                <div>
-                  <p className="font-medium text-gray-900">•••• •••• •••• 4242</p>
-                  <p className="text-sm text-gray-500">Expires 12/2026</p>
-                </div>
-              </div>
-              <button className="text-blue-600 hover:text-blue-700 font-medium text-sm">
-                Update
-              </button>
-            </div>
-          </div>
-        )}
-
-        {/* Billing History (Pro users only) */}
-        {isPro && (
-          <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl font-bold text-gray-900">Billing History</h2>
-              <button className="text-blue-600 hover:text-blue-700 font-medium text-sm">
-                Download all
-              </button>
-            </div>
-
-            <div className="space-y-3">
-              {[
-                { date: 'December 15, 2025', amount: '$29.00', status: 'Paid' },
-                { date: 'November 15, 2025', amount: '$29.00', status: 'Paid' },
-                { date: 'October 15, 2025', amount: '$29.00', status: 'Paid' },
-              ].map((invoice, index) => (
-                <div key={index} className="flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
-                  <div>
-                    <p className="font-medium text-gray-900">{invoice.date}</p>
-                    <p className="text-sm text-gray-500">Pro Plan - Monthly</p>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <span className="font-semibold text-gray-900">{invoice.amount}</span>
-                    <span className="bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded">
-                      {invoice.status}
-                    </span>
-                    <button className="text-blue-600 hover:text-blue-700 text-sm font-medium">
-                      Download
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
 
         {/* Upgrade CTA for Free Users */}
         {!isPro && (
