@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AstroHeader from '../../components/AstroHeader.astro';
+import AstroFooter from '../../components/AstroFooter.astro';
+import Subscription from '../../components/account/Subscription';
+
+export const prerender = false;
+
+const SUPABASE_URL = import.meta.env.PUBLIC_SUPABASE_URL || '';
+const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY || '';
+
+const seo = {
+  title: 'Subscription & Billing | Random Prompts',
+  description: 'Manage your subscription plan and billing preferences.',
+  canonical: 'https://randomprompts.org/account/subscription'
+};
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+  <Subscription client:load supabaseUrl={SUPABASE_URL} supabaseAnonKey={SUPABASE_ANON_KEY} />
+  <AstroFooter />
+</BaseLayout>

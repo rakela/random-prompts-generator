@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AstroHeader from '../../components/AstroHeader.astro';
+import AstroFooter from '../../components/AstroFooter.astro';
+import AccountDashboard from '../../components/account/AccountDashboard';
+
+export const prerender = false;
+
+const seo = {
+  title: 'Account Dashboard - Random Prompts Generator',
+  description: 'Manage your account, view credits, and access your generation history.',
+  keywords: 'account, dashboard, credits, profile',
+  path: '/account'
+};
+
+// Get Supabase config
+const SUPABASE_URL = import.meta.env.PUBLIC_SUPABASE_URL || '';
+const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY || '';
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+
+  <AccountDashboard
+    client:load
+    supabaseUrl={SUPABASE_URL}
+    supabaseAnonKey={SUPABASE_ANON_KEY}
+  />
+
+  <AstroFooter />
+</BaseLayout>
+
+<!-- Make Supabase config available globally -->
+<script is:inline define:vars={{ SUPABASE_URL, SUPABASE_ANON_KEY }}>
+  window.__SUPABASE_URL__ = SUPABASE_URL;
+  window.__SUPABASE_ANON_KEY__ = SUPABASE_ANON_KEY;
+</script>
