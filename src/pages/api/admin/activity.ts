@@ -79,7 +79,7 @@ export const GET: APIRoute = async ({ request }) => {
     // Get recent generations (last 30)
     const { data: recentGenerations } = await supabase
       .from('generations')
-      .select('id, user_id, tool_id, created_at')
+      .select('id, user_id, type, created_at')
       .order('created_at', { ascending: false })
       .limit(30);
 
@@ -99,7 +99,7 @@ export const GET: APIRoute = async ({ request }) => {
           id: `generation-${generation.id}`,
           type: 'generation',
           user_email: userEmail,
-          description: `Generated content using ${generation.tool_id}`,
+          description: `Generated content using ${generation.type}`,
           created_at: generation.created_at
         });
       });

@@ -320,8 +320,9 @@ export async function saveGeneration(data: {
     .from('generations')
     .insert({
       user_id: data.userId,
-      tool_id: data.type,  // Fixed: use tool_id instead of type
-      output: data.outputContent,  // Fixed: use output instead of output_content
+      type: data.type,  // Correct field name: type (not tool_id)
+      input_context: data.inputContext,  // Add input_context field
+      output_content: data.outputContent,  // Correct field name: output_content (not output)
       created_at: new Date().toISOString(),
       // Optional fields
       ...(data.videoTitle && { video_title: data.videoTitle }),

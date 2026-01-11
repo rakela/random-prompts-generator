@@ -28,7 +28,7 @@ export const GET: APIRoute = async ({ request }) => {
     // Get all generations for the user
     const { data: generations, error: genError } = await supabase
       .from('generations')
-      .select('tool_id, created_at')
+      .select('type, created_at')
       .eq('user_id', user.id)
       .order('created_at', { ascending: true });
 
@@ -72,7 +72,7 @@ export const GET: APIRoute = async ({ request }) => {
       }
 
       // Count tool usage
-      toolUsage[gen.tool_id] = (toolUsage[gen.tool_id] || 0) + 1;
+      toolUsage[gen.type] = (toolUsage[gen.type] || 0) + 1;
 
       // Count hourly distribution
       const hour = createdAt.getHours();
