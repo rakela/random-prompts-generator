@@ -36,12 +36,14 @@ export const GET: APIRoute = async ({ request, url }) => {
       throw error;
     }
 
-    // Add tool names
+    // Add tool names and map database fields to component-expected fields
     const generationsWithNames = (generations || []).map(gen => {
-      const tool = getToolById(gen.tool_id);
+      const tool = getToolById(gen.type);
       return {
         ...gen,
-        tool_name: tool?.seo_title || tool?.category || gen.tool_id
+        tool_id: gen.type,  // Map 'type' field to 'tool_id' for component compatibility
+        tool_name: tool?.seo_title || tool?.category || gen.type,
+        output: gen.output_content  // Map 'output_content' to 'output' for component compatibility
       };
     });
 

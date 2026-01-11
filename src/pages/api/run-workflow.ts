@@ -2,6 +2,7 @@
  * API Endpoint: /api/run-workflow
  *
  * Executes a complete workflow with multiple tool steps
+ * NOW WITH: Auth, Credit Check, and History Tracking
  */
 
 import type { APIRoute } from 'astro';
@@ -9,10 +10,35 @@ import type { RunWorkflowRequest, RunWorkflowResponse } from '../../types/workfl
 import { getWorkflowById } from '../../config/workflows';
 import { getToolById } from '../../config/tools';
 import { callLLM, interpolatePrompt, validateInputs, sanitizeInput } from '../../utils/llm';
-import { getYouTubeTranscript } from '../../utils/youtube';
+import { getYouTubeTranscript, extractVideoId } from '../../utils/youtube';
+import {
+  getUserFromRequest,
+  checkUserCredits,
+  deductCredit,
+  saveGeneration
+} from '../../lib/supabase';
 
 export const POST: APIRoute = async ({ request }) => {
   try {
+    // ===== STEP 1: AUTHENTICATION =====
+    const user = await getUserFromRequest(request);
+
+    if (!user) {
+      return new Response(
+        JSON.stringify({
+          success: false,
+          error: 'Authentication required. Please sign in to use this workflow.',
+          requiresAuth: true
+        } as RunWorkflowResponse),
+        {
+          status: 401,
+          headers: { 'Content-Type': 'application/json' }
+        }
+      );
+    }
+
+    console.log(`[run-workflow] User authenticated: ${user.id}`);
+
     // Parse request body
     const body: RunWorkflowRequest = await request.json();
     const { workflow_id, inputs } = body;
@@ -34,6 +60,27 @@ export const POST: APIRoute = async ({ request }) => {
         }
       );
     }
+
+    // ===== STEP 2: CREDIT CHECK =====
+    const { canGenerate, credits, isPro } = await checkUserCredits(user.id);
+
+    if (!canGenerate) {
+      return new Response(
+        JSON.stringify({
+          success: false,
+          error: 'You have no credits remaining. Please upgrade to Pro for unlimited generations.',
+          requiresUpgrade: true,
+          credits: 0,
+          isPro: false
+        } as RunWorkflowResponse),
+        {
+          status: 403,
+          headers: { 'Content-Type': 'application/json' }
+        }
+      );
+    }
+
+    console.log(`[run-workflow] Credit check passed. Credits: ${credits}, Pro: ${isPro}`);
 
     // Sanitize all inputs
     const sanitizedInputs: Record<string, string> = {};
@@ -65,11 +112,28 @@ export const POST: APIRoute = async ({ request }) => {
 
     // Fetch YouTube transcript once at the beginning if needed
     let transcript = '';
+    let videoTitle = '';
     if (sanitizedInputs.youtube_url) {
       try {
-        console.log(`[run-workflow] Fetching YouTube transcript...`);
-        transcript = await getYouTubeTranscript(sanitizedInputs.youtube_url);
-        console.log(`[run-workflow] Transcript fetched: ${transcript.length} characters`);
+        // Check if transcript was already fetched client-side
+        if (sanitizedInputs.youtube_transcript) {
+          console.log(`[run-workflow] Using client-side fetched transcript: ${sanitizedInputs.youtube_transcript.length} characters`);
+          transcript = sanitizedInputs.youtube_transcript;
+
+          // Extract video ID for reference
+          const videoId = extractVideoId(sanitizedInputs.youtube_url);
+          videoTitle = sanitizedInputs.video_title || `YouTube Video ${videoId}`;
+        } else {
+          // Fallback: Fetch server-side (will likely fail due to YouTube blocking)
+          console.log(`[run-workflow] No client-side transcript provided, attempting server-side fetch...`);
+          console.log(`[run-workflow] WARNING: Server-side fetching often fails due to YouTube blocking cloud IPs`);
+          transcript = await getYouTubeTranscript(sanitizedInputs.youtube_url);
+          console.log(`[run-workflow] Transcript fetched: ${transcript.length} characters`);
+
+          // Extract video ID for reference
+          const videoId = extractVideoId(sanitizedInputs.youtube_url);
+          videoTitle = sanitizedInputs.video_title || `YouTube Video ${videoId}`;
+        }
         context['transcript'] = transcript;
       } catch (error) {
         console.error('[run-workflow] Transcript fetch error:', error);
@@ -168,12 +232,39 @@ export const POST: APIRoute = async ({ request }) => {
     console.log(`[run-workflow] Workflow completed successfully`);
     console.log(`[run-workflow] Generated ${sections.length} sections`);
 
+    // ===== STEP 4: DEDUCT CREDIT =====
+    await deductCredit(user.id);
+    console.log(`[run-workflow] Credit deducted. Remaining: ${credits - 1}`);
+
+    // ===== STEP 5: SAVE TO HISTORY =====
+    // Save each section as a separate generation
+    for (const section of sections) {
+      await saveGeneration({
+        userId: user.id,
+        type: `${workflow_id}-${section.id}`,
+        inputContext: {
+          inputs: sanitizedInputs,
+          youtube_url: sanitizedInputs.youtube_url,
+          workflow_id: workflow_id,
+          section_id: section.id,
+          section_label: section.label
+        },
+        outputContent: section.content,
+        videoTitle: videoTitle || sanitizedInputs.video_title,
+        tokensUsed: undefined
+      });
+    }
+
+    console.log(`[run-workflow] Workflow saved to history (${sections.length} sections)`);
+
     // Return success response
     return new Response(
       JSON.stringify({
         success: true,
         workflow_id: workflow_id,
-        sections: sections
+        sections: sections,
+        creditsRemaining: isPro ? -1 : credits - 1, // -1 means unlimited
+        isPro: isPro
       } as RunWorkflowResponse),
       {
         status: 200,
