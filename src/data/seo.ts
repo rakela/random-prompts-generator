@@ -6,6 +6,7 @@ export interface SEOData {
   title: string;
   description: string;
   keywords: string;
+  ogImage?: string; // Optional custom OG image URL
 }
 
 export const seoData: Record<string, SEOData> = {

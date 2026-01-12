@@ -7,7 +7,7 @@ interface Props {
 
 const { seo } = Astro.props;
 const canonicalUrl = getCanonicalUrl(seo.path);
-const ogImage = `${canonicalUrl.replace(/\/$/, '')}/og-image.png`;
+const ogImage = seo.ogImage || `${PRIMARY_DOMAIN.startsWith('http') ? PRIMARY_DOMAIN : `https://${PRIMARY_DOMAIN}`}/og-image.png`;
 
 // Check if on primary domain (for robots meta)
 const currentDomain = Astro.url.hostname;
