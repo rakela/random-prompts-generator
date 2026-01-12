@@ -67,3 +67,9 @@ body {
 .inline-block{
   display: inline;
 }
+.prose {
+    margin-bottom: 30px;
+}
+.prose h2 {
+    margin: 30px auto;
+}
