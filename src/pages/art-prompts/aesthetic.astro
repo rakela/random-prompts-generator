@@ -46,7 +46,7 @@ const aestheticPrompts = [
   <AstroHeader />
 
   <!-- Hero Section -->
-  <div class="bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 text-white py-16">
+  <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-16">
     <div class="max-w-4xl mx-auto px-4 text-center">
       <h1 class="text-4xl md:text-5xl font-bold mb-4">
         Aesthetic Prompt Generator
@@ -67,11 +67,11 @@ const aestheticPrompts = [
         <h2 class="text-2xl font-bold text-gray-900 mb-4 text-center">✨ Random Aesthetic Prompt</h2>
         <p class="text-gray-600 text-center mb-6">Generate a random aesthetic prompt for your Pinterest boards and Instagram feed</p>
         <div class="text-center mb-6">
-          <button id="generate-random" class="px-8 py-3 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 text-white rounded-lg font-semibold hover:from-pink-600 hover:via-purple-600 hover:to-indigo-600 transition-all shadow-lg">
+          <button id="generate-random" class="px-8 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg font-semibold hover:from-indigo-700 hover:to-purple-700 transition-all shadow-lg">
             Generate Random Aesthetic
           </button>
         </div>
-        <div id="random-prompt-display" class="hidden bg-gradient-to-r from-pink-50 via-purple-50 to-indigo-50 border border-purple-300 rounded-lg p-6">
+        <div id="random-prompt-display" class="hidden bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-300 rounded-lg p-6">
           <div class="flex items-start gap-3">
             <div class="flex-1">
               <p class="text-gray-800" id="random-prompt-text"></p>
@@ -87,7 +87,7 @@ const aestheticPrompts = [
       </div>
 
       <!-- About Section with Pinterest/Instagram Keywords -->
-      <div class="bg-gradient-to-r from-pink-50 to-purple-50 rounded-2xl shadow-lg p-8 mb-12 border border-purple-200">
+      <div class="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-2xl shadow-lg p-8 mb-12 border border-indigo-200">
         <h2 class="text-2xl font-bold text-gray-900 mb-4">📌 Pinterest & Instagram Aesthetics</h2>
         <p class="text-gray-700 mb-4">
           Create stunning Pinterest boards and Instagram aesthetics with our curated aesthetic prompts. Whether you're building a mood board, planning your Instagram feed, or seeking visual inspiration, these aesthetic prompts cover popular Pinterest aesthetics including cottagecore, dark academia, Y2K, minimalist, vintage, and more.
@@ -102,9 +102,9 @@ const aestheticPrompts = [
         <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">All Aesthetic Prompts</h2>
         <div class="grid gap-4">
           {aestheticPrompts.map((prompt, index) => (
-            <div class="bg-gradient-to-r from-pink-50 via-purple-50 to-indigo-50 border border-purple-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+            <div class="bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-200 rounded-lg p-4 hover:shadow-md transition-shadow">
               <div class="flex items-start gap-3">
-                <div class="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-full flex items-center justify-center font-semibold text-sm">
+                <div class="flex-shrink-0 w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center font-semibold text-sm">
                   {index + 1}
                 </div>
                 <div class="flex-1">
@@ -130,16 +130,16 @@ const aestheticPrompts = [
       <div class="mt-12 bg-gray-50 rounded-lg p-6 border border-gray-200">
         <h3 class="text-xl font-bold text-gray-900 mb-4">More Art & Writing Prompts</h3>
         <div class="grid md:grid-cols-2 gap-4">
-          <a href="/ai-images-prompt" class="text-purple-700 hover:underline flex items-center gap-2">
+          <a href="/ai-images-prompt" class="text-indigo-700 hover:underline flex items-center gap-2">
             🎨 AI Art Prompts Generator
           </a>
-          <a href="/midjourney-ai-picture-generator" class="text-purple-700 hover:underline flex items-center gap-2">
+          <a href="/midjourney-ai-picture-generator" class="text-indigo-700 hover:underline flex items-center gap-2">
             🖼️ Midjourney Prompts
           </a>
-          <a href="/writing-prompts" class="text-purple-700 hover:underline flex items-center gap-2">
+          <a href="/writing-prompts" class="text-indigo-700 hover:underline flex items-center gap-2">
             ✍️ Writing Prompts
           </a>
-          <a href="/random-book-prompt-generator" class="text-purple-700 hover:underline flex items-center gap-2">
+          <a href="/random-book-prompt-generator" class="text-indigo-700 hover:underline flex items-center gap-2">
             📚 Book Prompts Generator
           </a>
         </div>
