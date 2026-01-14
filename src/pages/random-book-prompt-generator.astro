@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AstroHeader from '../components/AstroHeader.astro';
+import AstroFooter from '../components/AstroFooter.astro';
+import PromptGenerator from '../components/PromptGenerator';
+import '../styles/global.css';
+import { getSEOData } from '../data/seo';
+
+const seo = getSEOData('randomBookPromptGenerator');
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-16">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">
+        Random Book Prompt Generator
+      </h1>
+
+      <p class="text-lg opacity-80 mb-8 max-w-2xl mx-auto">
+        Generate creative random book prompts instantly with our free book prompt generator. Discover unique novel ideas, mind-bending concepts, and compelling narratives for your next book or fiction writing project.
+      </p>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="max-w-6xl mx-auto px-4 py-8">
+    {/* Prompt Generator Component */}
+    <PromptGenerator client:load category="book" />
+
+    {/* SEO Content Section */}
+    <div class="mt-16 space-y-8">
+      <div class="prose prose-gray max-w-none">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Advanced Random Book Prompt Generator</h2>
+        <p class="text-gray-700 mb-4">
+          Our random book prompt generator creates intricate novel prompts with high-concept ideas, unique world-building elements, and thought-provoking premises that go beyond typical book ideas. Each prompt features reality-bending concepts, philosophical questions, and compelling narratives perfect for novels, novellas, and long-form fiction writing.
+        </p>
+        <p class="text-gray-700 mb-4">
+          Generate creative book writing prompts featuring innovative concepts (reality manipulation, memory trading, living simulations), mysterious phenomena (disappearing oceans, sentient shadows, timeline shifts), moral dilemmas, and mind-bending premises that drive compelling narratives for fiction authors and novelists.
+        </p>
+        <div class="bg-indigo-50 p-4 rounded-lg mt-4">
+          <h3 class="font-semibold text-indigo-900 mb-2">Random Book Prompt Generator Features:</h3>
+          <ul class="text-indigo-800 text-sm space-y-1">
+            <li>• High-concept premises with unique world-building</li>
+            <li>• Reality-bending and philosophical story ideas</li>
+            <li>• Complex moral dilemmas and existential questions</li>
+            <li>• Mind-bending plot concepts and narrative twists</li>
+          </ul>
+        </div>
+
+        <h2 class="text-2xl font-bold text-gray-900 mb-4 mt-8">More Novel Writing Resources</h2>
+        <p class="text-gray-700 mb-4">
+          For additional novel writing inspiration, explore our <a href="/writing-prompts" class="text-blue-600 hover:underline">writing prompts generator</a> and <a href="/short-story-prompts-generator" class="text-blue-600 hover:underline">short story prompts</a> for more creative ideas.
+        </p>
+      </div>
+
+      {/* More Writing Resources Section */}
+      <div class="prose prose-gray max-w-none mt-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">More Writing Prompt Generators</h2>
+        <div class="grid md:grid-cols-2 gap-4">
+          <a href="/writing-prompts" class="block p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
+            <h3 class="font-semibold text-blue-900 mb-2">Writing Prompts</h3>
+            <p class="text-blue-800 text-sm">General creative writing prompts with plot twists</p>
+          </a>
+          <a href="/short-story-prompts-generator" class="block p-4 bg-amber-50 rounded-lg hover:bg-amber-100 transition-colors">
+            <h3 class="font-semibold text-amber-900 mb-2">Short Story Prompts</h3>
+            <p class="text-amber-800 text-sm">Creative short story ideas and flash fiction prompts</p>
+          </a>
+          <a href="/movie-prompts-generator" class="block p-4 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors">
+            <h3 class="font-semibold text-purple-900 mb-2">Movie Prompts</h3>
+            <p class="text-purple-800 text-sm">Screenplay and film story ideas for filmmakers</p>
+          </a>
+          <a href="/nano-banana-prompts" class="block p-4 bg-green-50 rounded-lg hover:bg-green-100 transition-colors">
+            <h3 class="font-semibold text-green-900 mb-2">Nano Banana Prompts</h3>
+            <p class="text-green-800 text-sm">NaNoWriMo writing inspiration for novelists</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <AstroFooter />
+</BaseLayout>

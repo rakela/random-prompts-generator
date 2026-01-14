@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AstroHeader from '../../components/AstroHeader.astro';
+import AstroFooter from '../../components/AstroFooter.astro';
+import '../../styles/global.css';
+
+const seo = {
+  path: 'movie-prompts-generator/sci-fi',
+  title: 'Sci-Fi Movie Prompts Generator - Science Fiction Film Ideas',
+  description: 'Generate sci-fi movie prompts for futuristic films, space exploration, and technology-driven stories. Perfect for screenwriters and filmmakers.',
+  keywords: 'sci-fi movie prompts, science fiction prompts, futuristic film ideas, space movie prompts, sci-fi screenplay ideas'
+};
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-r from-cyan-600 to-blue-600 text-white py-16">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">
+        Sci-Fi Movie Prompts Generator
+      </h1>
+
+      <p class="text-lg opacity-80 mb-8 max-w-2xl mx-auto">
+        Science fiction movie prompts for futuristic stories, space exploration, and technology-driven narratives.
+      </p>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="max-w-4xl mx-auto px-4 py-16">
+    <div class="bg-gradient-to-br from-cyan-50 to-blue-50 border-2 border-cyan-300 rounded-2xl p-12 text-center">
+      <div class="mb-6">
+        <svg class="w-24 h-24 mx-auto text-cyan-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+      </div>
+
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">Coming Soon</h2>
+
+      <p class="text-lg text-gray-700 mb-6">
+        We're developing a dedicated sci-fi movie prompts generator with advanced features for creating futuristic storylines, space opera narratives, and technology-driven plots.
+      </p>
+
+      <div class="bg-white rounded-lg p-6 mb-6 text-left max-w-2xl mx-auto">
+        <h3 class="font-semibold text-cyan-900 mb-3">What to expect:</h3>
+        <ul class="text-gray-700 space-y-2">
+          <li>✨ Time travel and alternate timeline stories</li>
+          <li>🚀 Space exploration and alien contact scenarios</li>
+          <li>🤖 AI and technology-driven narratives</li>
+          <li>🌌 Futuristic dystopias and utopias</li>
+          <li>🧬 Genetic engineering and transhumanism plots</li>
+        </ul>
+      </div>
+
+      <p class="text-gray-600 mb-8">
+        In the meantime, explore our general <a href="/movie-prompts-generator" class="text-cyan-600 hover:underline font-semibold">movie prompts generator</a> which includes sci-fi prompts along with other genres.
+      </p>
+
+      <a href="/movie-prompts-generator" class="inline-block bg-cyan-600 hover:bg-cyan-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors">
+        Explore Movie Prompts Generator
+      </a>
+    </div>
+
+    <!-- Related Links -->
+    <div class="mt-12">
+      <h3 class="text-xl font-bold text-gray-900 mb-4 text-center">Related Generators</h3>
+      <div class="grid md:grid-cols-2 gap-4">
+        <a href="/movie-prompts-generator" class="block p-4 bg-red-50 rounded-lg hover:bg-red-100 transition-colors">
+          <h4 class="font-semibold text-red-900 mb-2">Movie Prompts Generator</h4>
+          <p class="text-red-800 text-sm">Generate film ideas across all genres</p>
+        </a>
+        <a href="/movie-prompts-generator/horror" class="block p-4 bg-slate-50 rounded-lg hover:bg-slate-100 transition-colors">
+          <h4 class="font-semibold text-slate-900 mb-2">Horror Movie Prompts</h4>
+          <p class="text-slate-800 text-sm">Terrifying horror film ideas (Coming Soon)</p>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <AstroFooter />
+</BaseLayout>
