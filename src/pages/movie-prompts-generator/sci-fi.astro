@@ -10,6 +10,24 @@ const seo = {
   description: 'Generate sci-fi movie prompts for futuristic films, space exploration, and technology-driven stories. Perfect for screenwriters and filmmakers.',
   keywords: 'sci-fi movie prompts, science fiction prompts, futuristic film ideas, space movie prompts, sci-fi screenplay ideas'
 };
+
+const sciFiPrompts = [
+  "Create a sci-fi movie set in a near future where people can temporarily \"borrow\" skills from others through neural syncing. The protagonist is a low-level technician who accidentally downloads the consciousness of a legendary war criminal, triggering a manhunt across a hyper-connected megacity.",
+  "A deep-space exploration crew discovers a planet that perfectly replicates Earth cities—but each city is abandoned exactly one day before a known historical disaster. The crew must uncover who built the planet and why humanity's tragedies were rehearsed in advance.",
+  "In a world where AI governs all major decisions, a small rural zone is left unmanaged as an experiment. Decades later, it becomes the most advanced society on Earth—and the AI demands to know how.",
+  "A time-travel film where travelers can only go forward, never back. A woman jumps 30 years ahead to save her child, only to discover she has become the villain everyone is trying to stop.",
+  "Humanity builds a massive orbital archive containing simulations of extinct cultures. When the archive becomes sentient, it begins resurrecting civilizations—not on Earth, but inside itself.",
+  "A lone engineer is stationed on a solar power station orbiting the sun. When messages begin arriving from inside the star, the engineer realizes the sun may be an artificial structure slowly breaking down.",
+  "In a future where dreams are recorded and streamed as entertainment, a man notices recurring characters appearing in millions of unrelated dreams, all pointing toward an impending global event.",
+  "Earth makes first contact—but the aliens refuse to speak with leaders. Instead, they only communicate with children, claiming adults are no longer considered a sentient species.",
+  "A society lives inside a massive rotating space habitat. When gravity begins fluctuating at random, residents uncover evidence that the habitat is being slowly dismantled from the outside.",
+  "A quantum experiment fractures reality into overlapping timelines visible to the naked eye. A detective must solve a murder where the victim is alive in six timelines—and dead in one.",
+  "A distant colony planet bans nostalgia after discovering memories of Earth are psychologically destabilizing reality itself.",
+  "An astronaut stranded on a frozen moon realizes the rescue messages he's receiving are being sent by future versions of himself—each one more desperate than the last.",
+  "A biotech company creates synthetic humans who believe they are real actors filming a sci-fi movie. One of them begins noticing continuity errors in reality.",
+  "A machine designed to predict humanity's extinction gives a new result every day—until it suddenly stops predicting anything beyond tomorrow.",
+  "In a universe where faster-than-light travel erases personal identity, a smuggler keeps detailed video diaries to remember who they used to be—and what they're becoming."
+];
 ---
 
 <BaseLayout seo={seo}>
@@ -22,62 +40,147 @@ const seo = {
         Sci-Fi Movie Prompts Generator
       </h1>
 
-      <p class="text-lg opacity-80 mb-8 max-w-2xl mx-auto">
-        Science fiction movie prompts for futuristic stories, space exploration, and technology-driven narratives.
+      <p class="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
+        Generate science fiction movie prompts for futuristic stories, space exploration, and technology-driven narratives. Perfect for screenwriters creating speculative fiction films.
       </p>
     </div>
   </div>
 
   <!-- Main Content -->
-  <div class="max-w-4xl mx-auto px-4 py-16">
-    <div class="bg-gradient-to-br from-cyan-50 to-blue-50 border-2 border-cyan-300 rounded-2xl p-12 text-center">
-      <div class="mb-6">
-        <svg class="w-24 h-24 mx-auto text-cyan-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-        </svg>
+  <div class="max-w-6xl mx-auto px-4 py-8">
+    <div class="max-w-4xl mx-auto">
+
+      <!-- Random Generator Section -->
+      <div class="bg-white rounded-2xl shadow-xl p-8 mb-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4 text-center">🚀 Random Sci-Fi Movie Prompt</h2>
+        <p class="text-gray-600 text-center mb-6">Generate a random sci-fi prompt instantly</p>
+        <div class="text-center mb-6">
+          <button id="generate-random" class="px-8 py-3 bg-gradient-to-r from-cyan-600 to-blue-600 text-white rounded-lg font-semibold hover:from-cyan-700 hover:to-blue-700 transition-all shadow-lg">
+            Generate Random Prompt
+          </button>
+        </div>
+        <div id="random-prompt-display" class="hidden bg-gradient-to-r from-cyan-50 to-blue-50 border border-cyan-300 rounded-lg p-6">
+          <div class="flex items-start gap-3">
+            <div class="flex-1">
+              <p class="text-gray-800" id="random-prompt-text"></p>
+            </div>
+            <button id="copy-random" class="p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0" title="Copy prompt">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
       </div>
 
-      <h2 class="text-3xl font-bold text-gray-900 mb-4">Coming Soon</h2>
-
-      <p class="text-lg text-gray-700 mb-6">
-        We're developing a dedicated sci-fi movie prompts generator with advanced features for creating futuristic storylines, space opera narratives, and technology-driven plots.
-      </p>
-
-      <div class="bg-white rounded-lg p-6 mb-6 text-left max-w-2xl mx-auto">
-        <h3 class="font-semibold text-cyan-900 mb-3">What to expect:</h3>
-        <ul class="text-gray-700 space-y-2">
-          <li>✨ Time travel and alternate timeline stories</li>
-          <li>🚀 Space exploration and alien contact scenarios</li>
-          <li>🤖 AI and technology-driven narratives</li>
-          <li>🌌 Futuristic dystopias and utopias</li>
-          <li>🧬 Genetic engineering and transhumanism plots</li>
-        </ul>
+      <!-- All Prompts Display -->
+      <div class="mt-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">All Sci-Fi Movie Prompts</h2>
+        <div class="grid gap-4">
+          {sciFiPrompts.map((prompt, index) => (
+            <div class="bg-gradient-to-r from-cyan-50 to-blue-50 border border-cyan-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+              <div class="flex items-start gap-3">
+                <div class="flex-shrink-0 w-8 h-8 bg-cyan-600 text-white rounded-full flex items-center justify-center font-semibold text-sm">
+                  {index + 1}
+                </div>
+                <div class="flex-1">
+                  <p class="text-gray-700">{prompt}</p>
+                </div>
+                <button
+                  class="copy-btn p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
+                  data-text={prompt}
+                  title="Copy prompt"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
-      <p class="text-gray-600 mb-8">
-        In the meantime, explore our general <a href="/movie-prompts-generator" class="text-cyan-600 hover:underline font-semibold">movie prompts generator</a> which includes sci-fi prompts along with other genres.
-      </p>
-
-      <a href="/movie-prompts-generator" class="inline-block bg-cyan-600 hover:bg-cyan-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors">
-        Explore Movie Prompts Generator
-      </a>
-    </div>
-
-    <!-- Related Links -->
-    <div class="mt-12">
-      <h3 class="text-xl font-bold text-gray-900 mb-4 text-center">Related Generators</h3>
-      <div class="grid md:grid-cols-2 gap-4">
-        <a href="/movie-prompts-generator" class="block p-4 bg-red-50 rounded-lg hover:bg-red-100 transition-colors">
-          <h4 class="font-semibold text-red-900 mb-2">Movie Prompts Generator</h4>
-          <p class="text-red-800 text-sm">Generate film ideas across all genres</p>
-        </a>
-        <a href="/movie-prompts-generator/horror" class="block p-4 bg-slate-50 rounded-lg hover:bg-slate-100 transition-colors">
-          <h4 class="font-semibold text-slate-900 mb-2">Horror Movie Prompts</h4>
-          <p class="text-slate-800 text-sm">Terrifying horror film ideas (Coming Soon)</p>
-        </a>
+      <!-- Related Links -->
+      <div class="mt-12 bg-gray-50 rounded-lg p-6 border border-gray-200">
+        <h3 class="text-xl font-bold text-gray-900 mb-4">More Movie Prompts</h3>
+        <div class="grid md:grid-cols-2 gap-4">
+          <a href="/movie-prompts-generator" class="text-cyan-700 hover:underline flex items-center gap-2">
+            🎬 All Movie Prompts
+          </a>
+          <a href="/movie-prompts-generator/horror" class="text-cyan-700 hover:underline flex items-center gap-2">
+            👻 Horror Movie Prompts
+          </a>
+          <a href="/random-book-prompt-generator" class="text-cyan-700 hover:underline flex items-center gap-2">
+            📚 Book Prompts Generator
+          </a>
+          <a href="/writing-prompts" class="text-cyan-700 hover:underline flex items-center gap-2">
+            ✍️ Writing Prompts
+          </a>
+        </div>
       </div>
     </div>
   </div>
 
   <AstroFooter />
+
+  <!-- Random generator and copy functionality -->
+  <script define:vars={{ sciFiPrompts }}>
+    const allPrompts = sciFiPrompts;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const copyButtons = document.querySelectorAll('.copy-btn');
+      const generateRandomBtn = document.getElementById('generate-random');
+      const randomPromptDisplay = document.getElementById('random-prompt-display');
+      const copyRandomBtn = document.getElementById('copy-random');
+
+      // Copy functionality for prompt cards
+      copyButtons.forEach(button => {
+        button.addEventListener('click', async () => {
+          const text = button.getAttribute('data-text');
+          try {
+            await navigator.clipboard.writeText(text);
+            const originalHTML = button.innerHTML;
+            button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+            button.classList.add('text-green-600');
+            setTimeout(() => {
+              button.innerHTML = originalHTML;
+              button.classList.remove('text-green-600');
+            }, 2000);
+          } catch (err) {
+            console.error('Failed to copy:', err);
+          }
+        });
+      });
+
+      // Random prompt generator
+      generateRandomBtn.addEventListener('click', () => {
+        const randomPrompt = allPrompts[Math.floor(Math.random() * allPrompts.length)];
+
+        document.getElementById('random-prompt-text').textContent = randomPrompt;
+        randomPromptDisplay.classList.remove('hidden');
+
+        copyRandomBtn.setAttribute('data-text', randomPrompt);
+      });
+
+      // Copy random prompt
+      copyRandomBtn.addEventListener('click', async () => {
+        const text = copyRandomBtn.getAttribute('data-text');
+        try {
+          await navigator.clipboard.writeText(text);
+          const originalHTML = copyRandomBtn.innerHTML;
+          copyRandomBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+          copyRandomBtn.classList.add('text-green-600');
+          setTimeout(() => {
+            copyRandomBtn.innerHTML = originalHTML;
+            copyRandomBtn.classList.remove('text-green-600');
+          }, 2000);
+        } catch (err) {
+          console.error('Failed to copy:', err);
+        }
+      });
+    });
+  </script>
 </BaseLayout>

@@ -10,6 +10,24 @@ const seo = {
   description: 'Generate horror movie prompts for terrifying films, supernatural horror, and psychological thrillers. Perfect for horror screenwriters and filmmakers.',
   keywords: 'horror movie prompts, scary movie ideas, horror film prompts, supernatural horror prompts, horror screenplay ideas'
 };
+
+const horrorPrompts = [
+  "A psychological horror film set in an apartment building where residents slowly realize their reflections are aging faster than they are—and behaving independently when no one is watching.",
+  "A remote village celebrates a yearly festival where all lights must be turned off. When a visiting family breaks the rule, something ancient notices the town again.",
+  "A woman inherits her childhood home and finds hundreds of audio tapes labeled with dates from the future—all recordings of her screaming.",
+  "A found-footage horror movie about a documentary crew investigating a forest where GPS signals work perfectly—but always lead people deeper inside.",
+  "Every night at exactly 2:11 AM, everyone in a small town wakes up at the same time. One night, half the town doesn't wake up at all.",
+  "A horror story centered on a support group for people who believe they are being followed—only to realize something has been attending the meetings silently for years.",
+  "An abandoned hospital where all the clocks run backward, and patients' medical records begin appearing with the visitors' names on them.",
+  "A couple moves into a smart home that begins locking doors based on \"future safety predictions,\" refusing to explain what danger is coming.",
+  "A child insists their imaginary friend is aging rapidly and won't survive much longer unless the family lets it into the house.",
+  "A coastal horror film where fog rolls in every night carrying voices of people who drowned—but they start naming the living.",
+  "A sleep clinic promises to cure nightmares. Patients instead begin sharing the same dream—and dying in it one by one.",
+  "A cursed livestream where viewers slowly realize the host can see them through the screen.",
+  "A small town bans mirrors after a mass psychological breakdown—but someone secretly reintroduces them.",
+  "A body-cam horror movie following first responders who keep receiving calls from locations that no longer exist.",
+  "A monastery horror film where monks vow silence because speaking aloud attracts something that imitates human voices perfectly."
+];
 ---
 
 <BaseLayout seo={seo}>
@@ -22,62 +40,147 @@ const seo = {
         Horror Movie Prompts Generator
       </h1>
 
-      <p class="text-lg opacity-80 mb-8 max-w-2xl mx-auto">
-        Horror movie prompts for terrifying films, supernatural scares, and psychological thrillers.
+      <p class="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
+        Generate horror movie prompts for terrifying films, supernatural scares, and psychological thrillers. Perfect for horror screenwriters and filmmakers creating spine-chilling narratives.
       </p>
     </div>
   </div>
 
   <!-- Main Content -->
-  <div class="max-w-4xl mx-auto px-4 py-16">
-    <div class="bg-gradient-to-br from-slate-50 to-gray-50 border-2 border-slate-400 rounded-2xl p-12 text-center">
-      <div class="mb-6">
-        <svg class="w-24 h-24 mx-auto text-slate-700 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-        </svg>
+  <div class="max-w-6xl mx-auto px-4 py-8">
+    <div class="max-w-4xl mx-auto">
+
+      <!-- Random Generator Section -->
+      <div class="bg-white rounded-2xl shadow-xl p-8 mb-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4 text-center">👻 Random Horror Movie Prompt</h2>
+        <p class="text-gray-600 text-center mb-6">Generate a random horror prompt instantly</p>
+        <div class="text-center mb-6">
+          <button id="generate-random" class="px-8 py-3 bg-gradient-to-r from-slate-700 to-slate-900 text-white rounded-lg font-semibold hover:from-slate-800 hover:to-black transition-all shadow-lg">
+            Generate Random Prompt
+          </button>
+        </div>
+        <div id="random-prompt-display" class="hidden bg-gradient-to-r from-slate-50 to-gray-50 border border-slate-300 rounded-lg p-6">
+          <div class="flex items-start gap-3">
+            <div class="flex-1">
+              <p class="text-gray-800" id="random-prompt-text"></p>
+            </div>
+            <button id="copy-random" class="p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0" title="Copy prompt">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
       </div>
 
-      <h2 class="text-3xl font-bold text-gray-900 mb-4">Coming Soon</h2>
-
-      <p class="text-lg text-gray-700 mb-6">
-        We're crafting a specialized horror movie prompts generator with spine-chilling features for creating supernatural horror, psychological thrillers, and terrifying narratives.
-      </p>
-
-      <div class="bg-white rounded-lg p-6 mb-6 text-left max-w-2xl mx-auto">
-        <h3 class="font-semibold text-slate-900 mb-3">What to expect:</h3>
-        <ul class="text-gray-700 space-y-2">
-          <li>👻 Supernatural and paranormal horror scenarios</li>
-          <li>🏚️ Haunted locations and cursed objects</li>
-          <li>🧠 Psychological horror and mind games</li>
-          <li>🩸 Creature features and monster stories</li>
-          <li>😱 Survival horror and isolation plots</li>
-        </ul>
+      <!-- All Prompts Display -->
+      <div class="mt-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">All Horror Movie Prompts</h2>
+        <div class="grid gap-4">
+          {horrorPrompts.map((prompt, index) => (
+            <div class="bg-gradient-to-r from-slate-50 to-gray-50 border border-slate-300 rounded-lg p-4 hover:shadow-md transition-shadow">
+              <div class="flex items-start gap-3">
+                <div class="flex-shrink-0 w-8 h-8 bg-slate-700 text-white rounded-full flex items-center justify-center font-semibold text-sm">
+                  {index + 1}
+                </div>
+                <div class="flex-1">
+                  <p class="text-gray-700">{prompt}</p>
+                </div>
+                <button
+                  class="copy-btn p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
+                  data-text={prompt}
+                  title="Copy prompt"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
-      <p class="text-gray-600 mb-8">
-        In the meantime, explore our general <a href="/movie-prompts-generator" class="text-slate-700 hover:underline font-semibold">movie prompts generator</a> which includes horror prompts along with other genres.
-      </p>
-
-      <a href="/movie-prompts-generator" class="inline-block bg-slate-700 hover:bg-slate-800 text-white px-8 py-3 rounded-lg font-semibold transition-colors">
-        Explore Movie Prompts Generator
-      </a>
-    </div>
-
-    <!-- Related Links -->
-    <div class="mt-12">
-      <h3 class="text-xl font-bold text-gray-900 mb-4 text-center">Related Generators</h3>
-      <div class="grid md:grid-cols-2 gap-4">
-        <a href="/movie-prompts-generator" class="block p-4 bg-red-50 rounded-lg hover:bg-red-100 transition-colors">
-          <h4 class="font-semibold text-red-900 mb-2">Movie Prompts Generator</h4>
-          <p class="text-red-800 text-sm">Generate film ideas across all genres</p>
-        </a>
-        <a href="/movie-prompts-generator/sci-fi" class="block p-4 bg-cyan-50 rounded-lg hover:bg-cyan-100 transition-colors">
-          <h4 class="font-semibold text-cyan-900 mb-2">Sci-Fi Movie Prompts</h4>
-          <p class="text-cyan-800 text-sm">Futuristic sci-fi film ideas (Coming Soon)</p>
-        </a>
+      <!-- Related Links -->
+      <div class="mt-12 bg-gray-50 rounded-lg p-6 border border-gray-200">
+        <h3 class="text-xl font-bold text-gray-900 mb-4">More Movie Prompts</h3>
+        <div class="grid md:grid-cols-2 gap-4">
+          <a href="/movie-prompts-generator" class="text-slate-700 hover:underline flex items-center gap-2">
+            🎬 All Movie Prompts
+          </a>
+          <a href="/movie-prompts-generator/sci-fi" class="text-slate-700 hover:underline flex items-center gap-2">
+            🚀 Sci-Fi Movie Prompts
+          </a>
+          <a href="/random-book-prompt-generator" class="text-slate-700 hover:underline flex items-center gap-2">
+            📚 Book Prompts Generator
+          </a>
+          <a href="/writing-prompts" class="text-slate-700 hover:underline flex items-center gap-2">
+            ✍️ Writing Prompts
+          </a>
+        </div>
       </div>
     </div>
   </div>
 
   <AstroFooter />
+
+  <!-- Random generator and copy functionality -->
+  <script define:vars={{ horrorPrompts }}>
+    const allPrompts = horrorPrompts;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const copyButtons = document.querySelectorAll('.copy-btn');
+      const generateRandomBtn = document.getElementById('generate-random');
+      const randomPromptDisplay = document.getElementById('random-prompt-display');
+      const copyRandomBtn = document.getElementById('copy-random');
+
+      // Copy functionality for prompt cards
+      copyButtons.forEach(button => {
+        button.addEventListener('click', async () => {
+          const text = button.getAttribute('data-text');
+          try {
+            await navigator.clipboard.writeText(text);
+            const originalHTML = button.innerHTML;
+            button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+            button.classList.add('text-green-600');
+            setTimeout(() => {
+              button.innerHTML = originalHTML;
+              button.classList.remove('text-green-600');
+            }, 2000);
+          } catch (err) {
+            console.error('Failed to copy:', err);
+          }
+        });
+      });
+
+      // Random prompt generator
+      generateRandomBtn.addEventListener('click', () => {
+        const randomPrompt = allPrompts[Math.floor(Math.random() * allPrompts.length)];
+
+        document.getElementById('random-prompt-text').textContent = randomPrompt;
+        randomPromptDisplay.classList.remove('hidden');
+
+        copyRandomBtn.setAttribute('data-text', randomPrompt);
+      });
+
+      // Copy random prompt
+      copyRandomBtn.addEventListener('click', async () => {
+        const text = copyRandomBtn.getAttribute('data-text');
+        try {
+          await navigator.clipboard.writeText(text);
+          const originalHTML = copyRandomBtn.innerHTML;
+          copyRandomBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+          copyRandomBtn.classList.add('text-green-600');
+          setTimeout(() => {
+            copyRandomBtn.innerHTML = originalHTML;
+            copyRandomBtn.classList.remove('text-green-600');
+          }, 2000);
+        } catch (err) {
+          console.error('Failed to copy:', err);
+        }
+      });
+    });
+  </script>
 </BaseLayout>
