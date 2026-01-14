@@ -2,34 +2,208 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import AstroHeader from '../../components/AstroHeader.astro';
 import AstroFooter from '../../components/AstroFooter.astro';
-import SimpleGenerator from '../../components/SimpleGenerator';
 import '../../styles/global.css';
 import { getSEOData } from '../../data/seo';
 
 const seo = getSEOData('randomAestheticPromptGenerator');
+
+// Aesthetic Prompts for Pinterest Boards & Instagram Aesthetics
+const aestheticPrompts = [
+  "Cottagecore dreamscape: wildflower meadows, vintage linen dresses, handwritten letters on aged paper, woven baskets filled with fresh bread, soft morning light filtering through lace curtains",
+  "Dark Academia aesthetic: candlelit library with leather-bound books, vintage fountain pens, tweed blazers, marble busts, handwritten poetry in sepia tones, ornate architecture",
+  "Y2K nostalgia vibes: holographic stickers, butterfly clips, low-rise jeans, flip phones with rhinestones, frosted lip gloss, digital cameras with date stamps, platform sneakers",
+  "Minimalist Scandinavian mood: clean white spaces, natural wood textures, single stem flowers in ceramic vases, linen bedding, neutral tones, geometric shadows, coffee in simple mugs",
+  "Vintage 70s aesthetic: earth tones and burnt orange, macramé wall hangings, vinyl records, bell-bottom jeans, polaroid cameras, retro sunglasses, shag carpets, wood paneling",
+  "Grunge indie vibes: distressed band tees, ripped black jeans, combat boots, vinyl collections, dimly lit bedrooms, polaroids on fairy lights, coffee shop corners, worn leather jackets",
+  "Soft girl aesthetic: pastel colors everywhere, teddy bears and plushies, heart-shaped sunglasses, oversized sweaters, strawberry milk, cloud watching, gentle pink lighting, cute hair clips",
+  "E-girl dark vibes: neon lights in bedroom, chains and safety pins, striped long sleeves under band tees, platform boots, gaming setup with LED strips, dyed hair, heavy eyeliner",
+  "Fairycore magical realm: moss-covered forests, mushroom circles, flowing white dresses, flower crowns, dewdrops on spider webs, ethereal fog, butterfly wings, enchanted woodland paths",
+  "Goblincore earth tones: collected rocks and bones, forest foraging, moss terrariums, dirt under fingernails, cozy caves, mismatched vintage clothing, frog friends, muddy boots",
+  "Light Academia golden hour: cream-colored poetry books, French cafés, art museums, flowing white shirts, classical music, handwritten notes, gentle sunlight, Renaissance paintings",
+  "Ocean core deep blue: seashells and sea glass, lighthouse views, sailor stripes, weathered driftwood, sandy footprints, ocean waves, nautical ropes, vintage boat aesthetics",
+  "Indie kid colorful chaos: thrifted oversized hoodies, colorful striped shirts, vinyl record players, film cameras, messy bedrooms, band posters, skateboard decks, iced coffee",
+  "Romantic academia: love letters in cursive, pressed flowers in old books, vintage tea sets, lace details, poetry journals, soft candlelight, antique mirrors, velvet ribbons",
+  "Cleancore pure simplicity: everything white and organized, minimal skincare routines, fresh laundry aesthetic, clean countertops, folded towels, glass containers, spa vibes",
+  "Cottagecore baking: flour-dusted aprons, wooden spoons, fresh-baked bread, ceramic mixing bowls, handwritten recipe cards, gingham tablecloths, window sill pies cooling",
+  "Cyberpunk neon nights: rain-slicked streets reflecting neon signs, futuristic cityscapes, tech wear fashion, holographic elements, dark backgrounds with bright accents",
+  "Vintage camera aesthetic: film photography, grainy textures, golden hour shots, developed photos hanging with clothespins, camera collections, darkroom red lights, contact sheets",
+  "Plant parent jungle: overgrown indoor plants, terracotta pots, watering cans, plant propagation stations, botanical prints, macramé plant hangers, sunlit greenery",
+  "Cozy autumn vibes: pumpkin spice everything, chunky knit blankets, fall leaves, warm sweaters, candlelit evenings, books and tea, crunchy leaves underfoot, harvest decorations",
+  "Ethereal angel aesthetic: all white everything, flowing fabrics, soft clouds, pearl jewelry, feather details, golden hour lighting, heavenly glow, delicate lace, porcelain skin",
+  "90s nostalgia throwback: scrunchies and chokers, disposable cameras, mall aesthetic, platform shoes, crop tops, CD players, butterfly motifs, iridescent accessories",
+  "Modern witchy vibes: crystal collections, tarot cards, black cats, moon phases, dried herbs hanging, spell books, vintage bottles, candlelit altars, mystical symbols",
+  "Kawaii Japanese cute: sanrio characters, pastel everything, bubble tea, cute stationery, puffy stickers, plushies everywhere, pink and blue tones, sweet desserts, anime vibes",
+  "Urban street style: graffiti walls, city skylines, street fashion, sneaker culture, subway aesthetics, concrete jungles, golden hour cityscapes, vintage streetwear",
+  "Bohemian wanderlust: layered jewelry, flowing maxi dresses, vintage travel suitcases, world maps, dreamcatchers, ethnic textiles, festival vibes, free-spirited energy",
+  "Academic bookworm: stacks of annotated books, cozy reading nooks, vintage library cards, book spine aesthetics, handwritten notes in margins, tea-stained pages, literary quotes",
+  "Sunset gradient dreams: golden hour photography, pink and orange skies, silhouettes against sunsets, beach sunsets, rooftop views, magic hour lighting, dreamy horizons",
+  "Vintage polaroid memories: instant film aesthetic, photo walls with string lights, memory boards, scrapbook pages, handwritten dates on photos, nostalgic moments captured",
+  "Pinterest board perfection: curated mood boards, aesthetic collages, inspiration boards, visual storytelling, thematic collections, dreamy compositions, Instagram-worthy moments"
+];
 ---
 
 <BaseLayout seo={seo}>
   <AstroHeader />
 
   <!-- Hero Section -->
-  <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16">
+  <div class="bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 text-white py-16">
     <div class="max-w-4xl mx-auto px-4 text-center">
       <h1 class="text-4xl md:text-5xl font-bold mb-4">
-        Random Aesthetic Prompt Generator
+        Aesthetic Prompt Generator
       </h1>
 
       <p class="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
-        {seo.description}
+        Generate aesthetic prompts for Pinterest boards, Instagram aesthetics, moodboards, and visual inspiration. Perfect for creators seeking aesthetic vibes and mood board ideas.
       </p>
     </div>
   </div>
 
   <!-- Main Content -->
   <div class="max-w-6xl mx-auto px-4 py-8">
-    {/* Generator Component */}
-    <SimpleGenerator client:load generatorKey="random-aesthetic-prompt-generator" />
+    <div class="max-w-4xl mx-auto">
+
+      <!-- Random Generator Section -->
+      <div class="bg-white rounded-2xl shadow-xl p-8 mb-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4 text-center">✨ Random Aesthetic Prompt</h2>
+        <p class="text-gray-600 text-center mb-6">Generate a random aesthetic prompt for your Pinterest boards and Instagram feed</p>
+        <div class="text-center mb-6">
+          <button id="generate-random" class="px-8 py-3 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 text-white rounded-lg font-semibold hover:from-pink-600 hover:via-purple-600 hover:to-indigo-600 transition-all shadow-lg">
+            Generate Random Aesthetic
+          </button>
+        </div>
+        <div id="random-prompt-display" class="hidden bg-gradient-to-r from-pink-50 via-purple-50 to-indigo-50 border border-purple-300 rounded-lg p-6">
+          <div class="flex items-start gap-3">
+            <div class="flex-1">
+              <p class="text-gray-800" id="random-prompt-text"></p>
+            </div>
+            <button id="copy-random" class="p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0" title="Copy prompt">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- About Section with Pinterest/Instagram Keywords -->
+      <div class="bg-gradient-to-r from-pink-50 to-purple-50 rounded-2xl shadow-lg p-8 mb-12 border border-purple-200">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">📌 Pinterest & Instagram Aesthetics</h2>
+        <p class="text-gray-700 mb-4">
+          Create stunning Pinterest boards and Instagram aesthetics with our curated aesthetic prompts. Whether you're building a mood board, planning your Instagram feed, or seeking visual inspiration, these aesthetic prompts cover popular Pinterest aesthetics including cottagecore, dark academia, Y2K, minimalist, vintage, and more.
+        </p>
+        <p class="text-gray-700">
+          Perfect for content creators, digital artists, and anyone curating their aesthetic vision on Pinterest and Instagram.
+        </p>
+      </div>
+
+      <!-- All Prompts Display -->
+      <div class="mt-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">All Aesthetic Prompts</h2>
+        <div class="grid gap-4">
+          {aestheticPrompts.map((prompt, index) => (
+            <div class="bg-gradient-to-r from-pink-50 via-purple-50 to-indigo-50 border border-purple-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+              <div class="flex items-start gap-3">
+                <div class="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-full flex items-center justify-center font-semibold text-sm">
+                  {index + 1}
+                </div>
+                <div class="flex-1">
+                  <p class="text-gray-700">{prompt}</p>
+                </div>
+                <button
+                  class="copy-btn p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
+                  data-text={prompt}
+                  title="Copy prompt"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Related Links -->
+      <div class="mt-12 bg-gray-50 rounded-lg p-6 border border-gray-200">
+        <h3 class="text-xl font-bold text-gray-900 mb-4">More Art & Writing Prompts</h3>
+        <div class="grid md:grid-cols-2 gap-4">
+          <a href="/ai-images-prompt" class="text-purple-700 hover:underline flex items-center gap-2">
+            🎨 AI Art Prompts Generator
+          </a>
+          <a href="/midjourney-ai-picture-generator" class="text-purple-700 hover:underline flex items-center gap-2">
+            🖼️ Midjourney Prompts
+          </a>
+          <a href="/writing-prompts" class="text-purple-700 hover:underline flex items-center gap-2">
+            ✍️ Writing Prompts
+          </a>
+          <a href="/random-book-prompt-generator" class="text-purple-700 hover:underline flex items-center gap-2">
+            📚 Book Prompts Generator
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 
   <AstroFooter />
+
+  <!-- Random generator and copy functionality -->
+  <script define:vars={{ aestheticPrompts }}>
+    const allPrompts = aestheticPrompts;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const copyButtons = document.querySelectorAll('.copy-btn');
+      const generateRandomBtn = document.getElementById('generate-random');
+      const randomPromptDisplay = document.getElementById('random-prompt-display');
+      const copyRandomBtn = document.getElementById('copy-random');
+
+      // Copy functionality for prompt cards
+      copyButtons.forEach(button => {
+        button.addEventListener('click', async () => {
+          const text = button.getAttribute('data-text');
+          try {
+            await navigator.clipboard.writeText(text);
+            const originalHTML = button.innerHTML;
+            button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+            button.classList.add('text-green-600');
+            setTimeout(() => {
+              button.innerHTML = originalHTML;
+              button.classList.remove('text-green-600');
+            }, 2000);
+          } catch (err) {
+            console.error('Failed to copy:', err);
+          }
+        });
+      });
+
+      // Random prompt generator
+      generateRandomBtn.addEventListener('click', () => {
+        const randomPrompt = allPrompts[Math.floor(Math.random() * allPrompts.length)];
+
+        document.getElementById('random-prompt-text').textContent = randomPrompt;
+        randomPromptDisplay.classList.remove('hidden');
+
+        copyRandomBtn.setAttribute('data-text', randomPrompt);
+      });
+
+      // Copy random prompt
+      copyRandomBtn.addEventListener('click', async () => {
+        const text = copyRandomBtn.getAttribute('data-text');
+        try {
+          await navigator.clipboard.writeText(text);
+          const originalHTML = copyRandomBtn.innerHTML;
+          copyRandomBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+          copyRandomBtn.classList.add('text-green-600');
+          setTimeout(() => {
+            copyRandomBtn.innerHTML = originalHTML;
+            copyRandomBtn.classList.remove('text-green-600');
+          }, 2000);
+        } catch (err) {
+          console.error('Failed to copy:', err);
+        }
+      });
+    });
+  </script>
 </BaseLayout>

@@ -249,9 +249,9 @@ export const seoData: Record<string, SEOData> = {
   // AI Art Generators
   randomAestheticPromptGenerator: {
     path: 'random-aesthetic-prompt-generator',
-    title: 'Random Aesthetic Prompt Generator | Random Prompts',
-    description: 'Generate random aesthetic prompts for moodboards, AI art, and branding. Free aesthetic prompt generator for MidJourney and creatives.',
-    keywords: 'aesthetic prompts, aesthetic generator, moodboard ideas, visual aesthetic, ai art aesthetic'
+    title: 'Aesthetic Prompt Generator - Pinterest & Instagram Aesthetics',
+    description: 'Generate aesthetic prompts for Pinterest boards, Instagram aesthetics, moodboards, and AI art. Free aesthetic prompt generator for creatives and visual inspiration.',
+    keywords: 'aesthetic prompt generator, aesthetic prompts, pinterest boards, instagram aesthetics, moodboard ideas, visual aesthetic, ai art aesthetic'
   },
   randomArtStyleGenerator: {
     path: 'art-prompts/art-style',
