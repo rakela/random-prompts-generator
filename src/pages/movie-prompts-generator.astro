@@ -2,95 +2,525 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import AstroHeader from '../components/AstroHeader.astro';
 import AstroFooter from '../components/AstroFooter.astro';
-import PromptGenerator from '../components/PromptGenerator';
 import '../styles/global.css';
 import { getSEOData } from '../data/seo';
 
 const seo = getSEOData('moviePromptsGenerator');
+
+// Movie Prompts Data organized by genre
+const moviePrompts = {
+  'drama': [
+    { prompt: "A once-famous musician is forced to return to their hometown to care for an estranged parent, only to uncover a long-buried family secret that explains why they left—and why they were never meant to come back.", genre: "Drama" },
+    { prompt: "After losing everything in a financial scandal they didn't commit, a quiet accountant must decide whether clearing their name is worth destroying the lives of the people they still love.", genre: "Drama" },
+    { prompt: "A single night at a hospital emergency room connects five strangers whose lives are permanently changed by one irreversible decision made before sunrise.", genre: "Drama" },
+    { prompt: "A teacher in a failing school discovers a student with extraordinary talent, but helping them succeed means breaking rules that could cost the teacher their career.", genre: "Drama" },
+    { prompt: "Two siblings reunite to sell their childhood home, only to relive a traumatic event they each remember very differently.", genre: "Drama" }
+  ],
+  'thriller': [
+    { prompt: "A small-town journalist receives anonymous letters predicting crimes hours before they happen—until one letter describes a murder that hasn't occurred yet… and names the journalist as the suspect.", genre: "Thriller / Mystery" },
+    { prompt: "After waking up with no memory of the past 48 hours, a woman discovers multiple versions of her own handwriting scattered across the city, all warning her not to trust herself.", genre: "Thriller / Mystery" },
+    { prompt: "A private investigator is hired to find a missing person who officially never existed—no records, no photos, no digital trace.", genre: "Thriller / Mystery" },
+    { prompt: "A group of strangers trapped in an elevator realize each of them is connected to the same unsolved crime from years ago.", genre: "Thriller / Mystery" },
+    { prompt: "During a city-wide blackout, a surveillance operator watches a crime unfold live on cameras—but no one else can see it.", genre: "Thriller / Mystery" }
+  ],
+  'scifi': [
+    { prompt: "In a future where memories can be legally erased, a technician discovers fragments of deleted memories that point to a global conspiracy.", genre: "Sci-Fi" },
+    { prompt: "Humanity makes first contact with aliens—but the aliens refuse to communicate with leaders and will only speak to one random civilian.", genre: "Sci-Fi" },
+    { prompt: "A time traveler keeps returning to the same moment to prevent a disaster, only to realize they are the cause of it.", genre: "Sci-Fi" },
+    { prompt: "In a society where emotions are regulated by implants, one person's device malfunctions, allowing them to feel everything at once.", genre: "Sci-Fi" },
+    { prompt: "An AI designed to write movie scripts begins predicting real-world events with terrifying accuracy.", genre: "Sci-Fi" }
+  ],
+  'fantasy': [
+    { prompt: "Magic disappears overnight, leaving a once-powerful kingdom defenseless—except for one person who never had magic to begin with.", genre: "Fantasy" },
+    { prompt: "A young courier discovers that the packages they deliver are enchanted artifacts capable of reshaping reality.", genre: "Fantasy" },
+    { prompt: "An immortal guardian begins aging for the first time and must decide who will inherit their ancient responsibility.", genre: "Fantasy" },
+    { prompt: "A peaceful village worships a god who has secretly been living among them as a normal human for decades.", genre: "Fantasy" },
+    { prompt: "A forbidden spell allows people to relive their happiest memory—but using it slowly erases the present.", genre: "Fantasy" }
+  ],
+  'horror': [
+    { prompt: "A family moves into a house where every mirror reflects something slightly different than reality.", genre: "Horror" },
+    { prompt: "A true-crime podcast host realizes the ghost haunting their apartment is trying to confess a murder.", genre: "Horror" },
+    { prompt: "A town experiences a strange phenomenon where no one can sleep—and something watches when their eyes close.", genre: "Horror" },
+    { prompt: "A therapist discovers that all their patients are being haunted by the same entity, appearing in different forms.", genre: "Horror" },
+    { prompt: "A filmmaker documenting abandoned places captures footage that changes every time it's played back.", genre: "Horror" }
+  ],
+  'romance': [
+    { prompt: "Two people fall in love through messages sent to the wrong phone number, never seeing each other—until one message suddenly stops.", genre: "Romance" },
+    { prompt: "A couple relives their first date every year, but one year only one of them remembers why it matters.", genre: "Romance" },
+    { prompt: "A marriage counselor secretly falls in love with the idea of love again while helping others fix their relationships.", genre: "Romance" },
+    { prompt: "Two strangers agree to fake a relationship for practical reasons, only to realize they're terrified of what happens when it ends.", genre: "Romance" },
+    { prompt: "A love story told entirely through missed connections and moments that almost happened.", genre: "Romance" }
+  ],
+  'comedy': [
+    { prompt: "A group of coworkers must pretend to be a perfectly functional family during a high-stakes corporate retreat.", genre: "Comedy" },
+    { prompt: "A struggling actor accidentally becomes famous for a role they never actually played.", genre: "Comedy" },
+    { prompt: "A wedding planner has to save a ceremony while hiding the fact that the bride and groom secretly broke up hours before.", genre: "Comedy" },
+    { prompt: "A life coach who has everything 'figured out' loses control when their own life starts falling apart publicly.", genre: "Comedy" },
+    { prompt: "A town treats a completely normal event as a massive supernatural crisis.", genre: "Comedy" }
+  ],
+  'crime': [
+    { prompt: "A retired criminal is forced back into the underworld—not for money, but to protect someone who doesn't know their past.", genre: "Crime" },
+    { prompt: "A detective and a criminal unknowingly compete against each other to solve the same case.", genre: "Crime" },
+    { prompt: "A heist goes perfectly—until the crew realizes they stole the wrong thing.", genre: "Crime" },
+    { prompt: "A courtroom drama where the crime is clear, but the motive is impossible to prove.", genre: "Crime" },
+    { prompt: "A criminal empire is taken down by its weakest link: an overlooked administrative error.", genre: "Crime" }
+  ],
+  'psychological': [
+    { prompt: "A man begins noticing subtle changes in his surroundings that only occur when he's alone.", genre: "Psychological" },
+    { prompt: "A woman attends therapy sessions she doesn't remember scheduling, discussing events she hasn't lived yet.", genre: "Psychological" },
+    { prompt: "A character slowly realizes the narration of their life is unreliable—and possibly controlled.", genre: "Psychological" },
+    { prompt: "A social experiment meant to last one week spirals into something no one can stop.", genre: "Psychological" },
+    { prompt: "A person discovers that everyone they know is responding to a version of them that isn't real.", genre: "Psychological" }
+  ],
+  'indie': [
+    { prompt: "A quiet film following a single day in the life of someone preparing to leave everything behind.", genre: "Indie / Arthouse" },
+    { prompt: "A story told entirely through unanswered voicemails and unread messages.", genre: "Indie / Arthouse" },
+    { prompt: "A character reflects on their life through objects they find while cleaning an empty apartment.", genre: "Indie / Arthouse" },
+    { prompt: "A long walk through a city becomes a meditation on identity, regret, and change.", genre: "Indie / Arthouse" },
+    { prompt: "A film where nothing dramatic happens—but everything meaningful does.", genre: "Indie / Arthouse" }
+  ]
+};
 ---
 
 <BaseLayout seo={seo}>
   <AstroHeader />
 
-  <!-- Hero Section -->
-  <div class="bg-gradient-to-r from-red-600 to-pink-600 text-white py-16">
+  <!-- Hero Section - Dark Cinema Theme -->
+  <div class="bg-gradient-to-r from-slate-900 via-gray-900 to-slate-800 text-white py-16">
     <div class="max-w-4xl mx-auto px-4 text-center">
       <h1 class="text-4xl md:text-5xl font-bold mb-4">
         Movie Prompts Generator
       </h1>
 
-      <p class="text-lg opacity-80 mb-8 max-w-2xl mx-auto">
-        Generate creative movie prompts instantly for screenwriters, filmmakers, and film students. Discover unique film ideas across drama, thriller, sci-fi, horror, romance, comedy, and more genres.
+      <p class="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
+        Explore 50 professional movie prompts for screenwriters and filmmakers across 10 unique genres. From emotional dramas to mind-bending thrillers, supernatural horror to heartfelt romance - find the perfect story idea for your next screenplay.
       </p>
     </div>
   </div>
 
   <!-- Main Content -->
   <div class="max-w-6xl mx-auto px-4 py-8">
-    {/* Prompt Generator Component */}
-    <PromptGenerator client:load category="movies" />
+    <div class="max-w-4xl mx-auto">
 
-    {/* SEO Content Section */}
-    <div class="mt-16 space-y-8">
-      <div class="prose prose-gray max-w-none">
-        <h2 class="text-2xl font-bold text-gray-900 mb-4">Professional Movie Prompts Generator</h2>
-        <p class="text-gray-700 mb-4">
-          Our movie prompts generator creates compelling film story ideas perfect for screenwriters, indie filmmakers, and film students. Each prompt includes rich character development, emotional stakes, and cinematic potential across multiple genres including drama, thriller, mystery, sci-fi, fantasy, horror, romance, comedy, crime, psychological, and indie/arthouse films.
-        </p>
-        <p class="text-gray-700 mb-4">
-          Generate professional screenplay prompts featuring complex protagonists, high-stakes conflicts, unexpected plot turns, and emotionally resonant narratives that translate perfectly to the screen. Perfect for script competitions, film school projects, and independent productions.
-        </p>
-        <div class="bg-red-50 p-4 rounded-lg mt-4">
-          <h3 class="font-semibold text-red-900 mb-2">Movie Prompts Generator Features:</h3>
-          <ul class="text-red-800 text-sm space-y-1">
-            <li>• Drama, thriller, sci-fi, fantasy, horror, romance, comedy prompts</li>
-            <li>• Character-driven stories with emotional depth</li>
-            <li>• High-concept premises with cinematic potential</li>
-            <li>• Perfect for screenwriting and film production</li>
-          </ul>
+      <!-- Random Generator Section -->
+      <div class="bg-white rounded-2xl shadow-xl p-8 mb-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4 text-center">🎬 Random Movie Prompt Generator</h2>
+        <p class="text-gray-600 text-center mb-6">Generate a random movie prompt instantly</p>
+        <div class="text-center mb-6">
+          <button id="generate-random" class="px-8 py-3 bg-gradient-to-r from-slate-800 to-gray-800 text-white rounded-lg font-semibold hover:from-slate-900 hover:to-gray-900 transition-all shadow-lg">
+            Generate Random Prompt
+          </button>
         </div>
-
-        <h2 class="text-2xl font-bold text-gray-900 mb-4 mt-8">Explore Movie Prompts by Genre</h2>
-        <p class="text-gray-700 mb-4">
-          Looking for specific genres? Explore our dedicated category pages for focused inspiration:
-        </p>
-
-        <div class="grid md:grid-cols-2 gap-4 mb-8">
-          <a href="/movie-prompts-generator/sci-fi" class="block p-4 bg-cyan-50 rounded-lg hover:bg-cyan-100 transition-colors">
-            <h3 class="font-semibold text-cyan-900 mb-2">🚀 Sci-Fi Movie Prompts</h3>
-            <p class="text-cyan-800 text-sm">Futuristic concepts, space exploration, and technology-driven stories</p>
-          </a>
-          <a href="/movie-prompts-generator/horror" class="block p-4 bg-slate-50 rounded-lg hover:bg-slate-100 transition-colors">
-            <h3 class="font-semibold text-slate-900 mb-2">👻 Horror Movie Prompts</h3>
-            <p class="text-slate-800 text-sm">Terrifying scenarios, supernatural horror, and psychological fear</p>
-          </a>
+        <div id="random-prompt-display" class="hidden bg-gradient-to-r from-slate-50 to-gray-50 border border-slate-300 rounded-lg p-6">
+          <div class="flex items-start gap-3">
+            <div class="flex-1">
+              <p class="text-sm text-slate-700 font-semibold mb-2" id="random-prompt-genre"></p>
+              <p class="text-gray-800" id="random-prompt-text"></p>
+            </div>
+            <button id="copy-random" class="p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0" title="Copy prompt">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+              </svg>
+            </button>
+          </div>
         </div>
-
-        <h2 class="text-2xl font-bold text-gray-900 mb-4 mt-8">More Creative Writing Resources</h2>
-        <p class="text-gray-700 mb-4">
-          For more screenplay and storytelling inspiration, check out our <a href="/writing-prompts" class="text-blue-600 hover:underline">writing prompts generator</a> and <a href="/random-book-prompt-generator" class="text-blue-600 hover:underline">book prompts</a> for narrative ideas.
-        </p>
       </div>
 
-      {/* More Writing Resources Section */}
-      <div class="prose prose-gray max-w-none mt-12">
-        <h2 class="text-2xl font-bold text-gray-900 mb-4">More Story Generators</h2>
+      <!-- All Prompts Display -->
+      <div class="mt-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">All Movie Prompts by Genre</h2>
+
+        <!-- Drama -->
+        <div class="mb-8">
+          <h3 class="text-xl font-bold text-blue-700 mb-4 flex items-center gap-2">
+            🎭 Drama
+          </h3>
+          <div class="grid gap-4">
+            {moviePrompts['drama'].map((item) => (
+              <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                <div class="flex items-start gap-3">
+                  <div class="flex-1">
+                    <p class="text-gray-700">{item.prompt}</p>
+                  </div>
+                  <button
+                    class="copy-btn p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
+                    data-text={item.prompt}
+                    title="Copy prompt"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Thriller / Mystery -->
+        <div class="mb-8">
+          <h3 class="text-xl font-bold text-red-700 mb-4 flex items-center gap-2">
+            🔍 Thriller / Mystery
+          </h3>
+          <div class="grid gap-4">
+            {moviePrompts['thriller'].map((item) => (
+              <div class="bg-gradient-to-r from-red-50 to-rose-50 border border-red-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                <div class="flex items-start gap-3">
+                  <div class="flex-1">
+                    <p class="text-gray-700">{item.prompt}</p>
+                  </div>
+                  <button
+                    class="copy-btn p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
+                    data-text={item.prompt}
+                    title="Copy prompt"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Sci-Fi -->
+        <div class="mb-8">
+          <h3 class="text-xl font-bold text-cyan-700 mb-4 flex items-center gap-2">
+            🚀 Sci-Fi
+          </h3>
+          <div class="grid gap-4">
+            {moviePrompts['scifi'].map((item) => (
+              <div class="bg-gradient-to-r from-cyan-50 to-blue-50 border border-cyan-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                <div class="flex items-start gap-3">
+                  <div class="flex-1">
+                    <p class="text-gray-700">{item.prompt}</p>
+                  </div>
+                  <button
+                    class="copy-btn p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
+                    data-text={item.prompt}
+                    title="Copy prompt"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Fantasy -->
+        <div class="mb-8">
+          <h3 class="text-xl font-bold text-purple-700 mb-4 flex items-center gap-2">
+            🧙 Fantasy
+          </h3>
+          <div class="grid gap-4">
+            {moviePrompts['fantasy'].map((item) => (
+              <div class="bg-gradient-to-r from-purple-50 to-violet-50 border border-purple-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                <div class="flex items-start gap-3">
+                  <div class="flex-1">
+                    <p class="text-gray-700">{item.prompt}</p>
+                  </div>
+                  <button
+                    class="copy-btn p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
+                    data-text={item.prompt}
+                    title="Copy prompt"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Horror -->
+        <div class="mb-8">
+          <h3 class="text-xl font-bold text-slate-700 mb-4 flex items-center gap-2">
+            👻 Horror
+          </h3>
+          <div class="grid gap-4">
+            {moviePrompts['horror'].map((item) => (
+              <div class="bg-gradient-to-r from-slate-50 to-gray-50 border border-slate-300 rounded-lg p-4 hover:shadow-md transition-shadow">
+                <div class="flex items-start gap-3">
+                  <div class="flex-1">
+                    <p class="text-gray-700">{item.prompt}</p>
+                  </div>
+                  <button
+                    class="copy-btn p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
+                    data-text={item.prompt}
+                    title="Copy prompt"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Romance -->
+        <div class="mb-8">
+          <h3 class="text-xl font-bold text-pink-700 mb-4 flex items-center gap-2">
+            ❤️ Romance
+          </h3>
+          <div class="grid gap-4">
+            {moviePrompts['romance'].map((item) => (
+              <div class="bg-gradient-to-r from-pink-50 to-rose-50 border border-pink-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                <div class="flex items-start gap-3">
+                  <div class="flex-1">
+                    <p class="text-gray-700">{item.prompt}</p>
+                  </div>
+                  <button
+                    class="copy-btn p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
+                    data-text={item.prompt}
+                    title="Copy prompt"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Comedy -->
+        <div class="mb-8">
+          <h3 class="text-xl font-bold text-amber-700 mb-4 flex items-center gap-2">
+            😄 Comedy
+          </h3>
+          <div class="grid gap-4">
+            {moviePrompts['comedy'].map((item) => (
+              <div class="bg-gradient-to-r from-amber-50 to-yellow-50 border border-amber-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                <div class="flex items-start gap-3">
+                  <div class="flex-1">
+                    <p class="text-gray-700">{item.prompt}</p>
+                  </div>
+                  <button
+                    class="copy-btn p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
+                    data-text={item.prompt}
+                    title="Copy prompt"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Crime -->
+        <div class="mb-8">
+          <h3 class="text-xl font-bold text-orange-700 mb-4 flex items-center gap-2">
+            🔫 Crime
+          </h3>
+          <div class="grid gap-4">
+            {moviePrompts['crime'].map((item) => (
+              <div class="bg-gradient-to-r from-orange-50 to-red-50 border border-orange-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                <div class="flex items-start gap-3">
+                  <div class="flex-1">
+                    <p class="text-gray-700">{item.prompt}</p>
+                  </div>
+                  <button
+                    class="copy-btn p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
+                    data-text={item.prompt}
+                    title="Copy prompt"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Psychological -->
+        <div class="mb-8">
+          <h3 class="text-xl font-bold text-indigo-700 mb-4 flex items-center gap-2">
+            🧠 Psychological
+          </h3>
+          <div class="grid gap-4">
+            {moviePrompts['psychological'].map((item) => (
+              <div class="bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                <div class="flex items-start gap-3">
+                  <div class="flex-1">
+                    <p class="text-gray-700">{item.prompt}</p>
+                  </div>
+                  <button
+                    class="copy-btn p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
+                    data-text={item.prompt}
+                    title="Copy prompt"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Indie / Arthouse -->
+        <div class="mb-8">
+          <h3 class="text-xl font-bold text-teal-700 mb-4 flex items-center gap-2">
+            🎬 Indie / Arthouse
+          </h3>
+          <div class="grid gap-4">
+            {moviePrompts['indie'].map((item) => (
+              <div class="bg-gradient-to-r from-teal-50 to-emerald-50 border border-teal-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                <div class="flex items-start gap-3">
+                  <div class="flex-1">
+                    <p class="text-gray-700">{item.prompt}</p>
+                  </div>
+                  <button
+                    class="copy-btn p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
+                    data-text={item.prompt}
+                    title="Copy prompt"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- SEO Content Section -->
+      <div class="mt-16 space-y-8">
+        <div class="prose prose-gray max-w-none">
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">Professional Movie Prompts for Screenwriters & Filmmakers</h2>
+          <p class="text-gray-700 mb-4">
+            Welcome to the ultimate collection of movie prompts designed for screenwriters, filmmakers, and film students. Whether you're working on your first short film or developing a feature-length screenplay, these carefully crafted prompts will inspire your next cinematic masterpiece across 10 essential genres.
+          </p>
+
+          <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">Explore 10 Essential Film Genres</h3>
+
+          <div class="grid md:grid-cols-2 gap-6 mb-6">
+            <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-lg border border-blue-200">
+              <h4 class="text-lg font-semibold text-gray-900 mb-2">🎭 Drama</h4>
+              <p class="text-gray-700">
+                Emotionally powerful stories exploring human relationships, family secrets, and life-changing decisions with character-driven narratives.
+              </p>
+            </div>
+
+            <div class="bg-gradient-to-br from-red-50 to-rose-50 p-6 rounded-lg border border-red-200">
+              <h4 class="text-lg font-semibold text-gray-900 mb-2">🔍 Thriller / Mystery</h4>
+              <p class="text-gray-700">
+                Suspenseful plots filled with unexpected twists, mysterious disappearances, and crimes that keep audiences on the edge of their seats.
+              </p>
+            </div>
+
+            <div class="bg-gradient-to-br from-cyan-50 to-blue-50 p-6 rounded-lg border border-cyan-200">
+              <h4 class="text-lg font-semibold text-gray-900 mb-2">🚀 Sci-Fi</h4>
+              <p class="text-gray-700">
+                Futuristic concepts exploring technology, time travel, alien contact, and the philosophical implications of scientific advancement.
+              </p>
+            </div>
+
+            <div class="bg-gradient-to-br from-purple-50 to-violet-50 p-6 rounded-lg border border-purple-200">
+              <h4 class="text-lg font-semibold text-gray-900 mb-2">🧙 Fantasy</h4>
+              <p class="text-gray-700">
+                Magical worlds with enchanted artifacts, ancient guardians, and supernatural elements that challenge reality itself.
+              </p>
+            </div>
+
+            <div class="bg-gradient-to-br from-slate-50 to-gray-50 p-6 rounded-lg border border-slate-300">
+              <h4 class="text-lg font-semibold text-gray-900 mb-2">👻 Horror</h4>
+              <p class="text-gray-700">
+                Terrifying scenarios featuring supernatural entities, psychological fear, and situations that explore our deepest anxieties.
+              </p>
+            </div>
+
+            <div class="bg-gradient-to-br from-pink-50 to-rose-50 p-6 rounded-lg border border-pink-200">
+              <h4 class="text-lg font-semibold text-gray-900 mb-2">❤️ Romance</h4>
+              <p class="text-gray-700">
+                Heartfelt love stories exploring connection, missed opportunities, and the complexities of modern relationships.
+              </p>
+            </div>
+
+            <div class="bg-gradient-to-br from-amber-50 to-yellow-50 p-6 rounded-lg border border-amber-200">
+              <h4 class="text-lg font-semibold text-gray-900 mb-2">😄 Comedy</h4>
+              <p class="text-gray-700">
+                Hilarious situations with mistaken identities, absurd predicaments, and characters whose plans hilariously fall apart.
+              </p>
+            </div>
+
+            <div class="bg-gradient-to-br from-orange-50 to-red-50 p-6 rounded-lg border border-orange-200">
+              <h4 class="text-lg font-semibold text-gray-900 mb-2">🔫 Crime</h4>
+              <p class="text-gray-700">
+                Gripping criminal underworlds, heists gone wrong, and morally complex characters navigating the line between right and wrong.
+              </p>
+            </div>
+
+            <div class="bg-gradient-to-br from-indigo-50 to-purple-50 p-6 rounded-lg border border-indigo-200">
+              <h4 class="text-lg font-semibold text-gray-900 mb-2">🧠 Psychological</h4>
+              <p class="text-gray-700">
+                Mind-bending narratives that question reality, explore unreliable narrators, and delve into the human psyche.
+              </p>
+            </div>
+
+            <div class="bg-gradient-to-br from-teal-50 to-emerald-50 p-6 rounded-lg border border-teal-200">
+              <h4 class="text-lg font-semibold text-gray-900 mb-2">🎬 Indie / Arthouse</h4>
+              <p class="text-gray-700">
+                Contemplative films with minimal dialogue, exploring themes of identity, loss, and the beauty of everyday moments.
+              </p>
+            </div>
+          </div>
+
+          <h3 class="text-xl font-bold text-gray-900 mt-8 mb-3">How to Use These Movie Prompts</h3>
+          <p class="text-gray-700 mb-4">
+            Each prompt provides a complete story concept with compelling characters, emotional stakes, and narrative hooks. Use them as-is for screenplay exercises, or adapt them to fit your unique vision. These prompts are perfect for film school assignments, screenplay competitions, or developing your portfolio.
+          </p>
+
+          <h3 class="text-xl font-bold text-gray-900 mt-8 mb-3">For More Story Ideas</h3>
+          <p class="text-gray-700 mb-4">
+            Looking for more screenplay inspiration? Explore our <a href="/movie-prompts-generator/sci-fi" class="text-blue-600 hover:underline">Sci-Fi Movie Prompts</a> and <a href="/movie-prompts-generator/horror" class="text-blue-600 hover:underline">Horror Movie Prompts</a> pages for genre-specific collections, or check out our <a href="/random-book-prompt-generator" class="text-blue-600 hover:underline">Book Prompts Generator</a> for novel-length story ideas.
+          </p>
+        </div>
+      </div>
+
+      <!-- Related Links -->
+      <div class="mt-12 bg-gray-50 rounded-lg p-6 border border-gray-200">
+        <h3 class="text-xl font-bold text-gray-900 mb-4">More Creative Resources</h3>
         <div class="grid md:grid-cols-2 gap-4">
-          <a href="/writing-prompts" class="block p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
-            <h3 class="font-semibold text-blue-900 mb-2">Writing Prompts</h3>
-            <p class="text-blue-800 text-sm">Creative writing prompts for all story formats</p>
+          <a href="/random-book-prompt-generator" class="text-slate-700 hover:underline flex items-center gap-2">
+            📚 Book Prompts Generator
           </a>
-          <a href="/random-book-prompt-generator" class="block p-4 bg-indigo-50 rounded-lg hover:bg-indigo-100 transition-colors">
-            <h3 class="font-semibold text-indigo-900 mb-2">Book Prompts</h3>
-            <p class="text-indigo-800 text-sm">Novel writing ideas and book concepts</p>
+          <a href="/short-story-prompts-generator" class="text-slate-700 hover:underline flex items-center gap-2">
+            ✍️ Short Story Prompts
           </a>
-          <a href="/short-story-prompts-generator" class="block p-4 bg-amber-50 rounded-lg hover:bg-amber-100 transition-colors">
-            <h3 class="font-semibold text-amber-900 mb-2">Short Story Prompts</h3>
-            <p class="text-amber-800 text-sm">Flash fiction and short narrative ideas</p>
+          <a href="/writing-prompts" class="text-slate-700 hover:underline flex items-center gap-2">
+            💭 Writing Prompts
           </a>
-          <a href="/writing-prompts-generator/character" class="block p-4 bg-green-50 rounded-lg hover:bg-green-100 transition-colors">
-            <h3 class="font-semibold text-green-900 mb-2">Character Generator</h3>
-            <p class="text-green-800 text-sm">Create unique characters for your stories</p>
+          <a href="/writing-prompts-generator/character" class="text-slate-700 hover:underline flex items-center gap-2">
+            👤 Character Generator
           </a>
         </div>
       </div>
@@ -98,4 +528,66 @@ const seo = getSEOData('moviePromptsGenerator');
   </div>
 
   <AstroFooter />
+
+  <!-- Random generator and copy functionality -->
+  <script define:vars={{ moviePrompts }}>
+    const allPromptsData = moviePrompts;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const copyButtons = document.querySelectorAll('.copy-btn');
+      const generateRandomBtn = document.getElementById('generate-random');
+      const randomPromptDisplay = document.getElementById('random-prompt-display');
+      const copyRandomBtn = document.getElementById('copy-random');
+
+      // Copy functionality for prompt cards
+      copyButtons.forEach(button => {
+        button.addEventListener('click', async () => {
+          const text = button.getAttribute('data-text');
+          try {
+            await navigator.clipboard.writeText(text);
+            const originalHTML = button.innerHTML;
+            button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+            button.classList.add('text-green-600');
+            setTimeout(() => {
+              button.innerHTML = originalHTML;
+              button.classList.remove('text-green-600');
+            }, 2000);
+          } catch (err) {
+            console.error('Failed to copy:', err);
+          }
+        });
+      });
+
+      // Random prompt generator
+      generateRandomBtn.addEventListener('click', () => {
+        const genres = Object.keys(allPromptsData);
+        const randomGenre = genres[Math.floor(Math.random() * genres.length)];
+        const promptsInGenre = allPromptsData[randomGenre];
+        const randomPrompt = promptsInGenre[Math.floor(Math.random() * promptsInGenre.length)];
+
+        document.getElementById('random-prompt-genre').textContent = randomPrompt.genre;
+        document.getElementById('random-prompt-text').textContent = randomPrompt.prompt;
+        randomPromptDisplay.classList.remove('hidden');
+
+        copyRandomBtn.setAttribute('data-text', randomPrompt.prompt);
+      });
+
+      // Copy random prompt
+      copyRandomBtn.addEventListener('click', async () => {
+        const text = copyRandomBtn.getAttribute('data-text');
+        try {
+          await navigator.clipboard.writeText(text);
+          const originalHTML = copyRandomBtn.innerHTML;
+          copyRandomBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+          copyRandomBtn.classList.add('text-green-600');
+          setTimeout(() => {
+            copyRandomBtn.innerHTML = originalHTML;
+            copyRandomBtn.classList.remove('text-green-600');
+          }, 2000);
+        } catch (err) {
+          console.error('Failed to copy:', err);
+        }
+      });
+    });
+  </script>
 </BaseLayout>
