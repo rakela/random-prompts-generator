@@ -2,11 +2,64 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import AstroHeader from '../components/AstroHeader.astro';
 import AstroFooter from '../components/AstroFooter.astro';
-import PromptGenerator from '../components/PromptGenerator';
 import '../styles/global.css';
 import { getSEOData } from '../data/seo';
 
 const seo = getSEOData('randomBookPromptGenerator');
+
+// Book Prompts Data
+const bookPrompts = [
+  "Write a novel about a librarian who discovers that every book checked out alters reality in a small but permanent way.",
+  "A quiet coastal town wakes up one morning to find the ocean has completely disappeared, leaving behind secrets buried for centuries.",
+  "In a world where memories can be legally traded, a teenager sells their happiest one and accidentally starts a revolution.",
+  "A historian finds a diary that describes events from tomorrow—with their own name appearing on the final page.",
+  "Every night at exactly 3:17 AM, the same train appears at an abandoned station, but no one who boards it ever ages again.",
+  "A famous author realizes their latest bestseller is plagiarized—from a book that hasn't been written yet.",
+  "In a city where lies physically stain the air, one person is born completely invisible to deception.",
+  "A small village worships a mountain, until the mountain begins sending written messages downhill.",
+  "After a global blackout, people discover shadows have developed independent personalities.",
+  "A child grows up translating dreams for a living, until one dream refuses to end.",
+  "A retired detective is forced back into work when crimes start copying cases from their unpublished memoir.",
+  "In a society where everyone has a visible countdown to their greatest achievement, one person's timer is broken.",
+  "A bookstore appears overnight on a street that doesn't exist on any map.",
+  "Humans finally receive proof that the universe is a simulation—but only pets seem to know how to escape it.",
+  "A long-forgotten language resurfaces, and anyone who speaks it can rewrite one moment of their past.",
+  "Every full moon, a town swaps places with its mirror version from another timeline.",
+  "A chef discovers their recipes cause specific emotional reactions that can't be controlled.",
+  "A letter arrives every year on the same date, signed by someone who died decades ago.",
+  "A group of strangers realizes they are all characters written by the same unknown author.",
+  "A world where books are illegal—except one that rewrites itself every time it's read.",
+  "A cartographer maps imaginary places until one of them appears in the real world.",
+  "A radio station broadcasts messages from listeners who don't exist yet.",
+  "People can choose to forget one person forever—until someone tries to forget you.",
+  "A planet where time moves backward hires an Earth historian to explain why their future keeps collapsing.",
+  "A journal that records lies as truth slowly replaces recorded history.",
+  "A city where rain causes people to relive someone else's memory.",
+  "A once-in-a-century eclipse reveals hidden doors in every home.",
+  "A novelist writes the same story every decade, unaware it's being used as prophecy.",
+  "A train journey where every stop removes a personal fear—at a cost.",
+  "A family passes down a rulebook for surviving reality glitches.",
+  "A painter's portraits age instead of the people they depict.",
+  "A town where everyone remembers the same event differently—and all versions are true.",
+  "After death, souls must write a final book explaining their life before moving on.",
+  "A planet colonized by humans bans imagination as a dangerous resource.",
+  "A diary that only appears when its owner is about to make a life-altering mistake.",
+  "A forgotten god is accidentally reawakened by a group of urban explorers.",
+  "Every lie told creates a physical crack in the ground somewhere on Earth.",
+  "A library where books can only be read once—and then disappear forever.",
+  "A child who can hear footnotes in reality, explaining everything no one notices.",
+  "A city trapped in a single day, slowly rewriting itself to avoid disaster.",
+  "A writer discovers their characters are editing the manuscript while they sleep.",
+  "A future where nostalgia is taxed as a luxury emotion.",
+  "An ancient manuscript that can only be read by people who are about to lose everything.",
+  "A town where names determine destiny—and one person has none.",
+  "A book club that accidentally summons elements of every novel they discuss.",
+  "A society where silence is considered the most powerful weapon.",
+  "A map that changes based on who is holding it.",
+  "A biography written about someone who hasn't been born yet.",
+  "A world where fictional characters demand legal rights.",
+  "A final book written by humanity, edited collaboratively as the world ends."
+];
 ---
 
 <BaseLayout seo={seo}>
@@ -19,62 +72,102 @@ const seo = getSEOData('randomBookPromptGenerator');
         Random Book Prompt Generator
       </h1>
 
-      <p class="text-lg opacity-80 mb-8 max-w-2xl mx-auto">
-        Generate creative random book prompts instantly with our free book prompt generator. Discover unique novel ideas, mind-bending concepts, and compelling narratives for your next book or fiction writing project.
+      <p class="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
+        Generate creative random book prompts instantly with our free book prompt generator. Discover 50 unique novel ideas, mind-bending concepts, and compelling narratives for your next book or fiction writing project.
       </p>
     </div>
   </div>
 
   <!-- Main Content -->
   <div class="max-w-6xl mx-auto px-4 py-8">
-    {/* Prompt Generator Component */}
-    <PromptGenerator client:load category="book" />
+    <div class="max-w-4xl mx-auto">
 
-    {/* SEO Content Section */}
-    <div class="mt-16 space-y-8">
-      <div class="prose prose-gray max-w-none">
-        <h2 class="text-2xl font-bold text-gray-900 mb-4">Advanced Random Book Prompt Generator</h2>
-        <p class="text-gray-700 mb-4">
-          Our random book prompt generator creates intricate novel prompts with high-concept ideas, unique world-building elements, and thought-provoking premises that go beyond typical book ideas. Each prompt features reality-bending concepts, philosophical questions, and compelling narratives perfect for novels, novellas, and long-form fiction writing.
-        </p>
-        <p class="text-gray-700 mb-4">
-          Generate creative book writing prompts featuring innovative concepts (reality manipulation, memory trading, living simulations), mysterious phenomena (disappearing oceans, sentient shadows, timeline shifts), moral dilemmas, and mind-bending premises that drive compelling narratives for fiction authors and novelists.
-        </p>
-        <div class="bg-indigo-50 p-4 rounded-lg mt-4">
-          <h3 class="font-semibold text-indigo-900 mb-2">Random Book Prompt Generator Features:</h3>
-          <ul class="text-indigo-800 text-sm space-y-1">
-            <li>• High-concept premises with unique world-building</li>
-            <li>• Reality-bending and philosophical story ideas</li>
-            <li>• Complex moral dilemmas and existential questions</li>
-            <li>• Mind-bending plot concepts and narrative twists</li>
-          </ul>
+      <!-- Random Generator Section -->
+      <div class="bg-white rounded-2xl shadow-xl p-8 mb-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4 text-center">📚 Random Book Prompt Generator</h2>
+        <p class="text-gray-600 text-center mb-6">Generate a random book prompt instantly</p>
+        <div class="text-center mb-6">
+          <button id="generate-random" class="px-8 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg font-semibold hover:from-indigo-700 hover:to-purple-700 transition-all shadow-lg">
+            Generate Random Prompt
+          </button>
         </div>
-
-        <h2 class="text-2xl font-bold text-gray-900 mb-4 mt-8">More Novel Writing Resources</h2>
-        <p class="text-gray-700 mb-4">
-          For additional novel writing inspiration, explore our <a href="/writing-prompts" class="text-blue-600 hover:underline">writing prompts generator</a> and <a href="/short-story-prompts-generator" class="text-blue-600 hover:underline">short story prompts</a> for more creative ideas.
-        </p>
+        <div id="random-prompt-display" class="hidden bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-300 rounded-lg p-6">
+          <div class="flex items-start gap-3">
+            <div class="flex-1">
+              <p class="text-gray-800" id="random-prompt-text"></p>
+            </div>
+            <button id="copy-random" class="p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0" title="Copy prompt">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
       </div>
 
-      {/* More Writing Resources Section */}
-      <div class="prose prose-gray max-w-none mt-12">
-        <h2 class="text-2xl font-bold text-gray-900 mb-4">More Writing Prompt Generators</h2>
+      <!-- All Prompts Display -->
+      <div class="mt-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">All Book Prompts</h2>
+        <div class="grid gap-4">
+          {bookPrompts.map((prompt, index) => (
+            <div class="bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+              <div class="flex items-start gap-3">
+                <div class="flex-shrink-0 w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center font-semibold text-sm">
+                  {index + 1}
+                </div>
+                <div class="flex-1">
+                  <p class="text-gray-700">{prompt}</p>
+                </div>
+                <button
+                  class="copy-btn p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
+                  data-text={prompt}
+                  title="Copy prompt"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- SEO Content Section -->
+      <div class="mt-16 space-y-8">
+        <div class="prose prose-gray max-w-none">
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">Advanced Random Book Prompt Generator</h2>
+          <p class="text-gray-700 mb-4">
+            Our random book prompt generator creates intricate novel prompts with high-concept ideas, unique world-building elements, and thought-provoking premises that go beyond typical book ideas. Each prompt features reality-bending concepts, philosophical questions, and compelling narratives perfect for novels, novellas, and long-form fiction writing.
+          </p>
+          <p class="text-gray-700 mb-4">
+            Generate creative book writing prompts featuring innovative concepts (reality manipulation, memory trading, living simulations), mysterious phenomena (disappearing oceans, sentient shadows, timeline shifts), moral dilemmas, and mind-bending premises that drive compelling narratives for fiction authors and novelists.
+          </p>
+
+          <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">More Novel Writing Resources</h3>
+          <p class="text-gray-700 mb-4">
+            For additional novel writing inspiration, explore our <a href="/writing-prompts" class="text-blue-600 hover:underline">writing prompts generator</a> and <a href="/short-story-prompts-generator" class="text-blue-600 hover:underline">short story prompts</a> for more creative ideas.
+          </p>
+        </div>
+      </div>
+
+      <!-- Related Links -->
+      <div class="mt-12 bg-gray-50 rounded-lg p-6 border border-gray-200">
+        <h3 class="text-xl font-bold text-gray-900 mb-4">More Writing Resources</h3>
         <div class="grid md:grid-cols-2 gap-4">
-          <a href="/writing-prompts" class="block p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
-            <h3 class="font-semibold text-blue-900 mb-2">Writing Prompts</h3>
-            <p class="text-blue-800 text-sm">General creative writing prompts with plot twists</p>
+          <a href="/writing-prompts" class="text-indigo-700 hover:underline flex items-center gap-2">
+            ✍️ Writing Prompts Generator
           </a>
-          <a href="/short-story-prompts-generator" class="block p-4 bg-amber-50 rounded-lg hover:bg-amber-100 transition-colors">
-            <h3 class="font-semibold text-amber-900 mb-2">Short Story Prompts</h3>
-            <p class="text-amber-800 text-sm">Creative short story ideas and flash fiction prompts</p>
+          <a href="/short-story-prompts-generator" class="text-indigo-700 hover:underline flex items-center gap-2">
+            📖 Short Story Prompts
           </a>
-          <a href="/movie-prompts-generator" class="block p-4 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors">
-            <h3 class="font-semibold text-purple-900 mb-2">Movie Prompts</h3>
-            <p class="text-purple-800 text-sm">Screenplay and film story ideas for filmmakers</p>
+          <a href="/movie-prompts-generator" class="text-indigo-700 hover:underline flex items-center gap-2">
+            🎬 Movie Prompts Generator
           </a>
-          <a href="/nano-banana-prompts" class="block p-4 bg-green-50 rounded-lg hover:bg-green-100 transition-colors">
-            <h3 class="font-semibold text-green-900 mb-2">Nano Banana Prompts</h3>
-            <p class="text-green-800 text-sm">NaNoWriMo writing inspiration for novelists</p>
+          <a href="/nano-banana-prompts" class="text-indigo-700 hover:underline flex items-center gap-2">
+            🍌 Nano Banana Prompts
           </a>
         </div>
       </div>
@@ -82,4 +175,62 @@ const seo = getSEOData('randomBookPromptGenerator');
   </div>
 
   <AstroFooter />
+
+  <!-- Random generator and copy functionality -->
+  <script define:vars={{ bookPrompts }}>
+    const allPrompts = bookPrompts;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const copyButtons = document.querySelectorAll('.copy-btn');
+      const generateRandomBtn = document.getElementById('generate-random');
+      const randomPromptDisplay = document.getElementById('random-prompt-display');
+      const copyRandomBtn = document.getElementById('copy-random');
+
+      // Copy functionality for prompt cards
+      copyButtons.forEach(button => {
+        button.addEventListener('click', async () => {
+          const text = button.getAttribute('data-text');
+          try {
+            await navigator.clipboard.writeText(text);
+            const originalHTML = button.innerHTML;
+            button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+            button.classList.add('text-green-600');
+            setTimeout(() => {
+              button.innerHTML = originalHTML;
+              button.classList.remove('text-green-600');
+            }, 2000);
+          } catch (err) {
+            console.error('Failed to copy:', err);
+          }
+        });
+      });
+
+      // Random prompt generator
+      generateRandomBtn.addEventListener('click', () => {
+        const randomPrompt = allPrompts[Math.floor(Math.random() * allPrompts.length)];
+
+        document.getElementById('random-prompt-text').textContent = randomPrompt;
+        randomPromptDisplay.classList.remove('hidden');
+
+        copyRandomBtn.setAttribute('data-text', randomPrompt);
+      });
+
+      // Copy random prompt
+      copyRandomBtn.addEventListener('click', async () => {
+        const text = copyRandomBtn.getAttribute('data-text');
+        try {
+          await navigator.clipboard.writeText(text);
+          const originalHTML = copyRandomBtn.innerHTML;
+          copyRandomBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+          copyRandomBtn.classList.add('text-green-600');
+          setTimeout(() => {
+            copyRandomBtn.innerHTML = originalHTML;
+            copyRandomBtn.classList.remove('text-green-600');
+          }, 2000);
+        } catch (err) {
+          console.error('Failed to copy:', err);
+        }
+      });
+    });
+  </script>
 </BaseLayout>
