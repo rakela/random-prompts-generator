@@ -63,6 +63,11 @@ const staticPageUrls = [
   // Seasonal/themed
   'october-writing-prompts',
   'christmas-writing-prompts',
+  // Book and Movie Prompts
+  'random-book-prompt-generator',
+  'movie-prompts-generator',
+  'movie-prompts-generator/sci-fi',
+  'movie-prompts-generator/horror',
   // AI-specific
   'chatgpt-photo-editing-prompts',
   'gemini-photo-editing-prompts',

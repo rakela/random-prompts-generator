@@ -337,6 +337,18 @@ export const seoData: Record<string, SEOData> = {
     title: 'Random Idea Generator | Random Prompts',
     description: 'Create random ideas for projects, stories, content, and brainstorming. Free random idea generator for creators, students, and entrepreneurs.',
     keywords: 'random idea generator, creative ideas, brainstorming tool, idea prompts, inspiration generator'
+  },
+  randomBookPromptGenerator: {
+    path: 'random-book-prompt-generator',
+    title: 'Random Book Prompt Generator - Free Novel Writing Ideas',
+    description: 'Generate creative book prompts for novels with unique plot ideas, mind-bending concepts, and compelling narratives. Free random book prompt generator for authors and fiction writers.',
+    keywords: 'random book prompt generator, book prompts, novel writing prompts, book ideas, fiction prompts, novel ideas generator, creative book ideas'
+  },
+  moviePromptsGenerator: {
+    path: 'movie-prompts-generator',
+    title: 'Movie Prompts Generator - Film & Screenplay Ideas',
+    description: 'Generate movie prompts for screenwriters and filmmakers with drama, thriller, sci-fi, horror, and romance ideas. Free film prompt generator for creative screenwriting.',
+    keywords: 'movie prompts generator, film prompts, screenplay ideas, movie ideas, screenwriting prompts, film story ideas, cinema prompts'
   }
 };
 

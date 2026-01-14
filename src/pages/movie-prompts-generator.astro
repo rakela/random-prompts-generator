@@ -1,0 +1,101 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AstroHeader from '../components/AstroHeader.astro';
+import AstroFooter from '../components/AstroFooter.astro';
+import PromptGenerator from '../components/PromptGenerator';
+import '../styles/global.css';
+import { getSEOData } from '../data/seo';
+
+const seo = getSEOData('moviePromptsGenerator');
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-r from-red-600 to-pink-600 text-white py-16">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">
+        Movie Prompts Generator
+      </h1>
+
+      <p class="text-lg opacity-80 mb-8 max-w-2xl mx-auto">
+        Generate creative movie prompts instantly for screenwriters, filmmakers, and film students. Discover unique film ideas across drama, thriller, sci-fi, horror, romance, comedy, and more genres.
+      </p>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="max-w-6xl mx-auto px-4 py-8">
+    {/* Prompt Generator Component */}
+    <PromptGenerator client:load category="movies" />
+
+    {/* SEO Content Section */}
+    <div class="mt-16 space-y-8">
+      <div class="prose prose-gray max-w-none">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Professional Movie Prompts Generator</h2>
+        <p class="text-gray-700 mb-4">
+          Our movie prompts generator creates compelling film story ideas perfect for screenwriters, indie filmmakers, and film students. Each prompt includes rich character development, emotional stakes, and cinematic potential across multiple genres including drama, thriller, mystery, sci-fi, fantasy, horror, romance, comedy, crime, psychological, and indie/arthouse films.
+        </p>
+        <p class="text-gray-700 mb-4">
+          Generate professional screenplay prompts featuring complex protagonists, high-stakes conflicts, unexpected plot turns, and emotionally resonant narratives that translate perfectly to the screen. Perfect for script competitions, film school projects, and independent productions.
+        </p>
+        <div class="bg-red-50 p-4 rounded-lg mt-4">
+          <h3 class="font-semibold text-red-900 mb-2">Movie Prompts Generator Features:</h3>
+          <ul class="text-red-800 text-sm space-y-1">
+            <li>• Drama, thriller, sci-fi, fantasy, horror, romance, comedy prompts</li>
+            <li>• Character-driven stories with emotional depth</li>
+            <li>• High-concept premises with cinematic potential</li>
+            <li>• Perfect for screenwriting and film production</li>
+          </ul>
+        </div>
+
+        <h2 class="text-2xl font-bold text-gray-900 mb-4 mt-8">Explore Movie Prompts by Genre</h2>
+        <p class="text-gray-700 mb-4">
+          Looking for specific genres? Explore our dedicated category pages for focused inspiration:
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-4 mb-8">
+          <a href="/movie-prompts-generator/sci-fi" class="block p-4 bg-cyan-50 rounded-lg hover:bg-cyan-100 transition-colors">
+            <h3 class="font-semibold text-cyan-900 mb-2">🚀 Sci-Fi Movie Prompts</h3>
+            <p class="text-cyan-800 text-sm">Futuristic concepts, space exploration, and technology-driven stories</p>
+          </a>
+          <a href="/movie-prompts-generator/horror" class="block p-4 bg-slate-50 rounded-lg hover:bg-slate-100 transition-colors">
+            <h3 class="font-semibold text-slate-900 mb-2">👻 Horror Movie Prompts</h3>
+            <p class="text-slate-800 text-sm">Terrifying scenarios, supernatural horror, and psychological fear</p>
+          </a>
+        </div>
+
+        <h2 class="text-2xl font-bold text-gray-900 mb-4 mt-8">More Creative Writing Resources</h2>
+        <p class="text-gray-700 mb-4">
+          For more screenplay and storytelling inspiration, check out our <a href="/writing-prompts" class="text-blue-600 hover:underline">writing prompts generator</a> and <a href="/random-book-prompt-generator" class="text-blue-600 hover:underline">book prompts</a> for narrative ideas.
+        </p>
+      </div>
+
+      {/* More Writing Resources Section */}
+      <div class="prose prose-gray max-w-none mt-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">More Story Generators</h2>
+        <div class="grid md:grid-cols-2 gap-4">
+          <a href="/writing-prompts" class="block p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
+            <h3 class="font-semibold text-blue-900 mb-2">Writing Prompts</h3>
+            <p class="text-blue-800 text-sm">Creative writing prompts for all story formats</p>
+          </a>
+          <a href="/random-book-prompt-generator" class="block p-4 bg-indigo-50 rounded-lg hover:bg-indigo-100 transition-colors">
+            <h3 class="font-semibold text-indigo-900 mb-2">Book Prompts</h3>
+            <p class="text-indigo-800 text-sm">Novel writing ideas and book concepts</p>
+          </a>
+          <a href="/short-story-prompts-generator" class="block p-4 bg-amber-50 rounded-lg hover:bg-amber-100 transition-colors">
+            <h3 class="font-semibold text-amber-900 mb-2">Short Story Prompts</h3>
+            <p class="text-amber-800 text-sm">Flash fiction and short narrative ideas</p>
+          </a>
+          <a href="/writing-prompts-generator/character" class="block p-4 bg-green-50 rounded-lg hover:bg-green-100 transition-colors">
+            <h3 class="font-semibold text-green-900 mb-2">Character Generator</h3>
+            <p class="text-green-800 text-sm">Create unique characters for your stories</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <AstroFooter />
+</BaseLayout>

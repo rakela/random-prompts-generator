@@ -3,7 +3,7 @@ import { Copy, RefreshCw, Save, Download, Share2, Star, History, FileText, FileJ
 import promptsData from '../data/prompts.json';
 import { jsPDF } from 'jspdf';
 
-type CategoryType = 'writing' | 'aiArt' | 'blog' | 'fantasy' | 'persuasive' | 'names';
+type CategoryType = 'writing' | 'aiArt' | 'blog' | 'fantasy' | 'persuasive' | 'names' | 'book' | 'movies';
 
 interface PromptType {
   id: number;
@@ -185,7 +185,9 @@ const PromptGenerator: React.FC<PromptGeneratorProps> = ({ category }) => {
     blog: { topic: 'any', format: 'any', angle: 'any' },
     fantasy: { race: 'any', magic: 'any', setting: 'any' },
     persuasive: { type: 'all' },
-    names: { type: 'full', origin: 'any', count: 'single' }
+    names: { type: 'full', origin: 'any', count: 'single' },
+    book: {},
+    movies: {}
   });
 
   // Load saved data from localStorage
