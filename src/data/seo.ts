@@ -247,6 +247,12 @@ export const seoData: Record<string, SEOData> = {
     keywords: 'relationship prompts, character relationships, romance prompts, friendship prompts, family dynamics'
   },
   // AI Art Generators
+  randomDrawingPromptGenerator: {
+    path: 'art-prompts/drawing',
+    title: 'Random Drawing Prompt Generator - Creative Art Ideas & Sketching Prompts',
+    description: 'Generate random drawing prompts for sketching, illustration practice, and creative art inspiration. Free drawing prompt generator with subjects, styles, and themes for artists.',
+    keywords: 'random drawing prompt, drawing prompts, art prompts, sketching ideas, drawing ideas, illustration prompts, art practice, creative drawing'
+  },
   randomAestheticPromptGenerator: {
     path: 'random-aesthetic-prompt-generator',
     title: 'Aesthetic Prompt Generator - Pinterest & Instagram Aesthetics',
