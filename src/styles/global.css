@@ -52,6 +52,10 @@ body {
 #product-megamenu .flex{
     width: 900px;
     margin-left: -200px !important;
+    background: #f9fafb;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 2px 40px 0 #00000021;
 }
 .grid-cols-3{
     grid-template-columns: 200px 200px 200px;
