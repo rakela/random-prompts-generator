@@ -1,0 +1,264 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AstroHeader from '../../components/AstroHeader.astro';
+import AstroFooter from '../../components/AstroFooter.astro';
+import '../../styles/global.css';
+import { getSEOData } from '../../data/seo';
+
+const seo = getSEOData('randomDrawingPromptGenerator');
+
+// Random Drawing Prompts for Artists
+const drawingPrompts = [
+  "Draw a cozy coffee shop interior with plants hanging from the ceiling and warm afternoon light streaming through the windows",
+  "Sketch a character sitting on a rooftop at sunset, surrounded by potted plants and string lights",
+  "Illustrate a magical library with floating books, spiral staircases, and glowing orbs of light",
+  "Create a portrait of someone reading in bed, surrounded by blankets and pillows, with a small lamp casting soft shadows",
+  "Draw a detailed study of hands holding different objects: a vintage camera, a steaming mug, wildflowers, an old book",
+  "Sketch an overgrown garden with a hidden stone pathway, wild roses, and a weathered wooden bench",
+  "Illustrate a rainy city street scene with reflections in puddles, umbrellas, and neon signs glowing in shop windows",
+  "Draw a character design for a forest guardian: part human, part nature, with flowers and vines woven into their appearance",
+  "Create a still life of art supplies scattered across a desk: pencils, paint tubes, brushes, sketchbooks, coffee stains",
+  "Sketch a whimsical treehouse with lanterns, curtained windows, rope ladders, and birds perched on branches",
+  "Illustrate a vintage record player with vinyl records stacked nearby, plants on the windowsill, and warm lighting",
+  "Draw a character in three different emotional states: peaceful, anxious, and joyful, showing body language and expression",
+  "Create a series of quick gesture drawings of people in motion: dancing, running, stretching, reaching",
+  "Sketch a mystical cave entrance with glowing mushrooms, crystal formations, and ethereal mist",
+  "Illustrate a cozy bedroom corner with a reading nook, fairy lights, stacks of books, and a window view",
+  "Draw a detailed botanical study of a single plant: roots, stems, leaves, flowers, and seeds in scientific illustration style",
+  "Create a character outfit design sheet showing front, back, and side views with fabric textures and accessories",
+  "Sketch an abandoned amusement park overtaken by nature: rusted rides, overgrown paths, birds nesting in old structures",
+  "Illustrate a starry night sky with constellations, shooting stars, and a silhouette of trees or mountains in the foreground",
+  "Draw a collection of fantasy weapons displayed on a wall: swords, staffs, bows, each with unique ornate details",
+  "Create a portrait study focusing on different hair textures and styles: curly, straight, braided, flowing",
+  "Sketch a underwater scene with coral reefs, tropical fish, rays of sunlight filtering through the water, and sea plants",
+  "Illustrate a witch's workshop with potions, spell books, dried herbs, crystals, and a black cat on the windowsill",
+  "Draw a series of animal studies in different poses: a cat stretching, a bird preening, a dog playing, a rabbit hopping",
+  "Create a cyberpunk street scene with neon signs, holographic advertisements, food vendors, and futuristic vehicles",
+  "Sketch a peaceful meditation space with cushions, incense, plants, candles, and soft natural light",
+  "Illustrate a fantasy map with mountains, forests, rivers, villages, and decorative compass rose and border details",
+  "Draw a character's workspace that tells their story: personal items, tools of their trade, photos, meaningful clutter",
+  "Create a series of eye studies showing different emotions and lighting conditions: happy, sad, surprised, thoughtful",
+  "Sketch an enchanted forest clearing with a fairy ring of mushrooms, fireflies, ancient trees, and magical atmosphere",
+  "Illustrate a vintage kitchen scene with hanging pots and pans, herbs drying, fresh bread, and morning light",
+  "Draw a dragon in a non-threatening pose: sleeping curled up, reading a book, tending a garden, playing with butterflies",
+  "Create an architectural sketch of a dream house exterior with interesting details: doorways, windows, plants, textures",
+  "Sketch a collection of shoes from different angles and styles: sneakers, boots, heels, sandals, showing wear and personality",
+  "Illustrate a greenhouse interior filled with exotic plants, terrariums, watering cans, and dappled sunlight",
+  "Draw a character doing everyday activities: cooking, reading, exercising, working, relaxing—showing authentic moments",
+  "Create a series of facial expression studies of the same character showing subtle emotional variations",
+  "Sketch a steampunk inventor's workshop with brass gears, old machinery, blueprints, and Victorian-era tools",
+  "Illustrate a peaceful lake scene at dawn with mist on the water, a small boat, and mountains in the distance",
+  "Draw a collection of vintage objects: old cameras, typewriters, rotary phones, pocket watches, arranged as still life",
+  "Create a character design for a modern witch: casual clothes, hidden magical items, contemporary setting",
+  "Sketch a detailed study of fabric and clothing folds: draped cloth, wrinkled shirt, flowing skirt, bunched sleeves",
+  "Illustrate a magical potion shop with shelves of colorful bottles, ingredient jars, cauldrons, and mysterious atmosphere",
+  "Draw a cityscape from a high viewpoint showing rooftops, streets below, distant buildings, and sky",
+  "Create a series of hand poses holding everyday objects with different grips and angles",
+  "Sketch a whimsical tea party scene with mismatched vintage cups, plates of pastries, flowers, and delicate details",
+  "Illustrate a character's before and after: same person in different life stages, moods, or parallel universe versions",
+  "Draw a detailed nature study: tree bark texture, leaf veins, flower petals, insect details, natural patterns",
+  "Create a cozy autumn scene with falling leaves, pumpkins, warm sweaters, hot drinks, and golden afternoon light",
+  "Sketch an artist's studio space showing works in progress, art supplies everywhere, natural light, creative chaos"
+];
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-16">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">
+        Random Drawing Prompt Generator
+      </h1>
+
+      <p class="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
+        Get instant random drawing prompts for sketching practice, illustration ideas, and creative art inspiration. Perfect for artists looking to improve their skills and overcome creative blocks.
+      </p>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="max-w-6xl mx-auto px-4 py-8">
+    <div class="max-w-4xl mx-auto">
+
+      <!-- Random Generator Section -->
+      <div class="bg-white rounded-2xl shadow-xl p-8 mb-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4 text-center">🎨 Generate Random Drawing Prompt</h2>
+        <p class="text-gray-600 text-center mb-6">Click to get a random drawing prompt and start creating</p>
+        <div class="text-center mb-6">
+          <button id="generate-random" class="px-8 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg font-semibold hover:from-indigo-700 hover:to-purple-700 transition-all shadow-lg">
+            Generate Random Drawing Prompt
+          </button>
+        </div>
+        <div id="random-prompt-display" class="hidden bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-300 rounded-lg p-6">
+          <div class="flex items-start gap-3">
+            <div class="flex-1">
+              <p class="text-gray-800" id="random-prompt-text"></p>
+            </div>
+            <button id="copy-random" class="p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0" title="Copy prompt">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- About Section -->
+      <div class="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-2xl shadow-lg p-8 mb-12 border border-indigo-200">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">✏️ Daily Drawing Practice</h2>
+        <p class="text-gray-700 mb-4">
+          Our random drawing prompt generator helps artists of all skill levels find fresh sketching ideas and illustration inspiration. Whether you're doing daily drawing practice, working on your portfolio, or just doodling for fun, these prompts cover diverse subjects from character design to landscapes, still life to fantasy scenes.
+        </p>
+        <p class="text-gray-700">
+          Perfect for art students, illustrators, and anyone looking to improve their drawing skills through consistent creative practice.
+        </p>
+      </div>
+
+      <!-- All Prompts Display -->
+      <div class="mt-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">All Drawing Prompts</h2>
+        <div class="grid gap-4">
+          {drawingPrompts.map((prompt, index) => (
+            <div class="bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+              <div class="flex items-start gap-3">
+                <div class="flex-shrink-0 w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center font-semibold text-sm">
+                  {index + 1}
+                </div>
+                <div class="flex-1">
+                  <p class="text-gray-700">{prompt}</p>
+                </div>
+                <button
+                  class="copy-btn p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
+                  data-text={prompt}
+                  title="Copy prompt"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Tips Section -->
+      <div class="mt-12 bg-white rounded-lg p-8 border border-gray-200 shadow-md">
+        <h3 class="text-2xl font-bold text-gray-900 mb-6">💡 Tips for Using Drawing Prompts</h3>
+        <div class="space-y-4">
+          <div class="flex items-start gap-3">
+            <span class="text-indigo-600 text-xl">•</span>
+            <div>
+              <h4 class="font-semibold text-gray-900">Set a Time Limit</h4>
+              <p class="text-gray-700">Try quick 10-minute sketches or detailed 1-hour studies depending on your goals</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-indigo-600 text-xl">•</span>
+            <div>
+              <h4 class="font-semibold text-gray-900">Focus on Fundamentals</h4>
+              <p class="text-gray-700">Use prompts to practice specific skills: anatomy, perspective, lighting, or composition</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-indigo-600 text-xl">•</span>
+            <div>
+              <h4 class="font-semibold text-gray-900">Don't Aim for Perfection</h4>
+              <p class="text-gray-700">Drawing prompts are for practice and exploration, not finished portfolio pieces</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-indigo-600 text-xl">•</span>
+            <div>
+              <h4 class="font-semibold text-gray-900">Add Your Own Twist</h4>
+              <p class="text-gray-700">Interpret prompts in your own style and add personal creative elements</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Related Links -->
+      <div class="mt-12 bg-gray-50 rounded-lg p-6 border border-gray-200">
+        <h3 class="text-xl font-bold text-gray-900 mb-4">More Art & Creative Prompts</h3>
+        <div class="grid md:grid-cols-2 gap-4">
+          <a href="/art-prompts/aesthetic" class="text-indigo-700 hover:underline flex items-center gap-2">
+            ✨ Aesthetic Prompts Generator
+          </a>
+          <a href="/ai-images-prompt" class="text-indigo-700 hover:underline flex items-center gap-2">
+            🎨 AI Art Prompts Generator
+          </a>
+          <a href="/midjourney-ai-picture-generator" class="text-indigo-700 hover:underline flex items-center gap-2">
+            🖼️ Midjourney Prompts
+          </a>
+          <a href="/random-character-design-prompt-generator" class="text-indigo-700 hover:underline flex items-center gap-2">
+            👤 Character Design Prompts
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <AstroFooter />
+
+  <!-- Random generator and copy functionality -->
+  <script define:vars={{ drawingPrompts }}>
+    const allPrompts = drawingPrompts;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const copyButtons = document.querySelectorAll('.copy-btn');
+      const generateRandomBtn = document.getElementById('generate-random');
+      const randomPromptDisplay = document.getElementById('random-prompt-display');
+      const copyRandomBtn = document.getElementById('copy-random');
+
+      // Copy functionality for prompt cards
+      copyButtons.forEach(button => {
+        button.addEventListener('click', async () => {
+          const text = button.getAttribute('data-text');
+          try {
+            await navigator.clipboard.writeText(text);
+            const originalHTML = button.innerHTML;
+            button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+            button.classList.add('text-green-600');
+            setTimeout(() => {
+              button.innerHTML = originalHTML;
+              button.classList.remove('text-green-600');
+            }, 2000);
+          } catch (err) {
+            console.error('Failed to copy:', err);
+          }
+        });
+      });
+
+      // Random prompt generator
+      generateRandomBtn.addEventListener('click', () => {
+        const randomPrompt = allPrompts[Math.floor(Math.random() * allPrompts.length)];
+
+        document.getElementById('random-prompt-text').textContent = randomPrompt;
+        randomPromptDisplay.classList.remove('hidden');
+
+        copyRandomBtn.setAttribute('data-text', randomPrompt);
+      });
+
+      // Copy random prompt
+      copyRandomBtn.addEventListener('click', async () => {
+        const text = copyRandomBtn.getAttribute('data-text');
+        try {
+          await navigator.clipboard.writeText(text);
+          const originalHTML = copyRandomBtn.innerHTML;
+          copyRandomBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+          copyRandomBtn.classList.add('text-green-600');
+          setTimeout(() => {
+            copyRandomBtn.innerHTML = originalHTML;
+            copyRandomBtn.classList.remove('text-green-600');
+          }, 2000);
+        } catch (err) {
+          console.error('Failed to copy:', err);
+        }
+      });
+    });
+  </script>
+</BaseLayout>

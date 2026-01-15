@@ -37,6 +37,7 @@ const staticPageUrls = [
   'writing-prompts-generator/first-lines',
   'writing-prompts-generator/journaling',
   // Art Prompts sub-pages
+  'art-prompts/drawing',
   'art-prompts/aesthetic',
   'art-prompts/art-style',
   'art-prompts/photography',
