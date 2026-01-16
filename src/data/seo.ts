@@ -355,6 +355,31 @@ export const seoData: Record<string, SEOData> = {
     title: 'Movie Prompts Generator - Film & Screenplay Ideas',
     description: 'Generate movie prompts for screenwriters and filmmakers with drama, thriller, sci-fi, horror, and romance ideas. Free film prompt generator for creative screenwriting.',
     keywords: 'movie prompts generator, film prompts, screenplay ideas, movie ideas, screenwriting prompts, film story ideas, cinema prompts'
+  },
+  // New AI Tools
+  textToPrompt: {
+    path: 'tools/text-to-prompt',
+    title: 'Prompt Expander & Logic | AI Text-to-Prompt Generator',
+    description: 'Transform short ideas into detailed prompts or structured JSON objects. Expand brief concepts into comprehensive prompts optimized for ChatGPT, Claude, Gemini, Midjourney, and more.',
+    keywords: 'prompt expander, text to prompt, ai prompt generator, prompt engineering, chatgpt prompts, claude prompts, midjourney prompts, prompt logic, structured prompts'
+  },
+  imageToPrompt: {
+    path: 'tools/image-to-prompt',
+    title: 'Image Analyzer | Reverse Engineer Images to AI Prompts',
+    description: 'Upload images and get detailed text prompts that describe them. Perfect for recreating images with AI, understanding visual composition, or learning prompt engineering.',
+    keywords: 'image to prompt, reverse engineer images, image analyzer, ai image prompts, image description, visual analysis, prompt from image, recreate images'
+  },
+  videoAIGeneration: {
+    path: 'tools/video-ai-generation',
+    title: 'Sora & Veo Prompts | AI Video Generation Optimizer',
+    description: 'Generate optimized prompts for Sora, Veo, and RunwayML. Create cinematic AI video prompts with perfect camera movements, physics control, and visual styling.',
+    keywords: 'sora prompts, veo prompts, ai video generation, video ai prompts, runway ml prompts, sora ai, veo ai, video generation prompts, cinematic ai prompts'
+  },
+  blog: {
+    path: 'blog',
+    title: 'Articles | AI Prompting Guides, Tutorials & Inspiration',
+    description: 'Expert guides on AI prompting, video generation, prompt engineering, and creative inspiration. Learn from tutorials and discover new techniques for ChatGPT, Claude, Midjourney, and more.',
+    keywords: 'ai prompting guides, prompt engineering tutorials, ai art tutorials, video ai guides, chatgpt tutorials, claude guides, midjourney tips, ai inspiration'
   }
 };
 
