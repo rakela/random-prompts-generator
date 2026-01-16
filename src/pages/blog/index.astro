@@ -1,0 +1,195 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AstroHeader from '../../components/AstroHeader.astro';
+import AstroFooter from '../../components/AstroFooter.astro';
+import { getAllBlogPosts, getBlogPostsByCategory } from '../../data/blogPosts';
+
+const allPosts = getAllBlogPosts();
+
+const seo = {
+  title: "Articles | Random Prompts - AI Prompting Guides, Tutorials & Inspiration",
+  description: "Explore expert guides on AI prompting, video generation, prompt engineering, and creative inspiration. Learn from tutorials and discover new techniques.",
+  canonical: "https://randomprompts.org/blog"
+};
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Articles & Resources</h1>
+        <p class="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">
+          Expert guides, tutorials, and inspiration for AI prompting and creative generation
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Categories Filter -->
+  <div class="bg-white border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div class="flex flex-wrap gap-3 justify-center">
+        <button class="category-filter active px-6 py-2 rounded-full bg-blue-600 text-white font-medium transition-colors hover:bg-blue-700" data-category="all">
+          All Articles
+        </button>
+        <button class="category-filter px-6 py-2 rounded-full bg-gray-100 text-gray-700 font-medium transition-colors hover:bg-gray-200" data-category="tutorials">
+          Tutorials
+        </button>
+        <button class="category-filter px-6 py-2 rounded-full bg-gray-100 text-gray-700 font-medium transition-colors hover:bg-gray-200" data-category="inspiration">
+          Inspiration
+        </button>
+        <button class="category-filter px-6 py-2 rounded-full bg-gray-100 text-gray-700 font-medium transition-colors hover:bg-gray-200" data-category="video ai">
+          Video AI
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Blog Posts Grid -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="posts-grid">
+      {allPosts.map((post) => (
+        <article class="post-card bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-xl transition-shadow duration-300" data-category={post.category}>
+          <a href={`/blog/${post.slug}`} class="block">
+            <!-- Featured Image -->
+            <div class="aspect-video bg-gradient-to-br from-blue-100 to-purple-100 relative">
+              <div class="absolute inset-0 flex items-center justify-center">
+                <svg class="w-16 h-16 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                </svg>
+              </div>
+              <!-- Category Badge -->
+              <div class="absolute top-3 left-3">
+                <span class={`px-3 py-1 rounded-full text-xs font-bold ${
+                  post.category === 'tutorials' ? 'bg-green-100 text-green-700' :
+                  post.category === 'inspiration' ? 'bg-purple-100 text-purple-700' :
+                  'bg-blue-100 text-blue-700'
+                }`}>
+                  {post.category === 'video ai' ? 'Video AI' : post.category.charAt(0).toUpperCase() + post.category.slice(1)}
+                </span>
+              </div>
+            </div>
+
+            <!-- Post Content -->
+            <div class="p-6">
+              <h2 class="text-xl font-bold text-gray-900 mb-3 line-clamp-2 hover:text-blue-600 transition-colors">
+                {post.title}
+              </h2>
+
+              <p class="text-gray-600 mb-4 line-clamp-3">
+                {post.excerpt}
+              </p>
+
+              <!-- Meta Information -->
+              <div class="flex items-center justify-between text-sm text-gray-500">
+                <div class="flex items-center space-x-4">
+                  <span>{new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
+                  <span>•</span>
+                  <span>{post.readTime}</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </article>
+      ))}
+    </div>
+
+    <!-- Empty State -->
+    <div id="empty-state" class="hidden text-center py-16">
+      <svg class="w-24 h-24 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+      </svg>
+      <h3 class="text-xl font-semibold text-gray-700 mb-2">No articles found</h3>
+      <p class="text-gray-500">Try selecting a different category</p>
+    </div>
+  </div>
+
+  <!-- CTA Section -->
+  <div class="bg-gradient-to-r from-green-600 to-teal-600 py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+        Try Our AI Tools
+      </h2>
+      <p class="text-xl text-green-100 mb-8">
+        Put these techniques into practice with our free AI prompt generators
+      </p>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a href="/tools/text-to-prompt" class="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-green-50 transition-colors">
+          Prompt Expander
+        </a>
+        <a href="/tools/image-to-prompt" class="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-green-50 transition-colors">
+          Image Analyzer
+        </a>
+        <a href="/tools/video-ai-generation" class="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-green-50 transition-colors">
+          Video AI Prompts
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <AstroFooter />
+</BaseLayout>
+
+<script>
+  // Category filtering
+  document.addEventListener('DOMContentLoaded', () => {
+    const filterButtons = document.querySelectorAll('.category-filter');
+    const postCards = document.querySelectorAll('.post-card');
+    const emptyState = document.getElementById('empty-state');
+    const postsGrid = document.getElementById('posts-grid');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const category = button.getAttribute('data-category');
+
+        // Update active button
+        filterButtons.forEach(btn => {
+          btn.classList.remove('active', 'bg-blue-600', 'text-white');
+          btn.classList.add('bg-gray-100', 'text-gray-700');
+        });
+        button.classList.remove('bg-gray-100', 'text-gray-700');
+        button.classList.add('active', 'bg-blue-600', 'text-white');
+
+        // Filter posts
+        let visibleCount = 0;
+        postCards.forEach(card => {
+          const postCategory = card.getAttribute('data-category');
+          if (category === 'all' || postCategory === category) {
+            card.style.display = 'block';
+            visibleCount++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        // Show/hide empty state
+        if (visibleCount === 0) {
+          if (emptyState) emptyState.classList.remove('hidden');
+          if (postsGrid) postsGrid.classList.add('hidden');
+        } else {
+          if (emptyState) emptyState.classList.add('hidden');
+          if (postsGrid) postsGrid.classList.remove('hidden');
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

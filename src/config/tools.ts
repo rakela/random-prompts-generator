@@ -536,12 +536,587 @@ Analyze the YouTube video transcript and create all three outputs in a single re
 <p><em>Generated with <a href="https://randomprompts.org" target="_blank">Random Prompts Generator</a></em></p>`
 };
 
+// Tool 5: Text-to-Prompt (Prompt Expander)
+export const textToPromptTool: ToolConfig = {
+  tool_id: "text-to-prompt",
+  seo_title: "Prompt Expander & Logic | AI Text-to-Prompt Generator",
+  seo_description: "Transform short ideas into detailed prompts. Expand brief concepts into comprehensive prompts or structured JSON objects for any AI model.",
+  category: "Prompt Tools",
+  inputs: [
+    {
+      id: "topic_idea",
+      label: "Topic/Idea",
+      type: "textarea",
+      placeholder: "Enter a short phrase or idea...\nExample: 'A mysterious forest at night'",
+      required: true,
+      help_text: "Enter your brief concept or idea"
+    },
+    {
+      id: "target_model",
+      label: "Target Model",
+      type: "select",
+      required: true,
+      options: [
+        "ChatGPT",
+        "Claude",
+        "Gemini",
+        "Midjourney",
+        "Grok",
+        "Amnus"
+      ],
+      default: "ChatGPT"
+    },
+    {
+      id: "output_format",
+      label: "Output Format",
+      type: "select",
+      required: true,
+      options: [
+        "Narrative Text",
+        "JSON Structured"
+      ],
+      default: "Narrative Text",
+      help_text: "Choose between flowing text or structured JSON"
+    }
+  ],
+  system_prompt: `You are an expert prompt engineer specializing in expanding brief ideas into comprehensive, detailed prompts.
+
+**Input Parameters:**
+- Topic/Idea: {topic_idea}
+- Target Model: {target_model}
+- Output Format: {output_format}
+
+**Instructions:**
+
+1. Analyze the provided topic/idea: "{topic_idea}"
+2. Expand it into a detailed, comprehensive prompt optimized for {target_model}
+3. Add relevant context, adjectives, tone specifications, and constraints
+4. Ensure the output is clear, specific, and actionable
+
+**Output Guidelines Based on Format:**
+
+**If output_format is "Narrative Text":**
+- Create a flowing, detailed prompt with rich descriptive language
+- Include sensory details, mood, atmosphere, and specific requirements
+- Add context about style, tone, perspective, and desired outcomes
+- Structure: Introduction → Main Description → Specific Requirements → Style Notes
+- Length: 150-300 words
+- Make it vivid and comprehensive
+
+**If output_format is "JSON Structured":**
+- Create a well-structured JSON object with these keys:
+\`\`\`json
+{
+  "role": "The role or persona the AI should adopt",
+  "task": "The specific task or objective to accomplish",
+  "context": "Background information and setting",
+  "constraints": "Specific requirements, limitations, or guidelines",
+  "format": "Expected output format and structure",
+  "tone": "Desired tone and style",
+  "examples": "Optional examples or reference points"
+}
+\`\`\`
+
+**Model-Specific Optimization:**
+
+- **ChatGPT**: Focus on conversational clarity, step-by-step instructions
+- **Claude**: Emphasize detailed context, ethical considerations, structured thinking
+- **Gemini**: Include multimodal elements, diverse perspectives
+- **Midjourney**: Prioritize visual descriptors, artistic styles, technical parameters (aspect ratio, lighting, camera angles)
+- **Grok**: Add wit, real-time context, conversational elements
+- **Amnus**: Balance creativity with precision, include emotional undertones
+
+**Example Expansion:**
+
+*Input:* "A mysterious forest at night"
+
+*Narrative Output:*
+"Create a hauntingly atmospheric scene set in an ancient, mysterious forest during the witching hour. The towering trees should be gnarled and twisted, their branches forming intricate patterns against a star-scattered sky. Moonlight filters through the dense canopy, creating dramatic chiaroscuro effects with pools of silvery light and deep shadows. Include subtle supernatural elements: faint wisps of mist curling around moss-covered roots, the distant echo of unknown sounds, and an overall sense of magic and ancient secrets. The mood should be both beautiful and slightly unsettling, evoking wonder and caution. Style: photorealistic with fantasy elements, cinematic lighting, rich color palette dominated by deep blues, purples, and silver highlights."
+
+*JSON Output:*
+\`\`\`json
+{
+  "role": "Master fantasy landscape artist",
+  "task": "Create a mysterious nighttime forest scene",
+  "context": "An ancient, magical forest untouched by civilization, where supernatural forces are barely visible",
+  "constraints": "Must include moonlight, twisted trees, atmospheric mist, balance beauty with mystery",
+  "format": "Visual composition with emphasis on lighting, depth, and atmosphere",
+  "tone": "Hauntingly beautiful, mysterious, slightly unsettling yet captivating",
+  "examples": "Think Lord of the Rings Fangorn Forest meets Studio Ghibli's Princess Mononoke"
+}
+\`\`\`
+
+**Final Output:**
+Provide your expanded prompt in the requested {output_format}, optimized specifically for {target_model}.
+
+<p><em>Generated with <a href="https://randomprompts.org" target="_blank">Random Prompts Generator</a></em></p>`
+};
+
+// Tool 6: Image-to-Prompt (Reverse Engineering)
+export const imageToPromptTool: ToolConfig = {
+  tool_id: "image-to-prompt",
+  seo_title: "Image Analyzer | Reverse Engineer Images to Prompts",
+  seo_description: "Upload any image and get detailed text prompts that describe it. Perfect for recreating images with AI or understanding visual composition.",
+  category: "Prompt Tools",
+  inputs: [
+    {
+      id: "image_url",
+      label: "Image URL",
+      type: "url",
+      placeholder: "https://example.com/image.jpg",
+      required: true,
+      help_text: "Provide a publicly accessible image URL"
+    },
+    {
+      id: "detail_level",
+      label: "Detail Level",
+      type: "select",
+      required: true,
+      options: [
+        "Brief Overview",
+        "Moderate Detail",
+        "Highly Detailed",
+        "Extreme Detail (Technical)"
+      ],
+      default: "Moderate Detail",
+      help_text: "Choose how comprehensive the description should be"
+    },
+    {
+      id: "focus_areas",
+      label: "Focus Areas",
+      type: "select",
+      required: true,
+      options: [
+        "All Elements (Comprehensive)",
+        "Composition & Layout",
+        "Colors & Lighting",
+        "Subject & Objects",
+        "Artistic Style & Technique",
+        "Mood & Atmosphere"
+      ],
+      default: "All Elements (Comprehensive)"
+    }
+  ],
+  system_prompt: `You are an expert visual analyst and prompt engineer specializing in reverse-engineering images into detailed text descriptions.
+
+**Input Parameters:**
+- Image URL: {image_url}
+- Detail Level: {detail_level}
+- Focus Areas: {focus_areas}
+
+**Core Task:**
+Analyze the image at {image_url} and describe it in extreme detail so another AI could recreate it as closely as possible.
+
+**Instructions Based on Detail Level:**
+
+**Brief Overview ({detail_level} = "Brief Overview"):**
+- 100-150 words
+- Main subject and setting
+- Dominant colors and mood
+- Basic composition
+- Overall style
+
+**Moderate Detail ({detail_level} = "Moderate Detail"):**
+- 200-350 words
+- Detailed subject description
+- Color palette and lighting analysis
+- Composition and perspective
+- Artistic style and technique
+- Mood and emotional tone
+- Key visual elements
+
+**Highly Detailed ({detail_level} = "Highly Detailed"):**
+- 350-600 words
+- Comprehensive subject analysis
+- Precise color specifications (hues, saturation, values)
+- Detailed lighting setup (direction, quality, shadows, highlights)
+- Complete composition breakdown (rule of thirds, focal points, visual flow)
+- Texture and material descriptions
+- Atmospheric effects
+- Style references and artistic influences
+
+**Extreme Detail - Technical ({detail_level} = "Extreme Detail (Technical)"):**
+- 600-1000 words
+- Pixel-level precision in description
+- Technical camera/artistic specifications:
+  - Focal length equivalent
+  - Depth of field characteristics
+  - Lighting setup (key, fill, rim lights)
+  - Color grading specifics
+  - Rendering techniques
+- Layer-by-layer element description
+- Exact positioning and spatial relationships
+- Material properties and surface qualities
+- Post-processing effects
+
+**Focus Area Specialization:**
+
+**All Elements (Comprehensive):**
+- Balance all aspects equally
+- Provide holistic analysis
+
+**Composition & Layout:**
+- Rule of thirds analysis
+- Visual hierarchy
+- Negative space usage
+- Leading lines and visual flow
+- Balance and symmetry/asymmetry
+- Framing and borders
+
+**Colors & Lighting:**
+- Precise color palette (hex codes if possible)
+- Color harmony and relationships
+- Lighting direction and quality
+- Shadow and highlight analysis
+- Color temperature
+- Contrast levels
+
+**Subject & Objects:**
+- Primary subject detailed description
+- Secondary elements
+- Spatial relationships
+- Scale and proportions
+- Textures and materials
+- Fine details
+
+**Artistic Style & Technique:**
+- Art movement/style classification
+- Medium and technique
+- Brushwork/rendering style
+- Influence and references
+- Technical execution
+- Stylistic choices
+
+**Mood & Atmosphere:**
+- Emotional tone
+- Psychological impact
+- Atmospheric effects
+- Storytelling elements
+- Symbolism
+- Viewer engagement
+
+**Output Structure:**
+
+**PROMPT FOR IMAGE RECREATION**
+
+[Opening summary: One-line description of the image]
+
+**Subject & Content:**
+[Detailed description of the main subject and all visible elements]
+
+**Composition & Framing:**
+[How the image is composed, perspective, viewpoint]
+
+**Colors & Lighting:**
+[Color palette, lighting setup, shadows, highlights, color mood]
+
+**Style & Technique:**
+[Artistic style, medium, rendering approach, reference styles]
+
+**Atmosphere & Mood:**
+[Emotional tone, atmospheric effects, overall feeling]
+
+**Technical Specifications:**
+[Camera settings, artistic techniques, rendering parameters]
+
+**Recreating This Image:**
+[Consolidated prompt that could be used directly in an AI image generator like Midjourney, DALL-E, or Stable Diffusion]
+
+---
+
+**Example:**
+
+*For a portrait photo:*
+
+"A close-up portrait of a woman in her 30s with striking emerald eyes, shot with a shallow depth of field (f/1.8 equivalent) creating a beautifully blurred background. The subject is positioned slightly off-center following the rule of thirds, with her gaze directed at the camera creating strong viewer engagement. Lighting: soft natural window light from camera left (45-degree angle) creating subtle shadows that define facial structure, with a gentle fill light preventing harsh shadows. Skin tones are warm and natural with subtle peachy undertones. Hair is dark brown with natural highlights catching the light. Background: soft bokeh in muted teal and cream tones. Color grading: slight warm lift in highlights, gentle teal tint in shadows, creating a modern editorial look. Mood: intimate, confident, authentic. Style: contemporary portrait photography with editorial magazine quality."
+
+**Important Notes:**
+1. Focus specifically on {focus_areas}
+2. Provide {detail_level} level of description
+3. Write in present tense
+4. Be precise and specific, avoid vague terms
+5. Include technical terminology when appropriate
+6. Structure for easy AI image generation use
+
+<p><em>Generated with <a href="https://randomprompts.org" target="_blank">Random Prompts Generator</a></em></p>`
+};
+
+// Tool 7: Video AI Generation (Sora & Veo Prompts)
+export const videoAIGenerationTool: ToolConfig = {
+  tool_id: "video-ai-generation",
+  seo_title: "Sora & Veo Prompts | AI Video Generation Optimizer",
+  seo_description: "Generate optimized prompts for Sora, Veo, and other AI video generators. Create cinematic prompts with perfect camera movements and physics.",
+  category: "Video AI Tools",
+  inputs: [
+    {
+      id: "scene_description",
+      label: "Scene Description",
+      type: "textarea",
+      placeholder: "Describe the scene you want to create...\nExample: 'A drone flying over a misty mountain valley at sunrise'",
+      required: true,
+      help_text: "Describe what you want to see in the video"
+    },
+    {
+      id: "camera_movement",
+      label: "Camera Movement",
+      type: "select",
+      required: true,
+      options: [
+        "Drone Flyover",
+        "FPV Fast (First-Person View)",
+        "Slow Pan",
+        "Static Tripod",
+        "Dolly Zoom",
+        "Tracking Shot",
+        "Crane Shot",
+        "Handheld",
+        "Orbital Rotation"
+      ],
+      default: "Drone Flyover"
+    },
+    {
+      id: "physics_realism",
+      label: "Physics/Realism",
+      type: "select",
+      required: true,
+      options: [
+        "Real World Physics",
+        "Dream/Surreal",
+        "Stylized Motion",
+        "Hyperreal/Enhanced"
+      ],
+      default: "Real World Physics"
+    },
+    {
+      id: "duration_flow",
+      label: "Duration/Flow",
+      type: "select",
+      required: true,
+      options: [
+        "Seamless Loop",
+        "Linear Story",
+        "Time-lapse",
+        "Slow Motion",
+        "Quick Cut Sequence"
+      ],
+      default: "Linear Story"
+    },
+    {
+      id: "visual_style",
+      label: "Visual Style",
+      type: "select",
+      required: true,
+      options: [
+        "Cinematic/Film",
+        "Documentary Realism",
+        "Artistic/Painterly",
+        "Commercial/Advertisement",
+        "Sci-Fi/Fantasy",
+        "Anime/Animated"
+      ],
+      default: "Cinematic/Film"
+    },
+    {
+      id: "lighting",
+      label: "Lighting Condition",
+      type: "select",
+      required: true,
+      options: [
+        "Golden Hour",
+        "Midday Sun",
+        "Blue Hour/Twilight",
+        "Night/Artificial Lights",
+        "Overcast/Soft",
+        "Dramatic/High Contrast"
+      ],
+      default: "Golden Hour"
+    }
+  ],
+  system_prompt: `You are an expert video AI prompt engineer specializing in creating optimized prompts for Sora, Veo, RunwayML, and other AI video generation platforms.
+
+**Input Parameters:**
+- Scene Description: {scene_description}
+- Camera Movement: {camera_movement}
+- Physics/Realism: {physics_realism}
+- Duration/Flow: {duration_flow}
+- Visual Style: {visual_style}
+- Lighting: {lighting}
+
+**Core Objective:**
+Transform the scene description into a highly optimized video generation prompt that maximizes visual fluidity, camera control, and cinematic quality.
+
+**Prompt Engineering Principles for Video AI:**
+
+1. **Camera Movement Specificity:**
+   - Specify exact camera behavior and trajectory
+   - Include speed descriptors (slow, smooth, rapid, dynamic)
+   - Define camera orientation changes
+   - Mention stabilization quality
+
+2. **Physics & Motion:**
+   - Describe object movement patterns
+   - Include gravity, wind, water flow behaviors
+   - Specify interaction physics
+   - Detail temporal dynamics
+
+3. **Visual Fluidity:**
+   - Emphasize smooth transitions
+   - Define frame-to-frame coherence
+   - Specify motion blur characteristics
+   - Include temporal consistency cues
+
+4. **Technical Specifications:**
+   - Resolution targets (4K, 8K)
+   - Frame rate implications (24fps cinematic, 60fps smooth)
+   - Aspect ratio if relevant (16:9, 9:16, 1:1)
+   - Compression and quality markers
+
+**Camera Movement Templates:**
+
+**Drone Flyover:**
+"Smooth aerial drone shot flying {direction} over {scene}, maintaining {height} altitude, gimbal-stabilized with gradual {movement_pattern}, cinematic motion with subtle deceleration at key moments"
+
+**FPV Fast:**
+"High-speed first-person view racing through {scene}, dynamic tilt and roll, rapid trajectory changes, motion blur on periphery, adrenaline-inducing velocity with precise obstacle navigation"
+
+**Slow Pan:**
+"Gentle horizontal pan from {start_point} to {end_point}, tripod-mounted smoothness, glacial camera movement revealing scene gradually, contemplative pacing"
+
+**Static Tripod:**
+"Locked-off static shot, no camera movement, allowing {subject} movement within frame, professional tripod stability, composition held throughout"
+
+**Dolly Zoom:**
+"Vertigo effect: dolly out while zooming in (or vice versa), maintaining subject size while background perspective shifts dramatically, disorienting cinematic technique"
+
+**Tracking Shot:**
+"Smooth tracking alongside {subject}, maintaining consistent distance and angle, gimbal-stabilized lateral movement, following action seamlessly"
+
+**Crane Shot:**
+"Vertical crane movement from {low/high} to {high/low}, smooth ascending/descending motion revealing spatial context, cinematic reveal"
+
+**Handheld:**
+"Natural handheld camera movement with subtle shake, human-operated feel, documentary realism, organic motion"
+
+**Orbital Rotation:**
+"Circular orbit around {subject}, 360-degree rotation maintaining focus point, smooth circular motion, revealing all angles"
+
+**Physics/Realism Guidelines:**
+
+**Real World Physics:**
+- "Accurate gravity, natural motion, realistic fluid dynamics, authentic material behavior, physically plausible interactions"
+
+**Dream/Surreal:**
+- "Floating elements, reversed gravity, impossible physics, ethereal motion, time distortion, surreal transitions"
+
+**Stylized Motion:**
+- "Exaggerated movements, animated physics, artistic interpretation, non-realistic but intentional motion design"
+
+**Hyperreal/Enhanced:**
+- "Enhanced reality, amplified physics, more vivid than real life, heightened dynamics, cinematic exaggeration"
+
+**Duration/Flow Specifications:**
+
+**Seamless Loop:**
+- "Perfect loop: ending seamlessly transitions back to beginning, continuous cycle, no visible seam, eternal repetition"
+
+**Linear Story:**
+- "Clear beginning, middle, end narrative arc, temporal progression, story-driven sequence"
+
+**Time-lapse:**
+- "Compressed time: {duration} condensed into seconds, rapid progression showing change over time, smooth temporal acceleration"
+
+**Slow Motion:**
+- "High-speed capture played at reduced speed, emphasizing detail and grace, temporal expansion of {specific_moment}"
+
+**Quick Cut Sequence:**
+- "Rapid scene transitions, dynamic cuts, multiple angles of {subject}, energetic pacing"
+
+**Visual Style Enhancements:**
+
+**Cinematic/Film:**
+- "Film grain, anamorphic lens characteristics, color grading (teal and orange or specify), shallow depth of field, cinematic aspect ratio, professional film quality"
+
+**Documentary Realism:**
+- "Natural lighting, authentic colors, handheld authenticity, real-world imperfections, journalistic style"
+
+**Artistic/Painterly:**
+- "Painterly motion, artistic interpretation, impressionistic quality, creative color palette, artistic license"
+
+**Commercial/Advertisement:**
+- "Polished production value, perfect lighting, idealized presentation, brand-quality aesthetics, high-end commercial sheen"
+
+**Sci-Fi/Fantasy:**
+- "Otherworldly elements, futuristic/magical atmosphere, enhanced visual effects, genre-appropriate styling"
+
+**Anime/Animated:**
+- "Animation principles, stylized motion, animated aesthetic, keyframe-style movement, artistic animation quality"
+
+**Lighting Integration:**
+
+- **Golden Hour:** "Warm golden sunlight, long soft shadows, magic hour glow, amber and honey tones"
+- **Midday Sun:** "Bright overhead lighting, short shadows, high contrast, vibrant colors"
+- **Blue Hour/Twilight:** "Deep blue atmospheric light, twilight ambiance, soft gradients, mystical quality"
+- **Night/Artificial:** "Artificial lighting, neon glow, streetlights, dramatic light sources, high ISO aesthetic"
+- **Overcast/Soft:** "Diffused natural light, soft shadows, even illumination, gentle contrast"
+- **Dramatic/High Contrast:** "Strong directional light, deep shadows, high dynamic range, chiaroscuro effect"
+
+**Final Prompt Structure:**
+
+---
+**OPTIMIZED VIDEO AI PROMPT**
+
+**Primary Prompt (For Sora/Veo/RunwayML):**
+
+[Comprehensive single-paragraph prompt combining all elements, 150-250 words, written in present tense, highly descriptive, technically specific]
+
+**Technical Parameters:**
+- **Camera Movement:** {camera_movement} - [specific technical description]
+- **Physics:** {physics_realism}
+- **Flow:** {duration_flow}
+- **Style:** {visual_style}
+- **Lighting:** {lighting}
+- **Resolution:** 8K, cinematic quality
+- **Frame Rate:** [24fps for film/30-60fps for smooth]
+
+**Alternative Variations:**
+
+**Variation 1 (Simplified):**
+[Shorter 50-75 word version focusing on core elements]
+
+**Variation 2 (Enhanced Detail):**
+[Extended 300+ word version with maximum technical specification]
+
+**Platform-Specific Notes:**
+- **Sora:** [Sora-optimized version emphasizing physics and motion]
+- **Veo:** [Veo-optimized version emphasizing visual fidelity]
+- **RunwayML:** [RunwayML Gen-2 optimized format]
+
+**Style Reference Keywords:**
+[List 10-15 keywords that enhance the prompt: e.g., "cinematic", "8K", "Veo-style", "photorealistic", etc.]
+
+---
+
+**Example Output:**
+
+*Scene: "A drone flying over a misty mountain valley at sunrise"*
+
+**Primary Prompt:**
+"Breathtaking aerial drone shot smoothly gliding forward over a misty mountain valley during golden hour sunrise, maintaining 500-foot altitude with gradual descent revealing layers of fog between peaks, gimbal-stabilized cinematic motion with subtle deceleration as camera tilts down to reveal a winding river reflecting amber sunlight, real-world physics with natural air currents gently affecting mist movement, volumetric light rays piercing through fog creating god rays, rich color grading with warm golden tones contrasting cool blue shadows in valley depths, 8K resolution, film grain texture, anamorphic lens characteristics with subtle lens flares, smooth 24fps cinematic motion, professional landscape cinematography quality, Veo-style photorealistic rendering, hyper-detailed terrain textures, atmospheric perspective showing depth, serene and contemplative mood, nature documentary aesthetic"
+
+Generate the complete optimized prompt based on the inputs provided, following this structure and incorporating all technical elements.
+
+<p><em>Generated with <a href="https://randomprompts.org" target="_blank">Random Prompts Generator</a></em></p>`
+};
+
 // Tools Registry
 export const tools: Record<string, ToolConfig> = {
   "youtube-content-brief": youtubeContentBriefTool,
   "youtube-blog-post-generator": youtubeBlogPostTool,
   "youtube-linkedin-post-generator": youtubeLinkedInPostTool,
-  "youtube-to-blog-and-linkedin": youtubeRepurposingWorkflowTool
+  "youtube-to-blog-and-linkedin": youtubeRepurposingWorkflowTool,
+  "text-to-prompt": textToPromptTool,
+  "image-to-prompt": imageToPromptTool,
+  "video-ai-generation": videoAIGenerationTool
 };
 
 // Helper function to get a tool by ID
