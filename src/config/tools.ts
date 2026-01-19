@@ -700,12 +700,11 @@ export const imageToPromptTool: ToolConfig = {
   system_prompt: `You are an expert visual analyst and prompt engineer specializing in reverse-engineering images into detailed text descriptions.
 
 **Input Parameters:**
-- Image URL: {image_url}
 - Detail Level: {detail_level}
 - Focus Areas: {focus_areas}
 
 **Core Task:**
-Analyze the image at {image_url} and describe it in extreme detail so another AI could recreate it as closely as possible.
+Analyze the provided image and describe it in extreme detail so another AI could recreate it as closely as possible. The image has been provided to you directly for analysis.
 
 **Instructions Based on Detail Level:**
 

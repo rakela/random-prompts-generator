@@ -11,6 +11,7 @@ export interface LLMRequest {
   temperature?: number;
   maxTokens?: number;
   model?: string;
+  imageUrl?: string; // For vision API calls
 }
 
 export interface LLMResponse {
@@ -115,6 +116,50 @@ async function callAnthropic(request: LLMRequest): Promise<LLMResponse> {
     throw new Error('ANTHROPIC_API_KEY environment variable is not set');
   }
 
+  // Prepare message content - handle vision if imageUrl is provided
+  let messageContent: any;
+
+  if (request.imageUrl) {
+    // Vision API: content is an array with image and text
+    try {
+      // Fetch the image and convert to base64
+      const imageResponse = await fetch(request.imageUrl);
+      if (!imageResponse.ok) {
+        throw new Error(`Failed to fetch image: ${imageResponse.status} ${imageResponse.statusText}`);
+      }
+
+      const imageBuffer = await imageResponse.arrayBuffer();
+      const base64Image = Buffer.from(imageBuffer).toString('base64');
+
+      // Detect image type from content-type header or URL
+      const contentType = imageResponse.headers.get('content-type') || 'image/jpeg';
+      const mediaType = contentType.includes('png') ? 'image/png' :
+                       contentType.includes('gif') ? 'image/gif' :
+                       contentType.includes('webp') ? 'image/webp' : 'image/jpeg';
+
+      messageContent = [
+        {
+          type: 'image',
+          source: {
+            type: 'base64',
+            media_type: mediaType,
+            data: base64Image
+          }
+        },
+        {
+          type: 'text',
+          text: request.userContent
+        }
+      ];
+    } catch (error) {
+      console.error('Error fetching image for vision API:', error);
+      throw new Error(`Failed to process image: ${error instanceof Error ? error.message : String(error)}`);
+    }
+  } else {
+    // Text-only: content is a string
+    messageContent = request.userContent;
+  }
+
   const response = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
     headers: {
@@ -123,14 +168,14 @@ async function callAnthropic(request: LLMRequest): Promise<LLMResponse> {
       'anthropic-version': '2023-06-01'
     },
     body: JSON.stringify({
-      model: request.model || 'claude-3-5-sonnet-20241022',
+      model: request.imageUrl ? 'claude-3-5-sonnet-20241022' : (request.model || 'claude-3-5-sonnet-20241022'),
       max_tokens: request.maxTokens || 4000,
       temperature: request.temperature,
       system: request.systemPrompt,
       messages: [
         {
           role: 'user',
-          content: request.userContent
+          content: messageContent
         }
       ]
     })
