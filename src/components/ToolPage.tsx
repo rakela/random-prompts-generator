@@ -10,6 +10,7 @@ interface ToolPageProps {
 export default function ToolPage({ tool }: ToolPageProps) {
   // Auth and credits state
   const [user, setUser] = useState<any>(null);
+  const [accessToken, setAccessToken] = useState<string | null>(null);
   const [credits, setCredits] = useState<number>(0);
   const [isPro, setIsPro] = useState(false);
   const [loadingAuth, setLoadingAuth] = useState(true);
@@ -51,6 +52,7 @@ export default function ToolPage({ tool }: ToolPageProps) {
 
       if (session?.user) {
         setUser(session.user);
+        setAccessToken(session.access_token);
 
         // Fetch credits
         try {
@@ -75,6 +77,7 @@ export default function ToolPage({ tool }: ToolPageProps) {
       // Listen for auth changes
       const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
         setUser(session?.user ?? null);
+        setAccessToken(session?.access_token ?? null);
         if (!session?.user) {
           setCredits(0);
           setIsPro(false);
@@ -118,7 +121,8 @@ export default function ToolPage({ tool }: ToolPageProps) {
       const response = await fetch('/api/run-tool', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${accessToken}`
         },
         body: JSON.stringify({
           tool_id: tool.tool_id,
