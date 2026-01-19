@@ -87,6 +87,12 @@ const staticPageUrls = [
   'tools/youtube-content-brief',
   'tools/youtube-blog-post-generator',
   'tools/youtube-linkedin-post-generator',
+  // New AI Prompt Tools
+  'tools/text-to-prompt',
+  'tools/image-to-prompt',
+  'tools/video-ai-generation',
+  // Blog
+  'blog',
   // Other pages
   'pricing',
   'contact',
@@ -105,10 +111,12 @@ export async function GET(context) {
   // Build static pages with priorities
   const staticPages = staticPageUrls.map((url, index) => ({
     url,
-    changefreq: url === '' ? 'daily' : url.startsWith('workflows/') || url.startsWith('tools/') ? 'daily' : 'weekly',
+    changefreq: url === '' ? 'daily' : url.startsWith('workflows/') || url.startsWith('tools/') || url.startsWith('blog') ? 'daily' : 'weekly',
     priority: url === '' ? '1.0' :
-              // YouTube Tools get very high priority (new feature)
-              url.startsWith('workflows/youtube') || url.startsWith('tools/youtube') ? '0.95' :
+              // YouTube Tools and new AI Tools get very high priority (new features)
+              url.startsWith('workflows/youtube') || url.startsWith('tools/youtube') || url.startsWith('tools/text-to-prompt') || url.startsWith('tools/image-to-prompt') || url.startsWith('tools/video-ai-generation') ? '0.95' :
+              // Blog gets high priority
+              url === 'blog' ? '0.9' :
               // Hub pages get high priority
               ['writing-prompts-generator', 'art-prompts', 'generators'].includes(url) ? '0.95' :
               // Sub-pages under hubs

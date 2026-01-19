@@ -185,12 +185,22 @@ export const POST: APIRoute = async ({ request }) => {
 
     // ===== STEP 3: CALL LLM =====
     console.log(`[run-tool] Calling LLM...`);
-    const llmResponse = await callLLM({
+
+    // Special handling for image-to-prompt tool (vision API)
+    const llmRequest: any = {
       systemPrompt: filledSystemPrompt,
       userContent: userContent,
       temperature: 0.7,
       maxTokens: 4000
-    });
+    };
+
+    // If this is the image-to-prompt tool, pass the image URL for vision API
+    if (tool_id === 'image-to-prompt' && sanitizedInputs.image_url) {
+      llmRequest.imageUrl = sanitizedInputs.image_url;
+      console.log(`[run-tool] Using vision API with image: ${sanitizedInputs.image_url}`);
+    }
+
+    const llmResponse = await callLLM(llmRequest);
 
     console.log(`[run-tool] LLM response received: ${llmResponse.content.length} characters`);
     console.log(`[run-tool] Tokens used: ${llmResponse.tokensUsed || 'unknown'}`);
