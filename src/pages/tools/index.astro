@@ -9,39 +9,45 @@ export const prerender = true;
 const tools = getAllTools();
 
 // Group tools by category
-const youtubeTools = tools.filter(t => t.category === 'YouTube Content');
-const promptTools = tools.filter(t => t.category === 'Prompt Tools');
+const youtubeTools = tools.filter(t => t.category === 'YouTube Tools' || t.category === 'YouTube Workflows');
+const promptTools = tools.filter(t => t.category === 'Prompt Tools' || t.category === 'Video AI Tools');
 
 // Icon and color mapping for each tool
 const toolConfig = {
   'youtube-content-brief': {
     icon: 'chart',
     gradient: 'from-blue-500 to-cyan-600',
+    bgColor: 'bg-blue-500',
     title: 'Content Brief Generator'
   },
   'youtube-blog-post-generator': {
     icon: 'document',
     gradient: 'from-purple-500 to-pink-600',
+    bgColor: 'bg-purple-500',
     title: 'Blog Post Generator'
   },
   'youtube-linkedin-post-generator': {
     icon: 'briefcase',
     gradient: 'from-indigo-500 to-blue-600',
+    bgColor: 'bg-indigo-500',
     title: 'LinkedIn Post Generator'
   },
   'text-to-prompt': {
     icon: 'sparkles',
     gradient: 'from-emerald-500 to-teal-600',
+    bgColor: 'bg-emerald-500',
     title: 'Prompt Expander & Logic'
   },
   'image-to-prompt': {
     icon: 'image',
     gradient: 'from-amber-500 to-orange-600',
+    bgColor: 'bg-amber-500',
     title: 'Image Analyzer'
   },
   'video-ai-generation': {
     icon: 'video',
     gradient: 'from-rose-500 to-red-600',
+    bgColor: 'bg-rose-500',
     title: 'Video AI Prompts'
   }
 };
@@ -120,9 +126,9 @@ const seo = {
                 </p>
 
                 <div class="flex items-center justify-between">
-                  <span class={`inline-flex items-center gap-2 text-sm font-semibold bg-gradient-to-r ${config.gradient} bg-clip-text text-transparent group-hover:translate-x-1 transition-transform`}>
+                  <span class={`inline-flex items-center gap-2 text-sm font-bold ${config.bgColor.replace('bg-', 'text-')} group-hover:translate-x-1 transition-transform`}>
                     Try it now
-                    <svg class="w-4 h-4 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class={`w-4 h-4 ${config.bgColor.replace('bg-', 'text-')}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                     </svg>
                   </span>
@@ -185,9 +191,9 @@ const seo = {
                 </p>
 
                 <div class="flex items-center justify-between">
-                  <span class={`inline-flex items-center gap-2 text-sm font-semibold bg-gradient-to-r ${config.gradient} bg-clip-text text-transparent group-hover:translate-x-1 transition-transform`}>
+                  <span class={`inline-flex items-center gap-2 text-sm font-bold ${config.bgColor.replace('bg-', 'text-')} group-hover:translate-x-1 transition-transform`}>
                     Try it now
-                    <svg class="w-4 h-4 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class={`w-4 h-4 ${config.bgColor.replace('bg-', 'text-')}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                     </svg>
                   </span>
