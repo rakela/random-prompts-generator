@@ -5,9 +5,10 @@ import { getSupabaseBrowserClient } from '../lib/supabaseBrowser';
 
 interface ToolPageProps {
   tool: ToolConfig;
+  freeGenerations?: number; // Daily free generation limit for this tool (default: 1)
 }
 
-export default function ToolPage({ tool }: ToolPageProps) {
+export default function ToolPage({ tool, freeGenerations = 1 }: ToolPageProps) {
   // Auth and credits state
   const [user, setUser] = useState<any>(null);
   const [accessToken, setAccessToken] = useState<string | null>(null);
@@ -135,7 +136,7 @@ export default function ToolPage({ tool }: ToolPageProps) {
       if (data.success && data.output) {
         setResult(data.output);
 
-        // Refresh credits after successful generation
+        // Refresh credits after successful generation (each generation costs 1 credit)
         if (!isPro) {
           setCredits(prev => Math.max(0, prev - 1));
         }
@@ -459,7 +460,7 @@ export default function ToolPage({ tool }: ToolPageProps) {
                     <Lock className="w-5 h-5 text-blue-600 flex-shrink-0" />
                     <div className="flex-1">
                       <p className="text-blue-900 font-medium">Sign in required</p>
-                      <p className="text-blue-700 text-sm">Sign in to generate content. Free users get 1 generation per day!</p>
+                      <p className="text-blue-700 text-sm">Sign in to generate content. Free users get {freeGenerations} {freeGenerations === 1 ? 'generation' : 'generations'} per day!</p>
                     </div>
                     <button
                       onClick={() => window.dispatchEvent(new CustomEvent('openAuthModal'))}
@@ -481,7 +482,7 @@ export default function ToolPage({ tool }: ToolPageProps) {
                     <CreditCard className="w-5 h-5 text-green-600 flex-shrink-0" />
                     <div className="flex-1">
                       <p className="text-green-900 font-semibold">{credits} {credits === 1 ? 'Credit' : 'Credits'} Remaining</p>
-                      <p className="text-green-700 text-sm">Free users get 1 credit per day. Need more? Upgrade or buy credits!</p>
+                      <p className="text-green-700 text-sm">Free users get {freeGenerations} {freeGenerations === 1 ? 'credit' : 'credits'} per day. Need more? Upgrade or buy credits!</p>
                     </div>
                     <a
                       href="/pricing"

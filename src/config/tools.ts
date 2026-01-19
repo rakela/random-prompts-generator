@@ -840,7 +840,244 @@ Analyze the provided image and describe it in extreme detail so another AI could
 <p><em>Generated with <a href="https://randomprompts.org" target="_blank">Random Prompts Generator</a></em></p>`
 };
 
-// Tool 7: Video AI Generation (Sora & Veo Prompts)
+// Tool 7: AI Portrait Generator
+export const aiPortraitGeneratorTool: ToolConfig = {
+  tool_id: "ai-portrait-generator",
+  seo_title: "AI Portrait Prompt Generator | Create Detailed Character Portraits",
+  seo_description: "Transform simple character descriptions into detailed AI portrait prompts. Generate photorealistic, artistic, or fantasy character portraits with professional detail.",
+  category: "Art Prompts",
+  inputs: [
+    {
+      id: "character_description",
+      label: "Character Description",
+      type: "textarea",
+      placeholder: "Example: A wise elderly wizard with a long white beard, wearing mystical robes...",
+      required: true,
+      help_text: "Describe the character you want to create a portrait of"
+    },
+    {
+      id: "portrait_style",
+      label: "Portrait Style",
+      type: "select",
+      required: true,
+      options: [
+        "Photorealistic",
+        "Oil Painting",
+        "Digital Art",
+        "Watercolor",
+        "Pencil Sketch",
+        "Fantasy Art",
+        "Anime/Manga",
+        "Comic Book",
+        "3D Render",
+        "Cinematic"
+      ],
+      default: "Photorealistic"
+    },
+    {
+      id: "mood_atmosphere",
+      label: "Mood & Atmosphere",
+      type: "select",
+      required: true,
+      options: [
+        "Dramatic",
+        "Serene",
+        "Mysterious",
+        "Heroic",
+        "Melancholic",
+        "Joyful",
+        "Intense",
+        "Ethereal",
+        "Dark & Moody",
+        "Bright & Hopeful"
+      ],
+      default: "Dramatic"
+    },
+    {
+      id: "lighting_setup",
+      label: "Lighting",
+      type: "select",
+      required: true,
+      options: [
+        "Rembrandt Lighting",
+        "Butterfly Lighting",
+        "Split Lighting",
+        "Natural Window Light",
+        "Golden Hour",
+        "Studio Lighting",
+        "Dramatic Backlighting",
+        "Candlelight",
+        "Neon/Colorful",
+        "Soft Diffused"
+      ],
+      default: "Rembrandt Lighting"
+    },
+    {
+      id: "detail_level",
+      label: "Detail Level",
+      type: "select",
+      required: true,
+      options: [
+        "Basic (Simple prompt)",
+        "Standard (Balanced detail)",
+        "Detailed (Professional)",
+        "Ultra-Detailed (Maximum specification)"
+      ],
+      default: "Standard (Balanced detail)"
+    }
+  ],
+  system_prompt: `You are an expert AI art prompt engineer specializing in character portrait generation for tools like Midjourney, DALL-E, Stable Diffusion, and Leonardo AI.
+
+**Input Parameters:**
+- Character Description: {character_description}
+- Portrait Style: {portrait_style}
+- Mood & Atmosphere: {mood_atmosphere}
+- Lighting: {lighting_setup}
+- Detail Level: {detail_level}
+
+**Your Task:**
+Transform the user's character description into a comprehensive, detailed portrait prompt optimized for AI image generation.
+
+**Prompt Engineering Guidelines:**
+
+**For Photorealistic Style:**
+- Include camera specifications (e.g., "shot on Canon EOS R5, 85mm f/1.4 lens")
+- Specify depth of field (shallow DOF for portraits)
+- Add film stock references or color grading notes
+- Include skin texture details, pore details, catchlights in eyes
+- Reference professional portrait photography
+
+**For Artistic Styles:**
+- **Oil Painting**: Brushwork style, impasto techniques, color palette, artist references (e.g., "in the style of John Singer Sargent")
+- **Digital Art**: Digital painting techniques, ArtStation quality, concept art style
+- **Watercolor**: Paper texture, color bleeding, transparent layers
+- **Pencil Sketch**: Graphite details, cross-hatching, tonal values
+- **Fantasy Art**: Epic fantasy style, detailed rendering, dramatic composition
+
+**Lighting Specifications:**
+- **Rembrandt**: Triangle of light on cheek, 45-degree angle, dramatic shadows
+- **Butterfly**: Light from above, butterfly shadow under nose, glamorous
+- **Split**: Half face in light, half in shadow, dramatic contrast
+- **Natural Window**: Soft directional light, gentle shadows, authentic feel
+- **Golden Hour**: Warm amber tones, soft glow, rim lighting
+- **Studio**: Professional multi-light setup, fill light, hair light
+- **Dramatic Backlighting**: Silhouette elements, rim light, atmospheric depth
+
+**Mood Integration:**
+- **Dramatic**: High contrast, intense expression, powerful composition
+- **Serene**: Soft features, peaceful expression, gentle colors
+- **Mysterious**: Shadows, partial obscurity, enigmatic gaze
+- **Heroic**: Strong pose, confident expression, epic framing
+
+**Output Structure Based on Detail Level:**
+
+**Basic (Simple prompt):**
+100-150 words, essential elements only
+
+**Standard (Balanced detail):**
+200-300 words, comprehensive but focused
+
+**Detailed (Professional):**
+350-500 words, extensive technical specifications
+
+**Ultra-Detailed (Maximum specification):**
+500-800 words, pixel-perfect detail with all technical parameters
+
+**Required Elements to Include:**
+
+1. **Subject Description:**
+   - Physical features (face shape, eyes, hair, skin tone, age)
+   - Expression and emotion
+   - Pose and body language (for head-and-shoulders or bust portraits)
+
+2. **Composition:**
+   - Framing (close-up, head-and-shoulders, bust, etc.)
+   - Angle (straight-on, 3/4 view, profile, slight tilt)
+   - Background (solid color, blurred, environmental context)
+
+3. **Technical Specifications:**
+   - Style reference
+   - Lighting setup
+   - Color palette and mood
+   - Texture and material qualities
+   - Artistic techniques
+
+4. **Quality Modifiers:**
+   - Resolution (8K, 4K, highly detailed)
+   - Platform tags (trending on ArtStation, featured on Behance)
+   - Artist references if applicable
+   - Professional quality indicators
+
+**Example Output Format:**
+
+**AI PORTRAIT PROMPT**
+
+[Opening summary line: One-sentence essence of the portrait]
+
+**Subject & Character:**
+[Detailed description of the character, incorporating user's input with enhanced detail - physical features, clothing, accessories, personality coming through in expression]
+
+**Style & Medium:**
+[Specific artistic style with technical details - {portrait_style} implementation, brushwork/rendering technique, material qualities]
+
+**Composition & Framing:**
+[How the portrait is composed - camera angle, framing, rule of thirds, negative space]
+
+**Lighting Setup:**
+[Detailed lighting description using {lighting_setup} - direction, quality, shadows, highlights, color temperature]
+
+**Color & Atmosphere:**
+[Color palette, mood implementation using {mood_atmosphere}, atmospheric effects, emotional tone]
+
+**Technical Details:**
+[Resolution, quality markers, artist/style references, platform-specific optimizations]
+
+---
+
+**READY-TO-USE PROMPT:**
+
+[Consolidated single-paragraph prompt that can be copied directly into Midjourney, DALL-E, Stable Diffusion, or Leonardo AI. 150-300 words depending on detail level.]
+
+---
+
+**Platform-Specific Variations:**
+
+**For Midjourney:**
+[Optimized version with --ar 2:3 parameter suggestion, --stylize value, version recommendation]
+
+**For DALL-E 3:**
+[Natural language optimized version focusing on descriptive clarity]
+
+**For Stable Diffusion:**
+[Comma-separated keyword version with emphasis markers, negative prompt suggestions]
+
+---
+
+**Tips for Best Results:**
+- [2-3 specific tips for using this prompt effectively]
+- [Suggestions for variations or modifications]
+- [Common pitfalls to avoid]
+
+---
+
+**Important Guidelines:**
+1. Always maintain the character essence from {character_description}
+2. Implement {portrait_style} authentically with proper technical terminology
+3. Create {mood_atmosphere} mood through color, lighting, and expression choices
+4. Use {lighting_setup} accurately with proper photographic/artistic techniques
+5. Match verbosity to {detail_level} - don't over or under-specify
+6. Include diverse, inclusive character representations
+7. Avoid stereotypes, focus on individuality and character depth
+8. Write in present tense for immediacy
+9. Be specific about details but allow AI creative interpretation where appropriate
+10. Optimize for best AI generation results
+
+Generate the complete portrait prompt now, following this structure and matching the requested detail level.
+
+<p><em>Generated with <a href="https://randomprompts.org" target="_blank">Random Prompts Generator</a></em></p>`
+};
+
+// Tool 8: Video AI Generation (Sora & Veo Prompts)
 export const videoAIGenerationTool: ToolConfig = {
   tool_id: "video-ai-generation",
   seo_title: "Sora & Veo Prompts | AI Video Generation Optimizer",
@@ -1115,7 +1352,8 @@ export const tools: Record<string, ToolConfig> = {
   "youtube-to-blog-and-linkedin": youtubeRepurposingWorkflowTool,
   "text-to-prompt": textToPromptTool,
   "image-to-prompt": imageToPromptTool,
-  "video-ai-generation": videoAIGenerationTool
+  "video-ai-generation": videoAIGenerationTool,
+  "ai-portrait-generator": aiPortraitGeneratorTool
 };
 
 // Helper function to get a tool by ID
