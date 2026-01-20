@@ -44,6 +44,9 @@ const seo = {
         <button class="category-filter px-6 py-2 rounded-full bg-gray-100 text-gray-700 font-medium transition-colors hover:bg-gray-200" data-category="video ai">
           Video AI
         </button>
+        <button class="category-filter px-6 py-2 rounded-full bg-gray-100 text-gray-700 font-medium transition-colors hover:bg-gray-200" data-category="productivity tips">
+          Productivity Tips
+        </button>
       </div>
     </div>
   </div>
@@ -66,9 +69,12 @@ const seo = {
                 <span class={`px-3 py-1 rounded-full text-xs font-bold ${
                   post.category === 'tutorials' ? 'bg-green-100 text-green-700' :
                   post.category === 'inspiration' ? 'bg-purple-100 text-purple-700' :
+                  post.category === 'productivity tips' ? 'bg-amber-100 text-amber-700' :
                   'bg-blue-100 text-blue-700'
                 }`}>
-                  {post.category === 'video ai' ? 'Video AI' : post.category.charAt(0).toUpperCase() + post.category.slice(1)}
+                  {post.category === 'video ai' ? 'Video AI' :
+                   post.category === 'productivity tips' ? 'Productivity Tips' :
+                   post.category.charAt(0).toUpperCase() + post.category.slice(1)}
                 </span>
               </div>
             </div>

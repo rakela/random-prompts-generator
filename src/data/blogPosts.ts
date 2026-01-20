@@ -5,7 +5,7 @@ export interface BlogPost {
   title: string;
   excerpt: string;
   content: string;
-  category: 'inspiration' | 'tutorials' | 'video ai';
+  category: 'inspiration' | 'tutorials' | 'video ai' | 'productivity tips';
   author: string;
   date: string;
   featuredImage: string;
@@ -833,6 +833,175 @@ This skill not only helps you recreate existing images but makes you a better pr
 
 Start simple, practice regularly, and soon you'll be able to deconstruct and recreate any visual style.
     `
+  },
+  {
+    slug: "free-youtube-to-blog-post-generator",
+    title: "Free YouTube to Blog Post Generator (AI Converter)",
+    excerpt: "Convert YouTube videos into SEO-optimized blog posts using AI. Extract transcripts, structure content, and generate articles in minutes—free to try.",
+    category: "productivity tips",
+    author: "Random Prompts Team",
+    date: "2026-01-20",
+    featuredImage: "/images/blog/youtube-to-blog-generator.jpg",
+    readTime: "6 min read",
+    content: `
+# Free YouTube to Blog Post Generator (AI Converter)
+
+![Tool UI screenshot - YouTube URL input and Generate button](/images/blog/youtube-to-blog-tool-ui.jpg)
+
+**[Use the YouTube to Blog Post Generator Tool →](/tools/youtube-blog-post-generator)**
+
+## Overview
+
+This Free YouTube to Blog Post Generator is an AI-powered converter that transforms YouTube videos into SEO-optimized blog posts.
+
+Instead of manually rewriting video content, the tool:
+- **Extracts the video transcript** automatically
+- **Analyzes the structure and intent** of the content
+- **Converts it into a clean, readable blog article** designed for search engines
+
+It's built for creators, marketers, founders, and anyone repurposing video content into written form.
+
+## How the YouTube to Blog Post Generator Works
+
+![Simple flow diagram showing YouTube → Transcript → Blog Post](/images/blog/youtube-to-blog-workflow.jpg)
+
+This tool follows a structured, technical workflow:
+
+### 1. Transcript Extraction
+The system retrieves the video transcript directly from YouTube (when available).
+
+### 2. Content Analysis
+The transcript is parsed into logical sections, identifying:
+- Main topics
+- Supporting points
+- Natural headings
+
+### 3. AI Conversion
+Using AI, the tool converts raw transcript data into:
+- Structured paragraphs
+- SEO-friendly headings (H1–H3)
+- Readable blog-style formatting
+
+### 4. Final Output
+You receive a publish-ready draft that can be edited, expanded, or optimized further.
+
+**This is not a copy-paste transcript**—it's a rewritten article.
+
+## Features
+
+![Feature icons showing key capabilities](/images/blog/youtube-to-blog-features.jpg)
+
+### ✅ Transcript-to-Article Conversion
+Automatically turns spoken content into readable blog text.
+
+### ✅ SEO-Optimized Structure
+Includes logical headings, scannable sections, and clean formatting suitable for ranking.
+
+### ✅ Fast Draft Generation
+Create a long-form blog draft in minutes instead of hours.
+
+### ✅ Markdown-Friendly Output
+Easily publish to most CMS platforms.
+
+### ✅ Built for Repurposing
+Designed specifically for creators who already publish on YouTube.
+
+## Supported Languages
+
+![Language icons showing multilingual support](/images/blog/youtube-to-blog-languages.jpg)
+
+The YouTube to Blog Post Generator supports multiple languages, including:
+- English
+- Spanish
+- German
+- French
+- Italian
+
+This makes it useful for international creators and multilingual blogs.
+
+## How to Use the Tool
+
+![Step-by-step UI screenshots](/images/blog/youtube-to-blog-steps.jpg)
+
+### Step 1: Paste a YouTube URL
+Insert the full URL of a public YouTube video.
+
+### Step 2: Choose Your Preferences
+Select tone, length, or structure (if available in the tool).
+
+### Step 3: Generate the Blog Post
+Click generate and let the AI convert the video into a blog draft.
+
+### Step 4: Review and Edit
+Polish the content, add internal links, images, and your own voice before publishing.
+
+## Who Is This Tool For?
+
+This AI converter is ideal for:
+- **YouTubers building organic traffic** – Turn your videos into searchable blog content
+- **Bloggers repurposing video content** – Multiply the value of existing videos
+- **SEO-focused content teams** – Scale content production efficiently
+- **Indie founders creating topical authority** – Build comprehensive content hubs
+- **Agencies producing content efficiently** – Deliver more value to clients faster
+
+If you already make videos, this tool helps you **multiply their value**.
+
+## Why Convert YouTube Videos to Blog Posts?
+
+### SEO Benefits
+Blog posts rank in search engines, while YouTube videos primarily rank in YouTube search. By converting videos to articles, you:
+- Capture Google search traffic
+- Target long-tail keywords
+- Build topical authority
+- Create backlink opportunities
+
+### Accessibility
+Not everyone consumes video content. Written articles serve users who:
+- Prefer reading over watching
+- Are in sound-sensitive environments
+- Have accessibility needs
+- Want to skim for specific information
+
+### Content Longevity
+Blog posts have longer shelf lives in search results compared to videos, which can get buried in recommendation algorithms.
+
+## Best Practices for Video-to-Blog Conversion
+
+### 1. Edit the AI Output
+Always review and customize the generated content:
+- Add your unique insights
+- Include relevant internal links
+- Insert images and visual breaks
+- Optimize for your target keywords
+
+### 2. Enhance SEO Elements
+- Write a compelling meta description
+- Add proper heading hierarchy
+- Include alt text for images
+- Add FAQ schema when relevant
+
+### 3. Link Back to the Original Video
+Embed or link to your YouTube video within the blog post to drive views and watch time.
+
+### 4. Update and Refresh
+Periodically update blog posts with new information to maintain search rankings.
+
+## Common Use Cases
+
+**Tutorial Videos** → Step-by-step how-to guides
+**Product Reviews** → Detailed comparison articles
+**Interviews** → Q&A format blog posts
+**Webinars** → Educational long-form content
+**Case Studies** → Success story articles
+
+## Start Converting Videos to Blog Posts
+
+Ready to repurpose your YouTube content?
+
+**[Try the Free YouTube to Blog Post Generator →](/tools/youtube-blog-post-generator)**
+
+Transform your video library into a content empire. Every video you've created is potential blog traffic waiting to happen.
+    `
   }
 ];
 
@@ -845,7 +1014,7 @@ export function getBlogPostBySlug(slug: string): BlogPost | undefined {
   return blogPosts.find(post => post.slug === slug);
 }
 
-export function getBlogPostsByCategory(category: 'inspiration' | 'tutorials' | 'video ai'): BlogPost[] {
+export function getBlogPostsByCategory(category: 'inspiration' | 'tutorials' | 'video ai' | 'productivity tips'): BlogPost[] {
   return blogPosts
     .filter(post => post.category === category)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
