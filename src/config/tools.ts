@@ -3,8 +3,8 @@ import type { ToolConfig } from '../types/workflow';
 // Tool 1: YouTube Content Brief Generator
 export const youtubeContentBriefTool: ToolConfig = {
   tool_id: "youtube-content-brief",
-  seo_title: "YouTube Video Script & Outline Generator | Free Content Brief",
-  seo_description: "Stop staring at a blank page. Generate data-backed YouTube video outlines, hooks, and call-to-action scripts in seconds.",
+  seo_title: "Transcript for YouTube Videos | YT Video to Text Converter",
+  seo_description: "Extract transcript for YouTube videos instantly. Free YouTube video to text converter that generates comprehensive content briefs, key takeaways, and actionable insights from any video.",
   category: "YouTube Tools",
   inputs: [
     {
@@ -115,8 +115,8 @@ Please provide the brief in {language}.`
 // Tool 2: YouTube Blog Post Generator
 export const youtubeBlogPostTool: ToolConfig = {
   tool_id: "youtube-blog-post-generator",
-  seo_title: "YouTube to Blog Post Converter | AI Article Writer - RandomPrompts",
-  seo_description: "Convert YouTube videos into SEO-optimized blog posts in seconds. Our AI extracts transcripts and formats them into high-quality articles.",
+  seo_title: "YouTube Transcript Blog Post | Video Transcript Download & Convert",
+  seo_description: "Convert YouTube video transcripts into SEO-optimized blog posts instantly. Download YouTube transcript and transform it into professional articles with our free AI converter.",
   category: "YouTube Tools",
   inputs: [
     {
@@ -241,8 +241,8 @@ Write the entire blog post in {language}.
 // Tool 3: YouTube LinkedIn Post Generator
 export const youtubeLinkedInPostTool: ToolConfig = {
   tool_id: "youtube-linkedin-post-generator",
-  seo_title: "YouTube to LinkedIn Post Generator | Viral Hook Writer",
-  seo_description: "Generate high-engagement LinkedIn posts from your YouTube videos. Create threads, carousels, and thought leadership posts instantly.",
+  seo_title: "Get Transcript of YouTube Video | Convert to LinkedIn Post",
+  seo_description: "Get a transcript of any YouTube video and convert it to engaging LinkedIn posts instantly. Extract YouTube video content and transform into professional LinkedIn updates for maximum engagement.",
   category: "YouTube Tools",
   inputs: [
     {
@@ -387,8 +387,8 @@ Write all posts in {language}.
 // Tool 4: YouTube Content Repurposing Workflow (All-in-One)
 export const youtubeRepurposingWorkflowTool: ToolConfig = {
   tool_id: "youtube-to-blog-and-linkedin",
-  seo_title: "AI Content Repurposing Workflow | Video to Blog & LinkedIn",
-  seo_description: "The ultimate creator workflow. Turn one YouTube video into a blog post, LinkedIn update, and newsletter draft simultaneously.",
+  seo_title: "YouTube Transcript Generator | Convert Video to Blog & LinkedIn Post",
+  seo_description: "Free YouTube transcript generator that converts videos to SEO-optimized blog posts and LinkedIn content. Extract transcript from YouTube videos and repurpose into multiple content formats instantly.",
   category: "YouTube Workflows",
   inputs: [
     {

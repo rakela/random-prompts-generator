@@ -163,7 +163,7 @@ export const seoData: Record<string, SEOData> = {
     keywords: 'random paragraph generator, paragraph generator, random text generator, writing practice, creative writing exercises'
   },
   randomSentenceGenerator: {
-    path: 'random-sentence-generator',
+    path: 'generators/sentence',
     title: 'Random Sentence Generator | Random Prompts',
     description: 'Create random sentences for writing warmups, ESL practice, and creativity boosts. Free random sentence generator for writers and learners.',
     keywords: 'random sentence generator, sentence generator, random sentences, writing warmup, creative sentences'
@@ -266,13 +266,13 @@ export const seoData: Record<string, SEOData> = {
     keywords: 'art style generator, art styles, drawing styles, illustration styles, ai art styles'
   },
   randomPhotographyPromptGenerator: {
-    path: 'random-photography-prompt-generator',
+    path: 'art-prompts/photography',
     title: 'Random Photography Prompt Generator | Random Prompts',
     description: 'Generate random photography prompts with subjects, locations, and lighting ideas. Free photo prompt generator for creators and AI images.',
     keywords: 'photography prompts, photo ideas, photography generator, photo shoot ideas, camera prompts'
   },
   randomCharacterDesignPromptGenerator: {
-    path: 'random-character-design-prompt-generator',
+    path: 'art-prompts/character-design',
     title: 'Random Character Design Prompt Generator | Random Prompts',
     description: 'Create random character design prompts for outfits, poses, and personalities. Perfect for concept artists and AI character generation.',
     keywords: 'character design prompts, character design generator, concept art prompts, character art ideas, visual character design'
@@ -296,7 +296,7 @@ export const seoData: Record<string, SEOData> = {
     keywords: 'fantasy art prompts, fantasy prompts, magical art, fantasy creatures, medieval art prompts'
   },
   randomAnimePromptGenerator: {
-    path: 'random-anime-prompt-generator',
+    path: 'art-prompts/anime',
     title: 'Random Anime Prompt Generator | Random Prompts',
     description: 'Create random anime prompts for characters, scenes, and aesthetics. Free anime prompt generator for artists and AI anime images.',
     keywords: 'anime prompts, anime generator, anime art prompts, manga prompts, anime character ideas'
@@ -321,7 +321,7 @@ export const seoData: Record<string, SEOData> = {
     keywords: 'fantasy name generator, fantasy names, character names, place names, dnd names'
   },
   randomObjectGenerator: {
-    path: 'random-object-generator',
+    path: 'generators/object',
     title: 'Random Object Generator | Random Prompts',
     description: 'Get random objects to spark story ideas, drawing prompts, and writing exercises. Free random object generator for creatives and teachers.',
     keywords: 'random object generator, object prompts, random items, creative objects, drawing objects'

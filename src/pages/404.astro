@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AstroHeader from '../components/AstroHeader.astro';
+import AstroFooter from '../components/AstroFooter.astro';
+
+const seo = {
+  title: '404 - Page Not Found | Random Prompts Generator',
+  description: 'The page you are looking for could not be found. Explore our AI-powered tools for content creation, writing prompts, and art generation.',
+  keywords: 'random prompts, AI tools, writing prompts, art generator',
+  path: '404'
+};
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+
+  <div class="min-h-[70vh] flex items-center justify-center bg-gradient-to-b from-gray-50 to-white px-4 py-16">
+    <div class="max-w-3xl mx-auto text-center">
+      <!-- 404 Graphic -->
+      <div class="mb-8">
+        <svg class="w-32 h-32 mx-auto text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      </div>
+
+      <!-- Title -->
+      <h1 class="text-6xl md:text-7xl font-bold text-gray-900 mb-4">
+        404
+      </h1>
+
+      <p class="text-2xl md:text-3xl font-semibold text-gray-700 mb-4">
+        Page Not Found
+      </p>
+
+      <p class="text-lg text-gray-600 mb-12 max-w-2xl mx-auto">
+        Oops! The page you're looking for doesn't exist. It might have been moved or deleted. Let's get you back on track.
+      </p>
+
+      <!-- Quick Links -->
+      <div class="grid md:grid-cols-3 gap-6 mb-12">
+        <!-- Home Link -->
+        <a href="/" class="group bg-white border-2 border-gray-200 hover:border-blue-500 rounded-xl p-6 transition-all duration-300 hover:shadow-lg">
+          <div class="bg-blue-100 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-600 transition-colors">
+            <svg class="w-6 h-6 text-blue-600 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Go Home</h3>
+          <p class="text-sm text-gray-600">Return to homepage</p>
+        </a>
+
+        <!-- Tools Link -->
+        <a href="/tools" class="group bg-white border-2 border-gray-200 hover:border-purple-500 rounded-xl p-6 transition-all duration-300 hover:shadow-lg">
+          <div class="bg-purple-100 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-purple-600 transition-colors">
+            <svg class="w-6 h-6 text-purple-600 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">AI Tools</h3>
+          <p class="text-sm text-gray-600">Explore our tools</p>
+        </a>
+
+        <!-- Writing Prompts Link -->
+        <a href="/writing-prompts-generator" class="group bg-white border-2 border-gray-200 hover:border-green-500 rounded-xl p-6 transition-all duration-300 hover:shadow-lg">
+          <div class="bg-green-100 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-green-600 transition-colors">
+            <svg class="w-6 h-6 text-green-600 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Writing Prompts</h3>
+          <p class="text-sm text-gray-600">Get inspired</p>
+        </a>
+      </div>
+
+      <!-- Popular Pages -->
+      <div class="bg-gray-50 rounded-xl p-8 border border-gray-200">
+        <h2 class="text-xl font-semibold text-gray-900 mb-6">Popular Pages</h2>
+        <div class="grid md:grid-cols-2 gap-3 text-left">
+          <a href="/tools/text-to-prompt" class="text-blue-600 hover:text-blue-700 hover:underline flex items-center gap-2">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>
+            Prompt Expander & Logic
+          </a>
+          <a href="/tools/image-to-prompt" class="text-blue-600 hover:text-blue-700 hover:underline flex items-center gap-2">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>
+            Image Analyzer
+          </a>
+          <a href="/tools/video-ai-generation" class="text-blue-600 hover:text-blue-700 hover:underline flex items-center gap-2">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>
+            Video AI Prompts
+          </a>
+          <a href="/workflows/youtube-to-blog-and-linkedin" class="text-blue-600 hover:text-blue-700 hover:underline flex items-center gap-2">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>
+            YouTube Transcript Generator
+          </a>
+          <a href="/art-prompts/portrait" class="text-blue-600 hover:text-blue-700 hover:underline flex items-center gap-2">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>
+            AI Portrait Generator
+          </a>
+          <a href="/generators" class="text-blue-600 hover:text-blue-700 hover:underline flex items-center gap-2">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>
+            All Generators
+          </a>
+        </div>
+      </div>
+
+      <!-- Back Button -->
+      <div class="mt-12">
+        <button
+          onclick="history.back()"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-semibold shadow-md hover:shadow-lg"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          Go Back
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <AstroFooter />
+</BaseLayout>
