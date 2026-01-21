@@ -29,9 +29,23 @@ const seo = {
   canonical: `https://randomprompts.org/blog/${post.slug}`
 };
 
+// Extract featured image (first image in content)
+const firstImageMatch = post.content.match(/!\[([^\]]*)\]\(([^)]+)\)/);
+const featuredImage = firstImageMatch ? firstImageMatch[2] : null;
+
 // Convert content to HTML (basic markdown-like conversion)
-const contentHtml = post.content
-  .replace(/^# (.+)$/gm, '<h1 class="text-4xl font-bold text-gray-900 mb-6">$1</h1>')
+// Remove first H1 and first image from content since they're displayed separately
+let contentForProcessing = post.content;
+
+// Remove the first H1 (main title)
+contentForProcessing = contentForProcessing.replace(/^# .+$/m, '');
+
+// Remove the first image (featured image)
+if (firstImageMatch) {
+  contentForProcessing = contentForProcessing.replace(firstImageMatch[0], '');
+}
+
+const contentHtml = contentForProcessing
   .replace(/^## (.+)$/gm, '<h2 class="text-3xl font-bold text-gray-900 mt-12 mb-4">$1</h2>')
   .replace(/^### (.+)$/gm, '<h3 class="text-2xl font-bold text-gray-900 mt-8 mb-3">$1</h3>')
   .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" class="rounded-lg my-6 w-full" />')
@@ -99,11 +113,23 @@ const contentHtml = post.content
       </div>
     </div>
 
+    <!-- Featured Image -->
+    {featuredImage && (
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8">
+        <img
+          src={featuredImage}
+          alt={post.title}
+          class="rounded-lg shadow-lg w-full object-cover"
+          style="max-height: 400px;"
+        />
+      </div>
+    )}
+
     <!-- Article Content -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <div class="flex flex-col lg:flex-row gap-8">
         <!-- Main Content -->
-        <div class="lg:col-span-8">
+        <div class="lg:w-[70%]">
           <div class="prose prose-lg max-w-none">
             <p class="text-gray-700 leading-relaxed mb-4" set:html={contentHtml} />
           </div>
@@ -139,7 +165,7 @@ const contentHtml = post.content
         </div>
 
         <!-- Sidebar -->
-        <aside class="lg:col-span-4">
+        <aside class="lg:w-[30%]">
           <!-- Try Our Tools Widget -->
           <div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-lg p-6 mb-8 sticky top-4">
             <h3 class="text-xl font-bold text-gray-900 mb-4">Try Our Tools</h3>
