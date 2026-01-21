@@ -2,7 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import AstroHeader from '../../components/AstroHeader.astro';
 import AstroFooter from '../../components/AstroFooter.astro';
-import { getAllBlogPosts, getBlogPostsByCategory } from '../../data/blogPosts';
+import { getAllBlogPosts, getBlogPostsByCategory, extractFirstImage } from '../../data/blogPosts';
 
 const allPosts = getAllBlogPosts();
 
@@ -54,16 +54,27 @@ const seo = {
   <!-- Blog Posts Grid -->
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="posts-grid">
-      {allPosts.map((post) => (
+      {allPosts.map((post) => {
+        const firstImage = extractFirstImage(post.content);
+        return (
         <article class="post-card bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-xl transition-shadow duration-300" data-category={post.category}>
           <a href={`/blog/${post.slug}`} class="block">
             <!-- Featured Image -->
-            <div class="aspect-video bg-gradient-to-br from-blue-100 to-purple-100 relative">
-              <div class="absolute inset-0 flex items-center justify-center">
-                <svg class="w-16 h-16 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
-                </svg>
-              </div>
+            <div class="aspect-video bg-gradient-to-br from-blue-100 to-purple-100 relative overflow-hidden">
+              {firstImage ? (
+                <img
+                  src={firstImage}
+                  alt={post.title}
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              ) : (
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <svg class="w-16 h-16 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                  </svg>
+                </div>
+              )}
               <!-- Category Badge -->
               <div class="absolute top-3 left-3">
                 <span class={`px-3 py-1 rounded-full text-xs font-bold ${
@@ -100,7 +111,8 @@ const seo = {
             </div>
           </a>
         </article>
-      ))}
+        );
+      })}
     </div>
 
     <!-- Empty State -->
