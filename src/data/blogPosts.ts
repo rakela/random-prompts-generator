@@ -1023,3 +1023,10 @@ export function getBlogPostsByCategory(category: 'inspiration' | 'tutorials' | '
 export function getRecentBlogPosts(limit: number = 3): BlogPost[] {
   return getAllBlogPosts().slice(0, limit);
 }
+
+// Extract first image from blog post content
+export function extractFirstImage(content: string): string | null {
+  const imageRegex = /!\[([^\]]*)\]\(([^)]+)\)/;
+  const match = content.match(imageRegex);
+  return match ? match[2] : null;
+}
