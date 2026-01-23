@@ -1002,6 +1002,90 @@ Ready to repurpose your YouTube content?
 
 Transform your video library into a content empire. Every video you've created is potential blog traffic waiting to happen.
     `
+  },
+  {
+    slug: "youtube-to-linkedin-post-generator",
+    title: "YouTube to LinkedIn Post Generator (Free AI Tool)",
+    excerpt: "Turn any YouTube video into multiple LinkedIn posts in seconds. Extract hooks, insights, and formats automatically with this free AI tool.",
+    category: "productivity tips",
+    author: "Random Prompts Team",
+    date: "2026-01-23",
+    featuredImage: "/images/blog/youtube-to-linkedin-tool.jpg",
+    readTime: "5 min read",
+    content: `
+# YouTube to LinkedIn Post Generator (Free AI Tool)
+
+![YouTube to LinkedIn conversion interface](/images/blog/youtube-to-linkedin-tool.jpg)
+
+Writing LinkedIn posts from scratch is slow — especially when you already have long YouTube videos.
+
+This free YouTube to LinkedIn Post Generator turns any video into multiple LinkedIn-ready posts in seconds by extracting the transcript and generating viral-style hooks.
+
+Paste a YouTube link. Get posts. Publish.
+
+**[Try the YouTube to LinkedIn Generator →](/tools/youtube-linkedin-post-generator)**
+
+## What This Tool Does
+
+The YouTube to LinkedIn Generator:
+
+✅ **Extracts the YouTube transcript automatically**
+
+✅ **Identifies key ideas and hooks**
+
+✅ **Generates multiple LinkedIn post variations**
+
+✅ **Formats content for LinkedIn tone and length**
+
+Perfect for creators, founders, and marketers repurposing video content.
+
+## How to Use the YouTube to LinkedIn Generator
+
+### Step 1: Paste the YouTube URL
+Add the link to any public YouTube video.
+
+### Step 2: Generate LinkedIn posts
+The AI analyzes the transcript and creates multiple post formats:
+- Hook-based insight
+- Short story
+- Lesson learned
+- Question-style engagement post
+- Contrarian take
+
+### Step 3: Copy & publish on LinkedIn
+Edit lightly if needed and post immediately.
+
+🔗 **[Try the YouTube to LinkedIn Generator free](/tools/youtube-linkedin-post-generator)**
+
+## Example Output (From One Video)
+
+![Example LinkedIn posts generated from YouTube video](/images/blog/youtube-to-linkedin-examples.jpg)
+
+From a single YouTube video, you can generate:
+- 5 different LinkedIn post angles
+- Clean, readable formatting
+- Natural, non-robotic language
+
+This saves hours of manual writing.
+
+## Who This Tool Is For
+
+- **YouTubers growing on LinkedIn**
+- **Founders building a personal brand**
+- **Marketers recycling video content**
+- **Anyone posting consistently on LinkedIn**
+
+## Common Use Cases
+
+- **YouTube → LinkedIn content recycling**
+- **Podcast videos → LinkedIn posts**
+- **Educational videos → professional insights**
+- **Thought leadership content repurposing**
+
+## Stop Rewriting Videos Manually
+
+👉 **[Generate LinkedIn posts from YouTube in seconds](/tools/youtube-linkedin-post-generator)**
+    `
   }
 ];
 

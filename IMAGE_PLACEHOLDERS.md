@@ -73,3 +73,39 @@ The blog post has been added to:
 
 URL will be:
 `https://randomprompts.org/blog/free-youtube-to-blog-post-generator`
+
+---
+
+# Image Placeholders for Blog Post: "YouTube to LinkedIn Post Generator"
+
+The following images need to be added to the `/public/images/blog/` directory:
+
+## Required Images
+
+### 1. YouTube to LinkedIn Tool Interface
+**Path:** `/public/images/blog/youtube-to-linkedin-tool.jpg`
+**Recommended size:** 1200x630px
+**Description:** Screenshot showing the YouTube to LinkedIn conversion interface:
+- YouTube URL input field
+- Generate button
+- Clean, professional UI
+- LinkedIn branding elements
+
+### 2. Example Output Preview
+**Path:** `/public/images/blog/youtube-to-linkedin-examples.jpg`
+**Recommended size:** 1200x800px
+**Description:** Screenshots of example LinkedIn posts generated from a YouTube video:
+- Multiple post variations displayed
+- Different angles/hooks shown
+- Clean formatting
+- Professional LinkedIn post styling
+
+---
+
+## Blog Post Location
+
+The blog post has been added to:
+`/src/data/blogPosts.ts`
+
+URL will be:
+`https://randomprompts.org/blog/youtube-to-linkedin-post-generator`
