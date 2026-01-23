@@ -1,4 +1,5 @@
 import categoryPrompts from '../data/categoryPrompts.json';
+import { getAllBlogPosts } from '../data/blogPosts';
 
 const SITE_URL = 'https://randomprompts.org';
 
@@ -134,8 +135,17 @@ export async function GET(context) {
     lastmod: today
   }));
 
+  // Generate blog post pages
+  const blogPosts = getAllBlogPosts();
+  const blogPages = blogPosts.map(post => ({
+    url: `blog/${post.slug}`,
+    changefreq: 'monthly',
+    priority: '0.8',
+    lastmod: post.date || today
+  }));
+
   // Combine all pages
-  const allPages = [...staticPages, ...categoryPages];
+  const allPages = [...staticPages, ...categoryPages, ...blogPages];
 
   // Generate XML
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
