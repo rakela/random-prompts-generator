@@ -109,3 +109,41 @@ The blog post has been added to:
 
 URL will be:
 `https://randomprompts.org/blog/youtube-to-linkedin-post-generator`
+
+---
+
+# Image Placeholders for Blog Post: "Prompt Expander: Turn Short Prompts into Detailed AI Instructions"
+
+The following images need to be added to the `/public/images/blog/` directory:
+
+## Required Images
+
+### 1. Prompt Expander Tool Interface
+**Path:** `/public/images/blog/prompt-expander-tool.jpg`
+**Recommended size:** 1200x630px
+**Description:** Screenshot showing the Prompt Expander tool interface:
+- Text input field with short prompt example
+- "Expand Prompt" button
+- Before/After comparison showing transformation
+- Clean, professional UI design
+- Tool branding elements
+
+### 2. Prompt Expansion Examples
+**Path:** `/public/images/blog/prompt-expander-examples.jpg`
+**Recommended size:** 1200x800px
+**Description:** Visual examples showing prompt transformations:
+- Side-by-side comparisons of short vs expanded prompts
+- Multiple use cases (content writing, design, business)
+- Arrows or visual flow showing transformation
+- Readable text that demonstrates the expansion quality
+- Professional layout with clear visual hierarchy
+
+---
+
+## Blog Post Location
+
+The blog post has been added to:
+`/src/data/blogPosts.ts`
+
+URL will be:
+`https://randomprompts.org/blog/prompt-expander-turn-short-prompts-into-detailed-ai-instructions`
