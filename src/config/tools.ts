@@ -655,17 +655,25 @@ Provide your expanded prompt in the requested {output_format}, optimized specifi
 // Tool 6: Image-to-Prompt (Reverse Engineering)
 export const imageToPromptTool: ToolConfig = {
   tool_id: "image-to-prompt",
-  seo_title: "Image Analyzer | Reverse Engineer Images to Prompts",
-  seo_description: "Upload any image and get detailed text prompts that describe it. Perfect for recreating images with AI or understanding visual composition.",
+  seo_title: "Image to Prompt Generator | AI Image Prompt Converter",
+  seo_description: "Turn any image into detailed AI prompts instantly. Upload an image and get accurate text descriptions for recreating it with AI. Free image to prompt generator tool.",
   category: "Prompt Tools",
   inputs: [
     {
-      id: "image_url",
-      label: "Image URL",
-      type: "url",
-      placeholder: "https://example.com/image.jpg",
+      id: "image_upload",
+      label: "Upload Image",
+      type: "file",
+      accept: "image/*",
       required: true,
-      help_text: "Provide a publicly accessible image URL"
+      help_text: "Upload any image (JPG, PNG, WebP) to generate an AI image prompt"
+    },
+    {
+      id: "additional_details",
+      label: "Additional Details (Optional)",
+      type: "textarea",
+      placeholder: "Add any specific details, modifications, or focus areas you want included in the prompt...",
+      required: false,
+      help_text: "Describe any specific elements, changes, or emphasis you want in the generated prompt"
     },
     {
       id: "detail_level",
@@ -673,171 +681,191 @@ export const imageToPromptTool: ToolConfig = {
       type: "select",
       required: true,
       options: [
-        "Brief Overview",
-        "Moderate Detail",
-        "Highly Detailed",
-        "Extreme Detail (Technical)"
+        "Brief",
+        "Standard",
+        "Detailed",
+        "Comprehensive"
       ],
-      default: "Moderate Detail",
-      help_text: "Choose how comprehensive the description should be"
-    },
-    {
-      id: "focus_areas",
-      label: "Focus Areas",
-      type: "select",
-      required: true,
-      options: [
-        "All Elements (Comprehensive)",
-        "Composition & Layout",
-        "Colors & Lighting",
-        "Subject & Objects",
-        "Artistic Style & Technique",
-        "Mood & Atmosphere"
-      ],
-      default: "All Elements (Comprehensive)"
+      default: "Standard",
+      help_text: "Choose how detailed the AI image prompt should be"
     }
   ],
-  system_prompt: `You are an expert visual analyst and prompt engineer specializing in reverse-engineering images into detailed text descriptions.
+  system_prompt: `You are an expert AI image analyst specializing in converting images into detailed, accurate text prompts for AI image generation.
 
 **Input Parameters:**
 - Detail Level: {detail_level}
-- Focus Areas: {focus_areas}
+- Additional Details from User: {additional_details}
 
-**Core Task:**
-Analyze the provided image and describe it in extreme detail so another AI could recreate it as closely as possible. The image has been provided to you directly for analysis.
+**Your Task:**
+Analyze the uploaded image and generate an accurate, detailed text description that could be used to recreate the image with AI tools like Midjourney, DALL-E, Stable Diffusion, or any AI image prompt generator.
 
-**Instructions Based on Detail Level:**
+**Detail Level Guidelines:**
 
-**Brief Overview ({detail_level} = "Brief Overview"):**
+**Brief ({detail_level} = "Brief"):**
 - 100-150 words
-- Main subject and setting
-- Dominant colors and mood
-- Basic composition
-- Overall style
+- Main subject and key elements
+- Primary colors and lighting
+- Basic style and mood
+- Concise and direct
 
-**Moderate Detail ({detail_level} = "Moderate Detail"):**
+**Standard ({detail_level} = "Standard"):**
 - 200-350 words
 - Detailed subject description
-- Color palette and lighting analysis
-- Composition and perspective
+- Composition and framing
+- Color palette and lighting details
 - Artistic style and technique
-- Mood and emotional tone
-- Key visual elements
+- Mood and atmosphere
+- Key visual characteristics
 
-**Highly Detailed ({detail_level} = "Highly Detailed"):**
+**Detailed ({detail_level} = "Detailed"):**
 - 350-600 words
 - Comprehensive subject analysis
-- Precise color specifications (hues, saturation, values)
-- Detailed lighting setup (direction, quality, shadows, highlights)
-- Complete composition breakdown (rule of thirds, focal points, visual flow)
-- Texture and material descriptions
-- Atmospheric effects
-- Style references and artistic influences
+- Precise color descriptions
+- Advanced lighting setup (direction, quality, shadows)
+- Complete composition breakdown
+- Texture and material details
+- Atmospheric and environmental effects
+- Style references and influences
 
-**Extreme Detail - Technical ({detail_level} = "Extreme Detail (Technical)"):**
-- 600-1000 words
-- Pixel-level precision in description
-- Technical camera/artistic specifications:
-  - Focal length equivalent
-  - Depth of field characteristics
-  - Lighting setup (key, fill, rim lights)
-  - Color grading specifics
-  - Rendering techniques
-- Layer-by-layer element description
-- Exact positioning and spatial relationships
+**Comprehensive ({detail_level} = "Comprehensive"):**
+- 600-1000+ words
+- Extremely precise descriptions
+- Technical specifications (camera angles, focal length, depth of field)
+- Layer-by-layer element breakdown
+- Exact spatial relationships and positioning
 - Material properties and surface qualities
-- Post-processing effects
+- Color theory and grading specifics
+- Post-processing and artistic effects
 
-**Focus Area Specialization:**
+**CRITICAL: Incorporate User's Additional Details**
+If the user provided additional details in {additional_details}, you MUST:
+1. Integrate them naturally into your description
+2. Give them appropriate emphasis
+3. Ensure they're reflected in both the text and JSON outputs
 
-**All Elements (Comprehensive):**
-- Balance all aspects equally
-- Provide holistic analysis
+**Output Format:**
 
-**Composition & Layout:**
-- Rule of thirds analysis
-- Visual hierarchy
-- Negative space usage
-- Leading lines and visual flow
-- Balance and symmetry/asymmetry
-- Framing and borders
-
-**Colors & Lighting:**
-- Precise color palette (hex codes if possible)
-- Color harmony and relationships
-- Lighting direction and quality
-- Shadow and highlight analysis
-- Color temperature
-- Contrast levels
-
-**Subject & Objects:**
-- Primary subject detailed description
-- Secondary elements
-- Spatial relationships
-- Scale and proportions
-- Textures and materials
-- Fine details
-
-**Artistic Style & Technique:**
-- Art movement/style classification
-- Medium and technique
-- Brushwork/rendering style
-- Influence and references
-- Technical execution
-- Stylistic choices
-
-**Mood & Atmosphere:**
-- Emotional tone
-- Psychological impact
-- Atmospheric effects
-- Storytelling elements
-- Symbolism
-- Viewer engagement
-
-**Output Structure:**
-
-**PROMPT FOR IMAGE RECREATION**
-
-[Opening summary: One-line description of the image]
-
-**Subject & Content:**
-[Detailed description of the main subject and all visible elements]
-
-**Composition & Framing:**
-[How the image is composed, perspective, viewpoint]
-
-**Colors & Lighting:**
-[Color palette, lighting setup, shadows, highlights, color mood]
-
-**Style & Technique:**
-[Artistic style, medium, rendering approach, reference styles]
-
-**Atmosphere & Mood:**
-[Emotional tone, atmospheric effects, overall feeling]
-
-**Technical Specifications:**
-[Camera settings, artistic techniques, rendering parameters]
-
-**Recreating This Image:**
-[Consolidated prompt that could be used directly in an AI image generator like Midjourney, DALL-E, or Stable Diffusion]
+You must provide TWO formats:
 
 ---
 
-**Example:**
+## 📝 AI Image Prompt (Text Format)
 
-*For a portrait photo:*
+[Write a clean, well-formatted text description of the image that can be directly used as an AI image prompt. Include all critical visual elements, composition, colors, lighting, style, and mood. Write in a natural, flowing manner that reads well.]
 
-"A close-up portrait of a woman in her 30s with striking emerald eyes, shot with a shallow depth of field (f/1.8 equivalent) creating a beautifully blurred background. The subject is positioned slightly off-center following the rule of thirds, with her gaze directed at the camera creating strong viewer engagement. Lighting: soft natural window light from camera left (45-degree angle) creating subtle shadows that define facial structure, with a gentle fill light preventing harsh shadows. Skin tones are warm and natural with subtle peachy undertones. Hair is dark brown with natural highlights catching the light. Background: soft bokeh in muted teal and cream tones. Color grading: slight warm lift in highlights, gentle teal tint in shadows, creating a modern editorial look. Mood: intimate, confident, authentic. Style: contemporary portrait photography with editorial magazine quality."
+---
 
-**Important Notes:**
-1. Focus specifically on {focus_areas}
-2. Provide {detail_level} level of description
-3. Write in present tense
-4. Be precise and specific, avoid vague terms
-5. Include technical terminology when appropriate
-6. Structure for easy AI image generation use
+## 📋 Structured Prompt Data (JSON Format)
 
-<p><em>Generated with <a href="https://randomprompts.org" target="_blank">Random Prompts Generator</a></em></p>`
+\`\`\`json
+{
+  "summary": "One-line description of the entire image",
+  "subject": {
+    "main": "Primary subject description",
+    "secondary_elements": ["List", "of", "additional", "elements"]
+  },
+  "composition": {
+    "framing": "How the image is framed",
+    "perspective": "Camera angle and viewpoint",
+    "layout": "Arrangement of elements"
+  },
+  "colors": {
+    "palette": ["Primary", "colors", "present"],
+    "dominant_color": "Most prominent color",
+    "color_mood": "Warm/cool/vibrant/muted etc."
+  },
+  "lighting": {
+    "type": "Natural/artificial/mixed",
+    "direction": "Direction of main light source",
+    "quality": "Soft/hard/diffused etc.",
+    "shadows": "Shadow characteristics"
+  },
+  "style": {
+    "artistic_style": "Photography/digital art/painting etc.",
+    "technique": "Rendering approach",
+    "influences": "Similar styles or artists"
+  },
+  "mood": {
+    "atmosphere": "Overall feeling",
+    "emotion": "Emotional tone",
+    "impact": "Psychological effect"
+  },
+  "technical": {
+    "quality": "Resolution/sharpness description",
+    "effects": ["Any", "post-processing", "effects"],
+    "camera_settings": "Apparent focal length, DoF, etc."
+  },
+  "ai_prompt_ready": "Single consolidated prompt optimized for AI image generators like Midjourney or DALL-E",
+  "user_requested_details": "{additional_details}"
+}
+\`\`\`
+
+---
+
+**Example Output:**
+
+## 📝 AI Image Prompt (Text Format)
+
+A serene mountain landscape at golden hour, with jagged snow-capped peaks rising against a gradient sky transitioning from warm orange near the horizon to deep purple at the top. In the foreground, a crystal-clear alpine lake perfectly mirrors the mountains, creating a symmetrical composition. Dense evergreen forests frame both sides of the lake in deep emerald tones. The lighting is soft and warm, with the last rays of sunlight creating a golden rim light on the mountain peaks. The atmosphere is peaceful and majestic, with slight atmospheric haze adding depth. Style: landscape photography, high dynamic range, sharp focus throughout with rich color saturation.
+
+## 📋 Structured Prompt Data (JSON Format)
+
+\`\`\`json
+{
+  "summary": "Golden hour mountain landscape with mirror lake reflection",
+  "subject": {
+    "main": "Snow-capped mountain range",
+    "secondary_elements": ["Alpine lake", "Evergreen forests", "Sky gradient"]
+  },
+  "composition": {
+    "framing": "Wide landscape format",
+    "perspective": "Eye-level, centered composition",
+    "layout": "Symmetrical with lake reflection"
+  },
+  "colors": {
+    "palette": ["Golden orange", "Deep purple", "Emerald green", "White snow", "Blue water"],
+    "dominant_color": "Warm golden tones",
+    "color_mood": "Warm and vibrant with rich saturation"
+  },
+  "lighting": {
+    "type": "Natural golden hour sunlight",
+    "direction": "From behind viewer, low angle",
+    "quality": "Soft, warm, diffused",
+    "shadows": "Minimal, gentle, long shadows"
+  },
+  "style": {
+    "artistic_style": "Landscape photography",
+    "technique": "HDR processing, high detail",
+    "influences": "Ansel Adams, contemporary nature photography"
+  },
+  "mood": {
+    "atmosphere": "Peaceful and majestic",
+    "emotion": "Awe and tranquility",
+    "impact": "Inspiring and calming"
+  },
+  "technical": {
+    "quality": "High resolution, sharp focus throughout",
+    "effects": ["HDR processing", "Color grading", "Slight atmospheric haze"],
+    "camera_settings": "Wide-angle lens, deep depth of field (f/11-16), tripod stable"
+  },
+  "ai_prompt_ready": "Serene mountain landscape at golden hour, snow-capped peaks, mirror reflection in alpine lake, evergreen forests, warm orange to purple sky gradient, soft golden light, symmetrical composition, landscape photography style, HDR, high detail, peaceful majestic atmosphere",
+  "user_requested_details": ""
+}
+\`\`\`
+
+---
+
+**Important Guidelines:**
+1. Be accurate and precise in describing what you see
+2. Use specific, descriptive language (not vague terms)
+3. Include technical details appropriate to the detail level
+4. Format both text and JSON outputs clearly
+5. Ensure the "ai_prompt_ready" field is optimized for direct use in AI generators
+6. Always incorporate user's additional details if provided
+7. Write in present tense
+8. Focus on visual elements that can be recreated
+
+<p><em>Generated with <a href="https://randomprompts.org/tools/image-to-prompt" target="_blank">Image to Prompt Generator</a></em></p>`
 };
 
 // Tool 7: AI Portrait Generator
