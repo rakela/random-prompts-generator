@@ -81,10 +81,14 @@ export const POST: APIRoute = async ({ request }) => {
 
     console.log(`[run-tool] Credit check passed. Credits: ${credits}, Pro: ${isPro}`);
 
-    // Sanitize all inputs
+    // Sanitize all inputs (skip sanitization for base64 image data)
     const sanitizedInputs: Record<string, string> = {};
     for (const [key, value] of Object.entries(inputs)) {
-      sanitizedInputs[key] = sanitizeInput(value);
+      if (key === 'image_upload' && value.startsWith('data:image/')) {
+        sanitizedInputs[key] = value;
+      } else {
+        sanitizedInputs[key] = sanitizeInput(value);
+      }
     }
 
     // Validate required inputs
@@ -194,10 +198,24 @@ export const POST: APIRoute = async ({ request }) => {
       maxTokens: 4000
     };
 
-    // If this is the image-to-prompt tool, pass the image URL for vision API
-    if (tool_id === 'image-to-prompt' && sanitizedInputs.image_url) {
-      llmRequest.imageUrl = sanitizedInputs.image_url;
-      console.log(`[run-tool] Using vision API with image: ${sanitizedInputs.image_url}`);
+    // If this is the image-to-prompt tool, extract base64 image data for vision API
+    if (tool_id === 'image-to-prompt' && sanitizedInputs.image_upload) {
+      const dataUrl = sanitizedInputs.image_upload;
+      const matches = dataUrl.match(/^data:(image\/[^;]+);base64,(.+)$/s);
+      if (matches) {
+        llmRequest.imageBase64 = matches[2];
+        llmRequest.imageMediaType = matches[1];
+        console.log(`[run-tool] Using vision API with uploaded image (${matches[1]}, ${Math.round(matches[2].length / 1024)}KB base64)`);
+      } else {
+        console.error(`[run-tool] Invalid image data URL format`);
+        return new Response(
+          JSON.stringify({
+            success: false,
+            error: 'Invalid image format. Please upload a JPG, PNG, or WebP image.'
+          } as RunToolResponse),
+          { status: 400, headers: { 'Content-Type': 'application/json' } }
+        );
+      }
     }
 
     const llmResponse = await callLLM(llmRequest);

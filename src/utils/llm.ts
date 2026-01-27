@@ -11,7 +11,9 @@ export interface LLMRequest {
   temperature?: number;
   maxTokens?: number;
   model?: string;
-  imageUrl?: string; // For vision API calls
+  imageUrl?: string; // For vision API calls (URL-based)
+  imageBase64?: string; // For vision API calls (direct base64 data)
+  imageMediaType?: string; // e.g. 'image/jpeg', 'image/png'
 }
 
 export interface LLMResponse {
@@ -26,13 +28,13 @@ export interface LLMResponse {
  * This is a generic wrapper that can be configured to use different LLM providers
  */
 export async function callLLM(request: LLMRequest): Promise<LLMResponse> {
-  const {
-    systemPrompt,
-    userContent,
-    temperature = 0.7,
-    maxTokens = 4000,
-    model = 'gpt-4-turbo-preview'
-  } = request;
+  // Apply defaults and pass the full request to providers
+  const fullRequest: LLMRequest = {
+    ...request,
+    temperature: request.temperature ?? 0.7,
+    maxTokens: request.maxTokens ?? 4000,
+    model: request.model ?? 'gpt-4-turbo-preview'
+  };
 
   // Determine which provider to use based on environment variables
   const provider = process.env.LLM_PROVIDER || 'openai';
@@ -40,10 +42,10 @@ export async function callLLM(request: LLMRequest): Promise<LLMResponse> {
   try {
     switch (provider.toLowerCase()) {
       case 'openai':
-        return await callOpenAI({ systemPrompt, userContent, temperature, maxTokens, model });
+        return await callOpenAI(fullRequest);
 
       case 'anthropic':
-        return await callAnthropic({ systemPrompt, userContent, temperature, maxTokens, model });
+        return await callAnthropic(fullRequest);
 
       default:
         throw new Error(`Unsupported LLM provider: ${provider}`);
@@ -116,13 +118,28 @@ async function callAnthropic(request: LLMRequest): Promise<LLMResponse> {
     throw new Error('ANTHROPIC_API_KEY environment variable is not set');
   }
 
-  // Prepare message content - handle vision if imageUrl is provided
+  // Prepare message content - handle vision if image data is provided
   let messageContent: any;
 
-  if (request.imageUrl) {
-    // Vision API: content is an array with image and text
+  if (request.imageBase64 && request.imageMediaType) {
+    // Direct base64 image data (from file upload)
+    messageContent = [
+      {
+        type: 'image',
+        source: {
+          type: 'base64',
+          media_type: request.imageMediaType,
+          data: request.imageBase64
+        }
+      },
+      {
+        type: 'text',
+        text: request.userContent
+      }
+    ];
+  } else if (request.imageUrl) {
+    // URL-based image (fetch and convert to base64)
     try {
-      // Fetch the image and convert to base64
       const imageResponse = await fetch(request.imageUrl);
       if (!imageResponse.ok) {
         throw new Error(`Failed to fetch image: ${imageResponse.status} ${imageResponse.statusText}`);
@@ -131,7 +148,6 @@ async function callAnthropic(request: LLMRequest): Promise<LLMResponse> {
       const imageBuffer = await imageResponse.arrayBuffer();
       const base64Image = Buffer.from(imageBuffer).toString('base64');
 
-      // Detect image type from content-type header or URL
       const contentType = imageResponse.headers.get('content-type') || 'image/jpeg';
       const mediaType = contentType.includes('png') ? 'image/png' :
                        contentType.includes('gif') ? 'image/gif' :
@@ -168,7 +184,7 @@ async function callAnthropic(request: LLMRequest): Promise<LLMResponse> {
       'anthropic-version': '2023-06-01'
     },
     body: JSON.stringify({
-      model: request.imageUrl ? 'claude-3-5-sonnet-20241022' : (request.model || 'claude-3-5-sonnet-20241022'),
+      model: (request.imageBase64 || request.imageUrl) ? 'claude-3-5-sonnet-20241022' : (request.model || 'claude-3-5-sonnet-20241022'),
       max_tokens: request.maxTokens || 4000,
       temperature: request.temperature,
       system: request.systemPrompt,

@@ -1,6 +1,6 @@
 import React, { useState, FormEvent, useEffect, useRef } from 'react';
 import type { ToolConfig, RunToolResponse } from '../types/workflow';
-import { Copy, Loader2, CheckCircle, AlertCircle, ChevronDown, ChevronUp, CreditCard, Zap, Lock } from 'lucide-react';
+import { Copy, Loader2, CheckCircle, AlertCircle, ChevronDown, ChevronUp, CreditCard, Zap, Lock, Upload } from 'lucide-react';
 import { getSupabaseBrowserClient } from '../lib/supabaseBrowser';
 
 interface ToolPageProps {
@@ -96,6 +96,20 @@ export default function ToolPage({ tool, freeGenerations = 1 }: ToolPageProps) {
       ...prev,
       [inputId]: value
     }));
+  };
+
+  const handleFileUpload = (inputId: string, file: File) => {
+    // Validate file size (max 10MB)
+    if (file.size > 10 * 1024 * 1024) {
+      setError('File too large. Please upload an image under 10MB.');
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const dataUrl = e.target?.result as string;
+      handleInputChange(inputId, dataUrl);
+    };
+    reader.readAsDataURL(file);
   };
 
   const handleSubmit = async (e: FormEvent) => {
@@ -336,6 +350,46 @@ export default function ToolPage({ tool, freeGenerations = 1 }: ToolPageProps) {
           </select>
         );
 
+      case 'file':
+        return (
+          <div>
+            <div
+              className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center cursor-pointer hover:border-blue-400 transition-colors"
+              onClick={() => document.getElementById(`file-${input.id}`)?.click()}
+              onDragOver={(e) => { e.preventDefault(); e.stopPropagation(); }}
+              onDrop={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const file = e.dataTransfer.files[0];
+                if (file) handleFileUpload(input.id, file);
+              }}
+            >
+              {value ? (
+                <div>
+                  <img src={value} alt="Uploaded preview" className="max-h-48 mx-auto mb-3 rounded-lg" />
+                  <p className="text-sm text-gray-600">Click or drag to replace</p>
+                </div>
+              ) : (
+                <div>
+                  <Upload className="w-10 h-10 text-gray-400 mx-auto mb-3" />
+                  <p className="text-gray-600 font-medium">Click to upload or drag and drop</p>
+                  <p className="text-sm text-gray-400 mt-1">JPG, PNG, WebP supported (max 10MB)</p>
+                </div>
+              )}
+            </div>
+            <input
+              id={`file-${input.id}`}
+              type="file"
+              accept={input.accept || 'image/*'}
+              className="hidden"
+              onChange={(e) => {
+                const file = e.target.files?.[0];
+                if (file) handleFileUpload(input.id, file);
+              }}
+            />
+          </div>
+        );
+
       case 'number':
         return (
           <input
@@ -547,7 +601,7 @@ export default function ToolPage({ tool, freeGenerations = 1 }: ToolPageProps) {
                     Generating...
                   </>
                 ) : (
-                  'Generate Content'
+                  tool.tool_id === 'image-to-prompt' ? 'Generate Prompt' : 'Generate Content'
                 )}
               </button>
             </form>
