@@ -40,6 +40,11 @@ export async function callLLM(request: LLMRequest): Promise<LLMResponse> {
   const provider = process.env.LLM_PROVIDER || 'openai';
 
   try {
+    // Force Anthropic for vision requests (only Anthropic supports image analysis)
+    if (fullRequest.imageBase64 || fullRequest.imageUrl) {
+      return await callAnthropic(fullRequest);
+    }
+
     switch (provider.toLowerCase()) {
       case 'openai':
         return await callOpenAI(fullRequest);

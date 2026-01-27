@@ -161,9 +161,13 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     // Build the system prompt by interpolating placeholders
+    // Exclude image_upload (base64 data) from interpolation — it's passed separately to the vision API
+    const interpolationInputs = Object.fromEntries(
+      Object.entries(sanitizedInputs).filter(([key]) => key !== 'image_upload')
+    );
     const filledSystemPrompt = interpolatePrompt(
       toolConfig.system_prompt,
-      sanitizedInputs
+      interpolationInputs
     );
 
     console.log(`[run-tool] System prompt length: ${filledSystemPrompt.length} characters`);
@@ -230,11 +234,15 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     // ===== STEP 5: SAVE TO HISTORY =====
+    // Exclude image_upload (base64 data) from saved context to avoid storing MBs in the DB
+    const savedInputs = Object.fromEntries(
+      Object.entries(sanitizedInputs).filter(([key]) => key !== 'image_upload')
+    );
     await saveGeneration({
       userId: user.id,
       type: tool_id,
       inputContext: {
-        inputs: sanitizedInputs,
+        inputs: savedInputs,
         youtube_url: sanitizedInputs.youtube_url,
         tool_config: {
           id: tool_id,
