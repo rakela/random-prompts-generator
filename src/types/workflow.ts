@@ -1,6 +1,6 @@
 // YouTube Content Generator Types
 
-export type InputType = "text" | "textarea" | "select" | "number" | "url";
+export type InputType = "text" | "textarea" | "select" | "number" | "url" | "file";
 
 export interface ToolInputConfig {
   id: string;            // e.g. "video_url"
@@ -11,6 +11,7 @@ export interface ToolInputConfig {
   options?: string[];    // for "select"
   default?: string;      // optional default
   help_text?: string;    // optional helper text
+  accept?: string;       // for "file" inputs (e.g. "image/*")
 }
 
 export interface ToolConfig {
