@@ -1101,6 +1101,139 @@ This saves hours of manual writing.
 
 ![Prompt Expander tool interface showing short prompt transformation](/images/blog/prompt-expander-tool.jpg)
 
+Short, vague prompts produce mediocre AI outputs.`
+  },
+  {
+    slug: "image-to-prompt-generator-reverse-engineer-ai-images",
+    title: "Image to Prompt Generator: Reverse Engineer Any AI Art Style",
+    excerpt: "Upload any image and extract the exact AI prompt behind it. Reverse engineer styles, keywords, and details for Midjourney and other AI tools.",
+    category: "tutorials",
+    author: "Random Prompts Team",
+    date: "2026-01-27",
+    featuredImage: "/images/blog/image-to-prompt-generator.jpg",
+    readTime: "6 min read",
+    content: `
+# Image to Prompt Generator: Reverse Engineer Any AI Art Style
+
+![Image to Prompt Generator — upload an image and get a detailed AI prompt](/images/blog/image-to-prompt-generator.jpg)
+
+Found an AI-generated image you love but don't know how to recreate it?
+
+Instead of guessing keywords or copying random prompts, use an **Image to Prompt Generator** to extract the style, structure, and descriptive elements directly from the image.
+
+This tool analyzes any image and turns it into a detailed AI prompt you can reuse instantly.
+
+**[Try the Image to Prompt Generator →](/tools/image-to-prompt)**
+
+## What Is an Image to Prompt Generator?
+
+An **image to prompt generator** is an AI tool that:
+
+- Analyzes visual elements in an image
+- Identifies style, composition, lighting, and subject
+- Converts those details into a structured AI prompt
+
+It's commonly used for:
+
+- **Midjourney**
+- **Stable Diffusion**
+- **DALL·E**
+- Other AI image generators
+
+Whether you're trying to reverse engineer a specific look or learn what makes a prompt effective, this AI art prompt extractor gives you an instant breakdown of any image.
+
+## How to Use the Image to Prompt Tool
+
+### Step 1: Upload an Image
+
+Upload any image you want to recreate or analyze — AI-generated art, photographs, illustrations, or design references.
+
+### Step 2: Analyze the Image
+
+The AI detects:
+
+- **Art style** (digital painting, photography, 3D render, etc.)
+- **Visual descriptors** (colors, textures, patterns)
+- **Lighting and mood** (golden hour, dramatic, soft, neon)
+- **Composition and details** (framing, perspective, focal points)
+
+### Step 3: Copy the Generated Prompt
+
+Use the extracted prompt directly in your AI image generator or modify it as needed.
+
+![Image to Prompt tool interface showing analysis results](/images/blog/image-to-prompt-tool-ui.jpg)
+
+**[Upload an Image and Extract the Prompt →](/tools/image-to-prompt)**
+
+## Why Reverse Engineering Prompts Works
+
+Most AI art styles aren't magic — they're the result of:
+
+- Specific descriptive keywords
+- Style references
+- Composition cues
+- Lighting instructions
+
+By reverse engineering an image:
+
+- **You learn why it looks good** — understanding what keywords and structure produce certain effects
+- **You can recreate or remix the style** — apply the same prompt to different subjects
+- **You save hours of trial and error** — skip the guesswork and start with a working prompt
+
+This is one of the fastest ways to improve your AI image prompting skills without deep technical knowledge.
+
+## Who This Tool Is For
+
+- **AI artists and designers** building consistent visual styles
+- **Creators using Midjourney or Stable Diffusion** who want to learn from existing work
+- **Marketers generating visuals with AI** who need brand-consistent outputs
+- **Anyone exploring AI art styles** and wanting to understand how prompts produce specific results
+
+If you've ever asked "how was this image made?", this tool is for you.
+
+## Combine With a Smarter Prompt Workflow
+
+For best results, combine the image to prompt AI workflow with other tools:
+
+1. **Start with an image** → extract the prompt using the [Image to Prompt Generator](/tools/image-to-prompt)
+2. **Refine it** using the [Prompt Expander tool](/tools/text-to-prompt) to add more detail and structure
+3. **Reuse or save** the prompt for future generations
+
+This creates a repeatable, high-quality AI art workflow. Learn more about building [a complete AI prompting workflow](https://promptsjourney.com/from-one-idea-to-a-perfect-prompt/).
+
+## Common Use Cases
+
+- **Recreate AI art styles** — see an image you love, extract the prompt, and generate your own version
+- **Learn prompt structure from images** — understand what keywords produce specific visual effects
+- **Generate consistent visuals** — maintain a unified style across multiple AI-generated images
+- **Build prompt libraries** — save extracted prompts as templates for future projects
+- **Experiment with variations** — modify extracted prompts to explore new directions
+
+## Final Thoughts
+
+You don't need to guess AI prompts anymore.
+
+With an **Image to Prompt Generator**, you can reverse engineer any image and turn it into a reusable AI prompt in seconds.
+
+Whether you're recreating a style, learning how prompts work, or building a library of image-to-text prompts, this tool gives you the shortcut.
+
+👉 **[Upload an Image and Extract the Prompt Now](/tools/image-to-prompt)**
+    `
+  },
+  {
+    slug: "prompt-expander-turn-short-prompts-into-detailed-ai-instructions",
+    title: "Prompt Expander: Turn Short Prompts into Detailed AI Instructions",
+    excerpt: "Turn short AI prompts into detailed, high-quality instructions instantly. Improve results for ChatGPT, Gemini, and Midjourney with this free Prompt Expander.",
+    category: "tutorials",
+    author: "Random Prompts Team",
+    date: "2026-01-25",
+    featuredImage: "/images/blog/prompt-expander-tool.jpg",
+    readTime: "7 min read",
+    content: `
+# Prompt Expander: Turn Short Prompts into Detailed AI Instructions
+
+![Prompt Expander tool interface showing short prompt transformation](/images/blog/prompt-expander-tool.jpg)
+
 Short, vague prompts produce mediocre AI outputs.
 
 Detailed, structured prompts produce professional-grade results.
