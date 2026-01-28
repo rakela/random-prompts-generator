@@ -40,11 +40,6 @@ export async function callLLM(request: LLMRequest): Promise<LLMResponse> {
   const provider = process.env.LLM_PROVIDER || 'openai';
 
   try {
-    // Force Anthropic for vision requests (only Anthropic supports image analysis)
-    if (fullRequest.imageBase64 || fullRequest.imageUrl) {
-      return await callAnthropic(fullRequest);
-    }
-
     switch (provider.toLowerCase()) {
       case 'openai':
         return await callOpenAI(fullRequest);
@@ -74,6 +69,42 @@ async function callOpenAI(request: LLMRequest): Promise<LLMResponse> {
     throw new Error('OPENAI_API_KEY environment variable is not set');
   }
 
+  // Build user message content — multimodal if image data is present
+  const hasImage = request.imageBase64 || request.imageUrl;
+  let userMessageContent: any;
+
+  if (request.imageBase64 && request.imageMediaType) {
+    // Direct base64 image (from file upload)
+    userMessageContent = [
+      {
+        type: 'image_url',
+        image_url: {
+          url: `data:${request.imageMediaType};base64,${request.imageBase64}`
+        }
+      },
+      {
+        type: 'text',
+        text: request.userContent
+      }
+    ];
+  } else if (request.imageUrl) {
+    // URL-based image
+    userMessageContent = [
+      {
+        type: 'image_url',
+        image_url: {
+          url: request.imageUrl
+        }
+      },
+      {
+        type: 'text',
+        text: request.userContent
+      }
+    ];
+  } else {
+    userMessageContent = request.userContent;
+  }
+
   const response = await fetch('https://api.openai.com/v1/chat/completions', {
     method: 'POST',
     headers: {
@@ -81,7 +112,7 @@ async function callOpenAI(request: LLMRequest): Promise<LLMResponse> {
       'Authorization': `Bearer ${apiKey}`
     },
     body: JSON.stringify({
-      model: request.model || 'gpt-4-turbo-preview',
+      model: hasImage ? 'gpt-4o' : (request.model || 'gpt-4-turbo-preview'),
       messages: [
         {
           role: 'system',
@@ -89,7 +120,7 @@ async function callOpenAI(request: LLMRequest): Promise<LLMResponse> {
         },
         {
           role: 'user',
-          content: request.userContent
+          content: userMessageContent
         }
       ],
       temperature: request.temperature,
