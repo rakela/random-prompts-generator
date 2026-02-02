@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AstroHeader from '../../components/AstroHeader.astro';
+import AstroFooter from '../../components/AstroFooter.astro';
+import NanoBananaPrompts from '../../components/NanoBananaPrompts';
+import '../../styles/global.css';
+
+const seo = {
+  path: 'prompts/nanobanana',
+  title: 'Nanobanana Prompts Library | 2026 AI Trends | Random Prompts',
+  description: 'Copy-paste nanobanana prompts for photorealism, branding, character consistency, infographics, and more. Filter by Fast or Thinking model. 2026 AI image generation trends.',
+  keywords: 'nanobanana prompts, nanobanana, ai image prompts, 2026 ai trends, midjourney prompts, photorealism prompts, character consistency prompts, ai art prompts',
+};
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+  <NanoBananaPrompts client:load />
+  <AstroFooter />
+</BaseLayout>
