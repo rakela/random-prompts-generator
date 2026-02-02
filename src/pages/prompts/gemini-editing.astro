@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AstroHeader from '../../components/AstroHeader.astro';
+import AstroFooter from '../../components/AstroFooter.astro';
+import GeminiEditingPrompts from '../../components/GeminiEditingPrompts';
+import '../../styles/global.css';
+
+const seo = {
+  path: 'prompts/gemini-editing',
+  title: 'Gemini AI Photo Editing Prompts | Google Magic Editor Commands 2026',
+  description: 'Copy-paste Gemini AI photo editing prompts for Google Magic Editor. Background replacement, lighting shifts, style transfer, object removal, and more.',
+  keywords: 'gemini ai photo editing prompts, google magic editor prompts, ai image modification prompts, gemini inpainting prompts, ai background replacement text, gemini photo editing, google photos ai prompts',
+};
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+  <GeminiEditingPrompts client:load />
+  <AstroFooter />
+</BaseLayout>

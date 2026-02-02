@@ -77,6 +77,9 @@ const staticPageUrls = [
   'midjourney-ai-picture-generator',
   'ghostface-ai-trend-prompt-generator',
   'nano-banana-prompts',
+  // Prompt Libraries
+  'prompts/nanobanana',
+  'prompts/gemini-editing',
   // Persuasive writing
   'persuasive-essays-topics',
   'persuasive-writing-titles',
