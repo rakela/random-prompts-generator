@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AstroHeader from '../../components/AstroHeader.astro';
+import AstroFooter from '../../components/AstroFooter.astro';
+import CoquetteAestheticPrompts from '../../components/CoquetteAestheticPrompts';
+import '../../styles/global.css';
+
+const seo = {
+  path: 'prompts/coquette-aesthetic',
+  title: 'Coquette Aesthetic AI Prompts: 10 Pink & Lace Image Prompts | Random Prompts',
+  description: 'Copy-paste coquette aesthetic AI image prompts featuring soft pinks, lace, vintage femininity, bows, and pearls. Ready for Midjourney, Stable Diffusion, and Gemini.',
+  keywords: 'coquette aesthetic prompts, coquette ai prompts, pink aesthetic ai, lace aesthetic, vintage feminine prompts, coquette core, ai image prompts, midjourney coquette',
+};
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+  <CoquetteAestheticPrompts client:load />
+  <AstroFooter />
+</BaseLayout>

@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AstroHeader from '../../components/AstroHeader.astro';
+import AstroFooter from '../../components/AstroFooter.astro';
+import CyberpunkPrompts from '../../components/CyberpunkPrompts';
+import '../../styles/global.css';
+
+const seo = {
+  path: 'prompts/cyberpunk-2077-aesthetic',
+  title: 'Cyberpunk 2077 Aesthetic AI Prompts: 10 Neon Dystopia Image Prompts | Random Prompts',
+  description: 'Copy-paste cyberpunk 2077 AI image prompts featuring neon-drenched streets, chrome implants, holographic tech, and dystopian cityscapes. Ready for Midjourney, Stable Diffusion, and Gemini.',
+  keywords: 'cyberpunk prompts, cyberpunk 2077 ai, neon aesthetic prompts, cyberpunk ai art, night city prompts, futuristic prompts, midjourney cyberpunk, neon blue pink aesthetic',
+};
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+  <CyberpunkPrompts client:load />
+  <AstroFooter />
+</BaseLayout>

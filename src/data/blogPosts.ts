@@ -1436,6 +1436,110 @@ Stop wasting time writing detailed prompts from scratch.
 Transform "write a blog post" into a comprehensive content brief in seconds. Get better AI outputs without becoming a prompt engineering expert.
     `
   }
+  ,
+  {
+    slug: "gemini-clothing-change-prompts",
+    title: "Gemini AI Clothing Change Prompts: The Ultimate Magic Editor Guide",
+    excerpt: "Learn how to use Gemini Magic Editor to change outfits in photos using natural language prompts. Includes formal wear, streetwear, and fantasy cosplay prompt templates.",
+    category: "tutorials",
+    author: "Random Prompts Team",
+    date: "2026-02-03",
+    featuredImage: "/images/blog/gemini-clothing-change.jpg",
+    readTime: "7 min read",
+    content: `
+# Gemini AI Clothing Change Prompts: The Ultimate Magic Editor Guide
+
+Google's Gemini Magic Editor has transformed how we edit photos. One of its most powerful features is the ability to change outfits in seconds using nothing but natural language prompts. Instead of spending hours in Photoshop, you can brush over an area of clothing and type a simple command.
+
+This guide provides ready-to-use prompts organized by style category, plus a step-by-step walkthrough for getting the best results.
+
+## How to Use Gemini Magic Editor for Clothing Changes
+
+Before diving into the prompts, here's how to access and use this feature:
+
+1. **Open Google Photos** and select the image you want to edit
+2. **Tap Magic Editor** (the sparkle icon in the editing toolbar)
+3. **Brush over the clothing** you want to change — be precise around edges
+4. **Type your prompt** from the templates below
+5. **Review the options** Gemini generates and pick your favorite
+
+**Pro Tip:** The more specific your prompt, the better the result. Include fabric type, color, and fit for the most accurate output.
+
+---
+
+## Section 1: Formal Wear Prompts
+
+These prompts are designed for professional and formal occasions — headshots, LinkedIn photos, wedding prep, or event imagery.
+
+### Classic Business Suit
+> "Change the outfit to a tailored navy blue two-piece business suit with a crisp white dress shirt and a burgundy silk tie. Keep the same body pose and lighting."
+
+### Elegant Evening Dress
+> "Replace the current clothing with a floor-length black satin evening gown with thin straps and a subtle side slit. Maintain natural skin tones and shadows."
+
+### Professional Blazer Look
+> "Change the top to a fitted charcoal gray blazer over a cream turtleneck. Keep the existing bottom and maintain the same body proportions."
+
+**Tip:** For formal wear, always specify "maintain the same body pose" so Gemini doesn't distort proportions.
+
+---
+
+## Section 2: Streetwear & Seasonal
+
+Casual, trendy, and season-specific outfit prompts for social media content and creative projects.
+
+### Winter Puffer Jacket
+> "Replace the outfit with an oversized matte black puffer jacket, dark joggers, and chunky white sneakers. Keep the background and lighting intact."
+
+### Summer Beach Look
+> "Change the clothing to a linen button-up shirt (unbuttoned, rolled sleeves) with khaki shorts and leather sandals. Maintain the warm lighting."
+
+### Vintage Hoodie Fit
+> "Swap the current top for an oversized vintage-wash hoodie in dusty rose with distressed joggers. Keep the relaxed pose and natural shadows."
+
+### Y2K Inspired
+> "Change the outfit to low-rise cargo pants, a cropped baby tee, and chunky platform sneakers. Add subtle Y2K color tones."
+
+**Tip:** For streetwear, mention specific fabric textures like "distressed," "washed," or "matte" — Gemini responds well to material descriptors.
+
+---
+
+## Section 3: Fantasy & Cosplay
+
+For creative projects, character design, and cosplay visualization.
+
+### Medieval Knight Armor
+> "Replace all clothing with full medieval plate armor in brushed silver with gold trim. Add a red velvet cape draped over one shoulder. Keep the face and hair unchanged."
+
+### Cyberpunk Tech-Wear
+> "Change the outfit to a high-collar black tech-wear jacket with glowing neon blue fiber-optic seams, tactical cargo pants, and heavy boots. Add subtle LED accents."
+
+### Wizard Robes
+> "Replace the clothing with flowing deep purple wizard robes with gold celestial embroidery. Add a leather belt with pouches and a hooded cloak. Keep the same pose."
+
+### Futuristic Space Suit
+> "Swap the outfit for a sleek white astronaut suit with chrome accents, a transparent helmet, and subtle holographic patches. Maintain natural body proportions."
+
+**Tip:** Fantasy prompts benefit from extra detail. Mention materials (velvet, chrome, leather) and accent colors for the most realistic results.
+
+---
+
+## Common Mistakes to Avoid
+
+1. **Being too vague** — "Change to a nice outfit" gives unpredictable results
+2. **Forgetting to preserve the pose** — Always add "keep the same body pose"
+3. **Not brushing precisely** — Sloppy selection leads to artifacts at clothing edges
+4. **Ignoring lighting** — Mention "maintain the same lighting" to avoid mismatched shadows
+5. **Overcomplicating a single prompt** — Break complex outfits into 2 passes if needed
+
+## More Resources
+
+- [Gemini AI Photo Editing Prompts](/prompts/gemini-editing) — Full prompt library for Magic Editor
+- [Image to Prompt Generator](/tools/image-to-prompt) — Reverse engineer any AI image into a reusable prompt
+- [ChatGPT Photo Editing Prompts](/chatgpt-photo-editing-prompts) — Alternative editing prompts for ChatGPT's image editor
+- [Midjourney AI Prompts](/midjourney-ai-picture-generator) — Generate fashion and outfit concepts from scratch
+    `
+  }
 ];
 
 // Helper functions
