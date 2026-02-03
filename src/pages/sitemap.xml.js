@@ -80,6 +80,9 @@ const staticPageUrls = [
   // Prompt Libraries
   'prompts/nanobanana',
   'prompts/gemini-editing',
+  'prompts/coquette-aesthetic',
+  'prompts/dark-academia-aesthetic',
+  'prompts/cyberpunk-2077-aesthetic',
   // Persuasive writing
   'persuasive-essays-topics',
   'persuasive-writing-titles',

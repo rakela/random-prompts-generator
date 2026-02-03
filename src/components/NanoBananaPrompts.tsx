@@ -90,6 +90,46 @@ const prompts: Prompt[] = [
     tier: 'fast',
     gradient: 'from-cyan-600 to-blue-800',
   },
+  {
+    id: 'anime-figurine',
+    category: 'Miniature',
+    title: 'Hand-Painted Anime Figurine',
+    text: "Hand-painted 1/7 scale anime figurine of a warrior princess in dynamic pose, metallic armor with pearl finish, displayed on a wooden base with nameplate. Studio macro photography, shallow depth of field, 8k detail.",
+    tier: 'thinking',
+    gradient: 'from-rose-600 to-fuchsia-900',
+  },
+  {
+    id: 'glass-banana-cat',
+    category: 'Miniature',
+    title: 'Glass-Blown Banana Cat',
+    text: "Miniature glass-blown banana cat figurine, translucent amber and yellow borosilicate glass, internal air bubbles catching light, sitting on a velvet display pad. Macro photography, studio rim lighting, hyper-realistic detail.",
+    tier: 'fast',
+    gradient: 'from-yellow-500 to-orange-700',
+  },
+  {
+    id: 'isometric-tavern',
+    category: 'Miniature',
+    title: 'Isometric Fantasy Tavern',
+    text: "Isometric 3D printed fantasy tavern miniature, hand-painted stone walls with moss detail, tiny LED candle glow from windows, wooden shingle roof, tavern sign reading 'The Golden Barrel'. Tilt-shift macro photography.",
+    tier: 'thinking',
+    gradient: 'from-green-700 to-emerald-900',
+  },
+  {
+    id: 'clay-forest-spirit',
+    category: 'Miniature',
+    title: 'Clay Forest Spirit',
+    text: "Macro shot of a tiny clay forest spirit figurine, hand-sculpted with visible fingerprint texture, moss and lichen details, mushroom cap hat, standing among real dried leaves. Natural lighting, 8k, shallow depth of field.",
+    tier: 'fast',
+    gradient: 'from-lime-700 to-green-900',
+  },
+  {
+    id: 'dollhouse-furniture',
+    category: 'Miniature',
+    title: '1:12 Dollhouse Furniture Set',
+    text: "1:12 scale dollhouse furniture set: Victorian writing desk with tiny ink bottle, miniature leather chair, working drawers with brass handles. Displayed on oak floor. Tilt-shift macro photography, warm studio lighting.",
+    tier: 'thinking',
+    gradient: 'from-amber-600 to-yellow-900',
+  },
 ];
 
 export default function NanoBananaPrompts() {
@@ -141,13 +181,31 @@ export default function NanoBananaPrompts() {
       {/* Hero */}
       <div className="border-b border-yellow-500/20 bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950">
         <div className="max-w-6xl mx-auto px-4 pt-14 pb-10 text-center">
-          <p className="text-yellow-400 font-mono text-sm tracking-widest uppercase mb-3">2026 AI Trends</p>
+          <p className="text-yellow-400 font-mono text-sm tracking-widest uppercase mb-3">Cat Figurines, Miniatures & Scale Models</p>
           <h1 className="text-4xl md:text-5xl font-extrabold mb-4">
-            <span className="text-yellow-400">Nanobanana</span> Prompts Library
+            <span className="text-yellow-400">Nano Banana</span> Prompts Library
           </h1>
           <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-            Copy-paste prompts for photorealism, branding, character consistency, infographics, and more. Filter by Fast or Thinking model.
+            AI prompts for hyper-realistic cat figurines, miniature dioramas, and scale model macro photography. Plus photorealism, branding, and more.
           </p>
+
+          {/* Featured Gallery */}
+          <div className="mt-8 grid sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
+            <div className="bg-gray-900/80 border border-yellow-500/20 rounded-xl p-4 text-left">
+              <div className="w-full h-24 bg-gradient-to-br from-amber-700 to-orange-900 rounded-lg mb-3 flex items-center justify-center">
+                <span className="text-white/60 text-3xl">🐱</span>
+              </div>
+              <h3 className="text-yellow-400 font-semibold text-sm">Hyper-Realistic Ceramic Cat Figurines</h3>
+              <p className="text-gray-500 text-xs mt-1">Macro photography, studio lighting, hand-painted detail</p>
+            </div>
+            <div className="bg-gray-900/80 border border-yellow-500/20 rounded-xl p-4 text-left">
+              <div className="w-full h-24 bg-gradient-to-br from-green-700 to-emerald-900 rounded-lg mb-3 flex items-center justify-center">
+                <span className="text-white/60 text-3xl">🏰</span>
+              </div>
+              <h3 className="text-yellow-400 font-semibold text-sm">Scale Model Dioramas</h3>
+              <p className="text-gray-500 text-xs mt-1">Isometric views, tilt-shift, hand-crafted textures</p>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -281,6 +339,39 @@ export default function NanoBananaPrompts() {
             ))}
           </div>
         )}
+
+        {/* Why Nano Banana? Section */}
+        <div className="mt-20 border-t border-yellow-500/20 pt-14">
+          <h2 className="text-2xl font-bold text-center mb-3">
+            Why <span className="text-yellow-400">Nano Banana</span>?
+          </h2>
+          <p className="text-gray-400 text-center max-w-2xl mx-auto mb-8">
+            Nano Banana is a specialized prompt style that excels at generating macro-scale subjects with extreme material fidelity.
+          </p>
+          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            <div className="bg-gray-900 border border-yellow-500/15 rounded-xl p-6">
+              <div className="w-10 h-10 rounded-lg bg-yellow-500/10 flex items-center justify-center text-yellow-400 text-xl font-bold mb-4">M</div>
+              <h3 className="font-semibold text-yellow-400 mb-2">Macro Textures</h3>
+              <p className="text-gray-400 text-sm leading-relaxed">
+                Optimized for close-up detail — ceramic glazes, glass translucency, polymer clay fingerprints, and wood grain are rendered with photographic accuracy.
+              </p>
+            </div>
+            <div className="bg-gray-900 border border-yellow-500/15 rounded-xl p-6">
+              <div className="w-10 h-10 rounded-lg bg-yellow-500/10 flex items-center justify-center text-yellow-400 text-xl font-bold mb-4">P</div>
+              <h3 className="font-semibold text-yellow-400 mb-2">Plastic & Ceramic Materials</h3>
+              <p className="text-gray-400 text-sm leading-relaxed">
+                Nano Banana prompts produce superior results for figurines, resin kits, porcelain collectibles, and other manufactured miniature objects.
+              </p>
+            </div>
+            <div className="bg-gray-900 border border-yellow-500/15 rounded-xl p-6">
+              <div className="w-10 h-10 rounded-lg bg-yellow-500/10 flex items-center justify-center text-yellow-400 text-xl font-bold mb-4">S</div>
+              <h3 className="font-semibold text-yellow-400 mb-2">Scale Model Fidelity</h3>
+              <p className="text-gray-400 text-sm leading-relaxed">
+                From 1:12 dollhouse furniture to 1:700 ship models, these prompts encode proper scale ratios and tilt-shift photography techniques for authentic miniature imagery.
+              </p>
+            </div>
+          </div>
+        </div>
 
         {/* Guide Section */}
         <div className="mt-20 border-t border-yellow-500/20 pt-14">

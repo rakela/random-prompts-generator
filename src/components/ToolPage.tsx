@@ -31,6 +31,10 @@ export default function ToolPage({ tool, freeGenerations = 1 }: ToolPageProps) {
   const [result, setResult] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
+  const [copiedMidjourney, setCopiedMidjourney] = useState(false);
+  const [copiedGemini, setCopiedGemini] = useState(false);
+  const [copiedTemplate, setCopiedTemplate] = useState(false);
+  const [proMode, setProMode] = useState(false);
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
 
   // Ref for first input to autofocus
@@ -164,16 +168,47 @@ export default function ToolPage({ tool, freeGenerations = 1 }: ToolPageProps) {
     }
   };
 
+  const getPlainResult = () => {
+    if (!result) return '';
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = result;
+    return tempDiv.textContent || tempDiv.innerText || '';
+  };
+
   const handleCopy = async () => {
-    if (result) {
-      // Strip HTML tags for copying
-      const tempDiv = document.createElement('div');
-      tempDiv.innerHTML = result;
-      const textContent = tempDiv.textContent || tempDiv.innerText || '';
+    const textContent = getPlainResult();
+    if (textContent) {
       await navigator.clipboard.writeText(textContent);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     }
+  };
+
+  const handleCopyMidjourney = async () => {
+    const text = getPlainResult();
+    if (text) {
+      const mjPrompt = `/imagine prompt: ${text.trim()} --ar 16:9 --v 6`;
+      await navigator.clipboard.writeText(mjPrompt);
+      setCopiedMidjourney(true);
+      setTimeout(() => setCopiedMidjourney(false), 2000);
+    }
+  };
+
+  const handleCopyGemini = async () => {
+    const text = getPlainResult();
+    if (text) {
+      const geminiPrompt = `Generate an image: ${text.trim()}`;
+      await navigator.clipboard.writeText(geminiPrompt);
+      setCopiedGemini(true);
+      setTimeout(() => setCopiedGemini(false), 2000);
+    }
+  };
+
+  const handleCopyTemplate = async () => {
+    const template = `Task: Perform a deep-dive reverse engineering of this image's visual DNA. Analyze: 1. Genre, 2. Spatial Geometry, 3. Material Science/Textures, 4. Lighting Physics (Kelvin/Direction). Output a 1:1 replica prompt.`;
+    await navigator.clipboard.writeText(template);
+    setCopiedTemplate(true);
+    setTimeout(() => setCopiedTemplate(false), 2000);
   };
 
   const renderFormattedResult = (content: string) => {
@@ -573,6 +608,44 @@ export default function ToolPage({ tool, freeGenerations = 1 }: ToolPageProps) {
               </div>
             )}
 
+            {/* Pro Mode Template (only for image-to-prompt) */}
+            {tool.tool_id === 'image-to-prompt' && (
+              <div className="max-w-2xl mx-auto mb-6">
+                <div className="bg-gradient-to-r from-purple-50 to-blue-50 border border-purple-200 rounded-xl p-5">
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center gap-2">
+                      <span className="text-purple-600 font-bold text-sm uppercase tracking-wider">Pro Mode</span>
+                      <span className="text-xs bg-purple-100 text-purple-700 px-2 py-0.5 rounded-full font-semibold">Advanced</span>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setProMode(!proMode)}
+                      className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${proMode ? 'bg-purple-600' : 'bg-gray-300'}`}
+                    >
+                      <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${proMode ? 'translate-x-6' : 'translate-x-1'}`} />
+                    </button>
+                  </div>
+                  <h3 className="font-semibold text-gray-900 mb-2">AI Visual DNA Reverse Engineering Template</h3>
+                  {proMode && (
+                    <div className="mt-3">
+                      <div className="bg-white border border-purple-200 rounded-lg p-4 font-mono text-sm text-gray-700 leading-relaxed">
+                        Task: Perform a deep-dive reverse engineering of this image's visual DNA. Analyze: 1. Genre, 2. Spatial Geometry, 3. Material Science/Textures, 4. Lighting Physics (Kelvin/Direction). Output a 1:1 replica prompt.
+                      </div>
+                      <button
+                        type="button"
+                        onClick={handleCopyTemplate}
+                        className={`mt-3 px-4 py-2 rounded-lg text-sm font-semibold transition-colors ${
+                          copiedTemplate ? 'bg-green-500 text-white' : 'bg-purple-600 text-white hover:bg-purple-700'
+                        }`}
+                      >
+                        {copiedTemplate ? 'Template Copied!' : 'Copy Template'}
+                      </button>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+
             <form onSubmit={handleSubmit} className="space-y-6 max-w-2xl mx-auto">
               {tool.inputs.map((input, index) => (
                 <div key={input.id}>
@@ -615,22 +688,58 @@ export default function ToolPage({ tool, freeGenerations = 1 }: ToolPageProps) {
                   Generated Content
                 </h2>
                 {result && (
-                  <button
-                    onClick={handleCopy}
-                    className="flex items-center gap-2 px-4 py-2 text-sm bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
-                  >
-                    {copied ? (
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <button
+                      onClick={handleCopy}
+                      className="flex items-center gap-2 px-4 py-2 text-sm bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
+                    >
+                      {copied ? (
+                        <>
+                          <CheckCircle className="w-4 h-4" />
+                          Copied!
+                        </>
+                      ) : (
+                        <>
+                          <Copy className="w-4 h-4" />
+                          Copy
+                        </>
+                      )}
+                    </button>
+                    {tool.tool_id === 'image-to-prompt' && (
                       <>
-                        <CheckCircle className="w-4 h-4" />
-                        Copied!
-                      </>
-                    ) : (
-                      <>
-                        <Copy className="w-4 h-4" />
-                        Copy to Clipboard
+                        <button
+                          onClick={handleCopyMidjourney}
+                          className={`flex items-center gap-2 px-4 py-2 text-sm rounded-lg transition-colors ${
+                            copiedMidjourney ? 'bg-green-500 text-white' : 'bg-indigo-600 hover:bg-indigo-700 text-white'
+                          }`}
+                        >
+                          {copiedMidjourney ? (
+                            <>
+                              <CheckCircle className="w-4 h-4" />
+                              Copied!
+                            </>
+                          ) : (
+                            'Copy for Midjourney'
+                          )}
+                        </button>
+                        <button
+                          onClick={handleCopyGemini}
+                          className={`flex items-center gap-2 px-4 py-2 text-sm rounded-lg transition-colors ${
+                            copiedGemini ? 'bg-green-500 text-white' : 'bg-emerald-600 hover:bg-emerald-700 text-white'
+                          }`}
+                        >
+                          {copiedGemini ? (
+                            <>
+                              <CheckCircle className="w-4 h-4" />
+                              Copied!
+                            </>
+                          ) : (
+                            'Copy for Gemini'
+                          )}
+                        </button>
                       </>
                     )}
-                  </button>
+                  </div>
                 )}
               </div>
 
@@ -706,6 +815,37 @@ export default function ToolPage({ tool, freeGenerations = 1 }: ToolPageProps) {
             ))}
           </div>
         </div>
+        {/* SEO Section for Image-to-Prompt */}
+        {tool.tool_id === 'image-to-prompt' && (
+          <div className="bg-white rounded-lg border border-gray-200 p-8 mt-8">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              How to Reverse Engineer an AI Image
+            </h2>
+            <div className="prose prose-lg max-w-none text-gray-700">
+              <p>
+                Image reverse engineering is the process of analyzing an AI-generated image to extract the original prompt, style parameters, and technical settings used to create it. Our <strong>image to text prompt generator</strong> automates this process using advanced vision AI.
+              </p>
+              <h3 className="text-xl font-semibold text-gray-900 mt-6 mb-3">What is an Image Reverse Engineering Template?</h3>
+              <p>
+                An <strong>image reverse engineering template</strong> is a structured framework for analyzing visual elements systematically. Instead of guessing, the template breaks the analysis into categories: genre identification, spatial geometry, material science, lighting physics, and color theory. This produces a prompt that can replicate the original image with high fidelity.
+              </p>
+              <h3 className="text-xl font-semibold text-gray-900 mt-6 mb-3">How It Works</h3>
+              <ol className="list-decimal list-inside space-y-2">
+                <li><strong>Upload your image</strong> — any AI-generated or reference image</li>
+                <li><strong>AI analyzes visual DNA</strong> — genre, textures, lighting, composition</li>
+                <li><strong>Get a detailed prompt</strong> — ready to use in Midjourney, Stable Diffusion, or Gemini</li>
+                <li><strong>Copy for your platform</strong> — use the Midjourney or Gemini copy buttons for formatted output</li>
+              </ol>
+              <h3 className="text-xl font-semibold text-gray-900 mt-6 mb-3">Use Cases</h3>
+              <ul className="list-disc list-inside space-y-2">
+                <li>Recreate a style you found on social media</li>
+                <li>Learn prompt engineering by studying what works</li>
+                <li>Build a library of proven prompt templates</li>
+                <li>Analyze competitor AI art for prompt patterns</li>
+              </ul>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
