@@ -1712,6 +1712,114 @@ Ready to join the trend? Here's your starting point:
 - [Gemini AI Photo Editing Prompts](/prompts/gemini-editing) — Similar effects with Google's AI
 - [Image to Prompt Generator](/tools/image-to-prompt) — Reverse engineer any AI image you see
     `
+  },
+  {
+    slug: "chatgpt-knows-me-caricature-trend",
+    title: "I Tried the Viral 'ChatGPT Knows Me' Caricature Trend—And It's Actually Terrifying",
+    excerpt: "The ChatGPT caricature challenge uses your hidden chat history to create eerily accurate portraits. Here's the exact prompt, why results are shocking, and 3 bonus 'knows me' prompts.",
+    category: "tutorials",
+    author: "Random Prompts Team",
+    date: "2026-02-09",
+    featuredImage: "/images/blog/chatgpt-knows-me-caricature.jpg",
+    readTime: "5 min read",
+    content: `
+# I Tried the Viral "ChatGPT Knows Me" Caricature Trend—And It's Actually Terrifying
+
+There's a new trend taking over TikTok and Reddit: the **ChatGPT Caricature Challenge**. Users are uploading a selfie and asking the bot to draw them based on their career and personality. The results are going viral because the AI uses your hidden chat history to add details you never asked for—like the specific messy desk you described months ago, or the coffee addiction you mentioned in passing.
+
+**⚠️ Important Note:** Be careful when searching for this trend. Many users are accidentally typing "chatgbt ai" and ending up on scam apps or fake websites. Always ensure you are using the official OpenAI platform at [chat.openai.com](https://chat.openai.com) or the official ChatGPT mobile app.
+
+---
+
+## The Viral Prompt to Use
+
+To get the best result, you need an existing chat history with the bot. The more you've talked to ChatGPT over time, the more eerily accurate your caricature will be.
+
+Use this exact prompt:
+
+> **"Create a classic, hand-drawn caricature of me and my job based on everything you know about me from our conversations. Uploading this photo for my likeness."**
+
+Then upload a clear selfie. The AI will combine your photo with everything it remembers about you to create a personalized caricature.
+
+---
+
+## Why the Results Are "Shocking"
+
+The magic (and terror) comes from ChatGPT's **Memory feature**. If you have memory enabled, ChatGPT remembers:
+
+- **Your hobbies and interests** — mentioned casually across conversations
+- **Your tone of voice** — are you sarcastic? anxious? formal?
+- **Your professional struggles** — deadlines, difficult clients, imposter syndrome
+- **Random details** — that time you complained about your chair, your cat's name, your favorite coffee order
+
+### Real Examples from the Trend
+
+- A developer who frequently asked about "debugging" got a caricature with a literal **bug sitting on their shoulder** and bags under their eyes
+- A writer who complained about writer's block was drawn surrounded by **crumpled paper balls** with a blank stare
+- A project manager who talked about meetings all day was depicted **drowning in calendar notifications**
+- A student who asked for essay help was shown **buried under a pile of books** with coffee IV drip
+
+The AI doesn't just draw your face—it draws your *life*.
+
+---
+
+## Bonus: 3 More "Knows Me" Prompts
+
+The caricature trend has spawned several related challenges. Try these:
+
+### 1. The Roast
+
+> **"Based on our chat history, roast my personality in 3 sentences. Be brutal."**
+
+ChatGPT will analyze how you communicate—your word choices, your anxieties, your repeated complaints—and deliver a devastatingly accurate roast. Users are posting these with reactions like "I feel personally attacked" and "How does it KNOW?"
+
+### 2. The Simpsons Character
+
+> **"Turn me into a character from The Simpsons based on what you know about my life and habits."**
+
+This is a huge sub-trend right now. The AI creates a Simpsons-style character with props and settings based on your chat history. Programmers get Springfield's nuclear plant control room. Teachers get a version of Mrs. Krabappel's classroom. It's uncanny.
+
+### 3. The Red Flag
+
+> **"Tell me my biggest 'red flags' based on how I talk to you."**
+
+This one is for the brave. ChatGPT analyzes your communication patterns to identify your potential "red flags"—things like being too apologetic, overexplaining, or asking the same anxious question multiple ways. It's like a therapy session you didn't ask for.
+
+---
+
+## How to Get the Best Results
+
+1. **Have an extensive chat history** — The more you've used ChatGPT with memory on, the better
+2. **Share a variety of topics** — Work, hobbies, complaints, celebrations
+3. **Upload a clear, well-lit selfie** — Front-facing works best
+4. **Be specific about style** — "hand-drawn caricature" works well; you can also try "editorial cartoon style" or "New Yorker illustration"
+
+---
+
+## Privacy Considerations
+
+This trend highlights how much ChatGPT actually remembers. If you're uncomfortable:
+
+- **Check your memory** — Go to Settings → Personalization → Memory to see what ChatGPT knows
+- **Clear specific memories** — You can delete individual facts
+- **Turn off memory entirely** — This prevents future accumulation
+- **Use temporary chat** — Start a conversation without memory for one-off requests
+
+---
+
+## The Verdict
+
+Is it terrifying? Yes. Is it impressive? Also yes. The "ChatGPT Knows Me" trend is a perfect example of AI's memory capabilities—and a reminder that these systems are paying more attention than we realize.
+
+Try the prompts above and see what ChatGPT really thinks of you. Just don't say I didn't warn you.
+
+## Related Resources
+
+- [What is the Prompt for the ChatGPT Caricature Trend?](/blog/chatgpt-caricature-prompt) — Quick answer version
+- [This Viral AI Caricature Trend is Everywhere](/blog/viral-chatgpt-caricature-trend) — Full trend breakdown
+- [ChatGPT Photo Editing Prompts](/chatgpt-photo-editing-prompts) — More creative ChatGPT image prompts
+- [Image to Prompt Generator](/tools/image-to-prompt) — Reverse engineer any AI image
+    `
   }
 ];
 
