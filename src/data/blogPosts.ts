@@ -1547,7 +1547,7 @@ For creative projects, character design, and cosplay visualization.
     category: "tutorials",
     author: "Random Prompts Team",
     date: "2026-02-09",
-    featuredImage: "/images/blog/caricature_1.png",
+    featuredImage: "/images/blog/caricature_1.webp",
     readTime: "2 min read",
     content: `
 # What is the Prompt for the ChatGPT Caricature Trend?
@@ -1560,7 +1560,7 @@ The viral ChatGPT caricature trend has taken social media by storm. Everyone wan
 
 That's it. This simple prompt works because ChatGPT uses your conversation history, uploaded photos, and any context you've shared to generate a personalized caricature that exaggerates your defining features.
 
-![Example of ChatGPT caricature trend showing AI-generated personalized cartoon portrait](/images/blog/caricature_2.png)
+![Example of ChatGPT caricature trend showing AI-generated personalized cartoon portrait](/images/blog/caricature_2.jpeg)
 *Credit: ChatGPT.*
 
 ## How It Works
@@ -1571,7 +1571,7 @@ When you use this prompt in ChatGPT (with GPT-4o or the image generation feature
 2. **It identifies key features** — physical traits, personality quirks, interests
 3. **It generates a caricature** — exaggerating those features in a humorous cartoon style
 
-![Viral ChatGPT caricature prompt result showing personalized AI cartoon](/images/blog/caricature_3.png)
+![Viral ChatGPT caricature prompt result showing personalized AI cartoon](/images/blog/caricature_3.webp)
 *Credit: ChatGPT.*
 
 ## Tips for Better Results
@@ -1598,7 +1598,7 @@ The genius of this prompt is its personalization. Unlike generic AI art prompts,
     category: "inspiration",
     author: "Random Prompts Team",
     date: "2026-02-09",
-    featuredImage: "/images/blog/caricature_5.png.webp",
+    featuredImage: "/images/blog/caricature_5.webp",
     readTime: "6 min read",
     content: `
 # This Viral AI Caricature Trend is Everywhere
@@ -1609,7 +1609,7 @@ You've seen them flooding your feed — exaggerated, cartoonish portraits that s
 
 The trend involves using ChatGPT's image generation capabilities to create personalized caricatures. Unlike traditional AI art prompts that generate generic images, these caricatures are tailored to the individual user — exaggerating their features, interests, and personality in a humorous cartoon style.
 
-![AI-generated caricature example showing personalized cartoon portrait from ChatGPT](/images/blog/caricature_1.png)
+![AI-generated caricature example showing personalized cartoon portrait from ChatGPT](/images/blog/caricature_1.webp)
 *Credit: ChatGPT.*
 
 ## The Prompt That Started It All
@@ -1634,7 +1634,7 @@ People are genuinely surprised by what ChatGPT picks up on. The AI often exagger
 
 No artistic skill required. No complex prompts to learn. Just one sentence and you get a shareable piece of personalized art.
 
-![ChatGPT caricature trend example with exaggerated features and personality traits](/images/blog/caricature_2.png)
+![ChatGPT caricature trend example with exaggerated features and personality traits](/images/blog/caricature_2.jpeg)
 *Credit: ChatGPT.*
 
 ## Variations People Are Trying
@@ -1653,7 +1653,7 @@ The base prompt has spawned countless variations:
 ### Pet Caricatures
 > "Create a caricature of my cat/dog based on the photos I've shared."
 
-![Viral ChatGPT caricature showing AI-generated cartoon based on user personality](/images/blog/caricature_3.png)
+![Viral ChatGPT caricature showing AI-generated cartoon based on user personality](/images/blog/caricature_3.webp)
 *Credit: ChatGPT.*
 
 ## How to Get the Best Results
