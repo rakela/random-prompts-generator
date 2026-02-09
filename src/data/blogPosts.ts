@@ -1833,6 +1833,557 @@ Try the prompts above and see what ChatGPT really thinks of you. Just don't say 
 - [ChatGPT Photo Editing Prompts](/chatgpt-photo-editing-prompts) — More creative ChatGPT image prompts
 - [Image to Prompt Generator](/tools/image-to-prompt) — Reverse engineer any AI image
     `
+  },
+  {
+    slug: "gemini-prompts-for-image-editing",
+    title: "10 Game-Changing Gemini AI Image Editing Prompts You Need to Try Today",
+    excerpt: "Master Gemini AI image editing with these 10 powerful prompts. Transform your photos into professional art instantly with our free guide.",
+    category: "tutorials",
+    author: "Random Prompts Team",
+    date: "2026-02-09",
+    featuredImage: "/images/blog/gemini-image-editing.jpg",
+    readTime: "6 min read",
+    content: `
+# 10 Game-Changing Gemini AI Image Editing Prompts You Need to Try Today
+
+Google Gemini has officially entered its "Art Era." While many users are still searching for "ChatGBT AI" (a common typo for ChatGPT), the real power users have shifted to Gemini for advanced image manipulation. Gemini's ability to understand lighting, texture, and context is revolutionary.
+
+In this guide, we'll share 10 prompts that transform how you edit photos with AI.
+
+---
+
+## The Core Editing Prompt
+
+This is the foundation prompt that works for almost any photo enhancement:
+
+> **"Act as a professional photo editor. I am uploading a photo. Please apply a [Cinematic/Vibrant/Moody] filter and adjust the exposure to emphasize the subject while maintaining a natural skin tone."**
+
+**Why this works:** Unlike older models, Gemini understands the context of a "subject." It knows to preserve skin while adjusting the background, lighting, and atmosphere.
+
+---
+
+## 10 Essential Gemini Image Editing Prompts
+
+### 1. The Cinematic Color Grade
+
+> "Transform this photo into a cinematic movie still. Apply teal and orange color grading, reduce highlights, and add subtle film grain. Keep the subject's face naturally lit."
+
+### 2. The Magazine Cover
+
+> "Edit this portrait to look like a professional magazine cover. Smooth the skin subtly (no plastic look), enhance eye clarity, and add a soft glamour lighting effect."
+
+### 3. The Golden Hour Transformation
+
+> "Change the lighting in this photo to golden hour. Add warm orange tones, soft lens flare from the right side, and gentle shadows. Make it look like sunset."
+
+### 4. The Moody Editorial
+
+> "Apply a moody editorial style: desaturate colors slightly, increase contrast, add deep shadows, and create a mysterious atmosphere while keeping the subject visible."
+
+### 5. The Clean Product Shot
+
+> "Transform this into a professional product photo. Remove background distractions, add soft studio lighting, and make the product pop with subtle reflection beneath it."
+
+### 6. The Vintage Film Look
+
+> "Make this photo look like it was taken on 35mm film in the 1970s. Add authentic film grain, faded blacks, and warm color cast. Include subtle light leaks on the edges."
+
+### 7. The HDR Landscape
+
+> "Enhance this landscape with natural HDR processing. Bring out shadow detail, enhance sky drama, and make colors vibrant without looking oversaturated or fake."
+
+### 8. The Soft Portrait
+
+> "Apply a soft, dreamy portrait style. Add subtle glow around highlights, slightly soften the background, and warm up skin tones while keeping eyes sharp."
+
+### 9. The Dark & Moody
+
+> "Transform this into a dark, moody aesthetic. Lower exposure, crush the blacks slightly, add blue-tinted shadows and warm highlights. Very cinematic."
+
+### 10. The Clean Minimalist
+
+> "Simplify this image with a clean, minimalist edit. Remove visual clutter, use a muted color palette, increase negative space, and create a calm, modern feel."
+
+---
+
+## Pro Tips for Better Results
+
+1. **Be specific about what to preserve** — Always mention "keep skin tones natural" or "maintain subject sharpness"
+2. **Reference professional styles** — Use terms like "magazine quality," "editorial," or "cinematic"
+3. **Layer your edits** — Start with exposure and color, then add effects in a second prompt
+4. **Use comparison language** — "Make it look like [photographer name]'s style" works surprisingly well
+
+---
+
+## FAQ
+
+**Can Gemini edit existing photos?**
+Yes! Upload any image and use these prompts. Gemini processes the image and applies the edits directly.
+
+**Is Gemini better than ChatGBT AI for editing?**
+While people often type "ChatGBT AI" when looking for help, Gemini currently offers more seamless integration with Google Photos and better understanding of professional photography terminology.
+
+**Do I need Gemini Pro?**
+Most of these prompts work in the free tier, but Pro gives faster processing and higher resolution outputs.
+
+---
+
+## Related Resources
+
+- [Gemini AI Photo Editing Prompts](/prompts/gemini-editing) — Full prompt library
+- [Gemini AI Snow Photo Tutorial](/gemini-ai-snow-prompt-tutorial) — Winter editing guide
+- [Image to Prompt Generator](/tools/image-to-prompt) — Reverse engineer any edit style
+- [ChatGPT Photo Editing Prompts](/chatgpt-photo-editing-prompts) — Alternative AI editing
+    `
+  },
+  {
+    slug: "gemini-ai-snow-photo-editing-prompts-free",
+    title: "Turning Summer into Winter: Free Gemini AI Snow Photo Editing Prompts for Instant Magic",
+    excerpt: "Transform any photo into a winter wonderland. Get our list of free Gemini AI snow photo editing prompts for realistic blizzards and frost effects.",
+    category: "tutorials",
+    author: "Random Prompts Team",
+    date: "2026-02-09",
+    featuredImage: "/images/blog/gemini-snow-editing.jpg",
+    readTime: "5 min read",
+    content: `
+# Turning Summer into Winter: Free Gemini AI Snow Photo Editing Prompts for Instant Magic
+
+You don't need a plane ticket to the Alps to get the perfect winter shot. With these free Gemini AI snow photo editing prompts, you can add realistic falling snow, frosted hair, and misty winter breath to any portrait.
+
+These prompts work in the free version of Google Gemini — no subscription required.
+
+---
+
+## The "Blizzard" Prompt
+
+For dramatic, heavy snowfall:
+
+> **"Add a heavy but realistic snowfall effect to this image. Ensure the snowflakes have a slight motion blur and that some frost appears on the edges of the subject's clothing. Keep the subject's face clear and visible."**
+
+**Why it works:** The motion blur instruction prevents the "fake confetti" look. The frost detail adds environmental authenticity.
+
+---
+
+## The "Cozy Glow" Prompt
+
+For warm, magical winter vibes:
+
+> **"Keep the snow light and fluffy, but change the ambient lighting to a warm 'Golden Hour' glow as if reflecting off a frozen lake. Add soft bokeh snowflakes in the foreground."**
+
+**Why it works:** The contrast between cold snow and warm light creates that "holiday movie" aesthetic everyone loves.
+
+---
+
+## More Free Winter Photo Prompts
+
+### The "First Snow" Effect
+> "Add gentle, sparse snowflakes falling in this photo. Make it look like the first snow of the season — magical but not overwhelming. Add a slight blue tint to shadows."
+
+### The "Frosted Portrait"
+> "Add realistic frost and ice crystals to the subject's hair and eyelashes. Include visible breath mist. Keep skin tones warm to contrast with the cold elements."
+
+### The "Snowy Forest"
+> "Transform the background into a snow-covered winter forest. Add snow on tree branches, mist in the distance, and soft snowfall. Keep the subject unchanged."
+
+### The "Ice Queen" Editorial
+> "Create a dramatic winter editorial look: pale blue color grade, crystalline ice effects on surfaces, dramatic rim lighting as if from winter sun, and subtle sparkles."
+
+### The "Cozy Cabin" Mood
+> "Add falling snow outside a window reflection. Warm interior lighting on subject, cold blue snow visible through glass, condensation on window edges."
+
+### The "Nordic Minimalist"
+> "Transform into a Scandinavian winter aesthetic: muted colors, clean white snow, soft overcast lighting, and a calm, minimal atmosphere."
+
+---
+
+## Pro Tips for Realistic Snow
+
+1. **Mention "Depth of Field"** — This makes snowflakes in the foreground blurry and background snow sharp (or vice versa)
+2. **Use "Bokeh"** — Creates beautiful soft circles from out-of-focus snow
+3. **Specify motion blur direction** — "Falling at a slight angle" looks more natural than perfectly vertical
+4. **Add environmental details** — Breath mist, red noses, frost on fabric sell the cold better than snow alone
+
+---
+
+## Combining Prompts
+
+For the best results, layer your edits:
+
+**Step 1:** "First, change the color grade to a cool winter palette with blue shadows and pale highlights."
+
+**Step 2:** "Now add falling snow with motion blur and frost on the subject's clothing edges."
+
+**Step 3:** "Finally, add warm light reflecting on the subject's face as if from a nearby fire or warm interior."
+
+---
+
+## FAQ
+
+**Are these prompts really free?**
+Yes! All of these work in the free version of Google Gemini. No subscription needed.
+
+**How do I get realistic snow?**
+Use keywords like "Depth of Field," "Bokeh," "motion blur," and specify the density of snowfall (light, moderate, heavy).
+
+**Can I use these on summer photos?**
+Absolutely! That's the magic — transform beach photos, garden portraits, or city shots into winter wonderlands.
+
+---
+
+## Related Resources
+
+- [Gemini AI Snow Prompt Tutorial](/gemini-ai-snow-prompt-tutorial) — Complete winter editing guide
+- [Gemini Photo Editing Prompts](/prompts/gemini-editing) — Full prompt library
+- [10 Gemini Image Editing Prompts](/blog/gemini-prompts-for-image-editing) — Master guide
+- [Aesthetic Prompt Generator](/art-prompts/aesthetic) — Winter aesthetic prompts
+    `
+  },
+  {
+    slug: "seo-optimized-blog-post-generator",
+    title: "The 'Infinite Traffic' Prompt: A Free SEO Optimized Blog Post Generator for Gemini",
+    excerpt: "Stop writing from scratch. Use our ultimate SEO optimized blog post generator prompt to create high-ranking content in minutes.",
+    category: "productivity tips",
+    author: "Random Prompts Team",
+    date: "2026-02-09",
+    featuredImage: "/images/blog/seo-blog-generator.jpg",
+    readTime: "5 min read",
+    content: `
+# The "Infinite Traffic" Prompt: A Free SEO Optimized Blog Post Generator for Gemini
+
+Content fatigue is real. But what if you had a 24/7 writer who knew exactly how to rank on Google? This SEO optimized blog post generator prompt turns Gemini into a Senior Editor who understands search intent, keyword placement, and content structure.
+
+---
+
+## The Mega-Prompt
+
+Copy this exact prompt and fill in the brackets:
+
+> **"Create a 1,200-word blog post on [TOPIC]. Use an H1, H2, and H3 structure. Include a meta description (under 160 characters), 3 internal link placeholders marked as [INTERNAL LINK: topic], and a 'Key Takeaways' bulleted list at the end. Optimize for the primary keyword '[KEYWORD]' with approximately 1.5% density. Write in a conversational but authoritative tone."**
+
+**Why this works:** This prompt covers all the SEO fundamentals that Google's algorithm rewards:
+- Proper heading hierarchy (H1 → H2 → H3)
+- Keyword optimization without stuffing
+- Internal linking structure
+- Scannable format with bullet points
+- Meta description for search results
+
+---
+
+## Advanced Variations
+
+### The "Pillar Post" Prompt
+> "Create a comprehensive 2,500-word pillar post on [TOPIC]. Include 5 H2 sections, each with 2-3 H3 subsections. Add a table of contents at the beginning, FAQ section with 5 questions at the end, and optimize for '[PRIMARY KEYWORD]' and '[SECONDARY KEYWORD]'. Include statistics placeholders marked as [STAT NEEDED]."
+
+### The "Quick Win" Prompt
+> "Write a 600-word blog post targeting the long-tail keyword '[LONG-TAIL KEYWORD]'. Focus on answering the search query directly in the first paragraph. Include one H2 section with a step-by-step list and end with a clear call-to-action."
+
+### The "Comparison Post" Prompt
+> "Create a '[PRODUCT A] vs [PRODUCT B]' comparison blog post. Include an H2 overview of each, a comparison table, pros and cons for both, and a 'Which Should You Choose?' conclusion section. Optimize for '[COMPARISON KEYWORD]'."
+
+### The "Listicle" Prompt
+> "Write a '[NUMBER] Best [TOPIC]' listicle blog post. Each item should have an H3 heading, 100-word description, and one key benefit highlighted in bold. Include an intro explaining the selection criteria and a summary conclusion."
+
+---
+
+## SEO Best Practices Built Into These Prompts
+
+1. **Heading Structure** — Google uses headings to understand content hierarchy
+2. **Keyword Density** — 1-2% is the sweet spot; more feels spammy
+3. **Internal Links** — Signals to Google that your site has depth
+4. **Featured Snippet Optimization** — Bullet points and clear answers can capture position zero
+5. **Meta Descriptions** — Improves click-through rate from search results
+
+---
+
+## How to Use the Output
+
+1. **Review and humanize** — AI content needs your voice added
+2. **Fill in placeholders** — Replace [INTERNAL LINK] with actual URLs
+3. **Add real statistics** — Find current data to replace [STAT NEEDED]
+4. **Include images** — Add visuals with alt text containing your keyword
+5. **Proofread** — Check for AI quirks and repetitive phrases
+
+---
+
+## FAQ
+
+**Does Google ban AI content?**
+No. Google rewards "Helpful Content" regardless of how it's made. The key is that it provides value to users. Always review and enhance AI output.
+
+**Can I use this for "ChatGBT AI" topics?**
+Yes! Many creators use this prompt to write about common tech topics, typos, and trends safely. Just ensure the content genuinely helps readers.
+
+**How often should I publish?**
+Quality over quantity. One excellent, SEO-optimized post per week beats five rushed articles.
+
+**What's the best length for SEO?**
+1,500-2,500 words for pillar content, 800-1,200 for regular posts. Match the depth of top-ranking competitors.
+
+---
+
+## Related Resources
+
+- [AI Blog Post Generator](/ai-blog-post-generator) — More content generation tools
+- [YouTube to Blog Post Workflow](/workflows/youtube-to-blog-and-linkedin) — Repurpose video content
+- [Prompt Expander Tool](/tools/text-to-prompt) — Expand short ideas into full prompts
+    `
+  },
+  {
+    slug: "funny-random-sentence-generator-prompts",
+    title: "50+ Funny Random Sentence Generator Prompts to Break Your Writer's Block",
+    excerpt: "Need a laugh? Use our funny random sentence generator prompts to spark your imagination or just pass the time with AI humor.",
+    category: "inspiration",
+    author: "Random Prompts Team",
+    date: "2026-02-09",
+    featuredImage: "/images/blog/funny-sentence-generator.jpg",
+    readTime: "7 min read",
+    content: `
+# 50+ Funny Random Sentence Generator Prompts to Break Your Writer's Block
+
+Sometimes, the best way to get creative is to get weird. Since we're RandomPrompts.org, we've curated a list of prompts that make AI go gloriously off the rails — perfect for warm-ups, party games, or just procrastinating productively.
+
+---
+
+## The "Chaos" Prompts
+
+These prompts generate unpredictable, absurd sentences:
+
+> **"Generate 10 random sentences that start normally but end with a confusing plot twist involving a penguin and a spatula."**
+
+> **"Write 5 sentences that sound like fortune cookies written by a paranoid squirrel."**
+
+> **"Create random sentences that a medieval knight would text to their therapist."**
+
+> **"Generate sentences that sound like error messages from a sentient toaster."**
+
+---
+
+## The "Passive Aggressive" Prompts
+
+For hilariously petty AI output:
+
+> **"Write a funny random sentence that sounds like an email from a microwave that is disappointed in its owner."**
+
+> **"Generate sentences a GPS would say if it was judging your life choices."**
+
+> **"Create passive-aggressive sentences from a houseplant that hasn't been watered."**
+
+> **"Write what an office printer would say if it could express its true feelings."**
+
+---
+
+## The "Mundane Made Epic" Prompts
+
+Turn boring topics into dramatic gold:
+
+> **"Describe making a sandwich like it's the climax of an action movie."**
+
+> **"Write about finding a parking spot in the style of a nature documentary."**
+
+> **"Generate sentences about doing laundry like it's an ancient prophecy being fulfilled."**
+
+> **"Describe a morning commute as if narrated by a dramatic movie trailer voice."**
+
+---
+
+## The "Wrong Genre" Prompts
+
+> **"Write a romantic confession, but it's about someone's love for their favorite snack."**
+
+> **"Create a horror movie trailer description for assembling IKEA furniture."**
+
+> **"Write a sports commentary about someone trying to open a jar."**
+
+> **"Generate a true crime podcast intro about who ate the last slice of pizza."**
+
+---
+
+## The "Unusual Perspectives" Prompts
+
+> **"Write sentences from the perspective of a sock that keeps losing its partner."**
+
+> **"Generate thoughts from a shopping cart with one wobbly wheel."**
+
+> **"Create internal monologue for a traffic light during rush hour."**
+
+> **"Write what a doorbell thinks about visitors."**
+
+---
+
+## 20 More Quick Prompts
+
+1. "Motivational quotes from someone who just woke up from a nap"
+2. "Wisdom from a pigeon who has seen too much"
+3. "Yelp reviews for places that don't exist"
+4. "Text messages from historical figures using modern slang"
+5. "Warning labels that should exist but don't"
+6. "Thoughts of a cat judging its owner's life"
+7. "Fortune cookie messages that are too specific"
+8. "Inspirational poster text written by a cynic"
+9. "Weather forecasts delivered by someone having an existential crisis"
+10. "Product descriptions written by someone who has never seen the product"
+11. "Apology letters from inanimate objects"
+12. "Compliments from someone who doesn't understand compliments"
+13. "Self-help advice from a very unhelpful person"
+14. "Song lyrics about extremely mundane activities"
+15. "Job descriptions for jobs that shouldn't exist"
+16. "Dating profile bios written by household appliances"
+17. "Conspiracy theories about completely normal things"
+18. "Testimonials for products that don't work"
+19. "Life advice from someone who clearly has none"
+20. "Breaking news alerts for non-events"
+
+---
+
+## Why Use Random Sentence Generators?
+
+1. **Warm up your creative muscles** — Start writing sessions with absurdity to loosen up
+2. **Break through blocks** — Randomness disrupts the patterns that cause stuckness
+3. **Generate comedy material** — Great for writers, comedians, and content creators
+4. **Party entertainment** — Read AI outputs aloud for guaranteed laughs
+5. **Train your brain** — Thinking outside the box becomes easier with practice
+
+---
+
+## FAQ
+
+**Why use a random sentence generator?**
+It's the best way to train your brain to think outside the box. Plus, it's genuinely entertaining.
+
+**Are these prompts safe for all ages?**
+Yes! These are designed for family-friendly creativity. The AI typically keeps outputs clean when the prompts are silly rather than edgy.
+
+**Which AI works best for these?**
+ChatGPT, Claude, and Gemini all handle absurdist prompts well. Each has a slightly different humor style — try them all!
+
+---
+
+## Related Resources
+
+- [Random Sentence Generator](/generators/sentence) — Generate sentences instantly
+- [Random Paragraph Generator](/generators/paragraph) — Longer random content
+- [Creative Writing Prompts](/writing-prompts-generator) — More structured inspiration
+- [Random Idea Generator](/generators/idea) — Spark unexpected ideas
+    `
+  },
+  {
+    slug: "advertising-prompts-viral-ads-gemini",
+    title: "High-Converting Advertising Prompts: How to Write Viral Ads with Gemini AI",
+    excerpt: "Skyrocket your ROI with these expert advertising prompts for Gemini. Create viral ad copy for Facebook, Google, and TikTok in seconds.",
+    category: "productivity tips",
+    author: "Random Prompts Team",
+    date: "2026-02-09",
+    featuredImage: "/images/blog/advertising-prompts.jpg",
+    readTime: "6 min read",
+    content: `
+# High-Converting Advertising Prompts: How to Write Viral Ads with Gemini AI
+
+Great advertising isn't about the product; it's about the problem. These advertising prompts help you identify customer pain points and solve them with catchy, high-converting copy — whether you're running Facebook Ads, Google Ads, or TikTok campaigns.
+
+---
+
+## The "AIDA" Framework Prompt
+
+The classic Attention-Interest-Desire-Action framework, optimized for AI:
+
+> **"Use the Attention-Interest-Desire-Action framework to write a Facebook Ad for [PRODUCT]. Target audience: [AUDIENCE DESCRIPTION]. Tone: [TONE]. Include a hook, benefit statement, social proof placeholder, and clear CTA."**
+
+**Example filled in:**
+> "Use the AIDA framework to write a Facebook Ad for a productivity app. Target audience: Overworked entrepreneurs who feel overwhelmed. Tone: Empathetic but urgent. Include a hook, benefit statement, social proof placeholder, and clear CTA."
+
+---
+
+## The "Hook" Prompt for Short-Form Video
+
+For TikTok, Reels, and YouTube Shorts:
+
+> **"Write 5 viral-style hooks for a TikTok ad about [PRODUCT]. The first 3 seconds must challenge a common industry myth OR ask a provocative question. Each hook should be under 10 words."**
+
+**Why it works:** Short-form video lives or dies by the hook. These prompts force the AI to front-load the most compelling element.
+
+---
+
+## Platform-Specific Prompts
+
+### Facebook/Instagram Feed Ads
+> "Write a Facebook ad with a relatable story opening. Product: [PRODUCT]. Start with 'I used to...' format, describe the transformation, and end with a soft CTA. Keep under 125 words for optimal engagement."
+
+### Google Search Ads
+> "Write 3 variations of Google Search ad copy for [PRODUCT]. Include the keyword '[KEYWORD]' in the headline. Each variation should have: 30-character headline, 90-character description, and a different value proposition."
+
+### LinkedIn Sponsored Content
+> "Create a LinkedIn ad for [B2B PRODUCT]. Use professional tone, focus on ROI and efficiency metrics, include a specific stat placeholder, and target [JOB TITLE] decision-makers."
+
+### TikTok Native Ads
+> "Write a TikTok ad script that doesn't feel like an ad. Product: [PRODUCT]. Use trending format: 'POV: You finally discovered...' Make it feel like organic content. Include visual direction notes."
+
+### YouTube Pre-Roll (Skippable)
+> "Write a 15-second YouTube pre-roll ad for [PRODUCT]. The first 5 seconds must hook viewers before the skip button appears. Include a visual direction note and end with URL mention."
+
+---
+
+## Advanced Advertising Prompts
+
+### The "Pain Point Excavator"
+> "List 10 specific pain points that [TARGET AUDIENCE] experiences related to [PROBLEM AREA]. For each pain point, write a one-sentence ad hook that agitates the problem, then briefly introduces [PRODUCT] as the solution."
+
+### The "Competitor Comparison"
+> "Write an ad that positions [PRODUCT] against [COMPETITOR TYPE] without naming them directly. Use 'Unlike other [CATEGORY]...' format. Highlight 3 unique differentiators."
+
+### The "Social Proof Generator"
+> "Write 5 different ways to incorporate social proof into ad copy for [PRODUCT]. Include: testimonial format, statistic format, 'as seen in' format, user count format, and award/recognition format."
+
+### The "Urgency Creator"
+> "Write 3 versions of urgency-driven ad copy for [PRODUCT] without being sleazy. Include: time-limited offer version, scarcity version, and 'before you miss out' version. Keep it ethical and truthful."
+
+---
+
+## The Complete Ad Brief Prompt
+
+For when you need everything at once:
+
+> **"Create a complete advertising brief for [PRODUCT]. Include:**
+> **1. Three target audience personas with pain points**
+> **2. Five hook variations**
+> **3. One AIDA-format long-form ad**
+> **4. Three short-form variations for different platforms**
+> **5. Five CTA variations**
+> **6. Suggested A/B test elements"**
+
+---
+
+## Pro Tips for AI-Generated Ads
+
+1. **Add your Customer Avatar** — The more detail about your audience, the better the copy
+2. **Specify tone precisely** — "Casual but professional" vs "Urgent but not pushy"
+3. **Request multiple variations** — Always test 3-5 versions
+4. **Include constraints** — Character limits, forbidden words, required phrases
+5. **Ask for reasoning** — "Explain why each hook would work" helps you learn
+
+---
+
+## FAQ
+
+**Can AI write ads that actually sell?**
+Yes, if you give it the right context. The key is detailed customer avatar information and clear value proposition. AI excels at variations and structure; you provide the insight.
+
+**Is Gemini better than "ChatGBT AI" for marketing?**
+Gemini has access to real-time Google search trends, making it slightly superior for timely advertising data. It can tell you what people are searching for right now.
+
+**Should I use AI ads directly?**
+Never publish without review. Use AI for first drafts and variations, then refine with your brand voice and compliance requirements.
+
+**How do I make AI ads compliant?**
+Always specify: "Ensure copy is truthful and doesn't make unverifiable claims. Avoid superlatives like 'best' or 'guaranteed' unless provable."
+
+---
+
+## Related Resources
+
+- [Prompt Expander Tool](/tools/text-to-prompt) — Expand brief ideas into full ad concepts
+- [SEO Blog Post Generator](/blog/seo-optimized-blog-post-generator) — Content marketing prompts
+- [YouTube to LinkedIn Workflow](/workflows/youtube-to-blog-and-linkedin) — Repurpose content for ads
+    `
   }
 ];
 
