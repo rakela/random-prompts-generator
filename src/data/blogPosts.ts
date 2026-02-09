@@ -1539,6 +1539,179 @@ For creative projects, character design, and cosplay visualization.
 - [ChatGPT Photo Editing Prompts](/chatgpt-photo-editing-prompts) — Alternative editing prompts for ChatGPT's image editor
 - [Midjourney AI Prompts](/midjourney-ai-picture-generator) — Generate fashion and outfit concepts from scratch
     `
+  },
+  {
+    slug: "chatgpt-caricature-prompt",
+    title: "What is the Prompt for the ChatGPT Caricature Trend?",
+    excerpt: "The exact prompt behind the viral ChatGPT caricature trend. Copy the prompt that's creating personalized AI caricatures across social media.",
+    category: "tutorials",
+    author: "Random Prompts Team",
+    date: "2026-02-09",
+    featuredImage: "/images/blog/chatgpt-caricature-prompt.jpg",
+    readTime: "2 min read",
+    content: `
+# What is the Prompt for the ChatGPT Caricature Trend?
+
+The viral ChatGPT caricature trend has taken social media by storm. Everyone wants to know the exact prompt that creates these hilarious, personalized AI caricatures. Here it is:
+
+## The Prompt
+
+> **"Create a caricature of me based on everything you know about me."**
+
+That's it. This simple prompt works because ChatGPT uses your conversation history, uploaded photos, and any context you've shared to generate a personalized caricature that exaggerates your defining features.
+
+## How It Works
+
+When you use this prompt in ChatGPT (with GPT-4o or the image generation feature enabled):
+
+1. **ChatGPT analyzes your profile** — photos you've shared, your writing style, topics you discuss
+2. **It identifies key features** — physical traits, personality quirks, interests
+3. **It generates a caricature** — exaggerating those features in a humorous cartoon style
+
+## Tips for Better Results
+
+- **Share a clear photo first** — upload a selfie before using the prompt
+- **Add context** — mention your hobbies, job, or personality traits in previous messages
+- **Be specific if needed** — "Create a caricature of me as a [profession]" for themed results
+
+## Why This Prompt Goes Viral
+
+The genius of this prompt is its personalization. Unlike generic AI art prompts, this one creates something unique to YOU. People love sharing results because each caricature is different — it's not just an AI image, it's YOUR AI image.
+
+## Related Resources
+
+- [ChatGPT Photo Editing Prompts](/chatgpt-photo-editing-prompts) — More creative prompts for ChatGPT's image features
+- [Image to Prompt Generator](/tools/image-to-prompt) — Reverse engineer any AI image
+- [This Viral AI Caricature Trend is Everywhere](/blog/viral-chatgpt-caricature-trend) — Deep dive into the trend
+    `
+  },
+  {
+    slug: "viral-chatgpt-caricature-trend",
+    title: "This Viral AI Caricature Trend is Everywhere",
+    excerpt: "The ChatGPT caricature trend explained: how it started, why it's viral, the exact prompts people are using, and how to create your own AI caricature.",
+    category: "inspiration",
+    author: "Random Prompts Team",
+    date: "2026-02-09",
+    featuredImage: "/images/blog/viral-caricature-trend.jpg",
+    readTime: "6 min read",
+    content: `
+# This Viral AI Caricature Trend is Everywhere
+
+You've seen them flooding your feed — exaggerated, cartoonish portraits that somehow capture people's essence perfectly. The ChatGPT caricature trend has become one of the biggest AI art phenomena of 2026, and it shows no signs of slowing down.
+
+## What is the ChatGPT Caricature Trend?
+
+The trend involves using ChatGPT's image generation capabilities to create personalized caricatures. Unlike traditional AI art prompts that generate generic images, these caricatures are tailored to the individual user — exaggerating their features, interests, and personality in a humorous cartoon style.
+
+<!-- IMAGE PLACEHOLDER: Example caricature 1 -->
+
+## The Prompt That Started It All
+
+The viral prompt is deceptively simple:
+
+> **"Create a caricature of me based on everything you know about me."**
+
+This works because ChatGPT has context from your conversation history, any photos you've shared, and details you've mentioned about yourself. The AI uses all of this to create something genuinely personalized.
+
+## Why It's Going Viral
+
+### 1. Personalization Factor
+
+Every caricature is unique. When someone shares theirs, friends can't just copy it — they have to create their own. This drives engagement and sharing.
+
+### 2. The "How Did It Know?" Effect
+
+People are genuinely surprised by what ChatGPT picks up on. The AI often exaggerates personality traits or interests that users didn't explicitly mention, creating an "it really gets me" moment.
+
+### 3. Low Barrier to Entry
+
+No artistic skill required. No complex prompts to learn. Just one sentence and you get a shareable piece of personalized art.
+
+<!-- IMAGE PLACEHOLDER: Example caricature 2 -->
+
+## Variations People Are Trying
+
+The base prompt has spawned countless variations:
+
+### Professional Caricatures
+> "Create a caricature of me as a [lawyer/doctor/developer/artist] based on everything you know about me."
+
+### Fantasy Versions
+> "Create a caricature of me as a medieval knight/wizard/pirate based on my personality."
+
+### Couples & Groups
+> "Create a caricature of me and my partner based on what you know about us."
+
+### Pet Caricatures
+> "Create a caricature of my cat/dog based on the photos I've shared."
+
+<!-- IMAGE PLACEHOLDER: Example caricature 3 -->
+
+## How to Get the Best Results
+
+### Step 1: Set the Stage
+
+Before using the caricature prompt, spend a few messages giving ChatGPT context:
+
+- Share a clear, well-lit photo
+- Mention your profession, hobbies, or personality traits
+- Describe your style or any signature looks
+
+### Step 2: Use the Magic Prompt
+
+> "Create a caricature of me based on everything you know about me."
+
+### Step 3: Iterate
+
+Not happy with the first result? Try:
+
+- "Make it more exaggerated"
+- "Focus more on [specific feature]"
+- "Make the style more [cartoonish/realistic/vintage]"
+
+## The Technology Behind It
+
+ChatGPT's image generation (powered by DALL-E 3) combined with its memory and context awareness makes this possible. The model:
+
+1. **Processes visual data** from any images you've shared
+2. **Analyzes conversation context** for personality clues
+3. **Applies caricature principles** — exaggerating distinctive features while maintaining recognizability
+4. **Generates unique artwork** tailored to the individual
+
+<!-- IMAGE PLACEHOLDER: Example caricature 4 -->
+
+## Privacy Considerations
+
+A word of caution: these caricatures work because ChatGPT remembers your data. If privacy is a concern:
+
+- Use ChatGPT without memory enabled
+- Start a fresh conversation with just a photo
+- Be mindful of what you share before the prompt
+
+## What's Next for AI Caricatures?
+
+This trend signals a shift in how people interact with AI art. The future likely holds:
+
+- **More personalized AI art forms** — not just caricatures, but personalized comics, avatars, and animations
+- **Integration with social platforms** — expect features that generate caricatures directly in apps
+- **Professional applications** — personalized marketing, custom gifts, virtual identity creation
+
+## Try It Yourself
+
+Ready to join the trend? Here's your starting point:
+
+1. Open ChatGPT (GPT-4o with image generation)
+2. Share a clear photo of yourself
+3. Paste: "Create a caricature of me based on everything you know about me."
+4. Share your result and tag us!
+
+## Related Resources
+
+- [What is the Prompt for the ChatGPT Caricature Trend?](/blog/chatgpt-caricature-prompt) — Quick answer version
+- [ChatGPT Photo Editing Prompts](/chatgpt-photo-editing-prompts) — More creative image prompts
+- [Gemini AI Photo Editing Prompts](/prompts/gemini-editing) — Similar effects with Google's AI
+- [Image to Prompt Generator](/tools/image-to-prompt) — Reverse engineer any AI image you see
+    `
   }
 ];
 
