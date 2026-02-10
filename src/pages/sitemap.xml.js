@@ -98,6 +98,7 @@ const staticPageUrls = [
   'tools/text-to-prompt',
   'tools/image-to-prompt',
   'tools/video-ai-generation',
+  'tools/instagram-aesthetic-generator',
   // Blog
   'blog',
   // Other pages
@@ -121,7 +122,7 @@ export async function GET(context) {
     changefreq: url === '' ? 'daily' : url.startsWith('workflows/') || url.startsWith('tools/') || url.startsWith('blog') ? 'daily' : 'weekly',
     priority: url === '' ? '1.0' :
               // YouTube Tools and new AI Tools get very high priority (new features)
-              url.startsWith('workflows/youtube') || url.startsWith('tools/youtube') || url.startsWith('tools/text-to-prompt') || url.startsWith('tools/image-to-prompt') || url.startsWith('tools/video-ai-generation') ? '0.95' :
+              url.startsWith('workflows/youtube') || url.startsWith('tools/youtube') || url.startsWith('tools/text-to-prompt') || url.startsWith('tools/image-to-prompt') || url.startsWith('tools/video-ai-generation') || url.startsWith('tools/instagram-aesthetic-generator') ? '0.95' :
               // Blog gets high priority
               url === 'blog' ? '0.9' :
               // Hub pages get high priority
