@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AstroHeader from '../../components/AstroHeader.astro';
+import AstroFooter from '../../components/AstroFooter.astro';
+import InstagramAestheticGenerator from '../../components/InstagramAestheticGenerator';
+
+// SEO data
+const seo = {
+  path: 'tools/instagram-aesthetic-generator',
+  title: 'Instagram Aesthetic Prompt Generator | Free AI Art Tool',
+  description: 'Generate copy-pasteable prompts for any Instagram aesthetic. Cinematic, Y2K, Cyberpunk, Cottagecore, Dark Academia, and more. Works with Midjourney, DALL-E, Gemini.'
+};
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+
+  <main class="min-h-screen bg-gradient-to-b from-gray-50 to-white py-12 px-4">
+    <InstagramAestheticGenerator client:load />
+  </main>
+
+  <AstroFooter />
+</BaseLayout>
