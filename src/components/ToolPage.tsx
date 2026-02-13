@@ -6,9 +6,10 @@ import { getSupabaseBrowserClient } from '../lib/supabaseBrowser';
 interface ToolPageProps {
   tool: ToolConfig;
   freeGenerations?: number; // Daily free generation limit for this tool (default: 1)
+  hideChrome?: boolean; // Hide header, how-to-use, and FAQ sections (for custom page layouts)
 }
 
-export default function ToolPage({ tool, freeGenerations = 1 }: ToolPageProps) {
+export default function ToolPage({ tool, freeGenerations = 1, hideChrome = false }: ToolPageProps) {
   // Auth and credits state
   const [user, setUser] = useState<any>(null);
   const [accessToken, setAccessToken] = useState<string | null>(null);
@@ -514,9 +515,10 @@ export default function ToolPage({ tool, freeGenerations = 1 }: ToolPageProps) {
   const faqData = getFaqData();
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
-      <div className="max-w-4xl mx-auto px-4">
-        {/* Header - Centered */}
+    <div className={hideChrome ? '' : 'min-h-screen bg-gray-50 py-12'}>
+      <div className={hideChrome ? '' : 'max-w-4xl mx-auto px-4'}>
+        {/* Header - Centered (hidden when embedded in custom page) */}
+        {!hideChrome && (
         <div className="mb-12 text-center">
           <div className="flex items-center justify-center gap-2 text-sm text-gray-600 mb-4">
             <a href="/" className="hover:text-blue-600">Home</a>
@@ -532,6 +534,7 @@ export default function ToolPage({ tool, freeGenerations = 1 }: ToolPageProps) {
             {tool.seo_description}
           </p>
         </div>
+        )}
 
         {/* Main Content - Single Column, Centered */}
         <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-8 mb-8">
@@ -774,7 +777,8 @@ export default function ToolPage({ tool, freeGenerations = 1 }: ToolPageProps) {
           )}
         </div>
 
-        {/* How to Use */}
+        {/* How to Use (hidden when embedded in custom page) */}
+        {!hideChrome && (
         <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
           <h3 className="text-lg font-semibold text-blue-900 mb-3">
             💡 How to use this tool
@@ -786,8 +790,10 @@ export default function ToolPage({ tool, freeGenerations = 1 }: ToolPageProps) {
             <li>• You can regenerate with different parameters anytime</li>
           </ul>
         </div>
+        )}
 
-        {/* FAQ Section */}
+        {/* FAQ Section (hidden when embedded in custom page) */}
+        {!hideChrome && (
         <div className="bg-white rounded-lg border border-gray-200 p-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
             Frequently Asked Questions
@@ -815,6 +821,7 @@ export default function ToolPage({ tool, freeGenerations = 1 }: ToolPageProps) {
             ))}
           </div>
         </div>
+        )}
         {/* SEO Section for Image-to-Prompt */}
         {tool.tool_id === 'image-to-prompt' && (
           <div className="bg-white rounded-lg border border-gray-200 p-8 mt-8">

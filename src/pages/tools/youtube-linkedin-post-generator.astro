@@ -1,0 +1,533 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AstroHeader from '../../components/AstroHeader.astro';
+import AstroFooter from '../../components/AstroFooter.astro';
+import ToolPage from '../../components/ToolPage';
+import { getToolById } from '../../config/tools';
+
+export const prerender = true;
+
+const tool = getToolById('youtube-linkedin-post-generator')!;
+
+const seo = {
+  path: 'tools/youtube-linkedin-post-generator',
+  title: 'Turn YouTube Videos into LinkedIn Posts (AI Generator)',
+  description: 'Convert any YouTube video into a LinkedIn post in seconds. Choose tone, length, and format. Free YouTube → LinkedIn post generator.'
+};
+
+const faqData = [
+  {
+    question: "Does this work with any YouTube video?",
+    answer: "Yes — as long as the video has captions or subtitles enabled. Public videos from major channels typically work best since they have high-quality transcripts. Private or unlisted videos without captions may not be supported."
+  },
+  {
+    question: "Why do the posts not match my exact writing style?",
+    answer: "The generator produces professional LinkedIn-style posts based on the tone you select. Think of the output as a strong first draft — edit it to add your personal voice, examples, and perspective before posting."
+  },
+  {
+    question: "Can I generate multiple variations?",
+    answer: "Yes. Use the 'Number of Variants' dropdown to generate up to 3 different versions at once. Each variation uses a different angle and hook so you can pick the best one."
+  },
+  {
+    question: "Do you store my video or transcript?",
+    answer: "We don't store your YouTube URL or the transcript permanently. The transcript is fetched in real-time, used for generation, and discarded. Your generated posts are saved to your account history if you're logged in."
+  },
+  {
+    question: "What makes a LinkedIn post perform well?",
+    answer: "High-performing LinkedIn posts share these traits: a strong hook in the first line, short paragraphs (1–2 sentences), a personal or contrarian angle, specific numbers or examples, and a question or CTA at the end to drive engagement."
+  },
+  {
+    question: "Is this free?",
+    answer: "Free users get 1 generation per day. That's enough to create a LinkedIn post from any video daily. For unlimited generations and access to all tools, upgrade to Pro."
+  }
+];
+
+const softwareAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "YouTube to LinkedIn Post Generator",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "description": "Convert any YouTube video into a LinkedIn post in seconds. Choose tone, length, and format. Free YouTube → LinkedIn post generator.",
+  "offers": [
+    { "@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free tier: 1 generation per day" },
+    { "@type": "Offer", "price": "9.99", "priceCurrency": "USD", "description": "Pro: Unlimited generations" }
+  ],
+  "publisher": { "@type": "Organization", "name": "RandomPrompts.org", "url": "https://randomprompts.org" }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqData.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+
+  <!-- Schema Markup -->
+  <script type="application/ld+json" set:html={JSON.stringify(softwareAppSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <main class="min-h-screen bg-gray-50">
+
+    <!-- ========== HERO SECTION ========== -->
+    <section class="bg-white border-b border-gray-200">
+      <div class="max-w-6xl mx-auto px-4 py-12 md:py-16">
+        <div class="grid md:grid-cols-2 gap-10 items-center">
+          <!-- Left Column -->
+          <div>
+            <div class="flex items-center gap-2 text-sm text-gray-500 mb-4">
+              <a href="/" class="hover:text-blue-600">Home</a>
+              <span>/</span>
+              <a href="/tools" class="hover:text-blue-600">Tools</a>
+              <span>/</span>
+              <span class="text-gray-900">YouTube to LinkedIn</span>
+            </div>
+
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 leading-tight">
+              Turn YouTube Videos into LinkedIn Authority Posts — Instantly
+            </h1>
+
+            <p class="text-lg text-gray-600 mb-6">
+              Repurpose video content into LinkedIn-ready posts that sound professional (not robotic). Paste a YouTube link, pick a style, generate.
+            </p>
+
+            <!-- Benefit Bullets -->
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-start gap-3">
+                <span class="flex-shrink-0 w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center mt-0.5">
+                  <svg class="w-3.5 h-3.5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
+                </span>
+                <span class="text-gray-700"><strong>Save 30–60 minutes</strong> per post</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="flex-shrink-0 w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center mt-0.5">
+                  <svg class="w-3.5 h-3.5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
+                </span>
+                <span class="text-gray-700"><strong>Choose tone:</strong> authority, educational, or story</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="flex-shrink-0 w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center mt-0.5">
+                  <svg class="w-3.5 h-3.5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
+                </span>
+                <span class="text-gray-700"><strong>Get a clean structure:</strong> hook → value → CTA</span>
+              </li>
+            </ul>
+
+            <!-- CTAs -->
+            <div class="flex flex-wrap items-center gap-4">
+              <a href="#tool-form" class="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors shadow-md hover:shadow-lg">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                Generate a Post (Free)
+              </a>
+              <a href="#examples" class="inline-flex items-center gap-2 px-6 py-3 border border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-50 transition-colors">
+                See Example Output
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+              </a>
+            </div>
+
+            <!-- Trust Microcopy -->
+            <p class="text-sm text-gray-400 mt-4 flex items-center gap-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+              No login required. We don't store your video link unless you save output.
+            </p>
+          </div>
+
+          <!-- Right Column: Example Output Card -->
+          <div class="bg-white border-2 border-gray-200 rounded-xl shadow-lg p-6 relative">
+            <div class="absolute -top-3 left-6 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">EXAMPLE OUTPUT</div>
+            <div class="pt-2">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center text-gray-600 font-bold text-sm">YN</div>
+                <div>
+                  <div class="font-semibold text-gray-900 text-sm">Your Name</div>
+                  <div class="text-xs text-gray-500">Founder & Creator • 1d</div>
+                </div>
+              </div>
+              <div class="text-sm text-gray-800 space-y-3 leading-relaxed">
+                <p class="font-medium">I watched a 45-minute talk on content strategy and pulled out the ONE insight that changed how I post.</p>
+                <p>Most creators obsess over algorithms.</p>
+                <p>The best creators obsess over one thing:<br/><strong>Making the reader feel something in the first line.</strong></p>
+                <p>Here's the framework from the talk:</p>
+                <p>→ Hook with a bold claim or story<br/>→ Deliver 1 actionable takeaway<br/>→ End with a question (not a pitch)</p>
+                <p>Simple? Yes. Effective? Wildly.</p>
+                <p class="text-gray-600">What's your go-to hook format for LinkedIn posts?</p>
+              </div>
+              <div class="mt-4 pt-3 border-t border-gray-100 flex items-center gap-4 text-xs text-gray-400">
+                <span>👍 142</span>
+                <span>💬 38 comments</span>
+                <span>🔄 12 reposts</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== HOW IT WORKS ========== -->
+    <section class="bg-white border-b border-gray-200">
+      <div class="max-w-4xl mx-auto px-4 py-10">
+        <h2 class="text-2xl font-bold text-gray-900 text-center mb-8">How It Works</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Step 1 -->
+          <div class="text-center">
+            <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <svg class="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>
+            </div>
+            <div class="text-sm font-bold text-blue-600 mb-1">Step 1</div>
+            <p class="text-gray-700 font-medium">Paste a YouTube link</p>
+          </div>
+          <!-- Step 2 -->
+          <div class="text-center">
+            <div class="w-14 h-14 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <svg class="w-7 h-7 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" /></svg>
+            </div>
+            <div class="text-sm font-bold text-purple-600 mb-1">Step 2</div>
+            <p class="text-gray-700 font-medium">Choose tone + length</p>
+          </div>
+          <!-- Step 3 -->
+          <div class="text-center">
+            <div class="w-14 h-14 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <svg class="w-7 h-7 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            </div>
+            <div class="text-sm font-bold text-green-600 mb-1">Step 3</div>
+            <p class="text-gray-700 font-medium">Generate, edit, and post</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== TOOL FORM SECTION ========== -->
+    <section id="tool-form" class="py-12">
+      <div class="max-w-4xl mx-auto px-4">
+        <ToolPage client:load tool={tool} hideChrome={true} />
+      </div>
+    </section>
+
+    <!-- ========== EXAMPLE OUTPUTS ========== -->
+    <section id="examples" class="bg-white border-t border-b border-gray-200 py-12">
+      <div class="max-w-4xl mx-auto px-4">
+        <h2 class="text-2xl font-bold text-gray-900 text-center mb-2">Example Outputs</h2>
+        <p class="text-gray-500 text-center mb-8">Real examples of what the generator produces. Click to copy.</p>
+
+        <!-- Tabs -->
+        <div class="flex justify-center gap-2 mb-8" id="example-tabs">
+          <button class="example-tab px-5 py-2 rounded-full font-medium text-sm transition-colors bg-blue-600 text-white" data-tab="authority">Authority</button>
+          <button class="example-tab px-5 py-2 rounded-full font-medium text-sm transition-colors bg-gray-100 text-gray-700 hover:bg-gray-200" data-tab="educational">Educational</button>
+          <button class="example-tab px-5 py-2 rounded-full font-medium text-sm transition-colors bg-gray-100 text-gray-700 hover:bg-gray-200" data-tab="story">Story</button>
+        </div>
+
+        <!-- Authority Example -->
+        <div class="example-content" data-content="authority">
+          <div class="bg-gray-50 rounded-xl border border-gray-200 p-6 md:p-8 relative">
+            <div class="text-gray-800 space-y-3 leading-relaxed whitespace-pre-line text-sm md:text-base">Most people think LinkedIn engagement is about posting more.
+
+It's not. It's about saying ONE thing clearly.
+
+I analyzed a 30-minute talk by a top content strategist and here's the takeaway that stuck:
+
+→ The best-performing posts have a single, specific insight
+→ They use the "hook → proof → question" framework
+→ They're written at a 6th-grade reading level
+
+The irony? The speaker spent 30 minutes explaining what fits in 5 lines.
+
+That's the skill: compression.
+
+What's the last piece of content you compressed into a single insight?
+
+#ContentStrategy #LinkedInGrowth #ContentRepurposing</div>
+            <button class="copy-example-btn mt-6 flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+              Copy this example
+            </button>
+          </div>
+        </div>
+
+        <!-- Educational Example -->
+        <div class="example-content hidden" data-content="educational">
+          <div class="bg-gray-50 rounded-xl border border-gray-200 p-6 md:p-8 relative">
+            <div class="text-gray-800 space-y-3 leading-relaxed whitespace-pre-line text-sm md:text-base">TIL: 73% of B2B buyers say content directly influences their purchasing decisions.
+
+I just watched a deep-dive on how top SaaS companies structure their content engines — and the framework is surprisingly simple.
+
+Here's the 3-step process they all follow:
+
+1. Start with customer pain points (not product features)
+2. Build "comparison" content before "how-to" content
+3. Gate nothing — earn trust first, capture leads second
+
+The biggest myth? That more content = more leads.
+
+The truth: fewer, better pieces that answer real questions outperform a blog with 500 posts every time.
+
+If you're building a content strategy right now, which of these 3 steps are you missing?
+
+#B2BMarketing #ContentMarketing #SaaS</div>
+            <button class="copy-example-btn mt-6 flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+              Copy this example
+            </button>
+          </div>
+        </div>
+
+        <!-- Story Example -->
+        <div class="example-content hidden" data-content="story">
+          <div class="bg-gray-50 rounded-xl border border-gray-200 p-6 md:p-8 relative">
+            <div class="text-gray-800 space-y-3 leading-relaxed whitespace-pre-line text-sm md:text-base">In 2019, I was mass-producing LinkedIn posts.
+
+3x a day. Hashtag soup. Zero engagement.
+
+Then I watched an interview with a creator who'd grown to 200K followers. One line hit me:
+
+"I stopped writing for the algorithm and started writing for ONE person."
+
+So I tried it. I imagined my friend Dave — a mid-career marketer struggling with burnout.
+
+I wrote ONE post for Dave.
+
+→ It got 4x my normal engagement
+→ 12 people DM'd me saying "this felt personal"
+→ I've used this method for every post since
+
+The lesson: specificity beats scale.
+
+Write for one person. The right audience will find you.
+
+Who's your "Dave"?
+
+#PersonalBranding #LinkedInTips #Storytelling</div>
+            <button class="copy-example-btn mt-6 flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+              Copy this example
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== WHO IT'S FOR ========== -->
+    <section class="py-12">
+      <div class="max-w-4xl mx-auto px-4">
+        <h2 class="text-2xl font-bold text-gray-900 text-center mb-8">Who It's For</h2>
+        <div class="grid md:grid-cols-2 gap-6">
+          <!-- Perfect For -->
+          <div class="bg-white rounded-xl border border-green-200 p-6">
+            <div class="flex items-center gap-2 mb-4">
+              <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              </div>
+              <h3 class="font-bold text-gray-900">Perfect For</h3>
+            </div>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-2 text-gray-700">
+                <span class="text-green-500 mt-1">✓</span>
+                <span>Founders building in public</span>
+              </li>
+              <li class="flex items-start gap-2 text-gray-700">
+                <span class="text-green-500 mt-1">✓</span>
+                <span>Consultants sharing insights</span>
+              </li>
+              <li class="flex items-start gap-2 text-gray-700">
+                <span class="text-green-500 mt-1">✓</span>
+                <span>Creators repurposing YouTube content</span>
+              </li>
+              <li class="flex items-start gap-2 text-gray-700">
+                <span class="text-green-500 mt-1">✓</span>
+                <span>Agencies turning videos into posts</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Not For -->
+          <div class="bg-white rounded-xl border border-red-200 p-6">
+            <div class="flex items-center gap-2 mb-4">
+              <div class="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
+                <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+              </div>
+              <h3 class="font-bold text-gray-900">Not For</h3>
+            </div>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-2 text-gray-700">
+                <span class="text-red-500 mt-1">✗</span>
+                <span>Viral meme posting</span>
+              </li>
+              <li class="flex items-start gap-2 text-gray-700">
+                <span class="text-red-500 mt-1">✗</span>
+                <span>Automated spam</span>
+              </li>
+              <li class="flex items-start gap-2 text-gray-700">
+                <span class="text-red-500 mt-1">✗</span>
+                <span>Copy/paste without editing</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== LEAD CAPTURE / CTA ========== -->
+    <section class="bg-gradient-to-r from-blue-600 to-indigo-700 py-10">
+      <div class="max-w-3xl mx-auto px-4 text-center">
+        <h2 class="text-xl md:text-2xl font-bold text-white mb-3">Want this to generate newsletters too?</h2>
+        <p class="text-blue-100 mb-6">Our full workflow turns one YouTube video into a blog post, LinkedIn post, AND newsletter draft.</p>
+        <a href="https://randomprompts.org/workflows/youtube-to-blog-and-linkedin" class="inline-flex items-center gap-2 px-6 py-3 bg-white text-blue-700 rounded-lg font-semibold hover:bg-blue-50 transition-colors shadow-md">
+          Try the Full Workflow
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- ========== FAQ SECTION ========== -->
+    <section class="py-12 bg-white">
+      <div class="max-w-3xl mx-auto px-4">
+        <h2 class="text-2xl font-bold text-gray-900 text-center mb-8">Frequently Asked Questions</h2>
+        <div class="space-y-3" id="faq-accordion">
+          {faqData.map((faq, index) => (
+            <div class="border border-gray-200 rounded-lg overflow-hidden">
+              <button
+                class="faq-toggle w-full px-6 py-4 flex items-center justify-between text-left hover:bg-gray-50 transition-colors"
+                data-index={index}
+              >
+                <span class="font-semibold text-gray-900 pr-4">{faq.question}</span>
+                <svg class="faq-chevron w-5 h-5 text-gray-400 flex-shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+              </button>
+              <div class="faq-answer hidden px-6 pb-4 text-gray-600 border-t border-gray-100 pt-4">
+                {faq.answer}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== RELATED TOOLS ========== -->
+    <section class="py-12 border-t border-gray-200">
+      <div class="max-w-4xl mx-auto px-4">
+        <h2 class="text-2xl font-bold text-gray-900 text-center mb-8">Related Tools</h2>
+        <div class="grid md:grid-cols-2 gap-4">
+          <a href="/tools/youtube-blog-post-generator" class="block bg-white rounded-xl border border-gray-200 p-5 hover:border-blue-400 hover:shadow-md transition-all">
+            <h3 class="font-semibold text-gray-900 mb-1">YouTube → Blog Post Generator</h3>
+            <p class="text-sm text-gray-500">Turn YouTube videos into full SEO-optimized blog articles.</p>
+          </a>
+          <a href="/tools/youtube-content-brief" class="block bg-white rounded-xl border border-gray-200 p-5 hover:border-blue-400 hover:shadow-md transition-all">
+            <h3 class="font-semibold text-gray-900 mb-1">YouTube → Content Brief Generator</h3>
+            <p class="text-sm text-gray-500">Extract key takeaways and structure from any YouTube video.</p>
+          </a>
+          <a href="/workflows/youtube-to-blog-and-linkedin" class="block bg-white rounded-xl border border-gray-200 p-5 hover:border-blue-400 hover:shadow-md transition-all">
+            <h3 class="font-semibold text-gray-900 mb-1">Full Content Repurposing Workflow</h3>
+            <p class="text-sm text-gray-500">One YouTube link → blog post + LinkedIn post + newsletter draft.</p>
+          </a>
+          <a href="/tools/text-to-prompt" class="block bg-white rounded-xl border border-gray-200 p-5 hover:border-blue-400 hover:shadow-md transition-all">
+            <h3 class="font-semibold text-gray-900 mb-1">Prompt Expander & Logic</h3>
+            <p class="text-sm text-gray-500">Turn short ideas into detailed, structured AI prompts.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <AstroFooter />
+</BaseLayout>
+
+<!-- Client-side interactivity: tabs, FAQ accordion, copy buttons -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Example output tabs
+    const tabs = document.querySelectorAll('.example-tab');
+    const contents = document.querySelectorAll('.example-content');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const tabName = (tab as HTMLElement).dataset.tab;
+
+        // Reset all tabs
+        tabs.forEach(t => {
+          t.classList.remove('bg-blue-600', 'text-white');
+          t.classList.add('bg-gray-100', 'text-gray-700');
+        });
+        // Activate clicked tab
+        tab.classList.remove('bg-gray-100', 'text-gray-700');
+        tab.classList.add('bg-blue-600', 'text-white');
+
+        // Show/hide content
+        contents.forEach(c => {
+          if ((c as HTMLElement).dataset.content === tabName) {
+            c.classList.remove('hidden');
+          } else {
+            c.classList.add('hidden');
+          }
+        });
+      });
+    });
+
+    // FAQ accordion
+    const faqToggles = document.querySelectorAll('.faq-toggle');
+    faqToggles.forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        const answer = toggle.nextElementSibling;
+        const chevron = toggle.querySelector('.faq-chevron');
+
+        if (answer && chevron) {
+          const isOpen = !answer.classList.contains('hidden');
+
+          // Close all
+          document.querySelectorAll('.faq-answer').forEach(a => a.classList.add('hidden'));
+          document.querySelectorAll('.faq-chevron').forEach(c => c.classList.remove('rotate-180'));
+
+          // Open this one if it was closed
+          if (!isOpen) {
+            answer.classList.remove('hidden');
+            chevron.classList.add('rotate-180');
+          }
+        }
+      });
+    });
+
+    // Copy example buttons
+    const copyBtns = document.querySelectorAll('.copy-example-btn');
+    copyBtns.forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const container = btn.closest('.example-content');
+        const textEl = container?.querySelector('.whitespace-pre-line');
+        if (textEl) {
+          try {
+            await navigator.clipboard.writeText(textEl.textContent || '');
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg> Copied!';
+            (btn as HTMLElement).classList.add('bg-green-600');
+            (btn as HTMLElement).classList.remove('bg-blue-600');
+            setTimeout(() => {
+              btn.innerHTML = originalHTML;
+              (btn as HTMLElement).classList.remove('bg-green-600');
+              (btn as HTMLElement).classList.add('bg-blue-600');
+            }, 2000);
+          } catch (e) {
+            console.error('Copy failed:', e);
+          }
+        }
+      });
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.querySelector((anchor as HTMLAnchorElement).getAttribute('href') || '');
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  });
+</script>
