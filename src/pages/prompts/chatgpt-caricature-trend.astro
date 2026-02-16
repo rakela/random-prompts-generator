@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AstroHeader from '../../components/AstroHeader.astro';
+import AstroFooter from '../../components/AstroFooter.astro';
+import ChatGPTCaricaturePrompts from '../../components/ChatGPTCaricaturePrompts';
+import '../../styles/global.css';
+
+const seo = {
+  path: 'prompts/chatgpt-caricature-trend',
+  title: 'ChatGPT Caricature Trend Prompt: 12 Viral Prompts to Copy & Paste',
+  description: 'The best ChatGPT caricature trend prompts. 12 copy-paste prompts for the viral AI caricature trend — roast, Simpsons, Pixar, Ghibli, and more.',
+  keywords: 'chatgpt caricature trend prompt, chatgpt caricature, ai caricature trend, chatgpt caricature prompt, viral chatgpt trend, caricature ai prompt',
+};
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+  <ChatGPTCaricaturePrompts client:load />
+  <AstroFooter />
+</BaseLayout>
