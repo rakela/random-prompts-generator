@@ -2617,7 +2617,7 @@ Whether you're Team Gemini or Team ChatGPT (or spell it "chatgbp"—we won't jud
     date: "2026-02-17",
     featuredImage: "/images/blog/mental-health-portrait.jpg",
     readTime: "6 min read",
-    content: \`
+    content: `
 # I Asked ChatGPT: Can You Make an Interpretive Image of What My Mental Health Would Look Like in a Portrait in a Museum?
 
 I asked ChatGPT:
@@ -2760,7 +2760,7 @@ Then don't judge it too fast. Ask what it reveals — and what it refuses to exp
 - [ChatGPT Caricature Trend](/prompts/chatgpt-caricature-trend) — Create viral caricature portraits
 - [Morning Journal Prompts](/morning-journal-prompts) — Start your day with self-reflection
 - [Image to Prompt Tool](/tools/image-to-prompt) — Reverse-engineer any image into a prompt
-    \`
+    `
   }
 ];
 
