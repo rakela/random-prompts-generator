@@ -1,5 +1,5 @@
 /**
- * Centralized SEO Meta Descriptions for Random Prompts Generator
+ * Centralized SEO Meta Descriptions for Random Prompt Generator
  * All descriptions are kept under 160 characters for optimal SEO performance
  * Each entry includes: title, description (max 160 chars), keywords, and path
  */
@@ -7,7 +7,7 @@
 export const seoDescriptions = {
   home: {
     path: '',
-    title: 'Random Prompts Generator - Writing, Stories, & AI Art',
+    title: 'Random Prompt Generator - Writing, Stories, & AI Art',
     description: 'Generate unlimited random prompts for writing, AI art, blogs, stories & names. Free prompt generator for ChatGPT, MidJourney & creative projects.',
     keywords: 'random prompts generator, random writing prompts, random story prompts, ai art prompts, random prompt generator'
   },
@@ -126,14 +126,14 @@ export const seoDescriptions = {
 
   privacy: {
     path: 'privacy',
-    title: 'Privacy Policy - Random Prompts Generator',
+    title: 'Privacy Policy - Random Prompt Generator',
     description: 'Privacy Policy for RandomPrompts.org. Learn how we protect your data and privacy when using our free random prompt generator tools.',
     keywords: 'privacy policy, data protection, privacy, random prompts generator privacy'
   },
 
   terms: {
     path: 'terms',
-    title: 'Terms of Service - Random Prompts Generator',
+    title: 'Terms of Service - Random Prompt Generator',
     description: 'Terms of Service for RandomPrompts.org. Review our usage terms and conditions for the free random prompts generator platform.',
     keywords: 'terms of service, terms and conditions, usage terms, random prompts generator terms'
   }

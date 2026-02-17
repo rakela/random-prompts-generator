@@ -81,7 +81,7 @@ export const POST: APIRoute = async ({ request }) => {
                 <div class="container">
                   <div class="header">
                     <h1 style="margin: 0; font-size: 24px;">New Contact Form Submission</h1>
-                    <p style="margin: 10px 0 0 0; opacity: 0.9;">Random Prompts Generator</p>
+                    <p style="margin: 10px 0 0 0; opacity: 0.9;">Random Prompt Generator</p>
                   </div>
                   <div class="content">
                     <div class="field">

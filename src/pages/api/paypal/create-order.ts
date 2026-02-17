@@ -104,7 +104,7 @@ export const POST: APIRoute = async ({ request }) => {
           }
         ],
         application_context: {
-          brand_name: 'Random Prompts Generator',
+          brand_name: 'Random Prompt Generator',
           landing_page: 'NO_PREFERENCE',
           user_action: 'PAY_NOW',
           return_url: `${new URL(request.url).origin}/?upgraded=true`,
