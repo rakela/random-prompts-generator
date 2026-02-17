@@ -2609,7 +2609,7 @@ Whether you're Team Gemini or Team ChatGPT (or spell it "chatgbp"—we won't jud
     `
   },
   {
-    slug: "chatgpt-mental-health-portrait-museum",
+    slug: "asked-chat-to-make-an-interpretive-image",
     title: "Asked Chat: Can you make an interpretive image of what my mental health would look like in a portrait in a museum",
     excerpt: "What started as a creative experiment became something deeper: a visual translation of inner experience that bypasses words entirely.",
     category: "inspiration",
@@ -2660,6 +2660,8 @@ My first reaction was blunt:
 And then I paused — because that reaction was part of the truth.
 
 ---
+
+![Mental Health Portrait](/images/blog/mental-health-portrait.jpg)
 
 ## ChatGPT's Interpretation (Summarized)
 
