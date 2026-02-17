@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AstroHeader from '../components/AstroHeader.astro';
+import AstroFooter from '../components/AstroFooter.astro';
+import CaricaturePrompts from '../components/CaricaturePrompts';
+import '../styles/global.css';
+
+const seo = {
+  path: 'caricature-prompt',
+  title: 'Caricature Prompt: 5 AI Prompts for Stylized Illustrations',
+  description: 'Create fun, stylized caricature illustrations with these AI caricature prompt templates. 5 copy-paste prompts from cute cartoon styles to semi-realistic portraits.',
+  keywords: 'caricature prompt, ai caricature, cartoon portrait prompt, caricature illustration, stylized portrait ai, caricature generator prompt',
+};
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+  <CaricaturePrompts client:load />
+  <AstroFooter />
+</BaseLayout>

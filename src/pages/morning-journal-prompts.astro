@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AstroHeader from '../components/AstroHeader.astro';
+import AstroFooter from '../components/AstroFooter.astro';
+import MorningJournalPrompts from '../components/MorningJournalPrompts';
+import '../styles/global.css';
+
+const seo = {
+  path: 'morning-journal-prompts',
+  title: 'Morning Journal Prompts: 24 Prompts to Start Your Day with Intention',
+  description: 'Start your day with clarity using these morning journal prompts. 24 thoughtful prompts for grounding, focus, mindset, growth, energy, and reflection.',
+  keywords: 'morning journal prompts, morning journaling, daily journal prompts, journaling prompts morning, mindful morning routine, self-reflection prompts',
+};
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+  <MorningJournalPrompts client:load />
+  <AstroFooter />
+</BaseLayout>

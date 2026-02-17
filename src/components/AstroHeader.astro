@@ -28,6 +28,13 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY ||
   supabaseAnonKey={SUPABASE_ANON_KEY}
 />
 
+<!-- Top Announcement Bar -->
+<div class="bg-gradient-to-r from-amber-500 to-orange-500 text-white text-center py-1.5 px-4">
+  <a href="/morning-journal-prompts" class="text-xs font-medium hover:underline">
+    New: Start your day with intention — try our Morning Journal Prompts
+  </a>
+</div>
+
 <header class="bg-white shadow-sm border-b border-gray-200">
   <div class="max-w-7xl mx-auto px-4 py-4">
     <div class="flex items-center">
@@ -151,6 +158,7 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY ||
                         <a href="/chatgpt-photo-editing-prompts" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">ChatGPT Photo Editing</a>
                         <a href="/gemini-photo-editing-prompts" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Gemini Photo Editing</a>
                         <a href="/prompts/gemini-editing" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Gemini Magic Editor</a>
+                        <a href="/chatgpt-family-photo-prompt" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">ChatGPT Family Photo</a>
                       </div>
                       <!-- Column 2 -->
                       <div class="space-y-2">
@@ -158,6 +166,7 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY ||
                         <a href="/christmas-writing-prompts" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Christmas Writing Prompts</a>
                         <a href="/writing-prompts-for-students" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Writing Prompts for Students</a>
                         <a href="/persuasive-writing-topics" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Persuasive Writing</a>
+                        <a href="/morning-journal-prompts" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Morning Journal Prompts</a>
                       </div>
                       <!-- Column 3 -->
                       <div class="space-y-2">
@@ -169,6 +178,7 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY ||
                         <a href="/prompts/dark-academia-aesthetic" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Dark Academia</a>
                         <a href="/prompts/cyberpunk-2077-aesthetic" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Cyberpunk 2077</a>
                         <a href="/prompts/chatgpt-caricature-trend" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">ChatGPT Caricature Trend</a>
+                        <a href="/caricature-prompt" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Caricature Prompt</a>
                       </div>
                     </div>
                   </div>
@@ -278,10 +288,12 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY ||
               <a href="/chatgpt-photo-editing-prompts" class="text-gray-600 hover:text-blue-600 transition-colors py-1">ChatGPT Photo Editing</a>
               <a href="/gemini-photo-editing-prompts" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Gemini Photo Editing</a>
               <a href="/prompts/gemini-editing" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Gemini Magic Editor</a>
+              <a href="/chatgpt-family-photo-prompt" class="text-gray-600 hover:text-blue-600 transition-colors py-1">ChatGPT Family Photo</a>
               <a href="/october-writing-prompts" class="text-gray-600 hover:text-blue-600 transition-colors py-1">October Writing Prompts</a>
               <a href="/christmas-writing-prompts" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Christmas Writing Prompts</a>
               <a href="/writing-prompts-for-students" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Writing Prompts for Students</a>
               <a href="/persuasive-writing-topics" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Persuasive Writing</a>
+              <a href="/morning-journal-prompts" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Morning Journal Prompts</a>
               <a href="/random-book-prompt-generator" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Book Prompts Generator</a>
               <a href="/movie-prompts-generator" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Movie Prompts Generator</a>
               <a href="/midjourney-ai-picture-generator" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Midjourney AI Prompts</a>
@@ -290,6 +302,7 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY ||
               <a href="/prompts/dark-academia-aesthetic" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Dark Academia</a>
               <a href="/prompts/cyberpunk-2077-aesthetic" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Cyberpunk 2077</a>
               <a href="/prompts/chatgpt-caricature-trend" class="text-gray-600 hover:text-blue-600 transition-colors py-1">ChatGPT Caricature Trend</a>
+              <a href="/caricature-prompt" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Caricature Prompt</a>
             </div>
           </div>
 
