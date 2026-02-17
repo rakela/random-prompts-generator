@@ -84,6 +84,10 @@ const staticPageUrls = [
   'prompts/dark-academia-aesthetic',
   'prompts/cyberpunk-2077-aesthetic',
   'prompts/chatgpt-caricature-trend',
+  // New prompt pages
+  'morning-journal-prompts',
+  'chatgpt-family-photo-prompt',
+  'caricature-prompt',
   // Persuasive writing
   'persuasive-essays-topics',
   'persuasive-writing-titles',

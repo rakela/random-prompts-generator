@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AstroHeader from '../components/AstroHeader.astro';
+import AstroFooter from '../components/AstroFooter.astro';
+import ChatGPTFamilyPhotoPrompts from '../components/ChatGPTFamilyPhotoPrompts';
+import '../styles/global.css';
+
+const seo = {
+  path: 'chatgpt-family-photo-prompt',
+  title: 'ChatGPT Family Photo Prompt: 5 Realistic Prompts to Copy & Paste',
+  description: 'Create realistic AI family portraits with these chatgpt family photo prompt templates. 5 copy-paste prompts for natural, professional-looking family photos.',
+  keywords: 'chatgpt family photo prompt, ai family photo, chatgpt portrait prompt, realistic family photo ai, family portrait prompt, chatgpt image generation',
+};
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+  <ChatGPTFamilyPhotoPrompts client:load />
+  <AstroFooter />
+</BaseLayout>
