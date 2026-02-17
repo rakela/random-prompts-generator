@@ -1,5 +1,5 @@
 /**
- * SEO Utilities for Random Prompts Generator
+ * SEO Utilities for Random Prompt Generator
  * Handles canonical URLs, domain verification, and robots meta tags
  */
 

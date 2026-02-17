@@ -235,7 +235,7 @@ Write the entire blog post in {language}.
 **Important:**
 1. Focus on delivering value, maintaining readability, and creating content that stands alone even without watching the video
 2. At the end of the post, add an attribution paragraph:
-<p><em>This content was generated using <a href="https://randomprompts.org" target="_blank">Random Prompts Generator</a> - AI-powered content creation tools.</em></p>`
+<p><em>This content was generated using <a href="https://randomprompts.org" target="_blank">Random Prompt Generator</a> - AI-powered content creation tools.</em></p>`
 };
 
 // Tool 3: YouTube LinkedIn Post Generator
@@ -371,7 +371,7 @@ For each variant, use this structure with HTML formatting:
 
 <p>{if include_hashtags: hashtags here}</p>
 
-<p><em>📱 Generated with <a href="https://randomprompts.org" target="_blank">Random Prompts Generator</a></em></p>
+<p><em>📱 Generated with <a href="https://randomprompts.org" target="_blank">Random Prompt Generator</a></em></p>
 ---
 
 Write all posts in {language}.
@@ -533,7 +533,7 @@ Analyze the YouTube video transcript and create all three outputs in a single re
 6. Use proper HTML tags (<h1>, <h2>, <p>, <strong>, <em>)
 7. Maintain proper spacing between sections
 
-<p><em>Generated with <a href="https://randomprompts.org" target="_blank">Random Prompts Generator</a></em></p>`
+<p><em>Generated with <a href="https://randomprompts.org" target="_blank">Random Prompt Generator</a></em></p>`
 };
 
 // Tool 5: Text-to-Prompt (Prompt Expander)
@@ -649,7 +649,7 @@ export const textToPromptTool: ToolConfig = {
 **Final Output:**
 Provide your expanded prompt in the requested {output_format}, optimized specifically for {target_model}.
 
-<p><em>Generated with <a href="https://randomprompts.org" target="_blank">Random Prompts Generator</a></em></p>`
+<p><em>Generated with <a href="https://randomprompts.org" target="_blank">Random Prompt Generator</a></em></p>`
 };
 
 // Tool 6: Image-to-Prompt (Reverse Engineering)
@@ -1102,7 +1102,7 @@ Transform the user's character description into a comprehensive, detailed portra
 
 Generate the complete portrait prompt now, following this structure and matching the requested detail level.
 
-<p><em>Generated with <a href="https://randomprompts.org" target="_blank">Random Prompts Generator</a></em></p>`
+<p><em>Generated with <a href="https://randomprompts.org" target="_blank">Random Prompt Generator</a></em></p>`
 };
 
 // Tool 8: Video AI Generation (Sora & Veo Prompts)
@@ -1369,7 +1369,7 @@ Transform the scene description into a highly optimized video generation prompt 
 
 Generate the complete optimized prompt based on the inputs provided, following this structure and incorporating all technical elements.
 
-<p><em>Generated with <a href="https://randomprompts.org" target="_blank">Random Prompts Generator</a></em></p>`
+<p><em>Generated with <a href="https://randomprompts.org" target="_blank">Random Prompt Generator</a></em></p>`
 };
 
 // Tools Registry

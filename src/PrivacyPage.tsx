@@ -38,7 +38,7 @@ const PrivacyPage: React.FC = () => {
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">Overview</h2>
               <p className="text-gray-700 mb-4">
-                Random Prompts Generator ("we," "our," or "us") is committed to protecting your privacy.
+                Random Prompt Generator ("we," "our," or "us") is committed to protecting your privacy.
                 This Privacy Policy explains our data practices for our website at{' '}
                 <a href="https://randomprompts.org" className="text-blue-600 hover:underline">
                   https://randomprompts.org
@@ -61,7 +61,7 @@ const PrivacyPage: React.FC = () => {
               <h2 className="text-2xl font-bold text-gray-900 mb-4">Information We Collect</h2>
               <h3 className="text-xl font-semibold text-gray-800 mb-3">Personal Information</h3>
               <p className="text-gray-700 mb-4">
-                We do NOT collect any personal information. You can use Random Prompts Generator
+                We do NOT collect any personal information. You can use Random Prompt Generator
                 completely anonymously without creating an account or providing any personal details.
               </p>
 
@@ -205,7 +205,7 @@ const PrivacyPage: React.FC = () => {
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">Children's Privacy</h2>
               <p className="text-gray-700 mb-4">
-                Random Prompts Generator is safe for all ages. We do not knowingly collect personal
+                Random Prompt Generator is safe for all ages. We do not knowingly collect personal
                 information from anyone, including children under 13. Since we don't collect personal
                 information at all, there are no special COPPA compliance requirements.
               </p>

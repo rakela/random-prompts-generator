@@ -12,7 +12,7 @@ export interface SEOData {
 export const seoData: Record<string, SEOData> = {
   home: {
     path: '',
-    title: 'Random Prompts Generator - Writing, Stories, & AI Art',
+    title: 'Random Prompt Generator - Writing, Stories, & AI Art',
     description: 'Generate unlimited random prompts for writing, AI art, blogs, stories & names. Free prompt generator for ChatGPT, MidJourney & creative projects.',
     keywords: 'random prompts generator, random writing prompts, random story prompts, ai art prompts, random prompt generator'
   },
@@ -73,7 +73,7 @@ export const seoData: Record<string, SEOData> = {
   chatgptPhotoEditingPrompts: {
     path: 'chatgpt-photo-editing-prompts',
     title: 'ChatGPT Photo Editing Prompts - AI Photo Editor Prompts & Tips',
-    description: 'Master photo editing with ChatGPT prompts. Professional templates for portraits, landscapes, color grading & retouching with expert tips.',
+    description: 'Master AI-powered with chatgpt photo editing prompts. Learn how to write effective prompts and get professional-quality results with ready-to-use editing templates.',
     keywords: 'chatgpt photo editing prompts, chatgpt photo editing, ai photo editing prompts, photo editing ai, chatgpt for photo editing, chatgpt prompts for editing photos'
   },
   geminiPhotoEditingPrompts: {
@@ -145,13 +145,13 @@ export const seoData: Record<string, SEOData> = {
   },
   privacy: {
     path: 'privacy',
-    title: 'Privacy Policy - Random Prompts Generator',
+    title: 'Privacy Policy - Random Prompt Generator',
     description: 'Privacy Policy for RandomPrompts.org. Learn how we protect your data and privacy when using our free random prompt generator tools.',
     keywords: 'privacy policy, data protection, privacy, random prompts generator privacy'
   },
   terms: {
     path: 'terms',
-    title: 'Terms of Service - Random Prompts Generator',
+    title: 'Terms of Service - Random Prompt Generator',
     description: 'Terms of Service for RandomPrompts.org. Review our usage terms and conditions for the free random prompts generator platform.',
     keywords: 'terms of service, terms and conditions, usage terms, random prompts generator terms'
   },
