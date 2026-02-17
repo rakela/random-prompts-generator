@@ -2610,7 +2610,7 @@ Whether you're Team Gemini or Team ChatGPT (or spell it "chatgbp"—we won't jud
   },
   {
     slug: "chatgpt-mental-health-portrait-museum",
-    title: "I Asked ChatGPT to Create a Portrait of My Mental Health — Here's What Happened",
+    title: "Asked Chat: Can you make an interpretive image of what my mental health would look like in a portrait in a museum",
     excerpt: "What started as a creative experiment became something deeper: a visual translation of inner experience that bypasses words entirely.",
     category: "inspiration",
     author: "Random Prompts Team",
@@ -2618,11 +2618,14 @@ Whether you're Team Gemini or Team ChatGPT (or spell it "chatgbp"—we won't jud
     featuredImage: "/images/blog/mental-health-portrait.jpg",
     readTime: "6 min read",
     content: `
-# I Asked ChatGPT: Can You Make an Interpretive Image of What My Mental Health Would Look Like in a Portrait in a Museum?
+# Asked Chat: Can you make an interpretive image of what my mental health would look like in a portrait in a museum
 
 I asked ChatGPT:
 
-> "Can you create an interpretive image of what my mental health would look like as a portrait hanging in a museum?"
+<div style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); border-left: 4px solid #6366f1; padding: 20px 24px; margin: 20px 0; border-radius: 0 12px 12px 0; font-size: 1.05em;">
+<strong style="color: #4f46e5;">Prompt:</strong><br/><br/>
+"Can you create an interpretive image of what my mental health would look like as a portrait hanging in a museum?"
+</div>
 
 What started as a creative experiment quickly became something else entirely — a way of seeing my inner world without having to explain it.
 
@@ -2748,7 +2751,10 @@ Sometimes that's what we need most — not solutions, but acknowledgment. Not ad
 
 If you want to explore this, try this prompt:
 
-> "Create an interpretive, abstract portrait of my current mental health as if it were a painting hanging in a modern art museum. Focus on emotional texture, color, and symbolism rather than realism."
+<div style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); border-left: 4px solid #6366f1; padding: 20px 24px; margin: 20px 0; border-radius: 0 12px 12px 0; font-size: 1.05em;">
+<strong style="color: #4f46e5;">Prompt:</strong><br/><br/>
+"Create an interpretive, abstract portrait of my current mental health as if it were a painting hanging in a modern art museum. Focus on emotional texture, color, and symbolism rather than realism."
+</div>
 
 Then don't judge it too fast. Ask what it reveals — and what it refuses to explain.
 
