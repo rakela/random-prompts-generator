@@ -167,6 +167,11 @@
       "source": "/prompts/sci-fi",
       "destination": "/prompts",
       "permanent": true
+    },
+    {
+      "source": "/prompts/nanobanana",
+      "destination": "/nano-banana-prompts",
+      "permanent": true
     }
   ]
 }
