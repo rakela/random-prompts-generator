@@ -84,7 +84,7 @@ export const seoData: Record<string, SEOData> = {
   },
   nanoBananaPrompts: {
     path: 'nano-banana-prompts',
-    title: 'Copy & Paste Nano Banana Prompts (Viral Cat Figurine AI)',
+    title: 'Best Nano Banana Prompts: Cat Figurine & Anime Templates (Copy/Paste)',
     description: 'Get the exact Nano Banana prompts to create viral cat figurine AI images. Copy and paste ready prompts for 3D figurines, plush toys, and capsule dioramas.',
     keywords: 'nano banana prompts, nano banana cat, viral cat figurine ai, nano banana ai prompts, cat figurine prompts, nano banana trend'
   },

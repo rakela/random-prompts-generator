@@ -2915,6 +2915,86 @@ Tired of typing out prompts manually? Overcome creative block instantly!
 - [ChatGPT Caricature Trend](/prompts/chatgpt-caricature-trend) — Create viral caricature portraits
 - [Image to Prompt Tool](/tools/image-to-prompt) — Reverse-engineer any image into a prompt
     `
+  },
+  {
+    slug: "trending-chatgpt-image-prompts",
+    title: "Trending ChatGPT Image Prompts: Viral 3D, Caricatures & Memes",
+    excerpt: "Discover the most viral and trending ChatGPT image prompts used on TikTok and Instagram right now. Copy and paste these exact prompts to create stunning AI art.",
+    category: "tutorials",
+    author: "Random Prompts Team",
+    date: "2026-02-20",
+    featuredImage: "/images/blog/trending-chatgpt-image-prompts.jpg",
+    readTime: "8 min read",
+    content: `
+# Trending ChatGPT image prompts
+
+![Trending ChatGPT Image Prompts](/images/blog/trending-chatgpt-image-prompts.jpg)
+
+If you want to go viral on social media or just create the coolest AI art of the week, you need to use the most Trending ChatGPT image prompts. The AI landscape moves incredibly fast, and the basic prompts from last year simply don't cut it anymore. From hyper-realistic 3D caricatures to the latest TikTok meme formats, we have compiled the ultimate list of copy-and-paste prompts so you can generate exactly what is breaking the internet today.
+
+---
+
+## The Viral 3D Caricature Prompt
+
+This trend completely took over Instagram and TikTok, allowing people to turn themselves into Pixar-style characters. The key is combining the right style keywords with exaggerated features and vibrant backgrounds. Influencers and everyday users alike have been flooding social media with these adorable, stylized versions of themselves.
+
+<div style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); border-left: 4px solid #6366f1; padding: 20px 24px; margin: 20px 0; border-radius: 0 12px 12px 0; font-size: 1.05em;">
+<strong style="color: #4f46e5;">Copy & Paste Prompt:</strong><br/><br/>
+"A highly detailed 3D Pixar-style caricature of a [person description]. They are wearing [clothing] and doing a highly exaggerated, funny expression. The background is a vibrant, softly lit [environment]. 8k resolution, trending on ArtStation, Disney animation style."
+</div>
+
+---
+
+## The "Italian Brainrot" Meme Prompt
+
+This is currently a massive trend in early 2026 for making short-form video content. The "Italian Brainrot" aesthetic features surreal, wide-angle distorted images with exaggerated hand gestures and chaotic energy. It's become the go-to format for comedic AI content on TikTok and Instagram Reels.
+
+<div style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); border-left: 4px solid #6366f1; padding: 20px 24px; margin: 20px 0; border-radius: 0 12px 12px 0; font-size: 1.05em;">
+<strong style="color: #4f46e5;">Copy & Paste Prompt:</strong><br/><br/>
+"A hyper-realistic, slightly distorted wide-angle fisheye lens photo of a character doing an exaggerated Italian chef hand gesture (pinched fingers) right up to the camera lens. The character is [description]. Deeply saturated colors, chaotic meme aesthetic, flash photography lighting."
+</div>
+
+---
+
+## The "Chibi" Blind-Box Toy Figure
+
+People love turning their selfies into cute, collectible 3D figures. This blind-box toy aesthetic has exploded in popularity, with users creating adorable miniature versions of themselves, their pets, or fictional characters. The "Pop Mart" style is instantly recognizable and highly shareable.
+
+<div style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); border-left: 4px solid #6366f1; padding: 20px 24px; margin: 20px 0; border-radius: 0 12px 12px 0; font-size: 1.05em;">
+<strong style="color: #4f46e5;">Copy & Paste Prompt:</strong><br/><br/>
+"A 3D render of a cute, Chibi-style blind box vinyl toy figure of [person/character description]. The figure has a massive oversized head, big glossy acrylic eyes, and a tiny body. It is standing on a pastel plastic display base. Studio lighting, octane render, smooth resin and matte PVC textures."
+</div>
+
+---
+
+## The Polaroid / 1980s Vintage Trend
+
+Users are pushing back against "perfect" AI and want raw, nostalgic, unedited looks. This vintage aesthetic captures the imperfect charm of old photographs—complete with film grain, light leaks, and faded colors. It's perfect for creating nostalgic, authentic-feeling images that stand out from the polished AI art crowd.
+
+<div style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); border-left: 4px solid #6366f1; padding: 20px 24px; margin: 20px 0; border-radius: 0 12px 12px 0; font-size: 1.05em;">
+<strong style="color: #4f46e5;">Copy & Paste Prompt:</strong><br/><br/>
+"A candid, vintage 1980s Polaroid photograph of [subject description]. The image is low-quality, with heavy film grain, slight motion blur, washed-out colors, and a bright, harsh direct flash. There is a light leak in the bottom corner and the borders of the Polaroid frame are visible."
+</div>
+
+---
+
+## How to Get the Best Results with DALL-E 3 in ChatGPT
+
+To maximize your AI image generation results, follow these essential tips:
+
+- **Be specific:** ChatGPT will fill in the blanks if you don't. Describe the lighting, camera angle, and exact clothing.
+- **Use the Aspect Ratio command:** Tell ChatGPT to make it horizontal or vertical by adding "Make this image in a 16:9 aspect ratio" or "9:16 aspect ratio" at the end of your prompt.
+- **Ask for variations:** If you like the result but want to tweak it, just reply to ChatGPT: "Keep this exact style and character, but change the background to a coffee shop."
+
+---
+
+## More Trending AI Tools
+
+- [Nano Banana Prompts](/nano-banana-prompts) — Create viral cat figurines and collectibles
+- [ChatGPT Caricature Trend](/prompts/chatgpt-caricature-trend) — Master the 3D caricature style
+- [Random Aesthetic Prompt Generator](/art-prompts/aesthetic) — Discover aesthetic styles for your AI art
+- [Image to Prompt Tool](/tools/image-to-prompt) — Reverse-engineer any image into a prompt
+    `
   }
 ];
 
