@@ -1,0 +1,463 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AstroHeader from '../components/AstroHeader.astro';
+import AstroFooter from '../components/AstroFooter.astro';
+import '../styles/global.css';
+
+const seo = {
+  path: 'fanfic-prompt-generator',
+  title: 'Fanfic Prompt Generator - Endless Ideas for AU, OTP & Angst',
+  description: 'Overcome writer\'s block with our free fanfic prompt generator. Instantly generate creative scenarios, dialogue, AUs, and OTP prompts for your favorite characters.',
+  keywords: 'fanfic prompt generator, fanfiction prompts, au prompts, otp prompts, angst prompts, fluff prompts, dialogue prompts, hurt comfort prompts, fanfic ideas',
+};
+
+// Prompts organized by category
+const dialoguePrompts = [
+  { text: '"Who did this to you?"', tag: 'Angst' },
+  { text: '"You\'re bleeding." / "It\'s not my blood."', tag: 'Drama' },
+  { text: '"I think I\'m supposed to hate you, but I\'m really struggling to remember why right now."', tag: 'Enemies' },
+  { text: '"Just pretend you like me for five minutes. Please."', tag: 'Fake Dating' },
+  { text: '"I told you to run! Why did you come back?" / "Because you were still here."', tag: 'Angst' },
+  { text: '"Are you flirting with me or starting a fight?" / "Can\'t I do both?"', tag: 'Banter' },
+  { text: '"I brought you coffee. Don\'t look at me like that, it\'s not poisoned."', tag: 'Enemies' },
+  { text: '"If we survive this, I\'m never letting you choose the shortcut again."', tag: 'Adventure' },
+];
+
+const auPrompts = [
+  { text: 'Fake Dating AU: Character A needs a date to a family event to stop their parents from nagging them. Character B volunteers, but they have to convince everyone they\'ve been in love for years.', tag: 'Romance' },
+  { text: 'Soulmate AU: The first words your soulmate says to you are tattooed on your wrist. Character A\'s tattoo is an incredibly embarrassing insult.', tag: 'Soulmate' },
+  { text: 'Roommate AU: Character A and Character B are assigned as college roommates. One is an absolute neat freak; the other is chaos incarnate. They only communicate via passive-aggressive sticky notes.', tag: 'College' },
+  { text: 'Coffee Shop AU: Character A is a barista who deliberately spells Character B\'s name wrong on their cup every single day just to see their reaction.', tag: 'Meet-Cute' },
+  { text: 'Supernatural AU: Character A is a vampire trying to live a normal human life. Character B is their human neighbor who keeps inviting them to daytime beach parties.', tag: 'Supernatural' },
+  { text: 'Rivalry AU: Character A and Character B are rival bakers competing for the same storefront. The pranks escalate until they accidentally lock themselves in the same walk-in freezer.', tag: 'Rivals' },
+];
+
+const fluffPrompts = [
+  { text: 'Character A is terrified of thunderstorms. Character B builds a massive pillow fort in the living room to distract them.', tag: 'Comfort' },
+  { text: 'Waking up on a lazy Sunday morning. Character A tries to sneak out of bed to make breakfast, but Character B sleepily pulls them back under the covers.', tag: 'Domestic' },
+  { text: 'They get caught in a sudden, freezing downpour and have to huddle together under a single, tiny umbrella while waiting for the bus.', tag: 'Cute' },
+  { text: 'Character A falls asleep on Character B\'s shoulder during a movie. Character B refuses to move for three hours so they don\'t wake them up.', tag: 'Sweet' },
+  { text: 'Character A gets the flu. Character B, who is famously terrible at cooking and domestic chores, tries their absolute hardest to nurse them back to health.', tag: 'Caretaking' },
+];
+
+const angstPrompts = [
+  { text: 'Character A has to completely erase Character B\'s memories of them in order to keep them safe from the villain.', tag: 'Sacrifice' },
+  { text: '"I love you," Character A whispered, desperate. Character B smiled sadly. "I know. I\'m so sorry."', tag: 'Heartbreak' },
+  { text: 'They finally reunite after five years of believing the other was dead—only to realize they are now fighting on opposite sides of a war.', tag: 'War' },
+  { text: 'Character A discovers that Character B has been lying about their true identity since the very first day they met.', tag: 'Betrayal' },
+  { text: 'Character A is forced to watch Character B sacrifice themselves for the rest of the team, completely unable to stop it.', tag: 'Tragedy' },
+];
+
+const hurtComfortPrompts = [
+  { text: 'Character A shows up at Character B\'s apartment at 3:00 AM, soaking wet, shivering, and covered in bruises. They just say, "I didn\'t know where else to go."', tag: 'Hurt' },
+  { text: 'Character A tries to hide a severe injury so they don\'t slow the team down. Character B notices them wincing and corners them in the bathroom to patch them up.', tag: 'Injury' },
+  { text: 'Character A wakes up from a recurring, terrifying nightmare. Character B stays up with them, softly running fingers through their hair until they fall back asleep.', tag: 'Nightmares' },
+  { text: 'Character A is pushed to their absolute breaking point and finally snaps, having a panic attack. Character B is the only one who knows how to ground them.', tag: 'Comfort' },
+];
+
+const genFicPrompts = [
+  { text: 'The squad gets hopelessly lost on a road trip because Character A refused to use a GPS and Character B read the physical map upside down.', tag: 'Humor' },
+  { text: 'Character A accidentally drinks a truth serum right before a highly important team meeting. Character B has to aggressively cover their mouth the whole time.', tag: 'Chaos' },
+  { text: 'The team decides to play Monopoly on their night off. It almost ruins their friendship permanently.', tag: 'Humor' },
+  { text: 'Character A gets stuck in a tree trying to rescue a cat. The cat easily climbs down. Character A is still stuck when the rest of the team finds them.', tag: 'Comedy' },
+];
+
+// All prompts combined for random generation
+const allPrompts = [
+  ...dialoguePrompts.map(p => ({ ...p, category: 'Dialogue' })),
+  ...auPrompts.map(p => ({ ...p, category: 'AU' })),
+  ...fluffPrompts.map(p => ({ ...p, category: 'Fluff' })),
+  ...angstPrompts.map(p => ({ ...p, category: 'Angst' })),
+  ...hurtComfortPrompts.map(p => ({ ...p, category: 'Hurt/Comfort' })),
+  ...genFicPrompts.map(p => ({ ...p, category: 'Gen Fic' })),
+];
+
+const faqs = [
+  {
+    question: "What is a fanfic prompt generator?",
+    answer: "A fanfic prompt generator is a tool that randomly creates story ideas, scenarios, dialogue lines, and situations specifically designed for fanfiction writers. It helps overcome writer's block by providing creative starting points you can apply to your favorite characters from any fandom."
+  },
+  {
+    question: "How do I use these prompts with my OTP?",
+    answer: "Simply take any prompt and replace 'Character A' and 'Character B' with your favorite characters. The prompts are intentionally character-neutral so they work with any ship, fandom, or pairing you love to write about."
+  },
+  {
+    question: "What does AU mean in fanfiction?",
+    answer: "AU stands for 'Alternate Universe.' It's a fanfiction genre where characters are placed in a different setting or reality than their original canon—like a coffee shop AU, college AU, or soulmate AU. These prompts reimagine characters in entirely new scenarios."
+  },
+  {
+    question: "What's the difference between angst and hurt/comfort?",
+    answer: "Angst focuses on emotional pain, internal conflict, and dramatic situations that may not have a happy resolution. Hurt/Comfort (H/C) specifically involves one character being hurt (physically or emotionally) and another character providing comfort and care. H/C typically ends on a hopeful note."
+  },
+  {
+    question: "Can I publish stories based on these prompts?",
+    answer: "Absolutely! These prompts are free to use for any fanfiction you want to write. Many writers share their prompt-inspired fics on AO3, Wattpad, Tumblr, and other platforms. Some even credit the prompt source, but it's not required."
+  },
+  {
+    question: "What if I don't like the prompt I generated?",
+    answer: "Just click the generate button again! The beauty of a prompt generator is that you can keep clicking until you find something that sparks your creativity. You can also combine multiple prompts or use them as loose inspiration rather than following them exactly."
+  }
+];
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-r from-pink-600 to-purple-600 text-white py-16">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">
+        Fanfic Prompt Generator
+      </h1>
+      <p class="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
+        Are you staring at a blank page, wondering what to put your favorite characters through next? Whether you write for anime, TV shows, movies, or books, our fanfic prompt generator is the perfect tool to spark your creativity and cure writer's block. From sweet fluff to heart-wrenching angst, one click is all it takes to find your next great story idea.
+      </p>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="max-w-6xl mx-auto px-4 py-8">
+    <div class="max-w-4xl mx-auto">
+
+      <!-- Random Generator Section -->
+      <div class="bg-white rounded-2xl shadow-xl p-8 mb-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4 text-center">Generate Your Next Fanfic Idea</h2>
+        <p class="text-gray-600 text-center mb-6">Click the button to get a random prompt for your OTP, rarepair, or ensemble cast</p>
+        <div class="text-center mb-6">
+          <button id="generate-random" class="px-8 py-3 bg-gradient-to-r from-pink-600 to-purple-600 text-white rounded-lg font-semibold hover:from-pink-700 hover:to-purple-700 transition-all shadow-lg">
+            Generate Random Prompt
+          </button>
+        </div>
+        <div id="random-prompt-display" class="hidden bg-gradient-to-r from-pink-50 to-purple-50 border border-pink-300 rounded-lg p-6">
+          <div class="flex items-start gap-3">
+            <div class="flex-1">
+              <div class="flex gap-2 mb-2">
+                <span id="random-category" class="text-xs font-semibold bg-pink-500 text-white px-2 py-0.5 rounded-full"></span>
+                <span id="random-tag" class="text-xs font-semibold bg-purple-500 text-white px-2 py-0.5 rounded-full"></span>
+              </div>
+              <p class="text-gray-800" id="random-prompt-text"></p>
+            </div>
+            <button id="copy-random" class="p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0" title="Copy prompt">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- How It Works -->
+      <div class="bg-purple-50 border border-purple-200 rounded-xl p-6 mb-10">
+        <h2 class="text-xl font-bold text-gray-900 mb-4">How It Works</h2>
+        <p class="text-gray-700 mb-4">
+          Using this tool is incredibly simple. Just hit the "Generate" button, and the tool will provide you with a unique scenario, dialogue line, or situational prompt. You can take the result and apply it directly to your OTP (One True Pairing), your favorite rarepair, or an ensemble cast of characters. Keep clicking until you find the exact spark you need to start typing.
+        </p>
+      </div>
+
+      <!-- Types of Prompts -->
+      <div class="bg-white border border-gray-200 rounded-xl p-6 mb-10">
+        <h2 class="text-xl font-bold text-gray-900 mb-4">Types of Prompts You Will Discover</h2>
+        <p class="text-gray-700 mb-4">Fanfiction thrives on tropes, and our generator is packed with the community's favorites:</p>
+        <ul class="space-y-3 text-gray-700">
+          <li class="flex items-start gap-2">
+            <span class="text-purple-500 font-bold">•</span>
+            <span><strong>Alternate Universes (AUs):</strong> Coffee shop meet-cutes, historical settings, soulmate mechanics, and college AUs.</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-purple-500 font-bold">•</span>
+            <span><strong>Dialogue Prompts:</strong> Out-of-context quotes and sudden confessions designed to kickstart a scene.</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-purple-500 font-bold">•</span>
+            <span><strong>Fluff & Romance:</strong> Heartwarming, domestic scenarios perfect for your favorite ships.</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-purple-500 font-bold">•</span>
+            <span><strong>Angst & Drama:</strong> High-stakes situations, betrayals, and "hurt/comfort" setups to put your characters through the wringer.</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-purple-500 font-bold">•</span>
+            <span><strong>Gen Fic Ideas:</strong> Platonic bonding, team-building exercises, and friendship-centric adventures.</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Why Use Section -->
+      <div class="bg-gradient-to-r from-pink-50 to-purple-50 border border-pink-200 rounded-xl p-6 mb-10">
+        <h2 class="text-xl font-bold text-gray-900 mb-4">Why Use a Prompt Generator for Fanfiction?</h2>
+        <p class="text-gray-700">
+          Even the most passionate fandom writers experience burnout. When you love a universe but can't figure out the plot for your next one-shot or multi-chapter slow burn, a randomized prompt acts as a creative jumping-off point. It forces you to think outside your usual writing habits and drop your characters into completely unexpected situations.
+        </p>
+      </div>
+
+      <!-- Dialogue Prompts Section -->
+      <div class="mt-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+          <span class="text-2xl">💬</span> Dialogue Prompts (Out of Context)
+        </h2>
+        <div class="grid gap-4">
+          {dialoguePrompts.map((prompt, index) => (
+            <div class="bg-gradient-to-r from-pink-50 to-purple-50 border border-pink-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+              <div class="flex items-start gap-3">
+                <div class="flex-shrink-0 w-8 h-8 bg-pink-600 text-white rounded-full flex items-center justify-center font-semibold text-sm">
+                  {index + 1}
+                </div>
+                <div class="flex-1">
+                  <span class="text-xs font-semibold bg-purple-500 text-white px-2 py-0.5 rounded-full mb-2 inline-block">{prompt.tag}</span>
+                  <p class="text-gray-700 italic">{prompt.text}</p>
+                </div>
+                <button class="copy-btn p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0" data-text={prompt.text} title="Copy prompt">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- AU Prompts Section -->
+      <div class="mt-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+          <span class="text-2xl">🌌</span> Alternate Universe (AU) Prompts
+        </h2>
+        <div class="grid gap-4">
+          {auPrompts.map((prompt, index) => (
+            <div class="bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+              <div class="flex items-start gap-3">
+                <div class="flex-shrink-0 w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center font-semibold text-sm">
+                  {index + 1}
+                </div>
+                <div class="flex-1">
+                  <span class="text-xs font-semibold bg-indigo-500 text-white px-2 py-0.5 rounded-full mb-2 inline-block">{prompt.tag}</span>
+                  <p class="text-gray-700">{prompt.text}</p>
+                </div>
+                <button class="copy-btn p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0" data-text={prompt.text} title="Copy prompt">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Fluff Prompts Section -->
+      <div class="mt-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+          <span class="text-2xl">💖</span> Fluff & Romance Prompts
+        </h2>
+        <div class="grid gap-4">
+          {fluffPrompts.map((prompt, index) => (
+            <div class="bg-gradient-to-r from-rose-50 to-pink-50 border border-rose-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+              <div class="flex items-start gap-3">
+                <div class="flex-shrink-0 w-8 h-8 bg-rose-500 text-white rounded-full flex items-center justify-center font-semibold text-sm">
+                  {index + 1}
+                </div>
+                <div class="flex-1">
+                  <span class="text-xs font-semibold bg-rose-500 text-white px-2 py-0.5 rounded-full mb-2 inline-block">{prompt.tag}</span>
+                  <p class="text-gray-700">{prompt.text}</p>
+                </div>
+                <button class="copy-btn p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0" data-text={prompt.text} title="Copy prompt">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Angst Prompts Section -->
+      <div class="mt-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+          <span class="text-2xl">💔</span> Angst & Drama Prompts
+        </h2>
+        <div class="grid gap-4">
+          {angstPrompts.map((prompt, index) => (
+            <div class="bg-gradient-to-r from-slate-50 to-gray-100 border border-slate-300 rounded-lg p-4 hover:shadow-md transition-shadow">
+              <div class="flex items-start gap-3">
+                <div class="flex-shrink-0 w-8 h-8 bg-slate-600 text-white rounded-full flex items-center justify-center font-semibold text-sm">
+                  {index + 1}
+                </div>
+                <div class="flex-1">
+                  <span class="text-xs font-semibold bg-slate-600 text-white px-2 py-0.5 rounded-full mb-2 inline-block">{prompt.tag}</span>
+                  <p class="text-gray-700">{prompt.text}</p>
+                </div>
+                <button class="copy-btn p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0" data-text={prompt.text} title="Copy prompt">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Hurt/Comfort Prompts Section -->
+      <div class="mt-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+          <span class="text-2xl">🩹</span> Hurt / Comfort Prompts
+        </h2>
+        <div class="grid gap-4">
+          {hurtComfortPrompts.map((prompt, index) => (
+            <div class="bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+              <div class="flex items-start gap-3">
+                <div class="flex-shrink-0 w-8 h-8 bg-amber-500 text-white rounded-full flex items-center justify-center font-semibold text-sm">
+                  {index + 1}
+                </div>
+                <div class="flex-1">
+                  <span class="text-xs font-semibold bg-amber-500 text-white px-2 py-0.5 rounded-full mb-2 inline-block">{prompt.tag}</span>
+                  <p class="text-gray-700">{prompt.text}</p>
+                </div>
+                <button class="copy-btn p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0" data-text={prompt.text} title="Copy prompt">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Gen Fic Prompts Section -->
+      <div class="mt-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+          <span class="text-2xl">🎲</span> Gen Fic (Friendship & Humor) Prompts
+        </h2>
+        <div class="grid gap-4">
+          {genFicPrompts.map((prompt, index) => (
+            <div class="bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+              <div class="flex items-start gap-3">
+                <div class="flex-shrink-0 w-8 h-8 bg-emerald-500 text-white rounded-full flex items-center justify-center font-semibold text-sm">
+                  {index + 1}
+                </div>
+                <div class="flex-1">
+                  <span class="text-xs font-semibold bg-emerald-500 text-white px-2 py-0.5 rounded-full mb-2 inline-block">{prompt.tag}</span>
+                  <p class="text-gray-700">{prompt.text}</p>
+                </div>
+                <button class="copy-btn p-2 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0" data-text={prompt.text} title="Copy prompt">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="mt-16">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+        <div class="space-y-4">
+          {faqs.map((faq) => (
+            <div class="bg-white border border-gray-200 rounded-xl p-5">
+              <h3 class="font-semibold text-gray-900 mb-2">{faq.question}</h3>
+              <p class="text-gray-600 text-sm">{faq.answer}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Related Links -->
+      <div class="mt-12 bg-purple-50 rounded-lg p-6 border border-purple-200">
+        <h3 class="text-xl font-bold text-gray-900 mb-4">More Writing Prompt Generators</h3>
+        <div class="grid md:grid-cols-2 gap-4">
+          <a href="/writing-prompts-generator/otp-ideas" class="text-purple-700 hover:underline flex items-center gap-2">
+            💕 OTP Prompt Generator
+          </a>
+          <a href="/writing-prompts-generator/dialogue" class="text-purple-700 hover:underline flex items-center gap-2">
+            💬 Dialogue Prompt Generator
+          </a>
+          <a href="/writing-prompts-generator/character" class="text-purple-700 hover:underline flex items-center gap-2">
+            👤 Character Generator
+          </a>
+          <a href="/writing-prompts-generator/conflict" class="text-purple-700 hover:underline flex items-center gap-2">
+            ⚔️ Conflict Generator
+          </a>
+          <a href="/random-book-prompt-generator" class="text-purple-700 hover:underline flex items-center gap-2">
+            📚 Book Prompt Generator
+          </a>
+          <a href="/short-story-prompts-generator" class="text-purple-700 hover:underline flex items-center gap-2">
+            📖 Short Story Prompts
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <AstroFooter />
+
+  <!-- Random generator and copy functionality -->
+  <script define:vars={{ allPrompts }}>
+    const prompts = allPrompts;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const copyButtons = document.querySelectorAll('.copy-btn');
+      const generateRandomBtn = document.getElementById('generate-random');
+      const randomPromptDisplay = document.getElementById('random-prompt-display');
+      const copyRandomBtn = document.getElementById('copy-random');
+
+      // Copy functionality for prompt cards
+      copyButtons.forEach(button => {
+        button.addEventListener('click', async () => {
+          const text = button.getAttribute('data-text');
+          try {
+            await navigator.clipboard.writeText(text);
+            const originalHTML = button.innerHTML;
+            button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+            button.classList.add('text-green-600');
+            setTimeout(() => {
+              button.innerHTML = originalHTML;
+              button.classList.remove('text-green-600');
+            }, 2000);
+          } catch (err) {
+            console.error('Failed to copy:', err);
+          }
+        });
+      });
+
+      // Random prompt generator
+      generateRandomBtn.addEventListener('click', () => {
+        const randomPrompt = prompts[Math.floor(Math.random() * prompts.length)];
+
+        document.getElementById('random-prompt-text').textContent = randomPrompt.text;
+        document.getElementById('random-category').textContent = randomPrompt.category;
+        document.getElementById('random-tag').textContent = randomPrompt.tag;
+        randomPromptDisplay.classList.remove('hidden');
+
+        copyRandomBtn.setAttribute('data-text', randomPrompt.text);
+      });
+
+      // Copy random prompt
+      copyRandomBtn.addEventListener('click', async () => {
+        const text = copyRandomBtn.getAttribute('data-text');
+        try {
+          await navigator.clipboard.writeText(text);
+          const originalHTML = copyRandomBtn.innerHTML;
+          copyRandomBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+          copyRandomBtn.classList.add('text-green-600');
+          setTimeout(() => {
+            copyRandomBtn.innerHTML = originalHTML;
+            copyRandomBtn.classList.remove('text-green-600');
+          }, 2000);
+        } catch (err) {
+          console.error('Failed to copy:', err);
+        }
+      });
+    });
+  </script>
+</BaseLayout>
