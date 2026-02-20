@@ -162,6 +162,65 @@ const categoryInfo = {
     </div>
   </section>
 
+  <!-- Popular Tools Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Popular Creative Tools</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Explore our most-used generators for writing, storytelling, and character creation.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <a href="/generators/paragraph" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-gray-200">
+          <div class="p-6" style="background: linear-gradient(135deg, #3b82f6, #1d4ed8);">
+            <div class="text-5xl mb-3 text-white">📝</div>
+            <h3 class="text-2xl font-bold mb-2 text-white">Random Paragraph Generator</h3>
+          </div>
+          <div class="p-6">
+            <p class="text-gray-600 mb-4">Generate random paragraphs for writing practice, filler text, or creative exercises. Perfect for warming up before a writing session.</p>
+            <div class="flex items-center text-blue-600 font-semibold group-hover:translate-x-2 transition-transform">
+              <span>Try Generator</span>
+              <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </div>
+          </div>
+        </a>
+        <a href="/writing-prompts-generator/story-starters" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-gray-200">
+          <div class="p-6" style="background: linear-gradient(135deg, #8b5cf6, #6d28d9);">
+            <div class="text-5xl mb-3 text-white">🚀</div>
+            <h3 class="text-2xl font-bold mb-2 text-white">Story Starter Generator</h3>
+          </div>
+          <div class="p-6">
+            <p class="text-gray-600 mb-4">Get your story off the ground with compelling opening lines and scenarios. Overcome writer's block with instant inspiration.</p>
+            <div class="flex items-center text-purple-600 font-semibold group-hover:translate-x-2 transition-transform">
+              <span>Try Generator</span>
+              <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </div>
+          </div>
+        </a>
+        <a href="/art-prompts/character-design" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-gray-200">
+          <div class="p-6" style="background: linear-gradient(135deg, #ec4899, #be185d);">
+            <div class="text-5xl mb-3 text-white">🎨</div>
+            <h3 class="text-2xl font-bold mb-2 text-white">Character Design Prompts</h3>
+          </div>
+          <div class="p-6">
+            <p class="text-gray-600 mb-4">Generate unique character concepts for art, games, and stories. Perfect for artists and game designers seeking fresh ideas.</p>
+            <div class="flex items-center text-pink-600 font-semibold group-hover:translate-x-2 transition-transform">
+              <span>Try Generator</span>
+              <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- Category-Based Generators Section -->
   <section class="py-16 bg-gradient-to-br from-purple-50 to-blue-50">
     <div class="max-w-6xl mx-auto px-4">
@@ -182,11 +241,11 @@ const categoryInfo = {
           };
           const promptCount = categoryPrompts.filter(p => p.category === category).length;
 
-          const colorClasses = {
-            purple: 'from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700',
-            blue: 'from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700',
-            pink: 'from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700',
-            gray: 'from-gray-500 to-gray-600 hover:from-gray-600 hover:to-gray-700'
+          const colorStyles = {
+            purple: 'background: linear-gradient(to right, #8b5cf6, #7c3aed);',
+            blue: 'background: linear-gradient(to right, #3b82f6, #2563eb);',
+            pink: 'background: linear-gradient(to right, #ec4899, #db2777);',
+            gray: 'background: linear-gradient(to right, #6b7280, #4b5563);'
           };
 
           return (
@@ -194,7 +253,7 @@ const categoryInfo = {
               href={`/prompts/${category}`}
               class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden"
             >
-              <div class={`bg-gradient-to-r ${colorClasses[info.color]} p-6 text-white`}>
+              <div class="p-6 text-white" style={colorStyles[info.color] || colorStyles.gray}>
                 <div class="text-5xl mb-3">{info.icon}</div>
                 <h3 class="text-2xl font-bold mb-2">{info.title}</h3>
                 <p class="text-sm opacity-90">{promptCount}+ unique prompts</p>
