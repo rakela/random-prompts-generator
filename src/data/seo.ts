@@ -84,9 +84,9 @@ export const seoData: Record<string, SEOData> = {
   },
   nanoBananaPrompts: {
     path: 'nano-banana-prompts',
-    title: 'Nano Banana Prompts - NaNoWriMo Writing Prompts Generator',
-    description: 'Nano Banana Prompts for NaNoWriMo! Generate creative writing prompts to hit your 50k word goal. Free NaNoWriMo prompt generator for novelists.',
-    keywords: 'nano banana prompts, nanowrimo prompts, nano prompts, writing prompts nanowrimo, novel writing prompts, nanowrimo ideas'
+    title: 'Copy & Paste Nano Banana Prompts (Viral Cat Figurine AI)',
+    description: 'Get the exact Nano Banana prompts to create viral cat figurine AI images. Copy and paste ready prompts for 3D figurines, plush toys, and capsule dioramas.',
+    keywords: 'nano banana prompts, nano banana cat, viral cat figurine ai, nano banana ai prompts, cat figurine prompts, nano banana trend'
   },
   octoberWritingPrompts: {
     path: 'october-writing-prompts',
@@ -255,15 +255,15 @@ export const seoData: Record<string, SEOData> = {
   },
   randomAestheticPromptGenerator: {
     path: 'random-aesthetic-prompt-generator',
-    title: 'Aesthetic Prompt Generator - Pinterest & Instagram Aesthetics',
-    description: 'Generate aesthetic prompts for Pinterest boards, Instagram aesthetics, moodboards, and AI art. Free aesthetic prompt generator for creatives and visual inspiration.',
-    keywords: 'aesthetic prompt generator, aesthetic prompts, pinterest boards, instagram aesthetics, moodboard ideas, visual aesthetic, ai art aesthetic'
+    title: 'Random Aesthetic Prompt Generator (For Art, Photography & AI)',
+    description: 'Generate aesthetic prompts for AI art, Pinterest boards, photography, and moodboards. Free random aesthetic generator with Dark Academia, Cottagecore, Y2K, and 30+ aesthetic styles.',
+    keywords: 'aesthetic prompt generator, random aesthetic generator, aesthetic prompts for ai art, pinterest aesthetic prompt, aesthetic photo prompt generator, aesthetic layout prompt'
   },
   randomArtStyleGenerator: {
     path: 'art-prompts/art-style',
-    title: 'Random Art Style Generator | Random Prompts',
-    description: 'Discover random art styles to explore in your drawings or AI images. Free art style generator for illustrators and AI art tools.',
-    keywords: 'art style generator, art styles, drawing styles, illustration styles, ai art styles'
+    title: 'Random Art Style Generator: 100+ Art Styles for Drawing & AI',
+    description: 'Discover 100+ random art styles for your drawings and AI image generation. Free art style generator with styles from Impressionism to Anime, perfect for artists and AI tools.',
+    keywords: 'art style generator, random art style, art styles for drawing, ai art styles, illustration styles, drawing styles generator'
   },
   randomPhotographyPromptGenerator: {
     path: 'art-prompts/photography',
