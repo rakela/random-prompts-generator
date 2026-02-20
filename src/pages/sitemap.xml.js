@@ -70,6 +70,7 @@ const staticPageUrls = [
   'movie-prompts-generator',
   'movie-prompts-generator/sci-fi',
   'movie-prompts-generator/horror',
+  'fanfic-prompt-generator',
   // AI-specific
   'chatgpt-photo-editing-prompts',
   'gemini-photo-editing-prompts',
