@@ -2769,6 +2769,152 @@ Then don't judge it too fast. Ask what it reveals — and what it refuses to exp
 - [Morning Journal Prompts](/morning-journal-prompts) — Start your day with self-reflection
 - [Image to Prompt Tool](/tools/image-to-prompt) — Reverse-engineer any image into a prompt
     `
+  },
+  {
+    slug: "best-chatgpt-gemini-photo-editing-prompts",
+    title: "30+ Best ChatGPT & Gemini Prompts for Professional Photo Editing",
+    excerpt: "Master AI photo editing with these copy-and-paste ChatGPT and Google Gemini prompts. Learn how to color grade, sharpen images, and enhance photos like a pro.",
+    category: "tutorials",
+    author: "Random Prompts Team",
+    date: "2026-02-20",
+    featuredImage: "/images/blog/chatgpt-gemini-photo-editing.jpg",
+    readTime: "10 min read",
+    content: `
+# The Best ChatGPT & Google Gemini Prompts for Professional Photo Editing
+
+![ChatGPT and Gemini Photo Editing Prompts](/images/blog/chatgpt-gemini-photo-editing.jpg)
+
+AI has completely revolutionized how we edit photos. You no longer need to spend hours tweaking sliders in Photoshop or Lightroom to get the perfect shot. Whether you are using ChatGPT Plus (with Vision and DALL-E) or Google Gemini Advanced, you can now edit, color grade, and enhance your photos using simple text commands.
+
+But there is a catch: if you give the AI a generic prompt, you will get a generic, overly-processed result.
+
+To get studio-quality results, you need to speak the AI's language. Below is our ultimate list of the best ChatGPT and Gemini prompts for professional photo editing. Just copy, paste, and replace the bracketed text with your own details!
+
+---
+
+## 📸 1. Color Grading & Lightroom Style Prompts
+
+Want your photo to look like it was color-graded by a professional photographer? Use these prompts to apply specific cinematic looks, mood lighting, and aesthetic color palettes.
+
+### The Cinematic Film Look
+
+<div style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); border-left: 4px solid #6366f1; padding: 20px 24px; margin: 20px 0; border-radius: 0 12px 12px 0; font-size: 1.05em;">
+<strong style="color: #4f46e5;">Prompt:</strong><br/><br/>
+"Analyze the attached image. Re-render this photo with a cinematic color grade inspired by 35mm film. Add a subtle teal and orange contrast, deepen the shadows to a cool dark blue, and warm up the highlights. Add a very slight film grain (ISO 400) for a vintage, professional feel."
+</div>
+
+### The "Lightroom" Moody Portrait
+
+<div style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); border-left: 4px solid #6366f1; padding: 20px 24px; margin: 20px 0; border-radius: 0 12px 12px 0; font-size: 1.05em;">
+<strong style="color: #4f46e5;">Prompt:</strong><br/><br/>
+"Edit this portrait to have a moody, dramatic aesthetic. Lower the overall exposure slightly, crush the blacks for a matte finish, and desaturate the greens and yellows. Keep the skin tones natural but luminous."
+</div>
+
+### Golden Hour Enhancement
+
+<div style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); border-left: 4px solid #6366f1; padding: 20px 24px; margin: 20px 0; border-radius: 0 12px 12px 0; font-size: 1.05em;">
+<strong style="color: #4f46e5;">Prompt:</strong><br/><br/>
+"Enhance the lighting in this photo to simulate perfectly timed golden hour photography. Bathe the scene in warm, directional amber light coming from the [left/right], create long soft shadows, and boost the vibrance of the warm colors without oversaturating the image."
+</div>
+
+---
+
+## 🔍 2. Image Sharpening & Quality Enhancement Prompts
+
+If your photo is slightly blurry, noisy, or low-resolution, AI can help reconstruct the lost details. (Note: Gemini is particularly great at reading and enhancing finer details).
+
+### The Ultimate Sharpening Prompt
+
+<div style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); border-left: 4px solid #6366f1; padding: 20px 24px; margin: 20px 0; border-radius: 0 12px 12px 0; font-size: 1.05em;">
+<strong style="color: #4f46e5;">Prompt:</strong><br/><br/>
+"Act as an expert photo retoucher. Enhance the resolution and sharpness of this image. Reduce the digital noise (chroma noise) in the background, sharpen the fine details on the [subject], and enhance the micro-contrast to make the subject pop against the background. Do not make it look over-sharpened or artificial."
+</div>
+
+### Product Photography Cleanup (Great for Adobe Stock)
+
+<div style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); border-left: 4px solid #6366f1; padding: 20px 24px; margin: 20px 0; border-radius: 0 12px 12px 0; font-size: 1.05em;">
+<strong style="color: #4f46e5;">Prompt:</strong><br/><br/>
+"Clean up this product photo for commercial use. Remove any dust, scratches, or imperfections on the product surface. Ensure the lighting is even, correct the white balance to pure neutral, and sharpen the edges of the product so it looks crisp and high-end."
+</div>
+
+---
+
+## ✂️ 3. Background Replacement & Object Removal
+
+Sometimes a great photo is ruined by a cluttered background or a photobomber. Use these prompts to seamlessly alter the environment.
+
+### Seamless Object Removal
+
+<div style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); border-left: 4px solid #6366f1; padding: 20px 24px; margin: 20px 0; border-radius: 0 12px 12px 0; font-size: 1.05em;">
+<strong style="color: #4f46e5;">Prompt:</strong><br/><br/>
+"Carefully remove the [object/person] in the [location] of this image. Fill in the removed area using content-aware generation so it matches the surrounding textures, lighting, and depth of field perfectly. The edit must be invisible to the naked eye."
+</div>
+
+### Studio Background Replacement
+
+<div style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); border-left: 4px solid #6366f1; padding: 20px 24px; margin: 20px 0; border-radius: 0 12px 12px 0; font-size: 1.05em;">
+<strong style="color: #4f46e5;">Prompt:</strong><br/><br/>
+"Isolate the main subject of this photo and completely remove the background. Replace it with a seamless, professional studio backdrop in [color]. Ensure the subject's lighting and edge shadows blend naturally with the new background."
+</div>
+
+### The "Snowy Winter" Trend Prompt
+
+This is the viral Gemini aesthetic trend!
+
+<div style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); border-left: 4px solid #6366f1; padding: 20px 24px; margin: 20px 0; border-radius: 0 12px 12px 0; font-size: 1.05em;">
+<strong style="color: #4f46e5;">Prompt:</strong><br/><br/>
+"Take this image and transform the environment into a magical, heavy winter snowfall scene. Add soft, out-of-focus snowflakes falling in the foreground to create depth, cover the ground in fresh white snow, and adjust the overall lighting to a cool, crisp winter morning tone."
+</div>
+
+---
+
+## 🎨 4. Creative & Trending Aesthetic Prompts
+
+Looking to make something viral for social media? Try these creative edits.
+
+### The Viral Caricature/Illustrated Trend
+
+<div style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); border-left: 4px solid #6366f1; padding: 20px 24px; margin: 20px 0; border-radius: 0 12px 12px 0; font-size: 1.05em;">
+<strong style="color: #4f46e5;">Prompt:</strong><br/><br/>
+"Analyze the subject in this photo and recreate them in a highly detailed, exaggerated 3D caricature style. Maintain their exact clothing, hairstyle, and facial features, but stylize them like a modern Pixar or Disney 3D animated character."
+</div>
+
+### Cyberpunk Neon Aesthetic
+
+<div style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); border-left: 4px solid #6366f1; padding: 20px 24px; margin: 20px 0; border-radius: 0 12px 12px 0; font-size: 1.05em;">
+<strong style="color: #4f46e5;">Prompt:</strong><br/><br/>
+"Turn this night street photo into a dark, futuristic cyberpunk scene. Enhance the neon signs, change the ambient lighting to vivid magenta and cyan, and add realistic rain puddles on the ground reflecting the neon lights."
+</div>
+
+---
+
+## 💡 Pro Tips for Editing Photos with AI
+
+To get the absolute best results from ChatGPT and Gemini, keep these three rules in mind:
+
+### 1. Be Specific About the Genre
+
+Always tell the AI what type of photo it is (e.g., "macro photography," "candid street photography," "commercial product shot").
+
+### 2. Control the Lighting
+
+AI loves to make things overly bright. Use terms like "soft diffused lighting," "Rembrandt lighting," or "harsh dramatic shadows" to control the mood.
+
+### 3. Use Iterative Prompting
+
+Don't ask for 10 changes at once. Ask the AI to fix the lighting first. Once it gives you that result, ask it to color grade it. Then ask it to sharpen it.
+
+---
+
+## More Creative Resources
+
+Tired of typing out prompts manually? Overcome creative block instantly!
+
+- [Random Idea Generator](/generators/idea) — Generate fresh creative concepts
+- [Random Aesthetic Prompt Generator](/art-prompts/aesthetic) — Find the perfect style for your next AI photo edit
+- [ChatGPT Caricature Trend](/prompts/chatgpt-caricature-trend) — Create viral caricature portraits
+- [Image to Prompt Tool](/tools/image-to-prompt) — Reverse-engineer any image into a prompt
+    `
   }
 ];
 
