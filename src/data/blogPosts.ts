@@ -2995,6 +2995,112 @@ To maximize your AI image generation results, follow these essential tips:
 - [Random Aesthetic Prompt Generator](/art-prompts/aesthetic) — Discover aesthetic styles for your AI art
 - [Image to Prompt Tool](/tools/image-to-prompt) — Reverse-engineer any image into a prompt
     `
+  },
+  {
+    slug: "how-to-make-animation-stickman-ai-guide",
+    title: "How to Make Animation Stickman Videos Go Viral (AI Guide)",
+    excerpt: "Learn how to make animation stickman videos using ChatGPT, OpenArt, and Kling. Discover the workflow earning creators $4k per video on YouTube.",
+    category: "tutorials",
+    author: "Random Prompts Team",
+    date: "2026-02-21",
+    featuredImage: "/images/blog/how-to-make-animation-stickman.jpg",
+    readTime: "9 min read",
+    content: `
+# How to Make Animation Stickman Videos Go Viral (And Earn Up to $4K Per Video)
+
+![How to Make Animation Stickman Videos](/images/blog/how-to-make-animation-stickman.jpg)
+
+If you've spent any time on YouTube's "Explore" page recently, you might have noticed a surprising trend. It isn't high-budget travel vlogs or celebrity interviews dominating the algorithm—it's Stickman animations.
+
+These seemingly simple videos are milking the YouTube Partner Program dry. Top channels in this niche are pulling in millions of views per month. With a realistic RPM (Revenue Per Mille) for storytelling and animation niches, creators can earn upwards of **$4,000 per video** on their highest-performing uploads.
+
+The best part? You don't need to be an artist, an animator, or even have a drawing tablet. In 2024, the secret to success is knowing **how to make animation stickman** videos using an AI stack.
+
+Here is the step-by-step breakdown of how to build a viral animation channel from scratch.
+
+---
+
+## Why Stickman Animations?
+
+Before we dive into the tools, it is important to understand why these videos work.
+
+1. **Universal Appeal:** Stick figures transcend language barriers.
+2. **High Retention:** Fast-paced storytelling keeps viewers watching.
+3. **High RPM:** Advertisers love safe, animated content, leading to higher payouts per 1,000 views.
+
+Ready to start? Here is the 3-step AI workflow.
+
+---
+
+## Step 1: Ideation and Prompt Engineering with ChatGPT
+
+The hardest part of animation used to be the storyboard. Now, it takes seconds.
+
+To start, head over to ChatGPT.
+
+1. Navigate to the "Explore" tab (the GPT store).
+2. Search for a GPT called **"Stickman Visuals."**
+3. Start a chat and type in a broad concept or trending topic.
+
+<div style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); border-left: 4px solid #6366f1; padding: 20px 24px; margin: 20px 0; border-radius: 0 12px 12px 0; font-size: 1.05em;">
+<strong style="color: #4f46e5;">Example Input:</strong><br/><br/>
+"Chinese New Year celebration gone wrong."
+</div>
+
+In return, the AI will generate **seven distinct, highly detailed text-to-image prompts** tailored specifically for stickman aesthetics. Copy these prompts—they are the blueprint for your visuals.
+
+---
+
+## Step 2: Generating Characters with OpenArt
+
+Now that you have your text prompts, you need to turn them into high-quality visuals. For this, we are using **OpenArt**, a powerhouse for consistent character generation.
+
+1. Go to OpenArt.ai.
+2. **Crucial Step:** Select the model **"Nano Banana Pro."** This model is excellent at capturing the simplistic yet stylized look required for high-quality stickman art.
+3. Paste the prompts you copied from ChatGPT.
+4. Hit Generate.
+
+You will instantly get visuals that look like they were drawn by a professional digital artist—clean lines, expressive poses, and perfect backgrounds.
+
+---
+
+## Step 3: Animate with Kling AI
+
+Static images won't get you monetization on YouTube; you need movement. This is where the new **Kling Video Model** comes in. It is currently one of the best tools for turning static images into fluid video.
+
+1. Upload your OpenArt visuals into the Kling AI video interface.
+2. Set your motion parameters (usually, the default works well for stickmen).
+3. Generate.
+
+The result? Your static stickman is now fighting, running, or celebrating. The AI handles the physics and the movement interpolation, leaving you with a clip ready for your timeline.
+
+---
+
+## Putting It All Together
+
+Once you have your clips:
+
+- **Stitch them together** in a video editor (like CapCut or Premiere).
+- **Add sound effects and a voiceover** (you can use ElevenLabs for AI voiceovers).
+- **Upload to YouTube** with a catchy title.
+
+Learning how to make animation stickman videos is no longer about drawing frame-by-frame; it is about mastering this AI workflow.
+
+---
+
+## Want the Full Breakdown?
+
+If you want a complete PDF guide that includes the specific prompt structures, the exact settings I use for Nano Banana Pro, and how to optimize your YouTube tags for this niche, drop a comment below or subscribe to our newsletter!
+
+---
+
+## More AI Creative Guides
+
+- [Nano Banana Prompts](/nano-banana-prompts) — Get the exact prompts for Nano Banana Pro
+- [Trending ChatGPT Image Prompts](/blog/trending-chatgpt-image-prompts) — The latest viral AI image trends
+- [ChatGPT & Gemini Photo Editing Prompts](/blog/best-chatgpt-gemini-photo-editing-prompts) — Professional photo editing with AI
+- [Random Idea Generator](/generators/idea) — Generate fresh creative concepts for your next video
+    `
   }
 ];
 
