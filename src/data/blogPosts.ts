@@ -1725,7 +1725,7 @@ Ready to join the trend? Here's your starting point:
   },
   {
     slug: "chatgpt-knows-me-caricature-trend",
-    title: "I Tried the Viral 'ChatGPT Knows Me' Caricature Trend—And It's Actually Terrifying",
+    title: "I Tried the 'ChatGPT Knows Me' Caricature Trend",
     excerpt: "The ChatGPT caricature challenge uses your hidden chat history to create eerily accurate portraits. Here's the exact prompt, why results are shocking, and 3 bonus 'knows me' prompts.",
     category: "tutorials",
     author: "Random Prompts Team",
@@ -1836,7 +1836,7 @@ Try the prompts above and see what ChatGPT really thinks of you. Just don't say 
   },
   {
     slug: "gemini-prompts-for-image-editing",
-    title: "10 Game-Changing Gemini AI Image Editing Prompts You Need to Try Today",
+    title: "10 Gemini AI Image Editing Prompts You Need to Try",
     excerpt: "Master Gemini AI image editing with these 10 powerful prompts. Transform your photos into professional art instantly with our free guide.",
     category: "tutorials",
     author: "Random Prompts Team",
@@ -1938,7 +1938,7 @@ Most of these prompts work in the free tier, but Pro gives faster processing and
   },
   {
     slug: "gemini-ai-snow-photo-editing-prompts-free",
-    title: "Turning Summer into Winter: Free Gemini AI Snow Photo Editing Prompts for Instant Magic",
+    title: "Free Gemini AI Snow Photo Editing Prompts",
     excerpt: "Transform any photo into a winter wonderland. Get our list of free Gemini AI snow photo editing prompts for realistic blizzards and frost effects.",
     category: "tutorials",
     author: "Random Prompts Team",
@@ -2040,7 +2040,7 @@ Absolutely! That's the magic — transform beach photos, garden portraits, or ci
   },
   {
     slug: "seo-optimized-blog-post-generator",
-    title: "The 'Infinite Traffic' Prompt: A Free SEO Optimized Blog Post Generator for Gemini",
+    title: "Free SEO Optimized Blog Post Generator for Gemini",
     excerpt: "Stop writing from scratch. Use our ultimate SEO optimized blog post generator prompt to create high-ranking content in minutes.",
     category: "productivity tips",
     author: "Random Prompts Team",
@@ -2130,7 +2130,7 @@ Quality over quantity. One excellent, SEO-optimized post per week beats five rus
   },
   {
     slug: "funny-random-sentence-generator-prompts",
-    title: "50+ Funny Random Sentence Generator Prompts to Break Your Writer's Block",
+    title: "50+ Funny Random Sentence Generator Prompts",
     excerpt: "Need a laugh? Use our funny random sentence generator prompts to spark your imagination or just pass the time with AI humor.",
     category: "inspiration",
     author: "Random Prompts Team",
@@ -2387,7 +2387,7 @@ Always specify: "Ensure copy is truthful and doesn't make unverifiable claims. A
   },
   {
     slug: "gemini-vs-chatgpt-ai-comparison",
-    title: "Gemini vs ChatGPT AI: Which One Should You Use in 2026?",
+    title: "Gemini vs ChatGPT AI: Which Should You Use?",
     excerpt: "A comprehensive comparison of Google Gemini and ChatGPT for image editing, coding, creative writing, and everyday tasks. Find out which AI assistant wins for your specific needs.",
     category: "tutorials",
     author: "Random Prompts Team",
@@ -2610,7 +2610,7 @@ Whether you're Team Gemini or Team ChatGPT (or spell it "chatgbp"—we won't jud
   },
   {
     slug: "asked-chat-to-make-an-interpretive-image",
-    title: "Asked Chat: Can you make an interpretive image of what my mental health would look like in a portrait in a museum",
+    title: "Asked ChatGPT: Mental Health as a Museum Portrait",
     excerpt: "What started as a creative experiment became something deeper: a visual translation of inner experience that bypasses words entirely.",
     category: "inspiration",
     author: "Random Prompts Team",
@@ -2772,7 +2772,7 @@ Then don't judge it too fast. Ask what it reveals — and what it refuses to exp
   },
   {
     slug: "best-chatgpt-gemini-photo-editing-prompts",
-    title: "30+ Best ChatGPT & Gemini Prompts for Professional Photo Editing",
+    title: "Best ChatGPT & Gemini Photo Editing Prompts (30+)",
     excerpt: "Master AI photo editing with these copy-and-paste ChatGPT and Google Gemini prompts. Learn how to color grade, sharpen images, and enhance photos like a pro.",
     category: "tutorials",
     author: "Random Prompts Team",
@@ -2918,7 +2918,7 @@ Tired of typing out prompts manually? Overcome creative block instantly!
   },
   {
     slug: "trending-chatgpt-image-prompts",
-    title: "Trending ChatGPT Image Prompts: Viral 3D, Caricatures & Memes",
+    title: "Trending ChatGPT Image Prompts: Viral 3D & Memes",
     excerpt: "Discover the most viral and trending ChatGPT image prompts used on TikTok and Instagram right now. Copy and paste these exact prompts to create stunning AI art.",
     category: "tutorials",
     author: "Random Prompts Team",
@@ -2998,7 +2998,7 @@ To maximize your AI image generation results, follow these essential tips:
   },
   {
     slug: "how-to-make-animation-stickman-ai-guide",
-    title: "How to Make Animation Stickman Videos Go Viral (AI Guide)",
+    title: "How to Make Animation Stickman Videos (AI Guide)",
     excerpt: "Learn how to make animation stickman videos using ChatGPT, OpenArt, and Kling. Discover the workflow earning creators $4k per video on YouTube.",
     category: "tutorials",
     author: "Random Prompts Team",
