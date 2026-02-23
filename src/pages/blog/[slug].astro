@@ -24,9 +24,10 @@ if (!post) {
 const recentPosts = getRecentBlogPosts(3).filter(p => p.slug !== post.slug);
 
 const seo = {
+  path: `blog/${post.slug}`,
   title: `${post.title} | Random Prompts`,
   description: post.excerpt,
-  canonical: `https://randomprompts.org/blog/${post.slug}`
+  keywords: ''
 };
 
 // Extract featured image (first image in content)
