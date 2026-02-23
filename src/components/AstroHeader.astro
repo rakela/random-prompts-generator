@@ -2,6 +2,7 @@
 // Astro Header Component - Server-side rendered with client-side interactivity for mobile menu
 import UserMenu from './UserMenu';
 import AuthModal from './AuthModal';
+import SearchOverlay from './SearchOverlay';
 
 // Get Supabase config with fallbacks
 const SUPABASE_URL = import.meta.env.PUBLIC_SUPABASE_URL ||
@@ -57,10 +58,13 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY ||
         <span class="text-xl font-bold text-gray-900">Random Prompts</span>
       </a>
 
-      <!-- Mobile menu toggle button -->
+      <!-- Mobile: Search + Menu Toggle -->
+      <div class="md:hidden ml-auto flex items-center gap-1">
+        <SearchOverlay client:load />
+      </div>
       <button
         id="mobile-menu-toggle"
-        class="md:hidden ml-auto p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
+        class="md:hidden p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
         aria-label="Toggle menu"
       >
         <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -242,8 +246,9 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY ||
         <a href="/contact" class="text-gray-600 hover:text-blue-600 transition-colors">Contact Us</a>
       </nav>
 
-      <!-- User Menu - Right Side -->
-      <div class="hidden md:flex items-center flex-shrink-0 ml-6">
+      <!-- Search & User Menu - Right Side -->
+      <div class="hidden md:flex items-center flex-shrink-0 ml-6 gap-1">
+        <SearchOverlay client:load />
         <UserMenu client:load supabaseUrl={SUPABASE_URL} supabaseAnonKey={SUPABASE_ANON_KEY} />
       </div>
     </div>

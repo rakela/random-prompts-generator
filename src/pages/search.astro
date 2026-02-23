@@ -1,0 +1,165 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AstroHeader from '../components/AstroHeader.astro';
+import AstroFooter from '../components/AstroFooter.astro';
+import '../styles/global.css';
+
+const seo = {
+  path: 'search',
+  title: 'Search - Random Prompts',
+  description: 'Search across all tools, generators, and articles on Random Prompts.',
+  keywords: 'search, random prompts search, find tools, find generators'
+};
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+
+  <div class="max-w-4xl mx-auto px-4 py-12">
+    <h1 class="text-3xl font-bold text-gray-900 mb-8 text-center">Search</h1>
+
+    <div class="max-w-2xl mx-auto mb-8">
+      <div class="relative">
+        <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+        <input
+          id="search-input"
+          type="text"
+          placeholder="Search tools, generators, articles..."
+          class="w-full pl-12 pr-4 py-4 text-lg border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+          autofocus
+        />
+      </div>
+    </div>
+
+    <div id="search-results" class="space-y-3">
+      <!-- Results populated by JS -->
+    </div>
+
+    <div id="no-results" class="hidden text-center py-12 text-gray-500">
+      <p class="text-lg">No results found</p>
+      <p class="text-sm mt-1">Try different keywords</p>
+    </div>
+
+    <div id="empty-state" class="text-center py-12 text-gray-400">
+      <p class="text-sm">Type to search across all tools and articles</p>
+    </div>
+  </div>
+
+  <AstroFooter />
+
+  <script>
+    const searchIndex = [
+      { title: 'Random Writing Prompt Generator', path: '/writing-prompts', description: 'Creative writing prompts with conflicts and plot twists', type: 'page' },
+      { title: 'AI Images Prompt Generator', path: '/ai-images-prompt', description: 'AI art prompts for MidJourney, DALL-E & Stable Diffusion', type: 'page' },
+      { title: 'AI Blog Post Generator', path: '/ai-blog-post-generator', description: 'SEO-optimized blog post ideas and topics', type: 'page' },
+      { title: 'Short Story Prompts Generator', path: '/short-story-prompts-generator', description: 'Flash fiction and short story prompts', type: 'page' },
+      { title: 'Random Name Generator', path: '/random-name-generator', description: 'Fantasy and character names for stories and games', type: 'page' },
+      { title: 'MidJourney AI Prompts Generator', path: '/midjourney-ai-picture-generator', description: 'Professional MidJourney prompts for AI art', type: 'page' },
+      { title: 'Random Paragraph Generator', path: '/generators/paragraph', description: 'Random paragraphs for writing practice', type: 'page' },
+      { title: 'Random Sentence Generator', path: '/generators/sentence', description: 'Random sentences for writing warmups', type: 'page' },
+      { title: 'Random Fantasy Name Generator', path: '/generators/fantasy-name', description: 'Fantasy names for characters and places', type: 'page' },
+      { title: 'Random Superpower Generator', path: '/generators/superpower', description: 'Superpowers with strengths and drawbacks', type: 'page' },
+      { title: 'Random Idea Generator', path: '/generators/idea', description: 'Random ideas for projects and brainstorming', type: 'page' },
+      { title: 'Story Starter Generator', path: '/writing-prompts-generator/story-starters', description: 'Opening lines to kick off your story', type: 'page' },
+      { title: 'Character Generator', path: '/writing-prompts-generator/character', description: 'Characters with traits, goals, and flaws', type: 'page' },
+      { title: 'Plot Twist Generator', path: '/writing-prompts-generator/plot-twist', description: 'Surprising plot twists for stories', type: 'page' },
+      { title: 'Villain Generator', path: '/writing-prompts-generator/villain', description: 'Villains with motives and backstories', type: 'page' },
+      { title: 'Hero Generator', path: '/writing-prompts-generator/hero', description: 'Heroes with goals and inner conflicts', type: 'page' },
+      { title: 'Theme Generator', path: '/writing-prompts-generator/theme', description: 'Story themes and big ideas', type: 'page' },
+      { title: 'Emotion Prompt Generator', path: '/writing-prompts-generator/emotion', description: 'Emotion-based writing prompts', type: 'page' },
+      { title: 'Drawing Prompt Generator', path: '/art-prompts/drawing', description: 'Drawing and sketching prompts for artists', type: 'page' },
+      { title: 'Aesthetic Prompt Generator', path: '/art-prompts/aesthetic', description: 'Aesthetic prompts for AI art and photography', type: 'page' },
+      { title: 'Art Style Generator', path: '/art-prompts/art-style', description: '100+ art styles for drawing and AI', type: 'page' },
+      { title: 'Character Design Generator', path: '/art-prompts/character-design', description: 'Character design prompts for concept art', type: 'page' },
+      { title: 'Fantasy Art Generator', path: '/art-prompts/fantasy-art', description: 'Fantasy art prompts with creatures and magic', type: 'page' },
+      { title: 'Anime Prompt Generator', path: '/art-prompts/anime', description: 'Anime prompts for characters and scenes', type: 'page' },
+      { title: 'Portrait Prompt Generator', path: '/art-prompts/portrait', description: 'Portrait prompts with styles and moods', type: 'page' },
+      { title: 'Nano Banana Prompts', path: '/nano-banana-prompts', description: 'Viral cat figurine and collectible AI prompts', type: 'page' },
+      { title: 'ChatGPT Photo Editing Prompts', path: '/chatgpt-photo-editing-prompts', description: 'AI photo editor prompts and tips', type: 'page' },
+      { title: 'Gemini Photo Editing Prompts', path: '/gemini-photo-editing-prompts', description: 'Google AI photo editor guide', type: 'page' },
+      { title: 'Prompt Expander', path: '/tools/text-to-prompt', description: 'Transform short ideas into detailed prompts', type: 'page' },
+      { title: 'Image to Prompt', path: '/tools/image-to-prompt', description: 'Reverse-engineer images to AI prompts', type: 'page' },
+      { title: 'Fanfic Prompt Generator', path: '/fanfic-prompt-generator', description: 'Fanfiction writing prompts by category', type: 'page' },
+      { title: 'Morning Journal Prompts', path: '/morning-journal-prompts', description: '24 prompts to start your day', type: 'page' },
+      { title: 'Movie Prompts Generator', path: '/movie-prompts-generator', description: 'Film and screenplay ideas', type: 'page' },
+      { title: 'Best ChatGPT & Gemini Photo Editing Prompts', path: '/blog/best-chatgpt-gemini-photo-editing-prompts', description: 'Copy-and-paste prompts for professional photo editing', type: 'post' },
+      { title: 'Trending ChatGPT Image Prompts', path: '/blog/trending-chatgpt-image-prompts', description: 'Viral 3D caricatures, memes, and AI art trends', type: 'post' },
+      { title: 'How to Make Animation Stickman Videos', path: '/blog/how-to-make-animation-stickman-ai-guide', description: 'AI workflow for viral stickman animations', type: 'post' },
+      { title: 'Gemini vs ChatGPT AI Comparison', path: '/blog/gemini-vs-chatgpt-ai-comparison', description: 'Which AI should you use?', type: 'post' },
+      { title: 'Gemini AI Image Editing Prompts', path: '/blog/gemini-prompts-for-image-editing', description: 'Game-changing Gemini prompts for editing', type: 'post' },
+      { title: 'Funny Random Sentence Generator Prompts', path: '/blog/funny-random-sentence-generator-prompts', description: 'Break writer\'s block with humor', type: 'post' },
+      { title: 'ChatGPT Caricature Prompt', path: '/blog/chatgpt-caricature-prompt', description: 'The exact prompt for the caricature trend', type: 'post' },
+      { title: 'SEO Blog Post Generator for Gemini', path: '/blog/seo-optimized-blog-post-generator', description: 'Free SEO blog post prompt for Gemini', type: 'post' },
+    ];
+
+    const input = document.getElementById('search-input');
+    const resultsDiv = document.getElementById('search-results');
+    const noResults = document.getElementById('no-results');
+    const emptyState = document.getElementById('empty-state');
+
+    // Pre-fill from URL
+    const params = new URLSearchParams(window.location.search);
+    const q = params.get('q');
+    if (q && input) {
+      input.value = q;
+      doSearch(q);
+    }
+
+    input?.addEventListener('input', (e) => {
+      const val = e.target.value;
+      const url = new URL(window.location.href);
+      if (val) url.searchParams.set('q', val);
+      else url.searchParams.delete('q');
+      history.replaceState(null, '', url.toString());
+      doSearch(val);
+    });
+
+    function doSearch(query) {
+      if (!query.trim()) {
+        resultsDiv.innerHTML = '';
+        noResults.classList.add('hidden');
+        emptyState.classList.remove('hidden');
+        return;
+      }
+      emptyState.classList.add('hidden');
+      const terms = query.toLowerCase().split(/\s+/);
+      const filtered = searchIndex.filter(item => {
+        const text = `${item.title} ${item.description}`.toLowerCase();
+        return terms.every(t => text.includes(t));
+      });
+
+      if (filtered.length === 0) {
+        resultsDiv.innerHTML = '';
+        noResults.classList.remove('hidden');
+        return;
+      }
+
+      noResults.classList.add('hidden');
+      const pages = filtered.filter(r => r.type === 'page');
+      const posts = filtered.filter(r => r.type === 'post');
+
+      let html = '';
+      if (pages.length) {
+        html += '<h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Tools & Pages</h2>';
+        pages.forEach(item => {
+          html += `<a href="${item.path}" class="block p-4 bg-white border border-gray-200 rounded-lg hover:border-blue-400 hover:shadow-md transition-all">
+            <div class="font-medium text-gray-900">${item.title}</div>
+            <div class="text-sm text-gray-500 mt-1">${item.description}</div>
+          </a>`;
+        });
+      }
+      if (posts.length) {
+        html += '<h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3 mt-6">Articles</h2>';
+        posts.forEach(item => {
+          html += `<a href="${item.path}" class="block p-4 bg-white border border-gray-200 rounded-lg hover:border-purple-400 hover:shadow-md transition-all">
+            <div class="font-medium text-gray-900">${item.title}</div>
+            <div class="text-sm text-gray-500 mt-1">${item.description}</div>
+          </a>`;
+        });
+      }
+      resultsDiv.innerHTML = html;
+    }
+  </script>
+</BaseLayout>
