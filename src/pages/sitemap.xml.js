@@ -85,6 +85,7 @@ const staticPageUrls = [
   'prompts/dark-academia-aesthetic',
   'prompts/cyberpunk-2077-aesthetic',
   'prompts/chatgpt-caricature-trend',
+  'prompts/ai-linkedin-headshot-prompt-generator',
   // New prompt pages
   'morning-journal-prompts',
   'chatgpt-family-photo-prompt',

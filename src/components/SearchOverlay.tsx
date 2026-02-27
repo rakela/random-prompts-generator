@@ -47,6 +47,7 @@ const searchIndex: SearchItem[] = [
   { title: 'Sci-Fi Prompt Generator', path: '/art-prompts/sci-fi-art', description: 'Sci-fi prompts for stories and AI art', type: 'page' },
   { title: 'Lighting Style Generator', path: '/art-prompts/lighting', description: 'Lighting styles from soft sunset to harsh neon', type: 'page' },
   { title: 'Nano Banana Prompts', path: '/nano-banana-prompts', description: 'Viral cat figurine and collectible AI prompts', type: 'page' },
+  { title: 'AI LinkedIn Headshot Prompt Generator', path: '/prompts/ai-linkedin-headshot-prompt-generator', description: 'Professional AI headshot prompts for LinkedIn', type: 'page' },
   { title: 'Ghostface AI Prompt Generator', path: '/ghostface-ai-trend-prompt-generator', description: 'Horror-themed Ghostface AI art prompts', type: 'page' },
   { title: 'Gemini AI Snow Prompt Tutorial', path: '/gemini-ai-snow-prompt-tutorial', description: 'Professional winter portrait prompts for Gemini', type: 'page' },
   { title: 'ChatGPT Photo Editing Prompts', path: '/chatgpt-photo-editing-prompts', description: 'AI photo editor prompts and tips', type: 'page' },
@@ -78,6 +79,7 @@ const searchIndex: SearchItem[] = [
   { title: 'SEO Optimized Blog Post Generator for Gemini', path: '/blog/seo-optimized-blog-post-generator', description: 'Free SEO blog post prompt for Gemini AI', type: 'post' },
   { title: 'ChatGPT Caricature Prompt', path: '/blog/chatgpt-caricature-prompt', description: 'The exact prompt for the ChatGPT caricature trend', type: 'post' },
   { title: 'Viral AI Caricature Trend', path: '/blog/viral-chatgpt-caricature-trend', description: 'This viral AI caricature trend is everywhere', type: 'post' },
+  { title: 'ChatGPT Prompts for Pictures of Yourself', path: '/blog/chatgpt-prompts-for-pictures-of-yourself', description: '10 best prompts for AI avatars and self-portraits', type: 'post' },
 ];
 
 export default function SearchOverlay() {
