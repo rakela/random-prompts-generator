@@ -1,0 +1,292 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AstroHeader from '../components/AstroHeader.astro';
+import AstroFooter from '../components/AstroFooter.astro';
+import '../styles/global.css';
+
+const seo = {
+  path: 'cinematic-lighting-ai-prompt',
+  title: 'Cinematic Lighting AI Prompt (Film-Quality Images)',
+  description: 'Create film-quality AI images with cinematic lighting prompts. Copy ready-to-use prompts for dramatic, moody, and Hollywood-style lighting effects.',
+  keywords: 'cinematic lighting ai prompt, cinematic lighting prompt, film lighting ai prompt, dramatic lighting prompt, movie lighting ai, hollywood lighting prompt'
+};
+
+const prompts = [
+  {
+    name: "Golden Hour Portrait",
+    prompt: "Cinematic portrait with golden hour lighting, warm orange and amber tones, sun low on horizon creating long shadows, soft lens flare, backlit subject with hair light, film grain texture, anamorphic bokeh, shot on Arri Alexa, 35mm film aesthetic, dramatic Hollywood cinematography.",
+    color: "amber"
+  },
+  {
+    name: "Noir Detective",
+    prompt: "Film noir cinematic lighting, harsh high-contrast black and white, dramatic venetian blind shadows across face, single hard key light from window, deep blacks and bright highlights, 1940s detective aesthetic, moody atmospheric, shot on vintage cinema lens, dramatic chiaroscuro.",
+    color: "gray"
+  },
+  {
+    name: "Neon Cyberpunk",
+    prompt: "Cyberpunk cinematic lighting with neon pink and blue, rain-soaked city street reflections, volumetric light through fog, high contrast, Blade Runner aesthetic, futuristic urban atmosphere, dramatic color grading, anamorphic lens flare, cinematic widescreen composition.",
+    color: "pink"
+  },
+  {
+    name: "Epic Sunrise Silhouette",
+    prompt: "Epic cinematic sunrise lighting, dramatic silhouette against bright orange sky, volumetric god rays breaking through clouds, massive scale, hero shot composition, IMAX quality, film grain, anamorphic widescreen, blockbuster movie poster aesthetic.",
+    color: "orange"
+  },
+  {
+    name: "Intimate Candlelight",
+    prompt: "Intimate candlelight cinematic scene, warm flickering amber glow, soft shadows dancing on walls, period drama aesthetic, romantic atmosphere, shallow depth of field, film grain, shot on 50mm anamorphic, Barry Lyndon inspired natural light cinematography.",
+    color: "yellow"
+  },
+  {
+    name: "Dramatic Storm",
+    prompt: "Dramatic storm lighting, lightning flash illuminating scene, high contrast blue-white light against dark clouds, rain visible in light beams, epic cinematic atmosphere, thriller movie aesthetic, volumetric fog, shot on cinema camera, intense mood.",
+    color: "blue"
+  },
+  {
+    name: "Soft Window Light",
+    prompt: "Soft cinematic window light, diffused natural illumination wrapping around subject, subtle shadows, intimate and contemplative mood, indie film aesthetic, beautiful skin tones, shallow depth of field, 35mm film look, A24 movie style photography.",
+    color: "neutral"
+  },
+  {
+    name: "Rembrandt Portrait",
+    prompt: "Rembrandt lighting cinematic portrait, classic triangle of light on cheek, dramatic single source illumination, deep shadows, painterly quality, old master aesthetic translated to cinema, rich warm tones, medium format film quality, timeless elegance.",
+    color: "brown"
+  },
+  {
+    name: "Sci-Fi Spaceship",
+    prompt: "Sci-fi cinematic lighting inside spaceship, cool blue ambient with warm orange accent lights, instrument panel glow on face, volumetric atmosphere, Alien movie aesthetic, practical lighting effects, detailed set design, anamorphic wide shot.",
+    color: "cyan"
+  },
+  {
+    name: "Horror Basement",
+    prompt: "Horror movie cinematic lighting, single harsh overhead bulb swinging, dramatic shadows moving, unsettling atmosphere, high contrast, dust particles visible in light beam, psychological thriller aesthetic, tense mood, grainy film texture.",
+    color: "red"
+  },
+  {
+    name: "Magic Hour Landscape",
+    prompt: "Magic hour cinematic landscape, last light of day painting mountains gold and purple, epic wide establishing shot, dramatic cloud formations, lens flare, film grain, IMAX quality, sweeping vista, nature documentary meets feature film aesthetic.",
+    color: "purple"
+  },
+  {
+    name: "Moody Backlight",
+    prompt: "Moody cinematic backlighting, subject silhouetted with rim light, hazy atmospheric fog, dramatic high contrast, mysterious mood, thriller movie aesthetic, anamorphic bokeh, smoke machine atmosphere, professional film lighting setup.",
+    color: "slate"
+  },
+  {
+    name: "Neon Signs Night",
+    prompt: "Urban night cinematic lighting, colorful neon signs reflecting on wet pavement, mixture of warm and cool tones, atmospheric city fog, Wong Kar-wai aesthetic, Hong Kong cinema style, romantic melancholy mood, shallow depth of field.",
+    color: "rose"
+  },
+  {
+    name: "Firelight Campfire",
+    prompt: "Cinematic campfire lighting, warm orange glow illuminating faces from below, dancing shadows from flickering flames, night forest background in darkness, intimate storytelling mood, western or adventure film aesthetic, natural practical lighting.",
+    color: "orange"
+  },
+  {
+    name: "Theatrical Spotlight",
+    prompt: "Theatrical cinematic spotlight, single intense beam cutting through darkness, dust and haze visible, dramatic performer lighting, stage drama atmosphere, Birdman or Whiplash aesthetic, high contrast, film grain, powerful emotional moment.",
+    color: "white"
+  }
+];
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-br from-amber-600 via-orange-700 to-red-800 text-white py-16">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">
+        Cinematic Lighting AI Prompt Generator
+      </h1>
+      <p class="text-xl text-amber-100 max-w-2xl mx-auto">
+        Create film-quality AI images with professional cinematic lighting prompts. Master dramatic shadows, golden hour glow, and Hollywood-style atmospherics for stunning visual results.
+      </p>
+    </div>
+  </div>
+
+  <div class="max-w-4xl mx-auto px-4 py-12">
+
+    <!-- What is Section -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">What is a Cinematic Lighting AI Prompt?</h2>
+      <p class="text-gray-700 mb-4">
+        A cinematic lighting AI prompt is a specialized instruction that guides AI image generators to create images with professional film-quality lighting. These prompts incorporate terminology from cinematography - terms like "key light," "rim light," "volumetric fog," and "anamorphic lens flare" - to achieve the dramatic, polished look of Hollywood productions.
+      </p>
+      <p class="text-gray-700 mb-4">
+        Lighting is the single most important element that separates amateur images from professional ones. Directors of photography spend years mastering how light shapes mood, directs attention, and tells stories visually. These prompts distill that knowledge into instructions AI can understand.
+      </p>
+      <p class="text-gray-700">
+        Whether you're aiming for the golden glow of a Terrence Malick film, the neon-soaked streets of Blade Runner, or the dramatic chiaroscuro of a Fincher thriller, the right cinematic lighting prompt transforms ordinary AI generations into stunning visual art.
+      </p>
+    </section>
+
+    <!-- Prompt Structure -->
+    <section class="mb-12 bg-gradient-to-r from-amber-50 to-orange-50 rounded-2xl p-8 border border-amber-200">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Cinematic Lighting Prompt Structure</h2>
+      <p class="text-gray-700 mb-4">Follow this structure for film-quality results:</p>
+      <div class="bg-white rounded-lg p-6 border border-amber-300 mb-6 font-mono text-sm text-gray-800">
+        [Lighting type] cinematic [scene], [color temperature/tones], [light source and direction], [atmospheric effects], [film reference], [camera/lens details], [mood keywords].
+      </div>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Lighting Types:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
+            <li>Golden hour / Magic hour</li>
+            <li>Rembrandt / Chiaroscuro</li>
+            <li>High-key / Low-key</li>
+            <li>Practical / Natural</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Atmosphere Keywords:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
+            <li>"Volumetric fog/light"</li>
+            <li>"Anamorphic lens flare"</li>
+            <li>"Film grain texture"</li>
+            <li>"Shot on Arri Alexa"</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Prompts Grid -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">15 Professional Cinematic Lighting Prompts</h2>
+      <p class="text-center text-gray-600 mb-8">Click any prompt to copy it to your clipboard</p>
+
+      <div class="space-y-4">
+        {prompts.map((item, index) => (
+          <div class="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-start justify-between gap-4 mb-3">
+              <h3 class="text-lg font-bold text-gray-900">
+                <span class="text-amber-600">{index + 1}.</span> {item.name}
+              </h3>
+              <button
+                class="copy-btn flex-shrink-0 px-4 py-2 bg-amber-600 text-white text-sm font-medium rounded-lg hover:bg-amber-700 transition-colors"
+                data-text={item.prompt}
+              >
+                Copy
+              </button>
+            </div>
+            <p class="text-gray-700 text-sm leading-relaxed">{item.prompt}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- How to Improve -->
+    <section class="mb-12 bg-gradient-to-r from-slate-50 to-gray-100 rounded-2xl p-8 border border-slate-200">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">How to Improve Your Cinematic Lighting</h2>
+      <p class="text-gray-700 mb-4">Elevate your AI cinematography with these professional techniques:</p>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Reference Specific DPs:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-2 text-sm">
+            <li>Roger Deakins - natural, elegant</li>
+            <li>Emmanuel Lubezki - magic hour</li>
+            <li>Bradford Young - moody, underlit</li>
+            <li>Robert Richardson - high contrast</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Technical Additions:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-2 text-sm">
+            <li><code class="bg-white px-2 py-0.5 rounded">"2.39:1 aspect ratio"</code></li>
+            <li><code class="bg-white px-2 py-0.5 rounded">"IMAX film grain"</code></li>
+            <li><code class="bg-white px-2 py-0.5 rounded">"motivated lighting"</code></li>
+            <li><code class="bg-white px-2 py-0.5 rounded">"practical light sources"</code></li>
+          </ul>
+        </div>
+      </div>
+      <p class="text-gray-700 mt-6">
+        Transform basic scene descriptions into cinematic masterpieces with our <a href="/tools/text-to-prompt" class="text-amber-600 hover:underline font-medium">Text to Prompt Expander</a> tool.
+      </p>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-4">
+        <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">What makes lighting "cinematic"?</h3>
+          <p class="text-gray-700">
+            Cinematic lighting is intentional, motivated, and emotionally expressive. It uses contrast, color temperature, and direction to guide the viewer's eye and create mood. Unlike flat, even lighting, cinematic lighting has depth, shadows, and purpose.
+          </p>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Which AI tool handles cinematic lighting best?</h3>
+          <p class="text-gray-700">
+            Midjourney V6 excels at understanding cinematic terminology and producing film-quality lighting. DALL-E 3 and Stable Diffusion XL also produce excellent results when prompts include specific cinematography terms and film references.
+          </p>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">How do I get consistent lighting across multiple images?</h3>
+          <p class="text-gray-700">
+            Maintain the same lighting keywords, color temperature descriptions, and film references across your prompts. Specifying a particular cinematographer's style or film's look helps create visual consistency.
+          </p>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Should I always add film grain?</h3>
+          <p class="text-gray-700">
+            Film grain adds texture and a cinematic quality, but isn't always appropriate. For modern, clean aesthetics, skip it. For vintage, dramatic, or organic looks, "subtle film grain" or "35mm film texture" enhances the mood significantly.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Tools -->
+    <section class="bg-white rounded-2xl border border-gray-200 p-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Related Prompt Tools</h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        <a href="/tools/text-to-prompt" class="p-4 bg-amber-50 rounded-lg hover:bg-amber-100 transition-colors">
+          <h3 class="font-semibold text-amber-900">Text to Prompt Expander</h3>
+          <p class="text-sm text-amber-700">Add professional cinematography terms automatically</p>
+        </a>
+        <a href="/tools/image-to-prompt" class="p-4 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors">
+          <h3 class="font-semibold text-purple-900">Image to Prompt Analyzer</h3>
+          <p class="text-sm text-purple-700">Extract lighting details from film stills</p>
+        </a>
+        <a href="/art-prompts/lighting" class="p-4 bg-yellow-50 rounded-lg hover:bg-yellow-100 transition-colors">
+          <h3 class="font-semibold text-yellow-900">Lighting Style Generator</h3>
+          <p class="text-sm text-yellow-700">Explore more lighting styles and moods</p>
+        </a>
+        <a href="/art-prompts/photography" class="p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
+          <h3 class="font-semibold text-blue-900">Photography Prompts</h3>
+          <p class="text-sm text-blue-700">Professional photography style prompts</p>
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <AstroFooter />
+
+  <!-- Copy functionality -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const copyButtons = document.querySelectorAll('.copy-btn');
+
+      copyButtons.forEach(button => {
+        button.addEventListener('click', async () => {
+          const text = button.getAttribute('data-text');
+
+          try {
+            await navigator.clipboard.writeText(text);
+            const originalText = button.textContent;
+            button.textContent = 'Copied!';
+            button.classList.remove('bg-amber-600', 'hover:bg-amber-700');
+            button.classList.add('bg-green-600');
+
+            setTimeout(() => {
+              button.textContent = originalText;
+              button.classList.remove('bg-green-600');
+              button.classList.add('bg-amber-600', 'hover:bg-amber-700');
+            }, 2000);
+          } catch (err) {
+            console.error('Failed to copy:', err);
+          }
+        });
+      });
+    });
+  </script>
+</BaseLayout>

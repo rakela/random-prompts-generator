@@ -1,0 +1,292 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AstroHeader from '../components/AstroHeader.astro';
+import AstroFooter from '../components/AstroFooter.astro';
+import '../styles/global.css';
+
+const seo = {
+  path: 'double-exposure-ai-prompt',
+  title: 'Double Exposure AI Prompt (Surreal Blend Effects)',
+  description: 'Create stunning double exposure AI art with optimized prompts. Copy ready-to-use prompts for surreal portrait blends, nature overlays, and artistic compositions.',
+  keywords: 'double exposure ai prompt, double exposure prompt, surreal blend ai prompt, portrait overlay prompt, double exposure effect ai, multiple exposure prompt'
+};
+
+const prompts = [
+  {
+    name: "Forest Portrait Blend",
+    prompt: "Double exposure portrait effect, woman's silhouette filled with misty forest landscape, tall pine trees visible within profile, birds flying across face, ethereal dreamy atmosphere, black and white with subtle green tint, artistic surreal photography, seamless blend of human and nature.",
+    color: "green"
+  },
+  {
+    name: "City Skyline Face",
+    prompt: "Double exposure art of man's profile merged with urban cityscape at night, skyscrapers and city lights filling the silhouette, car light trails visible, blue and orange color palette, cinematic surreal effect, modern artistic portrait, professional photography composite.",
+    color: "blue"
+  },
+  {
+    name: "Ocean Waves Portrait",
+    prompt: "Surreal double exposure portrait, woman's face blended with crashing ocean waves, sea foam texture merging with skin, underwater elements visible, teal and white color scheme, dreamy ethereal mood, artistic photography effect, nature and human connection.",
+    color: "cyan"
+  },
+  {
+    name: "Galaxy Mind",
+    prompt: "Cosmic double exposure effect, person's silhouette filled with nebula and stars, Milky Way galaxy swirling within head, purple and blue space colors, ethereal spiritual aesthetic, universe within concept, surreal artistic photography, high contrast.",
+    color: "purple"
+  },
+  {
+    name: "Autumn Leaves Portrait",
+    prompt: "Double exposure portrait blending face with autumn forest, golden and red leaves filling silhouette, tree branches visible through features, warm fall color palette, nostalgic dreamy atmosphere, artistic nature photography composite, beautiful seasonal blend.",
+    color: "amber"
+  },
+  {
+    name: "Mountain Explorer",
+    prompt: "Double exposure art of hiker's silhouette merged with mountain landscape, snow-capped peaks within profile, dramatic clouds and valleys, adventure travel aesthetic, blue and grey tones, epic scale composition, surreal outdoor photography effect.",
+    color: "slate"
+  },
+  {
+    name: "Flower Garden Face",
+    prompt: "Delicate double exposure portrait, woman's profile filled with blooming flowers, roses and wildflowers emerging from silhouette, soft pink and white palette, romantic ethereal mood, botanical art photography, beautiful floral human blend.",
+    color: "pink"
+  },
+  {
+    name: "Wildlife Spirit",
+    prompt: "Dramatic double exposure of wolf silhouette merged with northern forest, pine trees and aurora borealis within animal shape, green and blue ethereal glow, spirit animal concept, mystical nature art, powerful wildlife photography composite.",
+    color: "emerald"
+  },
+  {
+    name: "Clock Time Portrait",
+    prompt: "Conceptual double exposure, person's face blended with vintage clock mechanisms, gears and watch parts visible within features, sepia and bronze tones, time passing concept, surreal artistic photography, steampunk aesthetic undertones.",
+    color: "orange"
+  },
+  {
+    name: "Desert Wanderer",
+    prompt: "Double exposure silhouette filled with desert landscape, sand dunes and sunset sky within profile, warm orange and gold palette, lone traveler aesthetic, dramatic horizon blending with face, artistic travel photography composite.",
+    color: "yellow"
+  },
+  {
+    name: "Cherry Blossom Portrait",
+    prompt: "Japanese-inspired double exposure, woman's silhouette merged with cherry blossom branches, pink sakura petals falling within profile, soft spring atmosphere, delicate artistic effect, Asian aesthetic photography, beautiful floral blend.",
+    color: "rose"
+  },
+  {
+    name: "Rainy City Soul",
+    prompt: "Moody double exposure portrait blended with rainy city street, raindrops and blurred lights within silhouette, reflections on wet pavement, melancholic blue atmosphere, noir artistic photography, urban emotion concept.",
+    color: "indigo"
+  },
+  {
+    name: "Underwater World",
+    prompt: "Surreal double exposure of diver's silhouette filled with coral reef, tropical fish swimming within profile, underwater light rays, vibrant teal and turquoise, marine life blend, dreamy ocean photography composite, aquatic wonder.",
+    color: "teal"
+  },
+  {
+    name: "Butterfly Transformation",
+    prompt: "Artistic double exposure of woman's profile merging with butterfly wings, monarch butterfly patterns visible within face, metamorphosis concept, orange and black with soft background, transformation symbolism, beautiful nature art photography.",
+    color: "orange"
+  },
+  {
+    name: "Winter Soul",
+    prompt: "Cold double exposure portrait, silhouette filled with snowy winter forest, bare trees and falling snowflakes within profile, blue and white icy palette, frozen ethereal atmosphere, solitude concept, artistic winter photography blend.",
+    color: "sky"
+  }
+];
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-br from-purple-600 via-indigo-700 to-blue-800 text-white py-16">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">
+        Double Exposure AI Prompt Generator
+      </h1>
+      <p class="text-xl text-purple-100 max-w-2xl mx-auto">
+        Create stunning double exposure AI artwork with our optimized prompts. Generate surreal portrait blends, nature overlays, and artistic compositions that merge subjects seamlessly.
+      </p>
+    </div>
+  </div>
+
+  <div class="max-w-4xl mx-auto px-4 py-12">
+
+    <!-- What is Section -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">What is a Double Exposure AI Prompt?</h2>
+      <p class="text-gray-700 mb-4">
+        A double exposure AI prompt instructs image generators to create the artistic effect of two images blended together, traditionally achieved by exposing film twice. This technique merges a silhouette or portrait with a secondary image - typically landscapes, cityscapes, or nature scenes - creating surreal, dreamlike compositions.
+      </p>
+      <p class="text-gray-700 mb-4">
+        The double exposure effect has been popular in fine art photography, album covers, and movie posters for decades. With AI, you can now create these complex composites instantly, experimenting with endless combinations of subjects and overlays.
+      </p>
+      <p class="text-gray-700">
+        These prompts work beautifully with Midjourney, DALL-E, and Stable Diffusion to produce artistic images that convey deep conceptual meaning through visual metaphor - showing the "universe within" or the connection between humans and nature.
+      </p>
+    </section>
+
+    <!-- Prompt Structure -->
+    <section class="mb-12 bg-gradient-to-r from-purple-50 to-indigo-50 rounded-2xl p-8 border border-purple-200">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Double Exposure Prompt Structure</h2>
+      <p class="text-gray-700 mb-4">Follow this structure for stunning blend effects:</p>
+      <div class="bg-white rounded-lg p-6 border border-purple-300 mb-6 font-mono text-sm text-gray-800">
+        Double exposure [effect/art] of [primary subject] [merged/blended/filled] with [secondary scene], [key visual elements], [color palette], [mood/atmosphere], [style keywords].
+      </div>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Primary Subjects:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
+            <li>Portrait silhouettes</li>
+            <li>Profile views</li>
+            <li>Animal shapes</li>
+            <li>Object outlines</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Blend Scenes:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
+            <li>Forests and nature</li>
+            <li>Cityscapes and architecture</li>
+            <li>Space and galaxies</li>
+            <li>Water and oceans</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Prompts Grid -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">15 Surreal Double Exposure AI Prompts</h2>
+      <p class="text-center text-gray-600 mb-8">Click any prompt to copy it to your clipboard</p>
+
+      <div class="space-y-4">
+        {prompts.map((item, index) => (
+          <div class="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-start justify-between gap-4 mb-3">
+              <h3 class="text-lg font-bold text-gray-900">
+                <span class="text-purple-600">{index + 1}.</span> {item.name}
+              </h3>
+              <button
+                class="copy-btn flex-shrink-0 px-4 py-2 bg-purple-600 text-white text-sm font-medium rounded-lg hover:bg-purple-700 transition-colors"
+                data-text={item.prompt}
+              >
+                Copy
+              </button>
+            </div>
+            <p class="text-gray-700 text-sm leading-relaxed">{item.prompt}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- How to Improve -->
+    <section class="mb-12 bg-gradient-to-r from-amber-50 to-yellow-50 rounded-2xl p-8 border border-amber-200">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">How to Improve Your Double Exposure Results</h2>
+      <p class="text-gray-700 mb-4">Create more impactful blend effects with these techniques:</p>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Conceptual Pairings:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-2 text-sm">
+            <li>Mind + Universe = infinite thought</li>
+            <li>Face + Forest = connection to nature</li>
+            <li>Profile + City = urban identity</li>
+            <li>Silhouette + Ocean = emotional depth</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Enhancement Keywords:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-2 text-sm">
+            <li><code class="bg-white px-2 py-0.5 rounded">"seamless blend"</code></li>
+            <li><code class="bg-white px-2 py-0.5 rounded">"ethereal dreamy"</code></li>
+            <li><code class="bg-white px-2 py-0.5 rounded">"visible within silhouette"</code></li>
+            <li><code class="bg-white px-2 py-0.5 rounded">"artistic composite"</code></li>
+          </ul>
+        </div>
+      </div>
+      <p class="text-gray-700 mt-6">
+        Transform simple blend ideas into detailed artistic prompts with our <a href="/tools/text-to-prompt" class="text-purple-600 hover:underline font-medium">Text to Prompt Expander</a> tool.
+      </p>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-4">
+        <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">What makes a good double exposure composition?</h3>
+          <p class="text-gray-700">
+            The best double exposures pair subjects with conceptual meaning - a person with the landscape that represents their inner world, or an animal with its natural habitat. Strong silhouettes with clear outlines work best as the primary subject.
+          </p>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Should I use color or black and white?</h3>
+          <p class="text-gray-700">
+            Both work beautifully. Black and white creates classic, timeless effects with emphasis on contrast. Color adds emotional depth - cool blues for melancholy, warm oranges for nostalgia, or complementary colors for visual impact.
+          </p>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Which AI tool creates the best double exposures?</h3>
+          <p class="text-gray-700">
+            Midjourney excels at understanding the double exposure concept and creating seamless blends. DALL-E 3 and Stable Diffusion also produce good results when you specify "double exposure effect" and describe both layers clearly.
+          </p>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">How do I make the blend look more natural?</h3>
+          <p class="text-gray-700">
+            Include keywords like "seamless blend," "merged naturally," and "smooth transition." Specify that elements should be "visible within the silhouette" rather than simply overlaid. Adding atmospheric elements like fog or light rays helps unify the composition.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Tools -->
+    <section class="bg-white rounded-2xl border border-gray-200 p-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Related Prompt Tools</h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        <a href="/tools/text-to-prompt" class="p-4 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors">
+          <h3 class="font-semibold text-purple-900">Text to Prompt Expander</h3>
+          <p class="text-sm text-purple-700">Expand blend concepts into detailed prompts</p>
+        </a>
+        <a href="/tools/image-to-prompt" class="p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
+          <h3 class="font-semibold text-blue-900">Image to Prompt Analyzer</h3>
+          <p class="text-sm text-blue-700">Analyze existing double exposure art</p>
+        </a>
+        <a href="/art-prompts/surrealism" class="p-4 bg-indigo-50 rounded-lg hover:bg-indigo-100 transition-colors">
+          <h3 class="font-semibold text-indigo-900">Surrealism Prompts</h3>
+          <p class="text-sm text-indigo-700">More surreal and dreamlike art styles</p>
+        </a>
+        <a href="/art-prompts/portrait" class="p-4 bg-pink-50 rounded-lg hover:bg-pink-100 transition-colors">
+          <h3 class="font-semibold text-pink-900">Portrait Generator</h3>
+          <p class="text-sm text-pink-700">Base portraits for double exposure effects</p>
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <AstroFooter />
+
+  <!-- Copy functionality -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const copyButtons = document.querySelectorAll('.copy-btn');
+
+      copyButtons.forEach(button => {
+        button.addEventListener('click', async () => {
+          const text = button.getAttribute('data-text');
+
+          try {
+            await navigator.clipboard.writeText(text);
+            const originalText = button.textContent;
+            button.textContent = 'Copied!';
+            button.classList.remove('bg-purple-600', 'hover:bg-purple-700');
+            button.classList.add('bg-green-600');
+
+            setTimeout(() => {
+              button.textContent = originalText;
+              button.classList.remove('bg-green-600');
+              button.classList.add('bg-purple-600', 'hover:bg-purple-700');
+            }, 2000);
+          } catch (err) {
+            console.error('Failed to copy:', err);
+          }
+        });
+      });
+    });
+  </script>
+</BaseLayout>

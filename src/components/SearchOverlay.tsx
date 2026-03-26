@@ -80,6 +80,16 @@ const searchIndex: SearchItem[] = [
   { title: 'ChatGPT Caricature Prompt', path: '/blog/chatgpt-caricature-prompt', description: 'The exact prompt for the ChatGPT caricature trend', type: 'post' },
   { title: 'Viral AI Caricature Trend', path: '/blog/viral-chatgpt-caricature-trend', description: 'This viral AI caricature trend is everywhere', type: 'post' },
   { title: 'ChatGPT Prompts for Pictures of Yourself', path: '/blog/chatgpt-prompts-for-pictures-of-yourself', description: '10 best prompts for AI avatars and self-portraits', type: 'post' },
+  // SEO Prompt Landing Pages
+  { title: 'AI LinkedIn Headshot Prompt', path: '/ai-linkedin-headshot-prompt', description: 'Professional AI prompts for LinkedIn profile photos', type: 'page' },
+  { title: 'AI Corporate Headshot Generator Prompt', path: '/ai-corporate-headshot-generator-prompt', description: 'Executive-quality AI business portrait prompts', type: 'page' },
+  { title: 'Studio Ghibli AI Prompt', path: '/studio-ghibli-ai-prompt', description: 'Miyazaki-inspired anime art prompts', type: 'page' },
+  { title: 'Cinematic Lighting AI Prompt', path: '/cinematic-lighting-ai-prompt', description: 'Film-quality dramatic lighting prompts', type: 'page' },
+  { title: 'Double Exposure AI Prompt', path: '/double-exposure-ai-prompt', description: 'Surreal portrait blend effect prompts', type: 'page' },
+  { title: 'AI Lead Generation Prompt', path: '/ai-lead-generation-prompt', description: 'Sales and marketing prompt templates', type: 'page' },
+  { title: 'AI Chatbot Prompt Template', path: '/ai-chatbot-prompt-template', description: 'System prompts for virtual assistants', type: 'page' },
+  { title: 'AI Prompt Generator for Images', path: '/ai-prompt-generator-for-images', description: 'Universal image prompt formulas and templates', type: 'page' },
+  { title: 'AI Prompt Templates Free', path: '/ai-prompt-templates-free', description: 'Complete library of free AI prompts', type: 'page' },
 ];
 
 export default function SearchOverlay() {

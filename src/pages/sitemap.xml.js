@@ -113,7 +113,17 @@ const staticPageUrls = [
   'contact',
   // Legal
   'privacy',
-  'terms'
+  'terms',
+  // SEO Prompt Landing Pages
+  'ai-linkedin-headshot-prompt',
+  'ai-corporate-headshot-generator-prompt',
+  'studio-ghibli-ai-prompt',
+  'cinematic-lighting-ai-prompt',
+  'double-exposure-ai-prompt',
+  'ai-lead-generation-prompt',
+  'ai-chatbot-prompt-template',
+  'ai-prompt-generator-for-images',
+  'ai-prompt-templates-free'
 ];
 
 // Generate sitemap XML

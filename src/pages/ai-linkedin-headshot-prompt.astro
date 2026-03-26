@@ -1,0 +1,277 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AstroHeader from '../components/AstroHeader.astro';
+import AstroFooter from '../components/AstroFooter.astro';
+import '../styles/global.css';
+
+const seo = {
+  path: 'ai-linkedin-headshot-prompt',
+  title: 'AI LinkedIn Headshot Prompt (Professional Profile Generator)',
+  description: 'Create professional AI LinkedIn headshots with optimized prompts. Copy ready-to-use prompts for realistic corporate profile photos.',
+  keywords: 'ai linkedin headshot prompt, linkedin headshot prompt, ai headshot prompt, professional ai headshot, corporate headshot prompt, linkedin profile photo prompt'
+};
+
+const prompts = [
+  {
+    name: "Corporate Executive",
+    prompt: "Ultra-realistic professional LinkedIn headshot of a confident executive in their 40s, wearing a tailored navy blazer and crisp white shirt, neutral grey studio background, soft diffused lighting from the left, 85mm portrait lens, shallow depth of field, natural skin texture with subtle retouching, confident yet approachable expression, DSLR photography, 8K resolution.",
+    color: "blue"
+  },
+  {
+    name: "Tech Founder",
+    prompt: "Professional AI LinkedIn headshot of a tech startup founder, early 30s, wearing a dark cashmere sweater, modern minimalist office background slightly blurred, natural window lighting mixed with soft fill light, realistic skin tones and texture, confident relaxed expression, shot with Canon 85mm f/1.4, shallow depth of field.",
+    color: "purple"
+  },
+  {
+    name: "Management Consultant",
+    prompt: "High-end LinkedIn portrait of a management consultant, professional business attire with subtle pattern tie, clean beige background with soft gradient, Rembrandt lighting setup, ultra-detailed realistic skin, sharp focus on eyes, professional corporate photography style, 4K quality.",
+    color: "indigo"
+  },
+  {
+    name: "Finance Executive",
+    prompt: "Professional LinkedIn headshot of a senior finance executive, wearing charcoal grey suit with light blue shirt, neutral backdrop, soft studio lighting with subtle rim light, realistic pores and skin texture, serious confident expression, DSLR portrait photography, high resolution.",
+    color: "slate"
+  },
+  {
+    name: "Healthcare Professional",
+    prompt: "Clean professional LinkedIn photo of a healthcare consultant, light blue blazer over white top, bright neutral background, soft natural lighting, trustworthy warm expression, ultra-realistic detail, professional medical industry aesthetic, shallow depth of field.",
+    color: "cyan"
+  },
+  {
+    name: "Legal Professional",
+    prompt: "Distinguished LinkedIn headshot for attorney, dark navy suit with conservative tie, light grey background, classic portrait lighting, authoritative yet approachable expression, ultra-realistic skin rendering, professional law firm photography style, sharp focus.",
+    color: "gray"
+  },
+  {
+    name: "Creative Director",
+    prompt: "Modern LinkedIn headshot for creative professional, smart casual dark outfit, artistic subtle lighting with soft shadows, contemporary neutral background, confident creative expression, realistic detail and skin texture, fashion-forward professional photography.",
+    color: "pink"
+  },
+  {
+    name: "Marketing Executive",
+    prompt: "Vibrant professional LinkedIn headshot of marketing executive, stylish business casual attire, clean modern background, bright balanced lighting, energetic approachable expression, high detail realistic rendering, contemporary corporate photography style.",
+    color: "amber"
+  },
+  {
+    name: "Senior Leadership",
+    prompt: "Executive LinkedIn portrait for C-suite leader, impeccably tailored dark suit, premium quality fabric visible in detail, sophisticated grey background, professional three-point lighting, commanding yet warm expression, ultra-high resolution, realistic skin texture.",
+    color: "neutral"
+  },
+  {
+    name: "Startup Professional",
+    prompt: "Fresh modern LinkedIn headshot for startup professional, quality casual button-down shirt, minimal clean background, natural soft lighting, genuine friendly expression, hyper-realistic detail, contemporary Silicon Valley aesthetic, DSLR quality.",
+    color: "green"
+  },
+  {
+    name: "Sales Executive",
+    prompt: "Approachable LinkedIn headshot for sales professional, professional business attire, warm neutral background, soft flattering lighting, confident trustworthy smile, realistic natural appearance, commercial portrait photography style, high resolution.",
+    color: "rose"
+  },
+  {
+    name: "Engineering Leader",
+    prompt: "Professional LinkedIn photo for engineering manager, smart casual with quality polo or button-down, modern tech company background blurred, natural lighting style, thoughtful intelligent expression, realistic rendering, professional tech industry aesthetic.",
+    color: "teal"
+  }
+];
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 text-white py-16">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">
+        AI LinkedIn Headshot Prompt Generator
+      </h1>
+      <p class="text-xl text-blue-100 max-w-2xl mx-auto">
+        Create professional AI LinkedIn headshot images with our optimized prompts. Get studio-quality corporate profile photos using AI image generators like ChatGPT, Midjourney, and DALL-E.
+      </p>
+    </div>
+  </div>
+
+  <div class="max-w-4xl mx-auto px-4 py-12">
+
+    <!-- What is Section -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">What is an AI LinkedIn Headshot Prompt?</h2>
+      <p class="text-gray-700 mb-4">
+        An AI LinkedIn headshot prompt is a carefully crafted text instruction that tells AI image generators exactly how to create a professional-looking profile photo. The right prompt combines photography terminology, lighting descriptions, and professional aesthetics to produce headshots that rival expensive studio photography.
+      </p>
+      <p class="text-gray-700 mb-4">
+        With tools like ChatGPT (DALL-E), Midjourney, and Stable Diffusion, you can now generate corporate-quality headshots in minutes. The key difference between amateur and professional results lies entirely in how you structure your prompt.
+      </p>
+      <p class="text-gray-700">
+        These prompts work for executives, consultants, entrepreneurs, and professionals across all industries who need polished LinkedIn profile photos without the cost and scheduling hassle of traditional photography.
+      </p>
+    </section>
+
+    <!-- Prompt Structure -->
+    <section class="mb-12 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-8 border border-blue-100">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Perfect AI LinkedIn Headshot Prompt Structure</h2>
+      <p class="text-gray-700 mb-4">Follow this proven structure for professional results:</p>
+      <div class="bg-white rounded-lg p-6 border border-blue-200 mb-6 font-mono text-sm text-gray-800">
+        Ultra-realistic professional LinkedIn headshot of [description], wearing [attire], [background], [lighting setup], [camera/lens], [technical details], [expression], [style keywords].
+      </div>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Essential Elements:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
+            <li>Subject description (age, gender)</li>
+            <li>Professional attire details</li>
+            <li>Background type and color</li>
+            <li>Lighting setup description</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Technical Keywords:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
+            <li>85mm lens, shallow depth of field</li>
+            <li>DSLR photography, 8K resolution</li>
+            <li>Natural skin texture</li>
+            <li>Sharp focus on eyes</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Prompts Grid -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">12 Ready-to-Use AI LinkedIn Headshot Prompts</h2>
+      <p class="text-center text-gray-600 mb-8">Click any prompt to copy it to your clipboard</p>
+
+      <div class="space-y-4">
+        {prompts.map((item, index) => (
+          <div class="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-start justify-between gap-4 mb-3">
+              <h3 class="text-lg font-bold text-gray-900">
+                <span class="text-blue-600">{index + 1}.</span> {item.name}
+              </h3>
+              <button
+                class="copy-btn flex-shrink-0 px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors"
+                data-text={item.prompt}
+              >
+                Copy
+              </button>
+            </div>
+            <p class="text-gray-700 text-sm leading-relaxed">{item.prompt}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- How to Improve -->
+    <section class="mb-12 bg-gradient-to-r from-amber-50 to-yellow-50 rounded-2xl p-8 border border-amber-200">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">How to Improve Your AI LinkedIn Headshot Results</h2>
+      <p class="text-gray-700 mb-4">If your generated headshots look artificial or unprofessional, try these improvements:</p>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Add These Keywords:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-2 text-sm">
+            <li><code class="bg-white px-2 py-0.5 rounded">"ultra-realistic skin texture"</code></li>
+            <li><code class="bg-white px-2 py-0.5 rounded">"shot with Canon EOS R5"</code></li>
+            <li><code class="bg-white px-2 py-0.5 rounded">"natural pores visible"</code></li>
+            <li><code class="bg-white px-2 py-0.5 rounded">"subtle catchlights in eyes"</code></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Avoid These Terms:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-2 text-sm">
+            <li>Words like "cartoon," "anime," "illustration"</li>
+            <li>Overly dramatic lighting descriptions</li>
+            <li>Fantasy or artistic style keywords</li>
+            <li>Generic terms without specifics</li>
+          </ul>
+        </div>
+      </div>
+      <p class="text-gray-700 mt-6">
+        Need help expanding a basic idea into a detailed prompt? Use our <a href="/tools/text-to-prompt" class="text-blue-600 hover:underline font-medium">Text to Prompt Expander</a> to automatically add professional photography terminology.
+      </p>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-4">
+        <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">What makes a good AI LinkedIn headshot prompt?</h3>
+          <p class="text-gray-700">
+            A good AI LinkedIn headshot prompt includes specific details about professional attire, neutral backgrounds, studio lighting terminology, camera settings like "85mm lens" and "shallow depth of field," and realism keywords like "DSLR photography" and "natural skin texture."
+          </p>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Which AI tool creates the best LinkedIn headshots?</h3>
+          <p class="text-gray-700">
+            Midjourney V6, ChatGPT with DALL-E 3, and Stable Diffusion XL all produce excellent results when given properly structured prompts. The quality depends more on your prompt than the specific tool.
+          </p>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Is it okay to use an AI headshot on LinkedIn?</h3>
+          <p class="text-gray-700">
+            Yes, many professionals use AI-generated or AI-enhanced headshots on LinkedIn. Ensure the image accurately represents you and looks natural rather than obviously artificial.
+          </p>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">How do I make my AI headshot look more realistic?</h3>
+          <p class="text-gray-700">
+            Include specific camera and lens details, add skin texture keywords, use professional lighting terminology, and avoid any artistic or illustration-related terms. Regenerate multiple times to find the best result.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Tools -->
+    <section class="bg-white rounded-2xl border border-gray-200 p-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Related Prompt Tools</h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        <a href="/tools/text-to-prompt" class="p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
+          <h3 class="font-semibold text-blue-900">Text to Prompt Expander</h3>
+          <p class="text-sm text-blue-700">Transform basic ideas into detailed professional prompts</p>
+        </a>
+        <a href="/tools/image-to-prompt" class="p-4 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors">
+          <h3 class="font-semibold text-purple-900">Image to Prompt Analyzer</h3>
+          <p class="text-sm text-purple-700">Reverse-engineer any photo into a usable prompt</p>
+        </a>
+        <a href="/ai-corporate-headshot-generator-prompt" class="p-4 bg-indigo-50 rounded-lg hover:bg-indigo-100 transition-colors">
+          <h3 class="font-semibold text-indigo-900">Corporate Headshot Prompts</h3>
+          <p class="text-sm text-indigo-700">More prompts for executive and business photos</p>
+        </a>
+        <a href="/art-prompts/portrait" class="p-4 bg-pink-50 rounded-lg hover:bg-pink-100 transition-colors">
+          <h3 class="font-semibold text-pink-900">Portrait Prompt Generator</h3>
+          <p class="text-sm text-pink-700">Generate artistic portrait prompts with various styles</p>
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <AstroFooter />
+
+  <!-- Copy functionality -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const copyButtons = document.querySelectorAll('.copy-btn');
+
+      copyButtons.forEach(button => {
+        button.addEventListener('click', async () => {
+          const text = button.getAttribute('data-text');
+
+          try {
+            await navigator.clipboard.writeText(text);
+            const originalText = button.textContent;
+            button.textContent = 'Copied!';
+            button.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+            button.classList.add('bg-green-600');
+
+            setTimeout(() => {
+              button.textContent = originalText;
+              button.classList.remove('bg-green-600');
+              button.classList.add('bg-blue-600', 'hover:bg-blue-700');
+            }, 2000);
+          } catch (err) {
+            console.error('Failed to copy:', err);
+          }
+        });
+      });
+    });
+  </script>
+</BaseLayout>
