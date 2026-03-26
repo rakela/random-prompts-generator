@@ -1,0 +1,292 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AstroHeader from '../components/AstroHeader.astro';
+import AstroFooter from '../components/AstroFooter.astro';
+import '../styles/global.css';
+
+const seo = {
+  path: 'ai-lead-generation-prompt',
+  title: 'AI Lead Generation Prompt (Sales & Marketing Templates)',
+  description: 'Generate qualified leads with AI prompts for sales and marketing. Copy ready-to-use prompts for prospecting, outreach emails, and lead qualification.',
+  keywords: 'ai lead generation prompt, lead generation prompt, ai sales prompt, prospecting prompt ai, lead qualification prompt, ai marketing prompt'
+};
+
+const prompts = [
+  {
+    name: "Ideal Customer Profile Builder",
+    prompt: "Act as a B2B sales strategist. Help me create a detailed Ideal Customer Profile (ICP) for [PRODUCT/SERVICE]. Include: company size, industry verticals, annual revenue range, technology stack indicators, pain points they likely face, buying triggers, decision-maker titles, and where they typically research solutions. Format as a comprehensive profile document I can use for targeting.",
+    color: "blue"
+  },
+  {
+    name: "Cold Email Sequence Generator",
+    prompt: "You are an expert cold email copywriter. Create a 3-email sequence for reaching out to [TARGET ROLE] at [INDUSTRY] companies about [PRODUCT/SERVICE]. Email 1: Pattern interrupt opening. Email 2: Case study/social proof. Email 3: Break-up email. Each email should be under 100 words, have a compelling subject line, and include a soft CTA. Focus on their pain points, not our features.",
+    color: "green"
+  },
+  {
+    name: "LinkedIn Outreach Messages",
+    prompt: "Create 5 variations of LinkedIn connection request messages and follow-up sequences for reaching [TARGET PERSONA]. Messages should: be under 300 characters for connection requests, feel personal not salesy, reference a specific trigger or commonality, and gradually introduce value before asking for a call. Include the initial request plus 2 follow-up messages for each variation.",
+    color: "indigo"
+  },
+  {
+    name: "Lead Qualification Questions",
+    prompt: "Act as a sales qualification expert. Generate a BANT+ qualification framework with 15 strategic questions I can ask [PROSPECT TYPE] to determine if they're a good fit for [PRODUCT/SERVICE]. Include questions for: Budget (direct and indirect), Authority (decision process), Need (pain severity), Timeline (urgency), and Competition (alternatives they're considering). Order from least to most intrusive.",
+    color: "amber"
+  },
+  {
+    name: "Competitor Displacement Script",
+    prompt: "You're a competitive sales strategist. Create a discovery call script for prospects currently using [COMPETITOR]. Include: non-threatening opening questions, ways to surface dissatisfaction without badmouthing, transition questions to our strengths, and objection handlers for 'we're happy with current solution.' Make it conversational, not aggressive.",
+    color: "red"
+  },
+  {
+    name: "Webinar Invitation Copy",
+    prompt: "Write compelling copy for a lead-gen webinar invitation targeting [AUDIENCE]. Include: attention-grabbing subject line, preview text, email body highlighting 3 key takeaways, speaker credibility, urgency element, and registration CTA. The webinar topic is [TOPIC]. Tone should be professional but not stuffy. Also provide 3 follow-up reminder emails.",
+    color: "purple"
+  },
+  {
+    name: "Lead Magnet Ideas Generator",
+    prompt: "Generate 10 high-converting lead magnet ideas for [INDUSTRY/NICHE]. For each idea, provide: the title, format (checklist, template, guide, etc.), what problem it solves, why prospects would trade their email for it, and an outline of what it would contain. Focus on bottom-of-funnel magnets that attract qualified buyers, not just freebie seekers.",
+    color: "pink"
+  },
+  {
+    name: "Account Research Template",
+    prompt: "Create a comprehensive account research template for preparing outreach to [COMPANY TYPE]. Include sections for: company overview, recent news/triggers, technology stack, organizational structure, likely pain points based on industry, potential champions and blockers, competitive landscape, and personalization hooks. Also suggest where to find each piece of information.",
+    color: "cyan"
+  },
+  {
+    name: "Objection Handling Playbook",
+    prompt: "Act as a sales training expert. Create an objection handling playbook for the top 10 objections [SALES TEAM] faces when selling [PRODUCT/SERVICE]. For each objection, provide: why prospects say this, what they really mean, the ideal response framework, example responses, and how to pivot back to value. Include 'no budget,' 'bad timing,' and 'need to think about it.'",
+    color: "orange"
+  },
+  {
+    name: "Referral Request Templates",
+    prompt: "Generate 5 different referral request templates I can use with existing customers of [PRODUCT/SERVICE]. Include: templates for asking at different relationship stages (new customer, long-term, after success milestone), both email and phone scripts, specific language that makes it easy to say yes, and follow-up if they agree. Make requests feel natural, not awkward.",
+    color: "teal"
+  },
+  {
+    name: "Trade Show Lead Capture",
+    prompt: "Create a trade show lead generation strategy for [EVENT TYPE]. Include: booth conversation starters, qualifying questions to ask in 2-minute interactions, lead scoring criteria, badge scanning follow-up email sequences (hot/warm/cold), and a 30-day post-event nurture plan. Focus on quality over quantity of leads captured.",
+    color: "violet"
+  },
+  {
+    name: "Content Syndication Follow-up",
+    prompt: "Write a 5-email nurture sequence for leads generated through content syndication who downloaded [CONTENT PIECE]. Emails should: acknowledge the download without being creepy, provide additional related value, gradually introduce our solution, include case studies, and end with meeting request. Space appropriately over 3 weeks.",
+    color: "emerald"
+  },
+  {
+    name: "Sales Voicemail Scripts",
+    prompt: "Create 5 different voicemail scripts for cold prospecting to [TARGET ROLE]. Each should be: under 30 seconds, have a pattern-interrupt opening, include one compelling reason to call back, and end with clear contact info. Vary the approaches: curiosity-based, trigger-based, referral-based, insight-based, and direct-ask.",
+    color: "slate"
+  },
+  {
+    name: "LinkedIn Post Lead Magnet",
+    prompt: "Write 5 LinkedIn posts designed to generate inbound leads for [PRODUCT/SERVICE]. Each post should: provide genuine value upfront, demonstrate expertise, include a soft CTA offering something valuable (DM me for template, comment for guide), and be formatted for maximum engagement. Include hashtag suggestions and best posting times.",
+    color: "sky"
+  },
+  {
+    name: "Meeting Confirmation Sequence",
+    prompt: "Create a meeting confirmation and preparation sequence for after a prospect agrees to a call about [PRODUCT/SERVICE]. Include: initial confirmation email with agenda, reminder email 24 hours before, same-day reminder, pre-call prep questions for them to consider, and a no-show follow-up sequence. Goal is to reduce no-shows and arrive prepared.",
+    color: "rose"
+  }
+];
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-br from-green-600 via-emerald-700 to-teal-800 text-white py-16">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">
+        AI Lead Generation Prompt Templates
+      </h1>
+      <p class="text-xl text-green-100 max-w-2xl mx-auto">
+        Generate more qualified leads with AI-powered prompts for sales and marketing. Get ready-to-use templates for prospecting, outreach, lead qualification, and conversion optimization.
+      </p>
+    </div>
+  </div>
+
+  <div class="max-w-4xl mx-auto px-4 py-12">
+
+    <!-- What is Section -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">What is an AI Lead Generation Prompt?</h2>
+      <p class="text-gray-700 mb-4">
+        An AI lead generation prompt is a carefully structured instruction that helps ChatGPT, Claude, or other AI assistants create sales and marketing content designed to attract, qualify, and convert potential customers. These prompts transform AI into your virtual sales strategist, copywriter, and research assistant.
+      </p>
+      <p class="text-gray-700 mb-4">
+        The best lead generation prompts provide context about your target audience, product, and goals, then ask AI to generate specific deliverables: cold emails, LinkedIn messages, qualification frameworks, objection handlers, and nurture sequences.
+      </p>
+      <p class="text-gray-700">
+        By using structured prompts instead of vague requests, you get output that's immediately actionable - content you can copy, customize with specifics, and deploy in your sales process within minutes.
+      </p>
+    </section>
+
+    <!-- Prompt Structure -->
+    <section class="mb-12 bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-8 border border-green-200">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Effective Lead Gen Prompt Structure</h2>
+      <p class="text-gray-700 mb-4">Follow this structure for high-converting outputs:</p>
+      <div class="bg-white rounded-lg p-6 border border-green-300 mb-6 font-mono text-sm text-gray-800">
+        Act as [expert role]. Create [specific deliverable] for [target audience] about [product/service]. Include: [required elements]. Format: [output structure]. Tone: [professional/casual]. Constraints: [word limits, etc].
+      </div>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Essential Context:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
+            <li>Target persona/company type</li>
+            <li>Product/service being sold</li>
+            <li>Key pain points addressed</li>
+            <li>Desired outcome/CTA</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Output Requirements:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
+            <li>Specific format (email, script, list)</li>
+            <li>Length constraints</li>
+            <li>Number of variations</li>
+            <li>Tone and style guidelines</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Prompts Grid -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">15 AI Lead Generation Prompt Templates</h2>
+      <p class="text-center text-gray-600 mb-8">Click any prompt to copy, then customize the [BRACKETED] sections</p>
+
+      <div class="space-y-4">
+        {prompts.map((item, index) => (
+          <div class="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-start justify-between gap-4 mb-3">
+              <h3 class="text-lg font-bold text-gray-900">
+                <span class="text-green-600">{index + 1}.</span> {item.name}
+              </h3>
+              <button
+                class="copy-btn flex-shrink-0 px-4 py-2 bg-green-600 text-white text-sm font-medium rounded-lg hover:bg-green-700 transition-colors"
+                data-text={item.prompt}
+              >
+                Copy
+              </button>
+            </div>
+            <p class="text-gray-700 text-sm leading-relaxed">{item.prompt}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- How to Improve -->
+    <section class="mb-12 bg-gradient-to-r from-amber-50 to-yellow-50 rounded-2xl p-8 border border-amber-200">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">How to Improve Your Lead Gen Results</h2>
+      <p class="text-gray-700 mb-4">Get better outputs from AI with these techniques:</p>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Provide More Context:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-2 text-sm">
+            <li>Share your ICP details</li>
+            <li>Include competitor names</li>
+            <li>Add real customer quotes</li>
+            <li>Specify your unique value prop</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Iterate and Refine:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-2 text-sm">
+            <li>"Make it shorter and punchier"</li>
+            <li>"Add more urgency"</li>
+            <li>"Make the CTA softer"</li>
+            <li>"Generate 5 more variations"</li>
+          </ul>
+        </div>
+      </div>
+      <p class="text-gray-700 mt-6">
+        Use our <a href="/tools/text-to-prompt" class="text-green-600 hover:underline font-medium">Text to Prompt Expander</a> to automatically add context and structure to basic prompt ideas.
+      </p>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-4">
+        <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Which AI works best for lead generation content?</h3>
+          <p class="text-gray-700">
+            Both ChatGPT-4 and Claude excel at sales and marketing content. ChatGPT tends to be more creative with subject lines and hooks, while Claude often produces more nuanced, professional-sounding copy. Test both with your specific use cases.
+          </p>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">How do I make AI-generated content feel less generic?</h3>
+          <p class="text-gray-700">
+            Always customize the bracketed sections with real details. Add specific numbers, company names, and industry terminology. Follow up with "make this more specific to [industry]" or "add a reference to [recent trend]."
+          </p>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Can AI really write cold emails that convert?</h3>
+          <p class="text-gray-700">
+            AI can write solid first drafts that follow proven frameworks. The best results come from using AI output as a starting point, then adding your unique insights, specific case studies, and personal touches that make outreach feel human.
+          </p>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">How often should I update my AI-generated content?</h3>
+          <p class="text-gray-700">
+            Refresh email sequences quarterly and whenever you have new case studies or features. Test different variations continuously - AI makes it easy to generate multiple versions for A/B testing.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Tools -->
+    <section class="bg-white rounded-2xl border border-gray-200 p-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Related Prompt Tools</h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        <a href="/tools/text-to-prompt" class="p-4 bg-green-50 rounded-lg hover:bg-green-100 transition-colors">
+          <h3 class="font-semibold text-green-900">Text to Prompt Expander</h3>
+          <p class="text-sm text-green-700">Enhance basic ideas into detailed prompts</p>
+        </a>
+        <a href="/ai-chatbot-prompt-template" class="p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
+          <h3 class="font-semibold text-blue-900">Chatbot Prompt Templates</h3>
+          <p class="text-sm text-blue-700">Templates for customer service bots</p>
+        </a>
+        <a href="/writing-prompts/business" class="p-4 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors">
+          <h3 class="font-semibold text-purple-900">Business Writing Prompts</h3>
+          <p class="text-sm text-purple-700">Professional communication templates</p>
+        </a>
+        <a href="/ai-prompt-templates-free" class="p-4 bg-amber-50 rounded-lg hover:bg-amber-100 transition-colors">
+          <h3 class="font-semibold text-amber-900">All Prompt Templates</h3>
+          <p class="text-sm text-amber-700">Browse our complete prompt library</p>
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <AstroFooter />
+
+  <!-- Copy functionality -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const copyButtons = document.querySelectorAll('.copy-btn');
+
+      copyButtons.forEach(button => {
+        button.addEventListener('click', async () => {
+          const text = button.getAttribute('data-text');
+
+          try {
+            await navigator.clipboard.writeText(text);
+            const originalText = button.textContent;
+            button.textContent = 'Copied!';
+            button.classList.remove('bg-green-600', 'hover:bg-green-700');
+            button.classList.add('bg-emerald-600');
+
+            setTimeout(() => {
+              button.textContent = originalText;
+              button.classList.remove('bg-emerald-600');
+              button.classList.add('bg-green-600', 'hover:bg-green-700');
+            }, 2000);
+          } catch (err) {
+            console.error('Failed to copy:', err);
+          }
+        });
+      });
+    });
+  </script>
+</BaseLayout>

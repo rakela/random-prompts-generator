@@ -1,0 +1,352 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AstroHeader from '../components/AstroHeader.astro';
+import AstroFooter from '../components/AstroFooter.astro';
+import '../styles/global.css';
+
+const seo = {
+  path: 'ai-prompt-generator-for-images',
+  title: 'AI Prompt Generator for Images (Art & Photo Prompts)',
+  description: 'Generate perfect AI image prompts for Midjourney, DALL-E, and Stable Diffusion. Copy ready-to-use prompts for any art style, subject, or visual effect.',
+  keywords: 'ai prompt generator for images, image prompt generator, ai art prompt generator, midjourney prompt generator, dalle prompt generator, stable diffusion prompts'
+};
+
+const categories = [
+  {
+    name: "Portrait Photography",
+    prompts: [
+      "Professional studio portrait, soft diffused lighting, shallow depth of field, 85mm lens, neutral background, natural skin tones, high-end fashion magazine quality, DSLR photography, 8K resolution.",
+      "Dramatic Rembrandt lighting portrait, single light source, deep shadows, painterly quality, classic fine art photography, black background, emotional expression, medium format film grain."
+    ],
+    color: "blue"
+  },
+  {
+    name: "Landscape & Nature",
+    prompts: [
+      "Epic mountain landscape at golden hour, dramatic clouds, snow-capped peaks, alpine meadow with wildflowers, National Geographic quality, wide angle 24mm lens, vibrant colors, stunning depth.",
+      "Mystical enchanted forest, morning mist, rays of sunlight filtering through ancient trees, moss-covered ground, magical atmosphere, fantasy art meets nature photography."
+    ],
+    color: "green"
+  },
+  {
+    name: "Anime & Manga",
+    prompts: [
+      "Anime key visual, detailed character design, vibrant colors, dynamic pose, sakura petals floating, dramatic lighting, Studio Bones quality, clean line art, cinematic composition.",
+      "Manga illustration style, black and white with screentone shading, expressive eyes, action scene, speed lines, detailed backgrounds, Shonen Jump quality."
+    ],
+    color: "pink"
+  },
+  {
+    name: "Fantasy Art",
+    prompts: [
+      "Epic fantasy scene, dragon soaring over medieval castle, dramatic stormy sky, magical energy effects, detailed armor and architecture, concept art quality, artstation trending.",
+      "Ethereal fairy in enchanted garden, bioluminescent flowers, moonlight atmosphere, intricate wing details, fantasy illustration, dreamy soft lighting, magical particles."
+    ],
+    color: "purple"
+  },
+  {
+    name: "Sci-Fi & Cyberpunk",
+    prompts: [
+      "Cyberpunk cityscape at night, neon lights, rain-soaked streets, flying vehicles, holographic advertisements, Blade Runner aesthetic, detailed architecture, cinematic atmosphere.",
+      "Futuristic space station interior, sleek technology, holographic displays, astronaut in detailed suit, hard sci-fi aesthetic, dramatic lighting, ultra-detailed machinery."
+    ],
+    color: "cyan"
+  },
+  {
+    name: "Product Photography",
+    prompts: [
+      "Luxury product photography, sleek minimal background, professional studio lighting, reflective surface, premium feel, commercial advertising quality, sharp focus, high-end brand aesthetic.",
+      "Lifestyle product shot, natural setting, soft window light, styled props, Instagram-worthy composition, warm color palette, aspirational mood, professional commercial photography."
+    ],
+    color: "amber"
+  },
+  {
+    name: "Architecture & Interior",
+    prompts: [
+      "Modern minimalist interior design, floor to ceiling windows, natural light flooding space, Scandinavian aesthetic, clean lines, indoor plants, architectural digest quality photography.",
+      "Gothic cathedral interior, dramatic light rays through stained glass, soaring vaulted ceilings, intricate stone carvings, sacred atmosphere, wide angle photography."
+    ],
+    color: "slate"
+  },
+  {
+    name: "Food Photography",
+    prompts: [
+      "Gourmet food photography, professional plating, soft directional lighting, shallow depth of field, steam rising, appetizing colors, Michelin star presentation, food magazine cover quality.",
+      "Rustic farmhouse food styling, wooden table, natural ingredients, warm morning light, artisanal bread, homemade aesthetic, cozy atmosphere, lifestyle food photography."
+    ],
+    color: "orange"
+  },
+  {
+    name: "Abstract & Conceptual",
+    prompts: [
+      "Abstract fluid art, swirling colors of blue and gold, marble texture, organic shapes, mesmerizing patterns, high resolution, art print quality, elegant contemporary aesthetic.",
+      "Surrealist conceptual art, impossible architecture, Escher-inspired, dreamlike atmosphere, perfect geometric shapes, mind-bending perspective, thought-provoking composition."
+    ],
+    color: "violet"
+  },
+  {
+    name: "Vintage & Retro",
+    prompts: [
+      "1950s vintage Americana, classic diner scene, chrome and neon, pastel colors, retro typography, nostalgic atmosphere, Norman Rockwell meets photography, authentic period details.",
+      "Retro 80s synthwave aesthetic, neon grid, chrome text, sunset gradient, VHS artifacts, nostalgic futurism, outrun style, vibrant magenta and cyan."
+    ],
+    color: "rose"
+  }
+];
+
+const promptFormulas = [
+  {
+    title: "Photography Formula",
+    formula: "[Subject] + [Setting] + [Lighting] + [Camera/Lens] + [Style] + [Quality Keywords]",
+    example: "Portrait of elderly craftsman + in traditional workshop + warm window light + 50mm lens f/1.8 + documentary photography + highly detailed"
+  },
+  {
+    title: "Digital Art Formula",
+    formula: "[Subject] + [Action/Pose] + [Environment] + [Art Style] + [Mood] + [Platform Reference]",
+    example: "Warrior princess + wielding magic sword + ancient ruins + concept art + epic dramatic + artstation trending"
+  },
+  {
+    title: "Stylized Formula",
+    formula: "[Style Reference] + [Subject] + [Setting Details] + [Atmosphere] + [Color Palette] + [Quality]",
+    example: "Studio Ghibli style + cozy cottage + surrounded by wildflowers + peaceful afternoon + warm earthy tones + hand-painted animation"
+  }
+];
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-br from-violet-600 via-purple-700 to-indigo-800 text-white py-16">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">
+        AI Prompt Generator for Images
+      </h1>
+      <p class="text-xl text-violet-100 max-w-2xl mx-auto">
+        Generate perfect prompts for Midjourney, DALL-E, Stable Diffusion, and ChatGPT image generation. Copy ready-to-use prompts for any art style, subject, or visual effect.
+      </p>
+    </div>
+  </div>
+
+  <div class="max-w-4xl mx-auto px-4 py-12">
+
+    <!-- What is Section -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">What is an AI Prompt Generator for Images?</h2>
+      <p class="text-gray-700 mb-4">
+        An AI prompt generator for images helps you create effective text instructions for AI art tools like Midjourney, DALL-E, Stable Diffusion, and ChatGPT's image features. The right prompt combines subject description, style keywords, technical parameters, and quality modifiers to produce stunning visual results.
+      </p>
+      <p class="text-gray-700 mb-4">
+        Unlike simple descriptions, optimized image prompts use specific vocabulary that AI models understand: photography terminology, art movement references, lighting descriptions, and rendering keywords. The difference between "a cat" and a professionally crafted prompt can be the difference between amateur and gallery-worthy results.
+      </p>
+      <p class="text-gray-700">
+        This page provides copy-ready prompts across all major categories plus formulas you can use to generate your own custom prompts for any subject or style imaginable.
+      </p>
+    </section>
+
+    <!-- Prompt Formulas -->
+    <section class="mb-12 bg-gradient-to-r from-violet-50 to-purple-50 rounded-2xl p-8 border border-violet-200">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Universal Image Prompt Formulas</h2>
+      <p class="text-gray-700 mb-6">Use these proven formulas to generate prompts for any subject:</p>
+
+      <div class="space-y-6">
+        {promptFormulas.map((formula) => (
+          <div class="bg-white rounded-lg p-6 border border-violet-200">
+            <h3 class="font-bold text-gray-900 mb-2">{formula.title}</h3>
+            <div class="font-mono text-sm bg-gray-100 p-3 rounded mb-3 text-purple-700">
+              {formula.formula}
+            </div>
+            <p class="text-sm text-gray-600">
+              <span class="font-medium">Example:</span> {formula.example}
+            </p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Prompts by Category -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">Ready-to-Use Image Prompts by Category</h2>
+      <p class="text-center text-gray-600 mb-8">Click any prompt to copy it to your clipboard</p>
+
+      <div class="space-y-8">
+        {categories.map((category) => (
+          <div class="bg-white rounded-xl border border-gray-200 p-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-4">{category.name}</h3>
+            <div class="space-y-3">
+              {category.prompts.map((prompt, index) => (
+                <div class="bg-gray-50 rounded-lg p-4 flex items-start justify-between gap-4">
+                  <p class="text-gray-700 text-sm leading-relaxed flex-1">{prompt}</p>
+                  <button
+                    class="copy-btn flex-shrink-0 px-3 py-1.5 bg-violet-600 text-white text-xs font-medium rounded-lg hover:bg-violet-700 transition-colors"
+                    data-text={prompt}
+                  >
+                    Copy
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- AI Tool Comparison -->
+    <section class="mb-12 bg-gradient-to-r from-amber-50 to-yellow-50 rounded-2xl p-8 border border-amber-200">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Optimizing Prompts for Different AI Tools</h2>
+      <p class="text-gray-700 mb-4">Each AI image generator has strengths - tailor your prompts accordingly:</p>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Midjourney V6:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
+            <li>Excels at artistic interpretation</li>
+            <li>Understands style references well</li>
+            <li>Add --ar for aspect ratio, --v 6 for version</li>
+            <li>Great with mood/atmosphere keywords</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">DALL-E 3 / ChatGPT:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
+            <li>Follows detailed instructions precisely</li>
+            <li>Better at text rendering in images</li>
+            <li>Natural language works well</li>
+            <li>Good at specific compositions</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Stable Diffusion:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
+            <li>Responds well to weighted terms (keyword:1.5)</li>
+            <li>Benefits from negative prompts</li>
+            <li>Great with specific model fine-tunes</li>
+            <li>More technical control available</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Universal Tips:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
+            <li>Be specific about what you want</li>
+            <li>Include quality keywords (8K, detailed)</li>
+            <li>Reference specific artists or styles</li>
+            <li>Describe lighting and atmosphere</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- How to Improve -->
+    <section class="mb-12 bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-8 border border-green-200">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">How to Improve Your Image Prompts</h2>
+      <p class="text-gray-700 mb-4">Transform basic ideas into stunning results:</p>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Add These Elements:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-2 text-sm">
+            <li><code class="bg-white px-2 py-0.5 rounded">"highly detailed"</code></li>
+            <li><code class="bg-white px-2 py-0.5 rounded">"8K resolution"</code></li>
+            <li><code class="bg-white px-2 py-0.5 rounded">"artstation trending"</code></li>
+            <li><code class="bg-white px-2 py-0.5 rounded">"professional photography"</code></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Specify Lighting:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-2 text-sm">
+            <li><code class="bg-white px-2 py-0.5 rounded">"golden hour lighting"</code></li>
+            <li><code class="bg-white px-2 py-0.5 rounded">"dramatic rim light"</code></li>
+            <li><code class="bg-white px-2 py-0.5 rounded">"soft diffused light"</code></li>
+            <li><code class="bg-white px-2 py-0.5 rounded">"cinematic lighting"</code></li>
+          </ul>
+        </div>
+      </div>
+      <p class="text-gray-700 mt-6">
+        Let AI expand your basic ideas into detailed prompts using our <a href="/tools/text-to-prompt" class="text-violet-600 hover:underline font-medium">Text to Prompt Expander</a> tool.
+      </p>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-4">
+        <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">How long should an image prompt be?</h3>
+          <p class="text-gray-700">
+            Effective prompts are typically 50-150 words. Too short lacks detail; too long can confuse the AI. Focus on the most important elements: subject, style, lighting, and quality modifiers.
+          </p>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">What order should prompt elements be in?</h3>
+          <p class="text-gray-700">
+            Most AI models weight earlier words more heavily. Put your main subject first, followed by important style/mood descriptors, then technical details. Save quality keywords for the end.
+          </p>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Why do my AI images look amateur?</h3>
+          <p class="text-gray-700">
+            Usually missing quality modifiers and specific style references. Add keywords like "professional," "high quality," "detailed," and reference specific artists, photographers, or platforms like "artstation" or "Vogue magazine."
+          </p>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Can I reference specific artists in prompts?</h3>
+          <p class="text-gray-700">
+            Yes, referencing artist styles is very effective. Use "in the style of [artist name]" or combine multiple influences. Be aware some platforms have restrictions on certain artist names.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Tools -->
+    <section class="bg-white rounded-2xl border border-gray-200 p-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Related Prompt Tools</h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        <a href="/tools/text-to-prompt" class="p-4 bg-violet-50 rounded-lg hover:bg-violet-100 transition-colors">
+          <h3 class="font-semibold text-violet-900">Text to Prompt Expander</h3>
+          <p class="text-sm text-violet-700">Expand simple ideas into detailed prompts</p>
+        </a>
+        <a href="/tools/image-to-prompt" class="p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
+          <h3 class="font-semibold text-blue-900">Image to Prompt Analyzer</h3>
+          <p class="text-sm text-blue-700">Reverse-engineer any image into a prompt</p>
+        </a>
+        <a href="/studio-ghibli-ai-prompt" class="p-4 bg-green-50 rounded-lg hover:bg-green-100 transition-colors">
+          <h3 class="font-semibold text-green-900">Studio Ghibli Prompts</h3>
+          <p class="text-sm text-green-700">Anime and Miyazaki-style art prompts</p>
+        </a>
+        <a href="/cinematic-lighting-ai-prompt" class="p-4 bg-amber-50 rounded-lg hover:bg-amber-100 transition-colors">
+          <h3 class="font-semibold text-amber-900">Cinematic Lighting Prompts</h3>
+          <p class="text-sm text-amber-700">Film-quality lighting techniques</p>
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <AstroFooter />
+
+  <!-- Copy functionality -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const copyButtons = document.querySelectorAll('.copy-btn');
+
+      copyButtons.forEach(button => {
+        button.addEventListener('click', async () => {
+          const text = button.getAttribute('data-text');
+
+          try {
+            await navigator.clipboard.writeText(text);
+            const originalText = button.textContent;
+            button.textContent = 'Copied!';
+            button.classList.remove('bg-violet-600', 'hover:bg-violet-700');
+            button.classList.add('bg-green-600');
+
+            setTimeout(() => {
+              button.textContent = originalText;
+              button.classList.remove('bg-green-600');
+              button.classList.add('bg-violet-600', 'hover:bg-violet-700');
+            }, 2000);
+          } catch (err) {
+            console.error('Failed to copy:', err);
+          }
+        });
+      });
+    });
+  </script>
+</BaseLayout>

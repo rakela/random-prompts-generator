@@ -1,0 +1,292 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AstroHeader from '../components/AstroHeader.astro';
+import AstroFooter from '../components/AstroFooter.astro';
+import '../styles/global.css';
+
+const seo = {
+  path: 'ai-corporate-headshot-generator-prompt',
+  title: 'AI Corporate Headshot Generator Prompt (Executive Photos)',
+  description: 'Generate executive-quality AI corporate headshots with professional prompts. Ready-to-use prompts for business portraits and company photos.',
+  keywords: 'ai corporate headshot generator prompt, corporate headshot prompt, executive headshot prompt, business portrait prompt, ai business photo prompt, professional corporate photo prompt'
+};
+
+const prompts = [
+  {
+    name: "C-Suite Executive",
+    prompt: "Ultra-realistic corporate headshot of a distinguished CEO in their 50s, wearing an impeccably tailored charcoal grey suit with subtle pinstripe, crisp white dress shirt, burgundy silk tie, premium grey studio background, professional three-point lighting setup, 85mm f/1.8 lens, ultra-sharp focus on eyes, commanding yet approachable expression, high-end executive photography, 8K resolution.",
+    color: "slate"
+  },
+  {
+    name: "Board Member Portrait",
+    prompt: "Prestigious corporate portrait of a board member, formal dark navy suit, light blue shirt, sophisticated neutral background with subtle gradient, Rembrandt lighting with soft fill, professional DSLR quality, distinguished confident expression, ultra-realistic skin texture, executive board room photography style.",
+    color: "blue"
+  },
+  {
+    name: "VP Corporate Portrait",
+    prompt: "Professional corporate headshot of a Vice President, tailored black suit with modern slim fit, neutral grey backdrop, soft diffused studio lighting, shallow depth of field, natural skin tones and texture, confident leadership expression, Canon 85mm portrait lens, corporate executive photography.",
+    color: "neutral"
+  },
+  {
+    name: "Managing Director",
+    prompt: "Executive corporate headshot for Managing Director, premium wool suit in dark blue, subtle pattern tie, clean professional background, balanced studio lighting with catchlights, ultra-high resolution, authoritative warm expression, realistic detail, corporate annual report photography style.",
+    color: "indigo"
+  },
+  {
+    name: "Financial Officer",
+    prompt: "Professional CFO corporate portrait, conservative charcoal suit, white shirt, understated tie, neutral business background, soft professional lighting, trustworthy serious expression, ultra-realistic rendering, Wall Street executive photography aesthetic, sharp focus, high detail.",
+    color: "gray"
+  },
+  {
+    name: "Legal Counsel Portrait",
+    prompt: "Distinguished corporate headshot for General Counsel, dark formal suit, conservative professional attire, law firm aesthetic background, classic portrait lighting, authoritative intelligent expression, ultra-realistic detail, professional legal industry photography style.",
+    color: "amber"
+  },
+  {
+    name: "Tech Executive",
+    prompt: "Modern corporate headshot for technology executive, smart contemporary suit without tie, clean minimal background, bright balanced lighting, confident innovative expression, Silicon Valley aesthetic, ultra-realistic skin detail, professional tech industry photography.",
+    color: "purple"
+  },
+  {
+    name: "Healthcare Executive",
+    prompt: "Professional corporate portrait for healthcare executive, light grey suit with subtle blue undertones, clean clinical background, bright balanced lighting, trustworthy caring expression, medical industry executive aesthetic, ultra-realistic rendering, high resolution.",
+    color: "cyan"
+  },
+  {
+    name: "Consulting Partner",
+    prompt: "Elite corporate headshot for consulting firm partner, premium tailored suit, sophisticated neutral background, professional studio lighting with subtle rim light, intelligent confident expression, McKinsey/Bain aesthetic, ultra-realistic detail, executive portrait photography.",
+    color: "rose"
+  },
+  {
+    name: "Investment Executive",
+    prompt: "Premium corporate portrait for investment executive, bespoke dark suit, luxury fabric visible in detail, prestigious grey background, refined professional lighting, sharp discerning expression, private equity aesthetic, ultra-high resolution, realistic texture.",
+    color: "emerald"
+  },
+  {
+    name: "Corporate Team Headshot",
+    prompt: "Standardized corporate team headshot, professional business attire, consistent neutral grey background, uniform soft lighting setup, friendly professional expression, company website aesthetic, ultra-realistic detail, batch photography style consistency.",
+    color: "sky"
+  },
+  {
+    name: "Annual Report Portrait",
+    prompt: "Premium annual report executive portrait, formal business attire, sophisticated gradient background, editorial quality lighting, confident accomplished expression, Fortune 500 aesthetic, ultra-realistic rendering, magazine quality photography, 8K detail.",
+    color: "violet"
+  },
+  {
+    name: "Business Casual Executive",
+    prompt: "Modern corporate headshot for progressive company, smart business casual without tie, quality fabric visible, contemporary clean background, natural professional lighting, approachable leader expression, startup-meets-enterprise aesthetic, realistic detail.",
+    color: "teal"
+  },
+  {
+    name: "Global Executive",
+    prompt: "International corporate portrait for global executive, classic business formal attire, premium neutral background, universally professional lighting, confident worldly expression, multinational company aesthetic, ultra-realistic rendering, high resolution detail.",
+    color: "orange"
+  },
+  {
+    name: "Entrepreneur Portrait",
+    prompt: "Professional corporate headshot for company founder, polished business attire balancing formal and approachable, modern clean background, bright confident lighting, visionary expression with warmth, successful entrepreneur aesthetic, ultra-realistic detail.",
+    color: "pink"
+  }
+];
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-br from-slate-700 via-slate-800 to-gray-900 text-white py-16">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">
+        AI Corporate Headshot Generator Prompt
+      </h1>
+      <p class="text-xl text-slate-300 max-w-2xl mx-auto">
+        Generate executive-quality AI corporate headshots with our professional prompts. Create polished business portraits for company websites, annual reports, and professional profiles.
+      </p>
+    </div>
+  </div>
+
+  <div class="max-w-4xl mx-auto px-4 py-12">
+
+    <!-- What is Section -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">What is an AI Corporate Headshot Generator Prompt?</h2>
+      <p class="text-gray-700 mb-4">
+        An AI corporate headshot generator prompt is a specialized text instruction designed to create executive-quality business portraits using AI image generators. These prompts incorporate professional photography terminology, corporate aesthetics, and technical specifications to produce headshots suitable for Fortune 500 company profiles, annual reports, and executive team pages.
+      </p>
+      <p class="text-gray-700 mb-4">
+        Unlike casual headshots, corporate portraits require specific attention to formal attire, authoritative expressions, premium backgrounds, and lighting that conveys trust and competence. The right prompt captures the gravitas expected in boardroom-level imagery.
+      </p>
+      <p class="text-gray-700">
+        These prompts work with AI tools like Midjourney, ChatGPT (DALL-E), and Stable Diffusion to generate professional results that traditionally required expensive studio sessions and professional photographers.
+      </p>
+    </section>
+
+    <!-- Prompt Structure -->
+    <section class="mb-12 bg-gradient-to-r from-slate-50 to-gray-100 rounded-2xl p-8 border border-slate-200">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Corporate Headshot Prompt Structure</h2>
+      <p class="text-gray-700 mb-4">Follow this structure for executive-quality results:</p>
+      <div class="bg-white rounded-lg p-6 border border-slate-300 mb-6 font-mono text-sm text-gray-800">
+        [Quality keyword] corporate headshot of [title/role], wearing [formal attire details], [premium background], [professional lighting], [camera specs], [expression], [industry aesthetic], [technical quality].
+      </div>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Corporate Essentials:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
+            <li>Formal business attire (suits, ties)</li>
+            <li>Premium neutral backgrounds</li>
+            <li>Professional studio lighting</li>
+            <li>Authoritative expressions</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Quality Keywords:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
+            <li>"Executive photography style"</li>
+            <li>"Annual report quality"</li>
+            <li>"Fortune 500 aesthetic"</li>
+            <li>"Premium corporate portrait"</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Prompts Grid -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">15 Executive Corporate Headshot Prompts</h2>
+      <p class="text-center text-gray-600 mb-8">Click any prompt to copy it instantly</p>
+
+      <div class="space-y-4">
+        {prompts.map((item, index) => (
+          <div class="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-start justify-between gap-4 mb-3">
+              <h3 class="text-lg font-bold text-gray-900">
+                <span class="text-slate-600">{index + 1}.</span> {item.name}
+              </h3>
+              <button
+                class="copy-btn flex-shrink-0 px-4 py-2 bg-slate-700 text-white text-sm font-medium rounded-lg hover:bg-slate-800 transition-colors"
+                data-text={item.prompt}
+              >
+                Copy
+              </button>
+            </div>
+            <p class="text-gray-700 text-sm leading-relaxed">{item.prompt}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- How to Improve -->
+    <section class="mb-12 bg-gradient-to-r from-amber-50 to-yellow-50 rounded-2xl p-8 border border-amber-200">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">How to Improve Corporate Headshot Results</h2>
+      <p class="text-gray-700 mb-4">For truly executive-level results, enhance your prompts with these techniques:</p>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Industry-Specific Details:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-2 text-sm">
+            <li>Finance: Conservative, Wall Street aesthetic</li>
+            <li>Tech: Modern, Silicon Valley style</li>
+            <li>Legal: Distinguished, authoritative</li>
+            <li>Healthcare: Trustworthy, caring</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Premium Touches:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-2 text-sm">
+            <li><code class="bg-white px-2 py-0.5 rounded">"bespoke tailored suit"</code></li>
+            <li><code class="bg-white px-2 py-0.5 rounded">"premium fabric visible"</code></li>
+            <li><code class="bg-white px-2 py-0.5 rounded">"subtle rim lighting"</code></li>
+            <li><code class="bg-white px-2 py-0.5 rounded">"magazine quality"</code></li>
+          </ul>
+        </div>
+      </div>
+      <p class="text-gray-700 mt-6">
+        Transform simple descriptions into executive-level prompts with our <a href="/tools/text-to-prompt" class="text-blue-600 hover:underline font-medium">Text to Prompt Expander</a> tool.
+      </p>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-4">
+        <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">What makes a corporate headshot different from a regular headshot?</h3>
+          <p class="text-gray-700">
+            Corporate headshots emphasize formal professional attire, premium neutral backgrounds, authoritative expressions, and lighting that conveys trust and competence. They're designed for executive profiles, annual reports, and company websites where gravitas matters.
+          </p>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Can AI generate consistent headshots for an entire executive team?</h3>
+          <p class="text-gray-700">
+            Yes, by using consistent prompt elements for background, lighting, and style, you can generate matching headshots for team pages. Specify "standardized corporate team headshot" and maintain the same technical parameters across all prompts.
+          </p>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">What attire works best for corporate AI headshots?</h3>
+          <p class="text-gray-700">
+            Dark suits (charcoal, navy, black) with white or light blue shirts and conservative ties produce the most professional results. Specify fabric quality and fit details like "tailored" or "bespoke" for premium aesthetics.
+          </p>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">How do I match my company's photography style?</h3>
+          <p class="text-gray-700">
+            Upload existing company headshots to our <a href="/tools/image-to-prompt" class="text-blue-600 hover:underline">Image to Prompt Analyzer</a> to extract the lighting, background, and style details, then incorporate those elements into your new prompts.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Tools -->
+    <section class="bg-white rounded-2xl border border-gray-200 p-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Related Prompt Tools</h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        <a href="/tools/text-to-prompt" class="p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
+          <h3 class="font-semibold text-blue-900">Text to Prompt Expander</h3>
+          <p class="text-sm text-blue-700">Enhance basic ideas into detailed executive prompts</p>
+        </a>
+        <a href="/tools/image-to-prompt" class="p-4 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors">
+          <h3 class="font-semibold text-purple-900">Image to Prompt Analyzer</h3>
+          <p class="text-sm text-purple-700">Match existing company photography style</p>
+        </a>
+        <a href="/ai-linkedin-headshot-prompt" class="p-4 bg-indigo-50 rounded-lg hover:bg-indigo-100 transition-colors">
+          <h3 class="font-semibold text-indigo-900">LinkedIn Headshot Prompts</h3>
+          <p class="text-sm text-indigo-700">Professional prompts for LinkedIn profiles</p>
+        </a>
+        <a href="/art-prompts/portrait" class="p-4 bg-pink-50 rounded-lg hover:bg-pink-100 transition-colors">
+          <h3 class="font-semibold text-pink-900">Portrait Generator</h3>
+          <p class="text-sm text-pink-700">Artistic portrait styles and variations</p>
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <AstroFooter />
+
+  <!-- Copy functionality -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const copyButtons = document.querySelectorAll('.copy-btn');
+
+      copyButtons.forEach(button => {
+        button.addEventListener('click', async () => {
+          const text = button.getAttribute('data-text');
+
+          try {
+            await navigator.clipboard.writeText(text);
+            const originalText = button.textContent;
+            button.textContent = 'Copied!';
+            button.classList.remove('bg-slate-700', 'hover:bg-slate-800');
+            button.classList.add('bg-green-600');
+
+            setTimeout(() => {
+              button.textContent = originalText;
+              button.classList.remove('bg-green-600');
+              button.classList.add('bg-slate-700', 'hover:bg-slate-800');
+            }, 2000);
+          } catch (err) {
+            console.error('Failed to copy:', err);
+          }
+        });
+      });
+    });
+  </script>
+</BaseLayout>
