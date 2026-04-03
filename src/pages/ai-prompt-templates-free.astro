@@ -6,106 +6,78 @@ import '../styles/global.css';
 
 const seo = {
   path: 'ai-prompt-templates-free',
-  title: 'AI Prompt Templates Free (Complete Library 2024)',
-  description: 'Free AI prompt templates for ChatGPT, Midjourney, DALL-E, and Claude. Browse 500+ ready-to-use prompts for images, writing, business, and more.',
+  title: 'AI Prompt Templates Free (Best Prompts for Any Use Case)',
+  description: 'Browse free AI prompt templates for content, images, business, and automation. Copy and use instantly.',
   keywords: 'ai prompt templates free, free ai prompts, chatgpt prompt templates, midjourney prompts free, ai prompt library, free prompt templates'
 };
 
-const imagePromptCategories = [
+const imagePrompts = [
   {
     title: "AI LinkedIn Headshot Prompt",
-    description: "Professional profile photos for LinkedIn and corporate use",
-    url: "/ai-linkedin-headshot-prompt",
-    count: "12 prompts",
-    color: "blue"
+    description: "Professional profile photos for LinkedIn",
+    url: "/ai-linkedin-headshot-prompt"
   },
   {
     title: "AI Corporate Headshot Generator",
-    description: "Executive-quality business portraits and team photos",
-    url: "/ai-corporate-headshot-generator-prompt",
-    count: "15 prompts",
-    color: "slate"
+    description: "Executive-quality business portraits",
+    url: "/ai-corporate-headshot-generator-prompt"
   },
   {
     title: "Studio Ghibli AI Prompt",
-    description: "Miyazaki-inspired anime scenes and magical worlds",
-    url: "/studio-ghibli-ai-prompt",
-    count: "15 prompts",
-    color: "green"
+    description: "Miyazaki-inspired anime scenes",
+    url: "/studio-ghibli-ai-prompt"
   },
   {
     title: "Cinematic Lighting AI Prompt",
-    description: "Film-quality lighting effects and Hollywood aesthetics",
-    url: "/cinematic-lighting-ai-prompt",
-    count: "15 prompts",
-    color: "amber"
+    description: "Film-quality dramatic lighting",
+    url: "/cinematic-lighting-ai-prompt"
   },
   {
     title: "Double Exposure AI Prompt",
-    description: "Surreal portrait blends and artistic overlays",
-    url: "/double-exposure-ai-prompt",
-    count: "15 prompts",
-    color: "purple"
+    description: "Surreal portrait blend effects",
+    url: "/double-exposure-ai-prompt"
   },
   {
     title: "AI Image Prompt Generator",
-    description: "Universal formulas and prompts for any art style",
-    url: "/ai-prompt-generator-for-images",
-    count: "20+ prompts",
-    color: "violet"
+    description: "Universal formulas for any art style",
+    url: "/ai-prompt-generator-for-images"
   }
 ];
 
-const textPromptCategories = [
+const businessPrompts = [
   {
     title: "AI Lead Generation Prompt",
-    description: "Sales prospecting, cold outreach, and conversion templates",
-    url: "/ai-lead-generation-prompt",
-    count: "15 prompts",
-    color: "emerald"
+    description: "Capture and qualify leads automatically",
+    url: "/ai-lead-generation-prompt"
   },
   {
     title: "AI Chatbot Prompt Template",
-    description: "System prompts for customer service and virtual assistants",
-    url: "/ai-chatbot-prompt-template",
-    count: "15 templates",
-    color: "indigo"
+    description: "Customer support and automation",
+    url: "/ai-chatbot-prompt-template"
   }
 ];
 
-const toolCategories = [
+const examplePrompts = [
   {
-    title: "Text to Prompt Expander",
-    description: "Transform simple ideas into detailed, optimized prompts",
-    url: "/tools/text-to-prompt",
-    icon: "expand",
-    color: "blue"
+    category: "LinkedIn Post",
+    prompt: "Write a LinkedIn post based on this topic with a strong hook, short paragraphs, and a call-to-action that encourages engagement."
   },
   {
-    title: "Image to Prompt Analyzer",
-    description: "Reverse-engineer any image into a reusable prompt",
-    url: "/tools/image-to-prompt",
-    icon: "analyze",
-    color: "purple"
+    category: "Portrait Photo",
+    prompt: "Generate a realistic portrait with cinematic lighting, professional styling, shallow depth of field, and high-end fashion magazine quality."
+  },
+  {
+    category: "Sales Assistant",
+    prompt: "Act as a sales assistant and qualify leads based on budget, timeline, and intent. Guide qualified leads to booking."
+  },
+  {
+    category: "Blog Writing",
+    prompt: "Write an SEO-optimized blog post about [topic] with a compelling introduction, clear headings, and actionable takeaways."
+  },
+  {
+    category: "Customer Support",
+    prompt: "You are a support assistant. Answer questions clearly, guide users to solutions step by step, and escalate complex issues to human support."
   }
-];
-
-const artPromptCategories = [
-  { title: "Portrait Prompts", url: "/art-prompts/portrait", color: "rose" },
-  { title: "Landscape Prompts", url: "/art-prompts/landscape", color: "green" },
-  { title: "Anime Prompts", url: "/art-prompts/anime", color: "pink" },
-  { title: "Fantasy Art Prompts", url: "/art-prompts/fantasy-art", color: "purple" },
-  { title: "Photography Prompts", url: "/art-prompts/photography", color: "slate" },
-  { title: "Surrealism Prompts", url: "/art-prompts/surrealism", color: "indigo" },
-  { title: "Oil Painting Prompts", url: "/art-prompts/oil-painting", color: "amber" },
-  { title: "Watercolor Prompts", url: "/art-prompts/watercolor", color: "cyan" }
-];
-
-const writingPromptCategories = [
-  { title: "Story Writing Prompts", url: "/writing-prompts/story", color: "blue" },
-  { title: "Creative Writing", url: "/writing-prompts/creative", color: "purple" },
-  { title: "Business Writing", url: "/writing-prompts/business", color: "slate" },
-  { title: "Blog Writing Prompts", url: "/writing-prompts/blog", color: "green" }
 ];
 ---
 
@@ -114,211 +86,187 @@ const writingPromptCategories = [
 
   <!-- Hero Section -->
   <div class="bg-gradient-to-br from-indigo-600 via-purple-700 to-pink-700 text-white py-20">
-    <div class="max-w-5xl mx-auto px-4 text-center">
-      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-        Free AI Prompt Templates
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">
+        AI Prompt Templates Free (Ready-to-Use Prompts for Any Task)
       </h1>
-      <p class="text-xl md:text-2xl text-purple-100 max-w-3xl mx-auto mb-8">
-        Your complete library of AI prompt templates free to use. 500+ ready-to-copy prompts for ChatGPT, Midjourney, DALL-E, Claude, and Stable Diffusion.
+      <p class="text-xl text-purple-100 max-w-2xl mx-auto">
+        Skip the guesswork and get better results instantly with our free AI prompt templates.
       </p>
-      <div class="flex flex-wrap justify-center gap-4">
-        <a href="#image-prompts" class="px-6 py-3 bg-white text-purple-700 font-semibold rounded-lg hover:bg-purple-50 transition-colors">
-          Image Prompts
-        </a>
-        <a href="#text-prompts" class="px-6 py-3 bg-purple-500 text-white font-semibold rounded-lg hover:bg-purple-400 transition-colors">
-          Text/Chat Prompts
-        </a>
-        <a href="#tools" class="px-6 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-purple-700 transition-colors">
-          Prompt Tools
-        </a>
-      </div>
     </div>
   </div>
 
-  <div class="max-w-5xl mx-auto px-4 py-16">
+  <div class="max-w-4xl mx-auto px-4 py-12">
 
-    <!-- What Are AI Prompt Templates -->
-    <section class="mb-16">
-      <h2 class="text-3xl font-bold text-gray-900 mb-6 text-center">What Are AI Prompt Templates?</h2>
-      <p class="text-lg text-gray-700 mb-4 max-w-3xl mx-auto text-center">
-        AI prompt templates are pre-written instructions designed to get the best results from AI tools like ChatGPT, Midjourney, DALL-E, and Claude. Instead of starting from scratch, you copy a proven template and customize it for your needs.
+    <!-- Intro -->
+    <section class="mb-12">
+      <p class="text-lg text-gray-700 mb-4">
+        Writing good prompts is the hardest part of using AI.
       </p>
-      <p class="text-lg text-gray-700 max-w-3xl mx-auto text-center">
-        Our free AI prompt templates cover image generation, text writing, business tasks, creative projects, and more. Each template is optimized with the right keywords, structure, and parameters for professional results.
+      <p class="text-lg text-gray-700">
+        This page gives you <strong>AI prompt templates free</strong> so you can skip the guesswork and get better results instantly.
       </p>
     </section>
 
-    <!-- Featured Image Prompt Templates -->
-    <section id="image-prompts" class="mb-16">
-      <div class="flex items-center justify-between mb-8">
-        <h2 class="text-2xl font-bold text-gray-900">AI Image Prompt Templates</h2>
-        <span class="text-sm text-gray-500">For Midjourney, DALL-E, Stable Diffusion</span>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {imagePromptCategories.map((category) => (
-          <a href={category.url} class="group bg-white rounded-xl border border-gray-200 p-6 hover:shadow-xl hover:border-purple-300 transition-all">
-            <div class="flex items-start justify-between mb-3">
-              <h3 class="text-lg font-bold text-gray-900 group-hover:text-purple-700 transition-colors">
-                {category.title}
-              </h3>
-              <span class="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded-full">
-                {category.count}
-              </span>
-            </div>
-            <p class="text-gray-600 text-sm mb-4">{category.description}</p>
-            <span class="text-purple-600 text-sm font-medium group-hover:text-purple-800">
-              Browse templates &rarr;
-            </span>
-          </a>
-        ))}
-      </div>
-    </section>
-
-    <!-- Text/Business Prompt Templates -->
-    <section id="text-prompts" class="mb-16">
-      <div class="flex items-center justify-between mb-8">
-        <h2 class="text-2xl font-bold text-gray-900">AI Text & Business Prompt Templates</h2>
-        <span class="text-sm text-gray-500">For ChatGPT, Claude, Gemini</span>
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-6">
-        {textPromptCategories.map((category) => (
-          <a href={category.url} class="group bg-white rounded-xl border border-gray-200 p-6 hover:shadow-xl hover:border-green-300 transition-all">
-            <div class="flex items-start justify-between mb-3">
-              <h3 class="text-lg font-bold text-gray-900 group-hover:text-green-700 transition-colors">
-                {category.title}
-              </h3>
-              <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">
-                {category.count}
-              </span>
-            </div>
-            <p class="text-gray-600 text-sm mb-4">{category.description}</p>
-            <span class="text-green-600 text-sm font-medium group-hover:text-green-800">
-              Browse templates &rarr;
-            </span>
-          </a>
-        ))}
-      </div>
-    </section>
-
-    <!-- Prompt Tools Section -->
-    <section id="tools" class="mb-16">
-      <h2 class="text-2xl font-bold text-gray-900 mb-8">AI Prompt Tools</h2>
-
-      <div class="grid md:grid-cols-2 gap-6">
-        {toolCategories.map((tool) => (
-          <a href={tool.url} class="group bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl border border-indigo-200 p-8 hover:shadow-xl transition-all">
-            <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-indigo-700 transition-colors">
-              {tool.title}
+    <!-- Image Prompts -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Image Prompts</h2>
+      <p class="text-gray-600 mb-4">For Midjourney, DALL-E, Stable Diffusion, and ChatGPT images</p>
+      <div class="grid md:grid-cols-2 gap-4">
+        {imagePrompts.map((item) => (
+          <a href={item.url} class="group bg-white rounded-xl border border-gray-200 p-5 hover:shadow-lg hover:border-purple-300 transition-all">
+            <h3 class="font-bold text-gray-900 group-hover:text-purple-700 transition-colors mb-1">
+              {item.title}
             </h3>
-            <p class="text-gray-600 mb-4">{tool.description}</p>
-            <span class="inline-flex items-center text-indigo-600 font-medium group-hover:text-indigo-800">
-              Try tool &rarr;
-            </span>
+            <p class="text-sm text-gray-600">{item.description}</p>
           </a>
         ))}
       </div>
     </section>
 
-    <!-- Art Style Prompts Grid -->
-    <section class="mb-16">
-      <h2 class="text-2xl font-bold text-gray-900 mb-8">Browse by Art Style</h2>
-
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {artPromptCategories.map((category) => (
-          <a href={category.url} class="bg-gray-50 rounded-lg p-4 hover:bg-purple-50 hover:shadow transition-all text-center">
-            <span class="text-gray-900 font-medium text-sm">{category.title}</span>
+    <!-- Business Prompts -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Business Prompts</h2>
+      <p class="text-gray-600 mb-4">For ChatGPT, Claude, and automation tools</p>
+      <div class="grid md:grid-cols-2 gap-4">
+        {businessPrompts.map((item) => (
+          <a href={item.url} class="group bg-white rounded-xl border border-gray-200 p-5 hover:shadow-lg hover:border-green-300 transition-all">
+            <h3 class="font-bold text-gray-900 group-hover:text-green-700 transition-colors mb-1">
+              {item.title}
+            </h3>
+            <p class="text-sm text-gray-600">{item.description}</p>
           </a>
         ))}
       </div>
     </section>
 
-    <!-- Writing Prompts Grid -->
-    <section class="mb-16">
-      <h2 class="text-2xl font-bold text-gray-900 mb-8">Writing Prompt Templates</h2>
+    <!-- Content Prompts Section -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Content Prompts</h2>
+      <p class="text-gray-600 mb-4">For blog writing, social media, and SEO</p>
+      <div class="grid md:grid-cols-2 gap-4">
+        <a href="/ai-blog-post-generator" class="group bg-white rounded-xl border border-gray-200 p-5 hover:shadow-lg hover:border-blue-300 transition-all">
+          <h3 class="font-bold text-gray-900 group-hover:text-blue-700 transition-colors mb-1">
+            AI Blog Post Generator
+          </h3>
+          <p class="text-sm text-gray-600">SEO-optimized blog post ideas</p>
+        </a>
+        <a href="/writing-prompts" class="group bg-white rounded-xl border border-gray-200 p-5 hover:shadow-lg hover:border-blue-300 transition-all">
+          <h3 class="font-bold text-gray-900 group-hover:text-blue-700 transition-colors mb-1">
+            Writing Prompt Generator
+          </h3>
+          <p class="text-sm text-gray-600">Creative writing prompts</p>
+        </a>
+      </div>
+    </section>
 
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {writingPromptCategories.map((category) => (
-          <a href={category.url} class="bg-gray-50 rounded-lg p-4 hover:bg-blue-50 hover:shadow transition-all text-center">
-            <span class="text-gray-900 font-medium text-sm">{category.title}</span>
-          </a>
+    <!-- Example Prompts -->
+    <section class="mb-12 bg-gradient-to-r from-gray-50 to-slate-100 rounded-2xl p-8 border border-gray-200">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Example Prompts You Can Copy</h2>
+      <div class="space-y-4">
+        {examplePrompts.map((item) => (
+          <div class="bg-white rounded-lg p-4 border border-gray-200">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <span class="text-xs font-medium text-purple-600 uppercase tracking-wide">{item.category}</span>
+                <p class="text-gray-700 text-sm mt-1">{item.prompt}</p>
+              </div>
+              <button
+                class="copy-btn flex-shrink-0 px-3 py-1.5 bg-purple-600 text-white text-xs font-medium rounded-lg hover:bg-purple-700 transition-colors"
+                data-text={item.prompt}
+              >
+                Copy
+              </button>
+            </div>
+          </div>
         ))}
       </div>
     </section>
 
-    <!-- Why Use Our Templates -->
-    <section class="mb-16 bg-gradient-to-r from-amber-50 to-yellow-50 rounded-2xl p-8 border border-amber-200">
-      <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">Why Use Our Free AI Prompt Templates?</h2>
+    <!-- How to Use -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">How to Use These Templates</h2>
+      <div class="grid md:grid-cols-3 gap-4">
+        <div class="bg-gray-50 rounded-lg p-5 text-center">
+          <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
+            <span class="text-purple-600 font-bold">1</span>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-1">Copy</h3>
+          <p class="text-sm text-gray-600">Click any prompt to copy it</p>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-5 text-center">
+          <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
+            <span class="text-purple-600 font-bold">2</span>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-1">Adjust</h3>
+          <p class="text-sm text-gray-600">Customize for your use case</p>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-5 text-center">
+          <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
+            <span class="text-purple-600 font-bold">3</span>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-1">Expand</h3>
+          <p class="text-sm text-gray-600">Use our tools for better results</p>
+        </div>
+      </div>
+    </section>
 
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="text-center">
-          <div class="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-            </svg>
-          </div>
-          <h3 class="font-bold text-gray-900 mb-2">Save Hours of Testing</h3>
-          <p class="text-sm text-gray-600">Each template has been refined through hundreds of generations to produce optimal results.</p>
-        </div>
-        <div class="text-center">
-          <div class="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-          </div>
-          <h3 class="font-bold text-gray-900 mb-2">Professional Quality</h3>
-          <p class="text-sm text-gray-600">Get results that look like they came from expensive professionals or agencies.</p>
-        </div>
-        <div class="text-center">
-          <div class="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2" />
-            </svg>
-          </div>
-          <h3 class="font-bold text-gray-900 mb-2">Copy & Customize</h3>
-          <p class="text-sm text-gray-600">One-click copy, then easily modify for your specific project needs.</p>
-        </div>
+    <!-- Tools -->
+    <section class="mb-12 bg-white rounded-2xl border border-gray-200 p-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Prompt Tools</h2>
+      <p class="text-gray-600 mb-4">Improve any prompt with our free tools</p>
+      <div class="grid md:grid-cols-3 gap-4">
+        <a href="/tools/text-to-prompt" class="p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
+          <h3 class="font-semibold text-blue-900">Prompt Expander</h3>
+          <p class="text-sm text-blue-700">Transform basic ideas into detailed prompts</p>
+        </a>
+        <a href="/tools/text-to-prompt" class="p-4 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors">
+          <h3 class="font-semibold text-purple-900">Text to Prompt</h3>
+          <p class="text-sm text-purple-700">Convert descriptions into AI-ready prompts</p>
+        </a>
+        <a href="/tools/image-to-prompt" class="p-4 bg-pink-50 rounded-lg hover:bg-pink-100 transition-colors">
+          <h3 class="font-semibold text-pink-900">Image to Prompt</h3>
+          <p class="text-sm text-pink-700">Reverse-engineer images into prompts</p>
+        </a>
       </div>
     </section>
 
     <!-- FAQ Section -->
-    <section class="mb-16">
-      <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
-
-      <div class="space-y-4 max-w-3xl mx-auto">
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-4">
         <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
-          <h3 class="text-lg font-semibold text-gray-900 mb-2">Are these AI prompt templates really free?</h3>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Are these prompts really free?</h3>
           <p class="text-gray-700">
-            Yes, all prompt templates on this page are completely free to use. Copy them, modify them, use them commercially - no attribution required.
+            Yes, all prompts on this page are completely free to use. Copy, modify, and use them however you like.
           </p>
         </div>
         <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
-          <h3 class="text-lg font-semibold text-gray-900 mb-2">Which AI tools do these prompts work with?</h3>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Which AI tools work with these?</h3>
           <p class="text-gray-700">
-            Our image prompts work with Midjourney, DALL-E 3, Stable Diffusion, Leonardo AI, and ChatGPT image generation. Text prompts work with ChatGPT, Claude, Gemini, and most LLMs.
+            ChatGPT, Claude, Midjourney, DALL-E, Stable Diffusion, and most other AI tools that accept text prompts.
           </p>
         </div>
         <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
-          <h3 class="text-lg font-semibold text-gray-900 mb-2">How do I use these templates?</h3>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Can I modify these templates?</h3>
           <p class="text-gray-700">
-            Click the "Copy" button next to any prompt, paste it into your AI tool, and customize any bracketed sections like [YOUR TOPIC] with your specific details. Then generate!
+            Absolutely. These are starting points. Customize them with your specific details, style preferences, and requirements.
           </p>
         </div>
         <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
-          <h3 class="text-lg font-semibold text-gray-900 mb-2">Can I modify the templates?</h3>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">How do I get better results?</h3>
           <p class="text-gray-700">
-            Absolutely! These templates are starting points. Feel free to add, remove, or change any elements to better fit your project. Experimentation often leads to the best results.
+            Be specific, add context, and use our Prompt Expander tool to automatically enhance any basic idea into a detailed prompt.
           </p>
         </div>
       </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="bg-gradient-to-r from-purple-600 to-indigo-700 rounded-2xl p-8 md:p-12 text-center text-white">
-      <h2 class="text-2xl md:text-3xl font-bold mb-4">Ready to Create Amazing AI Content?</h2>
-      <p class="text-purple-100 mb-8 max-w-2xl mx-auto">
-        Start with any template above or use our AI tools to generate custom prompts from your ideas.
+    <!-- CTA -->
+    <section class="bg-gradient-to-r from-purple-600 to-indigo-700 rounded-2xl p-8 text-center text-white">
+      <h2 class="text-2xl font-bold mb-4">Ready to Create?</h2>
+      <p class="text-purple-100 mb-6">
+        Start with any template above or use our tools to generate custom prompts.
       </p>
       <div class="flex flex-wrap justify-center gap-4">
         <a href="/tools/text-to-prompt" class="px-6 py-3 bg-white text-purple-700 font-semibold rounded-lg hover:bg-purple-50 transition-colors">
@@ -329,8 +277,36 @@ const writingPromptCategories = [
         </a>
       </div>
     </section>
-
   </div>
 
   <AstroFooter />
+
+  <!-- Copy functionality -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const copyButtons = document.querySelectorAll('.copy-btn');
+
+      copyButtons.forEach(button => {
+        button.addEventListener('click', async () => {
+          const text = button.getAttribute('data-text');
+
+          try {
+            await navigator.clipboard.writeText(text);
+            const originalText = button.textContent;
+            button.textContent = 'Copied!';
+            button.classList.remove('bg-purple-600', 'hover:bg-purple-700');
+            button.classList.add('bg-green-600');
+
+            setTimeout(() => {
+              button.textContent = originalText;
+              button.classList.remove('bg-green-600');
+              button.classList.add('bg-purple-600', 'hover:bg-purple-700');
+            }, 2000);
+          } catch (err) {
+            console.error('Failed to copy:', err);
+          }
+        });
+      });
+    });
+  </script>
 </BaseLayout>
