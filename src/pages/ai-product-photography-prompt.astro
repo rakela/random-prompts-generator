@@ -1,0 +1,307 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AstroHeader from '../components/AstroHeader.astro';
+import AstroFooter from '../components/AstroFooter.astro';
+import '../styles/global.css';
+
+const seo = {
+  path: 'ai-product-photography-prompt',
+  title: 'AI Product Photography Prompt (E-commerce Images)',
+  description: 'Create stunning product photos with AI prompts. Copy templates for e-commerce, Amazon listings, lifestyle shots, and commercial photography.',
+  keywords: 'ai product photography prompt, product photo prompt, ecommerce photography prompt, amazon product image prompt, commercial photography ai, product shot prompt'
+};
+
+const prompts = [
+  {
+    name: "Clean White Background",
+    prompt: "Professional product photography of [product] on pure white seamless background, studio lighting with soft shadows, high-key lighting setup, sharp focus throughout, commercial e-commerce style, 8K resolution, suitable for Amazon listing, perfectly centered composition.",
+    type: "E-commerce",
+    color: "slate"
+  },
+  {
+    name: "Lifestyle Context Shot",
+    prompt: "Lifestyle product photography of [product] in natural setting, [describe environment: modern kitchen, minimalist desk, cozy living room], soft natural window light, styled with complementary props, Instagram-worthy composition, aspirational mood, shallow depth of field, premium brand aesthetic.",
+    type: "Lifestyle",
+    color: "amber"
+  },
+  {
+    name: "Hero Product Shot",
+    prompt: "Hero shot of [product] with dramatic lighting, dark gradient background, rim lighting highlighting product edges, reflective surface beneath, premium luxury aesthetic, cinematic commercial photography, 8K detail, flagship product presentation.",
+    type: "Hero Shot",
+    color: "purple"
+  },
+  {
+    name: "Flat Lay Composition",
+    prompt: "Flat lay product photography of [product] arranged with complementary items, [describe items: ingredients, accessories, lifestyle objects], shot from directly above, clean organized composition, soft even lighting, lifestyle blog aesthetic, Pinterest-worthy styling.",
+    type: "Flat Lay",
+    color: "pink"
+  },
+  {
+    name: "Scale/Size Reference",
+    prompt: "Product photography showing [product] with size reference, [hand holding product, product next to common object for scale], clean neutral background, natural proportions clearly visible, helpful for online shoppers, bright even lighting, commercial clarity.",
+    type: "Scale Reference",
+    color: "blue"
+  },
+  {
+    name: "Detail/Macro Shot",
+    prompt: "Macro detail shot of [product] showing texture, material quality, and craftsmanship, extreme close-up with shallow depth of field, [specific detail: stitching, grain, finish], soft directional lighting revealing texture, premium quality emphasis, high resolution detail.",
+    type: "Detail Shot",
+    color: "emerald"
+  },
+  {
+    name: "Packaging Shot",
+    prompt: "Product packaging photography showing [product] with its box/packaging, premium unboxing presentation, clean studio background, packaging partially open to reveal product, gift-worthy presentation, luxury brand aesthetic, commercial retail photography.",
+    type: "Packaging",
+    color: "orange"
+  },
+  {
+    name: "In-Use Action Shot",
+    prompt: "Action product photography showing [product] being used, [describe action: pouring, applying, wearing, operating], motion blur on action with sharp product focus, dynamic composition, lifestyle context, demonstrates product benefit, commercial advertising style.",
+    type: "Action Shot",
+    color: "red"
+  },
+  {
+    name: "Multi-Angle Bundle",
+    prompt: "Generate consistent product photography set showing [product] from multiple angles: front view, side view, back view, 3/4 angle, and detail shot. Maintain same lighting, background, and style across all angles. White background, commercial e-commerce standard.",
+    type: "Multi-Angle",
+    color: "cyan"
+  },
+  {
+    name: "Seasonal/Holiday Theme",
+    prompt: "Seasonal product photography of [product] with [holiday/season] theme, [describe: Christmas decorations, autumn leaves, summer beach, spring flowers], festive but product-focused, promotional marketing style, holiday campaign aesthetic, warm inviting mood.",
+    type: "Seasonal",
+    color: "rose"
+  },
+  {
+    name: "Comparison/Variant Display",
+    prompt: "Product photography showing [product] color variants or sizes side by side, clean arrangement on neutral background, consistent lighting across all items, clear differentiation between options, e-commerce variant display, organized commercial presentation.",
+    type: "Variants",
+    color: "indigo"
+  },
+  {
+    name: "Food Photography Style",
+    prompt: "Appetizing product photography of [food/beverage product], [describe: steam rising, fresh ingredients visible, appetizing arrangement], food styling with garnishes, soft directional lighting, shallow depth of field, restaurant menu quality, makes viewers hungry.",
+    type: "Food",
+    color: "yellow"
+  }
+];
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-br from-amber-500 via-orange-600 to-red-700 text-white py-16">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">
+        AI Product Photography Prompt (E-commerce Images)
+      </h1>
+      <p class="text-xl text-amber-100 max-w-2xl mx-auto">
+        Create professional product photos for e-commerce, Amazon, and marketing without expensive photo shoots.
+      </p>
+    </div>
+  </div>
+
+  <div class="max-w-4xl mx-auto px-4 py-12">
+
+    <!-- Intro -->
+    <section class="mb-12">
+      <p class="text-lg text-gray-700 mb-4">
+        Product photos sell products. Bad photos lose sales.
+      </p>
+      <p class="text-lg text-gray-700 mb-4">
+        Professional photography costs thousands. AI can create commercial-quality images in minutes.
+      </p>
+      <p class="text-lg text-gray-700">
+        This guide gives you <strong>AI product photography prompt</strong> templates that create images good enough for Amazon, Shopify, and marketing campaigns.
+      </p>
+    </section>
+
+    <!-- What is Section -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">What is an AI Product Photography Prompt?</h2>
+      <p class="text-gray-700 mb-4">
+        An <strong>AI product photography prompt</strong> is a detailed instruction that guides AI image generators to create commercial-quality product images. Good prompts specify:
+      </p>
+      <ul class="list-disc list-inside text-gray-700 space-y-2 mb-4">
+        <li>Product type and key features</li>
+        <li>Background style (white, lifestyle, contextual)</li>
+        <li>Lighting setup (studio, natural, dramatic)</li>
+        <li>Composition and angle</li>
+        <li>Commercial use case (e-commerce, ads, social)</li>
+      </ul>
+      <p class="text-gray-700">
+        The result? Images that look like they came from a professional studio.
+      </p>
+    </section>
+
+    <!-- Prompt Structure -->
+    <section class="mb-12 bg-gradient-to-r from-amber-50 to-orange-50 rounded-2xl p-8 border border-amber-200">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Product Photography Prompt Structure</h2>
+      <p class="text-gray-700 mb-4">Use this formula for commercial-quality results:</p>
+      <div class="bg-white rounded-lg p-6 border border-amber-300 mb-6 font-mono text-sm text-gray-800">
+        Shot Type + Product + Background + Lighting + Composition + Style + Quality Keywords
+      </div>
+      <p class="text-gray-700 mb-4"><strong>Example:</strong></p>
+      <div class="bg-white rounded-lg p-4 border border-amber-200 text-sm text-gray-700">
+        "Professional product photography of luxury watch on dark reflective surface, dramatic rim lighting, 3/4 angle, premium commercial style, 8K resolution, suitable for print advertising."
+      </div>
+    </section>
+
+    <!-- Prompts Grid -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">12 AI Product Photography Prompts</h2>
+      <p class="text-center text-gray-600 mb-8">Click any prompt to copy it to your clipboard</p>
+
+      <div class="space-y-4">
+        {prompts.map((item, index) => (
+          <div class="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-start justify-between gap-4 mb-3">
+              <div>
+                <span class="text-xs font-medium text-amber-600 uppercase tracking-wide">{item.type}</span>
+                <h3 class="text-lg font-bold text-gray-900">
+                  {index + 1}. {item.name}
+                </h3>
+              </div>
+              <button
+                class="copy-btn flex-shrink-0 px-4 py-2 bg-amber-600 text-white text-sm font-medium rounded-lg hover:bg-amber-700 transition-colors"
+                data-text={item.prompt}
+              >
+                Copy
+              </button>
+            </div>
+            <p class="text-gray-700 text-sm leading-relaxed">{item.prompt}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- E-commerce Requirements -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">E-commerce Image Requirements</h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="bg-gray-50 rounded-lg p-5 border border-gray-200">
+          <h3 class="font-bold text-gray-900 mb-3">Amazon Requirements</h3>
+          <ul class="text-sm text-gray-700 space-y-2">
+            <li>Main image: Pure white background (RGB 255,255,255)</li>
+            <li>Product fills 85% of frame</li>
+            <li>No text, logos, or watermarks</li>
+            <li>1000px minimum on longest side</li>
+          </ul>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-5 border border-gray-200">
+          <h3 class="font-bold text-gray-900 mb-3">Shopify Best Practices</h3>
+          <ul class="text-sm text-gray-700 space-y-2">
+            <li>Consistent style across catalog</li>
+            <li>Multiple angles per product</li>
+            <li>2048x2048px recommended</li>
+            <li>Lifestyle shots for collection pages</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- How to Improve -->
+    <section class="mb-12 bg-gradient-to-r from-emerald-50 to-green-50 rounded-2xl p-8 border border-emerald-200">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">How to Improve Your Results</h2>
+      <p class="text-gray-700 mb-4">Get better product images from any <strong>AI product photography prompt</strong>:</p>
+      <ul class="list-disc list-inside text-gray-700 space-y-2">
+        <li>Describe your product material and finish (matte, glossy, metallic)</li>
+        <li>Specify exact background color codes when needed</li>
+        <li>Reference specific photography styles (Apple, Nike, luxury brands)</li>
+        <li>Include props that add context without distracting</li>
+        <li>Request consistent lighting for product sets</li>
+      </ul>
+    </section>
+
+    <!-- Internal Tools -->
+    <section class="mb-12 bg-white rounded-2xl border border-gray-200 p-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Improve Your Prompts</h2>
+      <div class="grid md:grid-cols-3 gap-4">
+        <a href="/tools/text-to-prompt" class="p-4 bg-amber-50 rounded-lg hover:bg-amber-100 transition-colors">
+          <h3 class="font-semibold text-amber-900">Prompt Expander</h3>
+          <p class="text-sm text-amber-700">Transform ideas into detailed prompts</p>
+        </a>
+        <a href="/tools/image-to-prompt" class="p-4 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors">
+          <h3 class="font-semibold text-purple-900">Image to Prompt</h3>
+          <p class="text-sm text-purple-700">Recreate competitor product photos</p>
+        </a>
+        <a href="/midjourney-prompt-generator" class="p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
+          <h3 class="font-semibold text-blue-900">Midjourney Generator</h3>
+          <p class="text-sm text-blue-700">Platform-optimized prompts</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-4">
+        <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Can AI product photos be used commercially?</h3>
+          <p class="text-gray-700">
+            Yes, images generated with Midjourney (paid plans), DALL-E, and most AI tools grant commercial usage rights. Check your specific tool's terms of service.
+          </p>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Will AI match my real product exactly?</h3>
+          <p class="text-gray-700">
+            AI works best for generic product visualization, concept shots, and lifestyle contexts. For exact product representation, use real photos or provide reference images.
+          </p>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Which AI tool is best for product photography?</h3>
+          <p class="text-gray-700">
+            Midjourney excels at stylized and lifestyle shots. DALL-E 3 handles specific compositions well. For e-commerce white backgrounds, both work with the right prompts.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Pages -->
+    <section class="bg-gradient-to-r from-amber-600 to-orange-600 rounded-2xl p-8 text-white">
+      <h2 class="text-2xl font-bold mb-6">Related Prompt Templates</h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        <a href="/midjourney-prompt-generator" class="p-4 bg-white/10 rounded-lg hover:bg-white/20 transition-colors">
+          <h3 class="font-semibold">Midjourney Prompt Generator</h3>
+          <p class="text-sm text-amber-100">Platform-specific prompts</p>
+        </a>
+        <a href="/ai-prompt-templates-free" class="p-4 bg-white/10 rounded-lg hover:bg-white/20 transition-colors">
+          <h3 class="font-semibold">AI Prompt Templates Free</h3>
+          <p class="text-sm text-amber-100">Browse all prompt categories</p>
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <AstroFooter />
+
+  <!-- Copy functionality -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const copyButtons = document.querySelectorAll('.copy-btn');
+
+      copyButtons.forEach(button => {
+        button.addEventListener('click', async () => {
+          const text = button.getAttribute('data-text');
+
+          try {
+            await navigator.clipboard.writeText(text);
+            const originalText = button.textContent;
+            button.textContent = 'Copied!';
+            button.classList.remove('bg-amber-600', 'hover:bg-amber-700');
+            button.classList.add('bg-green-600');
+
+            setTimeout(() => {
+              button.textContent = originalText;
+              button.classList.remove('bg-green-600');
+              button.classList.add('bg-amber-600', 'hover:bg-amber-700');
+            }, 2000);
+          } catch (err) {
+            console.error('Failed to copy:', err);
+          }
+        });
+      });
+    });
+  </script>
+</BaseLayout>

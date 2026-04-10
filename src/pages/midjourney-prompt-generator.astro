@@ -1,0 +1,332 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AstroHeader from '../components/AstroHeader.astro';
+import AstroFooter from '../components/AstroFooter.astro';
+import '../styles/global.css';
+
+const seo = {
+  path: 'midjourney-prompt-generator',
+  title: 'Midjourney Prompt Generator (V6 Optimized Templates)',
+  description: 'Generate perfect Midjourney prompts with V6-optimized templates. Copy ready-to-use prompts for portraits, landscapes, art styles, and more.',
+  keywords: 'midjourney prompt generator, midjourney prompts, midjourney v6 prompt, mj prompt generator, midjourney prompt ideas, midjourney prompt template'
+};
+
+const prompts = [
+  {
+    name: "Photorealistic Portrait",
+    prompt: "portrait photograph of [subject description], natural lighting, shot on Canon EOS R5, 85mm lens, shallow depth of field, detailed skin texture, cinematic color grading --ar 2:3 --v 6 --style raw",
+    category: "Portrait",
+    color: "blue"
+  },
+  {
+    name: "Fantasy Character",
+    prompt: "[character description], fantasy art, intricate armor details, magical atmosphere, dramatic lighting, concept art style, trending on artstation, highly detailed, 8K --ar 2:3 --v 6",
+    category: "Character",
+    color: "purple"
+  },
+  {
+    name: "Epic Landscape",
+    prompt: "breathtaking [landscape type] landscape, golden hour lighting, dramatic clouds, national geographic style, ultra wide angle, vibrant colors, detailed environment, cinematic composition --ar 16:9 --v 6",
+    category: "Landscape",
+    color: "green"
+  },
+  {
+    name: "Anime Style",
+    prompt: "[subject/scene] in anime style, Studio Ghibli inspired, hand-drawn aesthetic, soft watercolor textures, warm lighting, detailed background, Miyazaki aesthetic --ar 16:9 --v 6 --niji 6",
+    category: "Anime",
+    color: "pink"
+  },
+  {
+    name: "Product Photography",
+    prompt: "professional product photography of [product], white background, studio lighting, commercial style, sharp focus, 8K resolution, suitable for e-commerce --ar 1:1 --v 6 --style raw",
+    category: "Product",
+    color: "slate"
+  },
+  {
+    name: "Cyberpunk Scene",
+    prompt: "cyberpunk [scene description], neon lights, rain-soaked streets, Blade Runner aesthetic, volumetric fog, cinematic lighting, highly detailed, futuristic, 8K --ar 16:9 --v 6",
+    category: "Sci-Fi",
+    color: "cyan"
+  },
+  {
+    name: "Oil Painting Style",
+    prompt: "[subject] in the style of classical oil painting, rich colors, visible brushstrokes, Rembrandt lighting, museum quality, fine art, dramatic chiaroscuro --ar 4:5 --v 6",
+    category: "Fine Art",
+    color: "amber"
+  },
+  {
+    name: "Architectural Visualization",
+    prompt: "modern architecture, [building type], minimalist design, clean lines, natural light flooding interior, architectural photography, award-winning design, 8K --ar 16:9 --v 6 --style raw",
+    category: "Architecture",
+    color: "neutral"
+  },
+  {
+    name: "Food Photography",
+    prompt: "appetizing [food item], professional food photography, soft directional lighting, shallow depth of field, steam rising, styled with fresh ingredients, restaurant quality --ar 1:1 --v 6 --style raw",
+    category: "Food",
+    color: "orange"
+  },
+  {
+    name: "Double Exposure",
+    prompt: "double exposure portrait of [subject] merged with [scene/nature], surreal artistic effect, seamless blend, ethereal mood, black and white with subtle color accent --ar 2:3 --v 6",
+    category: "Artistic",
+    color: "indigo"
+  },
+  {
+    name: "Vintage Retro",
+    prompt: "[scene description] in 1970s aesthetic, vintage color palette, film grain, retro styling, nostalgic atmosphere, period-accurate details, Kodachrome colors --ar 3:2 --v 6",
+    category: "Vintage",
+    color: "rose"
+  },
+  {
+    name: "Logo/Icon Design",
+    prompt: "minimalist logo design for [brand/concept], vector style, clean lines, modern aesthetic, scalable, professional branding, white background, simple geometric shapes --ar 1:1 --v 6 --style raw",
+    category: "Design",
+    color: "emerald"
+  }
+];
+
+const parameters = [
+  { param: "--ar X:Y", desc: "Aspect ratio (16:9, 1:1, 2:3, 9:16)" },
+  { param: "--v 6", desc: "Midjourney version 6 (latest)" },
+  { param: "--style raw", desc: "Less stylized, more photographic" },
+  { param: "--niji 6", desc: "Anime-optimized model" },
+  { param: "--chaos N", desc: "Variation amount (0-100)" },
+  { param: "--stylize N", desc: "Artistic stylization (0-1000)" },
+  { param: "--no [item]", desc: "Exclude elements from image" },
+  { param: "--tile", desc: "Seamless tileable pattern" }
+];
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-br from-indigo-600 via-purple-700 to-pink-700 text-white py-16">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">
+        Midjourney Prompt Generator (V6 Optimized)
+      </h1>
+      <p class="text-xl text-purple-100 max-w-2xl mx-auto">
+        Generate perfect Midjourney V6 prompts with copy-ready templates. Stop guessing parameters and start creating.
+      </p>
+    </div>
+  </div>
+
+  <div class="max-w-4xl mx-auto px-4 py-12">
+
+    <!-- Intro -->
+    <section class="mb-12">
+      <p class="text-lg text-gray-700 mb-4">
+        Midjourney V6 changed everything.
+      </p>
+      <p class="text-lg text-gray-700 mb-4">
+        New prompting style. Better text rendering. More photorealistic results. But old prompts don't work the same.
+      </p>
+      <p class="text-lg text-gray-700">
+        This <strong>Midjourney prompt generator</strong> gives you V6-optimized templates that actually work with the latest model.
+      </p>
+    </section>
+
+    <!-- What is Section -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">What Makes a Good Midjourney Prompt?</h2>
+      <p class="text-gray-700 mb-4">
+        A good <strong>Midjourney prompt</strong> in V6 is more natural and descriptive than previous versions. Key elements:
+      </p>
+      <ul class="list-disc list-inside text-gray-700 space-y-2 mb-4">
+        <li>Clear subject description</li>
+        <li>Style and mood keywords</li>
+        <li>Lighting and atmosphere details</li>
+        <li>Technical quality terms (8K, detailed)</li>
+        <li>Correct parameters (--ar, --v, --style)</li>
+      </ul>
+      <p class="text-gray-700">
+        V6 understands natural language better, so write prompts like you're describing to a skilled artist.
+      </p>
+    </section>
+
+    <!-- Parameters Section -->
+    <section class="mb-12 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-2xl p-8 border border-indigo-200">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Essential Midjourney V6 Parameters</h2>
+      <div class="grid md:grid-cols-2 gap-3">
+        {parameters.map((item) => (
+          <div class="bg-white rounded-lg p-3 border border-indigo-200">
+            <code class="text-indigo-700 font-mono text-sm">{item.param}</code>
+            <p class="text-gray-600 text-sm mt-1">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Prompt Structure -->
+    <section class="mb-12 bg-white rounded-2xl border border-gray-200 p-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Midjourney V6 Prompt Formula</h2>
+      <p class="text-gray-700 mb-4">Use this structure for best results:</p>
+      <div class="bg-gray-50 rounded-lg p-6 border border-gray-300 mb-6 font-mono text-sm text-gray-800">
+        [Subject] + [Environment/Context] + [Style/Mood] + [Lighting] + [Quality Keywords] + [Parameters]
+      </div>
+      <p class="text-gray-700 mb-4"><strong>Example:</strong></p>
+      <div class="bg-gray-50 rounded-lg p-4 border border-gray-200 text-sm text-gray-700">
+        "portrait of a woman with red hair, in a sunlit garden, romantic Pre-Raphaelite style, soft golden hour lighting, highly detailed, 8K --ar 2:3 --v 6"
+      </div>
+    </section>
+
+    <!-- Prompts Grid -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">12 Midjourney V6 Prompt Templates</h2>
+      <p class="text-center text-gray-600 mb-8">Click any prompt to copy it to your clipboard</p>
+
+      <div class="space-y-4">
+        {prompts.map((item, index) => (
+          <div class="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-start justify-between gap-4 mb-3">
+              <div>
+                <span class="text-xs font-medium text-purple-600 uppercase tracking-wide">{item.category}</span>
+                <h3 class="text-lg font-bold text-gray-900">
+                  {index + 1}. {item.name}
+                </h3>
+              </div>
+              <button
+                class="copy-btn flex-shrink-0 px-4 py-2 bg-purple-600 text-white text-sm font-medium rounded-lg hover:bg-purple-700 transition-colors"
+                data-text={item.prompt}
+              >
+                Copy
+              </button>
+            </div>
+            <p class="text-gray-700 text-sm leading-relaxed font-mono bg-gray-50 p-3 rounded">{item.prompt}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- V6 Tips -->
+    <section class="mb-12 bg-gradient-to-r from-amber-50 to-yellow-50 rounded-2xl p-8 border border-amber-200">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Midjourney V6 Tips</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">What's New in V6:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-2 text-sm">
+            <li>Better understanding of natural language</li>
+            <li>Improved text rendering in images</li>
+            <li>More photorealistic results</li>
+            <li>Better prompt following accuracy</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Best Practices:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-2 text-sm">
+            <li>Be descriptive, not just keyword-heavy</li>
+            <li>Use --style raw for photography</li>
+            <li>Specify camera/lens for realism</li>
+            <li>Use --niji 6 for anime styles</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Internal Tools -->
+    <section class="mb-12 bg-white rounded-2xl border border-gray-200 p-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Improve Your Prompts</h2>
+      <div class="grid md:grid-cols-3 gap-4">
+        <a href="/tools/text-to-prompt" class="p-4 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors">
+          <h3 class="font-semibold text-purple-900">Prompt Expander</h3>
+          <p class="text-sm text-purple-700">Transform ideas into detailed prompts</p>
+        </a>
+        <a href="/tools/image-to-prompt" class="p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
+          <h3 class="font-semibold text-blue-900">Image to Prompt</h3>
+          <p class="text-sm text-blue-700">Reverse-engineer any image</p>
+        </a>
+        <a href="/ai-prompt-generator-for-images" class="p-4 bg-pink-50 rounded-lg hover:bg-pink-100 transition-colors">
+          <h3 class="font-semibold text-pink-900">Image Prompt Generator</h3>
+          <p class="text-sm text-pink-700">Universal image prompts</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-4">
+        <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Do old prompts work with V6?</h3>
+          <p class="text-gray-700">
+            Some do, but V6 responds better to natural, descriptive language rather than comma-separated keywords. Update your prompts for best results.
+          </p>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Should I always use --v 6?</h3>
+          <p class="text-gray-700">
+            V6 is now the default. Use --niji 6 specifically for anime styles. Older versions (--v 5.2) still work if you prefer that aesthetic.
+          </p>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">What's the difference between --style raw and default?</h3>
+          <p class="text-gray-700">
+            --style raw reduces Midjourney's artistic interpretation, resulting in more literal, photographic outputs. Use it for product shots and realistic portraits.
+          </p>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">How do I get text in my images?</h3>
+          <p class="text-gray-700">
+            V6 handles text much better. Put the text in quotes within your prompt: "sign that says 'Hello World'". Keep text short for best results.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Pages -->
+    <section class="bg-gradient-to-r from-purple-600 to-indigo-700 rounded-2xl p-8 text-white">
+      <h2 class="text-2xl font-bold mb-6">Related Prompt Templates</h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        <a href="/ai-product-photography-prompt" class="p-4 bg-white/10 rounded-lg hover:bg-white/20 transition-colors">
+          <h3 class="font-semibold">Product Photography Prompts</h3>
+          <p class="text-sm text-purple-100">E-commerce and commercial shots</p>
+        </a>
+        <a href="/studio-ghibli-ai-prompt" class="p-4 bg-white/10 rounded-lg hover:bg-white/20 transition-colors">
+          <h3 class="font-semibold">Studio Ghibli Prompts</h3>
+          <p class="text-sm text-purple-100">Anime and Miyazaki-style art</p>
+        </a>
+        <a href="/cinematic-lighting-ai-prompt" class="p-4 bg-white/10 rounded-lg hover:bg-white/20 transition-colors">
+          <h3 class="font-semibold">Cinematic Lighting Prompts</h3>
+          <p class="text-sm text-purple-100">Film-quality dramatic lighting</p>
+        </a>
+        <a href="/ai-prompt-templates-free" class="p-4 bg-white/10 rounded-lg hover:bg-white/20 transition-colors">
+          <h3 class="font-semibold">All Prompt Templates</h3>
+          <p class="text-sm text-purple-100">Browse complete library</p>
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <AstroFooter />
+
+  <!-- Copy functionality -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const copyButtons = document.querySelectorAll('.copy-btn');
+
+      copyButtons.forEach(button => {
+        button.addEventListener('click', async () => {
+          const text = button.getAttribute('data-text');
+
+          try {
+            await navigator.clipboard.writeText(text);
+            const originalText = button.textContent;
+            button.textContent = 'Copied!';
+            button.classList.remove('bg-purple-600', 'hover:bg-purple-700');
+            button.classList.add('bg-green-600');
+
+            setTimeout(() => {
+              button.textContent = originalText;
+              button.classList.remove('bg-green-600');
+              button.classList.add('bg-purple-600', 'hover:bg-purple-700');
+            }, 2000);
+          } catch (err) {
+            console.error('Failed to copy:', err);
+          }
+        });
+      });
+    });
+  </script>
+</BaseLayout>

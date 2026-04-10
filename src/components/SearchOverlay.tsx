@@ -90,6 +90,11 @@ const searchIndex: SearchItem[] = [
   { title: 'AI Chatbot Prompt Template', path: '/ai-chatbot-prompt-template', description: 'System prompts for virtual assistants', type: 'page' },
   { title: 'AI Prompt Generator for Images', path: '/ai-prompt-generator-for-images', description: 'Universal image prompt formulas and templates', type: 'page' },
   { title: 'AI Prompt Templates Free', path: '/ai-prompt-templates-free', description: 'Complete library of free AI prompts', type: 'page' },
+  // Content & Platform-Specific Prompts
+  { title: 'AI Social Media Prompt', path: '/ai-social-media-prompt', description: 'LinkedIn, Twitter, Instagram post prompts', type: 'page' },
+  { title: 'AI Blog Writing Prompt', path: '/ai-blog-writing-prompt', description: 'SEO-optimized blog content templates', type: 'page' },
+  { title: 'AI Product Photography Prompt', path: '/ai-product-photography-prompt', description: 'E-commerce and commercial product photos', type: 'page' },
+  { title: 'Midjourney Prompt Generator', path: '/midjourney-prompt-generator', description: 'V6-optimized Midjourney templates', type: 'page' },
 ];
 
 export default function SearchOverlay() {
