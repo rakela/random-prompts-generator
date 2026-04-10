@@ -123,7 +123,12 @@ const staticPageUrls = [
   'ai-lead-generation-prompt',
   'ai-chatbot-prompt-template',
   'ai-prompt-generator-for-images',
-  'ai-prompt-templates-free'
+  'ai-prompt-templates-free',
+  // Content & Platform-Specific Prompts
+  'ai-social-media-prompt',
+  'ai-blog-writing-prompt',
+  'ai-product-photography-prompt',
+  'midjourney-prompt-generator'
 ];
 
 // Generate sitemap XML

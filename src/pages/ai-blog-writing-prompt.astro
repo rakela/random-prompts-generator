@@ -1,0 +1,304 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AstroHeader from '../components/AstroHeader.astro';
+import AstroFooter from '../components/AstroFooter.astro';
+import '../styles/global.css';
+
+const seo = {
+  path: 'ai-blog-writing-prompt',
+  title: 'AI Blog Writing Prompt (SEO Content That Ranks)',
+  description: 'Create SEO-optimized blog posts with AI writing prompts. Copy templates for articles, listicles, how-to guides, and pillar content.',
+  keywords: 'ai blog writing prompt, blog writing prompt, ai content writing prompt, seo blog prompt, article writing prompt ai, blog post generator prompt'
+};
+
+const prompts = [
+  {
+    name: "SEO Blog Post (How-To Guide)",
+    prompt: "Write a comprehensive how-to guide about [topic]. Target keyword: [keyword]. Include: compelling H1 with keyword, intro that hooks and includes keyword in first 100 words, clear H2 subheadings, numbered steps with actionable details, pro tips in callout boxes, FAQ section with 5 questions, conclusion with CTA. Aim for 1500+ words.",
+    type: "How-To",
+    color: "blue"
+  },
+  {
+    name: "Listicle Article",
+    prompt: "Write a listicle: '[Number] Best [Topic] for [Audience/Year]'. Include: attention-grabbing intro, brief methodology, numbered items with H2 headings, 100-150 words per item explaining benefits and use cases, comparison table if relevant, verdict/recommendation section, FAQ. Optimize for [keyword].",
+    type: "Listicle",
+    color: "green"
+  },
+  {
+    name: "Ultimate Guide (Pillar Content)",
+    prompt: "Create an ultimate guide about [topic] targeting [keyword]. Structure: powerful intro establishing authority, table of contents, 8-10 major sections with H2s, subsections with H3s, examples and case studies, expert quotes or data, internal linking opportunities marked as [LINK], FAQ with 8+ questions, comprehensive conclusion. Target 3000+ words.",
+    type: "Pillar Content",
+    color: "purple"
+  },
+  {
+    name: "Comparison Post",
+    prompt: "Write a comparison article: '[Product A] vs [Product B]: Which is Better for [Use Case]?'. Include: unbiased intro, quick verdict for scanners, detailed feature-by-feature comparison with H2 sections, comparison table, pros/cons for each, 'Choose A if...' and 'Choose B if...' sections, FAQ, final recommendation.",
+    type: "Comparison",
+    color: "amber"
+  },
+  {
+    name: "Problem-Solution Article",
+    prompt: "Write an article solving [specific problem] for [target audience]. Structure: empathize with the problem in intro, explain why it happens, present the solution step-by-step, include common mistakes to avoid, add troubleshooting section, end with success indicators. Target keyword: [keyword].",
+    type: "Problem-Solution",
+    color: "red"
+  },
+  {
+    name: "Beginner's Guide",
+    prompt: "Write a beginner's guide to [topic] for people who know nothing about it. Use simple language, define all jargon, include analogies, break complex concepts into digestible chunks, add 'Key Takeaway' boxes, include a glossary section, end with 'Next Steps' for continued learning. Target keyword: [keyword].",
+    type: "Beginner Guide",
+    color: "cyan"
+  },
+  {
+    name: "Case Study Article",
+    prompt: "Write a case study about [topic/result]. Structure: attention-grabbing headline with specific result, background/context, the challenge faced, the solution implemented (step-by-step), results with specific metrics, key lessons learned, how readers can apply this. Include quotes if available.",
+    type: "Case Study",
+    color: "emerald"
+  },
+  {
+    name: "News/Trend Analysis",
+    prompt: "Write an analysis article about [trend/news]. Include: hook about why this matters now, background context, what's happening, expert opinions, implications for [industry/audience], predictions, actionable takeaways for readers. Keep it timely and authoritative.",
+    type: "Analysis",
+    color: "orange"
+  },
+  {
+    name: "Roundup Post",
+    prompt: "Create a roundup post: 'Expert Tips on [Topic] from [Number] Industry Leaders'. Include: intro explaining the roundup value, each expert's tip with their name/title/company, your commentary connecting the tips, patterns you noticed, actionable summary, expert bios at the end.",
+    type: "Roundup",
+    color: "pink"
+  },
+  {
+    name: "Product Review",
+    prompt: "Write an honest product review of [product] for [target audience]. Include: quick verdict box at top, who this is for (and not for), unboxing/first impressions, detailed feature breakdown, real-world testing, pros and cons list, comparison to alternatives, pricing analysis, final verdict with rating.",
+    type: "Review",
+    color: "indigo"
+  }
+];
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-800 text-white py-16">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">
+        AI Blog Writing Prompt (SEO Content That Ranks)
+      </h1>
+      <p class="text-xl text-blue-100 max-w-2xl mx-auto">
+        Stop writing blog posts that nobody reads. Create SEO-optimized content that ranks and converts.
+      </p>
+    </div>
+  </div>
+
+  <div class="max-w-4xl mx-auto px-4 py-12">
+
+    <!-- Intro -->
+    <section class="mb-12">
+      <p class="text-lg text-gray-700 mb-4">
+        Most AI-written blog posts sound the same.
+      </p>
+      <p class="text-lg text-gray-700 mb-4">
+        Generic intros. Fluffy content. No structure. No optimization.
+      </p>
+      <p class="text-lg text-gray-700">
+        This guide gives you <strong>AI blog writing prompt</strong> templates that create content Google wants to rank and readers want to share.
+      </p>
+    </section>
+
+    <!-- What is Section -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">What is an AI Blog Writing Prompt?</h2>
+      <p class="text-gray-700 mb-4">
+        An <strong>AI blog writing prompt</strong> is a detailed instruction that guides AI to create well-structured, SEO-optimized articles. Good prompts specify:
+      </p>
+      <ul class="list-disc list-inside text-gray-700 space-y-2 mb-4">
+        <li>Target keyword and placement</li>
+        <li>Article structure (H1, H2, H3)</li>
+        <li>Content type (listicle, how-to, guide)</li>
+        <li>Word count and depth</li>
+        <li>Specific sections to include</li>
+      </ul>
+      <p class="text-gray-700">
+        The difference between "write a blog post about X" and a structured prompt is the difference between thin content and comprehensive resources.
+      </p>
+    </section>
+
+    <!-- Prompt Structure -->
+    <section class="mb-12 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-8 border border-blue-200">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Blog Writing Prompt Structure</h2>
+      <p class="text-gray-700 mb-4">Use this formula for SEO-optimized content:</p>
+      <div class="bg-white rounded-lg p-6 border border-blue-300 mb-6 font-mono text-sm text-gray-800">
+        Content Type + Topic + Target Keyword + Structure Requirements + Word Count + Special Sections
+      </div>
+      <p class="text-gray-700 mb-4"><strong>Example:</strong></p>
+      <div class="bg-white rounded-lg p-4 border border-blue-200 text-sm text-gray-700">
+        "Write a comprehensive how-to guide about email marketing for beginners. Target keyword: 'email marketing for beginners'. Include H2 sections, step-by-step instructions, pro tips, FAQ section. Aim for 2000 words."
+      </div>
+    </section>
+
+    <!-- Prompts Grid -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">10 AI Blog Writing Prompts by Content Type</h2>
+      <p class="text-center text-gray-600 mb-8">Click any prompt to copy it to your clipboard</p>
+
+      <div class="space-y-4">
+        {prompts.map((item, index) => (
+          <div class="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-start justify-between gap-4 mb-3">
+              <div>
+                <span class="text-xs font-medium text-indigo-600 uppercase tracking-wide">{item.type}</span>
+                <h3 class="text-lg font-bold text-gray-900">
+                  {index + 1}. {item.name}
+                </h3>
+              </div>
+              <button
+                class="copy-btn flex-shrink-0 px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-lg hover:bg-indigo-700 transition-colors"
+                data-text={item.prompt}
+              >
+                Copy
+              </button>
+            </div>
+            <p class="text-gray-700 text-sm leading-relaxed">{item.prompt}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- How to Improve -->
+    <section class="mb-12 bg-gradient-to-r from-amber-50 to-yellow-50 rounded-2xl p-8 border border-amber-200">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">How to Improve Your Results</h2>
+      <p class="text-gray-700 mb-4">Get better blog content from any <strong>AI blog writing prompt</strong>:</p>
+      <ul class="list-disc list-inside text-gray-700 space-y-2">
+        <li>Always specify your target keyword</li>
+        <li>Include competitor URLs to analyze and beat</li>
+        <li>Define your target audience clearly</li>
+        <li>Request specific examples and data points</li>
+        <li>Ask for internal linking opportunities</li>
+        <li>Specify your brand voice or tone</li>
+      </ul>
+    </section>
+
+    <!-- SEO Checklist -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Blog SEO Checklist</h2>
+      <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+        <ul class="space-y-3">
+          <li class="flex items-start gap-2">
+            <span class="text-green-500 mt-0.5">✓</span>
+            <span class="text-gray-700">Keyword in title, H1, and first 100 words</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-green-500 mt-0.5">✓</span>
+            <span class="text-gray-700">Clear H2 and H3 structure with keywords</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-green-500 mt-0.5">✓</span>
+            <span class="text-gray-700">FAQ section targeting "People Also Ask"</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-green-500 mt-0.5">✓</span>
+            <span class="text-gray-700">Internal links to related content</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-green-500 mt-0.5">✓</span>
+            <span class="text-gray-700">Comprehensive coverage of the topic</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-green-500 mt-0.5">✓</span>
+            <span class="text-gray-700">Actionable takeaways and examples</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Internal Tools -->
+    <section class="mb-12 bg-white rounded-2xl border border-gray-200 p-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Improve Your Prompts</h2>
+      <div class="grid md:grid-cols-3 gap-4">
+        <a href="/tools/text-to-prompt" class="p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
+          <h3 class="font-semibold text-blue-900">Prompt Expander</h3>
+          <p class="text-sm text-blue-700">Transform topics into detailed prompts</p>
+        </a>
+        <a href="/ai-blog-post-generator" class="p-4 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors">
+          <h3 class="font-semibold text-purple-900">Blog Post Generator</h3>
+          <p class="text-sm text-purple-700">Generate blog ideas instantly</p>
+        </a>
+        <a href="/tools/image-to-prompt" class="p-4 bg-pink-50 rounded-lg hover:bg-pink-100 transition-colors">
+          <h3 class="font-semibold text-pink-900">Image to Prompt</h3>
+          <p class="text-sm text-pink-700">Create image descriptions</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-4">
+        <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Can AI-written blogs rank on Google?</h3>
+          <p class="text-gray-700">
+            Yes, when properly optimized and edited. Google cares about quality and helpfulness, not whether AI assisted. Add unique insights, examples, and expertise.
+          </p>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">How long should blog posts be?</h3>
+          <p class="text-gray-700">
+            Match the search intent. Quick answers: 500-800 words. How-to guides: 1500-2500 words. Ultimate guides: 3000+ words. Check what's ranking and aim to be more comprehensive.
+          </p>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Should I edit AI-generated content?</h3>
+          <p class="text-gray-700">
+            Always. Add your expertise, remove fluff, verify facts, include personal examples, and ensure it matches your brand voice. AI is a first draft, not a final product.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Pages -->
+    <section class="bg-gradient-to-r from-indigo-600 to-purple-700 rounded-2xl p-8 text-white">
+      <h2 class="text-2xl font-bold mb-6">Related Prompt Templates</h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        <a href="/ai-social-media-prompt" class="p-4 bg-white/10 rounded-lg hover:bg-white/20 transition-colors">
+          <h3 class="font-semibold">AI Social Media Prompt</h3>
+          <p class="text-sm text-indigo-100">Content for LinkedIn, Twitter, Instagram</p>
+        </a>
+        <a href="/ai-prompt-templates-free" class="p-4 bg-white/10 rounded-lg hover:bg-white/20 transition-colors">
+          <h3 class="font-semibold">AI Prompt Templates Free</h3>
+          <p class="text-sm text-indigo-100">Browse all prompt categories</p>
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <AstroFooter />
+
+  <!-- Copy functionality -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const copyButtons = document.querySelectorAll('.copy-btn');
+
+      copyButtons.forEach(button => {
+        button.addEventListener('click', async () => {
+          const text = button.getAttribute('data-text');
+
+          try {
+            await navigator.clipboard.writeText(text);
+            const originalText = button.textContent;
+            button.textContent = 'Copied!';
+            button.classList.remove('bg-indigo-600', 'hover:bg-indigo-700');
+            button.classList.add('bg-green-600');
+
+            setTimeout(() => {
+              button.textContent = originalText;
+              button.classList.remove('bg-green-600');
+              button.classList.add('bg-indigo-600', 'hover:bg-indigo-700');
+            }, 2000);
+          } catch (err) {
+            console.error('Failed to copy:', err);
+          }
+        });
+      });
+    });
+  </script>
+</BaseLayout>

@@ -38,6 +38,16 @@ const imagePrompts = [
     url: "/double-exposure-ai-prompt"
   },
   {
+    title: "AI Product Photography Prompt",
+    description: "E-commerce and commercial photos",
+    url: "/ai-product-photography-prompt"
+  },
+  {
+    title: "Midjourney Prompt Generator",
+    description: "V6-optimized templates",
+    url: "/midjourney-prompt-generator"
+  },
+  {
     title: "AI Image Prompt Generator",
     description: "Universal formulas for any art style",
     url: "/ai-prompt-generator-for-images"
@@ -54,6 +64,19 @@ const businessPrompts = [
     title: "AI Chatbot Prompt Template",
     description: "Customer support and automation",
     url: "/ai-chatbot-prompt-template"
+  }
+];
+
+const contentPrompts = [
+  {
+    title: "AI Social Media Prompt",
+    description: "LinkedIn, Twitter, Instagram posts",
+    url: "/ai-social-media-prompt"
+  },
+  {
+    title: "AI Blog Writing Prompt",
+    description: "SEO-optimized blog content",
+    url: "/ai-blog-writing-prompt"
   }
 ];
 
@@ -145,6 +168,14 @@ const examplePrompts = [
       <h2 class="text-2xl font-bold text-gray-900 mb-6">Content Prompts</h2>
       <p class="text-gray-600 mb-4">For blog writing, social media, and SEO</p>
       <div class="grid md:grid-cols-2 gap-4">
+        {contentPrompts.map((item) => (
+          <a href={item.url} class="group bg-white rounded-xl border border-gray-200 p-5 hover:shadow-lg hover:border-blue-300 transition-all">
+            <h3 class="font-bold text-gray-900 group-hover:text-blue-700 transition-colors mb-1">
+              {item.title}
+            </h3>
+            <p class="text-sm text-gray-600">{item.description}</p>
+          </a>
+        ))}
         <a href="/ai-blog-post-generator" class="group bg-white rounded-xl border border-gray-200 p-5 hover:shadow-lg hover:border-blue-300 transition-all">
           <h3 class="font-bold text-gray-900 group-hover:text-blue-700 transition-colors mb-1">
             AI Blog Post Generator
