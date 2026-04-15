@@ -86,6 +86,17 @@ const aestheticPrompts = [
         </div>
       </div>
 
+      <!-- Upgrade CTA Banner (shown after 3 generate clicks) -->
+      <div id="upgrade-cta-banner" class="hidden mb-6">
+        <div class="bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p class="text-gray-700 text-sm font-medium">Like these prompts? Get unlimited saves, export to PDF, and 50+ exclusive generators with Pro.</p>
+          <a href="/pricing" class="flex-shrink-0 inline-flex items-center gap-1 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors whitespace-nowrap">
+            See plans
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+
       <!-- AI Art Section -->
       <div class="bg-gradient-to-r from-purple-50 to-pink-50 border border-purple-200 rounded-xl p-6 mb-8">
         <h2 class="text-xl font-bold text-gray-900 mb-4">Aesthetic Prompts for AI Art (Midjourney & Gemini)</h2>
@@ -284,6 +295,9 @@ const aestheticPrompts = [
             🎭 Random Art Style Generator
           </a>
         </div>
+        <div class="mt-4 pt-4 border-t border-gray-200">
+          <a href="/pricing" class="text-indigo-600 hover:underline text-sm font-medium">Want unlimited saves and 50+ exclusive prompts? See Pro plans →</a>
+        </div>
       </div>
     </div>
   </div>
@@ -319,6 +333,11 @@ const aestheticPrompts = [
         });
       });
 
+      // Upgrade CTA tracking
+      const ctaStorageKey = 'promptCount_aesthetic';
+      localStorage.setItem(ctaStorageKey, '0');
+      const upgradeBanner = document.getElementById('upgrade-cta-banner');
+
       // Random prompt generator
       generateRandomBtn.addEventListener('click', () => {
         const randomPrompt = allPrompts[Math.floor(Math.random() * allPrompts.length)];
@@ -327,6 +346,14 @@ const aestheticPrompts = [
         randomPromptDisplay.classList.remove('hidden');
 
         copyRandomBtn.setAttribute('data-text', randomPrompt);
+
+        // Track click count for upgrade CTA
+        let count = parseInt(localStorage.getItem(ctaStorageKey) || '0');
+        count++;
+        localStorage.setItem(ctaStorageKey, count.toString());
+        if (count >= 3 && upgradeBanner) {
+          upgradeBanner.classList.remove('hidden');
+        }
       });
 
       // Copy random prompt

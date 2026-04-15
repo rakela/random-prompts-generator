@@ -32,6 +32,17 @@ const seo = getSEOData('randomParagraphGenerator');
       {/* Main Content - 70% width on desktop */}
       <div class="flex-1 lg:w-[70%]">
         <SimpleGenerator client:load generatorKey="random-paragraph-generator" />
+
+        <!-- Upgrade CTA Banner (shown after 3 generate clicks) -->
+        <div id="upgrade-cta-banner" class="hidden mt-4 mb-2">
+          <div class="bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <p class="text-gray-700 text-sm font-medium">Like these prompts? Get unlimited saves, export to PDF, and 50+ exclusive generators with Pro.</p>
+            <a href="/pricing" class="flex-shrink-0 inline-flex items-center gap-1 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors whitespace-nowrap">
+              See plans
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
       </div>
 
       {/* Sidebar - 30% width on desktop, appears below on mobile */}
@@ -42,4 +53,27 @@ const seo = getSEOData('randomParagraphGenerator');
   </div>
 
   <AstroFooter />
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const storageKey = 'promptCount_paragraph';
+      localStorage.setItem(storageKey, '0');
+
+      const banner = document.getElementById('upgrade-cta-banner');
+
+      document.addEventListener('click', (e) => {
+        const btn = (e.target as Element).closest('button');
+        if (!btn) return;
+        const text = btn.textContent?.trim() || '';
+        if (text.includes('Generate') && !text.includes('Copy')) {
+          let count = parseInt(localStorage.getItem(storageKey) || '0');
+          count++;
+          localStorage.setItem(storageKey, count.toString());
+          if (count >= 3 && banner) {
+            banner.classList.remove('hidden');
+          }
+        }
+      });
+    });
+  </script>
 </BaseLayout>

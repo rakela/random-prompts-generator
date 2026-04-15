@@ -24,14 +24,14 @@ export const seoData: Record<string, SEOData> = {
   },
   writingPromptsGenerators: {
     path: 'writing-prompts-generator',
-    title: 'Writing Prompt Generators - Story, Character & Plot Generators',
-    description: 'Free writing prompt generators for characters, conflicts, plot twists, themes, settings & more. Professional story generators for creative writers.',
-    keywords: 'writing prompt generators, story generators, character generator, plot generator, creative writing tools, fiction writing generators'
+    title: 'Writing Prompt Generator — Random Prompts for Every Genre',
+    description: 'Generate random writing prompts instantly. Choose from story starters, conflict, character, dialogue, villain, emotion, and more. Free generator.',
+    keywords: 'writing prompt generator, random writing prompts, story ideas, creative writing, writing prompt generators, character generator, plot generator'
   },
   aiImagesPrompt: {
     path: 'ai-images-prompt',
-    title: 'AI Images Prompt Generator - Free AI Art Prompts for MidJourney & DALL-E',
-    description: 'Generate professional AI art prompts for MidJourney, DALL-E & Stable Diffusion. Free AI images prompt with lighting, composition & artistic styles.',
+    title: 'AI Image Prompt Generator — Random Prompts for Any Style',
+    description: 'Generate detailed AI image prompts for Midjourney, DALL-E, and Stable Diffusion. Aesthetic, fantasy, anime, cyberpunk, and more. Free.',
     keywords: 'ai images prompt, ai art prompt generator, midjourney prompts, dall-e prompts, stable diffusion prompts, ai image generation'
   },
   blogPostGenerator: {
@@ -72,8 +72,8 @@ export const seoData: Record<string, SEOData> = {
   },
   chatgptPhotoEditingPrompts: {
     path: 'chatgpt-photo-editing-prompts',
-    title: 'ChatGPT Photo Editing Prompts - AI Photo Editor Prompts & Tips',
-    description: 'Master AI-powered with chatgpt photo editing prompts. Learn how to write effective prompts and get professional-quality results with ready-to-use editing templates.',
+    title: 'ChatGPT Photo Editing Prompts — Copy & Paste Ready (2026)',
+    description: 'The best ChatGPT prompts for photo editing. Color grading, portrait enhancement, background swap, and more. Free. Updated for GPT-4o.',
     keywords: 'chatgpt photo editing prompts, chatgpt photo editing, ai photo editing prompts, photo editing ai, chatgpt for photo editing, chatgpt prompts for editing photos'
   },
   geminiPhotoEditingPrompts: {
@@ -84,8 +84,8 @@ export const seoData: Record<string, SEOData> = {
   },
   nanoBananaPrompts: {
     path: 'nano-banana-prompts',
-    title: 'Best Nano Banana Prompts: Cat Figurine & Anime Templates (Copy/Paste)',
-    description: 'Get the exact Nano Banana prompts to create viral cat figurine AI images. Copy and paste ready prompts for 3D figurines, plush toys, and capsule dioramas.',
+    title: 'Nano Banana Prompts — Best Cat Figurine Templates (Copy & Paste)',
+    description: 'Get the best Nano Banana AI prompts for cat figurines, chef scenes, and collectible-style renders. Copy and paste directly into ChatGPT or Gemini.',
     keywords: 'nano banana prompts, nano banana cat, viral cat figurine ai, nano banana ai prompts, cat figurine prompts, nano banana trend'
   },
   octoberWritingPrompts: {
@@ -261,8 +261,8 @@ export const seoData: Record<string, SEOData> = {
   },
   randomArtStyleGenerator: {
     path: 'art-prompts/art-style',
-    title: 'Random Art Style Generator: 100+ Art Styles for Drawing & AI',
-    description: 'Discover 100+ random art styles for your drawings and AI image generation. Free art style generator with styles from Impressionism to Anime, perfect for artists and AI tools.',
+    title: 'Random Art Style Generator — Discover Your Next Style',
+    description: 'Spin a random art style — impressionism, cyberpunk, watercolor, and 100+ more. Great for artists, AI prompts, and creative challenges. Free.',
     keywords: 'art style generator, random art style, art styles for drawing, ai art styles, illustration styles, drawing styles generator'
   },
   randomPhotographyPromptGenerator: {
@@ -291,8 +291,8 @@ export const seoData: Record<string, SEOData> = {
   },
   randomFantasyArtPromptGenerator: {
     path: 'art-prompts/fantasy-art',
-    title: 'Random Fantasy Art Prompt Generator - Random Prompts',
-    description: 'Generate random fantasy art prompts with creatures, castles, and magic. Free fantasy art prompt generator for MidJourney and digital art.',
+    title: 'Fantasy Art Prompt Generator — 100+ Random Ideas',
+    description: 'Generate random fantasy art prompts instantly. Landscapes, creatures, characters, and scenes. Click to get a new idea. Free, no signup needed.',
     keywords: 'fantasy art prompts, fantasy prompts, magical art, fantasy creatures, medieval art prompts'
   },
   randomAnimePromptGenerator: {
