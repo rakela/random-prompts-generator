@@ -1105,8 +1105,8 @@ Short, vague prompts produce mediocre AI outputs.`
   },
   {
     slug: "image-to-prompt-generator-reverse-engineer-ai-images",
-    title: "Image to Prompt Generator: Reverse Engineer Any AI Art Style",
-    excerpt: "Upload any image and extract the exact AI prompt behind it. Reverse engineer styles, keywords, and details for Midjourney and other AI tools.",
+    title: "Image to Prompt Generator — Reverse Engineer Any AI Image (Free)",
+    excerpt: "Upload or describe an AI image and get the prompt behind it. Reverse engineer Midjourney, DALL-E, and Stable Diffusion images in seconds.",
     category: "tutorials",
     author: "Random Prompts Team",
     date: "2026-01-27",

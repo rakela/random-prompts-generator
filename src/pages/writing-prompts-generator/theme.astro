@@ -29,7 +29,46 @@ const seo = getSEOData('randomThemeGenerator');
   <div class="max-w-6xl mx-auto px-4 py-8">
     {/* Generator Component */}
     <SimpleGenerator client:load generatorKey="random-theme-generator" />
+
+    <!-- Pricing Link -->
+    <div class="max-w-4xl mx-auto mt-4 text-center">
+      <a href="/pricing" class="text-sm text-blue-600 hover:underline">Want unlimited prompts and export to PDF? See Pro plans →</a>
+    </div>
+
+    <!-- Upgrade CTA Banner (shown after 3 generate clicks) -->
+    <div id="upgrade-cta-banner" class="hidden max-w-4xl mx-auto mt-4 mb-2">
+      <div class="bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <p class="text-gray-700 text-sm font-medium">Like these prompts? Get unlimited saves, export to PDF, and 50+ exclusive generators with Pro.</p>
+        <a href="/pricing" class="flex-shrink-0 inline-flex items-center gap-1 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors whitespace-nowrap">
+          See plans
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
   </div>
 
   <AstroFooter />
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const storageKey = 'promptCount_theme';
+      localStorage.setItem(storageKey, '0');
+
+      const banner = document.getElementById('upgrade-cta-banner');
+
+      document.addEventListener('click', (e) => {
+        const btn = (e.target as Element).closest('button');
+        if (!btn) return;
+        const text = btn.textContent?.trim() || '';
+        if (text.includes('Generate') && !text.includes('Copy')) {
+          let count = parseInt(localStorage.getItem(storageKey) || '0');
+          count++;
+          localStorage.setItem(storageKey, count.toString());
+          if (count >= 3 && banner) {
+            banner.classList.remove('hidden');
+          }
+        }
+      });
+    });
+  </script>
 </BaseLayout>

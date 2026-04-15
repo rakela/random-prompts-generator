@@ -1,0 +1,226 @@
+---
+/**
+ * TrendPromptLayout.astro
+ * Reusable layout for AI trend prompt pages (Nano Banana, Ghostface, Caricature, etc.)
+ *
+ * Usage:
+ *   import TrendPromptLayout from '../../layouts/TrendPromptLayout.astro';
+ *   <TrendPromptLayout {trendProps} />
+ *
+ * Required props: trendName, slug, intro, primaryPrompt, steps, variations, faqs, relatedLinks, seo
+ */
+import BaseLayout from './BaseLayout.astro';
+import AstroHeader from '../components/AstroHeader.astro';
+import AstroFooter from '../components/AstroFooter.astro';
+import '../styles/global.css';
+
+interface Step {
+  title: string;
+  description: string;
+}
+
+interface Variation {
+  name: string;
+  prompt: string;
+}
+
+interface FAQ {
+  question: string;
+  answer: string;
+}
+
+interface RelatedLink {
+  text: string;
+  url: string;
+}
+
+interface SEO {
+  path: string;
+  title: string;
+  description: string;
+  keywords?: string;
+}
+
+interface Props {
+  trendName: string;
+  slug: string;
+  intro: string;
+  primaryPrompt: string;
+  steps: Step[];
+  variations: Variation[];
+  faqs: FAQ[];
+  relatedLinks: RelatedLink[];
+  seo: SEO;
+  accentColor?: string; // tailwind color name, e.g. "purple", "blue", "green"
+}
+
+const {
+  trendName,
+  intro,
+  primaryPrompt,
+  steps,
+  variations,
+  faqs,
+  relatedLinks,
+  seo,
+  accentColor = 'purple'
+} = Astro.props;
+
+// HowTo JSON-LD schema
+const howToSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": `How to Use the ${trendName} AI Prompt`,
+  "description": intro,
+  "step": steps.map((s, i) => ({
+    "@type": "HowToStep",
+    "position": i + 1,
+    "name": s.title,
+    "text": s.description
+  }))
+};
+
+const gradientClass = `from-${accentColor}-600 to-${accentColor}-800`;
+---
+
+<BaseLayout seo={seo}>
+  <!-- HowTo JSON-LD Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify(howToSchema)} />
+
+  <AstroHeader />
+
+  <!-- Hero Section -->
+  <div class={`bg-gradient-to-br ${gradientClass} text-white py-16`}>
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">
+        {trendName}
+      </h1>
+      <p class="text-xl text-white/90 max-w-2xl mx-auto">
+        {intro}
+      </p>
+    </div>
+  </div>
+
+  <div class="max-w-4xl mx-auto px-4 py-12">
+
+    <!-- Primary Prompt Copy Box -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Copy the Prompt</h2>
+      <div class="bg-gray-50 border border-gray-200 rounded-xl p-6">
+        <p class="text-gray-800 leading-relaxed font-mono text-sm whitespace-pre-wrap mb-4" id="primary-prompt">{primaryPrompt}</p>
+        <button
+          id="copy-primary"
+          class={`px-5 py-2.5 bg-${accentColor}-600 hover:bg-${accentColor}-700 text-white text-sm font-semibold rounded-lg transition-colors`}
+        >
+          Copy Prompt
+        </button>
+      </div>
+    </section>
+
+    <!-- How to Use (Steps) -->
+    <section class={`mb-12 bg-${accentColor}-50 border border-${accentColor}-200 rounded-2xl p-8`}>
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">How to Use This Prompt</h2>
+      <ol class="space-y-4">
+        {steps.map((step, i) => (
+          <li class="flex gap-4">
+            <span class={`flex-shrink-0 w-8 h-8 bg-${accentColor}-600 text-white rounded-full flex items-center justify-center font-bold text-sm`}>
+              {i + 1}
+            </span>
+            <div>
+              <h3 class="font-semibold text-gray-900 mb-1">{step.title}</h3>
+              <p class="text-gray-700 text-sm">{step.description}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <!-- Variations -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Prompt Variations</h2>
+      <div class="space-y-4">
+        {variations.map((v) => (
+          <div class="bg-white border border-gray-200 rounded-xl p-5 hover:shadow-md transition-shadow">
+            <div class="flex items-start justify-between gap-4 mb-2">
+              <h3 class="font-semibold text-gray-900">{v.name}</h3>
+              <button
+                class="variation-copy flex-shrink-0 px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-medium rounded-lg transition-colors"
+                data-text={v.prompt}
+              >
+                Copy
+              </button>
+            </div>
+            <p class="text-gray-600 text-sm font-mono leading-relaxed">{v.prompt}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-4">
+        {faqs.map((faq) => (
+          <div class="bg-gray-50 border border-gray-200 rounded-xl p-5">
+            <h3 class="font-semibold text-gray-900 mb-2">{faq.question}</h3>
+            <p class="text-gray-700 text-sm">{faq.answer}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Related Links -->
+    <section class="bg-white border border-gray-200 rounded-2xl p-6">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Related Tools</h2>
+      <div class="grid sm:grid-cols-2 gap-3">
+        {relatedLinks.map((link) => (
+          <a
+            href={link.url}
+            class={`p-3 bg-${accentColor}-50 hover:bg-${accentColor}-100 rounded-lg text-${accentColor}-800 text-sm font-medium transition-colors`}
+          >
+            {link.text}
+          </a>
+        ))}
+      </div>
+    </section>
+  </div>
+
+  <AstroFooter />
+
+  <!-- Copy functionality -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Copy primary prompt
+      const copyPrimaryBtn = document.getElementById('copy-primary');
+      const primaryPromptEl = document.getElementById('primary-prompt');
+
+      if (copyPrimaryBtn && primaryPromptEl) {
+        copyPrimaryBtn.addEventListener('click', async () => {
+          try {
+            await navigator.clipboard.writeText(primaryPromptEl.textContent || '');
+            const orig = copyPrimaryBtn.textContent;
+            copyPrimaryBtn.textContent = 'Copied!';
+            setTimeout(() => { copyPrimaryBtn.textContent = orig; }, 2000);
+          } catch (err) {
+            console.error('Copy failed:', err);
+          }
+        });
+      }
+
+      // Copy variation prompts
+      document.querySelectorAll('.variation-copy').forEach(btn => {
+        btn.addEventListener('click', async () => {
+          const text = btn.getAttribute('data-text') || '';
+          try {
+            await navigator.clipboard.writeText(text);
+            const orig = btn.textContent;
+            btn.textContent = 'Copied!';
+            setTimeout(() => { btn.textContent = orig; }, 2000);
+          } catch (err) {
+            console.error('Copy failed:', err);
+          }
+        });
+      });
+    });
+  </script>
+</BaseLayout>

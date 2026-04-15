@@ -11,6 +11,7 @@ export default defineConfig({
   ],
   output: 'server',
   adapter: vercel(),
+  trailingSlash: 'never',
   build: {
     format: 'directory',
   },
