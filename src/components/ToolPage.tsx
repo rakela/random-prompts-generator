@@ -533,6 +533,15 @@ export default function ToolPage({ tool, freeGenerations = 1, hideChrome = false
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             {tool.seo_description}
           </p>
+
+          {/* Pro Tool Notice */}
+          {['youtube-content-brief', 'youtube-blog-post-generator', 'youtube-linkedin-post-generator', 'video-ai-generation'].includes(tool.tool_id) && (
+            <div className="pro-notice mt-6 max-w-xl mx-auto flex items-center justify-center gap-2.5 bg-gray-50 border border-gray-200 rounded-md px-4 py-2.5 text-sm text-gray-600">
+              <span className="pro-badge bg-gray-900 text-white text-xs font-semibold px-2 py-0.5 rounded tracking-wide flex-shrink-0">PRO</span>
+              <span>This is a Pro tool.</span>
+              <a href="/pricing" className="text-gray-900 underline hover:text-blue-600">See what's included in Pro →</a>
+            </div>
+          )}
         </div>
         )}
 
