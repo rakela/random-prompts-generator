@@ -79,159 +79,91 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY ||
       <nav class="hidden md:flex items-center space-x-6 flex-1 justify-center">
         <a href="/" class="text-gray-600 hover:text-blue-600 transition-colors">Home</a>
 
-        <!-- Product Megamenu with Tabs -->
+        <!-- Free Tools Megamenu -->
         <div class="relative group">
           <button class="text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-1">
-            Product
+            Free Tools
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
 
-          <!-- Megamenu Dropdown -->
-          <div id="product-megamenu" class="absolute top-full left-0 mt-2 w-[1000px] bg-white rounded-lg shadow-xl border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-            <div class="flex w-[1000px]">
-              <!-- Left Column: Tabs/Categories -->
-              <div class="w-48 flex-shrink-0 bg-gray-50 border-r border-gray-200 rounded-l-lg p-4">           
-                <button
-                  class="product-tab w-full text-left px-4 py-3 rounded-lg text-gray-700 hover:bg-white hover:text-blue-600 transition-colors font-medium"
-                  data-tab="features"
-                >
-                  Features
-                </button>
-                <button
-                  class="product-tab active w-full text-left px-4 py-3 rounded-lg text-gray-700 hover:bg-white hover:text-blue-600 transition-colors font-medium mb-2 bg-white text-blue-600"
-                  data-tab="free-tools"
-                >
-                  Free Tools
-                </button>
-              </div>
-
-              <!-- Right Column: Tab Content -->
-              <div class="flex-1 p-6">
-                <!-- Free Tools Content -->
-                <div class="product-tab-content" data-content="free-tools">
-                  <!-- First Row: Writing Prompts, Generators, Art Prompts -->
-                  <div class="grid grid-cols-3 gap-6 mb-6">
-                    <!-- Writing Prompts Column -->
-                    <div>
-                      <a href="/writing-prompts-generator" class="font-bold text-gray-900 hover:text-blue-600 mb-3 block">Writing Prompts</a>
-                      <div class="space-y-2">
-                        <a href="/writing-prompts-generator/story-starters" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Story Starters</a>
-                        <a href="/writing-prompts-generator/character" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Character Generator</a>
-                        <a href="/writing-prompts-generator/conflict" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Conflict Generator</a>
-                        <a href="/writing-prompts-generator/plot-twist" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Plot Twist Generator</a>
-                        <a href="/writing-prompts-generator/villain" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Villain Generator</a>
-                        <a href="/fanfic-prompt-generator" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Fanfic Prompt Generator</a>
-                      </div>
-                    </div>
-
-                    <!-- Generators Column -->
-                    <div>
-                      <a href="/generators" class="font-bold text-gray-900 hover:text-blue-600 mb-3 block">Generators</a>
-                      <div class="space-y-2">
-                        <a href="/generators/paragraph" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Paragraph Generator</a>
-                        <a href="/generators/sentence" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Sentence Generator</a>
-                        <a href="/generators/fantasy-name" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Fantasy Name Generator</a>
-                        <a href="/generators/superpower" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Superpower Generator</a>
-                        <a href="/generators/idea" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Idea Generator</a>
-                      </div>
-                    </div>
-
-                    <!-- Art Prompts Column -->
-                    <div>
-                      <a href="/art-prompts" class="font-bold text-gray-900 hover:text-blue-600 mb-3 block">Art Prompts</a>
-                      <div class="space-y-2">
-                        <a href="/art-prompts/drawing" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Drawing Prompts Generator</a>
-                        <a href="/art-prompts/aesthetic" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Aesthetic Generator</a>
-                        <a href="/art-prompts/fantasy-art" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Fantasy Art Generator</a>
-                        <a href="/art-prompts/anime" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Anime Generator</a>
-                        <a href="/art-prompts/character-design" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Character Design Generator</a>
-                        <a href="/art-prompts/portrait" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Portrait Generator</a>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Second Row: Other Prompts in 3 Columns -->
-                  <div class="border-t border-gray-200 pt-4">
-                    <h3 class="font-bold text-gray-900 mb-3">Other Prompts</h3>
-                    <div class="grid grid-cols-3 gap-6">
-                      <!-- Column 1 -->
-                      <div class="space-y-2">
-                        <a href="/ghostface-ai-trend-prompt-generator" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Ghostface AI Trend</a>
-                        <a href="/gemini-ai-snow-prompt-tutorial" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Gemini AI Snow Tutorial</a>
-                        <a href="/chatgpt-photo-editing-prompts" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">ChatGPT Photo Editing</a>
-                        <a href="/gemini-photo-editing-prompts" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Gemini Photo Editing</a>
-                        <a href="/prompts/gemini-editing" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Gemini Magic Editor</a>
-                        <a href="/chatgpt-family-photo-prompt" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">ChatGPT Family Photo</a>
-                      </div>
-                      <!-- Column 2 -->
-                      <div class="space-y-2">
-                        <a href="/october-writing-prompts" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">October Writing Prompts</a>
-                        <a href="/christmas-writing-prompts" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Christmas Writing Prompts</a>
-                        <a href="/writing-prompts-for-students" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Writing Prompts for Students</a>
-                        <a href="/persuasive-writing-topics" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Persuasive Writing</a>
-                        <a href="/morning-journal-prompts" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Morning Journal Prompts</a>
-                      </div>
-                      <!-- Column 3 -->
-                      <div class="space-y-2">
-                        <a href="/random-book-prompt-generator" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Book Prompts Generator</a>
-                        <a href="/movie-prompts-generator" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Movie Prompts Generator</a>
-                        <a href="/midjourney-ai-picture-generator" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Midjourney AI Prompts</a>
-                        <a href="/prompts/nanobanana" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Nanobanana Prompts</a>
-                        <a href="/prompts/coquette-aesthetic" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Coquette Aesthetic</a>
-                        <a href="/prompts/dark-academia-aesthetic" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Dark Academia</a>
-                        <a href="/prompts/cyberpunk-2077-aesthetic" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Cyberpunk 2077</a>
-                        <a href="/prompts/chatgpt-caricature-trend" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">ChatGPT Caricature Trend</a>
-                        <a href="/caricature-prompt" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Caricature Prompt</a>
-                      </div>
-                    </div>
+          <!-- Free Tools Dropdown -->
+          <div class="absolute top-full left-0 mt-2 w-[800px] bg-white rounded-lg shadow-xl border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+            <div class="p-6">
+              <!-- First Row: Writing Prompts, Generators, Art Prompts -->
+              <div class="grid grid-cols-3 gap-6 mb-6">
+                <!-- Writing Prompts Column -->
+                <div>
+                  <a href="/writing-prompts-generator" class="font-bold text-gray-900 hover:text-blue-600 mb-3 block">Writing Prompts</a>
+                  <div class="space-y-2">
+                    <a href="/writing-prompts-generator/story-starters" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Story Starters</a>
+                    <a href="/writing-prompts-generator/character" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Character Generator</a>
+                    <a href="/writing-prompts-generator/conflict" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Conflict Generator</a>
+                    <a href="/writing-prompts-generator/plot-twist" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Plot Twist Generator</a>
+                    <a href="/writing-prompts-generator/villain" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Villain Generator</a>
+                    <a href="/fanfic-prompt-generator" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Fanfic Prompt Generator</a>
                   </div>
                 </div>
 
-                <!-- Features Content -->
-                <div class="product-tab-content hidden" data-content="features">
-                  <div class="grid grid-cols-3 gap-4">
-                    <a href="/workflows/youtube-to-blog-and-linkedin" class="p-4 border border-gray-200 rounded-lg hover:border-blue-500 hover:shadow-md transition-all relative group">
-                      <span class="absolute top-3 right-3 bg-green-100 text-green-700 text-xs font-bold px-2 py-1 rounded-full">POPULAR</span>
-                      <h3 class="font-semibold text-gray-900 mb-2 pr-20">YouTube to LinkedIn and Blog Post</h3>
-                      <p class="text-sm text-gray-600">Transform any YouTube video into a content brief, blog post, and LinkedIn posts</p>
-                    </a>
-                    <a href="/tools/youtube-content-brief" class="p-4 border border-gray-200 rounded-lg hover:border-blue-500 hover:shadow-md transition-all relative">
-                      <span class="absolute top-3 right-3 bg-purple-100 text-purple-700 text-xs font-bold px-2 py-1 rounded-full">PRO</span>
-                      <h3 class="font-semibold text-gray-900 mb-2 pr-16">YouTube to Content Brief Generator</h3>
-                      <p class="text-sm text-gray-600">Transform YouTube videos into structured content briefs with key takeaways</p>
-                    </a>
-                    <a href="/tools/youtube-blog-post-generator" class="p-4 border border-gray-200 rounded-lg hover:border-blue-500 hover:shadow-md transition-all relative">
-                      <span class="absolute top-3 right-3 bg-purple-100 text-purple-700 text-xs font-bold px-2 py-1 rounded-full">PRO</span>
-                      <h3 class="font-semibold text-gray-900 mb-2 pr-16">YouTube to Blog Post Generator</h3>
-                      <p class="text-sm text-gray-600">Transform YouTube video content briefs into engaging, SEO-optimized blog posts</p>
-                    </a>
-                    <a href="/tools/youtube-linkedin-post-generator" class="p-4 border border-gray-200 rounded-lg hover:border-blue-500 hover:shadow-md transition-all relative">
-                      <span class="absolute top-3 right-3 bg-purple-100 text-purple-700 text-xs font-bold px-2 py-1 rounded-full">PRO</span>
-                      <h3 class="font-semibold text-gray-900 mb-2 pr-16">YouTube to LinkedIn Post Generator</h3>
-                      <p class="text-sm text-gray-600">Generate professional LinkedIn posts from YouTube video content</p>
-                    </a>
-                    <a href="/tools/text-to-prompt" class="p-4 border border-gray-200 rounded-lg hover:border-blue-500 hover:shadow-md transition-all relative">
-                      <span class="absolute top-3 right-3 bg-blue-100 text-blue-700 text-xs font-bold px-2 py-1 rounded-full">NEW</span>
-                      <h3 class="font-semibold text-gray-900 mb-2 pr-16">Prompt Expander & Logic</h3>
-                      <p class="text-sm text-gray-600">Expand short ideas into detailed prompts or structured JSON objects</p>
-                    </a>
-                    <a href="/tools/image-to-prompt" class="p-4 border border-gray-200 rounded-lg hover:border-blue-500 hover:shadow-md transition-all relative">
-                      <span class="absolute top-3 right-3 bg-blue-100 text-blue-700 text-xs font-bold px-2 py-1 rounded-full">NEW</span>
-                      <h3 class="font-semibold text-gray-900 mb-2 pr-16">Image Analyzer</h3>
-                      <p class="text-sm text-gray-600">Reverse engineer images into detailed AI-ready text prompts</p>
-                    </a>
-                    <a href="/tools/video-ai-generation" class="p-4 border border-gray-200 rounded-lg hover:border-blue-500 hover:shadow-md transition-all relative">
-                      <span class="absolute top-3 right-3 bg-blue-100 text-blue-700 text-xs font-bold px-2 py-1 rounded-full">NEW</span>
-                      <h3 class="font-semibold text-gray-900 mb-2 pr-16">Sora & Veo Prompts</h3>
-                      <p class="text-sm text-gray-600">Generate optimized prompts for AI video generation with perfect camera control</p>
-                    </a>
-                    <a href="/tools/instagram-aesthetic-generator" class="p-4 border border-gray-200 rounded-lg hover:border-blue-500 hover:shadow-md transition-all relative">
-                      <span class="absolute top-3 right-3 bg-pink-100 text-pink-700 text-xs font-bold px-2 py-1 rounded-full">NEW</span>
-                      <h3 class="font-semibold text-gray-900 mb-2 pr-16">Instagram Aesthetic Generator</h3>
-                      <p class="text-sm text-gray-600">Generate copy-pasteable prompts for any Instagram aesthetic style</p>
-                    </a>
+                <!-- Generators Column -->
+                <div>
+                  <a href="/generators" class="font-bold text-gray-900 hover:text-blue-600 mb-3 block">Generators</a>
+                  <div class="space-y-2">
+                    <a href="/generators/paragraph" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Paragraph Generator</a>
+                    <a href="/generators/sentence" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Sentence Generator</a>
+                    <a href="/generators/fantasy-name" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Fantasy Name Generator</a>
+                    <a href="/generators/superpower" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Superpower Generator</a>
+                    <a href="/generators/idea" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Idea Generator</a>
+                  </div>
+                </div>
+
+                <!-- Art Prompts Column -->
+                <div>
+                  <a href="/art-prompts" class="font-bold text-gray-900 hover:text-blue-600 mb-3 block">Art Prompts</a>
+                  <div class="space-y-2">
+                    <a href="/art-prompts/drawing" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Drawing Prompts Generator</a>
+                    <a href="/art-prompts/aesthetic" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Aesthetic Generator</a>
+                    <a href="/art-prompts/fantasy-art" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Fantasy Art Generator</a>
+                    <a href="/art-prompts/anime" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Anime Generator</a>
+                    <a href="/art-prompts/character-design" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Character Design Generator</a>
+                    <a href="/art-prompts/portrait" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Portrait Generator</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Second Row: Other Prompts in 3 Columns -->
+              <div class="border-t border-gray-200 pt-4">
+                <h3 class="font-bold text-gray-900 mb-3">Other Prompts</h3>
+                <div class="grid grid-cols-3 gap-6">
+                  <!-- Column 1 -->
+                  <div class="space-y-2">
+                    <a href="/ghostface-ai-trend-prompt-generator" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Ghostface AI Trend</a>
+                    <a href="/gemini-ai-snow-prompt-tutorial" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Gemini AI Snow Tutorial</a>
+                    <a href="/chatgpt-photo-editing-prompts" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">ChatGPT Photo Editing</a>
+                    <a href="/gemini-photo-editing-prompts" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Gemini Photo Editing</a>
+                    <a href="/prompts/gemini-editing" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Gemini Magic Editor</a>
+                    <a href="/chatgpt-family-photo-prompt" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">ChatGPT Family Photo</a>
+                  </div>
+                  <!-- Column 2 -->
+                  <div class="space-y-2">
+                    <a href="/october-writing-prompts" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">October Writing Prompts</a>
+                    <a href="/christmas-writing-prompts" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Christmas Writing Prompts</a>
+                    <a href="/writing-prompts-for-students" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Writing Prompts for Students</a>
+                    <a href="/persuasive-writing-topics" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Persuasive Writing</a>
+                    <a href="/morning-journal-prompts" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Morning Journal Prompts</a>
+                  </div>
+                  <!-- Column 3 -->
+                  <div class="space-y-2">
+                    <a href="/random-book-prompt-generator" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Book Prompts Generator</a>
+                    <a href="/movie-prompts-generator" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Movie Prompts Generator</a>
+                    <a href="/midjourney-ai-picture-generator" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Midjourney AI Prompts</a>
+                    <a href="/prompts/nanobanana" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Nanobanana Prompts</a>
+                    <a href="/prompts/coquette-aesthetic" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Coquette Aesthetic</a>
+                    <a href="/prompts/dark-academia-aesthetic" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Dark Academia</a>
+                    <a href="/prompts/cyberpunk-2077-aesthetic" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Cyberpunk 2077</a>
+                    <a href="/prompts/chatgpt-caricature-trend" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">ChatGPT Caricature Trend</a>
+                    <a href="/caricature-prompt" class="block text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">Caricature Prompt</a>
                   </div>
                 </div>
               </div>
@@ -239,9 +171,67 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY ||
           </div>
         </div>
 
+        <!-- Pro Tools Dropdown -->
+        <div class="relative group">
+          <button class="text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-1">
+            Pro Tools
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+
+          <!-- Pro Tools Dropdown -->
+          <div class="absolute top-full left-0 mt-2 w-[600px] bg-white rounded-lg shadow-xl border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+            <div class="p-6">
+              <div class="grid grid-cols-2 gap-4">
+                <a href="/workflows/youtube-to-blog-and-linkedin" class="p-4 border border-gray-200 rounded-lg hover:border-blue-500 hover:shadow-md transition-all relative">
+                  <span class="absolute top-3 right-3 bg-green-100 text-green-700 text-xs font-bold px-2 py-1 rounded-full">POPULAR</span>
+                  <h3 class="font-semibold text-gray-900 mb-2 pr-20">YouTube → Blog & LinkedIn</h3>
+                  <p class="text-sm text-gray-600">Transform any YouTube video into a content brief, blog post, and LinkedIn posts</p>
+                </a>
+                <a href="/tools/youtube-content-brief" class="p-4 border border-gray-200 rounded-lg hover:border-blue-500 hover:shadow-md transition-all relative">
+                  <span class="absolute top-3 right-3 bg-gray-900 text-white text-xs font-bold px-2 py-1 rounded-full">PRO</span>
+                  <h3 class="font-semibold text-gray-900 mb-2 pr-16">YouTube Content Brief</h3>
+                  <p class="text-sm text-gray-600">Transform YouTube videos into structured content briefs</p>
+                </a>
+                <a href="/tools/youtube-blog-post-generator" class="p-4 border border-gray-200 rounded-lg hover:border-blue-500 hover:shadow-md transition-all relative">
+                  <span class="absolute top-3 right-3 bg-gray-900 text-white text-xs font-bold px-2 py-1 rounded-full">PRO</span>
+                  <h3 class="font-semibold text-gray-900 mb-2 pr-16">YouTube Blog Post Generator</h3>
+                  <p class="text-sm text-gray-600">Convert video content into SEO-optimized blog posts</p>
+                </a>
+                <a href="/tools/youtube-linkedin-post-generator" class="p-4 border border-gray-200 rounded-lg hover:border-blue-500 hover:shadow-md transition-all relative">
+                  <span class="absolute top-3 right-3 bg-gray-900 text-white text-xs font-bold px-2 py-1 rounded-full">PRO</span>
+                  <h3 class="font-semibold text-gray-900 mb-2 pr-16">YouTube LinkedIn Post</h3>
+                  <p class="text-sm text-gray-600">Generate professional LinkedIn posts from videos</p>
+                </a>
+                <a href="/tools/text-to-prompt" class="p-4 border border-gray-200 rounded-lg hover:border-blue-500 hover:shadow-md transition-all relative">
+                  <span class="absolute top-3 right-3 bg-blue-100 text-blue-700 text-xs font-bold px-2 py-1 rounded-full">NEW</span>
+                  <h3 class="font-semibold text-gray-900 mb-2 pr-16">Prompt Expander</h3>
+                  <p class="text-sm text-gray-600">Expand short ideas into detailed AI prompts</p>
+                </a>
+                <a href="/tools/image-to-prompt" class="p-4 border border-gray-200 rounded-lg hover:border-blue-500 hover:shadow-md transition-all relative">
+                  <span class="absolute top-3 right-3 bg-blue-100 text-blue-700 text-xs font-bold px-2 py-1 rounded-full">NEW</span>
+                  <h3 class="font-semibold text-gray-900 mb-2 pr-16">Image Analyzer</h3>
+                  <p class="text-sm text-gray-600">Reverse engineer images into text prompts</p>
+                </a>
+                <a href="/tools/video-ai-generation" class="p-4 border border-gray-200 rounded-lg hover:border-blue-500 hover:shadow-md transition-all relative">
+                  <span class="absolute top-3 right-3 bg-blue-100 text-blue-700 text-xs font-bold px-2 py-1 rounded-full">NEW</span>
+                  <h3 class="font-semibold text-gray-900 mb-2 pr-16">Sora & Veo Prompts</h3>
+                  <p class="text-sm text-gray-600">Generate optimized prompts for AI video</p>
+                </a>
+                <a href="/tools/instagram-aesthetic-generator" class="p-4 border border-gray-200 rounded-lg hover:border-blue-500 hover:shadow-md transition-all relative">
+                  <span class="absolute top-3 right-3 bg-blue-100 text-blue-700 text-xs font-bold px-2 py-1 rounded-full">NEW</span>
+                  <h3 class="font-semibold text-gray-900 mb-2 pr-16">Instagram Aesthetic</h3>
+                  <p class="text-sm text-gray-600">Generate copy-pasteable aesthetic prompts</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <a href="/pricing" class="text-gray-600 hover:text-blue-600 transition-colors">Pricing</a>
 
-        <a href="/blog" class="text-gray-600 hover:text-blue-600 transition-colors">Articles</a>
+        <a href="/blog" class="text-gray-600 hover:text-blue-600 transition-colors">Blog</a>
 
         <a href="/contact" class="text-gray-600 hover:text-blue-600 transition-colors">Contact Us</a>
       </nav>
@@ -256,31 +246,27 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY ||
     <!-- Mobile Navigation Menu -->
     <div id="mobile-menu" class="hidden md:hidden mt-4 py-4 border-t border-gray-200">
       <nav class="flex flex-col space-y-3">
-        <a href="/" class="text-gray-600 hover:text-blue-600 transition-colors py-2" onClick={() => setMobileMenuOpen(false)}>Home</a>
+        <a href="/" class="text-gray-600 hover:text-blue-600 transition-colors py-2">Home</a>
 
-        <!-- Product Section (Mobile) -->
+        <!-- Free Tools Section (Mobile) -->
         <div class="border-t border-gray-100 pt-3">
-          <div class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Product</div>
+          <div class="text-sm font-semibold text-blue-600 mb-2">Free Tools</div>
+          <div class="flex flex-col space-y-2 pl-3">
+            <div class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Writing Prompts</div>
+            <a href="/writing-prompts-generator/story-starters" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Story Starters</a>
+            <a href="/writing-prompts-generator/character" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Character Generator</a>
+            <a href="/writing-prompts-generator/conflict" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Conflict Generator</a>
+            <a href="/writing-prompts-generator/plot-twist" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Plot Twist Generator</a>
+            <a href="/writing-prompts-generator/villain" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Villain Generator</a>
+            <a href="/fanfic-prompt-generator" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Fanfic Prompt Generator</a>
 
-          <!-- Free Tools -->
-          <div class="mb-4">
-            <div class="text-sm font-semibold text-blue-600 mb-2">Free Tools</div>
-            <div class="flex flex-col space-y-2 pl-3">
-              <div class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Writing Prompts</div>
-              <a href="/writing-prompts-generator/story-starters" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Story Starters</a>
-              <a href="/writing-prompts-generator/character" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Character Generator</a>
-              <a href="/writing-prompts-generator/conflict" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Conflict Generator</a>
-              <a href="/writing-prompts-generator/plot-twist" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Plot Twist Generator</a>
-              <a href="/writing-prompts-generator/villain" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Villain Generator</a>
-              <a href="/fanfic-prompt-generator" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Fanfic Prompt Generator</a>
-
-              <div class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1 mt-3">Art Prompts</div>
-              <a href="/art-prompts/drawing" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Drawing Prompts Generator</a>
-              <a href="/art-prompts/aesthetic" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Aesthetic Generator</a>
-              <a href="/art-prompts/fantasy-art" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Fantasy Art Generator</a>
-              <a href="/art-prompts/anime" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Anime Generator</a>
-              <a href="/art-prompts/character-design" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Character Design Generator</a>
-              <a href="/art-prompts/portrait" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Portrait Generator</a>
+            <div class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1 mt-3">Art Prompts</div>
+            <a href="/art-prompts/drawing" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Drawing Prompts Generator</a>
+            <a href="/art-prompts/aesthetic" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Aesthetic Generator</a>
+            <a href="/art-prompts/fantasy-art" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Fantasy Art Generator</a>
+            <a href="/art-prompts/anime" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Anime Generator</a>
+            <a href="/art-prompts/character-design" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Character Design Generator</a>
+            <a href="/art-prompts/portrait" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Portrait Generator</a>
 
               <div class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1 mt-3">Generators</div>
               <a href="/generators/paragraph" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Paragraph Generator</a>
@@ -313,25 +299,24 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY ||
             </div>
           </div>
 
-          <!-- Features -->
-          <div>
-            <div class="text-sm font-semibold text-blue-600 mb-2">Features</div>
-            <div class="flex flex-col space-y-2 pl-3">
-              <a href="/workflows/youtube-to-blog-and-linkedin" class="text-gray-600 hover:text-blue-600 transition-colors py-1">YouTube → Blog & LinkedIn</a>
-              <a href="/tools/youtube-content-brief" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Content Brief Generator</a>
-              <a href="/tools/youtube-blog-post-generator" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Blog Post Generator</a>
-              <a href="/tools/youtube-linkedin-post-generator" class="text-gray-600 hover:text-blue-600 transition-colors py-1">LinkedIn Post Generator</a>
-              <a href="/tools/text-to-prompt" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Prompt Expander & Logic</a>
-              <a href="/tools/image-to-prompt" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Image Analyzer</a>
-              <a href="/tools/video-ai-generation" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Sora & Veo Prompts</a>
-              <a href="/tools/instagram-aesthetic-generator" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Instagram Aesthetic Generator</a>
-            </div>
+        <!-- Pro Tools Section (Mobile) -->
+        <div class="border-t border-gray-100 pt-3">
+          <div class="text-sm font-semibold text-blue-600 mb-2">Pro Tools</div>
+          <div class="flex flex-col space-y-2 pl-3">
+            <a href="/workflows/youtube-to-blog-and-linkedin" class="text-gray-600 hover:text-blue-600 transition-colors py-1">YouTube → Blog & LinkedIn</a>
+            <a href="/tools/youtube-content-brief" class="text-gray-600 hover:text-blue-600 transition-colors py-1">YouTube Content Brief</a>
+            <a href="/tools/youtube-blog-post-generator" class="text-gray-600 hover:text-blue-600 transition-colors py-1">YouTube Blog Post Generator</a>
+            <a href="/tools/youtube-linkedin-post-generator" class="text-gray-600 hover:text-blue-600 transition-colors py-1">YouTube LinkedIn Post</a>
+            <a href="/tools/text-to-prompt" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Prompt Expander</a>
+            <a href="/tools/image-to-prompt" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Image Analyzer</a>
+            <a href="/tools/video-ai-generation" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Sora & Veo Prompts</a>
+            <a href="/tools/instagram-aesthetic-generator" class="text-gray-600 hover:text-blue-600 transition-colors py-1">Instagram Aesthetic</a>
           </div>
         </div>
 
         <a href="/pricing" class="text-gray-600 hover:text-blue-600 transition-colors py-2 border-t border-gray-100 pt-3">Pricing</a>
 
-        <a href="/blog" class="text-gray-600 hover:text-blue-600 transition-colors py-2">Articles</a>
+        <a href="/blog" class="text-gray-600 hover:text-blue-600 transition-colors py-2">Blog</a>
 
         <a href="/contact" class="text-gray-600 hover:text-blue-600 transition-colors py-2">Contact Us</a>
 
@@ -360,27 +345,5 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY ||
       });
     }
 
-    // Product megamenu tabs
-    const tabs = document.querySelectorAll('.product-tab');
-    const tabContents = document.querySelectorAll('.product-tab-content');
-
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        const tabName = tab.dataset.tab;
-
-        // Remove active class from all tabs
-        tabs.forEach(t => t.classList.remove('active', 'bg-white', 'text-blue-600'));
-        // Add active class to clicked tab
-        tab.classList.add('active', 'bg-white', 'text-blue-600');
-
-        // Hide all tab contents
-        tabContents.forEach(content => content.classList.add('hidden'));
-        // Show the selected tab content
-        const targetContent = document.querySelector(`[data-content="${tabName}"]`);
-        if (targetContent) {
-          targetContent.classList.remove('hidden');
-        }
-      });
-    });
   });
 </script>
