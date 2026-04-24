@@ -375,6 +375,12 @@ export const seoData: Record<string, SEOData> = {
     description: 'Generate optimized prompts for Sora, Veo, and RunwayML. Create cinematic AI video prompts with perfect camera movements, physics control, and visual styling.',
     keywords: 'sora prompts, veo prompts, ai video generation, video ai prompts, runway ml prompts, sora ai, veo ai, video generation prompts, cinematic ai prompts'
   },
+  veo3PromptGenerator: {
+    path: 'veo-3-prompt-generator',
+    title: 'Veo 3 Prompt Generator — Free Google Veo 3 Video Prompts',
+    description: 'Free Veo 3 prompt generator for Google\'s AI video model. Generate cinematic, viral, and professional video prompts for Veo 3 and Veo 3.1. Copy and use instantly.',
+    keywords: 'veo 3 prompt generator, veo 3 prompts, google veo 3 prompt, veo 3.1 prompts, ai video prompts, veo 3 prompt examples, google veo prompts, veo 3 video generator prompts'
+  },
   blog: {
     path: 'blog',
     title: 'Articles | AI Prompting Guides, Tutorials & Inspiration',

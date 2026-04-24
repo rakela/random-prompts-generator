@@ -1,0 +1,326 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AstroHeader from '../components/AstroHeader.astro';
+import AstroFooter from '../components/AstroFooter.astro';
+import '../styles/global.css';
+
+const seo = {
+  path: 'veo-3-prompt-generator',
+  title: 'Veo 3 Prompt Generator — Free Google Veo 3 Video Prompts',
+  description: 'Free Veo 3 prompt generator for Google\'s AI video model. Generate cinematic, viral, and professional video prompts for Veo 3 and Veo 3.1. Copy and use instantly.',
+  keywords: 'veo 3 prompt generator, veo 3 prompts, google veo 3 prompt, veo 3.1 prompts, ai video prompts, veo 3 prompt examples, google veo prompts, veo 3 video generator prompts'
+};
+
+const prompts = [
+  {
+    name: "Cinematic Chase Sequence",
+    category: "Action",
+    prompt: "A motorcycle chase through rain-soaked neon-lit Tokyo streets at night, low camera angle tracking shot, water splashing under wheels, motion blur on passing streetlights, cinematic 24mm lens, Blade Runner-inspired color grading, realistic wet road reflections, dramatic music implied by the pacing, 4K cinematic quality.",
+    color: "red"
+  },
+  {
+    name: "Serene Nature Timelapse",
+    category: "Nature",
+    prompt: "Timelapse of a mountain valley from dawn to dusk, clouds rolling over peaks in fast motion, wildflowers blooming in foreground, golden hour light painting the rocky summits amber and pink, smooth camera pan left to right, BBC Planet Earth production quality, no people, hyper-realistic 8K.",
+    color: "emerald"
+  },
+  {
+    name: "Emotional Portrait Monologue",
+    category: "Drama",
+    prompt: "Close-up of a 30-year-old woman sitting by a rainy window, soft natural light, she looks down thoughtfully then slowly meets the camera, subtle lip movement as if speaking, photorealistic skin texture, shallow depth of field blurring the rain-streaked glass behind her, film grain, intimate mood.",
+    color: "purple"
+  },
+  {
+    name: "Futuristic City Flyover",
+    category: "Sci-Fi",
+    prompt: "Aerial drone shot flying low over a futuristic megacity at twilight, towering glass skyscrapers with glowing blue facades, flying vehicles in organized lanes, holographic billboards in multiple languages, vast urban sprawl stretching to the horizon, smooth forward motion, Cyberpunk 2099 aesthetic, hyper-detailed.",
+    color: "blue"
+  },
+  {
+    name: "Vintage Coffee Shop Morning",
+    category: "Lifestyle",
+    prompt: "Slow-motion interior of a cozy 1970s-style coffee shop at 8am, steam rising from fresh espresso, morning light streaming through dusty venetian blinds, barista pouring latte art, soft jazz atmosphere, warm amber tones, 16mm film look with slight grain, nostalgic and inviting.",
+    color: "amber"
+  },
+  {
+    name: "Ocean Storm Drama",
+    category: "Nature",
+    prompt: "A massive ocean wave crashing against a lighthouse in a stormy Atlantic night, lightning strike illuminating churning black water, sea spray exploding 30 feet into the air, dramatic soundtrack implied, camera mounted on the cliff face, ultra-realistic water physics, cinematic slow motion at impact, 4K HDR.",
+    color: "sky"
+  },
+  {
+    name: "AI Product Launch Ad",
+    category: "Commercial",
+    prompt: "Sleek product reveal: a matte black smartphone rises from darkness on a rotating platform, light beams scanning its surface revealing its glass back and titanium frame, text 'Designed for Tomorrow' fades in, Apple-style minimalist aesthetic, white background, dramatic orchestral sting, 15-second ad format.",
+    color: "gray"
+  },
+  {
+    name: "Fantasy Battle Scene",
+    category: "Fantasy",
+    prompt: "Epic fantasy battle on a crumbling stone bridge over a volcanic canyon, armored knight versus a fire-breathing dragon, embers swirling in the air, dramatic wide shot, Lord of the Rings production quality, slow-motion sword swing, dragon roar creating shockwave ripple through the air, orchestral score.",
+    color: "orange"
+  },
+  {
+    name: "Viral Dance Transition",
+    category: "Social Media",
+    prompt: "TikTok-style outfit transition: person in casual clothes claps hands, instant cut to same person in elegant evening wear, confetti explosion, bright studio lighting, upbeat music implied, clean white background, satisfying and snappy 3-second transition, square format 1:1 ratio.",
+    color: "pink"
+  },
+  {
+    name: "Documentary Interview Setup",
+    category: "Documentary",
+    prompt: "Medium shot of a 65-year-old farmer sitting on a wooden porch at golden hour, speaking directly to camera, authentic wrinkles and weathered hands, sunflower fields in soft focus background, natural ambient sound, handheld slight camera movement for authenticity, warm documentary color grade, PBS/Netflix style.",
+    color: "yellow"
+  },
+  {
+    name: "Space Station Interior",
+    category: "Sci-Fi",
+    prompt: "Interior of a near-future space station orbiting Earth, astronaut floating weightlessly through a corridor, Earth visible through a large oval porthole, equipment panels with blinking LEDs, ambient hum of ventilation, soft white LED lighting, zero-gravity hair movement, photorealistic NASA-quality simulation.",
+    color: "indigo"
+  },
+  {
+    name: "Cooking ASMR Close-Up",
+    category: "Food",
+    prompt: "Extreme close-up of chef's hands folding fresh pasta dough on a marble counter, slow rhythmic motion, flour dust suspended in warm kitchen light, shallow depth of field, soft ambient kitchen sounds implied, golden hour light from a window, satisfying tactile quality, Italian countryside kitchen aesthetic.",
+    color: "rose"
+  },
+  {
+    name: "Children's Story Animation",
+    category: "Animation",
+    prompt: "2D animated scene in the style of modern Netflix children's shows: a small bear cub discovers a glowing firefly in a moonlit forest, gentle whimsical music implied, soft pastel colors, bouncy character animation with exaggerated expressions, warm magical atmosphere, suitable for ages 3-6.",
+    color: "teal"
+  },
+  {
+    name: "Athlete Training Montage",
+    category: "Sports",
+    prompt: "Dynamic training montage of a female sprinter preparing for the Olympics: slow-motion start from blocks, close-up of spiked shoes hitting the track, sweat flying, crowd in background blurred, track stadium flood lights, ESPN sports broadcast aesthetic, motivational energy, cuts between multiple angles.",
+    color: "green"
+  },
+  {
+    name: "Horror Jump Scare Setup",
+    category: "Horror",
+    prompt: "POV walking down a dark Victorian hallway with a candle, each doorway passed reveals a slightly open door, dead silence except for creaking floorboards, at the end of the hall a child's music box starts playing, camera slowly zooms toward the last closed door, extreme tension, no jump scare yet — the anticipation is the content.",
+    color: "violet"
+  }
+];
+
+const faqs = [
+  {
+    q: "What is a Veo 3 prompt generator?",
+    a: "A Veo 3 prompt generator creates detailed text descriptions specifically optimized for Google's Veo 3 AI video model. These prompts include camera direction, lighting, mood, character actions, and style keywords that guide Veo 3 to produce cinematic, high-quality videos."
+  },
+  {
+    q: "Is Veo 3 free to use?",
+    a: "Yes — Google made Veo 3.1 free for all Google account holders in April 2026. You can access it through Google's AI tools to generate high-quality AI videos from text prompts."
+  },
+  {
+    q: "How do I write a good Veo 3 prompt?",
+    a: "The best Veo 3 prompts include: (1) a clear subject and action, (2) camera direction (close-up, aerial, tracking shot), (3) lighting description, (4) mood and atmosphere, (5) style reference (cinematic, documentary, commercial), and (6) technical quality markers like '4K' or 'photorealistic'. More detail equals better results."
+  },
+  {
+    q: "What makes Veo 3 different from Sora?",
+    a: "Veo 3 is Google DeepMind's AI video model, competing directly with OpenAI's Sora. Veo 3 is noted for exceptional realism, native audio generation, and strong understanding of physics and lighting. Both respond well to detailed, structured prompts."
+  },
+  {
+    q: "Can I use Veo 3 prompts for commercial projects?",
+    a: "Always check Google's current terms of service for commercial usage rights. Prompts themselves have no copyright restrictions — you can use and modify any prompts from this generator freely."
+  }
+];
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-br from-blue-600 via-violet-600 to-purple-700 text-white py-16">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <div class="inline-flex items-center gap-2 bg-white/20 rounded-full px-4 py-1.5 text-sm font-medium mb-6">
+        <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+        Veo 3.1 is now free for everyone
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">
+        Veo 3 Prompt Generator
+      </h1>
+      <p class="text-xl text-blue-100 max-w-2xl mx-auto">
+        Generate powerful prompts for Google's Veo 3 AI video model — free, copy-ready, and optimized for cinematic results. Our Veo 3 prompt generator covers every genre from action to documentary.
+      </p>
+    </div>
+  </div>
+
+  <div class="max-w-4xl mx-auto px-4 py-12">
+
+    <!-- What is Veo 3 Section -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">What is the Veo 3 Prompt Generator?</h2>
+      <p class="text-gray-700 mb-4">
+        The <strong>Veo 3 prompt generator</strong> on this page gives you 15 professionally crafted, copy-ready prompts for Google's most advanced AI video model. Each prompt is structured with the camera direction, lighting, mood, and style keywords that Veo 3 needs to produce cinematic-quality video output.
+      </p>
+      <p class="text-gray-700 mb-4">
+        Google's Veo 3 (and the updated Veo 3.1, free for all users since April 2026) represents a new era in AI video generation — capable of realistic motion, accurate physics, and now native audio. Getting the prompt right is the difference between an average clip and a viral one.
+      </p>
+      <p class="text-gray-700">
+        Whether you're creating content for social media, short films, product ads, or just experimenting with AI video, these prompts give you a working starting point you can refine and own.
+      </p>
+    </section>
+
+    <!-- Prompt Structure Box -->
+    <section class="mb-12 bg-gradient-to-r from-blue-50 to-violet-50 rounded-2xl p-8 border border-blue-200">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">How to Write a Veo 3 Prompt</h2>
+      <p class="text-gray-700 mb-4">Use this structure to build your own Veo 3 prompts:</p>
+      <div class="bg-white rounded-lg p-6 border border-blue-300 mb-6 font-mono text-sm text-gray-800 leading-relaxed">
+        [Camera shot type] of [subject + action], [location/setting], [lighting], [mood/atmosphere], [style reference], [technical quality], [duration hint if needed].
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Camera Shot Types:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
+            <li>Close-up / extreme close-up</li>
+            <li>Medium shot / wide shot</li>
+            <li>Aerial drone shot</li>
+            <li>Tracking shot / dolly shot</li>
+            <li>POV (point of view)</li>
+            <li>Slow-motion / timelapse</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Style Keywords That Work:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
+            <li>"Cinematic 4K"</li>
+            <li>"Documentary style"</li>
+            <li>"Photorealistic"</li>
+            <li>"16mm film grain"</li>
+            <li>"BBC nature documentary"</li>
+            <li>"Netflix production quality"</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Prompts Grid -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-2 text-center">15 Ready-to-Use Veo 3 Prompts</h2>
+      <p class="text-center text-gray-500 mb-8 text-sm">Click any prompt to copy it — paste directly into Veo 3</p>
+
+      <div class="space-y-4">
+        {prompts.map((item, index) => (
+          <div class="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-start justify-between gap-4 mb-3">
+              <div>
+                <h3 class="text-lg font-bold text-gray-900">
+                  <span class="text-blue-600">{index + 1}.</span> {item.name}
+                </h3>
+                <span class="inline-block mt-1 text-xs font-medium bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full">
+                  {item.category}
+                </span>
+              </div>
+              <button
+                class="copy-btn flex-shrink-0 px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors"
+                data-text={item.prompt}
+              >
+                Copy
+              </button>
+            </div>
+            <p class="text-gray-700 text-sm leading-relaxed">{item.prompt}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Tips Section -->
+    <section class="mb-12 bg-gradient-to-r from-amber-50 to-orange-50 rounded-2xl p-8 border border-amber-200">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Veo 3 Prompting Tips for Better Results</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-3">Do This:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-2 text-sm">
+            <li>Specify exact camera movements (not just "dynamic")</li>
+            <li>Include lighting time of day (golden hour, midday, dusk)</li>
+            <li>Reference a known production style (BBC, Netflix, Apple ad)</li>
+            <li>Add audio cues even if Veo generates them — it aligns the model</li>
+            <li>Use physics descriptors (water splash, smoke dissipating)</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-3">Avoid This:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-2 text-sm">
+            <li>Vague descriptors like "beautiful" or "cool"</li>
+            <li>Prompts longer than 200 words (diminishing returns)</li>
+            <li>Conflicting styles in the same prompt</li>
+            <li>Copyrighted character names or brand trademarks</li>
+            <li>Asking for text overlays (Veo handles this poorly)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-4">
+        {faqs.map(faq => (
+          <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">{faq.q}</h3>
+            <p class="text-gray-700">{faq.a}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Related Tools -->
+    <section class="bg-white rounded-2xl border border-gray-200 p-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">More AI Prompt Tools</h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        <a href="/tools/video-ai-generation" class="p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
+          <h3 class="font-semibold text-blue-900">AI Video Prompt Builder</h3>
+          <p class="text-sm text-blue-700">Build structured video prompts for Sora, Veo & Kling</p>
+        </a>
+        <a href="/tools/text-to-prompt" class="p-4 bg-violet-50 rounded-lg hover:bg-violet-100 transition-colors">
+          <h3 class="font-semibold text-violet-900">Text to Prompt Expander</h3>
+          <p class="text-sm text-violet-700">Turn a rough idea into a detailed Veo 3 prompt</p>
+        </a>
+        <a href="/midjourney-prompt-generator" class="p-4 bg-pink-50 rounded-lg hover:bg-pink-100 transition-colors">
+          <h3 class="font-semibold text-pink-900">Midjourney Prompt Generator</h3>
+          <p class="text-sm text-pink-700">AI image prompts for Midjourney V6</p>
+        </a>
+        <a href="/studio-ghibli-ai-prompt" class="p-4 bg-green-50 rounded-lg hover:bg-green-100 transition-colors">
+          <h3 class="font-semibold text-green-900">Studio Ghibli AI Prompts</h3>
+          <p class="text-sm text-green-700">Miyazaki-style prompts for images and video</p>
+        </a>
+        <a href="/ai-images-prompt" class="p-4 bg-amber-50 rounded-lg hover:bg-amber-100 transition-colors">
+          <h3 class="font-semibold text-amber-900">AI Image Prompt Generator</h3>
+          <p class="text-sm text-amber-700">Prompts for DALL-E, Stable Diffusion & more</p>
+        </a>
+        <a href="/cinematic-lighting-ai-prompt" class="p-4 bg-indigo-50 rounded-lg hover:bg-indigo-100 transition-colors">
+          <h3 class="font-semibold text-indigo-900">Cinematic Lighting Prompts</h3>
+          <p class="text-sm text-indigo-700">Professional lighting setups for AI video & images</p>
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <AstroFooter />
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.copy-btn').forEach(button => {
+        button.addEventListener('click', async () => {
+          const text = button.getAttribute('data-text');
+          try {
+            await navigator.clipboard.writeText(text);
+            const orig = button.textContent;
+            button.textContent = 'Copied!';
+            button.classList.replace('bg-blue-600', 'bg-green-600');
+            button.classList.replace('hover:bg-blue-700', 'hover:bg-green-700');
+            setTimeout(() => {
+              button.textContent = orig;
+              button.classList.replace('bg-green-600', 'bg-blue-600');
+              button.classList.replace('hover:bg-green-700', 'hover:bg-blue-700');
+            }, 2000);
+          } catch {
+            button.textContent = 'Copy failed';
+          }
+        });
+      });
+    });
+  </script>
+</BaseLayout>
