@@ -1,0 +1,405 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AstroHeader from '../components/AstroHeader.astro';
+import AstroFooter from '../components/AstroFooter.astro';
+import '../styles/global.css';
+
+const seo = {
+  path: 'gpt-image-2-prompt-generator',
+  title: 'GPT Image 2 Prompt Generator — Free Copy-Paste Prompts (2026)',
+  description: 'GPT Image 2 prompt generator with 20 free, copy-ready prompts for OpenAI\'s latest image model. Portraits, products, posters, UI design, and more — updated April 2026.',
+  keywords: 'gpt image 2 prompts, gpt image 2 prompt generator, chatgpt images 2.0 prompts, gpt image 2 examples, gpt image 2 free prompts, openai gpt image 2, gpt image 2 guide'
+};
+
+const prompts = [
+  {
+    name: "Hyper-Realistic Studio Portrait",
+    category: "Portrait",
+    prompt: "Studio portrait of a 35-year-old woman with warm olive skin, shot on a Hasselblad medium-format camera, soft octabox lighting from camera-left, subtle rim light on right shoulder, neutral gray seamless background, sharp focus on eyes with natural catchlights, slight depth of field blurring the background, natural skin texture preserved, no over-retouching, editorial magazine quality, 4K.",
+    color: "rose"
+  },
+  {
+    name: "2K Product Photography — Perfume",
+    category: "Product",
+    prompt: "Premium perfume bottle product shot on a white marble surface, dramatic side lighting creating a long shadow, bottle filled with amber liquid, condensation droplets on glass, black background gradient, hero shot framing, commercial photography quality, photorealistic, 2K resolution, no reflections on lens, suitable for luxury brand advertising.",
+    color: "amber"
+  },
+  {
+    name: "Architectural Visualization",
+    category: "Architecture",
+    prompt: "Exterior render of a modern minimalist villa, single-story with floor-to-ceiling glass walls, concrete and warm wood facade, surrounded by landscaped desert garden with succulents, golden hour lighting casting long shadows, subtle water feature in foreground, ultra-realistic 3D visualization quality, architectural photography framing, wide-angle shot.",
+    color: "sky"
+  },
+  {
+    name: "UI Screenshot — SaaS Dashboard",
+    category: "UI Design",
+    prompt: "Clean SaaS analytics dashboard UI screenshot, dark mode with purple accent colors, shows revenue chart trending up, sidebar navigation with icons, data cards showing KPIs, modern sans-serif typography (Inter font style), glassmorphism card effects, pixel-perfect Figma-quality design, desktop 1440px wide layout, professional product screenshot.",
+    color: "violet"
+  },
+  {
+    name: "Illustrated Book Cover",
+    category: "Publishing",
+    prompt: "Fantasy novel book cover illustration: a lone female warrior standing at the edge of a cliff at twilight, her sword glowing blue, storm clouds gathering behind her, a distant floating city visible through the clouds, dramatic upward camera angle, rich jewel-tone color palette, oil painting style with digital precision, title space at top, author name space at bottom, 6x9 book cover format.",
+    color: "indigo"
+  },
+  {
+    name: "Cinematic Storyboard Frame",
+    category: "Filmmaking",
+    prompt: "Cinematic widescreen still (2.39:1 aspect ratio): two characters facing each other in a rain-soaked alley at night, only light source is a flickering neon sign reflecting on wet pavement, tension implied in body language, film noir color grade, anamorphic lens flare, shallow depth of field, Roger Deakins cinematography style, movie still quality.",
+    color: "gray"
+  },
+  {
+    name: "E-commerce Lifestyle Shot — Sneakers",
+    category: "Fashion/Retail",
+    prompt: "Lifestyle product photo of white minimal sneakers on feet, person walking on a sun-drenched terracotta street in a European coastal village, motion blur on legs, sharp sneakers in focus, casual summer outfit cropped to knees, warm Mediterranean light, genuine candid energy, brand-ready product photography, square crop for Instagram.",
+    color: "orange"
+  },
+  {
+    name: "Chibi Character Design",
+    category: "Illustration",
+    prompt: "Chibi-style character: a tiny cute wizard with an oversized purple hat, wide shiny eyes, rosy cheeks, holding a glowing wand, standing on a mushroom in an enchanted forest, soft pastel background with sparkles, clean vector-like illustration style, white outline, suitable for stickers or NFT collection, flat background.",
+    color: "purple"
+  },
+  {
+    name: "Food Photography — Ramen",
+    category: "Food",
+    prompt: "Hero shot of a steaming bowl of tonkotsu ramen, overhead angle slightly tilted, rich milky-white broth, perfectly arranged toppings: sliced chashu pork, soft-boiled egg cut in half, nori sheet, bamboo shoots, green onion, sesame seeds, chopsticks resting on bowl, dark wooden table, steam wisping upward, Michelin-star food photography, natural light from left.",
+    color: "yellow"
+  },
+  {
+    name: "Corporate LinkedIn Headshot",
+    category: "Portrait",
+    prompt: "Professional LinkedIn headshot of a 40-year-old man in a navy blue suit, white shirt, no tie, confident genuine smile, standing in front of softly blurred modern office interior (bokeh), professional studio-grade lighting (Rembrandt setup), warm skin tones, sharp eyes, natural background color grade, business casual vibe, 4:5 portrait ratio.",
+    color: "blue"
+  },
+  {
+    name: "Event Poster — Music Festival",
+    category: "Graphic Design",
+    prompt: "Bold music festival event poster design: psychedelic 1970s-inspired color palette (electric blue, neon orange, hot pink), large bold typography announcing 'SOLARIS FESTIVAL' at top, stylized sun-face illustration in center, lineup artist names in smaller text below, ticket info at bottom, festival grounds silhouette in background, screenprint texture overlay, A2 poster format.",
+    color: "pink"
+  },
+  {
+    name: "Scientific Illustration — Cell",
+    category: "Science",
+    prompt: "Hyper-detailed scientific illustration of a human cell in cross-section, labeled organelles (nucleus, mitochondria, endoplasmic reticulum, Golgi apparatus), vibrant blue and purple bioluminescent color scheme on dark background, textbook diagram quality, clean label lines with sans-serif text, National Geographic educational visual standard.",
+    color: "teal"
+  },
+  {
+    name: "Luxury Real Estate Interior",
+    category: "Interior Design",
+    prompt: "Interior render of a luxury penthouse living room, floor-to-ceiling windows with Manhattan skyline at dusk, ivory travertine floors, cream bouclé sofa, statement curved brass floor lamp, low-profile marble coffee table with art books, curated gallery wall, ambient warm lighting from recessed LEDs, Architectural Digest quality render, wide-angle shot.",
+    color: "emerald"
+  },
+  {
+    name: "Brand Logo on Merchandise",
+    category: "Branding",
+    prompt: "Lifestyle mockup of a white organic-cotton tote bag on a marble surface, featuring a minimalist black logo (simple geometric leaf shape), natural linen texture visible in weave, small sprigs of eucalyptus beside the bag, soft morning light, brand photography aesthetic, flat lay composition, suitable for Shopify product page.",
+    color: "green"
+  },
+  {
+    name: "AI Art — Surrealist Landscape",
+    category: "Fine Art",
+    prompt: "Surrealist landscape painting in the style of Salvador Dalí and René Magritte: a vast barren desert with floating grandfather clocks melting over bare tree branches, a single door standing alone with no walls opening to a starry sky, a bowler hat floating above, hyperrealistic rendering of impossible objects, oil-painting texture, dreamlike and unsettling atmosphere.",
+    color: "red"
+  },
+  {
+    name: "Children's Book Illustration",
+    category: "Publishing",
+    prompt: "Watercolor children's book illustration: a brave little fox in a red scarf exploring a snowy winter forest, footprints in fresh snow, warm light glowing from a cozy cottage in the background, gentle pastel blues and warm oranges, loose expressive brushstrokes, Beatrix Potter meets modern picture book style, full-page spread with space for text at bottom.",
+    color: "cyan"
+  },
+  {
+    name: "Macro Photography — Dewdrop",
+    category: "Photography",
+    prompt: "Extreme macro photograph of a single dewdrop on the tip of a bright green leaf, inside the droplet a perfectly refracted inverted image of a garden visible, captured with 100mm macro lens at f/2.8, shallow depth of field, morning light from behind the leaf creating translucency, photorealistic, National Geographic photography standard.",
+    color: "lime"
+  },
+  {
+    name: "Game Character Concept Art",
+    category: "Game Design",
+    prompt: "Video game character concept art sheet: a futuristic bounty hunter in matte black tactical armor with glowing orange visor, front view and side profile view on the same sheet, turnaround reference style, labeled key design features (retractable grappling hook, ammunition belt, holographic wrist display), dark gray background, AAA game development studio quality.",
+    color: "slate"
+  },
+  {
+    name: "Wedding Photography Edit",
+    category: "Portrait",
+    prompt: "Wedding portrait: bride and groom sharing a quiet moment in a sunlit meadow, bride in a flowing ivory dress, groom in a light linen suit, golden hour backlight creating a halo effect, soft film emulation color grade (warm, airy, slightly faded), shallow depth of field blurring the wildflowers in foreground, intimate and authentic mood, 35mm film aesthetic.",
+    color: "fuchsia"
+  },
+  {
+    name: "Technical Diagram — Exploded View",
+    category: "Technical",
+    prompt: "Clean technical exploded-view diagram of a mechanical watch movement, all components separated and floating in isometric space with thin leader lines pointing to labels, white background, precision engineering illustration style, each part color-coded by function (gold for gears, silver for springs, blue for jewels), patent drawing meets modern design quality.",
+    color: "zinc"
+  }
+];
+
+const faqs = [
+  {
+    q: "What is a GPT Image 2 prompt generator?",
+    a: "A GPT Image 2 prompt generator creates detailed text descriptions optimized for OpenAI's GPT Image 2 model (also known as ChatGPT Images 2.0). These prompts include composition, lighting, style, and subject details that guide GPT Image 2 to produce high-quality, commercially usable images at up to 2K–4K resolution."
+  },
+  {
+    q: "When was GPT Image 2 released?",
+    a: "OpenAI released GPT Image 2 (ChatGPT Images 2.0) on April 21, 2026. It is the successor to GPT Image 1.5 and generates images at native 2K resolution with optional 4K upscaling. It is available directly inside ChatGPT for Plus, Pro, and Team subscribers."
+  },
+  {
+    q: "How is GPT Image 2 different from DALL-E 3?",
+    a: "GPT Image 2 is a significant leap beyond DALL-E 3. It renders text inside images with near-perfect accuracy, maintains character and object consistency across multiple generations, understands complex multi-element compositions, and generates at higher native resolution. Prompts that work for DALL-E 3 generally work better with GPT Image 2."
+  },
+  {
+    q: "How do I write a good GPT Image 2 prompt?",
+    a: "Effective GPT Image 2 prompts follow this structure: (1) Subject + action or pose, (2) Composition and framing (close-up, overhead, wide shot), (3) Lighting setup (golden hour, studio softbox, rim light), (4) Style reference (editorial, architectural visualization, product photography), (5) Technical specs (resolution hint, aspect ratio, no artifacts). GPT Image 2 responds well to detailed, natural language descriptions."
+  },
+  {
+    q: "Can I use GPT Image 2 images commercially?",
+    a: "OpenAI's current terms allow commercial use of GPT Image 2 outputs for paying subscribers (Plus, Pro, Team, Enterprise). Always verify the latest OpenAI usage policies before commercial deployment. The prompt text itself has no copyright restrictions."
+  },
+  {
+    q: "What makes GPT Image 2 prompts different from MidJourney prompts?",
+    a: "GPT Image 2 is optimized for natural language — write it like you'd describe the image to a professional photographer. MidJourney responds better to comma-separated keyword clusters and parameter flags (--ar, --style). For GPT Image 2, full descriptive sentences consistently outperform keyword lists."
+  }
+];
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-700 text-white py-16">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <div class="inline-flex items-center gap-2 bg-white/20 rounded-full px-4 py-1.5 text-sm font-medium mb-6">
+        <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+        New: GPT Image 2 released April 21, 2026
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">
+        GPT Image 2 Prompt Generator
+      </h1>
+      <p class="text-xl text-teal-100 max-w-2xl mx-auto">
+        The GPT Image 2 prompt generator gives you 20 free, copy-ready prompts for OpenAI's most powerful image model. From portraits and products to UI design and fine art — use them directly in ChatGPT, no signup required here.
+      </p>
+    </div>
+  </div>
+
+  <div class="max-w-4xl mx-auto px-4 py-12">
+
+    <!-- What is GPT Image 2 Section -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">What is the GPT Image 2 Prompt Generator?</h2>
+      <p class="text-gray-700 mb-4">
+        The <strong>GPT Image 2 prompt generator</strong> on this page provides 20 professionally crafted prompts for OpenAI's latest image model — <strong>GPT Image 2</strong> (officially called ChatGPT Images 2.0), released on April 21, 2026. Each prompt is structured to take full advantage of GPT Image 2's breakthrough capabilities: pixel-perfect text rendering, 2K native resolution, cross-image character consistency, and advanced reasoning about complex compositions.
+      </p>
+      <p class="text-gray-700 mb-4">
+        GPT Image 2 represents the biggest leap in AI image generation since the introduction of diffusion models. Unlike its predecessor DALL-E 3, GPT Image 2 understands nuanced creative briefs, renders legible text inside images, and produces commercial-quality output across portraits, products, UI mockups, illustrations, and more.
+      </p>
+      <p class="text-gray-700">
+        Every prompt below is copy-ready. Paste it directly into ChatGPT (GPT-4o with image generation enabled) to generate your image. Each prompt specifies composition, lighting, style, and technical details so you get consistent, high-quality results on the first try.
+      </p>
+    </section>
+
+    <!-- How to Write a GPT Image 2 Prompt -->
+    <section class="mb-12 bg-gradient-to-r from-emerald-50 to-teal-50 rounded-2xl p-8 border border-emerald-200">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">How to Write a GPT Image 2 Prompt</h2>
+      <p class="text-gray-700 mb-4">GPT Image 2 responds to natural-language descriptions better than any previous image model. Use this structure:</p>
+      <div class="bg-white rounded-lg p-6 border border-emerald-300 mb-6 font-mono text-sm text-gray-800 leading-relaxed">
+        [Subject + action/pose] on/in [setting], [lighting description], [composition framing], [style reference], [technical quality hint], [aspect ratio if needed].
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Lighting Keywords That Work:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
+            <li>Golden hour backlight</li>
+            <li>Studio softbox from camera-left</li>
+            <li>Dramatic rim lighting</li>
+            <li>Natural window light, diffused</li>
+            <li>Neon ambient glow</li>
+            <li>Rembrandt lighting setup</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Style References That Resonate:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
+            <li>"Editorial magazine quality"</li>
+            <li>"Architectural Digest render"</li>
+            <li>"Commercial product photography"</li>
+            <li>"Michelin-star food photography"</li>
+            <li>"AAA game concept art"</li>
+            <li>"National Geographic standard"</li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-6 p-4 bg-emerald-100 rounded-lg border border-emerald-300">
+        <p class="text-sm text-emerald-900 font-medium">Key difference from MidJourney:</p>
+        <p class="text-sm text-emerald-800 mt-1">GPT Image 2 is trained on natural language. Write full descriptive sentences — not comma-separated keyword lists. "A dramatic close-up of a perfume bottle with a long shadow" works far better than "perfume, dramatic, shadow, close-up".</p>
+      </div>
+    </section>
+
+    <!-- Prompts Grid -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-2 text-center">20 Free GPT Image 2 Prompts — Copy & Paste</h2>
+      <p class="text-center text-gray-500 mb-8 text-sm">Click any prompt to copy it — paste directly into ChatGPT with GPT Image 2 enabled</p>
+
+      <div class="space-y-4">
+        {prompts.map((item, index) => (
+          <div class="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-start justify-between gap-4 mb-3">
+              <div>
+                <h3 class="text-lg font-bold text-gray-900">
+                  <span class="text-emerald-600">{index + 1}.</span> {item.name}
+                </h3>
+                <span class="inline-block mt-1 text-xs font-medium bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full">
+                  {item.category}
+                </span>
+              </div>
+              <button
+                class="copy-btn flex-shrink-0 px-4 py-2 bg-emerald-600 text-white text-sm font-medium rounded-lg hover:bg-emerald-700 transition-colors"
+                data-text={item.prompt}
+              >
+                Copy
+              </button>
+            </div>
+            <p class="text-gray-700 text-sm leading-relaxed">{item.prompt}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- GPT Image 2 vs Competitors -->
+    <section class="mb-12 bg-gradient-to-r from-slate-50 to-gray-50 rounded-2xl p-8 border border-gray-200">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">GPT Image 2 vs. Other AI Image Models (2026)</h2>
+      <p class="text-gray-700 mb-6">Knowing when to use GPT Image 2 versus alternatives like MidJourney, Stable Diffusion, or Grok Imagine helps you get better results faster:</p>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-gray-100">
+              <th class="text-left p-3 font-semibold text-gray-900 border border-gray-200">Model</th>
+              <th class="text-left p-3 font-semibold text-gray-900 border border-gray-200">Best For</th>
+              <th class="text-left p-3 font-semibold text-gray-900 border border-gray-200">Prompt Style</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bg-emerald-50">
+              <td class="p-3 font-semibold text-emerald-800 border border-gray-200">GPT Image 2</td>
+              <td class="p-3 text-gray-700 border border-gray-200">Portraits, products, text-in-image, UI, commercial work</td>
+              <td class="p-3 text-gray-700 border border-gray-200">Full natural language sentences</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-gray-700 border border-gray-200">MidJourney V7</td>
+              <td class="p-3 text-gray-700 border border-gray-200">Fine art, artistic styles, abstract concepts</td>
+              <td class="p-3 text-gray-700 border border-gray-200">Comma-separated keywords + parameters</td>
+            </tr>
+            <tr class="bg-gray-50">
+              <td class="p-3 font-semibold text-gray-700 border border-gray-200">Grok Imagine</td>
+              <td class="p-3 text-gray-700 border border-gray-200">Social media content, quick iterations</td>
+              <td class="p-3 text-gray-700 border border-gray-200">Natural language, conversational</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-gray-700 border border-gray-200">Stable Diffusion</td>
+              <td class="p-3 text-gray-700 border border-gray-200">Fine control, custom LoRA styles, local generation</td>
+              <td class="p-3 text-gray-700 border border-gray-200">Weighted keywords, negative prompts</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Tips Section -->
+    <section class="mb-12 bg-gradient-to-r from-amber-50 to-orange-50 rounded-2xl p-8 border border-amber-200">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">GPT Image 2 Tips for Better Results</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-3">Do This:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-2 text-sm">
+            <li>Write in full, descriptive sentences</li>
+            <li>Specify lighting setup explicitly (not just "good lighting")</li>
+            <li>Name a photographic or artistic style reference</li>
+            <li>Include composition and framing details</li>
+            <li>Mention aspect ratio for non-square images</li>
+            <li>Use "photorealistic" or "2K quality" for resolution boost</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-3">Avoid This:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-2 text-sm">
+            <li>Comma-separated keyword lists (MidJourney habit)</li>
+            <li>Vague descriptors: "beautiful", "amazing", "perfect"</li>
+            <li>Prompts that mix too many unrelated styles</li>
+            <li>Asking for specific brand logos (rejected by safety filters)</li>
+            <li>Prompts over 300 words (diminishing returns)</li>
+            <li>Copyrighted character names from fiction</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions — GPT Image 2</h2>
+      <div class="space-y-4">
+        {faqs.map(faq => (
+          <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">{faq.q}</h3>
+            <p class="text-gray-700">{faq.a}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Related Tools -->
+    <section class="bg-white rounded-2xl border border-gray-200 p-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">More AI Prompt Tools</h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        <a href="/chatgpt-photo-editing-prompts" class="p-4 bg-emerald-50 rounded-lg hover:bg-emerald-100 transition-colors">
+          <h3 class="font-semibold text-emerald-900">ChatGPT Photo Editing Prompts</h3>
+          <p class="text-sm text-emerald-700">Edit and retouch photos with GPT Image 2 prompts</p>
+        </a>
+        <a href="/midjourney-ai-picture-generator" class="p-4 bg-violet-50 rounded-lg hover:bg-violet-100 transition-colors">
+          <h3 class="font-semibold text-violet-900">MidJourney Prompt Generator</h3>
+          <p class="text-sm text-violet-700">Keyword-style prompts optimized for MidJourney V7</p>
+        </a>
+        <a href="/ai-images-prompt" class="p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
+          <h3 class="font-semibold text-blue-900">AI Image Prompt Generator</h3>
+          <p class="text-sm text-blue-700">Universal prompts for DALL-E, SD & all image models</p>
+        </a>
+        <a href="/tools/image-to-prompt" class="p-4 bg-pink-50 rounded-lg hover:bg-pink-100 transition-colors">
+          <h3 class="font-semibold text-pink-900">Image to Prompt</h3>
+          <p class="text-sm text-pink-700">Reverse-engineer any image into a GPT Image 2 prompt</p>
+        </a>
+        <a href="/studio-ghibli-ai-prompt" class="p-4 bg-green-50 rounded-lg hover:bg-green-100 transition-colors">
+          <h3 class="font-semibold text-green-900">Studio Ghibli AI Prompts</h3>
+          <p class="text-sm text-green-700">Miyazaki-style prompts for GPT Image 2 and MidJourney</p>
+        </a>
+        <a href="/veo-3-prompt-generator" class="p-4 bg-indigo-50 rounded-lg hover:bg-indigo-100 transition-colors">
+          <h3 class="font-semibold text-indigo-900">Veo 3 Prompt Generator</h3>
+          <p class="text-sm text-indigo-700">From images to videos — Veo 3 prompt templates</p>
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <AstroFooter />
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.copy-btn').forEach(button => {
+        button.addEventListener('click', async () => {
+          const text = button.getAttribute('data-text');
+          try {
+            await navigator.clipboard.writeText(text);
+            const orig = button.textContent;
+            button.textContent = 'Copied!';
+            button.classList.replace('bg-emerald-600', 'bg-green-600');
+            button.classList.replace('hover:bg-emerald-700', 'hover:bg-green-700');
+            setTimeout(() => {
+              button.textContent = orig;
+              button.classList.replace('bg-green-600', 'bg-emerald-600');
+              button.classList.replace('hover:bg-green-700', 'hover:bg-emerald-700');
+            }, 2000);
+          } catch {
+            button.textContent = 'Copy failed';
+          }
+        });
+      });
+    });
+  </script>
+</BaseLayout>

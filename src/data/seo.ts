@@ -58,6 +58,12 @@ export const seoData: Record<string, SEOData> = {
     description: 'Generate professional MidJourney prompts with advanced techniques. Free MidJourney AI prompt generator optimized for stunning V6 AI art results.',
     keywords: 'midjourney prompts, midjourney ai prompts, midjourney prompt generator, midjourney v6 prompts, ai art prompts, midjourney ideas'
   },
+  gptImage2PromptGenerator: {
+    path: 'gpt-image-2-prompt-generator',
+    title: 'GPT Image 2 Prompt Generator — Free Copy-Paste Prompts (2026)',
+    description: 'GPT Image 2 prompt generator with 20 free, copy-ready prompts for OpenAI\'s latest image model. Portraits, products, posters, UI design, and more — updated April 2026.',
+    keywords: 'gpt image 2 prompts, gpt image 2 prompt generator, chatgpt images 2.0 prompts, gpt image 2 examples, gpt image 2 free prompts, openai gpt image 2, gpt image 2 guide'
+  },
   ghostfacePrompt: {
     path: 'ghostface-ai-trend-prompt-generator',
     title: 'Ghostface AI Prompt Generator - Horror Character Prompts',
