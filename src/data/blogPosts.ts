@@ -2772,8 +2772,8 @@ Then don't judge it too fast. Ask what it reveals — and what it refuses to exp
   },
   {
     slug: "best-chatgpt-gemini-photo-editing-prompts",
-    title: "Best ChatGPT & Gemini Photo Editing Prompts (30+)",
-    excerpt: "Master AI photo editing with these copy-and-paste ChatGPT and Google Gemini prompts. Learn how to color grade, sharpen images, and enhance photos like a pro.",
+    title: "30+ ChatGPT & Gemini Photo Editing Prompts That Actually Work (2026)",
+    excerpt: "30+ copy-paste ChatGPT and Gemini prompts for photo editing. Color grading, portrait retouching, background removal, vintage film & more. Free, no signup required.",
     category: "tutorials",
     author: "Random Prompts Team",
     date: "2026-02-20",

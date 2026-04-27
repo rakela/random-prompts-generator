@@ -84,8 +84,8 @@ export const seoData: Record<string, SEOData> = {
   },
   geminiPhotoEditingPrompts: {
     path: 'gemini-photo-editing-prompts',
-    title: 'Gemini Photo Editing Prompts - Google AI Photo Editor Guide',
-    description: 'Professional Gemini AI photo editing prompts & tutorial. Transform photos with expert techniques, color grading, and retouching guidance.',
+    title: 'Gemini Photo Editing Prompts — 20+ Free Templates (Copy & Paste)',
+    description: '20+ Gemini AI photo editing prompts — copy and paste directly. Portrait retouching, cinematic color grading, background swap & more. Free, no signup. Updated April 2026.',
     keywords: 'gemini photo editing prompts, gemini ai photo editing, google gemini photo editor, gemini prompts for photos, ai photo editing gemini, gemini image editing'
   },
   nanoBananaPrompts: {

@@ -22,7 +22,7 @@ export const getCurrentDomain = () => {
  */
 export const isPrimaryDomain = () => {
   const currentDomain = getCurrentDomain();
-  return currentDomain === PRIMARY_DOMAIN || currentDomain === `www.${PRIMARY_DOMAIN}`;
+  return currentDomain === PRIMARY_DOMAIN;
 };
 
 /**
