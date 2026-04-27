@@ -78,8 +78,8 @@ export const seoData: Record<string, SEOData> = {
   },
   chatgptPhotoEditingPrompts: {
     path: 'chatgpt-photo-editing-prompts',
-    title: 'ChatGPT Photo Editing Prompts — Copy & Paste Ready (2026)',
-    description: 'The best ChatGPT prompts for photo editing. Color grading, portrait enhancement, background swap, and more. Free. Updated for GPT-4o.',
+    title: 'ChatGPT Photo Editing Prompts — 30+ Free Templates (Copy & Paste)',
+    description: '30+ ChatGPT photo editing prompts — copy and paste directly. Portrait retouching, cinematic color grading, background removal, vintage film & more. Free, no signup. Works with GPT Image 2.',
     keywords: 'chatgpt photo editing prompts, chatgpt photo editing, ai photo editing prompts, photo editing ai, chatgpt for photo editing, chatgpt prompts for editing photos'
   },
   geminiPhotoEditingPrompts: {
@@ -164,8 +164,8 @@ export const seoData: Record<string, SEOData> = {
   // Writing Generators
   randomParagraphGenerator: {
     path: 'generators/paragraph',
-    title: 'Random Paragraph Generator - Random Prompts',
-    description: 'Generate random paragraphs instantly for writing practice, story drafts, and creative exercises. Free random paragraph generator for writers and students.',
+    title: 'Random Paragraph Generator — Free, Unlimited, No Signup',
+    description: 'Random paragraph generator — instant results, no signup, unlimited use. Perfect for writing practice, ESL exercises, creative drafts, and placeholder text. Free forever.',
     keywords: 'random paragraph generator, paragraph generator, random text generator, writing practice, creative writing exercises'
   },
   randomSentenceGenerator: {
