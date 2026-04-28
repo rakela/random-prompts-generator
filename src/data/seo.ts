@@ -392,6 +392,12 @@ export const seoData: Record<string, SEOData> = {
     title: 'Articles | AI Prompting Guides, Tutorials & Inspiration',
     description: 'Expert guides on AI prompting, video generation, prompt engineering, and creative inspiration. Learn from tutorials and discover new techniques for ChatGPT, Claude, Midjourney, and more.',
     keywords: 'ai prompting guides, prompt engineering tutorials, ai art tutorials, video ai guides, chatgpt tutorials, claude guides, midjourney tips, ai inspiration'
+  },
+  chatgptActionFigurePromptGenerator: {
+    path: 'chatgpt-action-figure-prompt-generator',
+    title: 'ChatGPT Action Figure Prompt Generator — 20 Free Templates (Viral 2026)',
+    description: 'ChatGPT action figure prompt generator with 20 free copy-paste templates. Turn yourself into a collectible toy with blister pack, accessories & custom label. Viral trend April 2026.',
+    keywords: 'chatgpt action figure prompt, chatgpt action figure prompt generator, action figure prompt generator, ai action figure prompt, chatgpt toy figure prompt, action figure ai trend, chatgpt doll prompt'
   }
 };
 

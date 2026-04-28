@@ -1,0 +1,459 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AstroHeader from '../components/AstroHeader.astro';
+import AstroFooter from '../components/AstroFooter.astro';
+import '../styles/global.css';
+import { getSEOData } from '../data/seo';
+
+const seo = getSEOData('chatgptActionFigurePromptGenerator');
+
+const prompts = [
+  {
+    name: "Classic Blister Pack Action Figure",
+    category: "Classic",
+    prompt: "Hyper-realistic product photograph of a sealed action figure in a blister pack. The plastic bubble contains a 6-inch articulated figure of [NAME], wearing [OUTFIT]. The printed cardboard backing is vivid red and black with bold typography reading '[NAME]' at the top and '[TITLE/ROLE]' underneath. Accessories in side compartments include [LIST 3 ACCESSORIES]. Studio product photography lighting, white background, sharp focus on packaging details, toy aisle commercial quality.",
+    color: "red"
+  },
+  {
+    name: "Barbie-Style Doll Box",
+    category: "Barbie / Doll",
+    prompt: "Professional product photo of a Barbie-style fashion doll in a bright pink window box. The doll resembles [NAME] wearing [OUTFIT]. The box is glossy pink with cursive gold typography reading '[NAME]' and a tagline '[CATCHPHRASE]'. Window opening shows the full doll. Accessories visible in lower compartments: [ACCESSORIES]. Dreamhouse pink aesthetic, soft glamour lighting, retail shelf photography quality, white background.",
+    color: "pink"
+  },
+  {
+    name: "90s Retro Toy Box",
+    category: "Retro / Nostalgia",
+    prompt: "Vintage 1990s action figure in original sealed box. The box features garish neon colors (electric blue and hot pink), pixelated logo font, and 'NEW!' starburst badges. The figure inside is [NAME] in [OUTFIT]. Box text includes: 'COLLECTABLE SERIES', '[NAME] ACTION FIGURE', and bullet points listing features. Slight artificial aging, plastic crinkle on box edges, toy fair booth photography, nostalgic fluorescent lighting.",
+    color: "blue"
+  },
+  {
+    name: "Marvel / Superhero Collector Edition",
+    category: "Superhero",
+    prompt: "Limited edition Marvel-style collector figure in premium black window box. The 12-inch highly articulated figure is [NAME] in [SUPERHERO COSTUME] with dynamic hero pose. Box reads 'COLLECTOR'S EDITION' in silver foil lettering. Accessories: [WEAPON/GADGETS]. Box interior has city skyline diorama backdrop. Premium metallic packaging with embossed logos, spot UV coating effect, collector toy photography, dramatic low-key lighting.",
+    color: "amber"
+  },
+  {
+    name: "Funko Pop Style Vinyl",
+    category: "Vinyl Figure",
+    prompt: "Funko Pop-style vinyl figure unboxed on white surface. Large chibi head, tiny body, black dot eyes, stylized facial features representing [NAME]. The figure wears [OUTFIT]. Displayed next to its numbered black window box with the Funko-style logo replaced by '[BRAND NAME]'. Figure number #[NUMBER] from '[SERIES NAME]' series. Clean product photography, white sweep background, collector shelf lighting.",
+    color: "orange"
+  },
+  {
+    name: "Professional / Office Edition",
+    category: "Professional",
+    prompt: "Realistic product shot of a 'Professional Edition' action figure in executive packaging. The figure represents [NAME] in business attire: [OUTFIT DESCRIPTION]. Blister pack accessories include: a tiny [WORK TOOL], a miniature [DEVICE], and a small [PERSONAL ITEM]. Box header reads '[NAME] — [JOB TITLE] EDITION'. Clean corporate color palette (navy and gold), matte finish packaging, LinkedIn-aesthetic professional lighting.",
+    color: "sky"
+  },
+  {
+    name: "Sports Star Collector Figure",
+    category: "Sports",
+    prompt: "Sports collector action figure in team-branded packaging. The articulated figure represents [NAME] in [SPORT] uniform — [TEAM COLORS] jersey with [NUMBER] on the back, posed mid-[ACTION]. Box graphics feature stadium crowd background and '[NAME]' in bold athletic typography. Included accessories: miniature [SPORT EQUIPMENT], trophy, and team pennant. Vibrant sports retail packaging photography, bright commercial lighting.",
+    color: "green"
+  },
+  {
+    name: "Anime / Manga Figure",
+    category: "Anime",
+    prompt: "Japanese-style anime collector figure in premium window box with Japanese and English text. The highly detailed PVC figure is [CHARACTER NAME] from [SERIES/STYLE], wearing [OUTFIT], dynamic action pose with [SPECIAL EFFECT — glowing energy, wind-swept hair, etc.]. The box features manga panel artwork, [SERIES] logo, and 'Limited Edition' badge. Anime figure collector photography style, soft diffused lighting, white background, 1/7 scale label.",
+    color: "violet"
+  },
+  {
+    name: "Celebrity / Influencer Edition",
+    category: "Celebrity",
+    prompt: "A hyper-realistic collectible doll in window box packaging styled after [CELEBRITY/INFLUENCER NAME]. The doll wears a signature look: [OUTFIT]. Box is hot pink with gold foil text reading '[NAME] ICON SERIES'. Accessories in compartment: mini phone with selfie screen, tiny ring light, and brand bag. The doll's face has accurate likeness detail — hair, makeup, and expression. Beauty commercial photography lighting, lifestyle retail packaging vibe.",
+    color: "rose"
+  },
+  {
+    name: "Mini Figure 3-Pack",
+    category: "Mini Pack",
+    prompt: "Retail blister card with three small 3-inch figures in a '3-PACK COLLECTOR SET'. Each mini figure represents [NAME 1], [NAME 2], and [NAME 3] in matching [THEME] outfits. The bright cardboard backing features colorful artwork and each figure's name label. Bold typography: 'COLLECT THEM ALL — SERIES 1'. Classic toy store packaging, front-facing photography, bright retail lighting, white background.",
+    color: "teal"
+  },
+  {
+    name: "Vintage Ken-Style Doll",
+    category: "Ken / Male Doll",
+    prompt: "Classic Ken-style fashion doll in an open window box. The doll represents [NAME] in a stylish outfit: [OUTFIT DESCRIPTION]. Box color scheme is [COLORS] with the doll's name in large swooping font at the top. Included accessories: [ACCESSORIES]. The doll's hair, facial features, and build reflect [NAME]'s appearance. Retro and modern toy aesthetic blend, natural packaging photography, warm studio lighting.",
+    color: "cyan"
+  },
+  {
+    name: "Chef / Food Edition Figure",
+    category: "Specialty",
+    prompt: "Collectible 'Master Chef Edition' action figure in white and gold packaging. The figure is [NAME] in a full chef's uniform: white double-breasted jacket, checked pants, toque. Blister pack accessories: tiny cast iron skillet, miniature herb bundle, small cutting board with vegetables. Box text: '[NAME] — EXECUTIVE CHEF EDITION'. Culinary lifestyle photography, warm light, marble surface background.",
+    color: "yellow"
+  },
+  {
+    name: "Gamer Edition Figure",
+    category: "Gaming",
+    prompt: "Gamer-edition collectible figure in dark RGB-lit packaging. The figure is [NAME] wearing gamer setup outfit: hoodie, headset, and fingerless gloves. The box has neon green circuit-board patterns on black background, RGB glow effects in corners, text reading '[NAME] — LEGENDARY RANK EDITION'. Accessories: tiny gaming controller, miniature energy drink can, small trophy. Dark mode cyberpunk packaging photography.",
+    color: "lime"
+  },
+  {
+    name: "Fitness / Gym Edition",
+    category: "Fitness",
+    prompt: "Sports supplement-style collectible figure packaging. The highly detailed figure is [NAME] in athletic wear: [OUTFIT]. The box has a bold motivational design with energy burst graphics, reads '[NAME] — CHAMPION EDITION'. Accessories include: tiny dumbbell set, miniature water bottle, small medal. Packaging colors: electric blue and black. High-energy product photography, gym environment background blur.",
+    color: "indigo"
+  },
+  {
+    name: "Royal / Fantasy Edition",
+    category: "Fantasy",
+    prompt: "Fantasy collector figure in premium royal-themed packaging. The figure represents [NAME] as a medieval monarch or fantasy character — [COSTUME DESCRIPTION]: crown, elaborate robes, scepter. The box is deep purple with gold embossed borders and reads '[NAME] — ROYAL LEGACY EDITION' in gothic serif font. Accessories: tiny scroll, miniature crown, golden goblet. Museum-quality packaging photography, warm candlelight-toned lighting.",
+    color: "purple"
+  },
+  {
+    name: "Pet Companion Set",
+    category: "Pet Edition",
+    prompt: "A 'Pet & Owner' collectible figure 2-pack in a pastel window box. One figure represents [OWNER NAME] holding a leash, the other is a highly detailed miniature figurine of their [PET BREED] dog/cat. Both are dressed in matching [THEME/COLOR] outfits. Box text: '[NAME] & [PET NAME] COMPANION SET'. Pastel pink or mint green packaging, lifestyle pet brand photography style, soft studio lighting.",
+    color: "emerald"
+  },
+  {
+    name: "Artist / Creative Edition",
+    category: "Creative",
+    prompt: "Artisan collector figure in museum-quality packaging. The figure represents [NAME] as an artist in a paint-splattered smock, beret, and holding a tiny palette. The premium white box has gallery-style design with the artist's signature printed on the side. Accessories: miniature easel with tiny canvas, paint tube set, small sculpture. '[NAME] — CREATOR SERIES' in elegant minimal typography. Art gallery photography lighting, white background.",
+    color: "fuchsia"
+  },
+  {
+    name: "Birthday / Party Figure",
+    category: "Celebration",
+    prompt: "Birthday celebration edition figure in festive packaging. The figure is [NAME] in party outfit: [DESCRIPTION]. Box is bright yellow with confetti graphics, balloons, and reads '[NAME]'S BIRTHDAY EDITION — LIMITED RELEASE'. Accessories: tiny birthday cake with candles, mini party hat, small confetti popper. Fun celebratory packaging photography, vibrant retail lighting.",
+    color: "amber"
+  },
+  {
+    name: "Couple / Best Friends 2-Pack",
+    category: "2-Pack",
+    prompt: "A collector 2-pack featuring best friends or a couple as action figures. Figure 1 is [PERSON A] and Figure 2 is [PERSON B], posed side-by-side in matching [THEME] outfits. Box design is split down the middle — each half featuring one character's color scheme. Text reads: '[PERSON A] & [PERSON B] — DYNAMIC DUO SET'. Each figure has individual accessories. Friendship/couple lifestyle branding photography, warm toned lighting.",
+    color: "orange"
+  },
+  {
+    name: "Dog / Pet as Action Figure",
+    category: "Pet",
+    prompt: "Adorable action figure version of a [BREED] dog in blister pack packaging. The miniature figure captures the dog's real markings, fur color, and personality — sitting in a heroic pose with a tiny [ACCESSORY: cape, badge, toy]. Box reads '[DOG NAME] — K9 HERO EDITION' with paw print graphics, bold font, and the dog's face as the box character art. Pet product photography quality, clean white background.",
+    color: "brown"
+  }
+];
+
+const faqs = [
+  {
+    q: "What is the ChatGPT action figure prompt trend?",
+    a: "The ChatGPT action figure trend is a viral social media phenomenon where people use ChatGPT's GPT-4o image generation to turn photos of themselves (or others) into collectible toy-style action figures complete with blister pack packaging, accessories, and branded labels. It exploded across LinkedIn, Instagram, TikTok, and Twitter in early 2026."
+  },
+  {
+    q: "Which ChatGPT model do I need to use?",
+    a: "You need access to ChatGPT with image generation, powered by GPT-4o or GPT Image 2. Free users can generate images but have a daily limit. ChatGPT Plus subscribers get more generations. Simply paste the prompt and optionally upload a reference photo of yourself."
+  },
+  {
+    q: "Do I need to upload my photo?",
+    a: "No, you can use the prompts without a photo and ChatGPT will generate a fictional figure. For personalized results, upload a clear front-facing photo of yourself along with the prompt — ChatGPT will base the figure's likeness on your image."
+  },
+  {
+    q: "How do I customize these prompts?",
+    a: "Replace the bracketed placeholders like [NAME], [OUTFIT], and [ACCESSORIES] with your own details. The more specific you are, the better the result. Add details like hair color, clothing brands, personality traits, or even inside jokes to make it uniquely yours."
+  },
+  {
+    q: "Can I use these for Gemini or DALL-E too?",
+    a: "Yes. These prompts are optimized for ChatGPT but work well with Google Gemini (Nano Banana / Imagen 4) and GPT Image 2. Slight rewording may improve results depending on the model."
+  },
+  {
+    q: "Why does my result not look like the trend images I see?",
+    a: "Viral results usually come from very detailed prompts with specific packaging, accessories, and lighting instructions. Use the templates above, fill in every placeholder, and add a high-quality reference photo. If results are flat, try adding 'studio product photography, white background, commercial quality' to any prompt."
+  }
+];
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+
+  <!-- Hero Section -->
+  <section class="relative py-20 px-4 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-orange-500/10 via-amber-400/10 to-yellow-300/10"></div>
+    <div class="max-w-6xl mx-auto relative">
+      <div class="text-center">
+        <div class="inline-flex items-center gap-2 px-4 py-2 bg-orange-100 rounded-full mb-6">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-orange-600">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+          </svg>
+          <span class="text-sm font-medium text-orange-900">Viral Trend — April 2026</span>
+        </div>
+        <h1 class="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-orange-600 via-amber-500 to-yellow-500 bg-clip-text text-transparent">
+          ChatGPT Action Figure Prompt Generator
+        </h1>
+        <p class="text-xl text-gray-700 max-w-3xl mx-auto mb-8">
+          Use this ChatGPT action figure prompt generator to turn yourself (or anyone) into a collectible toy with blister pack, accessories, and custom branding. 20 free, copy-paste ready prompts for the viral trend.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4 mb-4">
+          <div class="flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-sm border border-orange-200">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-orange-500">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span class="text-sm font-medium text-gray-700">20 Free Prompts</span>
+          </div>
+          <div class="flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-sm border border-orange-200">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-orange-500">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span class="text-sm font-medium text-gray-700">Copy & Paste Ready</span>
+          </div>
+          <div class="flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-sm border border-orange-200">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-orange-500">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span class="text-sm font-medium text-gray-700">No Signup Required</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What is Section -->
+  <section class="max-w-4xl mx-auto px-4 py-10">
+    <div class="bg-white rounded-2xl shadow-xl p-8 mb-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">
+        What Is the ChatGPT Action Figure Trend?
+      </h2>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        The <strong>ChatGPT action figure prompt generator</strong> trend lets you transform any person — yourself, a friend, a celebrity, or a pet — into a hyper-realistic collectible toy image. Powered by ChatGPT's GPT-4o image model, the results look exactly like a premium action figure sealed in a blister pack, complete with personalized accessories, branded packaging, and a custom label.
+      </p>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        The trend went viral in early 2026, spreading across LinkedIn, Instagram, TikTok, and Twitter with millions of people sharing their personalized figures. What sets the best results apart is a detailed, structured prompt — which is exactly what this page provides.
+      </p>
+      <div class="bg-orange-50 border-l-4 border-orange-500 p-5 rounded-r-lg">
+        <p class="font-semibold text-orange-900 mb-2">How to use these prompts:</p>
+        <ol class="space-y-1 text-gray-700 text-sm list-decimal list-inside">
+          <li>Pick a prompt style below and click <strong>Copy</strong></li>
+          <li>Replace the <strong>[BRACKETED PLACEHOLDERS]</strong> with your own details</li>
+          <li>Open ChatGPT and paste the prompt (optionally upload a photo for likeness)</li>
+          <li>Generate and download your action figure image</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- Prompts Grid -->
+  <section class="max-w-6xl mx-auto px-4 py-8">
+    <div class="text-center mb-10">
+      <h2 class="text-4xl font-bold text-gray-900 mb-3">
+        20 Free ChatGPT Action Figure Prompts
+      </h2>
+      <p class="text-xl text-gray-600">
+        Copy any template, fill in the placeholders, and paste into ChatGPT
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      {prompts.map((item) => (
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+          <div class="p-6">
+            <div class="flex items-start justify-between mb-3">
+              <div>
+                <span class={`inline-block px-2.5 py-1 rounded-full text-xs font-semibold bg-${item.color}-100 text-${item.color}-800 mb-2`}>
+                  {item.category}
+                </span>
+                <h3 class="text-lg font-bold text-gray-900">{item.name}</h3>
+              </div>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-4 mb-3">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Prompt Template</span>
+                <button
+                  class="copy-prompt-btn flex items-center gap-1.5 px-3 py-1.5 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors text-sm font-medium"
+                  data-prompt={item.prompt}
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                  </svg>
+                  Copy
+                </button>
+              </div>
+              <p class="text-sm text-gray-700 leading-relaxed">{item.prompt}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Tips Section -->
+  <section class="max-w-4xl mx-auto px-4 py-12">
+    <div class="bg-gradient-to-br from-orange-50 to-amber-50 rounded-2xl shadow-xl p-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">
+        Tips for the Best ChatGPT Action Figure Results
+      </h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-white rounded-xl p-5">
+          <h3 class="font-bold text-gray-900 mb-3 flex items-center gap-2">
+            <span class="text-orange-500">✓</span> Do This
+          </h3>
+          <ul class="space-y-2 text-sm text-gray-700">
+            <li class="flex gap-2"><span class="text-green-500 flex-shrink-0">•</span> Upload a clear, well-lit front-facing photo</li>
+            <li class="flex gap-2"><span class="text-green-500 flex-shrink-0">•</span> Fill in every bracketed placeholder with specific details</li>
+            <li class="flex gap-2"><span class="text-green-500 flex-shrink-0">•</span> Name 3–5 specific accessories for a richer result</li>
+            <li class="flex gap-2"><span class="text-green-500 flex-shrink-0">•</span> Add "studio product photography, white background" for clean look</li>
+            <li class="flex gap-2"><span class="text-green-500 flex-shrink-0">•</span> Include personality traits or signature items (e.g., "always carries a coffee")</li>
+            <li class="flex gap-2"><span class="text-green-500 flex-shrink-0">•</span> Specify packaging colors to match your branding or personality</li>
+          </ul>
+        </div>
+        <div class="bg-white rounded-xl p-5">
+          <h3 class="font-bold text-gray-900 mb-3 flex items-center gap-2">
+            <span class="text-red-400">✗</span> Avoid This
+          </h3>
+          <ul class="space-y-2 text-sm text-gray-700">
+            <li class="flex gap-2"><span class="text-red-400 flex-shrink-0">•</span> Leaving placeholders unfilled — gives generic results</li>
+            <li class="flex gap-2"><span class="text-red-400 flex-shrink-0">•</span> Using blurry or dark reference photos</li>
+            <li class="flex gap-2"><span class="text-red-400 flex-shrink-0">•</span> Using only a few words — short prompts produce flat images</li>
+            <li class="flex gap-2"><span class="text-red-400 flex-shrink-0">•</span> Asking for real trademark packaging (e.g., actual Barbie brand)</li>
+            <li class="flex gap-2"><span class="text-red-400 flex-shrink-0">•</span> Generating figures of real celebrities without permission</li>
+            <li class="flex gap-2"><span class="text-red-400 flex-shrink-0">•</span> Giving up after one try — regenerate with minor tweaks</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-6 bg-white rounded-xl p-5">
+        <h3 class="font-bold text-gray-900 mb-3">Power Tip: Add These Phrases to Any Prompt</h3>
+        <div class="flex flex-wrap gap-2">
+          {["studio product photography", "white sweep background", "commercial quality", "sharp packaging detail", "toy aisle lighting", "blister pack sealed", "collector item", "hyper-realistic"].map((tag) => (
+            <span class="px-3 py-1.5 bg-orange-100 text-orange-800 rounded-full text-sm font-medium">{tag}</span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison / Platforms Section -->
+  <section class="max-w-4xl mx-auto px-4 py-8">
+    <div class="bg-white rounded-2xl shadow-xl p-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">
+        Which AI Model Gives the Best Action Figure Results?
+      </h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b-2 border-gray-200">
+              <th class="text-left py-3 pr-4 font-bold text-gray-700">Model</th>
+              <th class="text-left py-3 pr-4 font-bold text-gray-700">Likeness</th>
+              <th class="text-left py-3 pr-4 font-bold text-gray-700">Packaging Detail</th>
+              <th class="text-left py-3 font-bold text-gray-700">Best For</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-100">
+            <tr class="hover:bg-orange-50">
+              <td class="py-3 pr-4 font-semibold text-gray-900">ChatGPT (GPT-4o)</td>
+              <td class="py-3 pr-4"><span class="text-green-600 font-bold">Excellent</span></td>
+              <td class="py-3 pr-4"><span class="text-green-600 font-bold">Excellent</span></td>
+              <td class="py-3 text-gray-600">Overall best — viral trend standard</td>
+            </tr>
+            <tr class="hover:bg-orange-50">
+              <td class="py-3 pr-4 font-semibold text-gray-900">GPT Image 2</td>
+              <td class="py-3 pr-4"><span class="text-green-600 font-bold">Excellent</span></td>
+              <td class="py-3 pr-4"><span class="text-green-600 font-bold">Best-in-class</span></td>
+              <td class="py-3 text-gray-600">Highest detail, text rendering on box</td>
+            </tr>
+            <tr class="hover:bg-orange-50">
+              <td class="py-3 pr-4 font-semibold text-gray-900">Google Gemini (Imagen 4)</td>
+              <td class="py-3 pr-4"><span class="text-amber-500 font-bold">Good</span></td>
+              <td class="py-3 pr-4"><span class="text-amber-500 font-bold">Good</span></td>
+              <td class="py-3 text-gray-600">Free alternative, consistent quality</td>
+            </tr>
+            <tr class="hover:bg-orange-50">
+              <td class="py-3 pr-4 font-semibold text-gray-900">MidJourney V7</td>
+              <td class="py-3 pr-4"><span class="text-amber-500 font-bold">Moderate</span></td>
+              <td class="py-3 pr-4"><span class="text-green-600 font-bold">Excellent</span></td>
+              <td class="py-3 text-gray-600">Artistic packaging, stylized look</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="max-w-4xl mx-auto px-4 py-12">
+    <div class="bg-white rounded-2xl shadow-xl p-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8">
+        Frequently Asked Questions
+      </h2>
+      <div class="space-y-6">
+        {faqs.map((faq) => (
+          <div class="border-b border-gray-100 pb-6 last:border-0 last:pb-0">
+            <h3 class="font-bold text-gray-900 mb-2 text-lg">{faq.q}</h3>
+            <p class="text-gray-700 leading-relaxed">{faq.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Tools -->
+  <section class="max-w-4xl mx-auto px-4 py-12 mb-12">
+    <div class="bg-white rounded-2xl shadow-xl p-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">
+        More Viral AI Prompt Generators
+      </h2>
+      <p class="text-gray-700 mb-6">Keep up with the latest AI image trends:</p>
+      <div class="grid md:grid-cols-2 gap-4">
+        <a href="/gpt-image-2-prompt-generator" class="flex items-center gap-3 p-4 bg-gradient-to-r from-emerald-50 to-teal-50 rounded-xl hover:shadow-md transition-shadow border-2 border-emerald-200">
+          <div>
+            <div class="font-semibold text-gray-900">GPT Image 2 Prompt Generator <span class="text-xs bg-emerald-100 text-emerald-700 px-1.5 py-0.5 rounded-full ml-1">New</span></div>
+            <div class="text-sm text-gray-600">20 free prompts for OpenAI's latest image model</div>
+          </div>
+        </a>
+        <a href="/chatgpt-photo-editing-prompts" class="flex items-center gap-3 p-4 bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl hover:shadow-md transition-shadow">
+          <div>
+            <div class="font-semibold text-gray-900">ChatGPT Photo Editing Prompts</div>
+            <div class="text-sm text-gray-600">30+ templates for AI photo retouching</div>
+          </div>
+        </a>
+        <a href="/nano-banana-prompts" class="flex items-center gap-3 p-4 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-xl hover:shadow-md transition-shadow">
+          <div>
+            <div class="font-semibold text-gray-900">Nano Banana Prompts</div>
+            <div class="text-sm text-gray-600">Viral cat figurine AI prompts</div>
+          </div>
+        </a>
+        <a href="/gemini-photo-editing-prompts" class="flex items-center gap-3 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl hover:shadow-md transition-shadow">
+          <div>
+            <div class="font-semibold text-gray-900">Gemini Photo Editing Prompts</div>
+            <div class="text-sm text-gray-600">Edit photos with Google Gemini AI</div>
+          </div>
+        </a>
+        <a href="/veo-3-prompt-generator" class="flex items-center gap-3 p-4 bg-gradient-to-r from-violet-50 to-purple-50 rounded-xl hover:shadow-md transition-shadow">
+          <div>
+            <div class="font-semibold text-gray-900">Veo 3 Prompt Generator</div>
+            <div class="text-sm text-gray-600">AI video prompts for Google Veo 3</div>
+          </div>
+        </a>
+        <a href="/midjourney-ai-picture-generator" class="flex items-center gap-3 p-4 bg-gradient-to-r from-gray-50 to-slate-50 rounded-xl hover:shadow-md transition-shadow">
+          <div>
+            <div class="font-semibold text-gray-900">Midjourney Prompt Generator</div>
+            <div class="text-sm text-gray-600">Professional AI art prompts</div>
+          </div>
+        </a>
+      </div>
+      <div class="mt-6 pt-6 border-t border-gray-100 text-center">
+        <a href="/pricing" class="text-blue-600 hover:underline text-sm font-medium">Unlock unlimited AI prompts and exclusive generators with Pro →</a>
+      </div>
+    </div>
+  </section>
+
+  <AstroFooter />
+
+  <script>
+    document.querySelectorAll('.copy-prompt-btn').forEach(button => {
+      button.addEventListener('click', async () => {
+        const prompt = button.getAttribute('data-prompt');
+        try {
+          await navigator.clipboard.writeText(prompt || '');
+          const originalHTML = button.innerHTML;
+          button.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            Copied!
+          `;
+          setTimeout(() => {
+            button.innerHTML = originalHTML;
+          }, 2000);
+        } catch (err) {
+          console.error('Failed to copy:', err);
+        }
+      });
+    });
+  </script>
+</BaseLayout>
