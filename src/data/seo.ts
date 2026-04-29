@@ -398,6 +398,12 @@ export const seoData: Record<string, SEOData> = {
     title: 'ChatGPT Action Figure Prompt Generator — 20 Free Templates (Viral 2026)',
     description: 'ChatGPT action figure prompt generator with 20 free copy-paste templates. Turn yourself into a collectible toy with blister pack, accessories & custom label. Viral trend April 2026.',
     keywords: 'chatgpt action figure prompt, chatgpt action figure prompt generator, action figure prompt generator, ai action figure prompt, chatgpt toy figure prompt, action figure ai trend, chatgpt doll prompt'
+  },
+  kling3PromptGenerator: {
+    path: 'kling-3-prompt-generator',
+    title: 'Kling 3 Prompt Generator — Free AI Video Prompts (2026)',
+    description: 'Free Kling 3 prompt generator with 20 copy-ready prompts for Kuaishou\'s top-rated AI video model. Multi-shot sequences, cinematic narratives, brand videos — updated 2026.',
+    keywords: 'kling 3 prompt generator, kling 3 prompts, kling ai prompts, kling 3.0 prompt guide, kling ai video prompts, kling 3 prompt examples, kling video generator prompts, kuaishou kling prompts'
   }
 };
 

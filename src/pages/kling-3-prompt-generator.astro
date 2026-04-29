@@ -1,0 +1,405 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AstroHeader from '../components/AstroHeader.astro';
+import AstroFooter from '../components/AstroFooter.astro';
+import '../styles/global.css';
+
+const seo = {
+  path: 'kling-3-prompt-generator',
+  title: 'Kling 3 Prompt Generator — Free AI Video Prompts (2026)',
+  description: 'Free Kling 3 prompt generator with 20 copy-ready prompts for Kuaishou\'s top-rated AI video model. Multi-shot sequences, cinematic narratives, brand videos — updated 2026.',
+  keywords: 'kling 3 prompt generator, kling 3 prompts, kling ai prompts, kling 3.0 prompt guide, kling ai video prompts, kling 3 prompt examples, kling video generator prompts, kuaishou kling prompts'
+};
+
+const prompts = [
+  {
+    name: "Multi-Shot Brand Story",
+    category: "Commercial",
+    prompt: "Three-shot brand sequence: Shot 1 — extreme close-up of hands wrapping a product in kraft paper, warm studio light, satisfying tactile texture; Shot 2 — medium shot of a courier handing the package to a smiling customer at the door, golden hour, authentic residential street; Shot 3 — customer opening the package indoors, soft window light, genuine delight reaction. Each shot 4-5 seconds, seamless cuts, brand video tone, 4K.",
+    color: "orange"
+  },
+  {
+    name: "Cinematic Nature — Waterfall Reveal",
+    category: "Nature",
+    prompt: "Slow drone descent through dense rainforest canopy, mist rising between ancient moss-covered trees, sound of rushing water building, camera breaks through the treeline to reveal a 60-meter waterfall crashing into an emerald pool, spray catching the morning light, rainbow forming in the mist. BBC Planet Earth production quality, photorealistic, native ambient audio, 4K.",
+    color: "emerald"
+  },
+  {
+    name: "Urban Street Style Reel",
+    category: "Social Media",
+    prompt: "Vertical 9:16 street style video: confident young woman in an oversized leather jacket walks through a rain-slicked Tokyo alley at night, neon reflections on wet pavement, she glances at camera then looks away, outfit in sharp focus, background bokeh, lo-fi hip-hop beat implied in the ambient sound, 8-second loop, TikTok/Reels format.",
+    color: "violet"
+  },
+  {
+    name: "Romantic Dialogue Scene",
+    category: "Drama",
+    prompt: "Two-shot dialogue scene on a Paris rooftop at dusk: a man and woman face each other, city lights behind them softening to bokeh, he reaches out and tucks a strand of hair behind her ear, she looks down smiling, cuts to close-up of her eyes meeting his, soft ambient Paris soundscape, warm film emulation color grade, 12 seconds total, Netflix romance film quality.",
+    color: "rose"
+  },
+  {
+    name: "Athlete Slow-Motion Performance",
+    category: "Sports",
+    prompt: "Ultra-slow-motion sequence (240fps effect) of a female gymnast's floor routine: she launches into a full layout, body perfectly horizontal in the air, chalk dust frozen mid-air around her hands, stadium floodlights casting hard shadows, crowd blurred behind, lands with precision, expression fierce then relieved. Sports broadcast aesthetic, ESPN quality, dynamic music cut implied.",
+    color: "red"
+  },
+  {
+    name: "Sci-Fi Corridor Exploration",
+    category: "Sci-Fi",
+    prompt: "First-person POV walking through a derelict space station corridor, emergency red lighting, floating debris in zero gravity, condensation on metallic walls, a door ahead slowly opens revealing a vast star field through a shattered viewport, Earth visible below, complete silence then the rush of decompression sound begins, photorealistic VFX quality, 15 seconds.",
+    color: "indigo"
+  },
+  {
+    name: "Luxury Car Advertisement",
+    category: "Commercial",
+    prompt: "Multi-angle luxury SUV ad sequence: Shot 1 — exterior hero shot, matte black SUV cresting a mountain pass at blue hour, headlights cutting through thin fog; Shot 2 — interior detail close-up, stitched leather steering wheel, digital dashboard activating; Shot 3 — aerial tracking shot following the vehicle along a coastal cliff road at sunset. Automotive ad production quality, 15 seconds, orchestral score cue.",
+    color: "gray"
+  },
+  {
+    name: "Chef Cooking ASMR Sequence",
+    category: "Food",
+    prompt: "Three-shot ASMR cooking sequence with native audio: Shot 1 — close-up of beef sizzling in a cast iron pan, fat bubbling, tongs flipping with a satisfying sear sound; Shot 2 — chef adding fleur de sel from height, salt crystals catching the kitchen light; Shot 3 — finished plated dish sliding onto a slate board, steam rising, restaurant kitchen ambient sounds. Michelin-star food video quality.",
+    color: "amber"
+  },
+  {
+    name: "Horror Tension Builder",
+    category: "Horror",
+    prompt: "POV sequence through a Victorian house at night: camera tracks slowly down a hallway, oil lamp flickering, a child's toy box sitting open with a ballerina spinning silently inside, camera approaches, the music box stops mid-rotation, a door at the end of the hall clicks open an inch on its own, cold air visible as breath fog, complete silence except for a heartbeat, 12 seconds of pure dread.",
+    color: "slate"
+  },
+  {
+    name: "Travel Destination Reel",
+    category: "Lifestyle",
+    prompt: "Fast-cut travel reel for the Amalfi Coast: opening aerial of cliffside villages at golden hour, cut to vibrant fish market, local vendor holding up a lemon, cut to moped weaving through narrow cobblestone lanes, cut to close-up of a seafood pasta bowl steaming, final wide shot of a sunset sailboat. Total 15 seconds, upbeat Mediterranean music implied, Instagram Reels format.",
+    color: "sky"
+  },
+  {
+    name: "Wedding Highlight Sequence",
+    category: "Wedding",
+    prompt: "Wedding film highlight sequence: slow-motion bride walking down an aisle through dappled forest light, flower petals swirling, cut to groom's reaction close-up, eyes glistening, cut to the couple's hands as the ring slides on, cut to wide shot of first kiss with guests erupting, confetti falling in slow motion, warm film emulation, golden hour color grade, emotional piano score implied.",
+    color: "pink"
+  },
+  {
+    name: "Corporate B-Roll Montage",
+    category: "Business",
+    prompt: "Corporate office b-roll sequence for a tech company: Shot 1 — hands typing on a glass-edge laptop in a bright open-plan office, bokeh behind; Shot 2 — diverse team collaborating around a standing whiteboard, genuine energy; Shot 3 — medium close-up of a woman presenting to a room, screen behind her showing charts; Shot 4 — exterior glass building facade, drone pulling back to reveal the city. Professional business video, natural light, authentic.",
+    color: "blue"
+  },
+  {
+    name: "Music Video Abstract",
+    category: "Music",
+    prompt: "Abstract music video sequence: a female singer stands in a mirrored room, infinite reflections extending in every direction, neon light strips casting cyan and magenta, she lip-syncs with intensity, camera orbits slowly, on the beat a shattering effect ripples through all reflections simultaneously, fragments floating, reconstructing. K-pop/Pop art direction quality, 3:4 portrait format.",
+    color: "fuchsia"
+  },
+  {
+    name: "Historical Documentary Style",
+    category: "Documentary",
+    prompt: "Documentary re-enactment of medieval blacksmithing: a smithy at work in a stone forge, 1200 CE aesthetic, glowing iron being hammered on an anvil, sparks exploding in slow motion, bellows being worked, orange forge glow illuminating sweat-drenched face, handheld camera with slight jitter for authenticity, muted earthy color grade, PBS documentary narration space, 10 seconds.",
+    color: "stone"
+  },
+  {
+    name: "Children's Story Animation Sequence",
+    category: "Animation",
+    prompt: "2D animated sequence in the style of modern Cartoon Network shows: a small hedgehog detective in a tiny trench coat examines a magnifying glass clue in a colorful market square, townspeople going about their day in the background, expressive character animation, bouncy timing, pastel colors with warm highlights, gentle adventure music implied, all-ages tone, 8 seconds.",
+    color: "teal"
+  },
+  {
+    name: "Fitness Motivation Montage",
+    category: "Sports",
+    prompt: "High-energy fitness montage: early morning 5AM alarm close-up, cut to lacing up running shoes in darkness, cut to runner emerging into dawn light on an empty street, cut to weight training rack loaded heavy, slow-motion barbell lockout at the top, cut to sweat dripping in extreme close-up, final shot — athlete standing at a summit at sunrise, breathing hard. 15 seconds, motivational energy, no dialogue.",
+    color: "green"
+  },
+  {
+    name: "Fashion Editorial Sequence",
+    category: "Fashion",
+    prompt: "High fashion editorial video: a model in a sculptural avant-garde gown on the steps of a marble building at dawn, two camera moves — a wide establishing shot pulling focus from architecture to model, then a slow intimate close-up of the fabric's texture in a breeze, Vogue editorial color grade, cold pale blue tones, near-silence with ambient city waking, 10 seconds, luxury brand tone.",
+    color: "purple"
+  },
+  {
+    name: "Real Estate Walkthrough",
+    category: "Real Estate",
+    prompt: "Luxury apartment walkthrough: smooth gimbal shot entering the front door revealing an open-plan living room with floor-to-ceiling windows and a Manhattan skyline view at dusk, camera glides to the kitchen island — marble counters, wine glasses pre-set — then pans to the master bedroom door opening to reveal a bed with city view beyond, warm ambient lighting, orchestral accent, 15 seconds.",
+    color: "yellow"
+  },
+  {
+    name: "Product Launch Countdown",
+    category: "Commercial",
+    prompt: "Tech product reveal sequence: dark void, a subtle glow appears, particles coalesce around the outline of a sleek device, light sweep reveals brushed aluminum texture and edge-to-edge display, text 'Coming May 2026' fades in below, soft electronic score building to a beat drop, ends on logo reveal, Apple launch event aesthetic, 12 seconds, 16:9.",
+    color: "cyan"
+  },
+  {
+    name: "Street Photography Montage",
+    category: "Documentary",
+    prompt: "Black and white street photography montage from a rainy city: a lone figure under an umbrella at a crosswalk, taxis blurring past, cut to close-up of puddle reflection showing an inverted skyline, cut to newspaper vendor in a doorway watching the rain, cut to children jumping a puddle laughing, cut back to wide lonely street as lights change green. Silent film aesthetic, jazz score space, high grain, timeless.",
+    color: "zinc"
+  }
+];
+
+const faqs = [
+  {
+    q: "What is the Kling 3 prompt generator?",
+    a: "The Kling 3 prompt generator on this page provides 20 free, copy-ready prompts specifically crafted for Kuaishou's Kling 3.0 AI video model. Each prompt is structured with camera direction, multi-shot sequencing, lighting, audio cues, and style references that take full advantage of Kling 3's advanced capabilities — including native audio generation, 15-second clips, and multi-shot sequences."
+  },
+  {
+    q: "What is Kling 3.0 and who made it?",
+    a: "Kling 3.0 is an AI video generation model developed by Kuaishou, one of China's largest technology companies. As of 2026, Kling 3.0 is widely ranked as the strongest value AI video model available — excelling at cinematic multi-shot sequences, native audio and dialogue generation, realistic motion physics, and character consistency across shots. It competes directly with Google's Veo 3 and Runway Gen-4."
+  },
+  {
+    q: "How is Kling 3 different from Veo 3?",
+    a: "Kling 3 and Veo 3 are both top-tier AI video models in 2026, but they have different strengths. Kling 3.0 is particularly strong at multi-shot sequences (up to 6 camera angles in a single 15-second generation), character consistency across cuts, and structured cinematic narratives. Veo 3.1 tends to excel at single-shot photorealistic clips and native audio quality. For commercial and narrative video work, Kling 3 is often the preferred choice."
+  },
+  {
+    q: "How do I write a good Kling 3 prompt?",
+    a: "Effective Kling 3 prompts follow a structured format: (1) Specify the number of shots and their order if using multi-shot mode, (2) Describe subject + action for each shot, (3) Include camera movement (tracking, aerial, POV, slow-motion), (4) Add lighting and atmosphere, (5) Include audio cues — Kling 3 generates native sound, so describing ambient audio improves results, (6) End with a style reference and duration hint. More specificity consistently delivers better output."
+  },
+  {
+    q: "What is Kling 3's multi-shot feature?",
+    a: "Kling 3.0 can generate up to 6 distinct camera angles and shots within a single 15-second video output, with natural cuts and transitions between them. This is unique among AI video models and makes Kling 3 exceptionally useful for storytelling, brand videos, and cinematic sequences that would otherwise require manual editing of multiple AI clips. Specify each shot in numbered sequence in your prompt for best results."
+  },
+  {
+    q: "Is Kling 3 free to use?",
+    a: "Kling 3.0 is available through Kuaishou's platform and third-party API providers including fal.ai. Access and pricing vary by platform — some offer free trial credits while professional production use typically requires a paid plan. Check the latest pricing on the platform you're using, as availability and costs change frequently in the AI video space."
+  }
+];
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-br from-orange-600 via-red-600 to-rose-700 text-white py-16">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <div class="inline-flex items-center gap-2 bg-white/20 rounded-full px-4 py-1.5 text-sm font-medium mb-6">
+        <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+        Kling 3.0 — Top-rated AI video model 2026
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">
+        Kling 3 Prompt Generator
+      </h1>
+      <p class="text-xl text-orange-100 max-w-2xl mx-auto">
+        The Kling 3 prompt generator gives you 20 free, copy-ready prompts for Kuaishou's most powerful AI video model — optimized for multi-shot sequences, cinematic narratives, and native audio. No signup required.
+      </p>
+    </div>
+  </div>
+
+  <div class="max-w-4xl mx-auto px-4 py-12">
+
+    <!-- What is Kling 3 Section -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">What is the Kling 3 Prompt Generator?</h2>
+      <p class="text-gray-700 mb-4">
+        The <strong>Kling 3 prompt generator</strong> on this page provides 20 professionally crafted, copy-ready prompts for <strong>Kling 3.0</strong>, Kuaishou's flagship AI video model and one of the top-rated video generation tools in 2026. Each prompt is built to leverage Kling 3's standout capabilities: multi-shot sequences, native audio generation, 15-second clip length, and exceptional character consistency across cuts.
+      </p>
+      <p class="text-gray-700 mb-4">
+        What makes Kling 3 a different beast from other AI video models is its cinematic intelligence. It doesn't just render a single continuous scene — it understands narrative structure, can produce up to 6 camera angles in one generation, and syncs natural-sounding audio to the visual content. For creators building brand videos, short films, or social media content, Kling 3 is often the fastest path from prompt to publishable output.
+      </p>
+      <p class="text-gray-700">
+        Every prompt below is ready to copy and paste directly into Kling 3.0. Each specifies shot structure, camera movement, lighting, audio atmosphere, and a style reference — so you get consistent, high-quality results without trial and error.
+      </p>
+    </section>
+
+    <!-- Prompt Structure Box -->
+    <section class="mb-12 bg-gradient-to-r from-orange-50 to-red-50 rounded-2xl p-8 border border-orange-200">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">How to Write a Kling 3 Prompt</h2>
+      <p class="text-gray-700 mb-4">Use this structure for single-shot and multi-shot Kling 3 prompts:</p>
+      <div class="bg-white rounded-lg p-6 border border-orange-300 mb-6 font-mono text-sm text-gray-800 leading-relaxed">
+        [Shot count if multi-shot: "Three-shot sequence:"] Shot 1 — [camera type + subject + action], [location], [lighting]; Shot 2 — [next beat]; Shot N — [final beat]. [Overall style reference], [audio cue], [duration], [format].
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Kling 3 Camera Moves:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
+            <li>Drone aerial / tracking shot</li>
+            <li>Gimbal walkthrough / reveal</li>
+            <li>POV first-person</li>
+            <li>Ultra slow-motion (240fps effect)</li>
+            <li>Orbit / 360° around subject</li>
+            <li>Push-in / zoom reveal</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Audio Cues That Help:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
+            <li>"Native ambient sound"</li>
+            <li>"orchestral score cue"</li>
+            <li>"ASMR audio, no music"</li>
+            <li>"upbeat music implied"</li>
+            <li>"near-silence with ambient room tone"</li>
+            <li>"heartbeat sound effect"</li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-6 p-4 bg-orange-100 rounded-lg border border-orange-300">
+        <p class="text-sm text-orange-900 font-medium">Kling 3's secret weapon — multi-shot sequencing:</p>
+        <p class="text-sm text-orange-800 mt-1">Number your shots explicitly ("Shot 1 —", "Shot 2 —") and Kling 3 will generate them as a cohesive edited sequence with natural cuts. This produces output that looks like a professionally edited video, not a single continuous AI clip.</p>
+      </div>
+    </section>
+
+    <!-- Prompts Grid -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-2 text-center">20 Free Kling 3 Prompts — Copy & Paste</h2>
+      <p class="text-center text-gray-500 mb-8 text-sm">Click any prompt to copy it — paste directly into Kling 3.0</p>
+
+      <div class="space-y-4">
+        {prompts.map((item, index) => (
+          <div class="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-start justify-between gap-4 mb-3">
+              <div>
+                <h3 class="text-lg font-bold text-gray-900">
+                  <span class="text-orange-600">{index + 1}.</span> {item.name}
+                </h3>
+                <span class="inline-block mt-1 text-xs font-medium bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full">
+                  {item.category}
+                </span>
+              </div>
+              <button
+                class="copy-btn flex-shrink-0 px-4 py-2 bg-orange-600 text-white text-sm font-medium rounded-lg hover:bg-orange-700 transition-colors"
+                data-text={item.prompt}
+              >
+                Copy
+              </button>
+            </div>
+            <p class="text-gray-700 text-sm leading-relaxed">{item.prompt}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Kling 3 vs Competitors -->
+    <section class="mb-12 bg-gradient-to-r from-slate-50 to-gray-50 rounded-2xl p-8 border border-gray-200">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Kling 3 vs. Other AI Video Models (2026)</h2>
+      <p class="text-gray-700 mb-6">Choosing the right AI video model for your use case saves hours. Here's how Kling 3.0 compares to the top alternatives:</p>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-gray-100">
+              <th class="text-left p-3 font-semibold text-gray-900 border border-gray-200">Model</th>
+              <th class="text-left p-3 font-semibold text-gray-900 border border-gray-200">Best For</th>
+              <th class="text-left p-3 font-semibold text-gray-900 border border-gray-200">Key Advantage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bg-orange-50">
+              <td class="p-3 font-semibold text-orange-800 border border-gray-200">Kling 3.0</td>
+              <td class="p-3 text-gray-700 border border-gray-200">Brand videos, narratives, multi-shot sequences</td>
+              <td class="p-3 text-gray-700 border border-gray-200">Multi-shot in one generation, native audio, character consistency</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-gray-700 border border-gray-200">Google Veo 3.1</td>
+              <td class="p-3 text-gray-700 border border-gray-200">Single-shot photorealistic clips, nature, physics</td>
+              <td class="p-3 text-gray-700 border border-gray-200">Best single-shot realism; free for all Google users</td>
+            </tr>
+            <tr class="bg-gray-50">
+              <td class="p-3 font-semibold text-gray-700 border border-gray-200">Runway Gen-4.5</td>
+              <td class="p-3 text-gray-700 border border-gray-200">Creative control, style transfer, film production</td>
+              <td class="p-3 text-gray-700 border border-gray-200">Most granular camera and style control</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-gray-700 border border-gray-200">Seedance 2.0</td>
+              <td class="p-3 text-gray-700 border border-gray-200">Image-to-video, social media clips</td>
+              <td class="p-3 text-gray-700 border border-gray-200">Hottest image-to-video fidelity; integrates with CapCut</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Tips Section -->
+    <section class="mb-12 bg-gradient-to-r from-amber-50 to-orange-50 rounded-2xl p-8 border border-amber-200">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Kling 3 Prompting Tips for Better Results</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-3">Do This:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-2 text-sm">
+            <li>Number your shots explicitly for multi-shot output</li>
+            <li>Describe audio environment — Kling 3 generates native sound</li>
+            <li>Specify character clothing and appearance consistently across shots</li>
+            <li>Include lighting time and source (golden hour, studio, neon)</li>
+            <li>Add a total duration hint (8s, 12s, or 15s max)</li>
+            <li>Reference a production style (Netflix, BBC, Apple ad)</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-3">Avoid This:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-2 text-sm">
+            <li>Prompts asking for more than 6 shots in one generation</li>
+            <li>Conflicting camera movements in the same shot description</li>
+            <li>Vague descriptors like "nice" or "cool looking"</li>
+            <li>Copyrighted characters or trademarked brands</li>
+            <li>Prompts over 250 words (diminishing returns)</li>
+            <li>Ignoring audio — silence instructions improve sound quality too</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions — Kling 3</h2>
+      <div class="space-y-4">
+        {faqs.map(faq => (
+          <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">{faq.q}</h3>
+            <p class="text-gray-700">{faq.a}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Related Tools -->
+    <section class="bg-white rounded-2xl border border-gray-200 p-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">More AI Video & Prompt Tools</h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        <a href="/veo-3-prompt-generator" class="p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
+          <h3 class="font-semibold text-blue-900">Veo 3 Prompt Generator</h3>
+          <p class="text-sm text-blue-700">Google's free AI video model — optimized prompts for Veo 3.1</p>
+        </a>
+        <a href="/tools/video-ai-generation" class="p-4 bg-violet-50 rounded-lg hover:bg-violet-100 transition-colors">
+          <h3 class="font-semibold text-violet-900">AI Video Prompt Builder</h3>
+          <p class="text-sm text-violet-700">Build structured video prompts for Kling, Veo & Runway</p>
+        </a>
+        <a href="/gpt-image-2-prompt-generator" class="p-4 bg-emerald-50 rounded-lg hover:bg-emerald-100 transition-colors">
+          <h3 class="font-semibold text-emerald-900">GPT Image 2 Prompt Generator</h3>
+          <p class="text-sm text-emerald-700">OpenAI's latest image model — 20 free copy-paste prompts</p>
+        </a>
+        <a href="/tools/text-to-prompt" class="p-4 bg-orange-50 rounded-lg hover:bg-orange-100 transition-colors">
+          <h3 class="font-semibold text-orange-900">Text to Prompt Expander</h3>
+          <p class="text-sm text-orange-700">Turn a rough idea into a detailed Kling 3 prompt</p>
+        </a>
+        <a href="/midjourney-ai-picture-generator" class="p-4 bg-pink-50 rounded-lg hover:bg-pink-100 transition-colors">
+          <h3 class="font-semibold text-pink-900">MidJourney Prompt Generator</h3>
+          <p class="text-sm text-pink-700">AI image prompts for MidJourney V7</p>
+        </a>
+        <a href="/ai-images-prompt" class="p-4 bg-indigo-50 rounded-lg hover:bg-indigo-100 transition-colors">
+          <h3 class="font-semibold text-indigo-900">AI Image Prompt Generator</h3>
+          <p class="text-sm text-indigo-700">Universal prompts for DALL-E, Stable Diffusion & all models</p>
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <AstroFooter />
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.copy-btn').forEach(button => {
+        button.addEventListener('click', async () => {
+          const text = button.getAttribute('data-text');
+          try {
+            await navigator.clipboard.writeText(text);
+            const orig = button.textContent;
+            button.textContent = 'Copied!';
+            button.classList.replace('bg-orange-600', 'bg-green-600');
+            button.classList.replace('hover:bg-orange-700', 'hover:bg-green-700');
+            setTimeout(() => {
+              button.textContent = orig;
+              button.classList.replace('bg-green-600', 'bg-orange-600');
+              button.classList.replace('hover:bg-green-700', 'hover:bg-orange-700');
+            }, 2000);
+          } catch {
+            button.textContent = 'Copy failed';
+          }
+        });
+      });
+    });
+  </script>
+</BaseLayout>
