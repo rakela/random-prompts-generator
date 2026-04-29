@@ -13,6 +13,7 @@
     "generate-sitemap": "node scripts/generate-sitemap.js",
     "prerender": "node scripts/prerender.js",
     "lint": "eslint . --ext js,jsx,ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "gsc:auth": "node scripts/gsc-auth.js",
     "gsc": "node scripts/fetch-gsc-data.js",
     "gsc:28": "node scripts/fetch-gsc-data.js --days 28"
   },
