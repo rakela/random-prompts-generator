@@ -12,7 +12,9 @@
     "generate-og-image": "node scripts/create-og-image-png.js",
     "generate-sitemap": "node scripts/generate-sitemap.js",
     "prerender": "node scripts/prerender.js",
-    "lint": "eslint . --ext js,jsx,ts,tsx --report-unused-disable-directives --max-warnings 0"
+    "lint": "eslint . --ext js,jsx,ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "gsc": "node scripts/fetch-gsc-data.js",
+    "gsc:28": "node scripts/fetch-gsc-data.js --days 28"
   },
   "dependencies": {
     "@astrojs/react": "^4.4.2",
@@ -39,6 +41,7 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
+    "googleapis": "^171.4.0",
     "postcss": "^8.4.27",
     "sharp": "^0.34.4",
     "tailwindcss": "^3.4.18",
