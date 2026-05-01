@@ -1,0 +1,411 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AstroHeader from '../components/AstroHeader.astro';
+import AstroFooter from '../components/AstroFooter.astro';
+import '../styles/global.css';
+
+const seo = {
+  path: 'grok-imagine-prompt-generator',
+  title: 'Grok Imagine Prompt Generator — 20 Free Prompts (xAI, 2026)',
+  description: 'Free Grok Imagine prompt generator with 20 copy-ready prompts for xAI\'s FLUX.1-powered image tool. Portraits, fantasy art, architecture, abstract & more. No signup needed.',
+  keywords: 'grok imagine prompt generator, grok imagine prompts, grok imagine prompt, xai grok image prompts, grok imagine examples, grok ai image generator prompts, grok flux prompts, grok imagine guide 2026'
+};
+
+const prompts = [
+  {
+    name: "Golden Hour Portrait",
+    category: "Portrait",
+    prompt: "A young woman with freckles and auburn hair sitting by a window at golden hour, warm sunlight catching the dust in the air, soft expression, natural skin texture, shallow depth of field with bokeh background of a cozy coffee shop, film photography aesthetic, intimate and candid.",
+    color: "amber"
+  },
+  {
+    name: "Ancient Forest Spirit",
+    category: "Fantasy",
+    prompt: "A towering forest spirit made of twisted ancient oak roots and glowing moss, standing in a misty old-growth forest at dawn, bioluminescent blue-green light emanating from cracks in its bark-like skin, birds perched on its outstretched arms, Studio Ghibli-inspired painterly style, magical realism.",
+    color: "emerald"
+  },
+  {
+    name: "Brutalist Architecture — Night",
+    category: "Architecture",
+    prompt: "Dramatic brutalist concrete apartment tower at night, heavy geometric shadows, a single lit window halfway up casting a warm orange rectangle against the cold grey facade, dramatic side lighting, low angle looking up, high contrast black and white photography, architectural photography award quality.",
+    color: "slate"
+  },
+  {
+    name: "Hyperrealistic Product Shot",
+    category: "Commercial",
+    prompt: "A frosted glass bottle of premium skincare serum on a polished dark marble surface, morning light coming from the left catching the glass texture and creating a soft caustic light pattern, single eucalyptus sprig beside it, clean negative space, commercial product photography, beauty brand aesthetic, ultra high resolution.",
+    color: "teal"
+  },
+  {
+    name: "Cyberpunk Street Food Vendor",
+    category: "Cyberpunk",
+    prompt: "A street food vendor operating a noodle stall under neon signs in a rain-soaked Neo-Tokyo alley at 2 AM, steam rising from the broth, neon reflections in puddles, customers with umbrella reflections, cyberpunk atmosphere, wires and pipes overhead, photorealistic, cinematic color grade in teal and orange.",
+    color: "cyan"
+  },
+  {
+    name: "Vintage Botanical Illustration",
+    category: "Illustration",
+    prompt: "A Victorian-era scientific botanical illustration of an imaginary tropical plant with large crimson leaves and deep violet seed pods, hand-painted watercolor style on aged cream paper, precise latin taxonomy labels in fine ink cursive, natural history museum quality, 1870s aesthetic.",
+    color: "rose"
+  },
+  {
+    name: "Surreal Desert Architecture",
+    category: "Surreal",
+    prompt: "A vast Sahara desert at midday with a pristine white marble library emerging from the sand dunes, its classical columns half-buried, interior visible through open doors showing glowing bookshelves extending into infinity, surrealist hyper-detailed, René Magritte meets Giorgio de Chirico, dreamlike silence.",
+    color: "yellow"
+  },
+  {
+    name: "Deep Sea Creature — Bioluminescent",
+    category: "Nature",
+    prompt: "A newly discovered deep-sea creature resembling a cross between a jellyfish and a manta ray, completely bioluminescent in electric blue and violet, trailing long translucent tendrils, photographed at 3000m depth, pitch black ocean background with suspended particles, BBC Blue Planet II documentary quality, macro focus.",
+    color: "indigo"
+  },
+  {
+    name: "Renaissance AI Portrait",
+    category: "Art Style",
+    prompt: "A formal Renaissance oil portrait of a female software engineer, she wears a dark velvet jacket instead of period clothing but the composition follows Flemish master convention — three-quarter view, dark neutral background, soft raking light, luminous skin, her laptop open in her lap the way a subject might hold a book. Vermeer lighting.",
+    color: "orange"
+  },
+  {
+    name: "Minimalist Japanese Zen Garden",
+    category: "Architecture",
+    prompt: "An immaculate karesansui (dry rock garden) in early morning mist, perfectly raked white gravel, three moss-covered stones, a single ginkgo leaf fallen at the edge, framed by a traditional wooden veranda, extreme compositional simplicity, desaturated palette with one warm ochre accent, Hiroshi Sugimoto photographic stillness.",
+    color: "stone"
+  },
+  {
+    name: "Steampunk Airship Interior",
+    category: "Steampunk",
+    prompt: "The ornate captain's bridge of a Victorian steampunk airship, brass gauges and copper pipes covering every surface, a large circular viewport looking out over clouds at sunset, a leather-gloved captain's hand on a telegraph wheel, warm gaslight glow, dark polished wood paneling, ultra-detailed, adventure novel cover illustration quality.",
+    color: "amber"
+  },
+  {
+    name: "Abstract Emotion — Grief",
+    category: "Abstract",
+    prompt: "Abstract digital painting representing grief: fractured navy and cobalt blue glass shards floating in slow suspension against a charcoal background, one fragment catching a thin bar of silver light that breaks into a spectrum where it exits the piece, geometric but emotionally resonant, 4K fine art print quality.",
+    color: "blue"
+  },
+  {
+    name: "Street Style — East London",
+    category: "Fashion",
+    prompt: "An editorial street fashion photograph shot in Brick Lane, East London, overcast flat lighting that makes colours pop, a tall subject in an oversized electric yellow tracksuit and vintage Nike Air Max, candid walking pose, shot at 35mm, light grain, authentic street energy, i-D magazine aesthetic.",
+    color: "yellow"
+  },
+  {
+    name: "Macro Frost Crystals",
+    category: "Nature",
+    prompt: "Extreme macro photograph of frost crystals forming on a dead leaf, each crystal branching with perfect hexagonal symmetry, backlit with a soft pink dawn sky creating a translucent glow through the ice, water droplets suspended mid-crystallisation, scientific precision meets artistic beauty, National Geographic quality.",
+    color: "sky"
+  },
+  {
+    name: "Abandoned Soviet Cosmodrome",
+    category: "Documentary",
+    prompt: "Interior of an abandoned Soviet-era cosmodrome assembly hall, a half-built rocket on a rusted gantry, shafts of dusty light coming through broken skylights 50 metres above, peeling propaganda murals on the far wall, scattered technical blueprints on the floor, time-capsule decay, photorealistic urban exploration photography.",
+    color: "zinc"
+  },
+  {
+    name: "Children's Book — Dragon Friend",
+    category: "Illustration",
+    prompt: "A warm and whimsical children's book illustration: a small girl with pigtails sharing her sandwich with a tiny aquamarine dragon no bigger than a cat, sitting together on a mossy stone wall at the edge of a sunlit meadow, the dragon has puppy eyes and wings too big for its body, gouache painting style, Beatrix Potter warmth.",
+    color: "green"
+  },
+  {
+    name: "Neon Sign Desert Motel",
+    category: "Americana",
+    prompt: "A 1950s roadside motel in the Nevada desert at dusk, a flickering neon 'VACANCY' sign in pink and turquoise, one car in the parking lot, telephone poles disappearing into a purple-orange horizon, Edward Hopper loneliness and Americana nostalgia, wide-angle shot, film grain, analog warmth.",
+    color: "pink"
+  },
+  {
+    name: "Futuristic Cityscape — Vertical Farm",
+    category: "Sci-Fi",
+    prompt: "A mid-21st-century city skyline where skyscrapers are vertical farms — tower facades covered in terraced hydroponic gardens, rice paddies on the 40th floor, vines cascading down glass panels, drone delivery vehicles weaving between foliage, late afternoon golden light, solarpunk architectural vision, photorealistic.",
+    color: "lime"
+  },
+  {
+    name: "Ink Wash — Samurai",
+    category: "Art Style",
+    prompt: "Traditional Japanese sumi-e ink wash painting of a lone samurai standing at the edge of a cliff in heavy rain, rendered in minimal brushstrokes with masterful use of empty space, ink running and pooling to suggest rain, cherry blossom petals blowing past, museum-quality contemporary sumi-e, signed bottom right.",
+    color: "gray"
+  },
+  {
+    name: "The Last Bookshop",
+    category: "Concept",
+    prompt: "A cosy independent bookshop squeezed between glass skyscrapers in a future metropolis, warm lamplight from inside the shop window glowing against the cold blue steel of the towers, a handwritten 'Open' sign, rain on the pavement reflecting the contrast, melancholy optimism, cinematic widescreen composition, Canon EOS R5 aesthetic.",
+    color: "violet"
+  }
+];
+
+const faqs = [
+  {
+    q: "What is the Grok Imagine prompt generator?",
+    a: "The Grok Imagine prompt generator on this page provides 20 free, professionally written prompts designed for xAI's Grok Imagine image generation tool. Each prompt is crafted for Grok Imagine's FLUX.1-based model, which responds particularly well to natural, descriptive language — no special syntax or parameter codes needed. Copy any prompt directly and paste it into Grok Imagine for immediate results."
+  },
+  {
+    q: "What is Grok Imagine and who made it?",
+    a: "Grok Imagine is the AI image generation capability built into Grok, xAI's AI assistant developed by Elon Musk's company. Grok Imagine runs on a version of Black Forest Labs' FLUX.1 model, one of the most capable open-weight image generation architectures available in 2026. It became a viral trend in April 2026 following widespread sharing of Grok-generated images on X (formerly Twitter). Grok Imagine is accessible to X Premium subscribers and through the Grok standalone app."
+  },
+  {
+    q: "How do I write a good Grok Imagine prompt?",
+    a: "Grok Imagine uses FLUX.1 under the hood, which is trained on natural language descriptions rather than comma-separated keyword lists. The most effective Grok Imagine prompts read like a paragraph written by a professional photographer or art director: (1) describe the main subject clearly, (2) specify the environment and lighting, (3) name the mood or emotion, (4) reference a visual style or photography aesthetic, and (5) optionally mention technical details like camera format or time of day. Avoid one-word descriptions — the more specific and vivid, the better."
+  },
+  {
+    q: "Is Grok Imagine free to use?",
+    a: "Grok Imagine is included with X Premium subscriptions (X Premium and X Premium+). Basic access to Grok is available to all X users with limited daily generation credits. Grok can also be accessed via the standalone Grok.com interface, where image generation is available with a Grok subscription. Credit limits and tier pricing change frequently — check xAI's current pricing page for the latest details."
+  },
+  {
+    q: "How is Grok Imagine different from DALL-E and Midjourney?",
+    a: "The key difference is the prompt style. Grok Imagine (FLUX.1) responds best to natural, descriptive paragraphs — like telling a story about the image. DALL-E 3 (used in ChatGPT) also handles natural language but tends toward more literal interpretations. Midjourney V7 uses a comma-separated aesthetic syntax with style modifiers. For users who find Midjourney syntax intimidating, Grok Imagine is often the most accessible — just describe what you see in your mind and FLUX.1 translates it accurately."
+  },
+  {
+    q: "Can I use Grok Imagine for commercial projects?",
+    a: "xAI's terms of service allow use of Grok-generated images for most personal and commercial purposes. However, always review the current xAI Terms of Service and any platform-specific licensing before using generated images commercially, particularly for advertising, product packaging, or resale. The terms were last updated in early 2026 and are available on grok.com."
+  }
+];
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-br from-violet-700 via-purple-700 to-indigo-800 text-white py-16">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <div class="inline-flex items-center gap-2 bg-white/20 rounded-full px-4 py-1.5 text-sm font-medium mb-6">
+        <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+        xAI Grok Imagine — FLUX.1 powered, trending 2026
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">
+        Grok Imagine Prompt Generator
+      </h1>
+      <p class="text-xl text-purple-100 max-w-2xl mx-auto">
+        The Grok Imagine prompt generator gives you 20 free, copy-ready prompts built for xAI's FLUX.1-powered image tool. No syntax to learn — paste directly into Grok Imagine and get stunning results instantly.
+      </p>
+    </div>
+  </div>
+
+  <div class="max-w-4xl mx-auto px-4 py-12">
+
+    <!-- What Is Section -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">What is the Grok Imagine Prompt Generator?</h2>
+      <p class="text-gray-700 mb-4">
+        The <strong>Grok Imagine prompt generator</strong> on this page provides 20 professionally crafted prompts for <strong>xAI's Grok Imagine</strong> — the viral AI image tool built into Grok that runs on Black Forest Labs' FLUX.1 model. Since Elon Musk's April 2026 posts sparked mass adoption, Grok Imagine has become one of the most-searched AI image tools, with users generating everything from hyper-realistic portraits to surreal concept art and fine art illustrations.
+      </p>
+      <p class="text-gray-700 mb-4">
+        What makes Grok Imagine unique is its prompt style: unlike Midjourney (which uses comma-separated modifiers) or older DALL-E models (which prefer simple sentences), FLUX.1 is trained to interpret rich, natural language descriptions. Think of each prompt as a scene direction — the more vivid and specific your writing, the more precisely FLUX.1 renders your vision.
+      </p>
+      <p class="text-gray-700">
+        All 20 prompts below are ready to copy and paste directly into Grok Imagine, Grok.com, or any other platform running FLUX.1. Each prompt includes subject, environment, lighting, mood, and a style reference — the core elements that consistently produce high-quality Grok Imagine results.
+      </p>
+    </section>
+
+    <!-- Prompt Formula Section -->
+    <section class="mb-12 bg-gradient-to-r from-violet-50 to-purple-50 rounded-2xl p-8 border border-violet-200">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">How to Write a Grok Imagine Prompt</h2>
+      <p class="text-gray-700 mb-4">Grok Imagine (FLUX.1) responds best to natural language. Use this formula:</p>
+      <div class="bg-white rounded-lg p-6 border border-violet-300 mb-6 font-mono text-sm text-gray-800 leading-relaxed">
+        [Main subject + defining detail], [environment or setting], [lighting condition], [mood or emotion], [photography/art style reference], [optional: camera format or era].
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Lighting Terms That Work:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
+            <li>"golden hour" / "blue hour"</li>
+            <li>"soft window light from the left"</li>
+            <li>"dramatic side lighting"</li>
+            <li>"bioluminescent glow"</li>
+            <li>"studio softbox, overhead"</li>
+            <li>"neon sign reflections on wet pavement"</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Style References That Land:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
+            <li>"Vermeer lighting" / "Rembrandt portrait"</li>
+            <li>"Studio Ghibli painterly"</li>
+            <li>"National Geographic quality"</li>
+            <li>"Brutalist photography aesthetic"</li>
+            <li>"BBC Planet Earth documentary"</li>
+            <li>"i-D magazine editorial"</li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-6 p-4 bg-violet-100 rounded-lg border border-violet-300">
+        <p class="text-sm text-violet-900 font-medium">FLUX.1 key insight:</p>
+        <p class="text-sm text-violet-800 mt-1">Write prompts as a sentence or two, not as a keyword list. FLUX.1 reads context — "a woman standing in golden hour light by a window" produces better results than "woman, golden hour, window, portrait, bokeh." Full sentences = better spatial understanding = better composition.</p>
+      </div>
+    </section>
+
+    <!-- Prompts Grid -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-2 text-center">20 Free Grok Imagine Prompts — Copy & Paste</h2>
+      <p class="text-center text-gray-500 mb-8 text-sm">Click any prompt to copy it — paste directly into Grok Imagine</p>
+
+      <div class="space-y-4">
+        {prompts.map((item, index) => (
+          <div class="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-start justify-between gap-4 mb-3">
+              <div>
+                <h3 class="text-lg font-bold text-gray-900">
+                  <span class="text-violet-600">{index + 1}.</span> {item.name}
+                </h3>
+                <span class="inline-block mt-1 text-xs font-medium bg-violet-100 text-violet-700 px-2 py-0.5 rounded-full">
+                  {item.category}
+                </span>
+              </div>
+              <button
+                class="copy-btn flex-shrink-0 px-4 py-2 bg-violet-600 text-white text-sm font-medium rounded-lg hover:bg-violet-700 transition-colors"
+                data-text={item.prompt}
+              >
+                Copy
+              </button>
+            </div>
+            <p class="text-gray-700 text-sm leading-relaxed">{item.prompt}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Grok Imagine vs Competitors -->
+    <section class="mb-12 bg-gradient-to-r from-slate-50 to-gray-50 rounded-2xl p-8 border border-gray-200">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Grok Imagine vs. Other AI Image Tools (2026)</h2>
+      <p class="text-gray-700 mb-6">Different AI image models excel in different areas. Here's how Grok Imagine compares to the alternatives:</p>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-gray-100">
+              <th class="text-left p-3 font-semibold text-gray-900 border border-gray-200">Model</th>
+              <th class="text-left p-3 font-semibold text-gray-900 border border-gray-200">Best Prompt Style</th>
+              <th class="text-left p-3 font-semibold text-gray-900 border border-gray-200">Strength</th>
+              <th class="text-left p-3 font-semibold text-gray-900 border border-gray-200">Access</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bg-violet-50">
+              <td class="p-3 font-semibold text-violet-800 border border-gray-200">Grok Imagine (FLUX.1)</td>
+              <td class="p-3 text-gray-700 border border-gray-200">Natural language paragraphs</td>
+              <td class="p-3 text-gray-700 border border-gray-200">Photorealism, spatial accuracy, artistic styles</td>
+              <td class="p-3 text-gray-700 border border-gray-200">X Premium / Grok.com</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-gray-700 border border-gray-200">GPT Image 2 (DALL-E 4)</td>
+              <td class="p-3 text-gray-700 border border-gray-200">Conversational descriptions</td>
+              <td class="p-3 text-gray-700 border border-gray-200">Following complex multi-element instructions</td>
+              <td class="p-3 text-gray-700 border border-gray-200">ChatGPT Plus / API</td>
+            </tr>
+            <tr class="bg-gray-50">
+              <td class="p-3 font-semibold text-gray-700 border border-gray-200">Midjourney V7</td>
+              <td class="p-3 text-gray-700 border border-gray-200">Comma keywords + style params</td>
+              <td class="p-3 text-gray-700 border border-gray-200">Aesthetic consistency, editorial quality</td>
+              <td class="p-3 text-gray-700 border border-gray-200">Midjourney subscription</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-gray-700 border border-gray-200">Adobe Firefly 4</td>
+              <td class="p-3 text-gray-700 border border-gray-200">Simple descriptions</td>
+              <td class="p-3 text-gray-700 border border-gray-200">Commercial-safe, Adobe CC integration</td>
+              <td class="p-3 text-gray-700 border border-gray-200">Adobe CC subscription</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Tips Section -->
+    <section class="mb-12 bg-gradient-to-r from-purple-50 to-indigo-50 rounded-2xl p-8 border border-purple-200">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Grok Imagine Tips for Better Results</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-3">Do This:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-2 text-sm">
+            <li>Write full descriptive sentences, not keyword lists</li>
+            <li>Specify the light source and time of day</li>
+            <li>Name a photographic or artistic style reference</li>
+            <li>Describe mood and emotion alongside visual details</li>
+            <li>Include a camera format hint for photorealism (e.g., "Canon 5D, 85mm")</li>
+            <li>Add texture and material details for objects</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-3">Avoid This:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-2 text-sm">
+            <li>Comma-separated keyword dumps (that's for Midjourney)</li>
+            <li>Vague requests like "beautiful woman, nice background"</li>
+            <li>Requesting specific real people by name</li>
+            <li>Contradictory instructions in the same prompt</li>
+            <li>Prompts over 300 words — returns diminish significantly</li>
+            <li>Skipping the mood/atmosphere — it anchors the whole image</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions — Grok Imagine</h2>
+      <div class="space-y-4">
+        {faqs.map(faq => (
+          <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">{faq.q}</h3>
+            <p class="text-gray-700">{faq.a}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Related Tools -->
+    <section class="bg-white rounded-2xl border border-gray-200 p-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">More AI Image & Prompt Tools</h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        <a href="/gpt-image-2-prompt-generator" class="p-4 bg-emerald-50 rounded-lg hover:bg-emerald-100 transition-colors">
+          <h3 class="font-semibold text-emerald-900">GPT Image 2 Prompt Generator</h3>
+          <p class="text-sm text-emerald-700">OpenAI's latest image model — 20 free copy-paste prompts</p>
+        </a>
+        <a href="/midjourney-ai-picture-generator" class="p-4 bg-pink-50 rounded-lg hover:bg-pink-100 transition-colors">
+          <h3 class="font-semibold text-pink-900">MidJourney Prompt Generator</h3>
+          <p class="text-sm text-pink-700">Aesthetic keyword-style prompts for Midjourney V7</p>
+        </a>
+        <a href="/tools/image-to-prompt" class="p-4 bg-violet-50 rounded-lg hover:bg-violet-100 transition-colors">
+          <h3 class="font-semibold text-violet-900">Image to Prompt Analyzer</h3>
+          <p class="text-sm text-violet-700">Upload an image, get the Grok Imagine prompt that recreates it</p>
+        </a>
+        <a href="/tools/text-to-prompt" class="p-4 bg-indigo-50 rounded-lg hover:bg-indigo-100 transition-colors">
+          <h3 class="font-semibold text-indigo-900">Text to Prompt Expander</h3>
+          <p class="text-sm text-indigo-700">Turn a rough idea into a detailed Grok Imagine prompt</p>
+        </a>
+        <a href="/veo-3-prompt-generator" class="p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
+          <h3 class="font-semibold text-blue-900">Veo 3 Prompt Generator</h3>
+          <p class="text-sm text-blue-700">Google's AI video model — free prompts for Veo 3</p>
+        </a>
+        <a href="/ai-images-prompt" class="p-4 bg-orange-50 rounded-lg hover:bg-orange-100 transition-colors">
+          <h3 class="font-semibold text-orange-900">AI Image Prompt Generator</h3>
+          <p class="text-sm text-orange-700">Universal prompts for DALL-E, Stable Diffusion & all models</p>
+        </a>
+      </div>
+    </section>
+
+  </div>
+
+  <AstroFooter />
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.copy-btn').forEach(button => {
+        button.addEventListener('click', async () => {
+          const text = button.getAttribute('data-text');
+          try {
+            await navigator.clipboard.writeText(text);
+            const orig = button.textContent;
+            button.textContent = 'Copied!';
+            button.classList.replace('bg-violet-600', 'bg-green-600');
+            button.classList.replace('hover:bg-violet-700', 'hover:bg-green-700');
+            setTimeout(() => {
+              button.textContent = orig;
+              button.classList.replace('bg-green-600', 'bg-violet-600');
+              button.classList.replace('hover:bg-green-700', 'hover:bg-violet-700');
+            }, 2000);
+          } catch {
+            button.textContent = 'Copy failed';
+          }
+        });
+      });
+    });
+  </script>
+</BaseLayout>

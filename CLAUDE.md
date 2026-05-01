@@ -2,7 +2,7 @@
 
 ## What this project is
 Free AI prompt generator platform at **randomprompts.org**. Built with Astro 5 + Tailwind + Vercel.
-Generates prompts for writing, AI art (MidJourney, DALL-E, GPT Image 2, Veo 3, Kling 3), blogs, and more.
+Generates prompts for writing, AI art (MidJourney, DALL-E, GPT Image 2, Veo 3, Kling 3, HappyHorse, Grok Imagine), blogs, and more.
 
 ## Stack quick reference
 - Pages: `src/pages/*.astro` (static) + `src/pages/blog/[slug].astro` (dynamic)
@@ -63,12 +63,15 @@ With items 1–4 in place, the entire daily loop (scan → decide → execute �
 
 ## Backlog (ordered by priority)
 
+### P0 — New pages (AI models released in last 30 days — act immediately, zero competition)
+
+- [ ] `wan-2-7-prompt-generator` — Alibaba Tongyi Lab released Wan 2.7 on April 3–6, 2026. Open-source 27B param model with "Thinking Mode." Heavy ongoing search traffic. Slug: `/wan-2-7-prompt-generator`.
+
+- [ ] `skyreels-v4-prompt-generator` — SkyReels V4 released April 3, 2026. First open-source model to generate video + synchronized audio in one pass. #1 T2V-with-audio on Artificial Analysis leaderboard. Slug: `/skyreels-v4-prompt-generator`.
+
 ### P1 — CTR fixes (title + description rewrites in seo.ts or blogPosts.ts)
 
-- [ ] `/writing-prompts-generator` — pos 19.4, 4,165 impressions, 2.6% CTR
-  - Current title: `Writing Prompt Generator — Random Prompts for Every Genre`
-  - Problem: position too deep AND title is generic. Needs both title fix and content improvement.
-  - Action: rewrite title to `Random Writing Prompt Generator — Free, Unlimited (No Signup)` + add more content to the hub page to improve ranking.
+- [x] `/writing-prompts-generator` — title fixed 2026-05-01 to `Random Writing Prompt Generator — Free, Unlimited (No Signup)`
 
 - [ ] `/prompts/coquette-aesthetic` — pos 3.7, 318 impressions, 1.9% CTR
   - Small volume but at position 3.7 the CTR should be 8%+. Check what the dynamic page title is and fix it.
@@ -90,17 +93,22 @@ With items 1–4 in place, the entire daily loop (scan → decide → execute �
 
 - [x] `kling-3-prompt-generator` — created 2026-04-29. Kling 3.0 is top AI video model in 2026. 20 prompts, FAQs, comparison table vs Veo 3 / Runway / Seedance.
 
-- [ ] `grok-imagine-prompt-generator` — "grok imagine prompts" trending since Elon Musk viral post (April 3, 2026). No page on site. Model is FLUX.1-based, responds to natural language. Slug must be `/grok-imagine-prompt-generator`.
+- [x] `grok-imagine-prompt-generator` — created 2026-05-01. xAI FLUX.1-powered image generator, viral since Elon Musk April post. 20 prompts, comparison table, tips, FAQs.
 
-- [ ] `chibi-ai-prompt-generator` — Chibi style consistently trending in 2026 for AI image generation. Multiple platforms competing but no clear SEO winner. Slug: `/chibi-ai-prompt-generator`.
+- [x] `happyhorse-prompt-generator` — created 2026-05-01. Alibaba's #1-ranked AI video model globally (Elo 1,341 T2V / 1,402 I2V). Zero competitor pages when created. 20 prompts, benchmark table, FAQs.
 
-- [ ] `seedance-2-prompt-generator` — ByteDance's Seedance 2.0 went viral (Feb 2026), API live April 9 on fal.ai. Hottest image-to-video model. Slug: `/seedance-2-prompt-generator`.
+- [ ] `seedance-2-prompt-generator` — ByteDance's Seedance 2.0 went viral (Feb 2026), API live April 9 on fal.ai. #2 overall on AI video leaderboard. Slug: `/seedance-2-prompt-generator`.
+
+- [ ] `chibi-ai-prompt-generator` — Chibi style consistently trending in 2026 for AI image generation. Viral via Grok Imagine's chibi template on X. Slug: `/chibi-ai-prompt-generator`.
+
+- [ ] `mai-image-2-prompt-generator` — Microsoft's MAI Image 2, released March 19 / live in Bing Image Creator April 2, 2026. #3 on Arena leaderboard. Massive distribution via Bing/Copilot. Slug: `/mai-image-2-prompt-generator`.
 
 ### P4 — Blog posts (informational intent, long-tail)
 
+- [ ] Blog post: "HappyHorse vs Kling 3 vs Veo 3: Best AI Video Model in 2026?" — targets high-volume comparison query, links to all three pages.
 - [ ] Blog post: "Kling 3 vs Veo 3: Which AI Video Model Should You Use in 2026?" — targets high-volume comparison query, links to both pages.
 - [ ] Blog post: "GPT Image 2 vs MidJourney: Which Should You Use in 2026?" — targets comparison searches, links to new GPT Image 2 page.
-- [ ] Blog post: "How to Write Prompts for Grok Imagine" — targets tutorial intent, links to new Grok page once created.
+- [ ] Blog post: "How to Write Prompts for Grok Imagine" — targets tutorial intent, links to Grok page.
 
 ---
 
@@ -121,6 +129,8 @@ With items 1–4 in place, the entire daily loop (scan → decide → execute �
 
 - `/gpt-image-2-prompt-generator` — created 2026-04-27. Exploding keyword (GPT Image 2 released April 21, 2026).
 - `/kling-3-prompt-generator` — created 2026-04-29. Top AI video model in 2026. 20 prompts, multi-shot guide, comparison table, FAQs, cross-links to Veo 3.
+- `/grok-imagine-prompt-generator` — created 2026-05-01. xAI Grok Imagine (FLUX.1), viral since Elon Musk April 2026 post. 20 prompts, tips, comparison table, FAQs.
+- `/happyhorse-prompt-generator` — created 2026-05-01. Alibaba HappyHorse-1.0, #1 globally on Artificial Analysis Video Arena (Elo 1,341 T2V). Zero competitor pages on creation date. 20 prompts, benchmark table, FAQs.
 
 ## Technical fixes applied
 

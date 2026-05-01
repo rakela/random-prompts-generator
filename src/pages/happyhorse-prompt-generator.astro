@@ -1,0 +1,414 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AstroHeader from '../components/AstroHeader.astro';
+import AstroFooter from '../components/AstroFooter.astro';
+import '../styles/global.css';
+
+const seo = {
+  path: 'happyhorse-prompt-generator',
+  title: 'HappyHorse Prompt Generator — Free AI Video Prompts (Alibaba #1, 2026)',
+  description: 'Free HappyHorse prompt generator with 20 copy-ready prompts for Alibaba\'s #1-ranked AI video model. HappyHorse-1.0 topped global benchmarks in April 2026 — cinematic, brand, and creative prompts.',
+  keywords: 'happyhorse prompt generator, happyhorse prompts, happyhorse ai video prompts, happyhorse 1.0 prompts, happyhorse ai prompts, alibaba happyhorse prompts, happyhorse video generator prompts, happyhorse prompt guide 2026'
+};
+
+const prompts = [
+  {
+    name: "Mountain Storm — Weather Cinematics",
+    category: "Nature",
+    prompt: "Time-lapse of a thunderstorm rolling across the Canadian Rockies: a clear summit at 6 AM, clouds building from the valley floor over 4 hours, lightning strobing behind dark peaks as the storm arrives, snow beginning to fall in the final frame, drone pullback revealing the full mountain range in chaotic beauty, BBC documentary quality, native ambient audio of wind and thunder building, 15 seconds.",
+    color: "slate"
+  },
+  {
+    name: "Parkour — Urban Physics",
+    category: "Action",
+    prompt: "Continuous tracking shot following a parkour athlete through downtown Seoul at dusk: he vaults a barrier onto a parked car, rolls off the hood, sprints across a glass skybridge, leaps to grab a fire escape railing, pulls up, turns to look at camera — all in one smooth gimbal move without a cut. Neon city lights, motion blur on the city below, authentic urban sound design, 12 seconds, Nike campaign aesthetic.",
+    color: "orange"
+  },
+  {
+    name: "Surgical Precision Product Reveal",
+    category: "Commercial",
+    prompt: "Single-shot luxury watch reveal: a gloved hand places a rose gold timepiece face-up on a backlit frosted glass surface, the camera starts at the crown, drifts slowly in a continuous macro arc over the dial — catching the guilloché engraving, the sapphire crystal reflection, the hand-polished case edge — ends on a wide showing the whole watch, dramatic spotlight from above, deep shadow, ASMR-style quiet ambient sound, 10 seconds. Rolex or Patek campaign quality.",
+    color: "amber"
+  },
+  {
+    name: "Emotional Reunion Scene",
+    category: "Drama",
+    prompt: "A father and teenage daughter reunite at an airport arrivals hall after three years apart. He spots her first — medium shot of his face showing disbelief, relief, then tears. She sees him — wide shot of her running, bag bouncing. They collide — tight hug, her face buried in his shoulder. His hand on the back of her head. Cut to a slow-motion wide of the embrace, other travellers flowing past. Handheld, warm colour grade, quiet ambient hall noise, 15 seconds. BAFTA-quality human drama.",
+    color: "rose"
+  },
+  {
+    name: "Underwater Coral Garden",
+    category: "Nature",
+    prompt: "Slow drift through a pristine coral reef in the Coral Sea, camera at 6 metres depth, dappled sunlight shimmering through crystal water, a school of anthias parting around the lens, a sea turtle hovering ahead, gentle current moving coral fans, vibrant reds, oranges, and purples in extreme clarity, zero bubbles — freediver shot aesthetic, National Geographic Blue Planet quality, natural hydrophone audio, 15 seconds.",
+    color: "cyan"
+  },
+  {
+    name: "Desert Night Sky Timelapse",
+    category: "Documentary",
+    prompt: "Night sky timelapse from the Atacama Desert: stars wheel overhead in an arc centred on the Milky Way core, the Magellanic Clouds visible low on the southern horizon, occasional meteor streaks, a silhouetted radio telescope slowly rotates in the foreground, pre-dawn light beginning to warm the right horizon in the final 3 seconds. European Southern Observatory production quality, ultra-dark sky, no artificial light pollution, 12 seconds.",
+    color: "indigo"
+  },
+  {
+    name: "High-Fashion Editorial",
+    category: "Fashion",
+    prompt: "A model in a sculptural red couture gown walks through an empty Louvre gallery at night — shot from behind as she approaches a painting, camera dollying slowly toward her, she stops, turns three-quarters, fabric sweeping across the marble floor. No people, only the two figures: her and the art. Single source spotlight from above, deep shadow, complete silence except for echoing footsteps. Vogue Paris aesthetic, 10 seconds.",
+    color: "red"
+  },
+  {
+    name: "Startup Pitch — Authentic Documentary",
+    category: "Business",
+    prompt: "Authentic documentary b-roll of a startup team preparing for an investor pitch: a founder rehearsing alone in a glass-walled conference room at 11 PM, city lights behind her, marker on whiteboard, a moment of doubt — she pauses, looks at her notes, breathes, nods to herself. Cut to the team arriving next morning, coffee in hand, setting up laptops. Hand-held observational camera, natural lighting only, no staged moments, Netflix documentary warmth, 12 seconds.",
+    color: "blue"
+  },
+  {
+    name: "Giant Squid — Deep Ocean Encounter",
+    category: "Nature",
+    prompt: "A remotely operated vehicle's camera captures a Humboldt squid at 500m depth: the animal hovers motionless, chromatophores pulsing in hypnotic colour patterns — deep red, then white, then iridescent — its siphon slowly venting, two dinner-plate eyes reflecting the ROV floodlights, then in an instant it jets backward into the black. Real submersible footage aesthetic, natural ROV lighting, genuine scientific discovery weight, 10 seconds.",
+    color: "teal"
+  },
+  {
+    name: "Solo Musician — Late Night Studio",
+    category: "Music",
+    prompt: "A jazz pianist alone in a dim recording studio at 1 AM: single lamp over the Steinway, sheet music yellowed at the edges, he begins to play — starting with one hand finding a motif, then both hands join. Camera starts on his face (eyes closed, concentration), drifts slowly to his hands, then pulls wide to show the whole empty room around him. Intimate and raw, natural piano acoustics with room tone, 15 seconds.",
+    color: "yellow"
+  },
+  {
+    name: "Ice Climbing — Extreme Sports",
+    category: "Action",
+    prompt: "A female ice climber ascending a 40-metre frozen waterfall in the Canadian Rockies: her ice axe swings and bites, crampons kicking in, breath visible in the -20°C air. Camera on a rope above her — looking down as she approaches, pauses to place a screw, looks up at the camera with fierce composure. Rope team partner visible small below. Adrenaline photography meets documentary, natural wind and axe sound, 12 seconds.",
+    color: "sky"
+  },
+  {
+    name: "Artisan Glassblowing",
+    category: "Craft",
+    prompt: "A master glassblower shaping a molten vessel: furnace glow illuminating her face orange, she works the blowpipe, rotating rhythmically, a glowing orange bubble extending and thinning at the end. Close-up on the molten glass itself — translucent, internal heat making it glow like a sun — then wide to show her silhouette against the furnace. ASMR aesthetics: natural flame hiss, no music, 10 seconds. PBS craftsmanship documentary quality.",
+    color: "amber"
+  },
+  {
+    name: "K-Pop Performance Opener",
+    category: "Music",
+    prompt: "K-pop concert opening sequence: darkness, a heartbeat on the speakers, a single spotlight materialises on the centre stage floor, a performer steps into it — sharp choreography freeze pose — then the lights explode as the beat drops: 6 performers in synchronised formation, stadium crowd erupting. Multi-camera cut sequence: wide → close-up of faces → overhead drone → ground-level tracking shot, all matching perfectly to the beat, 10 seconds.",
+    color: "fuchsia"
+  },
+  {
+    name: "Space Station Cupola View",
+    category: "Sci-Fi / Space",
+    prompt: "Photorealistic POV from the ISS Cupola window: an astronaut's hands rest on the glass, Earth fills the entire viewport below — the Sahara visible at the top, the Atlantic ocean cloud systems in the middle, South America's coast emerging from the right. The station drifts imperceptibly. Complete silence. Then a voice through the comms: 'Houston, you copying this?' Ultra-photorealistic, no CGI visible, 15 seconds.",
+    color: "violet"
+  },
+  {
+    name: "Street Photography — Monsoon Mumbai",
+    category: "Documentary",
+    prompt: "Street level during Mumbai monsoon season: a chaiwallah under a tin roof shelter serves tea to office workers waiting out the downpour, steam from the chai kettle, sheets of rain visible in the background, umbrella handles sticking out of bags, a taxi honking distantly. Intimate reportage photography brought to motion, natural monsoon audio, warm incandescent light from the stall, 10 seconds. Magnum Photos quality.",
+    color: "stone"
+  },
+  {
+    name: "Architectural Reveal — Zaha Hadid Style",
+    category: "Architecture",
+    prompt: "Smooth drone reveal of a parametric architecture museum: beginning from ground level close to the fluid white concrete form, the camera slowly rises and pulls back, revealing the full sweeping curves of the building against a moody overcast sky, a reflecting pool at its base catching the grey light. No people. Architecture speaks alone. Abstract ambient score implied, professional architectural photography movement, 12 seconds.",
+    color: "gray"
+  },
+  {
+    name: "Children's Animation Opening",
+    category: "Animation",
+    prompt: "3D animated short opening: a tiny mouse in an oversized explorer hat stands at the entrance to a hole in a skirting board — beyond it, a vast luminous world of giant fungi and glowing beetles. She adjusts her hat, consults a hand-drawn map, and steps in. The camera follows at mouse-height. Pixar production quality, warm magical lighting, whimsical orchestral score building, charming and adventurous, 10 seconds.",
+    color: "lime"
+  },
+  {
+    name: "Political Documentary — Press Conference Tension",
+    category: "Documentary",
+    prompt: "Tight observational shot of a politician at a press conference before cameras go live: she's alone at the podium adjusting her notes, a media adviser whispers something urgent, she nods once, straightens, the press room begins to fill behind her, camera flash tests pop. Not a word is said. The tension of what's about to happen is entirely visual. Handheld, natural fluorescent lighting, ambient crowd murmur, 10 seconds.",
+    color: "zinc"
+  },
+  {
+    name: "Grand Prix Pit Stop",
+    category: "Sports",
+    prompt: "An F1 pit stop at 24 fps with 120fps slow-motion spliced in: the car enters the box at speed — wide shot — the crew descends like a mechanical organism — front jack up, all four guns firing simultaneously, tyres off in under 1.5 seconds, tyres on — then the cut to ultra-slow-motion of a single lug nut spinning off through the air, the tyre being slammed on, the gun tightening, the front jack dropping — back to real speed as the car screams away. 10 seconds, pure technical theatre.",
+    color: "red"
+  },
+  {
+    name: "Solarpunk Village — Future Optimism",
+    category: "Sci-Fi",
+    prompt: "A solarpunk village in 2080: rounded adobe buildings with living roofs of wildflowers, wind turbines integrated into giant sculptural tree forms, children playing near a communal garden harvesting tomatoes, solar panels shaped like giant leaves on market stall awnings, crystal-clear river running through the village centre. Bright afternoon light, genuine human warmth, no dystopia, pure hopeful future vision, painterly realism, 12 seconds.",
+    color: "green"
+  }
+];
+
+const faqs = [
+  {
+    q: "What is the HappyHorse prompt generator?",
+    a: "The HappyHorse prompt generator on this page provides 20 free, professionally crafted prompts for HappyHorse-1.0, the AI video model developed by Alibaba (Taotian Group) that ranked #1 on the Artificial Analysis Video Arena leaderboard in April 2026 — beating Kling 3, Veo 3, and Seedance 2 on both text-to-video and image-to-video benchmarks. Each prompt is built for HappyHorse's exceptional motion realism, native audio generation, and cinematic narrative capability."
+  },
+  {
+    q: "What is HappyHorse and who made it?",
+    a: "HappyHorse-1.0 is an AI video generation model developed by Alibaba's Taotian Group, released in April 2026. It initially appeared anonymously on the Artificial Analysis Video Arena leaderboard and immediately ranked #1 with an Elo of 1,341 for text-to-video and 1,402 for image-to-video — sparking viral speculation about which company had built it. Alibaba was later confirmed as the creator, generating major coverage from CNBC, The Verge, and AI research communities. HappyHorse-1.0 is available via fal.ai and through Alibaba's cloud platforms."
+  },
+  {
+    q: "Why did HappyHorse go viral?",
+    a: "HappyHorse went viral because it appeared anonymously at the top of the global AI video benchmark leaderboard, outperforming every known model overnight. The mystery of who built it — combined with the unusual name — drove massive speculation on X and Reddit's AI communities. When Alibaba was revealed as the creator on April 10, 2026, it confirmed that the race for AI video supremacy was far more competitive than many assumed, with Chinese companies matching or exceeding Western models across key benchmarks."
+  },
+  {
+    q: "How do I write an effective HappyHorse prompt?",
+    a: "HappyHorse-1.0 responds best to structured, cinematic language. For best results: (1) Open with a shot description — camera type, angle, and movement; (2) Describe the subject and action with specific physical detail; (3) Specify the environment, time of day, and lighting; (4) Include audio direction — HappyHorse generates native sound, so describing ambient audio significantly improves the result; (5) End with a production quality reference (documentary style, ad aesthetic, film genre); (6) Add a duration hint (8–15 seconds). More detail consistently produces better output than vague descriptions."
+  },
+  {
+    q: "How does HappyHorse compare to Kling 3 and Veo 3?",
+    a: "As of April 2026, HappyHorse-1.0 outranked both Kling 3.0 and Veo 3.1 on the Artificial Analysis Video Arena leaderboard. HappyHorse's particular strengths are motion realism (especially for complex physics like water, fabric, and crowds), native audio-visual synchronisation, and narrative coherence across multi-shot sequences. Veo 3 remains strong for single-shot photorealistic clips, while Kling 3 excels at structured multi-shot cinematic sequencing. HappyHorse sits above both in raw quality benchmarks as of May 2026."
+  },
+  {
+    q: "Where can I access HappyHorse-1.0?",
+    a: "HappyHorse-1.0 is accessible via fal.ai (where it went live on April 26, 2026) and through Alibaba Cloud's AI services. Availability, pricing, and access tiers are evolving quickly — check fal.ai and Alibaba Cloud directly for current access options. Like most cutting-edge AI video models, it offers limited free trials with paid plans for higher-volume professional use."
+  }
+];
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-br from-green-700 via-teal-700 to-emerald-800 text-white py-16">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <div class="inline-flex items-center gap-2 bg-white/20 rounded-full px-4 py-1.5 text-sm font-medium mb-6">
+        <span class="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></span>
+        HappyHorse-1.0 — Ranked #1 AI video globally, April 2026
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">
+        HappyHorse Prompt Generator
+      </h1>
+      <p class="text-xl text-green-100 max-w-2xl mx-auto">
+        The HappyHorse prompt generator gives you 20 free, copy-ready prompts for Alibaba's benchmark-topping AI video model. HappyHorse-1.0 outranked Kling 3, Veo 3, and Seedance 2 on arrival — these prompts are built to match its capabilities.
+      </p>
+    </div>
+  </div>
+
+  <div class="max-w-4xl mx-auto px-4 py-12">
+
+    <!-- What Is Section -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">What is the HappyHorse Prompt Generator?</h2>
+      <p class="text-gray-700 mb-4">
+        The <strong>HappyHorse prompt generator</strong> on this page provides 20 free, professionally crafted prompts for <strong>HappyHorse-1.0</strong>, Alibaba's AI video model that arrived in April 2026 and immediately ranked #1 on the Artificial Analysis Video Arena leaderboard — the most respected independent AI model benchmark — with an Elo of 1,341 for text-to-video and 1,402 for image-to-video. It beat every competing model, including Kling 3.0, Veo 3.1, Runway Gen-4.5, and Seedance 2.0.
+      </p>
+      <p class="text-gray-700 mb-4">
+        The model went viral before anyone even knew who built it. It appeared anonymously at the top of the leaderboard with an unusual name, sparking days of speculation on X and Reddit about which company had secretly produced the world's best AI video model. When Alibaba was revealed as the creator on April 10, CNBC, The Verge, and the wider AI press covered the story — putting HappyHorse firmly on the map.
+      </p>
+      <p class="text-gray-700">
+        Every prompt below is copy-ready for HappyHorse-1.0. Each includes shot structure, camera movement, lighting, audio atmosphere, and a production style reference — the key elements that consistently deliver exceptional results from HappyHorse's motion physics and narrative generation capabilities.
+      </p>
+    </section>
+
+    <!-- Leaderboard Box -->
+    <section class="mb-12 bg-gradient-to-r from-green-50 to-teal-50 rounded-2xl p-8 border border-green-200">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">HappyHorse-1.0 Benchmark Rankings (April 2026)</h2>
+      <p class="text-gray-700 mb-6">HappyHorse-1.0 debuted at #1 on the Artificial Analysis Video Arena — the independent crowd-sourced benchmark that rates AI video models on real-world quality:</p>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-gray-100">
+              <th class="text-left p-3 font-semibold text-gray-900 border border-gray-200">Rank</th>
+              <th class="text-left p-3 font-semibold text-gray-900 border border-gray-200">Model</th>
+              <th class="text-left p-3 font-semibold text-gray-900 border border-gray-200">T2V Elo</th>
+              <th class="text-left p-3 font-semibold text-gray-900 border border-gray-200">I2V Elo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bg-green-50">
+              <td class="p-3 font-bold text-green-800 border border-gray-200">#1</td>
+              <td class="p-3 font-semibold text-green-800 border border-gray-200">HappyHorse-1.0 (Alibaba)</td>
+              <td class="p-3 text-gray-700 border border-gray-200">1,341</td>
+              <td class="p-3 text-gray-700 border border-gray-200">1,402</td>
+            </tr>
+            <tr>
+              <td class="p-3 text-gray-600 border border-gray-200">#2</td>
+              <td class="p-3 text-gray-700 border border-gray-200">Seedance 2.0 (ByteDance)</td>
+              <td class="p-3 text-gray-700 border border-gray-200">1,269</td>
+              <td class="p-3 text-gray-700 border border-gray-200">1,351</td>
+            </tr>
+            <tr class="bg-gray-50">
+              <td class="p-3 text-gray-600 border border-gray-200">#3</td>
+              <td class="p-3 text-gray-700 border border-gray-200">Kling 3.0 (Kuaishou)</td>
+              <td class="p-3 text-gray-700 border border-gray-200">1,248</td>
+              <td class="p-3 text-gray-700 border border-gray-200">1,312</td>
+            </tr>
+            <tr>
+              <td class="p-3 text-gray-600 border border-gray-200">#4</td>
+              <td class="p-3 text-gray-700 border border-gray-200">Veo 3.1 (Google)</td>
+              <td class="p-3 text-gray-700 border border-gray-200">1,231</td>
+              <td class="p-3 text-gray-700 border border-gray-200">1,298</td>
+            </tr>
+            <tr class="bg-gray-50">
+              <td class="p-3 text-gray-600 border border-gray-200">#5</td>
+              <td class="p-3 text-gray-700 border border-gray-200">Runway Gen-4.5</td>
+              <td class="p-3 text-gray-700 border border-gray-200">1,197</td>
+              <td class="p-3 text-gray-700 border border-gray-200">1,244</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-xs text-gray-500 mt-3">Source: Artificial Analysis Video Arena, April 2026. Elo scores approximate.</p>
+    </section>
+
+    <!-- Prompt Formula -->
+    <section class="mb-12 bg-gradient-to-r from-teal-50 to-emerald-50 rounded-2xl p-8 border border-teal-200">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">How to Write a HappyHorse Prompt</h2>
+      <p class="text-gray-700 mb-4">HappyHorse-1.0 is built for cinematic realism. Use this structure:</p>
+      <div class="bg-white rounded-lg p-6 border border-teal-300 mb-6 font-mono text-sm text-gray-800 leading-relaxed">
+        [Camera type + movement]: [Subject + action], [environment + lighting details], [audio direction — ambient or score], [production style reference], [duration].
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Camera Moves HappyHorse Excels At:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
+            <li>Tracking shot (gimbal follow)</li>
+            <li>Observational handheld</li>
+            <li>Drone reveal + pullback</li>
+            <li>Continuous arc / orbit</li>
+            <li>POV with physics interaction</li>
+            <li>Multi-camera cut sequences</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Audio Cues That Improve Output:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
+            <li>"natural ambient sound"</li>
+            <li>"ASMR quiet — no music"</li>
+            <li>"crowd erupting in the background"</li>
+            <li>"native hydrophone audio"</li>
+            <li>"wind and thunder building"</li>
+            <li>"complete silence"</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Prompts Grid -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-2 text-center">20 Free HappyHorse Prompts — Copy & Paste</h2>
+      <p class="text-center text-gray-500 mb-8 text-sm">Click any prompt to copy it — paste directly into HappyHorse-1.0</p>
+
+      <div class="space-y-4">
+        {prompts.map((item, index) => (
+          <div class="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-start justify-between gap-4 mb-3">
+              <div>
+                <h3 class="text-lg font-bold text-gray-900">
+                  <span class="text-green-700">{index + 1}.</span> {item.name}
+                </h3>
+                <span class="inline-block mt-1 text-xs font-medium bg-green-100 text-green-700 px-2 py-0.5 rounded-full">
+                  {item.category}
+                </span>
+              </div>
+              <button
+                class="copy-btn flex-shrink-0 px-4 py-2 bg-green-700 text-white text-sm font-medium rounded-lg hover:bg-green-800 transition-colors"
+                data-text={item.prompt}
+              >
+                Copy
+              </button>
+            </div>
+            <p class="text-gray-700 text-sm leading-relaxed">{item.prompt}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Tips Section -->
+    <section class="mb-12 bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-8 border border-green-200">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">HappyHorse Prompting Tips</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-3">Do This:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-2 text-sm">
+            <li>Specify camera movement type at the start</li>
+            <li>Describe audio — HappyHorse generates native sound</li>
+            <li>Include specific physical material details (marble, steel, wet pavement)</li>
+            <li>Name a production quality reference at the end</li>
+            <li>Include time of day and precise lighting source</li>
+            <li>Use 8–15 second duration hints</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-3">Avoid This:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-2 text-sm">
+            <li>Vague descriptions ("nice light," "beautiful scenery")</li>
+            <li>Requesting specific real people</li>
+            <li>Contradictory camera movements in one shot</li>
+            <li>Prompts over 200 words — HappyHorse handles them but results get erratic</li>
+            <li>Ignoring audio direction — it meaningfully affects generation quality</li>
+            <li>Comma lists — write full sentences for better spatial understanding</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions — HappyHorse</h2>
+      <div class="space-y-4">
+        {faqs.map(faq => (
+          <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">{faq.q}</h3>
+            <p class="text-gray-700">{faq.a}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Related Tools -->
+    <section class="bg-white rounded-2xl border border-gray-200 p-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">More AI Video & Prompt Tools</h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        <a href="/kling-3-prompt-generator" class="p-4 bg-orange-50 rounded-lg hover:bg-orange-100 transition-colors">
+          <h3 class="font-semibold text-orange-900">Kling 3 Prompt Generator</h3>
+          <p class="text-sm text-orange-700">Kuaishou's top-rated AI video model — multi-shot sequences</p>
+        </a>
+        <a href="/veo-3-prompt-generator" class="p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
+          <h3 class="font-semibold text-blue-900">Veo 3 Prompt Generator</h3>
+          <p class="text-sm text-blue-700">Google's free AI video model — photorealistic single shots</p>
+        </a>
+        <a href="/gpt-image-2-prompt-generator" class="p-4 bg-emerald-50 rounded-lg hover:bg-emerald-100 transition-colors">
+          <h3 class="font-semibold text-emerald-900">GPT Image 2 Prompt Generator</h3>
+          <p class="text-sm text-emerald-700">OpenAI's latest image model — 20 free copy-paste prompts</p>
+        </a>
+        <a href="/grok-imagine-prompt-generator" class="p-4 bg-violet-50 rounded-lg hover:bg-violet-100 transition-colors">
+          <h3 class="font-semibold text-violet-900">Grok Imagine Prompt Generator</h3>
+          <p class="text-sm text-violet-700">xAI's FLUX.1-powered image generator — 20 free prompts</p>
+        </a>
+        <a href="/tools/video-ai-generation" class="p-4 bg-teal-50 rounded-lg hover:bg-teal-100 transition-colors">
+          <h3 class="font-semibold text-teal-900">AI Video Prompt Builder</h3>
+          <p class="text-sm text-teal-700">Build structured video prompts for any AI model</p>
+        </a>
+        <a href="/tools/text-to-prompt" class="p-4 bg-green-50 rounded-lg hover:bg-green-100 transition-colors">
+          <h3 class="font-semibold text-green-900">Text to Prompt Expander</h3>
+          <p class="text-sm text-green-700">Turn a rough idea into a full HappyHorse-ready prompt</p>
+        </a>
+      </div>
+    </section>
+
+  </div>
+
+  <AstroFooter />
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.copy-btn').forEach(button => {
+        button.addEventListener('click', async () => {
+          const text = button.getAttribute('data-text');
+          try {
+            await navigator.clipboard.writeText(text);
+            const orig = button.textContent;
+            button.textContent = 'Copied!';
+            button.classList.replace('bg-green-700', 'bg-emerald-600');
+            button.classList.replace('hover:bg-green-800', 'hover:bg-emerald-700');
+            setTimeout(() => {
+              button.textContent = orig;
+              button.classList.replace('bg-emerald-600', 'bg-green-700');
+              button.classList.replace('hover:bg-emerald-700', 'hover:bg-green-800');
+            }, 2000);
+          } catch {
+            button.textContent = 'Copy failed';
+          }
+        });
+      });
+    });
+  </script>
+</BaseLayout>

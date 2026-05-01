@@ -24,9 +24,9 @@ export const seoData: Record<string, SEOData> = {
   },
   writingPromptsGenerators: {
     path: 'writing-prompts-generator',
-    title: 'Writing Prompt Generator — Random Prompts for Every Genre',
-    description: 'Generate random writing prompts instantly. Choose from story starters, conflict, character, dialogue, villain, emotion, and more. Free generator.',
-    keywords: 'writing prompt generator, random writing prompts, story ideas, creative writing, writing prompt generators, character generator, plot generator'
+    title: 'Random Writing Prompt Generator — Free, Unlimited (No Signup)',
+    description: 'Free random writing prompt generator — unlimited story starters, characters, conflicts, plot twists, and more. No signup, no limits. Instant creative writing inspiration.',
+    keywords: 'random writing prompt generator, writing prompt generator, free writing prompts, writing prompt generators, random story prompts, creative writing prompts, story ideas generator'
   },
   aiImagesPrompt: {
     path: 'ai-images-prompt',
@@ -404,6 +404,18 @@ export const seoData: Record<string, SEOData> = {
     title: 'Kling 3 Prompt Generator — Free AI Video Prompts (2026)',
     description: 'Free Kling 3 prompt generator with 20 copy-ready prompts for Kuaishou\'s top-rated AI video model. Multi-shot sequences, cinematic narratives, brand videos — updated 2026.',
     keywords: 'kling 3 prompt generator, kling 3 prompts, kling ai prompts, kling 3.0 prompt guide, kling ai video prompts, kling 3 prompt examples, kling video generator prompts, kuaishou kling prompts'
+  },
+  grokImaginePromptGenerator: {
+    path: 'grok-imagine-prompt-generator',
+    title: 'Grok Imagine Prompt Generator — 20 Free Prompts (xAI, 2026)',
+    description: 'Free Grok Imagine prompt generator with 20 copy-ready prompts for xAI\'s FLUX.1-powered image tool. Portraits, fantasy art, architecture, abstract & more. No signup needed.',
+    keywords: 'grok imagine prompt generator, grok imagine prompts, grok imagine prompt, xai grok image prompts, grok imagine examples, grok ai image generator prompts, grok flux prompts, grok imagine guide 2026'
+  },
+  happyhorsePromptGenerator: {
+    path: 'happyhorse-prompt-generator',
+    title: 'HappyHorse Prompt Generator — Free AI Video Prompts (Alibaba #1, 2026)',
+    description: 'Free HappyHorse prompt generator with 20 copy-ready prompts for Alibaba\'s #1-ranked AI video model. HappyHorse-1.0 topped global benchmarks in April 2026 — cinematic, brand, and creative prompts.',
+    keywords: 'happyhorse prompt generator, happyhorse prompts, happyhorse ai video prompts, happyhorse 1.0 prompts, happyhorse ai prompts, alibaba happyhorse prompts, happyhorse video generator prompts, happyhorse prompt guide 2026'
   }
 };
 
