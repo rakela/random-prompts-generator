@@ -1,0 +1,413 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AstroHeader from '../components/AstroHeader.astro';
+import AstroFooter from '../components/AstroFooter.astro';
+import '../styles/global.css';
+
+const seo = {
+  path: 'wan-2-7-prompt-generator',
+  title: 'Wan 2.7 Prompt Generator — Free AI Video Prompts (Open-Source, 2026)',
+  description: 'Free Wan 2.7 prompt generator with 20 copy-ready prompts for Alibaba\'s open-source 27B AI video model. Wan 2.7 introduced Thinking Mode for smarter generation — cinematic, creative, and commercial prompts.',
+  keywords: 'wan 2.7 prompt generator, wan 2.7 prompts, wan 2.7 ai video prompts, wan video prompts, alibaba wan 2.7, wan 2.7 thinking mode prompts, wan 2.7 open source prompts, wan2.7 prompt guide 2026'
+};
+
+const prompts = [
+  {
+    name: "Cherry Blossom Rain — Spring Macro",
+    category: "Nature",
+    prompt: "Extreme close-up macro shot of cherry blossom petals detaching from a branch in slow motion: each petal spirals downward through soft morning light at 120fps, the pale pink translucent against a blurred green hillside, two petals collide mid-air and drift apart, a single drop of dew releases from the last petal still clinging to the branch. Complete silence. Japanese spring aesthetic, National Geographic precision, 12 seconds.",
+    color: "pink"
+  },
+  {
+    name: "Neon Ramen Shop — Street Night",
+    category: "Documentary",
+    prompt: "Night street-level shot of a Tokyo ramen shop at 11 PM: condensation on the glass front reveals silhouettes of solo diners hunched over steaming bowls, neon kanji signage reflects in puddles on the wet pavement outside, a salaryman in a rumpled suit pushes through the door, letting warmth and broth steam billow into the cold air. Observational documentary camera, natural street audio — rain, distant traffic, bowl-clatter inside — 10 seconds.",
+    color: "orange"
+  },
+  {
+    name: "Alpine Icefall — Science Documentary",
+    category: "Nature",
+    prompt: "Time-lapse compressed into 12 seconds: a massive alpine icefall in the Swiss Alps collapses in stages — first a crack of sound, then a slow-motion avalanche of seracs tumbling into the glacial valley below, powder cloud rising 200 metres into thin mountain air, the valley walls echoing with the thunder of it. BBC Earth quality, drone wide shot pulling back as the collapse progresses, natural acoustic recording of the event.",
+    color: "sky"
+  },
+  {
+    name: "Hip-Hop Studio Session",
+    category: "Music",
+    prompt: "Intimate music video b-roll: a rapper records in a dim studio — one ring-light, a condenser mic inches from his face, headphones half-on, eyes closed. He runs the verse three times — the camera catches a lip movement, a fist clenching on the word, a half-smile at the punchline. Producer visible in the background through the glass, nodding in time. Warm colour grade, hip-hop aesthetic, natural studio bleed audio, 12 seconds.",
+    color: "yellow"
+  },
+  {
+    name: "Deep-Sea Bioluminescence",
+    category: "Science",
+    prompt: "ROV footage at 900 metres depth: complete darkness interrupted by a bloom of bioluminescent jellyfish drifting through frame — each one pulsing blue-green in its own rhythm, tentacles trailing metres below the bell. The ROV light catches one at close range, revealing a mouth ringed with glowing cilia. BBC Blue Planet aesthetic, real hydrophone silence, natural ROV light only, 15 seconds.",
+    color: "indigo"
+  },
+  {
+    name: "Brutalist Architecture — Golden Hour",
+    category: "Architecture",
+    prompt: "Low-angle drone shot of a Soviet-era brutalist housing block at golden hour: the concrete panels glow amber, windows lit from inside with warm domestic life, laundry on a high balcony catching the last light. The camera rises slowly until the full 18-storey block fills the frame against a fading pink sky, then drifts laterally to reveal identical blocks repeating to the horizon. Melancholy beauty, no music implied, natural wind tone, 12 seconds.",
+    color: "amber"
+  },
+  {
+    name: "Championship Boxer — Locker Room",
+    category: "Sports",
+    prompt: "Tight observational shot of a professional boxer alone in a locker room before the main event: wrapping his own hands in white tape with practised precision, eyes fixed on the middle distance, jaw set. No eye contact with camera. Cut to his reflection in the mirror — he finds it, holds it for three seconds, nods once. The crowd sound from the arena bleeds faintly through the walls. Handheld, single bulb overhead light, no music, 10 seconds.",
+    color: "slate"
+  },
+  {
+    name: "Wildfire Lookout — Aerial Dusk",
+    category: "Documentary",
+    prompt: "Aerial shot of a remote fire lookout tower at dusk: the tiny structure stands on a granite summit, smoke columns from multiple wildfires visible across the valley below turning the setting sun deep red. A silhouetted figure in the tower turns slowly with binoculars. The camera pulls back on a long lens to compress the smoke and the ridge and the figure into one frame. Forest Service documentary quality, ambient wind audio, 12 seconds.",
+    color: "red"
+  },
+  {
+    name: "Molecular Gastronomy — Chef's Table",
+    category: "Commercial",
+    prompt: "Extreme close-up of a Michelin-star chef plating a dish: using tweezers to place a single edible flower, a squeeze of micro-emulsion spheres that burst on contact with the warm plate, a brush of gold dust across the sauce. The camera is 10cm from the plate, macro lens tracking each placement. The chef's hands move with absolute economy. Complete silence except for the faint clink of tools. Architectural food photography brought to motion, 10 seconds.",
+    color: "emerald"
+  },
+  {
+    name: "Antarctic Blizzard — Survival Camp",
+    category: "Documentary",
+    prompt: "Antarctic expedition camp at -40°C during a whiteout blizzard: a researcher pushes against 80km/h wind to reach a yellow equipment tent 15 metres away, each step fought, the camp nearly invisible in the white-out, a rope guide line the only safety. Camera is static from inside the main tent, filming through a frost-covered porthole, natural wind audio at full volume — no narration, no music, pure elemental exposure, 12 seconds.",
+    color: "cyan"
+  },
+  {
+    name: "Luxury Car Launch — Desert Salt Flat",
+    category: "Commercial",
+    prompt: "Automotive launch film: a matte black hypercar accelerates across the Bonneville Salt Flats at sunrise, shot from a low pursuit vehicle running parallel at 200 km/h — the car is razor-sharp, the salt flat blurs to white beneath it, an enormous dust plume of salt crystals fans behind. Switch to wide drone shot showing the car as a black arrow on infinite white. No voiceover, engine sound mixed with dramatic score, 15 seconds, Porsche / McLaren aesthetic.",
+    color: "zinc"
+  },
+  {
+    name: "Rain Forest Canopy — Dawn Choir",
+    category: "Nature",
+    prompt: "Single long take inside the Amazon canopy at first light: the camera is mounted in the tree crown, looking upward as pink dawn light filters through 40 metres of overlapping leaves, mist rising, a troupe of howler monkeys beginning their territorial call — the sound builds from one voice to a full chorus as the light intensifies. BBC Natural World aesthetic, directional microphone capturing stereo canopy soundscape, 15 seconds.",
+    color: "green"
+  },
+  {
+    name: "Cyberpunk Night Market",
+    category: "Sci-Fi",
+    prompt: "A rain-soaked night market in 2047 Neo-Seoul: holographic vendor signs float at every stall, a food vendor's wok shoots a pillar of blue-tinged flame, a crowd of pedestrians with partially visible augmented-reality overlays on their field of view push past the camera, a maintenance drone hovers at head-height scanning for expired licences. Blade Runner 2049 aesthetic, natural crowd ambient plus digital glitch audio layer, no clean sci-fi music, 12 seconds.",
+    color: "violet"
+  },
+  {
+    name: "Coastal Storm — Lighthouse",
+    category: "Nature",
+    prompt: "A Category 2 storm battering a 19th-century lighthouse on the Maine coast: 12-metre waves strike the base and explode upward past the light, the beam sweeps through horizontal rain, a fishing boat visible in the distance fighting to round the headland. Static wide angle from a cliff opposite, spray reaching the lens, natural storm audio — howling wind, wave impact, thunder — no narration, 15 seconds.",
+    color: "blue"
+  },
+  {
+    name: "Marathon Finish Line — Emotion",
+    category: "Sports",
+    prompt: "Hand-held tracking shot of a 65-year-old woman crossing a marathon finish line: the crowd parting ahead of her, her face showing 4 hours of pain resolved into pure relief, a volunteer draping a foil blanket over her shoulders, her adult children running from the barrier to embrace her. No slow motion — real time, messy, real. Natural crowd noise and PA announcement, no music, 10 seconds. The Guardian documentary quality.",
+    color: "rose"
+  },
+  {
+    name: "ASMR Pottery — Clay and Wheel",
+    category: "Craft",
+    prompt: "Extreme close-up of hands on a spinning potter's wheel: wet clay being centred — fingers pressing inward, the clay rising and falling responsively, slurry flying in slow arcs at the edges. The camera stays at clay level, tracking the hands. Sound design is pure ASMR: wet clay slap, wheel hum, water being added, hands squeaking — no music, full sensory detail, 12 seconds.",
+    color: "stone"
+  },
+  {
+    name: "Night Surgery — Medical Drama",
+    category: "Drama",
+    prompt: "Observational b-roll inside an operating theatre at 2 AM: the surgical team works in near-silence over a draped patient, instruments passed without words, the lead surgeon's eyes alone visible above the mask — focused, unhurried. A junior resident glances at the vital signs monitor. Single overhead surgical light in an otherwise dark room. Natural OR audio: monitor beeps, ventilator rhythm, suction — 10 seconds. HBO medical drama quality.",
+    color: "teal"
+  },
+  {
+    name: "Rocket Launch — Pad-Level",
+    category: "Sci-Fi / Space",
+    prompt: "Pad-level camera captures a rocket ignition sequence: sound arrives 0.5 seconds after the flame — first visual is a white steam shockwave radiating outward from the pad, then the rocket lifts clear, exhaust plume turning the sky orange, the launch tower vibrating in the frame, debris dust rising around the camera. Go-pro aesthetic, raw pad audio — ignition crack, roar building to overwhelming — 12 seconds. SpaceX NASASpaceflight community quality.",
+    color: "orange"
+  },
+  {
+    name: "Whisky Distillery — Scotland",
+    category: "Commercial",
+    prompt: "Single continuous dolly through a Scottish Highland distillery at dusk: copper pot stills glowing in warm light, condensers running with cold water, a stillman checks the spirit safe with one practiced glance, barrels stacked floor-to-ceiling in a bonded warehouse visible through a stone arch, ending on a close-up of amber spirit flowing into a glass. Slow, deliberate, reverent. Natural distillery audio — drip, hiss, footstep on stone — 15 seconds. Glenfiddich brand quality.",
+    color: "amber"
+  },
+  {
+    name: "Hummingbird — Ultra Slow Motion",
+    category: "Nature",
+    prompt: "Phantom camera at 3,000fps captures a ruby-throated hummingbird feeding: each wingbeat isolated into 40 individual frames, the tongue extending into the flower visible in full detail, iridescent feathers frozen in colour. The background blurs completely. When played at normal speed the whole sequence becomes a 12-second hypnotic study of physics made visible. Natural silence at high-speed — just the faint whomp of wings slowed to a heartbeat, 12 seconds.",
+    color: "fuchsia"
+  }
+];
+
+const faqs = [
+  {
+    q: "What is the Wan 2.7 prompt generator?",
+    a: "The Wan 2.7 prompt generator on this page provides 20 free, professionally crafted prompts for Wan 2.7, Alibaba Tongyi Lab's open-source 27B-parameter AI video model released in April 2026. Wan 2.7 introduced 'Thinking Mode' — a first for open-source video generation — where the model reasons through the scene before rendering, producing more coherent motion physics, better camera consistency, and sharper narrative logic than previous versions."
+  },
+  {
+    q: "What is Wan 2.7 and who made it?",
+    a: "Wan 2.7 is an open-source AI video generation model developed by Alibaba's Tongyi Lab (the Wan Team) and released between April 3–6, 2026. It is a 27-billion parameter model available on HuggingFace, compatible with ComfyUI workflows, and runnable on high-end consumer hardware. Wan 2.7 supports text-to-video (T2V) and image-to-video (I2V) generation, with a native resolution of up to 720p and strong performance on multi-second narrative sequences."
+  },
+  {
+    q: "What is Wan 2.7 Thinking Mode?",
+    a: "Thinking Mode is the defining innovation in Wan 2.7. Before rendering each video, the model runs an internal reasoning step — similar to chain-of-thought in text models — where it works out camera geometry, scene physics, and motion consistency before generating a single frame. This produces notably better results on complex prompts: multi-object interactions, correct physics (water, cloth, hair), and camera moves that stay consistent across the full clip. You activate Thinking Mode via a flag in the API or through the ComfyUI node."
+  },
+  {
+    q: "How do I write an effective Wan 2.7 prompt?",
+    a: "Wan 2.7 responds best to structured prose rather than keyword lists. For optimal results: (1) Open with a specific camera type and movement (tracking shot, macro close-up, drone reveal); (2) Describe the subject with concrete physical detail — materials, texture, colour; (3) Include environment, lighting source, and time of day; (4) Add an audio direction line — Wan 2.7 benefits from audio context even if it doesn't generate audio natively; (5) Close with a production quality reference (BBC, Vogue, Nike campaign); (6) Keep prompts under 150 words for cleanest output. With Thinking Mode enabled, longer and more complex prompts become more reliable."
+  },
+  {
+    q: "How does Wan 2.7 compare to Kling 3 and HappyHorse?",
+    a: "As of May 2026, Wan 2.7's main competitive advantage is being fully open-source and locally runnable — no API costs, no platform restrictions, full control over output. On benchmark quality, HappyHorse-1.0 and Kling 3.0 score higher on the Artificial Analysis Video Arena, but both are proprietary API-only models. Wan 2.7 is the top choice for researchers, developers, and creators who want to run inference locally, fine-tune on custom datasets, or build applications without per-video API fees. For raw output quality without cost concerns, HappyHorse or Kling 3 currently lead."
+  },
+  {
+    q: "Where can I run Wan 2.7?",
+    a: "Wan 2.7 is available on HuggingFace (model weights are open-source), through ComfyUI with the WanVideo ComfyUI node, via Replicate and fal.ai APIs for cloud inference, and through Alibaba Cloud's ModelScope platform. Local inference requires approximately 20–24GB VRAM for the full 27B model; a quantized version runs on 12–16GB. The model is released under a permissive open-source licence allowing commercial and research use."
+  }
+];
+---
+
+<BaseLayout seo={seo}>
+  <AstroHeader />
+
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-br from-purple-700 via-violet-700 to-indigo-800 text-white py-16">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <div class="inline-flex items-center gap-2 bg-white/20 rounded-full px-4 py-1.5 text-sm font-medium mb-6">
+        <span class="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></span>
+        Wan 2.7 — Open-source 27B model with Thinking Mode, April 2026
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">
+        Wan 2.7 Prompt Generator
+      </h1>
+      <p class="text-xl text-purple-100 max-w-2xl mx-auto">
+        The Wan 2.7 prompt generator gives you 20 free, copy-ready prompts for Alibaba's open-source AI video model. Wan 2.7 introduced Thinking Mode — the first open-source video model to reason through a scene before rendering — producing smarter motion, sharper physics, and more consistent camera work.
+      </p>
+    </div>
+  </div>
+
+  <div class="max-w-4xl mx-auto px-4 py-12">
+
+    <!-- What Is Section -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">What is the Wan 2.7 Prompt Generator?</h2>
+      <p class="text-gray-700 mb-4">
+        The <strong>Wan 2.7 prompt generator</strong> on this page provides 20 free, professionally crafted prompts for <strong>Wan 2.7</strong>, Alibaba Tongyi Lab's open-source 27-billion-parameter AI video model released in April 2026. Wan 2.7 is the most capable openly licensed video generation model available today — you can download the weights, run it locally, fine-tune it on your own footage, and use it commercially, all without paying per-video API fees.
+      </p>
+      <p class="text-gray-700 mb-4">
+        The model's defining innovation is <strong>Thinking Mode</strong>: before rendering a single frame, Wan 2.7 runs an internal reasoning step that works out camera geometry, scene physics, and motion consistency. The result is noticeably better output on complex prompts — multi-object interactions, correct cloth and water physics, camera moves that hold across the full clip. Thinking Mode is the first time chain-of-thought reasoning has been applied inside an open-source video model.
+      </p>
+      <p class="text-gray-700">
+        Every prompt below is copy-ready for Wan 2.7. Each is structured with a camera move, subject detail, environment, audio context, and a production quality reference — the elements that consistently produce the strongest output from the model whether you're running locally via ComfyUI or through the fal.ai API.
+      </p>
+    </section>
+
+    <!-- Thinking Mode Box -->
+    <section class="mb-12 bg-gradient-to-r from-purple-50 to-violet-50 rounded-2xl p-8 border border-purple-200">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Wan 2.7 Thinking Mode — What It Changes</h2>
+      <p class="text-gray-700 mb-6">Thinking Mode is the reason Wan 2.7's prompts outperform Wan 2.1 on complex scenes. Enable it with <code class="bg-purple-100 text-purple-800 px-1.5 py-0.5 rounded text-sm font-mono">thinking_mode=True</code> in the API or via the ComfyUI WanVideo node toggle.</p>
+      <div class="bg-white rounded-lg p-6 border border-purple-300 mb-6 font-mono text-sm text-gray-800 leading-relaxed">
+        [Camera + movement] + [Subject + physical action] + [Environment + light] + [Audio context] + [Production style] + [Duration]
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">What Thinking Mode Improves:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
+            <li>Complex physics (water, cloth, fire, hair)</li>
+            <li>Camera consistency across full clip length</li>
+            <li>Multi-object interaction and collision</li>
+            <li>Crowd and background motion coherence</li>
+            <li>Narrative continuity in action sequences</li>
+            <li>Handling of longer, denser prompts</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Best Prompt Elements for Wan 2.7:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
+            <li>"tracking shot," "macro close-up," "drone reveal"</li>
+            <li>Specific material textures (wet pavement, copper, marble)</li>
+            <li>"natural ambient sound" or audio atmosphere</li>
+            <li>Production reference: "BBC Earth," "Nike campaign"</li>
+            <li>Duration hint: "10 seconds," "12 seconds"</li>
+            <li>Time of day + lighting source</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Model Comparison Box -->
+    <section class="mb-12 bg-gradient-to-r from-violet-50 to-indigo-50 rounded-2xl p-8 border border-violet-200">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Wan 2.7 vs. Other AI Video Models (May 2026)</h2>
+      <p class="text-gray-700 mb-6">Wan 2.7 is the leading open-source option. Here's how it compares to proprietary models:</p>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-gray-100">
+              <th class="text-left p-3 font-semibold text-gray-900 border border-gray-200">Model</th>
+              <th class="text-left p-3 font-semibold text-gray-900 border border-gray-200">Open-Source</th>
+              <th class="text-left p-3 font-semibold text-gray-900 border border-gray-200">Thinking Mode</th>
+              <th class="text-left p-3 font-semibold text-gray-900 border border-gray-200">Best For</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bg-purple-50">
+              <td class="p-3 font-semibold text-purple-800 border border-gray-200">Wan 2.7 (Alibaba Tongyi)</td>
+              <td class="p-3 text-green-700 font-medium border border-gray-200">Yes — 27B</td>
+              <td class="p-3 text-green-700 font-medium border border-gray-200">Yes (first OSS model)</td>
+              <td class="p-3 text-gray-700 border border-gray-200">Local inference, custom fine-tuning, no API costs</td>
+            </tr>
+            <tr>
+              <td class="p-3 text-gray-700 border border-gray-200">HappyHorse-1.0 (Alibaba Taotian)</td>
+              <td class="p-3 text-red-600 border border-gray-200">No</td>
+              <td class="p-3 text-red-600 border border-gray-200">No</td>
+              <td class="p-3 text-gray-700 border border-gray-200">Highest raw benchmark quality, cinematic realism</td>
+            </tr>
+            <tr class="bg-gray-50">
+              <td class="p-3 text-gray-700 border border-gray-200">Kling 3.0 (Kuaishou)</td>
+              <td class="p-3 text-red-600 border border-gray-200">No</td>
+              <td class="p-3 text-red-600 border border-gray-200">No</td>
+              <td class="p-3 text-gray-700 border border-gray-200">Multi-shot cinematic sequences, structured storytelling</td>
+            </tr>
+            <tr>
+              <td class="p-3 text-gray-700 border border-gray-200">Veo 3.1 (Google)</td>
+              <td class="p-3 text-red-600 border border-gray-200">No</td>
+              <td class="p-3 text-red-600 border border-gray-200">No</td>
+              <td class="p-3 text-gray-700 border border-gray-200">Photorealistic single shots, free via Google Labs</td>
+            </tr>
+            <tr class="bg-gray-50">
+              <td class="p-3 text-gray-700 border border-gray-200">Seedance 2.0 (ByteDance)</td>
+              <td class="p-3 text-red-600 border border-gray-200">No</td>
+              <td class="p-3 text-red-600 border border-gray-200">No</td>
+              <td class="p-3 text-gray-700 border border-gray-200">Speed and consistency for production pipelines</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Prompts Grid -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-2 text-center">20 Free Wan 2.7 Prompts — Copy & Paste</h2>
+      <p class="text-center text-gray-500 mb-8 text-sm">Click any prompt to copy it — paste directly into Wan 2.7 (enable Thinking Mode for best results)</p>
+
+      <div class="space-y-4">
+        {prompts.map((item, index) => (
+          <div class="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-start justify-between gap-4 mb-3">
+              <div>
+                <h3 class="text-lg font-bold text-gray-900">
+                  <span class="text-purple-700">{index + 1}.</span> {item.name}
+                </h3>
+                <span class="inline-block mt-1 text-xs font-medium bg-purple-100 text-purple-700 px-2 py-0.5 rounded-full">
+                  {item.category}
+                </span>
+              </div>
+              <button
+                class="copy-btn flex-shrink-0 px-4 py-2 bg-purple-700 text-white text-sm font-medium rounded-lg hover:bg-purple-800 transition-colors"
+                data-text={item.prompt}
+              >
+                Copy
+              </button>
+            </div>
+            <p class="text-gray-700 text-sm leading-relaxed">{item.prompt}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Tips Section -->
+    <section class="mb-12 bg-gradient-to-r from-purple-50 to-indigo-50 rounded-2xl p-8 border border-purple-200">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Wan 2.7 Prompting Tips</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-3">Do This:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-2 text-sm">
+            <li>Enable Thinking Mode for complex or multi-object scenes</li>
+            <li>Open with a camera type and movement direction</li>
+            <li>Use specific material descriptors (wet stone, copper oxide, linen)</li>
+            <li>Include an audio atmosphere line — it improves visual coherence</li>
+            <li>Name a production quality benchmark at the end</li>
+            <li>Keep prompts under 150 words for cleanest output</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-3">Avoid This:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-2 text-sm">
+            <li>Keyword comma dumps — write structured sentences</li>
+            <li>Requesting real identifiable people</li>
+            <li>Contradictory camera directions in one clip</li>
+            <li>Vague aesthetics ("beautiful," "amazing") without specifics</li>
+            <li>Prompts over 200 words without Thinking Mode enabled</li>
+            <li>Skipping a duration hint — Wan 2.7 uses it to pace motion</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions — Wan 2.7</h2>
+      <div class="space-y-4">
+        {faqs.map(faq => (
+          <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">{faq.q}</h3>
+            <p class="text-gray-700">{faq.a}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Related Tools -->
+    <section class="bg-white rounded-2xl border border-gray-200 p-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">More AI Video & Prompt Tools</h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        <a href="/happyhorse-prompt-generator" class="p-4 bg-green-50 rounded-lg hover:bg-green-100 transition-colors">
+          <h3 class="font-semibold text-green-900">HappyHorse Prompt Generator</h3>
+          <p class="text-sm text-green-700">Alibaba's #1-ranked AI video model — cinematic realism</p>
+        </a>
+        <a href="/kling-3-prompt-generator" class="p-4 bg-orange-50 rounded-lg hover:bg-orange-100 transition-colors">
+          <h3 class="font-semibold text-orange-900">Kling 3 Prompt Generator</h3>
+          <p class="text-sm text-orange-700">Kuaishou's multi-shot cinematic AI video model</p>
+        </a>
+        <a href="/veo-3-prompt-generator" class="p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
+          <h3 class="font-semibold text-blue-900">Veo 3 Prompt Generator</h3>
+          <p class="text-sm text-blue-700">Google's free AI video model — photorealistic clips</p>
+        </a>
+        <a href="/gpt-image-2-prompt-generator" class="p-4 bg-emerald-50 rounded-lg hover:bg-emerald-100 transition-colors">
+          <h3 class="font-semibold text-emerald-900">GPT Image 2 Prompt Generator</h3>
+          <p class="text-sm text-emerald-700">OpenAI's latest image model — 20 free copy-paste prompts</p>
+        </a>
+        <a href="/tools/video-ai-generation" class="p-4 bg-violet-50 rounded-lg hover:bg-violet-100 transition-colors">
+          <h3 class="font-semibold text-violet-900">AI Video Prompt Builder</h3>
+          <p class="text-sm text-violet-700">Build structured prompts for any AI video model</p>
+        </a>
+        <a href="/tools/text-to-prompt" class="p-4 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors">
+          <h3 class="font-semibold text-purple-900">Text to Prompt Expander</h3>
+          <p class="text-sm text-purple-700">Turn a rough idea into a full Wan 2.7-ready prompt</p>
+        </a>
+      </div>
+    </section>
+
+  </div>
+
+  <AstroFooter />
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.copy-btn').forEach(button => {
+        button.addEventListener('click', async () => {
+          const text = button.getAttribute('data-text');
+          try {
+            await navigator.clipboard.writeText(text);
+            const orig = button.textContent;
+            button.textContent = 'Copied!';
+            button.classList.replace('bg-purple-700', 'bg-violet-600');
+            button.classList.replace('hover:bg-purple-800', 'hover:bg-violet-700');
+            setTimeout(() => {
+              button.textContent = orig;
+              button.classList.replace('bg-violet-600', 'bg-purple-700');
+              button.classList.replace('hover:bg-violet-700', 'hover:bg-purple-800');
+            }, 2000);
+          } catch {
+            button.textContent = 'Copy failed';
+          }
+        });
+      });
+    });
+  </script>
+</BaseLayout>

@@ -118,6 +118,8 @@ const staticPageUrls = [
   'grok-imagine-prompt-generator',
   // HappyHorse (P0 — Alibaba #1 ranked AI video model globally, April 2026)
   'happyhorse-prompt-generator',
+  // Wan 2.7 (P0 — Alibaba Tongyi Lab open-source 27B model with Thinking Mode, April 2026)
+  'wan-2-7-prompt-generator',
   // Blog
   'blog',
   // Other pages
@@ -153,10 +155,10 @@ export async function GET(context) {
   // Build static pages with priorities
   const staticPages = staticPageUrls.map((url, index) => ({
     url,
-    changefreq: url === '' ? 'daily' : url.startsWith('workflows/') || url.startsWith('tools/') || url.startsWith('blog') || url === 'veo-3-prompt-generator' || url === 'gpt-image-2-prompt-generator' || url === 'chatgpt-action-figure-prompt-generator' || url === 'kling-3-prompt-generator' || url === 'grok-imagine-prompt-generator' || url === 'happyhorse-prompt-generator' ? 'daily' : 'weekly',
+    changefreq: url === '' ? 'daily' : url.startsWith('workflows/') || url.startsWith('tools/') || url.startsWith('blog') || url === 'veo-3-prompt-generator' || url === 'gpt-image-2-prompt-generator' || url === 'chatgpt-action-figure-prompt-generator' || url === 'kling-3-prompt-generator' || url === 'grok-imagine-prompt-generator' || url === 'happyhorse-prompt-generator' || url === 'wan-2-7-prompt-generator' ? 'daily' : 'weekly',
     priority: url === '' ? '1.0' :
               // New AI tools and trending generators — highest priority
-              url === 'veo-3-prompt-generator' || url === 'gpt-image-2-prompt-generator' || url === 'chatgpt-action-figure-prompt-generator' || url === 'kling-3-prompt-generator' || url === 'grok-imagine-prompt-generator' || url === 'happyhorse-prompt-generator' || url.startsWith('workflows/youtube') || url.startsWith('tools/youtube') || url.startsWith('tools/text-to-prompt') || url.startsWith('tools/image-to-prompt') || url.startsWith('tools/video-ai-generation') || url.startsWith('tools/instagram-aesthetic-generator') ? '0.95' :
+              url === 'veo-3-prompt-generator' || url === 'gpt-image-2-prompt-generator' || url === 'chatgpt-action-figure-prompt-generator' || url === 'kling-3-prompt-generator' || url === 'grok-imagine-prompt-generator' || url === 'happyhorse-prompt-generator' || url === 'wan-2-7-prompt-generator' || url.startsWith('workflows/youtube') || url.startsWith('tools/youtube') || url.startsWith('tools/text-to-prompt') || url.startsWith('tools/image-to-prompt') || url.startsWith('tools/video-ai-generation') || url.startsWith('tools/instagram-aesthetic-generator') ? '0.95' :
               // Blog gets high priority
               url === 'blog' ? '0.9' :
               // Hub pages get high priority
